@@ -3,7 +3,7 @@ requests~=2.27.1
 discord.py~=2.0.1
 blackboxprotobuf~=1.0.1
 protobuf==3.19.4
-textual~=0.1.15
+git+https://github.com/Textualize/textual.git@css#egg=textual
 rich~=12.5.1
 Pygments~=2.13.0
 rtoml~=0.8.0
