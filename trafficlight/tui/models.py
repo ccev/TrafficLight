@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum
+from types import DynamicClassAttribute
 from typing import TYPE_CHECKING
 
 from textual.widgets import Static
@@ -10,11 +11,15 @@ if TYPE_CHECKING:
 
 
 class Mode(Enum):
-    W = "Watch"
-    T = "Filter Text"
-    M = "Filter Methods"
-    S = "Filter Messages"
-    P = "Pause"
+    WATCH = "w"
+    PAUSE = "p"
+    FILTER_TEXT = "t"
+    FILTER_METHODS = "m"
+    FILTER_MESSAGES = "s"
+
+    @DynamicClassAttribute
+    def title(self) -> str:
+        return self.name.title().replace("_", " ")
 
 
 class NoPostStatic(Static):

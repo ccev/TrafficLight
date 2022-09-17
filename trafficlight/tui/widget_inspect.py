@@ -67,8 +67,6 @@ class InspectWidget(Vertical):
     def __init__(self):
         super().__init__(id="inspect")
 
-        self.styles.background = Color(28, 28, 28)
-
     def compose(self):
         yield InspectHeader("")
         yield Vertical(InspectBody())

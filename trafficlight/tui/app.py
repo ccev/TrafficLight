@@ -5,10 +5,12 @@ from typing import TYPE_CHECKING
 
 from textual import events
 from textual.app import App
-from textual.layout import Horizontal
+from textual.layout import Horizontal, Container
+from textual.widgets import Static
+from textual.reactive import reactive, Reactive, var
 
 from .models import Mode
-from .widget_input import InputWidget
+from .widget_input import InputWidget, CommandHelp
 from .widget_inspect import InspectWidget
 from .widget_request import RequestWidget
 from .widget_screen import ScreenWidget
@@ -20,7 +22,8 @@ if TYPE_CHECKING:
 class TrafficLightGui(App):
     input: InputWidget = InputWidget()
     scroll: ScreenWidget = ScreenWidget()
-    current_mode: Mode = Mode.W
+    current_mode: Reactive[Mode] = var(Mode.WATCH)
+    filter_text: Reactive[str] = reactive("")
 
     def __init__(self):
         super().__init__(css_path="_style.css")
@@ -29,7 +32,18 @@ class TrafficLightGui(App):
 
     def compose(self):
         yield Horizontal(self.scroll, InspectWidget())
+        yield CommandHelp()
         yield self.input
+
+    def toggle_command_help(self, show: bool):
+        cmd_help = self.query_one("#command-help")
+        cmd_help.display = show
+
+    def watch_filter_text(self, _):
+        self.scroll.filter()
+
+    def watch_current_mode(self, _):
+        self.scroll.filter()
 
     def on_mount(self):
         self.set_interval(1, self.process_queue)
@@ -43,7 +57,7 @@ class TrafficLightGui(App):
         self.query_one("#inspect").set_proto(proto)
 
     def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]):
-        if self.current_mode == Mode.P:
+        if self.current_mode == Mode.PAUSE:
             return
 
         request = RequestWidget(time=datetime.now(), rpc_id=rpc_id, rpc_status=rpc_status, protos=protos)
@@ -51,27 +65,10 @@ class TrafficLightGui(App):
         self.incoming_requests.append(request)
 
     async def on_key(self, event: events.Key) -> None:
-        if event.key == "left":
-            self.input.cursor_left()
-        elif event.key == "right":
-            self.input.cursor_right()
-        elif event.key == "home":
-            self.input.cursor_home()
-        elif event.key == "end":
-            self.input.cursor_end()
-        elif event.key == "ctrl+h":
-            self.input.key_backspace()
-        elif event.key == "delete":
-            self.input.key_delete()
-        elif event.key == "escape":
-            self.input.end_command_mode()
-        elif len(event.key) == 1 and event.key.isprintable():
-            if event.key == ">":
-                self.input.command_mode = not self.input.command_mode
-            else:
-                self.input.key_printable(event)
-
-        await self.scroll.dispatch_key(event)
+        if event.key == ">":
+            self.input.set_command_mode(not self.input.command_mode)
+        else:
+            self.input.input_key(event)
 
     async def run_app(self):
         await self._process_messages()

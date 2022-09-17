@@ -17,11 +17,54 @@ RequestWidget {
     height: auto;
 }
 
+InspectWidget {
+    background: rgb(28, 28, 28);
+}
+
 InspectHeader {
     dock: top;
     width: 100%;
     height: 2;
     padding-top: 1;
     padding-left: 1;
-    border-bottom: hkey rgb(10, 10, 10);
+    border-bottom: hkey rgb(16, 16, 16);
+}
+
+ScreenWidget {
+    padding: 0 0 0 1;
+    width: 65;
+    dock: left;
+    background: rgb(16, 16, 16);
+}
+
+CommandInput {
+    border-top: hkey rgb(0, 0, 0);
+    background: rgb(28, 28, 28);
+    dock: left;
+    width: auto;
+    padding: 0 4;
+    height: 3;
+}
+
+SearchInput {
+    border-top: hkey rgb(0, 0, 0);
+    background: rgb(16, 16, 16);
+    padding: 0 3;
+    height: 3;
+}
+
+TextInput {
+    background: rgb(16, 16, 16);
+    height: 1;
+    padding: 0;
+    width: 100%;
+}
+
+CommandHelp {
+    height: auto;
+    dock: bottom;
+    padding: 1 4;
+    border-top: hkey rgb(0, 0, 0);
+    background: rgb(16, 16, 16);
+    margin-bottom: 3;
 }

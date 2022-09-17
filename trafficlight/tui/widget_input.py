@@ -2,145 +2,179 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from rich.box import SQUARE
-from rich.style import Style
-from rich.table import Table
-from rich.text import Text
 from textual import events
+from textual.color import Color
+from textual.css.query import NoMatchingNodesError
 from textual.reactive import Reactive
 from textual.widget import Widget
-from textual.widgets import Footer
+from textual.widgets import Static, TextInput
+from textual.layout import Horizontal
+from rich.text import Text
+from rich.style import Style
+from .models import NoPostStatic
+from textual import events
 
+from trafficlight.proto import ALL_ACTION_NAMES, ACTION_PREFIXES, MESSAGE_NAMES
 from .models import Mode
 
 if TYPE_CHECKING:
     from .app import TrafficLightGui
 
-#  A lot of the text input code was taken from https://github.com/sirfuzzalot/textual-inputs
+
+class CustomTextInput(TextInput, can_focus=False):
+    app: TrafficLightGui
+
+    def __init__(self):
+        super().__init__(
+            placeholder="Press > to open the command input or start typing",
+            autocompleter=self.search_autocompleter,
+            id="custom-text-input",
+        )
+        self.has_focus = True
+        self._editor.insert = self.insert
+
+    def search_autocompleter(self, start: str) -> str | None:
+        def match(against: str) -> bool:
+            return against.casefold().startswith(start.casefold())
+
+        if self.current_mode == Mode.FILTER_METHODS:
+            for action_prefix in ACTION_PREFIXES:
+                if start.casefold() != action_prefix.casefold() and match(action_prefix):
+                    return action_prefix
+            for action in ALL_ACTION_NAMES:
+                if match(action):
+                    return action
+        elif self.current_mode == Mode.FILTER_MESSAGES:
+            for message in MESSAGE_NAMES:
+                if match(message):
+                    return message
+        return None
+
+    def filter_text(self, text: str) -> str:
+        if self.current_mode == Mode.FILTER_METHODS:
+            if len(text.upper()) == len(text):
+                text = text.upper()
+        return text
+
+    def insert(self, text: str) -> bool:
+        new_text = (
+            self._editor.content[: self._editor.cursor_index] + text + self._editor.content[self._editor.cursor_index :]
+        )
+        self._editor.content = self.filter_text(new_text)
+        self._editor.cursor_index = min(len(self._editor.content), self._editor.cursor_index + len(text))
+        return True
+
+    @property
+    def current_mode(self) -> Mode:
+        return self.app.current_mode
+
+    def input_key(self, event: events.Key):
+        if event.key in ("tab", "enter"):
+            if self._suggestion_suffix and self._editor.cursor_at_end:
+                self._editor.insert(self._suggestion_suffix)
+                self._suggestion_suffix = ""
+                self._reset_visible_range()
+        else:
+            super()._on_key(event)
+
+        self.app.filter_text = self._editor.content
+
+
+class CommandInput(Static):
+    app: TrafficLightGui
+
+    def __init__(self):
+        super().__init__(id="command-input")
+        self.in_input: bool = False
+
+    @property
+    def current_mode(self) -> Mode:
+        return self.app.current_mode
+
+    def render(self):
+        if self.in_input:
+            self.styles.color = Color(127, 240, 212)
+            mode = ""
+        else:
+            self.styles.color = None
+            mode = self.current_mode.title
+
+        return f"> {mode}"
+
+    def set_in_input(self, in_input: bool):
+        self.in_input = in_input
+        self.refresh(layout=True)
+
+    async def on_click(self, event: events.Click):
+        self.app.input.set_command_mode(not self.in_input)
+
+
+class SearchInput(Widget):
+    def compose(self):
+        yield CustomTextInput()
+
+
+class SelectModeWidget(NoPostStatic):
+    app: TrafficLightGui
+
+    def __init__(self, mode: Mode):
+        self._mode = mode
+
+        text = Text()
+        text.append(str(mode.value), style=Style(color="rgb(127, 240, 212)"))
+        text.append(" - ", style=Style(color="grey50"))
+        text.append(mode.title)
+        super().__init__(text)
+        self.styles.padding = (0, 0, 1, 0)
+
+    async def on_click(self, event: events.Click) -> None:
+        self.app.current_mode = self._mode
+        self.app.input.set_command_mode(False)
+
+
+class CommandHelp(Widget):
+    def __init__(self):
+        super().__init__(*(SelectModeWidget(m) for m in Mode), id="command-help")
+        self.display = False
 
 
 class InputWidget(Widget):
     app: TrafficLightGui
 
-    input_text: str = Reactive("")
     command_mode: bool = Reactive(False)
-    cursor = Text("|", style=Style(color="grey50"))
-    _cursor_position: int = Reactive(0)
-    _text_offset = 0
 
     DEFAULT_CSS = """
     InputWidget {
-        height: 3;
+        height: auto;
         dock: bottom;
     }
     """
 
-    def render(self):
-        table = Table(box=SQUARE, header_style=None, show_header=False, expand=True)
-
-        if self.command_mode:
-            command_text = ">"
-            column_kwargs = {"style": Style(color="cyan")}
-        else:
-            command_text = f"> {self.app.current_mode.value}"
-            column_kwargs = {}
-        table.add_column(min_width=len(command_text), **column_kwargs)
-
-        table.add_column(ratio=1)
-        table.add_row(command_text, self._render_text_with_cursor())
-        return table
-
-    # async def watch_input_text(self, new_value: str):
-    #     await self.app.scroll.update_requests()
-
-    def _render_text_with_cursor(self) -> Text:
-        text = self.input_text
-        left, right = self._text_offset_window()
-        text = text[left:right]
-
-        # convert the cursor to be relative to this view
-        cursor_relative_position = self._cursor_position - self._text_offset
-        return Text.assemble(
-            text[:cursor_relative_position],
-            self.cursor,
-            text[cursor_relative_position:],
-        )
+    @property
+    def text_input(self) -> CustomTextInput:
+        return self.query_one("#custom-text-input")
 
     @property
-    def _visible_width(self):
-        width, _ = self.size
-        width -= 2
-        return width
+    def command_input(self) -> CommandInput:
+        return self.query_one("#command-input")
 
-    def _text_offset_window(self):
-        return self._text_offset, self._text_offset + self._visible_width
+    def compose(self):
+        yield CommandInput()
+        yield SearchInput()
 
-    def _update_offset_left(self):
-        visibility_left = 3
-        if self._cursor_position < self._text_offset + visibility_left:
-            self._text_offset = max(0, self._cursor_position - visibility_left)
+    def set_command_mode(self, enable: bool):
+        self.app.toggle_command_help(enable)
+        self.command_mode = enable
+        self.command_input.set_in_input(enable)
 
-    def _update_offset_right(self):
-        _, right = self._text_offset_window()
-        if self._cursor_position > right:
-            self._text_offset = self._cursor_position - self._visible_width
-
-    def cursor_left(self):
+    def input_key(self, event: events.Key):
         if self.command_mode:
-            return
-        if self._cursor_position > 0:
-            self._cursor_position -= 1
-            self._update_offset_left()
+            self.set_command_mode(False)
+            if event.key.isprintable():
 
-    def cursor_right(self):
-        if self.command_mode:
-            return
-        if self._cursor_position < len(self.input_text):
-            self._cursor_position = self._cursor_position + 1
-            self._update_offset_right()
-
-    def cursor_home(self):
-        if self.command_mode:
-            return
-        self._cursor_position = 0
-        self._update_offset_left()
-
-    def cursor_end(self):
-        if self.command_mode:
-            return
-        self._cursor_position = len(self.input_text)
-        self._update_offset_right()
-
-    def key_backspace(self):
-        if self.command_mode:
-            return
-        if self._cursor_position > 0:
-            self.input_text = self.input_text[: self._cursor_position - 1] + self.input_text[self._cursor_position :]
-            self._cursor_position -= 1
-            self._update_offset_left()
-
-    def key_delete(self):
-        if self.command_mode:
-            return
-        if self._cursor_position < len(self.input_text):
-            self.input_text = self.input_text[: self._cursor_position] + self.input_text[self._cursor_position + 1 :]
-
-    def end_command_mode(self):
-        self.command_mode = False
-
-    def key_printable(self, event: events.Key):
-        if self.command_mode:
-            self.end_command_mode()
-
-            try:
-                self.app.current_mode = Mode[event.key.upper()]
-            except KeyError:
-                pass
+                try:
+                    self.app.current_mode = Mode(event.key.lower())
+                except ValueError:
+                    pass
         else:
-            self.input_text = (
-                self.input_text[: self._cursor_position] + event.key + self.input_text[self._cursor_position :]
-            )
-
-            if not self._cursor_position > len(self.input_text):
-                self._cursor_position += 1
-                self._update_offset_right()
+            self.text_input.input_key(event)

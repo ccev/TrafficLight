@@ -3,21 +3,51 @@ from __future__ import annotations
 import base64
 import json
 import sys
-from typing import TypeVar
+from typing import TypeVar, Type, Iterable
 
 from blackboxprotobuf.lib.interface import decode_message, _get_json_writeable_obj
-from google.protobuf import text_format
+from google.protobuf import text_format, descriptor
 from google.protobuf.message import Message as ProtobufMessage
+from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
 
 import protos
 
-MESSAGES = protos.AllTypesAndMessagesResponsesProto.AllMessagesProto.DESCRIPTOR.fields_by_number
-RESPONSES = protos.AllTypesAndMessagesResponsesProto.AllResponsesProto.DESCRIPTOR.fields_by_number
-METHODS = protos.AllTypesAndMessagesResponsesProto.AllResquestTypesProto.DESCRIPTOR.values_by_number
-METHOD_NAMES = protos.AllTypesAndMessagesResponsesProto.AllResquestTypesProto.DESCRIPTOR.values_by_name
+all_types = protos.AllTypesAndMessagesResponsesProto
+MESSAGES = all_types.AllMessagesProto.DESCRIPTOR.fields_by_number
+RESPONSES = all_types.AllResponsesProto.DESCRIPTOR.fields_by_number
+METHODS = all_types.AllResquestTypesProto.DESCRIPTOR.values_by_number
 MESSAGE_TYPE_TO_ID: dict[str, int] = {m.message_type.name: n for n, m in MESSAGES.items()}
 
 AnyMessage = TypeVar("AnyMessage", bound=ProtobufMessage)
+
+
+def _get_method_names(method_enum: EnumTypeWrapper) -> list[str]:
+    return [d.name for d in method_enum.DESCRIPTOR.values]
+
+
+def _get_message_names(all_messages: Type[AnyMessage]) -> list[str]:
+    return [f.message_type.name for f in all_messages.DESCRIPTOR.fields]
+
+
+MESSAGE_NAMES: list[str] = _get_message_names(all_types.AllMessagesProto) + _get_message_names(
+    all_types.AllResponsesProto
+)
+
+METHOD_NAMES: list[str] = _get_method_names(protos.Method)
+SOCIAL_ACTION_NAMES: list[str] = _get_method_names(protos.SocialAction)
+CLIENT_ACTION_NAMES: list[str] = _get_method_names(protos.ClientAction)
+ADVENTURE_SYNC_ACTION_NAMES: list[str] = _get_method_names(protos.GameAdventureSyncAction)
+PLAYER_SUBMISSION_ACTION_NAMES: list[str] = _get_method_names(protos.PlayerSubmissionAction)
+FITNESS_ACTION_NAMES: list[str] = _get_method_names(protos.GameFitnessAction)
+ALL_ACTION_NAMES: list[str] = (
+    METHOD_NAMES
+    + SOCIAL_ACTION_NAMES
+    + CLIENT_ACTION_NAMES
+    + ADVENTURE_SYNC_ACTION_NAMES
+    + PLAYER_SUBMISSION_ACTION_NAMES
+    + FITNESS_ACTION_NAMES
+)
+ACTION_PREFIXES: list[str] = ["METHOD_", "SOCIAL_ACTION_", "CLIENT_ACTION_", "PLAYER_SUBMISSION_ACTION_"]
 
 
 class Message:
@@ -107,6 +137,11 @@ class Proto:
                 raw_request=self.request.payload.payload,
                 raw_response=self.response.payload.payload,
             )
+
+    @property
+    def messages(self) -> Iterable[Message]:
+        yield self.request
+        yield self.response
 
     @staticmethod
     def get_message_name(messages: dict, value: int) -> str | None:

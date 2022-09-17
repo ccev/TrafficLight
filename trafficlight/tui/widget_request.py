@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Iterable
 
 from rich.console import Group
 from rich.padding import Padding
@@ -16,7 +16,7 @@ from textual.reactive import reactive
 from textual.widget import Widget
 from textual.widgets import Static
 
-from .models import NoPostStatic
+from .models import NoPostStatic, Mode
 from .proto_format import get_method_text, REQUEST_HEADER
 
 if TYPE_CHECKING:
@@ -38,24 +38,44 @@ class ProtoWidget(NoPostStatic):
         self._proto = proto
 
         self._middle_column_text = Padding("|", (0, 1))
-        self._content = self._get_content(proto)
+
+        self.plain_text: str = ""
+        self._content: Group = self._get_content(proto)
+
+    @property
+    def method_name(self) -> str:
+        return self._proto.method_name
+
+    @property
+    def proxy_method_name(self) -> str:
+        return self._proto.proxy.method_name if self._proto.proxy else ""
+
+    @property
+    def message_names(self) -> Iterable[str]:
+        for message in self._proto.messages:
+            if message.name:
+                yield message.name.casefold()
+
+        if self._proto.proxy:
+            for message in self._proto.proxy.messages:
+                if message.name:
+                    yield message.name.casefold()
 
     def _get_content(self, this_proto: Proto) -> Group:
         text = get_method_text(this_proto)
+        text.append("\n")
+        self.plain_text += text.plain
 
         table = Table.grid(Column(), Column(), Column())
         self._make_message_text(this_proto.request, table)
-        text.append("\n")
         self._make_message_text(this_proto.response, table)
-
-        elements = [text, table]
 
         if this_proto.proxy:
             proxy_group = self._get_content(this_proto.proxy)
             table.add_row()
             table.add_row("Proxy", self._middle_column_text, proxy_group)
 
-        return Group(*elements)
+        return Group(text, table)
 
     def _make_message_text(self, message: Message, table: Table):
         if message.name is None:
@@ -73,6 +93,7 @@ class ProtoWidget(NoPostStatic):
         text = Text(no_wrap=True)
         text.append(name + "\n")
         text.append(data, style=Style(color="grey50"))
+        self.plain_text += text.plain
         table.add_row(message.type, self._middle_column_text, text)
 
     def render(self):
@@ -99,12 +120,14 @@ class RequestWidget(Widget):
         self.styles.height = "auto"
         self.protos: list[ProtoWidget] = []
 
+        self.rpc_id = rpc_id
+
         self.text = Text("\n", no_wrap=True)
         self.text.append(time.strftime("%H:%M:%S"), style=REQUEST_HEADER)
         self.text.append(" | ")
         self.text.append(f"RPC ID {rpc_id}", style=REQUEST_HEADER)
         self.text.append(" | ")
-        self.text.append(f"RPC Status {rpc_status}\n\n", style=REQUEST_HEADER)
+        self.text.append(f"RPC Status {rpc_status}\n", style=REQUEST_HEADER)
 
         for proto in protos:
             self.protos.append(ProtoWidget(proto))
@@ -114,3 +137,16 @@ class RequestWidget(Widget):
         for proto in self.protos:
             yield proto
         yield Static(Rule(style=Style(color="grey15")))
+
+    def filter(self, mode: Mode, text: str):
+        for proto in self.protos:
+            if mode == Mode.FILTER_METHODS:
+                proto.display = text in proto.method_name.casefold() or text in proto.proxy_method_name.casefold()
+            elif mode == Mode.FILTER_MESSAGES:
+                proto.display = text in "".join(proto.message_names)
+            elif mode == Mode.FILTER_TEXT:
+                proto.display = text in self.text.plain.casefold() or text in proto.plain_text.casefold()
+            else:
+                proto.display = True
+
+        self.display = any(p.display for p in self.protos)
