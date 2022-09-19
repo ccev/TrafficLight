@@ -1,18 +1,16 @@
 from __future__ import annotations
 
-import json
 from typing import TYPE_CHECKING
 
 from rich.padding import Padding
 from rich.text import Text
-from textual.color import Color
 from textual.layout import Vertical
 
-from .proto_format import MessageFormatter, MESSAGE_NAME, BRACKETS, get_method_text
 from .models import NoPostStatic
+from .proto_format import MessageFormatter, get_method_text
 
 if TYPE_CHECKING:
-    from trafficlight.proto import Proto, Message
+    from trafficlight.proto import Proto
 
 
 class InspectHeader(NoPostStatic):

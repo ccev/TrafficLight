@@ -1,28 +1,20 @@
 from __future__ import annotations
 
+import random
 from typing import TYPE_CHECKING, Type
-import asyncio
 
+import pyperclip
+from rich.style import Style
+from rich.text import Text
 from textual import events
 from textual.color import Color
-from textual.css.query import NoMatchingNodesError
 from textual.reactive import Reactive
 from textual.widget import Widget
-from textual.widgets import Static, TextInput, Placeholder
-from textual.layout import Horizontal, Container
-from rich.text import Text
-from rich.style import Style
-from .models import NoPostStatic
-from textual import events
-from rich.console import Group
+from textual.widgets import Static, TextInput
 
 from trafficlight.proto import ALL_ACTION_NAMES, ACTION_PREFIXES, MESSAGE_NAMES
 from .models import Mode, Toggle, CommandEnum, Action
-import shlex
-import pyperclip
-
-from sys import platform
-import subprocess
+from .models import NoPostStatic
 
 if TYPE_CHECKING:
     from .app import TrafficLightGui
@@ -32,8 +24,9 @@ class CustomTextInput(TextInput, can_focus=False):
     app: TrafficLightGui
 
     def __init__(self):
+        command_key = random.choices(("↲", ">"), weights=(0.2, 0.8), k=1)[0]
         super().__init__(
-            placeholder="Press > to open the command input or start typing",
+            placeholder=f"Press {command_key} to open the command input or start typing",
             autocompleter=self.search_autocompleter,
             id="custom-text-input",
         )

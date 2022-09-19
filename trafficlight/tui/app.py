@@ -8,6 +8,7 @@ from textual.app import App
 from textual.layout import Horizontal, Container
 from textual.widgets import Static
 from textual.reactive import reactive, Reactive, var
+from textual.keys import Keys
 
 from .models import Mode, Toggle
 from .widget_input import InputWidget, CommandHelp
@@ -85,7 +86,8 @@ class TrafficLightGui(App):
         self.incoming_requests.append(request)
 
     async def on_key(self, event: events.Key) -> None:
-        if event.key == ">":
+        self.query_one(Static).update(event.key)
+        if event.key == ">" or event.key == Keys.Enter or event.key == Keys.Return:
             self.input.set_command_mode(not self.input.command_mode)
         else:
             self.input.input_key(event)
