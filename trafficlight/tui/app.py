@@ -9,7 +9,7 @@ from textual.layout import Horizontal, Container
 from textual.widgets import Static
 from textual.reactive import reactive, Reactive, var
 
-from .models import Mode
+from .models import Mode, Toggle
 from .widget_input import InputWidget, CommandHelp
 from .widget_inspect import InspectWidget
 from .widget_request import RequestWidget
@@ -29,15 +29,23 @@ class TrafficLightGui(App):
         super().__init__(css_path="_style.css")
 
         self.incoming_requests: list[RequestWidget] = []
+        self.toggles: dict[Toggle, bool] = {t: False for t in Toggle}
 
     def compose(self):
         yield Horizontal(self.scroll, InspectWidget())
         yield CommandHelp()
         yield self.input
 
+    def toggle_toggle(self, toggle: Toggle):
+        self.toggles[toggle] = result = not self.toggles.get(toggle, False)
+
+        if toggle == Toggle.FIRST_PROTO_ONLY:
+            self.screen_widget.filter()
+
+        self.command_help.update_toggle(toggle, result)
+
     def toggle_command_help(self, show: bool):
-        cmd_help = self.query_one("#command-help")
-        cmd_help.display = show
+        self.command_help.display = show
 
     def watch_filter_text(self, _):
         self.scroll.filter()
@@ -53,8 +61,20 @@ class TrafficLightGui(App):
             self.scroll.add_requests(self.incoming_requests)
             self.incoming_requests.clear()
 
+    @property
+    def inspect_widget(self) -> InspectWidget:
+        return self.query_one(InspectWidget)
+
+    @property
+    def screen_widget(self) -> ScreenWidget:
+        return self.scroll
+
+    @property
+    def command_help(self) -> CommandHelp:
+        return self.query_one(CommandHelp)
+
     def inspect_proto(self, proto: Proto):
-        self.query_one("#inspect").set_proto(proto)
+        self.inspect_widget.set_proto(proto)
 
     def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]):
         if self.current_mode == Mode.PAUSE:
@@ -68,7 +88,7 @@ class TrafficLightGui(App):
         if event.key == ">":
             self.input.set_command_mode(not self.input.command_mode)
         else:
-            self.input.input_key(event)
+            await self.input.input_key(event)
 
     async def run_app(self):
         await self._process_messages()

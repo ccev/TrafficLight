@@ -10,16 +10,34 @@ if TYPE_CHECKING:
     pass
 
 
-class Mode(Enum):
+class CommandEnum(Enum):
+    @DynamicClassAttribute
+    def title(self) -> str:
+        # THIS_NAME -> This Name
+        return self.name.title().replace("_", " ")
+
+    @DynamicClassAttribute
+    def id(self) -> str:
+        # THIS_NAME -> this-name
+        return self.name.lower().replace("_", "-")
+
+
+class Mode(CommandEnum):
     WATCH = "w"
     PAUSE = "p"
     FILTER_TEXT = "t"
     FILTER_METHODS = "m"
     FILTER_MESSAGES = "s"
 
-    @DynamicClassAttribute
-    def title(self) -> str:
-        return self.name.title().replace("_", " ")
+
+class Toggle(CommandEnum):
+    FIRST_PROTO_ONLY = "1"
+    FOLLOW = "f"
+
+
+class Action(CommandEnum):
+    EMPTY_LOG = "e"
+    COPY_INSPECTED = "c"
 
 
 class NoPostStatic(Static):

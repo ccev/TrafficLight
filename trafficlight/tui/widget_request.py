@@ -138,8 +138,14 @@ class RequestWidget(Widget):
             yield proto
         yield Static(Rule(style=Style(color="grey15")))
 
-    def filter(self, mode: Mode, text: str):
-        for proto in self.protos:
+    def filter(self, mode: Mode, first_only: bool, text: str):
+        self.display = False
+
+        if first_only:
+            for proto in self.protos[1:]:
+                proto.display = False
+
+        for proto in self.protos[:1 if first_only else None]:
             if mode == Mode.FILTER_METHODS:
                 proto.display = text in proto.method_name.casefold() or text in proto.proxy_method_name.casefold()
             elif mode == Mode.FILTER_MESSAGES:
@@ -149,4 +155,5 @@ class RequestWidget(Widget):
             else:
                 proto.display = True
 
-        self.display = any(p.display for p in self.protos)
+            if proto.display:
+                self.display = True

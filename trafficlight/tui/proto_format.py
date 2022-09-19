@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from typing import TYPE_CHECKING
 
 from google.protobuf import descriptor, text_encoding
@@ -58,18 +59,64 @@ def get_method_text(proto: Proto, text: Text | None = None) -> Text:
 
 
 class MessageFormatter:
-    def __init__(self, text: Text | None = None, indent: int = 4):
+    def __init__(
+        self,
+        text: Text | None = None,
+        indent: int = 4,
+        indent_guides: bool = True,
+        one_line: bool = False,
+        types: bool = True,
+    ):
         if text is None:
             self.out = Text()
         else:
             self.out = text
 
-        self.indent_size = indent - 1
+        self.indent_size = indent
         self.current_indent: int = 1
 
+        self._indent_guides: bool = indent_guides
+        self._one_line: bool = one_line
+        self._types: bool = types
+        
+    def append(self, text: str, style: Style | None = None):
+        self.out.append(text, style)
+
+    def new_line(self):
+        if not self._one_line:
+            self.append("\n")
+        
+    def format_proto(self, proto: Proto) -> Text:
+        def build_text(this_proto: Proto):
+            for message in (this_proto.request, this_proto.response):
+                if message.name is None:
+                    self.append("Unknown Message ")
+                    self.append(json.dumps(message.blackbox, indent=None if self._one_line else self.indent_size))
+                    self.new_line()
+                else:
+                    self.append(message.name, style=MESSAGE_NAME)
+                    self.append(" {", style=BRACKETS)
+                    self.new_line()
+                    self.print_message(message.payload)
+                    self.append("}", style=BRACKETS)
+                    self.new_line()
+                self.new_line()
+
+        build_text(proto)
+        if proto.proxy:
+            self.new_line()
+            build_text(proto.proxy)
+        return self.out
+
     def add_indent(self):
-        indent_template = "│" + " " * self.indent_size
-        self.out.append(indent_template * self.current_indent, style=Style(color="grey15"))
+        if self._one_line:
+            indent_template = " "
+        elif self._indent_guides:
+            indent_template = ("│" + " " * (self.indent_size - 1)) * self.current_indent
+        else:
+            indent_template = " " * self.indent_size * self.current_indent
+
+        self.append(indent_template, style=Style(color="grey15"))
 
     def print_message(self, message: AnyMessage):
         fields = message.ListFields()
@@ -98,38 +145,40 @@ class MessageFormatter:
     def print_field(self, field, value):
         """Print a single field name/value pair."""
         self._print_field_name(field)
-        self.out.append(" ")
+        self.append(" ")
         self.print_field_value(field, value)
-        self.out.append("\n")
+        self.new_line()
 
     def _print_field_name(self, field: descriptor.FieldDescriptor):
         """Print field name."""
         self.add_indent()
 
         if field.is_extension:
-            self.out.append("[", style=BRACKETS)
+            self.append("[", style=BRACKETS)
             if (
                 field.containing_type.GetOptions().message_set_wire_format
                 and field.type == descriptor.FieldDescriptor.TYPE_MESSAGE
                 and field.label == descriptor.FieldDescriptor.LABEL_OPTIONAL
             ):
-                self.out.append(field.message_type.full_name)
+                self.append(field.message_type.full_name)
             else:
-                self.out.append(field.full_name)
-            self.out.append("]", style=BRACKETS)
+                self.append(field.full_name)
+            self.append("]", style=BRACKETS)
         elif field.type == descriptor.FieldDescriptor.TYPE_GROUP:
             # For groups, use the capitalized name.
-            self.out.append(field.message_type.name)
+            self.append(field.message_type.name)
         elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE:
-            self.out.append("\n")
+            self.new_line()
             self.add_indent()
-            self.out.append(field.message_type.name, style=SUB_MESSAGE_NAME)
-            self.out.append(f" {field.name}")
+
+            if self._types:
+                self.append(field.message_type.name + " ", style=SUB_MESSAGE_NAME)
+            self.append(field.name)
         else:
             type_name = TYPES.get(field.type)
-            if type_name is not None:
-                self.out.append(f"{type_name} ", style=TYPE)
-            self.out.append(field.name)
+            if type_name is not None and self._types:
+                self.append(f"{type_name} ", style=TYPE)
+            self.append(field.name)
 
     def print_field_value(self, field, value):
         """Print a single field value (not including name).
@@ -145,42 +194,43 @@ class MessageFormatter:
         elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_ENUM:
             enum_value = field.enum_type.values_by_number.get(value, None)
             if enum_value is not None:
-                self.out.append(f"{field.enum_type.name}.{enum_value.name}:{value}", style=ENUM)
+                self.append(f"{field.enum_type.name}.{enum_value.name}:{value}", style=ENUM)
             else:
-                self.out.append(str(value), style=ENUM)
+                self.append(str(value), style=ENUM)
         elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_STRING:
-            self.out.append('"', style=STRING)
+            self.append('"', style=STRING)
             if field.type == descriptor.FieldDescriptor.TYPE_BYTES:
                 # We always need to escape all binary data in TYPE_BYTES fields.
                 out_as_utf8 = False
             else:
                 out_as_utf8 = True
-            self.out.append(text_encoding.CEscape(value, out_as_utf8), style=STRING)
-            self.out.append('"', style=STRING)
+            self.append(text_encoding.CEscape(value, out_as_utf8), style=STRING)
+            self.append('"', style=STRING)
         elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_BOOL:
             if value:
-                self.out.append("true", style=BOOLEAN)
+                self.append("true", style=BOOLEAN)
             else:
-                self.out.append("false", style=BOOLEAN)
+                self.append("false", style=BOOLEAN)
         elif field.cpp_type in (descriptor.FieldDescriptor.CPPTYPE_FLOAT, descriptor.FieldDescriptor.CPPTYPE_DOUBLE):
-            self.out.append(str(value), style=NUMBER)
+            self.append(str(value), style=NUMBER)
         elif field.cpp_type in (
             descriptor.FieldDescriptor.CPPTYPE_INT32,
             descriptor.FieldDescriptor.CPPTYPE_INT64,
             descriptor.FieldDescriptor.CPPTYPE_UINT32,
             descriptor.FieldDescriptor.CPPTYPE_UINT64,
         ):
-            self.out.append(str(value), style=NUMBER)
+            self.append(str(value), style=NUMBER)
         else:
-            self.out.append(str(value), style=OTHERVALUE)
+            self.append(str(value), style=OTHERVALUE)
 
     def print_message_field_value(self, value: AnyMessage):
         if not value.ListFields():
-            self.out.append("{}", style=BRACKETS)
+            self.append("{}", style=BRACKETS)
         else:
-            self.out.append("{\n", style=BRACKETS)
+            self.append("{", style=BRACKETS)
+            self.new_line()
             self.current_indent += 1
             self.print_message(value)
             self.current_indent -= 1
             self.add_indent()
-            self.out.append("}", style=BRACKETS)
+            self.append("}", style=BRACKETS)

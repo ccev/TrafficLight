@@ -16,9 +16,6 @@ if TYPE_CHECKING:
 
 
 class InspectHeader(NoPostStatic):
-    def __init__(self, text: str):
-        super().__init__(text, id="inspect-header")
-
     def update_proto(self, proto: Proto):
         if proto.proxy:
             text = Text("Proxy: ")
@@ -28,41 +25,22 @@ class InspectHeader(NoPostStatic):
 
         self.update(text)
 
-
-def build_message_text(message: Message, text: Text):
-    if message.name is None:
-        text.append("Unknown Message ")
-        text.append(json.dumps(message.blackbox, indent=4) + "\n")
-    else:
-        text.append(message.name, style=MESSAGE_NAME)
-        text.append(" {\n", style=BRACKETS)
-        formatter = MessageFormatter(text)
-        formatter.print_message(message.payload)
-        text.append("}\n", style=BRACKETS)
+    def clear(self):
+        self.update("")
 
 
 class InspectBody(NoPostStatic):
-    def __init__(self):
-        super().__init__("", id="inspect-body")
-
     def update_proto(self, proto: Proto):
-        text = Text()
-
-        def build_text(this_proto: Proto):
-            for message in (this_proto.request, this_proto.response):
-                build_message_text(message, text)
-                text.append("\n")
-
-        build_text(proto)
-        if proto.proxy:
-            text.append("\n")
-            build_text(proto.proxy)
-
+        formatter = MessageFormatter()
+        text = formatter.format_proto(proto)
         self.update(Padding(text, (1, 0, 0, 1)))
+
+    def clear(self):
+        self.update("")
 
 
 class InspectWidget(Vertical):
-    proto: Proto
+    proto: Proto | None = None
 
     def __init__(self):
         super().__init__(id="inspect")
@@ -71,8 +49,27 @@ class InspectWidget(Vertical):
         yield InspectHeader("")
         yield Vertical(InspectBody())
 
-    def set_proto(self, proto: Proto):
+    def get_copyable_text(self) -> str:
+        if self.proto is None:
+            return ""
+
+        text = Text()
+        get_method_text(self.proto, text)
+        text.append("\n\n")
+
+        formatter = MessageFormatter(text=text, indent_guides=False, types=False)
+        text = formatter.format_proto(self.proto)
+        return text.plain
+
+    def set_proto(self, proto: Proto) -> None:
         self.proto = proto
-        self.query_one("#inspect-header").update_proto(proto)
-        self.query_one("#inspect-body").update_proto(proto)
-        self.refresh(layout=True)
+        for element in (InspectHeader, InspectBody):
+            self.query_one(element).update_proto(proto)
+        # self.refresh(layout=True)
+
+    def clear(self) -> None:
+        if self.proto is None:
+            return
+
+        for element in (InspectHeader, InspectBody):
+            self.query_one(element).clear()

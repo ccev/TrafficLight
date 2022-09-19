@@ -1,21 +1,28 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Type
+import asyncio
 
 from textual import events
 from textual.color import Color
 from textual.css.query import NoMatchingNodesError
 from textual.reactive import Reactive
 from textual.widget import Widget
-from textual.widgets import Static, TextInput
-from textual.layout import Horizontal
+from textual.widgets import Static, TextInput, Placeholder
+from textual.layout import Horizontal, Container
 from rich.text import Text
 from rich.style import Style
 from .models import NoPostStatic
 from textual import events
+from rich.console import Group
 
 from trafficlight.proto import ALL_ACTION_NAMES, ACTION_PREFIXES, MESSAGE_NAMES
-from .models import Mode
+from .models import Mode, Toggle, CommandEnum, Action
+import shlex
+import pyperclip
+
+from sys import platform
+import subprocess
 
 if TYPE_CHECKING:
     from .app import TrafficLightGui
@@ -114,28 +121,77 @@ class SearchInput(Widget):
         yield CustomTextInput()
 
 
-class SelectModeWidget(NoPostStatic):
+class CommandHelpEntry(NoPostStatic):
     app: TrafficLightGui
 
-    def __init__(self, mode: Mode):
-        self._mode = mode
+    def __init__(self, command: CommandEnum):
+        self._command = command
+        text = self.get_text()
 
-        text = Text()
-        text.append(str(mode.value), style=Style(color="rgb(127, 240, 212)"))
-        text.append(" - ", style=Style(color="grey50"))
-        text.append(mode.title)
-        super().__init__(text)
+        super().__init__(text, id=str(command.id))
+
         self.styles.padding = (0, 0, 1, 0)
 
+    def get_text(self, toggle_value: bool = False) -> Text:
+        text = Text()
+        text.append(str(self._command.value), style=Style(color="rgb(127, 240, 212)"))
+        text.append(" - ", style=Style(color="grey50"))
+
+        if isinstance(self._command, Toggle):
+            if toggle_value:
+                text.append("▣ ", style=Style(color="rgb(86, 209, 108)"))
+            else:
+                text.append("□ ", style=Style(color="rgb(145, 145, 145)"))
+        text.append(self._command.title)
+        return text
+
+    def update_text(self, toggle_value: bool = False):
+        text = self.get_text(toggle_value)
+        super().update(text)
+
     async def on_click(self, event: events.Click) -> None:
-        self.app.current_mode = self._mode
         self.app.input.set_command_mode(False)
+        if isinstance(self._command, Mode):
+            self.app.current_mode = self._command
+        elif isinstance(self._command, Toggle):
+            self.app.toggle_toggle(self._command)
+        elif isinstance(self._command, Action):
+            await self.app.input.trigger_action(self._command)
+
+
+class HelpEntryContainer(Widget):
+    DEFAULT_CSS = """
+    HelpEntryContainer {
+        padding-right: 10;
+        height: auto;
+        width: auto;
+        overflow: hidden;
+    }
+    """
+
+    def __init__(self, command: Type[CommandEnum]):
+        super().__init__(id=command.__name__)
+        self._command: Type[CommandEnum] = command
+
+    def compose(self):
+        yield Static(self._command.__name__.upper() + "S", id="command-title")
+        for cmd in self._command:
+            yield CommandHelpEntry(cmd)
 
 
 class CommandHelp(Widget):
     def __init__(self):
-        super().__init__(*(SelectModeWidget(m) for m in Mode), id="command-help")
+        super().__init__(id="command-help")
         self.display = False
+
+    def compose(self):
+        yield HelpEntryContainer(Mode)
+        yield HelpEntryContainer(Toggle)
+        yield HelpEntryContainer(Action)
+
+    def update_toggle(self, toggle: Toggle, value: bool) -> None:
+        entry: CommandHelpEntry = self.query_one(f"#{toggle.id}")
+        entry.update_text(value)
 
 
 class InputWidget(Widget):
@@ -167,13 +223,35 @@ class InputWidget(Widget):
         self.command_mode = enable
         self.command_input.set_in_input(enable)
 
-    def input_key(self, event: events.Key):
+    async def trigger_action(self, action: Action):
+        if action == Action.COPY_INSPECTED:
+            text = self.app.inspect_widget.get_copyable_text()
+            if text:
+                pyperclip.copy(text)
+                pyperclip.paste()
+        elif action == Action.EMPTY_LOG:
+            self.app.screen_widget.clear()
+            self.app.inspect_widget.clear()
+
+    async def input_key(self, event: events.Key):
         if self.command_mode:
             self.set_command_mode(False)
             if event.key.isprintable():
 
                 try:
                     self.app.current_mode = Mode(event.key.lower())
+                except ValueError:
+                    pass
+
+                try:
+                    toggle = Toggle(event.key.lower())
+                    self.app.toggle_toggle(toggle)
+                except ValueError:
+                    pass
+
+                try:
+                    action = Action(event.key.lower())
+                    await self.trigger_action(action)
                 except ValueError:
                     pass
         else:
