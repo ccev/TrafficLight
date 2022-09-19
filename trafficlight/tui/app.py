@@ -88,7 +88,7 @@ class TrafficLightGui(App):
         if event.key == ">":
             self.input.set_command_mode(not self.input.command_mode)
         else:
-            await self.input.input_key(event)
+            self.input.input_key(event)
 
     async def run_app(self):
         await self._process_messages()

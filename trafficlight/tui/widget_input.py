@@ -156,7 +156,7 @@ class CommandHelpEntry(NoPostStatic):
         elif isinstance(self._command, Toggle):
             self.app.toggle_toggle(self._command)
         elif isinstance(self._command, Action):
-            await self.app.input.trigger_action(self._command)
+            self.app.input.trigger_action(self._command)
 
 
 class HelpEntryContainer(Widget):
@@ -223,7 +223,7 @@ class InputWidget(Widget):
         self.command_mode = enable
         self.command_input.set_in_input(enable)
 
-    async def trigger_action(self, action: Action):
+    def trigger_action(self, action: Action):
         if action == Action.COPY_INSPECTED:
             text = self.app.inspect_widget.get_copyable_text()
             if text:
@@ -233,7 +233,7 @@ class InputWidget(Widget):
             self.app.screen_widget.clear()
             self.app.inspect_widget.clear()
 
-    async def input_key(self, event: events.Key):
+    def input_key(self, event: events.Key):
         if self.command_mode:
             self.set_command_mode(False)
             if event.key.isprintable():
@@ -251,7 +251,7 @@ class InputWidget(Widget):
 
                 try:
                     action = Action(event.key.lower())
-                    await self.trigger_action(action)
+                    self.trigger_action(action)
                 except ValueError:
                     pass
         else:
