@@ -3,7 +3,11 @@ from __future__ import annotations
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from trafficlight.tui import TrafficLightGui
+from rich.console import Console
+from rich.rule import Rule
+from rich.text import Text
+
+from trafficlight.proto_format import MessageFormatter, get_method_text
 from .base import BaseOutput
 
 if TYPE_CHECKING:
@@ -11,19 +15,23 @@ if TYPE_CHECKING:
 
 
 class PrintOutput(BaseOutput):
-    app: TrafficLightGui
+    console: Console
 
     async def start(self) -> None:
-        pass
+        self.console = Console(width=None)
 
     async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]):
         time = datetime.now()
-        text = f"{time} | RPC ID {rpc_id} | RPC STATUS {rpc_status}\n\n"
+        text = Text(f"{time} | RPC ID {rpc_id} | RPC STATUS {rpc_status}\n\n", no_wrap=True, overflow="ellipsis")
 
+        formatter = MessageFormatter(text=text, one_line=True)
         for proto in protos:
-            text += self._get_text(proto) + "\n"
+            # text += self._get_text(proto) + "\n"
 
-        print(text + "-" * 100 + "\n")
+            text = formatter.format_proto(proto)
+
+        self.console.print(text + "-" * 100 + "\n", overflow="ignore", crop=False, soft_wrap=False)
+        self.console.print(Rule(style=""))
 
     def _get_text(self, proto: Proto, indent: int = 1):
         def get_message_text(message: Message) -> str:
