@@ -47,7 +47,7 @@ server = t.get_app()
 
 async def main():
     await output.start()
-    asyncio.create_task(web._run_app(server, host=config.host, port=config.port))
+    asyncio.create_task(web._run_app(server, host=config.host, port=config.port, print=lambda _: _))
     await asyncio.Event().wait()
 
 
