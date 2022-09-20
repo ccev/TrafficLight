@@ -15,7 +15,7 @@ class ScreenWidget(Vertical):
     children: list[RequestWidget]
 
     def _filter_requests(self, requests: list[RequestWidget]) -> None:
-        text = self.app.filter_text.casefold()
+        text = self.app.filter_text.casefold().strip()
         first_only = self.app.toggles[Toggle.FIRST_PROTO_ONLY]
 
         for request in requests:

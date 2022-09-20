@@ -48,7 +48,7 @@ class InspectBody(NoPostStatic):
     def highlight_text(self, text: str):
         copied_text = self._text.copy()
         copied_text.highlight_words(
-            (text,), style=Style(bgcolor="rgb(250, 250, 135)", color="black"), case_sensitive=False
+            (text.strip(),), style=Style(bgcolor="rgb(250, 250, 135)", color="black"), case_sensitive=False
         )
         self.update_text(copied_text)
 
