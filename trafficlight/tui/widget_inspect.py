@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING
 from rich.padding import Padding
 from rich.text import Text
 from textual.layout import Vertical
+from rich.style import Style
 
 from .models import NoPostStatic
 from .proto_format import MessageFormatter, get_method_text
@@ -28,10 +29,22 @@ class InspectHeader(NoPostStatic):
 
 
 class InspectBody(NoPostStatic):
+    _text: Text
+
     def update_proto(self, proto: Proto):
         formatter = MessageFormatter()
-        text = formatter.format_proto(proto)
-        self.update(Padding(text, (1, 0, 0, 1)))
+        self._text = formatter.format_proto(proto)
+        self.update_text()
+
+    def update_text(self, text: Text | None = None):
+        self.update(Padding(self._text if text is None else text, (1, 0, 0, 1)))
+
+    def highlight_text(self, text: str):
+        copied_text = self._text.copy()
+        copied_text.highlight_words(
+            (text,), style=Style(bgcolor="rgb(250, 250, 135)", color="black"), case_sensitive=False
+        )
+        self.update_text(copied_text)
 
     def clear(self):
         self.update("")
@@ -39,6 +52,7 @@ class InspectBody(NoPostStatic):
 
 class InspectWidget(Vertical):
     proto: Proto | None = None
+    _composed: bool = False
 
     def __init__(self):
         super().__init__(id="inspect")
@@ -46,6 +60,7 @@ class InspectWidget(Vertical):
     def compose(self):
         yield InspectHeader("")
         yield Vertical(InspectBody())
+        self._composed = True
 
     def get_copyable_text(self) -> str:
         if self.proto is None:
@@ -71,3 +86,8 @@ class InspectWidget(Vertical):
 
         for element in (InspectHeader, InspectBody):
             self.query_one(element).clear()
+
+    def search_text(self, text: str):
+        if not self._composed:
+            return
+        self.query_one(InspectBody).highlight_text(text)

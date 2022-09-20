@@ -50,9 +50,12 @@ class TrafficLightGui(App):
 
     def watch_filter_text(self, _):
         self.scroll.filter()
+        if self.current_mode == Mode.FILTER_TEXT:
+            self.inspect_widget.search_text(self.filter_text)
 
     def watch_current_mode(self, _):
         self.scroll.filter()
+        self.inspect_widget.search_text(self.filter_text if self.current_mode == Mode.FILTER_TEXT else "")
 
     def on_mount(self):
         self.set_interval(1, self.process_queue)
