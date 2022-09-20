@@ -78,7 +78,7 @@ class TrafficLightGui(App):
         self.inspect_widget.set_proto(proto)
 
     def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]):
-        if self.current_mode == Mode.PAUSE:
+        if self.toggles[Toggle.PAUSE]:
             return
 
         request = RequestWidget(time=datetime.now(), rpc_id=rpc_id, rpc_status=rpc_status, protos=protos)

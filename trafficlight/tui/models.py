@@ -24,13 +24,13 @@ class CommandEnum(Enum):
 
 class Mode(CommandEnum):
     WATCH = "w"
-    PAUSE = "p"
     FILTER_TEXT = "t"
     FILTER_METHODS = "m"
     FILTER_MESSAGES = "s"
 
 
 class Toggle(CommandEnum):
+    PAUSE = "p"
     FIRST_PROTO_ONLY = "1"
     FOLLOW = "f"
 
