@@ -86,7 +86,6 @@ class TrafficLightGui(App):
         self.incoming_requests.append(request)
 
     async def on_key(self, event: events.Key) -> None:
-        self.query_one(Static).update(event.key)
         if event.key == ">" or event.key == Keys.Enter or event.key == Keys.Return:
             self.input.set_command_mode(not self.input.command_mode)
         else:

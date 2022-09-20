@@ -114,36 +114,55 @@ class ProtoWidget(NoPostStatic):
 
 
 class RequestWidget(Widget):
+    text: Text
+
     def __init__(self, time: datetime, rpc_id: int, rpc_status: int, protos: list[Proto]):
         super().__init__()
 
         self.styles.height = "auto"
         self.protos: list[ProtoWidget] = []
+        self._composed: bool = False
 
-        self.rpc_id = rpc_id
+        self._rpc_id: int = rpc_id
+        self._rpc_status: int = rpc_status
+        self._time: datetime = time
 
-        self.text = Text("\n", no_wrap=True)
-        self.text.append(time.strftime("%H:%M:%S"), style=REQUEST_HEADER)
-        self.text.append(" | ")
-        self.text.append(f"RPC ID {rpc_id}", style=REQUEST_HEADER)
-        self.text.append(" | ")
-        self.text.append(f"RPC Status {rpc_status}\n", style=REQUEST_HEADER)
+        self.make_text()
 
         for proto in protos:
             self.protos.append(ProtoWidget(proto))
 
+    def make_text(self) -> None:
+        self.text = Text("\n", no_wrap=True)
+        self.text.append(self._time.strftime("%H:%M:%S"), style=REQUEST_HEADER)
+        self.text.append(" | ")
+        self.text.append(f"RPC ID {self._rpc_id}", style=REQUEST_HEADER)
+        self.text.append(" | ")
+        self.text.append(f"RPC Status {self._rpc_status}\n", style=REQUEST_HEADER)
+
     def compose(self):
-        yield NoPostStatic(self.text)
+        yield NoPostStatic(self.text, id="request-head")
         for proto in self.protos:
             yield proto
         yield Static(Rule(style=Style(color="grey15")))
+        self._composed = True
+
+    def update_head(self):
+        if self._composed:
+            self.query_one(NoPostStatic).update(self.text)
 
     def filter(self, mode: Mode, first_only: bool, text: str):
         self.display = False
 
         if first_only:
+            self.text = Text()
+            self.update_head()
+
             for proto in self.protos[1:]:
                 proto.display = False
+        elif not self.text:
+            self.make_text()
+            self.update_head()
 
         for proto in self.protos[:1 if first_only else None]:
             if mode == Mode.FILTER_METHODS:
