@@ -1,25 +1,36 @@
 import asyncio
+import json
 
 from aiohttp import web
+from pydantic import ValidationError
 
-from trafficlight import Proto
 from trafficlight.config import config
+from trafficlight.model import RequestModel
 from trafficlight.output import get_output
+from trafficlight.proto_utils import Proto
 
 output = get_output(config.output)
 
 
 class TrafficReceiver:
     @staticmethod
+    async def process_data(data: RequestModel):
+        processed_protos = [Proto.from_raw(data.rpcid, p) for p in data.protos]
+        await output.add_record(rpc_id=data.rpcid, rpc_status=data.rpcstatus, protos=processed_protos)
+
+    @staticmethod
     async def __traffic_post(request: web.Request):
-        data = await request.json()
+        try:
+            data = await request.json()
+        except json.JSONDecodeError:
+            return web.Response(status=400, text="bad json")
 
-        rpc_id: int = data["rpcid"]
-        rpc_status: int = data["rpcstatus"]
-        sent_protos = data["protos"]
-        processed_protos = [Proto.from_vm(rpc_id, p) for p in sent_protos]
+        try:
+            model = RequestModel(**data)
+        except ValidationError as e:
+            return web.Response(status=400, text=f"malformed data: {e}")
 
-        await output.add_record(rpc_id=rpc_id, rpc_status=rpc_status, protos=processed_protos)
+        await TrafficReceiver.process_data(model)
 
         return web.Response(text="OK")
 
@@ -38,5 +49,6 @@ async def main():
     await output.start()
     asyncio.create_task(web._run_app(server, host=config.host, port=config.port))
     await asyncio.Event().wait()
+
 
 asyncio.run(main())
