@@ -3,7 +3,6 @@ from __future__ import annotations
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from trafficlight.tui import TrafficLightGui
 from .base import BaseOutput
 
 if TYPE_CHECKING:
@@ -11,12 +10,10 @@ if TYPE_CHECKING:
 
 
 class PrintOutput(BaseOutput):
-    app: TrafficLightGui
-
     async def start(self) -> None:
         pass
 
-    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]):
+    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]) -> None:
         time = datetime.now()
         text = f"{time} | RPC ID {rpc_id} | RPC STATUS {rpc_status}\n\n"
 
@@ -25,7 +22,7 @@ class PrintOutput(BaseOutput):
 
         print(text + "-" * 100 + "\n")
 
-    def _get_text(self, proto: Proto, indent: int = 1):
+    def _get_text(self, proto: Proto, indent: int = 1) -> str:
         def get_message_text(message: Message) -> str:
             if message.name is None:
                 name = f"[Unknown {message.type} Message]"

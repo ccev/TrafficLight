@@ -3,7 +3,7 @@ from __future__ import annotations
 import base64
 import json
 import sys
-from typing import TypeVar, Type, Iterable
+from typing import TypeVar, Type, Iterable, TYPE_CHECKING
 
 from blackboxprotobuf.lib.interface import decode_message, _get_json_writeable_obj
 from google.protobuf import text_format, descriptor
@@ -11,6 +11,10 @@ from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
 from google.protobuf.message import Message as ProtobufMessage
 
 import protos
+
+if TYPE_CHECKING:
+    from trafficlight.model import ProtoModel
+
 
 all_types = protos.AllTypesAndMessagesResponsesProto
 MESSAGES: dict[int, descriptor.FieldDescriptor] = all_types.AllMessagesProto.DESCRIPTOR.fields_by_number
@@ -185,7 +189,7 @@ class Proto:
         return name
 
     @classmethod
-    def from_vm(cls, rpc_id: int, data: dict) -> Proto:
+    def from_raw(cls, rpc_id: int, data: ProtoModel) -> Proto:
         return cls(
-            rpc_id=rpc_id, method_value=data["method"], raw_request=data["request"], raw_response=data["response"]
+            rpc_id=rpc_id, method_value=data.method, raw_request=data.request, raw_response=data.response
         )

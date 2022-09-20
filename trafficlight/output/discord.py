@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Sized
+from typing import TYPE_CHECKING, Sized, Iterable, TypeVar
 
 import aiohttp
 import discord
@@ -11,8 +11,11 @@ from .base import BaseOutput
 if TYPE_CHECKING:
     from trafficlight.proto_utils.proto import Proto, Message
 
+T = TypeVar("T")
+AnySized = TypeVar("AnySized", bound=Sized)
 
-def chunks(iter_: Sized, size: int):
+
+def chunks(iter_: AnySized[T], size: int) -> Iterable[AnySized[T]]:
     """Yield equally sized chunks from an iterable"""
     for i in range(0, len(iter_), size):
         yield iter_[i : i + size]
@@ -22,7 +25,7 @@ class DiscordOutput(BaseOutput):
     async def start(self) -> None:
         pass
 
-    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]):
+    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]) -> None:
         now = discord.utils.utcnow()
         embeds = []
 
@@ -45,7 +48,7 @@ class DiscordOutput(BaseOutput):
                 )
 
     @staticmethod
-    def _add_discord_field(proto: Proto, embed: discord.Embed):
+    def _add_discord_field(proto: Proto, embed: discord.Embed) -> None:
         def make_message_text(message: Message, prefix: str = "") -> None:
             def get_payload() -> str:
                 data = message.to_string(False)
