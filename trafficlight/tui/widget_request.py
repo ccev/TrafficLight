@@ -17,7 +17,7 @@ from textual.widget import Widget
 from textual.widgets import Static
 
 from .models import NoPostStatic, Mode
-from .proto_format import get_method_text, REQUEST_HEADER
+from trafficlight.proto_format import get_method_text, REQUEST_HEADER
 
 if TYPE_CHECKING:
     from .app import TrafficLightGui

@@ -8,7 +8,7 @@ from textual.layout import Vertical
 from rich.style import Style
 
 from .models import NoPostStatic, Mode
-from .proto_format import MessageFormatter, get_method_text
+from trafficlight.proto_format import MessageFormatter, get_method_text
 
 if TYPE_CHECKING:
     from trafficlight.proto import Proto
