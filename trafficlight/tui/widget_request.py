@@ -17,11 +17,11 @@ from textual.widget import Widget
 from textual.widgets import Static
 
 from .models import NoPostStatic, Mode
-from trafficlight.proto_format import get_method_text, REQUEST_HEADER
+from trafficlight.proto_utils import get_method_text, REQUEST_HEADER
 
 if TYPE_CHECKING:
     from .app import TrafficLightGui
-    from trafficlight.proto import Proto, Message
+    from trafficlight.proto_utils import Proto, Message
 
 
 class ProtoContainer(Container):

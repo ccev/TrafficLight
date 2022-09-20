@@ -7,7 +7,7 @@ from trafficlight.tui import TrafficLightGui
 from .base import BaseOutput
 
 if TYPE_CHECKING:
-    from trafficlight.proto import Proto
+    from trafficlight.proto_utils.proto import Proto
 
 
 class UiOutput(BaseOutput):

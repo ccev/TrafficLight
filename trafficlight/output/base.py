@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from typing import TypeVar
 
 if TYPE_CHECKING:
-    from trafficlight.proto import Proto
+    from trafficlight.proto_utils.proto import Proto
 
 
 class BaseOutput(metaclass=ABCMeta):

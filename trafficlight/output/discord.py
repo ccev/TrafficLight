@@ -9,7 +9,7 @@ from trafficlight.config import config
 from .base import BaseOutput
 
 if TYPE_CHECKING:
-    from trafficlight.proto import Proto, Message
+    from trafficlight.proto_utils.proto import Proto, Message
 
 
 def chunks(iter_: Sized, size: int):
@@ -68,10 +68,10 @@ class DiscordOutput(BaseOutput):
                     formatted_payload = get_payload()
             embed.add_field(name=name, value=formatted_payload, inline=False)
 
-        for proto_message in (proto.request, proto.response):
+        for proto_message in proto.messages:
             make_message_text(proto_message)
 
         if proto.proxy:
             proxy_preifx = f"Proxy: {proto.proxy.method_value} | {proto.proxy.method_name}\n"
-            for proto_message in (proto.proxy.request, proto.proxy.response):
+            for proto_message in proto.messages:
                 make_message_text(proto_message, prefix=proxy_preifx)

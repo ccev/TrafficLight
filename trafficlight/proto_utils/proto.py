@@ -7,15 +7,15 @@ from typing import TypeVar, Type, Iterable
 
 from blackboxprotobuf.lib.interface import decode_message, _get_json_writeable_obj
 from google.protobuf import text_format, descriptor
-from google.protobuf.message import Message as ProtobufMessage
 from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
+from google.protobuf.message import Message as ProtobufMessage
 
 import protos
 
 all_types = protos.AllTypesAndMessagesResponsesProto
-MESSAGES = all_types.AllMessagesProto.DESCRIPTOR.fields_by_number
-RESPONSES = all_types.AllResponsesProto.DESCRIPTOR.fields_by_number
-METHODS = all_types.AllResquestTypesProto.DESCRIPTOR.values_by_number
+MESSAGES: dict[int, descriptor.FieldDescriptor] = all_types.AllMessagesProto.DESCRIPTOR.fields_by_number
+RESPONSES: dict[int, descriptor.FieldDescriptor] = all_types.AllResponsesProto.DESCRIPTOR.fields_by_number
+METHODS: dict[int, descriptor.EnumValueDescriptor] = all_types.AllResquestTypesProto.DESCRIPTOR.values_by_number
 MESSAGE_TYPE_TO_ID: dict[str, int] = {m.message_type.name: n for n, m in MESSAGES.items()}
 
 AnyMessage = TypeVar("AnyMessage", bound=ProtobufMessage)
@@ -51,40 +51,45 @@ ACTION_PREFIXES: list[str] = ["METHOD_", "SOCIAL_ACTION_", "CLIENT_ACTION_", "PL
 
 
 class Message:
-    type: str
-    messages: RESPONSES | MESSAGES
-
-    raw: str
-    name: str | None
-    payload: AnyMessage | None = None
-    blackbox: dict | None = None
+    messages: dict[int, descriptor.FieldDescriptor]
 
     def __init__(self, method_id: int, raw: str):
-        self.raw = raw
+        self._raw: str = raw
 
-        try:
-            self.name = self.messages[method_id].message_type.name
-        except KeyError:
-            self.name = None
+        self.name: str | None = None
+        _message = self.messages.get(method_id)
+        if _message is not None:
+            self.name = _message.message_type.name
 
+        self.payload: AnyMessage | None = None
         if self.name is not None:
             self.payload = self.decode_proto()
+
+        self.blackbox: dict | None = None
         if self.name is None or self.payload is None:
             self.blackbox = self.decode_blackbox()
 
-    def decode_b64(self):
+    @property
+    def type(self) -> str:
+        return self.__class__.__name__
+
+    def decode_b64(self) -> bytes | str:
         try:
-            return base64.b64decode(self.raw.rstrip("\0"))
+            return base64.b64decode(self._raw.rstrip("\0"))
         except TypeError:
-            return self.raw
+            return self._raw
 
     def decode_proto(self) -> ProtobufMessage | None:
         message = getattr(sys.modules["protos"], self.name)
+
+        if message is None:
+            return None
+
         try:
             decoded = self.decode_b64()
             return message.FromString(decoded)
         except Exception as e:
-            print(f"error decoding {message} with {self.raw}: {e}")
+            print(f"error decoding {message} with {self._raw}: {e}")
             return None
 
     def decode_blackbox(self) -> dict:
@@ -104,33 +109,27 @@ class Message:
 
 
 class Request(Message):
-    type = "Request"
     messages = MESSAGES
 
 
 class Respone(Message):
-    type = "Response"
     messages = RESPONSES
 
 
 class Proto:
-    rpc_id: int
-    method_value: int
-    method_name: str | None
-    request: Request
-    response: Respone
-    proxy: Proto | None = None
-
     def __init__(self, rpc_id: int, method_value: int, raw_request: str, raw_response: str):
-        self.rpc_id = rpc_id
-        self.method_value = method_value
-        self.method_name = self.get_method_name()
-        self.request = Request(self.method_value, raw_request)
-        self.response = Respone(self.method_value, raw_response)
+        self.rpc_id: int = rpc_id
+        self.method_value: int = method_value
+        self.method_name: str | None = self.get_method_name()
+        self.request: Request = Request(self.method_value, raw_request)
+        self.response: Respone = Respone(self.method_value, raw_response)
 
+        self.proxy: Proto | None = None
         if (
-            self.method_value == 5012 and self.request.payload is not None and self.response.payload is not None
-        ):  # CLIENT_ACTION_PROXY_SOCIAL_ACTION
+            self.method_value == protos.ClientAction.CLIENT_ACTION_PROXY_SOCIAL_ACTION
+            and self.request.payload is not None
+            and self.response.payload is not None
+        ):
             self.proxy = Proto(
                 rpc_id=rpc_id,
                 method_value=self.request.payload.action,
@@ -154,11 +153,13 @@ class Proto:
     @staticmethod
     def _get_method_name_basic(value: int) -> str | None:
         name: AnyMessage | None = METHODS.get(value)
+
         if name is None:
             return None
+
         return name.name[13:]
 
-    def get_method_name(self):
+    def get_method_name(self) -> str | None:
         name = self._get_method_name_basic(self.method_value)
 
         if (
@@ -184,7 +185,7 @@ class Proto:
         return name
 
     @classmethod
-    def from_vm(cls, rpc_id: int, data: dict):
+    def from_vm(cls, rpc_id: int, data: dict) -> Proto:
         return cls(
             rpc_id=rpc_id, method_value=data["method"], raw_request=data["request"], raw_response=data["response"]
         )

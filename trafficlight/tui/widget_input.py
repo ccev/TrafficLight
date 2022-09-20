@@ -12,7 +12,7 @@ from textual.reactive import Reactive
 from textual.widget import Widget
 from textual.widgets import Static, TextInput
 
-from trafficlight.proto import ALL_ACTION_NAMES, ACTION_PREFIXES, MESSAGE_NAMES
+from trafficlight.proto_utils import ALL_ACTION_NAMES, ACTION_PREFIXES, MESSAGE_NAMES
 from .models import Mode, Toggle, CommandEnum, Action
 from .models import NoPostStatic
 

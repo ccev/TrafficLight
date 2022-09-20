@@ -5,8 +5,7 @@ from typing import TYPE_CHECKING
 
 from textual import events
 from textual.app import App
-from textual.layout import Horizontal, Container
-from textual.widgets import Static
+from textual.layout import Horizontal
 from textual.reactive import reactive, Reactive, var
 from textual.keys import Keys
 
@@ -17,7 +16,7 @@ from .widget_request import RequestWidget
 from .widget_screen import ScreenWidget
 
 if TYPE_CHECKING:
-    from trafficlight.proto import Proto
+    from trafficlight.proto_utils import Proto
 
 
 class TrafficLightGui(App):

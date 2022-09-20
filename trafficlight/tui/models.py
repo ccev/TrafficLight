@@ -2,12 +2,8 @@ from __future__ import annotations
 
 from enum import Enum
 from types import DynamicClassAttribute
-from typing import TYPE_CHECKING
 
 from textual.widgets import Static
-
-if TYPE_CHECKING:
-    pass
 
 
 class CommandEnum(Enum):

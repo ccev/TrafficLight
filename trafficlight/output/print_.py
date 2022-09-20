@@ -7,7 +7,7 @@ from trafficlight.tui import TrafficLightGui
 from .base import BaseOutput
 
 if TYPE_CHECKING:
-    from trafficlight.proto import Proto, Message
+    from trafficlight.proto_utils.proto import Proto, Message
 
 
 class PrintOutput(BaseOutput):
@@ -43,7 +43,7 @@ class PrintOutput(BaseOutput):
 
         text = f"{proto.method_value} | {proto.method_name}\n"
 
-        for proto_message in (proto.request, proto.response):
+        for proto_message in proto.messages:
             text += "\t" * indent + get_message_text(proto_message) + "\n"
 
         if proto.proxy:

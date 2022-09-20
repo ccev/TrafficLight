@@ -1,14 +1,14 @@
 from __future__ import annotations
 
 import json
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from google.protobuf import descriptor, text_encoding
 from rich.style import Style
 from rich.text import Text
 
 if TYPE_CHECKING:
-    from trafficlight.proto import AnyMessage, Proto
+    from trafficlight.proto_utils.proto import AnyMessage, Proto
 
 # most of the code here is taken from google.protobuf.text_format with modifications to support rich Text
 
@@ -79,16 +79,16 @@ class MessageFormatter:
         self._one_line: bool = one_line
         self._types: bool = types
         
-    def append(self, text: str, style: Style | None = None):
+    def append(self, text: str, style: Style | None = None) -> None:
         self.out.append(text, style)
 
-    def new_line(self):
+    def new_line(self) -> None:
         if not self._one_line:
             self.append("\n")
         
     def format_proto(self, proto: Proto) -> Text:
         def build_text(this_proto: Proto):
-            for message in (this_proto.request, this_proto.response):
+            for message in this_proto.messages:
                 if message.name is None:
                     self.append("Unknown Message ")
                     self.append(json.dumps(message.blackbox, indent=None if self._one_line else self.indent_size))
@@ -108,7 +108,7 @@ class MessageFormatter:
             build_text(proto.proxy)
         return self.out
 
-    def add_indent(self):
+    def add_indent(self) -> None:
         if self._one_line:
             indent_template = " "
         elif self._indent_guides:
@@ -118,7 +118,7 @@ class MessageFormatter:
 
         self.append(indent_template, style=Style(color="grey15"))
 
-    def print_message(self, message: AnyMessage):
+    def print_message(self, message: AnyMessage) -> None:
         fields = message.ListFields()
         fields = sorted(fields, key=lambda f: 1 if f[0].cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE else 0)
         # message fields should come last
@@ -135,22 +135,21 @@ class MessageFormatter:
                 self.print_field(field, value)
 
     @staticmethod
-    def _is_map_entry(field):
+    def _is_map_entry(field: descriptor.FieldDescriptor) -> bool:
         return (
             field.type == descriptor.FieldDescriptor.TYPE_MESSAGE
             and field.message_type.has_options
             and field.message_type.GetOptions().map_entry
         )
 
-    def print_field(self, field, value):
+    def print_field(self, field: descriptor.FieldDescriptor, value: Any) -> None:
         """Print a single field name/value pair."""
         self._print_field_name(field)
         self.append(" ")
         self.print_field_value(field, value)
         self.new_line()
 
-    def _print_field_name(self, field: descriptor.FieldDescriptor):
-        """Print field name."""
+    def _print_field_name(self, field: descriptor.FieldDescriptor) -> None:
         self.add_indent()
 
         if field.is_extension:
@@ -180,7 +179,7 @@ class MessageFormatter:
                 self.append(f"{type_name} ", style=TYPE)
             self.append(field.name)
 
-    def print_field_value(self, field, value):
+    def print_field_value(self, field: descriptor.FieldDescriptor, value: Any) -> None:
         """Print a single field value (not including name).
 
         For repeated fields, the value should be a single element.
@@ -223,7 +222,7 @@ class MessageFormatter:
         else:
             self.append(str(value), style=OTHERVALUE)
 
-    def print_message_field_value(self, value: AnyMessage):
+    def print_message_field_value(self, value: AnyMessage) -> None:
         if not value.ListFields():
             self.append("{}", style=BRACKETS)
         else:
