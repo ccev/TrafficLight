@@ -155,9 +155,10 @@ class CommandHelpEntry(NoPostStatic):
 class HelpEntryContainer(Widget):
     DEFAULT_CSS = """
     HelpEntryContainer {
-        padding-right: 10;
         height: auto;
-        width: auto;
+        width: 1fr;
+        max-width: 45;
+        padding-left: 1;
         overflow: hidden;
     }
     """

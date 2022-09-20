@@ -64,7 +64,7 @@ CommandHelp {
     layout: horizontal;
     height: auto;
     dock: bottom;
-    padding: 1 4;
+    padding: 1 0 1 4;
     border-top: hkey rgb(0, 0, 0);
     background: rgb(16, 16, 16);
     margin-bottom: 3;
