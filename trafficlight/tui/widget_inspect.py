@@ -7,11 +7,12 @@ from rich.text import Text
 from textual.layout import Vertical
 from rich.style import Style
 
-from .models import NoPostStatic
+from .models import NoPostStatic, Mode
 from .proto_format import MessageFormatter, get_method_text
 
 if TYPE_CHECKING:
     from trafficlight.proto import Proto
+    from .app import TrafficLightGui
 
 
 class InspectHeader(NoPostStatic):
@@ -29,12 +30,17 @@ class InspectHeader(NoPostStatic):
 
 
 class InspectBody(NoPostStatic):
-    _text: Text
+    _text: Text = Text()
+    app: TrafficLightGui
 
     def update_proto(self, proto: Proto):
         formatter = MessageFormatter()
         self._text = formatter.format_proto(proto)
-        self.update_text()
+
+        if self.app.current_mode == Mode.FILTER_TEXT:
+            self.highlight_text(self.app.filter_text)
+        else:
+            self.update_text()
 
     def update_text(self, text: Text | None = None):
         self.update(Padding(self._text if text is None else text, (1, 0, 0, 1)))
@@ -47,7 +53,8 @@ class InspectBody(NoPostStatic):
         self.update_text(copied_text)
 
     def clear(self):
-        self.update("")
+        self._text = Text()
+        self.update_text()
 
 
 class InspectWidget(Vertical):
