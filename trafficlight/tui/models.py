@@ -1,12 +1,18 @@
-from __future__ import annotations
-
+from typing import Type
 from enum import Enum
 from types import DynamicClassAttribute
 
 from textual.widgets import Static
 
 
+HOVER_CLASS = "hover"
+
+
 class CommandEnum(Enum):
+    @classmethod
+    def plural(cls) -> str:
+        return cls.__name__ + "s"
+
     @DynamicClassAttribute
     def title(self) -> str:
         # THIS_NAME -> This Name
@@ -34,6 +40,9 @@ class Toggle(CommandEnum):
 class Action(CommandEnum):
     EMPTY_LOG = "e"
     COPY_INSPECTED = "c"
+
+
+ALL_COMMANDS: list[Type[CommandEnum]] = [Mode, Toggle, Action]
 
 
 class NoPostStatic(Static):

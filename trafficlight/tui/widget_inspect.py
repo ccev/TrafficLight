@@ -3,12 +3,13 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from rich.padding import Padding
-from rich.text import Text
-from textual.layout import Vertical
 from rich.style import Style
+from rich.text import Text
+from textual.app import ComposeResult
+from textual.layout import Vertical
 
-from .models import NoPostStatic, Mode
 from trafficlight.proto_utils import MessageFormatter, get_method_text
+from .models import NoPostStatic, Mode
 
 if TYPE_CHECKING:
     from trafficlight.proto_utils import Proto
@@ -16,7 +17,7 @@ if TYPE_CHECKING:
 
 
 class InspectHeader(NoPostStatic):
-    def update_proto(self, proto: Proto):
+    async def update_proto(self, proto: Proto):
         if proto.proxy:
             text = Text("Proxy: ")
             get_method_text(proto.proxy, text)
@@ -25,15 +26,15 @@ class InspectHeader(NoPostStatic):
 
         self.update(text)
 
-    def clear(self):
+    def clear(self) -> None:
         self.update("")
 
 
 class InspectBody(NoPostStatic):
-    _text: Text = Text()
     app: TrafficLightGui
+    _text: Text = Text()
 
-    def update_proto(self, proto: Proto):
+    async def update_proto(self, proto: Proto):
         formatter = MessageFormatter()
         self._text = formatter.format_proto(proto)
 
@@ -42,17 +43,17 @@ class InspectBody(NoPostStatic):
         else:
             self.update_text()
 
-    def update_text(self, text: Text | None = None):
+    def update_text(self, text: Text | None = None) -> None:
         self.update(Padding(self._text if text is None else text, (1, 0, 0, 1)))
 
-    def highlight_text(self, text: str):
+    def highlight_text(self, text: str) -> None:
         copied_text = self._text.copy()
         copied_text.highlight_words(
             (text.strip(),), style=Style(bgcolor="rgb(250, 250, 135)", color="black"), case_sensitive=False
         )
         self.update_text(copied_text)
 
-    def clear(self):
+    def clear(self) -> None:
         self._text = Text()
         self.update_text()
 
@@ -61,10 +62,7 @@ class InspectWidget(Vertical):
     proto: Proto | None = None
     _composed: bool = False
 
-    def __init__(self):
-        super().__init__(id="inspect")
-
-    def compose(self):
+    def compose(self) -> ComposeResult:
         yield InspectHeader("")
         yield Vertical(InspectBody())
         self._composed = True
@@ -81,20 +79,20 @@ class InspectWidget(Vertical):
         text = formatter.format_proto(self.proto)
         return text.plain
 
-    def set_proto(self, proto: Proto) -> None:
+    async def set_proto(self, proto: Proto) -> None:
         self.proto = proto
         for element in (InspectHeader, InspectBody):
-            self.query_one(element).update_proto(proto)
-        # self.refresh(layout=True)
+            await self.query_one(element).update_proto(proto)
 
     def clear(self) -> None:
         if self.proto is None:
             return
 
+        self.proto = None
         for element in (InspectHeader, InspectBody):
             self.query_one(element).clear()
 
-    def search_text(self, text: str):
+    def search_text(self, text: str) -> None:
         if not self._composed:
             return
         self.query_one(InspectBody).highlight_text(text)

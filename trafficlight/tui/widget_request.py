@@ -9,19 +9,18 @@ from rich.rule import Rule
 from rich.style import Style
 from rich.table import Table, Column
 from rich.text import Text
-from textual import events
-from textual.color import Color
+from textual.app import ComposeResult
 from textual.layout import Container
-from textual.reactive import reactive
+from textual.message import Message, MessageTarget
+from textual.reactive import reactive, Reactive
 from textual.widget import Widget
 from textual.widgets import Static
 
-from .models import NoPostStatic, Mode
 from trafficlight.proto_utils import get_method_text, REQUEST_HEADER
+from .models import NoPostStatic, Mode, HOVER_CLASS
 
 if TYPE_CHECKING:
-    from .app import TrafficLightGui
-    from trafficlight.proto_utils import Proto, Message
+    from trafficlight.proto_utils import Proto, Message as ProtoMessage
 
 
 class ProtoContainer(Container):
@@ -29,16 +28,20 @@ class ProtoContainer(Container):
 
 
 class ProtoWidget(NoPostStatic):
-    app: TrafficLightGui
-    mouse_over = reactive(False)
+    mouse_over: Reactive[bool] = reactive(False)
+
+    class Clicked(Message):
+        """Inspect this proto"""
+
+        def __init__(self, sender: MessageTarget, proto: Proto):
+            self.proto: Proto = proto
+            super().__init__(sender)
 
     def __init__(self, proto: Proto):
         super().__init__()
-        self.styles.margin = (0, 0, 1, 0)
-        self._proto = proto
+        self._proto: Proto = proto
 
         self._middle_column_text = Padding("|", (0, 1))
-
         self.plain_text: str = ""
         self._content: Group = self._get_content(proto)
 
@@ -77,7 +80,7 @@ class ProtoWidget(NoPostStatic):
 
         return Group(text, table)
 
-    def _make_message_text(self, message: Message, table: Table):
+    def _make_message_text(self, message: ProtoMessage, table: Table) -> None:
         if message.name is None:
             name = f"[Unknown Message]"
             data = f"Blackbox: {message.blackbox}"
@@ -96,21 +99,18 @@ class ProtoWidget(NoPostStatic):
         self.plain_text += text.plain
         table.add_row(message.type, self._middle_column_text, text)
 
-    def render(self):
-        if self.mouse_over:
-            self.styles.background = Color(25, 25, 25)
-        else:
-            self.styles.background = None
+    def render(self) -> Group:
+        self.set_class(self.mouse_over, HOVER_CLASS)
         return self._content
 
-    async def on_enter(self, event: events.Enter) -> None:
+    async def on_enter(self) -> None:
         self.mouse_over = True
 
-    async def on_leave(self, event: events.Leave) -> None:
+    async def on_leave(self) -> None:
         self.mouse_over = False
 
-    async def _on_click(self, event: events.Click) -> None:
-        self.app.inspect_proto(self._proto)
+    async def on_click(self) -> None:
+        await self.emit(self.Clicked(self, self._proto))
 
 
 class RequestWidget(Widget):
@@ -119,7 +119,6 @@ class RequestWidget(Widget):
     def __init__(self, time: datetime, rpc_id: int, rpc_status: int, protos: list[Proto]):
         super().__init__()
 
-        self.styles.height = "auto"
         self.protos: list[ProtoWidget] = []
         self._composed: bool = False
 
@@ -140,18 +139,18 @@ class RequestWidget(Widget):
         self.text.append(" | ")
         self.text.append(f"RPC Status {self._rpc_status}\n", style=REQUEST_HEADER)
 
-    def compose(self):
+    def compose(self) -> ComposeResult:
         yield NoPostStatic(self.text, id="request-head")
         for proto in self.protos:
             yield proto
         yield Static(Rule(style=Style(color="grey15")))
         self._composed = True
 
-    def update_head(self):
+    def update_head(self) -> None:
         if self._composed:
-            self.query_one(NoPostStatic).update(self.text)
+            self.query_one("#request-head", NoPostStatic).update(self.text)
 
-    def filter(self, mode: Mode, first_only: bool, text: str):
+    def filter(self, mode: Mode, first_only: bool, text: str) -> None:
         self.display = False
 
         if first_only:
@@ -164,7 +163,7 @@ class RequestWidget(Widget):
             self.make_text()
             self.update_head()
 
-        for proto in self.protos[:1 if first_only else None]:
+        for proto in self.protos[: 1 if first_only else None]:
             if mode == Mode.FILTER_METHODS:
                 proto.display = text in proto.method_name.casefold() or text in proto.proxy_method_name.casefold()
             elif mode == Mode.FILTER_MESSAGES:
