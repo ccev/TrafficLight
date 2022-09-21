@@ -4,25 +4,42 @@ Beautiful traffic logging for PGO.
 
 ## Features
 
-Traffic Light accepts specially formatted messages from a mitm app to display them nicely in several ways.
+Traffic Light takes specially formatted data from a mitm app and displays them in real-time, 
+allowing to see exactly what's going on.
 
-### 1. TUI
+### TUI
 
-![Text User Interface](readme_assets/tui.png)
+The tool comes with a fully featured UI running in your Terminal.
 
-The best part of Traffic Light: An interactive Text User Interface in the Terminal. Log, filter and inspect requests.
+![Main Window](readme_assets/tui_1.png)
 
-### 2. Printing
+There's a log of all captured requests on the left. You can click on any Proto to open it 
+in the Inspect View to analyze it further.
 
-![Print](readme_assets/log.png)
+![Command Input](readme_assets/tui_2.png)
 
-A simple log of requests.
+By pressing `>`, `ENTER` or `RETURN` (or by simply clicking on the left button) you enter 
+the Command Input. Here you can choose between a set of useful controls, either by pressing 
+the specified key or by clicking on it.
 
-### 3. Discord
+- Filters
+  - Text: Filters Method names, Message names and body. Also highlights the search string in 
+Inspect View
+  - Methods: (with autocomplete!) Filter by method names, i.e. `METHOD_FORT_DETAILS` 
+or `SOCIAL_ACTION_GET_INBOX` 
+  - Messages: (with autocomplete!) Filter by message names, i.e. `GetMapObjectsProto` 
+or `EncounterOutProto`
+- Pause: Ignores incoming requests
+- First Proto Only: In most requests, only the first entry/"Proto" matters. This helps clear 
+the clutter
+- Follow: Scrolls the Log to show new incoming requests
+- Empty Log: Clears the Log
+- Copy Inspected: Copies the text from the Inspected View
 
-![Discord](readme_assets/discord.png)
+### Legacy Outputs
 
-Webhooks in Discord
+There's also an option to simply print all requests or send them to Discord. You can use those 
+if you don't like the UI.
 
 ## Setup
 
@@ -30,12 +47,13 @@ Webhooks in Discord
 - Clone repo, install requirements, copy `config.example.toml` to `config.toml`, fill out the config
 - Open a supported MITM on your phone. Set POST destination to your endpoint from config.toml
 (default: http://{computer IP}:3335)
-- Run `trafficlight.py` and watch
+- Run `trafficlight.py`. You should use Python 3.10
 
 ### Supporting MITMs
 
 If you want your own MITM to support Traffic Light, all it needs to do is for every request the game makes, 
-send a POST request to a specified endpoint with the body looking as follows.
+send a POST request to a specified endpoint with the body looking as follows. It should run alongside 
+the game, so you can play it normally while inspecting the traffic.
 
 ```json
 {
@@ -58,7 +76,7 @@ send a POST request to a specified endpoint with the body looking as follows.
 
 ### Additional notes on TUI compatibility
 
-The TUI uses the beautiful [Textual](https://github.com/Textualize/textual). 
+The TUI uses [Textual](https://github.com/Textualize/textual). 
 Here's a copy from their docs on platform compatibility.
 
 > ### Linux (all distros)
