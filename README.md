@@ -44,10 +44,21 @@ if you don't like the UI.
 ## Setup
 
 - It's made to be used on your local computer with a local phone
-- Clone repo, install requirements, copy `config.example.toml` to `config.toml`, fill out the config
+- Clone repo, copy `config.example.toml` to `config.toml`, fill out the config
 - Open a supported MITM on your phone. Set POST destination to your endpoint from config.toml
 (default: http://{computer IP}:3335)
-- Run `trafficlight.py`. You should use Python 3.10
+- Make sure you use python 3.10+
+
+### Using Poetry
+
+- If you haven't already, I recommend [installing Poetry](https://python-poetry.org/docs/#installation)
+- Run `poetry install`
+- To start, run `poetry run trafficlight` in your TrafficLight root directory
+
+### Not using Poetry
+
+- Run `pip install -r requirements.txt`
+- To start, run `python3 traffic_light.py` in your TrafficLight root directory
 
 ### Supporting MITMs
 

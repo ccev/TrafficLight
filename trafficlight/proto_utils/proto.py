@@ -5,7 +5,7 @@ import json
 import sys
 from typing import TypeVar, Type, Iterable, TYPE_CHECKING
 
-from blackboxprotobuf.lib.interface import decode_message, _get_json_writeable_obj
+from blackboxprotobuf import protobuf_to_json, decode_message
 from google.protobuf import text_format, descriptor
 from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
 from google.protobuf.message import Message as ProtobufMessage
@@ -99,10 +99,8 @@ class Message:
     def decode_blackbox(self) -> dict:
         decoded = self.decode_b64()
 
-        value, message_type = decode_message(decoded)
-        value_cleaned = {}
-        _get_json_writeable_obj(value, value_cleaned, False)
-        return value_cleaned
+        value, _ = decode_message(decoded)
+        return value
 
     def to_string(self, one_line: bool = True) -> str:
         if self.payload is None:

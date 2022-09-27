@@ -4,10 +4,10 @@ import json
 from aiohttp import web
 from pydantic import ValidationError
 
-from trafficlight.config import config
-from trafficlight.model import RequestModel
-from trafficlight.output import get_output
-from trafficlight.proto_utils import Proto
+from .config import config
+from .model import RequestModel
+from .output import get_output
+from .proto_utils import Proto
 
 output = get_output(config.output)
 
@@ -51,4 +51,5 @@ async def main():
     await asyncio.Event().wait()
 
 
-asyncio.run(main())
+def run():
+    asyncio.run(main())
