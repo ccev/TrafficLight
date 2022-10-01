@@ -55,8 +55,8 @@ ACTION_PREFIXES: list[str] = ["METHOD_", "SOCIAL_ACTION_", "CLIENT_ACTION_", "PL
 class Message:
     messages: dict[int, descriptor.FieldDescriptor]
 
-    def __init__(self, method_id: int, raw: str):
-        self._raw: str = raw
+    def __init__(self, method_id: int, raw: str | bytes):
+        self._raw: str | bytes = raw
 
         self.name: str | None = None
         _message = self.messages.get(method_id)
@@ -75,11 +75,11 @@ class Message:
     def type(self) -> str:
         return self.__class__.__name__
 
-    def decode_b64(self) -> bytes | str:
-        try:
-            return base64.b64decode(self._raw.rstrip("\0"))
-        except TypeError:
+    def decode_b64(self) -> bytes:
+        if isinstance(self._raw, bytes):
             return self._raw
+
+        return base64.b64decode(self._raw.rstrip("\0"))
 
     def decode_proto(self) -> ProtobufMessage | None:
         if self.name is None:
@@ -120,7 +120,7 @@ class Respone(Message):
 
 
 class Proto:
-    def __init__(self, rpc_id: int, method_value: int, raw_request: str, raw_response: str):
+    def __init__(self, rpc_id: int, method_value: int, raw_request: str | bytes, raw_response: str | bytes):
         self.rpc_id: int = rpc_id
         self.method_value: int = method_value
         self.method_name: str | None = self.get_method_name()
@@ -128,7 +128,9 @@ class Proto:
         self.response: Respone = Respone(self.method_value, raw_response)
 
         self.proxy: Proto | None = None
-        if isinstance(self.request, protos.ProxyRequestProto) and isinstance(self.response, protos.ProxyResponseProto):
+        if isinstance(self.request.payload, protos.ProxyRequestProto) and isinstance(
+            self.response.payload, protos.ProxyResponseProto
+        ):
             self.proxy = Proto(
                 rpc_id=rpc_id,
                 method_value=self.request.payload.action,
