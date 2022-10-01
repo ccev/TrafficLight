@@ -6,12 +6,12 @@ from typing import TYPE_CHECKING
 import pyperclip
 from textual import events
 from textual.app import App, ComposeResult
-from textual.keys import Keys
 from textual.layout import Horizontal
 from textual.reactive import reactive, Reactive, var
+from textual.widgets import Static
 
 from .models import Mode, Toggle, Action
-from .widget_command_overview import CommandOverview, CommandEntry, CommandReceived
+from .widget_command_overview import CommandOverview, CommandReceived
 from .widget_input import InputWidget
 from .widget_inspect import InspectWidget
 from .widget_request import RequestWidget, ProtoWidget

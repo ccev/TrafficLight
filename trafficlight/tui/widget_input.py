@@ -26,6 +26,7 @@ if TYPE_CHECKING:
 
 class CustomTextInput(TextInput, can_focus=False):
     app: TrafficLightGui
+    _suggestion_suffix: str
 
     def __init__(self):
         command_key = random.choices(("↲", ">"), weights=(0.2, 0.8), k=1)[0]
@@ -143,7 +144,7 @@ class InputWidget(Widget):
         self.refresh()
 
     async def input_key(self, event: events.Key) -> None:
-        if event.key == ">" or event.key == Keys.Enter or event.key == Keys.Return:
+        if event.char == ">" or event.key == Keys.Enter or event.key == Keys.Return:
             self.set_command_mode(not self.command_mode)
             return
 

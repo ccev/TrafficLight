@@ -24,6 +24,8 @@ rtoml = "0.8.0"
 pydantic = "1.10.2"
 pyperclip = "1.8.2"
 "discord.py" = "^2.0.1"
+types-protobuf = {version = "^3.20.4", optional = true}
+mypy = {version = "^0.981", optional = true}
 
 [tool.poetry.scripts]
 trafficlight = "trafficlight.trafficlight:run"

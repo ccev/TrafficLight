@@ -8,7 +8,8 @@ from rich.style import Style
 from rich.text import Text
 
 if TYPE_CHECKING:
-    from trafficlight.proto_utils.proto import AnyMessage, Proto
+    from trafficlight.proto_utils.proto import Proto
+    from google.protobuf.message import Message
 
 # most of the code here is taken from google.protobuf.text_format with modifications to support rich Text
 
@@ -52,7 +53,7 @@ def get_method_text(proto: Proto, text: Text | None = None) -> Text:
     if text is None:
         text = Text(no_wrap=True)
 
-    text.append(proto.method_name, style=METHOD_NAME)
+    text.append(str(proto.method_name), style=METHOD_NAME)
     text.append(" | ")
     text.append(str(proto.method_value), style=METHOD_VALUE)
     return text
@@ -97,7 +98,10 @@ class MessageFormatter:
                     self.append(message.name, style=MESSAGE_NAME)
                     self.append(" {", style=BRACKETS)
                     self.new_line()
-                    self.print_message(message.payload)
+
+                    if message.payload is not None:
+                        self.print_message(message.payload)
+
                     self.append("}", style=BRACKETS)
                     self.new_line()
                 self.new_line()
@@ -118,7 +122,7 @@ class MessageFormatter:
 
         self.append(indent_template, style=Style(color="grey15"))
 
-    def print_message(self, message: AnyMessage) -> None:
+    def print_message(self, message: Message) -> None:
         fields = message.ListFields()
         fields = sorted(fields, key=lambda f: 1 if f[0].cpp_type == descriptor.FieldDescriptor.CPPTYPE_MESSAGE else 0)
         # message fields should come last
@@ -222,7 +226,7 @@ class MessageFormatter:
         else:
             self.append(str(value), style=OTHERVALUE)
 
-    def print_message_field_value(self, value: AnyMessage) -> None:
+    def print_message_field_value(self, value: Message) -> None:
         if not value.ListFields():
             self.append("{}", style=BRACKETS)
         else:

@@ -47,11 +47,15 @@ class ProtoWidget(NoPostStatic):
 
     @property
     def method_name(self) -> str:
-        return self._proto.method_name
+        return self._proto.method_name if self._proto.method_name is not None else "Unknown Method"
 
     @property
     def proxy_method_name(self) -> str:
-        return self._proto.proxy.method_name if self._proto.proxy else ""
+        return (
+            self._proto.proxy.method_name
+            if self._proto.proxy is not None and self._proto.proxy.method_name is not None
+            else ""
+        )
 
     @property
     def message_names(self) -> Iterable[str]:

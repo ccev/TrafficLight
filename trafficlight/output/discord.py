@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Sized, Iterable, TypeVar
+from typing import TYPE_CHECKING, Sequence, Iterable, TypeVar
 
 import aiohttp
 import discord
@@ -12,10 +12,9 @@ if TYPE_CHECKING:
     from trafficlight.proto_utils.proto import Proto, Message
 
 T = TypeVar("T")
-AnySized = TypeVar("AnySized", bound=Sized)
 
 
-def chunks(iter_: AnySized[T], size: int) -> Iterable[AnySized[T]]:
+def chunks(iter_: Sequence[T], size: int) -> Iterable[Sequence[T]]:
     """Yield equally sized chunks from an iterable"""
     for i in range(0, len(iter_), size):
         yield iter_[i : i + size]
@@ -37,7 +36,7 @@ class DiscordOutput(BaseOutput):
             embeds.append(embed)
 
         async with aiohttp.ClientSession() as session:
-            webhook = discord.Webhook.from_url(config.webhook, session=session)
+            webhook: discord.Webhook = discord.Webhook.from_url(config.webhook, session=session)
 
             for part_embeds in chunks(embeds, 10):
                 await webhook.send(

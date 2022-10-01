@@ -22,14 +22,12 @@ RESPONSES: dict[int, descriptor.FieldDescriptor] = all_types.AllResponsesProto.D
 METHODS: dict[int, descriptor.EnumValueDescriptor] = all_types.AllResquestTypesProto.DESCRIPTOR.values_by_number
 MESSAGE_TYPE_TO_ID: dict[str, int] = {m.message_type.name: n for n, m in MESSAGES.items()}
 
-AnyMessage = TypeVar("AnyMessage", bound=ProtobufMessage)
-
 
 def _get_method_names(method_enum: EnumTypeWrapper) -> list[str]:
     return [d.name for d in method_enum.DESCRIPTOR.values]
 
 
-def _get_message_names(all_messages: Type[AnyMessage]) -> list[str]:
+def _get_message_names(all_messages: Type[ProtobufMessage]) -> list[str]:
     return [f.message_type.name for f in all_messages.DESCRIPTOR.fields]
 
 
@@ -37,12 +35,12 @@ MESSAGE_NAMES: list[str] = _get_message_names(all_types.AllMessagesProto) + _get
     all_types.AllResponsesProto
 )
 
-METHOD_NAMES: list[str] = _get_method_names(protos.Method)
-SOCIAL_ACTION_NAMES: list[str] = _get_method_names(protos.SocialAction)
-CLIENT_ACTION_NAMES: list[str] = _get_method_names(protos.ClientAction)
-ADVENTURE_SYNC_ACTION_NAMES: list[str] = _get_method_names(protos.GameAdventureSyncAction)
-PLAYER_SUBMISSION_ACTION_NAMES: list[str] = _get_method_names(protos.PlayerSubmissionAction)
-FITNESS_ACTION_NAMES: list[str] = _get_method_names(protos.GameFitnessAction)
+METHOD_NAMES: list[str] = _get_method_names(protos.Method)  # type: ignore
+SOCIAL_ACTION_NAMES: list[str] = _get_method_names(protos.SocialAction)  # type: ignore
+CLIENT_ACTION_NAMES: list[str] = _get_method_names(protos.ClientAction)  # type: ignore
+ADVENTURE_SYNC_ACTION_NAMES: list[str] = _get_method_names(protos.GameAdventureSyncAction)  # type: ignore
+PLAYER_SUBMISSION_ACTION_NAMES: list[str] = _get_method_names(protos.PlayerSubmissionAction)  # type: ignore
+FITNESS_ACTION_NAMES: list[str] = _get_method_names(protos.GameFitnessAction)  # type: ignore
 ALL_ACTION_NAMES: list[str] = (
     METHOD_NAMES
     + SOCIAL_ACTION_NAMES
@@ -65,7 +63,7 @@ class Message:
         if _message is not None:
             self.name = _message.message_type.name
 
-        self.payload: AnyMessage | None = None
+        self.payload: ProtobufMessage | None = None
         if self.name is not None:
             self.payload = self.decode_proto()
 
@@ -84,6 +82,9 @@ class Message:
             return self._raw
 
     def decode_proto(self) -> ProtobufMessage | None:
+        if self.name is None:
+            return None
+
         message = getattr(sys.modules["protos"], self.name)
 
         if message is None:
@@ -128,9 +129,8 @@ class Proto:
 
         self.proxy: Proto | None = None
         if (
-            self.method_value == protos.ClientAction.CLIENT_ACTION_PROXY_SOCIAL_ACTION
-            and self.request.payload is not None
-            and self.response.payload is not None
+            isinstance(self.request, protos.ProxyRequestProto)
+            and isinstance(self.response, protos.ProxyResponseProto)
         ):
             self.proxy = Proto(
                 rpc_id=rpc_id,
@@ -154,7 +154,7 @@ class Proto:
 
     @staticmethod
     def _get_method_name_basic(value: int) -> str | None:
-        name: AnyMessage | None = METHODS.get(value)
+        name: descriptor.EnumValueDescriptor | None = METHODS.get(value)
 
         if name is None:
             return None
@@ -167,6 +167,7 @@ class Proto:
         if (
             self.method_value not in MESSAGES.keys()
             and self.method_value not in RESPONSES.keys()
+            and name is not None
             and name.startswith("SOCIAL_ACTION_")
         ):
             # mainly for proxy. trying to map the method name to a message name and get the method id this way
