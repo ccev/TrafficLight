@@ -5,7 +5,7 @@ import json
 import sys
 from typing import Type, Iterable, TYPE_CHECKING
 
-from blackboxprotobuf import decode_message
+from blackboxprotobuf.lib.api import decode_message, _json_safe_transform
 from google.protobuf import text_format, descriptor
 from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
 from google.protobuf.message import Message as ProtobufMessage
@@ -100,8 +100,8 @@ class Message:
     def decode_blackbox(self) -> dict:
         decoded = self.decode_b64()
 
-        value, _ = decode_message(decoded)
-        return value
+        value, typedef = decode_message(decoded)
+        return _json_safe_transform(values=value, typedef=typedef, toBytes=False)
 
     def to_string(self, one_line: bool = True) -> str:
         if self.payload is None:
