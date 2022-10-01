@@ -79,14 +79,14 @@ class MessageFormatter:
         self._indent_guides: bool = indent_guides
         self._one_line: bool = one_line
         self._types: bool = types
-        
+
     def append(self, text: str, style: Style | None = None) -> None:
         self.out.append(text, style)
 
     def new_line(self) -> None:
         if not self._one_line:
             self.append("\n")
-        
+
     def format_proto(self, proto: Proto) -> Text:
         def build_text(this_proto: Proto):
             for message in this_proto.messages:

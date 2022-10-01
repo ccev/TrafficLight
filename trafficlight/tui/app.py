@@ -8,7 +8,6 @@ from textual import events
 from textual.app import App, ComposeResult
 from textual.layout import Horizontal
 from textual.reactive import reactive, Reactive, var
-from textual.widgets import Static
 
 from .models import Mode, Toggle, Action
 from .widget_command_overview import CommandOverview, CommandReceived

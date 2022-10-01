@@ -1,23 +1,17 @@
 from __future__ import annotations
 
 import random
-from typing import TYPE_CHECKING, Type
+from typing import TYPE_CHECKING
 
-import pyperclip
-from rich.style import Style
-from rich.text import Text
 from textual import events
+from textual.app import ComposeResult
 from textual.color import Color
-from textual.reactive import Reactive, reactive
+from textual.keys import Keys
 from textual.widget import Widget
 from textual.widgets import Static, TextInput
-from textual.layout import Horizontal, Vertical
-from textual.app import ComposeResult
-from textual.keys import Keys
 
 from trafficlight.proto_utils import ALL_ACTION_NAMES, ACTION_PREFIXES, MESSAGE_NAMES
-from .models import Mode, Toggle, CommandEnum, Action, ALL_COMMANDS
-from .models import NoPostStatic
+from .models import Mode, ALL_COMMANDS
 from .widget_command_overview import CommandOverview, SetCommandMode, CommandReceived
 
 if TYPE_CHECKING:

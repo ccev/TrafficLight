@@ -1,14 +1,15 @@
 from __future__ import annotations
+
 from typing import Type, TYPE_CHECKING
 
 from rich.style import Style
 from rich.text import Text
 from textual.app import ComposeResult
+from textual.message import Message, MessageTarget
 from textual.widget import Widget
 from textual.widgets import Static
-from textual.message import Message, MessageTarget
 
-from .models import CommandEnum, Mode, Toggle, Action, ALL_COMMANDS, NoPostStatic
+from .models import CommandEnum, Toggle, ALL_COMMANDS, NoPostStatic
 
 if TYPE_CHECKING:
     from .app import TrafficLightGui

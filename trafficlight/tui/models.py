@@ -1,9 +1,8 @@
-from typing import Type
 from enum import Enum
 from types import DynamicClassAttribute
+from typing import Type
 
 from textual.widgets import Static
-
 
 HOVER_CLASS = "hover"
 

@@ -3,9 +3,9 @@ from __future__ import annotations
 import base64
 import json
 import sys
-from typing import TypeVar, Type, Iterable, TYPE_CHECKING
+from typing import Type, Iterable, TYPE_CHECKING
 
-from blackboxprotobuf import protobuf_to_json, decode_message
+from blackboxprotobuf import decode_message
 from google.protobuf import text_format, descriptor
 from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
 from google.protobuf.message import Message as ProtobufMessage
@@ -128,10 +128,7 @@ class Proto:
         self.response: Respone = Respone(self.method_value, raw_response)
 
         self.proxy: Proto | None = None
-        if (
-            isinstance(self.request, protos.ProxyRequestProto)
-            and isinstance(self.response, protos.ProxyResponseProto)
-        ):
+        if isinstance(self.request, protos.ProxyRequestProto) and isinstance(self.response, protos.ProxyResponseProto):
             self.proxy = Proto(
                 rpc_id=rpc_id,
                 method_value=self.request.payload.action,
@@ -189,6 +186,4 @@ class Proto:
 
     @classmethod
     def from_raw(cls, rpc_id: int, data: ProtoModel) -> Proto:
-        return cls(
-            rpc_id=rpc_id, method_value=data.method, raw_request=data.request, raw_response=data.response
-        )
+        return cls(rpc_id=rpc_id, method_value=data.method, raw_request=data.request, raw_response=data.response)
