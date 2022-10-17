@@ -15,17 +15,18 @@ packages = [{include = "trafficlight"}]
 python = "^3.10"
 aiohttp = "^3.8.0"
 msgpack = "^1.0.4"
-requests = "^2.27.1"
+requests = "^2.28.1"
 bbpb = "^1.0.0"
-protobuf = "^3.20.2"
+protobuf = "^3.20.3"
 textual = { git = "https://github.com/Textualize/textual.git", branch = "css" }
 Pygments = "2.13.0"
 rtoml = "0.8.0"
 pydantic = "1.10.2"
 pyperclip = "1.8.2"
 "discord.py" = "^2.0.1"
-types-protobuf = {version = "^3.20.4", optional = true}
-mypy = {version = "^0.981", optional = true}
+types-protobuf = {version = "^3.20.4"}
+mypy = {version = "^0.982"}
+mypy-protobuf = "^3.3.0"
 
 [tool.poetry.scripts]
 trafficlight = "trafficlight.trafficlight:run"
