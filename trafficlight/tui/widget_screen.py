@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from textual.layout import Vertical
+from textual.containers import Vertical
 
 from .models import Toggle
 

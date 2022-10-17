@@ -8,7 +8,7 @@ from textual.app import ComposeResult
 from textual.color import Color
 from textual.keys import Keys
 from textual.widget import Widget
-from textual.widgets import Static, TextInput
+from textual.widgets import Static, Input
 
 from trafficlight.proto_utils import ALL_ACTION_NAMES, ACTION_PREFIXES, MESSAGE_NAMES
 from .models import Mode, ALL_COMMANDS
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from .app import TrafficLightGui
 
 
-class CustomTextInput(TextInput, can_focus=False):
+class CustomTextInput(Input, can_focus=False):
     app: TrafficLightGui
     _suggestion_suffix: str
 
