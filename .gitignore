@@ -2,7 +2,7 @@
 pogo.proto
 config.toml
 test.py
-# update_protos.py
+update_protos.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
