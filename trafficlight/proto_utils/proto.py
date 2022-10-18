@@ -36,18 +36,22 @@ MESSAGE_NAMES: list[str] = _get_message_names(all_types.AllMessagesProto) + _get
 )
 
 METHOD_NAMES: list[str] = _get_method_names(protos.Method)  # type: ignore
-SOCIAL_ACTION_NAMES: list[str] = _get_method_names(protos.SocialAction)  # type: ignore
 CLIENT_ACTION_NAMES: list[str] = _get_method_names(protos.ClientAction)  # type: ignore
+SOCIAL_ACTION_NAMES: list[str] = _get_method_names(protos.SocialAction)  # type: ignore
 ADVENTURE_SYNC_ACTION_NAMES: list[str] = _get_method_names(protos.GameAdventureSyncAction)  # type: ignore
+GAME_ACTION_NAMES: list[str] = _get_method_names(protos.GameAction)  # type: ignore
+GAME_OTHERS_ACTION_NAMES: list[str] = _get_method_names(protos.GameOthersAction)  # type: ignore
 PLAYER_SUBMISSION_ACTION_NAMES: list[str] = _get_method_names(protos.PlayerSubmissionAction)  # type: ignore
 FITNESS_ACTION_NAMES: list[str] = _get_method_names(protos.GameFitnessAction)  # type: ignore
 ALL_ACTION_NAMES: list[str] = (
-    METHOD_NAMES
-    + SOCIAL_ACTION_NAMES
-    + CLIENT_ACTION_NAMES
-    + ADVENTURE_SYNC_ACTION_NAMES
-    + PLAYER_SUBMISSION_ACTION_NAMES
-    + FITNESS_ACTION_NAMES
+        METHOD_NAMES
+        + CLIENT_ACTION_NAMES
+        + SOCIAL_ACTION_NAMES
+        + ADVENTURE_SYNC_ACTION_NAMES
+        + GAME_ACTION_NAMES
+        + GAME_OTHERS_ACTION_NAMES
+        + PLAYER_SUBMISSION_ACTION_NAMES
+        + FITNESS_ACTION_NAMES
 )
 ACTION_PREFIXES: list[str] = ["METHOD_", "SOCIAL_ACTION_", "CLIENT_ACTION_", "PLAYER_SUBMISSION_ACTION_"]
 
