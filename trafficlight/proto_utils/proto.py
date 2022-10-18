@@ -41,8 +41,8 @@ METHOD_NAMES: list[str] = _get_method_names(protos.Method)  # type: ignore
 CLIENT_ACTION_NAMES: list[str] = _get_method_names(protos.ClientAction)  # type: ignore
 SOCIAL_ACTION_NAMES: list[str] = _get_method_names(protos.SocialAction)  # type: ignore
 ADVENTURE_SYNC_ACTION_NAMES: list[str] = _get_method_names(protos.GameAdventureSyncAction)  # type: ignore
-GAME_ACTION_NAMES: list[str] = _get_method_names(protos.GameAction)  # type: ignore
-GAME_OTHERS_ACTION_NAMES: list[str] = _get_method_names(protos.GameOthersAction)  # type: ignore
+# GAME_ACTION_NAMES: list[str] = _get_method_names(protos.GameAction)  # type: ignore
+# GAME_OTHERS_ACTION_NAMES: list[str] = _get_method_names(protos.GameOthersAction)  # type: ignore
 PLAYER_SUBMISSION_ACTION_NAMES: list[str] = _get_method_names(protos.PlayerSubmissionAction)  # type: ignore
 FITNESS_ACTION_NAMES: list[str] = _get_method_names(protos.GameFitnessAction)  # type: ignore
 ALL_ACTION_NAMES: list[str] = (
@@ -50,8 +50,8 @@ ALL_ACTION_NAMES: list[str] = (
     + CLIENT_ACTION_NAMES
     + SOCIAL_ACTION_NAMES
     + ADVENTURE_SYNC_ACTION_NAMES
-    + GAME_ACTION_NAMES
-    + GAME_OTHERS_ACTION_NAMES
+    # + GAME_ACTION_NAMES
+    # + GAME_OTHERS_ACTION_NAMES
     + PLAYER_SUBMISSION_ACTION_NAMES
     + FITNESS_ACTION_NAMES
 )
