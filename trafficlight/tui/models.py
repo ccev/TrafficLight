@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 from enum import Enum
 from types import DynamicClassAttribute
 from typing import Type

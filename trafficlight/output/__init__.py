@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 from trafficlight.config import Output as _OutputType
 from .base import BaseOutput
 from .discord import DiscordOutput
