@@ -71,7 +71,7 @@ SearchInput {
     height: 3;
 }
 
-TextInput {
+Input {
     background: rgb(16, 16, 16);
     height: 1;
     padding: 0;

@@ -27,7 +27,7 @@ class CustomTextInput(Input, can_focus=False):
     def __init__(self):
         command_key = random.choices(("↲", ">"), weights=(0.2, 0.8), k=1)[0]
         super().__init__(
-            placeholder=f"Press {command_key} to open the command input or start typing", id="SearchInput"
+            placeholder=f"Press {command_key} to open the command input or start typing", id="SearchInput", name="CustomTextInput"
         )
         self.complete = self.search_autocompleter
         self.has_focus = True
