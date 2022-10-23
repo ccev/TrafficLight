@@ -10,7 +10,7 @@ from rich.style import Style
 from rich.table import Table, Column
 from rich.text import Text
 from textual.app import ComposeResult
-from textual.containers import Container
+from textual.layout import Container
 from textual.message import Message, MessageTarget
 from textual.reactive import reactive, Reactive
 from textual.widget import Widget

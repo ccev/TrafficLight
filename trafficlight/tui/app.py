@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 import pyperclip
 from textual import events
 from textual.app import App, ComposeResult
-from textual.containers import Horizontal
+from textual.layout import Horizontal
 from textual.reactive import reactive, Reactive, var
 
 from .models import Mode, Toggle, Action
@@ -21,11 +21,12 @@ if TYPE_CHECKING:
 
 
 class TrafficLightGui(App):
+    TITLE = "Traffic Light"
     current_mode: Reactive[Mode] = var(Mode.WATCH)
     filter_text: Reactive[str] = reactive("")
 
     def __init__(self):
-        super().__init__(css_path="_style.css", title="Traffic Light")
+        super().__init__(css_path="_style.css")
 
         self.incoming_requests: list[RequestWidget] = []
         self.toggles: dict[Toggle, bool] = {t: False for t in Toggle}

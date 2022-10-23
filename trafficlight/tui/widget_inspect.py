@@ -6,7 +6,7 @@ from rich.padding import Padding
 from rich.style import Style
 from rich.text import Text
 from textual.app import ComposeResult
-from textual.containers import Vertical
+from textual.layout import Vertical
 
 from trafficlight.proto_utils import MessageFormatter, get_method_text
 from .models import NoPostStatic, Mode
