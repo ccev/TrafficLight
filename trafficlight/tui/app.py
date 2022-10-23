@@ -25,8 +25,8 @@ class TrafficLightGui(App):
     filter_text: Reactive[str] = reactive("")
 
     def __init__(self):
-        super().__init__(css_path="_style.css", title="Traffic Light")
-
+        super().__init__(css_path="_style.css")
+        self.title: Reactive[str] = reactive("Traffic Light")
         self.incoming_requests: list[RequestWidget] = []
         self.toggles: dict[Toggle, bool] = {t: False for t in Toggle}
 

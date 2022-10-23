@@ -1,0 +1,13 @@
+@echo off
+cls
+rem echo Install or update venv ...
+rem python -m venv ./venv
+echo Activate venv ...
+call venv\Scripts\activate.bat
+echo Install requirements ...
+rem venv\Scripts\poetry install
+rem venv\Scripts\poetry update
+cls
+echo Run's app ...
+venv\Scripts\poetry run trafficlight
+pause

@@ -9,6 +9,7 @@ from textual.color import Color
 from textual.keys import Keys
 from textual.widget import Widget
 from textual.widgets import Static, Input
+from textual._text_backend import TextEditorBackend
 
 from trafficlight.proto_utils import ALL_ACTION_NAMES, ACTION_PREFIXES, MESSAGE_NAMES
 from .models import Mode, ALL_COMMANDS
@@ -21,13 +22,14 @@ if TYPE_CHECKING:
 class CustomTextInput(Input, can_focus=False):
     app: TrafficLightGui
     _suggestion_suffix: str
+    _editor: TextEditorBackend = TextEditorBackend("", 0)
 
     def __init__(self):
         command_key = random.choices(("↲", ">"), weights=(0.2, 0.8), k=1)[0]
         super().__init__(
-            placeholder=f"Press {command_key} to open the command input or start typing",
-            autocompleter=self.search_autocompleter,
+            placeholder=f"Press {command_key} to open the command input or start typing", id="SearchInput"
         )
+        self.complete = self.search_autocompleter
         self.has_focus = True
         self._editor.insert = self.insert
 
