@@ -47,18 +47,11 @@ if you don't like the UI.
 - Clone repo, copy `config.example.toml` to `config.toml`, fill out the config
 - Open a supported MITM on your phone. Set POST destination to your endpoint from config.toml
 (default: http://{computer IP}:3335)
+- If you're on Linux, you might need to `sudo ufw allow 3335:3335/tcp`
 - Make sure you use python 3.10+
-
-### Using Poetry
-
-- If you haven't already, I recommend [installing Poetry](https://python-poetry.org/docs/#installation)
+- [Install Poetry](https://python-poetry.org/docs/#installation) if haven't already. I recommend using pipx: `pip install pipx`, `pipx install poetry` and follow instructions to make sure PATH is all set
 - Run `poetry install`
 - To start, run `poetry run trafficlight` in your TrafficLight root directory
-
-### Not using Poetry
-
-- Run `pip install -r requirements.txt`
-- To start, run `python3 traffic_light.py` in your TrafficLight root directory
 
 ### Supporting MITMs
 
