@@ -16,7 +16,15 @@ if TYPE_CHECKING:
     from .app import TrafficLightGui
 
 
-class InspectHeader(NoPostStatic):
+class _ProtoUpdater(NoPostStatic):
+    async def update_proto(self, proto: Proto) -> None:
+        pass
+
+    def clear(self) -> None:
+        pass
+
+
+class InspectHeader(_ProtoUpdater):
     async def update_proto(self, proto: Proto):
         if proto.proxy:
             text = Text("Proxy: ")
@@ -30,7 +38,7 @@ class InspectHeader(NoPostStatic):
         self.update("")
 
 
-class InspectBody(NoPostStatic):
+class InspectBody(_ProtoUpdater):
     app: TrafficLightGui
     _text: Text = Text()
 
