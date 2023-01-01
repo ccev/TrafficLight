@@ -7,6 +7,8 @@ Beautiful traffic logging for PGO.
 Traffic Light takes specially formatted data from a mitm app and displays them in real-time, 
 allowing to see exactly what's going on.
 
+There's an additional CLI that allows to explore the Proto definitions.
+
 ### TUI
 
 The tool comes with a fully featured UI running in your Terminal.
@@ -41,24 +43,33 @@ the clutter
 There's also an option to simply print all requests or send them to Discord. You can use those 
 if you don't like the UI.
 
-## Setup
+## TrafficLight CLI
 
-- It's made to be used on your local computer with a local phone
+- `trafficlight run` to run the TUI
+- `trafficlight show MESSAGENAME` to show the definition for any Message to Enum. Uses fuzzy search to display 
+the closest match
+
+## Installation
+
+- The TUI is made to be used on your local computer with a local phone
+
+### As a CLI
+
+- `pipx install git+https://github.com/ccev/TrafficLight@cli`
+  - I highly recommend using pipx. You can install it using `pip install pipx`. 
+  If you prefer, you can also use pip to install TrafficLight
+- If you installed pipx correctly, the `trafficlight` command will now be available in your PATH
+- Running the TUI opens its endpoint at port `3335` of your computer. You can now open a supported MITM on your phone.
+
+### Locally
+
 - Clone repo, copy `config.example.toml` to `config.toml`, fill out the config
+- Make sure you use python 3.10+
+- [install Poetry](https://python-poetry.org/docs/#installation) if you haven't already
+- Run `poetry install`
+- To start, run `poetry run trafficlight run` in your TrafficLight root directory
 - Open a supported MITM on your phone. Set POST destination to your endpoint from config.toml
 (default: http://{computer IP}:3335)
-- Make sure you use python 3.10+
-
-### Using Poetry
-
-- If you haven't already, I recommend [installing Poetry](https://python-poetry.org/docs/#installation)
-- Run `poetry install`
-- To start, run `poetry run trafficlight` in your TrafficLight root directory
-
-### Not using Poetry
-
-- Run `pip install -r requirements.txt`
-- To start, run `python3 traffic_light.py` in your TrafficLight root directory
 
 ### Supporting MITMs
 
