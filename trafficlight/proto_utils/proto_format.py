@@ -1,13 +1,11 @@
 from __future__ import annotations
 
 import json
-from typing import TYPE_CHECKING, Any, Type
+from typing import TYPE_CHECKING, Any
 
 from google.protobuf import descriptor, text_encoding
 from rich.style import Style
 from rich.text import Text
-from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
-from google.protobuf.pyext.cpp_message import GeneratedProtocolMessageType
 
 if TYPE_CHECKING:
     from trafficlight.proto_utils.proto import Proto

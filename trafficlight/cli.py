@@ -12,7 +12,7 @@ def show(message: str):
     from rich import print
     from thefuzz import process
 
-    import protos
+    from trafficlight import protos
     from trafficlight.proto_utils.proto_format import MessageFormatter
 
     message_map = {**protos.DESCRIPTOR.message_types_by_name, **protos.DESCRIPTOR.enum_types_by_name}
