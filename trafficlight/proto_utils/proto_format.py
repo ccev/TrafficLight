@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import json
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Type
 
 from google.protobuf import descriptor, text_encoding
 from rich.style import Style
 from rich.text import Text
+from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
+from google.protobuf.pyext.cpp_message import GeneratedProtocolMessageType
 
 if TYPE_CHECKING:
     from trafficlight.proto_utils.proto import Proto
@@ -67,6 +69,7 @@ class MessageFormatter:
         indent_guides: bool = True,
         one_line: bool = False,
         types: bool = True,
+        type_emphasize: bool = False,
     ):
         if text is None:
             self.out = Text()
@@ -75,10 +78,13 @@ class MessageFormatter:
 
         self.indent_size = indent
         self.current_indent: int = 1
+        self.type_emphasize: bool = type_emphasize
 
         self._indent_guides: bool = indent_guides
         self._one_line: bool = one_line
         self._types: bool = types
+
+        self.__current_recursin_stack: list[str] = []
 
     def append(self, text: str, style: Style | None = None) -> None:
         self.out.append(text, style)
@@ -138,6 +144,62 @@ class MessageFormatter:
             else:
                 self.print_field(field, value)
 
+    def format_message_type(self, message_type: descriptor.EnumDescriptor | descriptor.Descriptor) -> Text:
+        self.append(message_type.name, style=MESSAGE_NAME)
+        self.new_line()
+        if isinstance(message_type, descriptor.EnumDescriptor):
+            self.print_enum_values(message_type, limit=None)
+        elif isinstance(message_type, descriptor.Descriptor):
+            self.print_message_descriptor(message_type)
+        return self.out
+
+    def print_message_descriptor(self, message: descriptor.Descriptor) -> None:
+        def _sort_field(field_: descriptor.FieldDescriptor) -> int:
+            if field_.type == descriptor.FieldDescriptor.TYPE_MESSAGE:
+                return 2
+            elif field_.type == descriptor.FieldDescriptor.TYPE_ENUM:
+                return 1
+            return 0
+
+        fields = sorted(message.fields, key=_sort_field)
+
+        for field in fields:
+            self._print_field_name(field)
+            self.new_line()
+
+            if field.message_type is not None:
+                name = field.message_type.name
+                if name in self.__current_recursin_stack:
+                    self.add_indent()
+                    self.append("...")
+                    self.new_line()
+                    self.add_indent()
+                    continue
+
+                list_length = len(self.__current_recursin_stack)
+                self.__current_recursin_stack.append(name)
+                self.current_indent += 1
+                self.print_message_descriptor(field.message_type)
+                self.current_indent -= 1
+                del self.__current_recursin_stack[list_length:]
+
+            elif field.enum_type is not None:
+                self.current_indent += 1
+                self.print_enum_values(field.enum_type)
+                self.current_indent -= 1
+
+    def print_enum_values(self, enum: descriptor.EnumDescriptor, limit: int | None = 30) -> None:
+        for i, value in enumerate(enum.values):
+            self.add_indent()
+            self.append(f"{value.number}: {value.name}", style=OTHERVALUE)
+            self.new_line()
+
+            if limit is not None and i == limit:
+                self.add_indent()
+                self.append("...")
+                self.new_line()
+                break
+
     @staticmethod
     def _is_map_entry(field: descriptor.FieldDescriptor) -> bool:
         return (
@@ -155,6 +217,10 @@ class MessageFormatter:
 
     def _print_field_name(self, field: descriptor.FieldDescriptor) -> None:
         self.add_indent()
+
+        def _add_repeated():
+            if field.label == descriptor.FieldDescriptor.LABEL_REPEATED:
+                self.append(" repeated", style=TYPE)
 
         if field.is_extension:
             self.append("[", style=BRACKETS)
@@ -174,14 +240,60 @@ class MessageFormatter:
             self.new_line()
             self.add_indent()
 
-            if self._types:
-                self.append(field.message_type.name + " ", style=SUB_MESSAGE_NAME)
-            self.append(field.name)
+            if self.type_emphasize:
+                self.append(field.name + ": ")
+                self.append(field.message_type.name, style=SUB_MESSAGE_NAME)
+                _add_repeated()
+            else:
+                if self._types:
+                    self.append(field.message_type.name + " ", style=SUB_MESSAGE_NAME)
+                self.append(field.name)
+        elif field.enum_type is not None and self.type_emphasize:
+            self.new_line()
+            self.add_indent()
+
+            self.append(field.name + ": ")
+
+            full_name = field.enum_type.name
+            containg_type: descriptor.Descriptor | None = field.enum_type.containing_type
+
+            if containg_type is not None:
+                i = field.enum_type.full_name.find(field.enum_type.containing_type.name)
+                if i > 0:
+                    full_name = field.enum_type.full_name[i:]
+            self.append(full_name, style=ENUM)
+            _add_repeated()
         else:
             type_name = TYPES.get(field.type)
-            if type_name is not None and self._types:
-                self.append(f"{type_name} ", style=TYPE)
-            self.append(field.name)
+
+            if self.type_emphasize:
+                self.append(field.name + ": ")
+
+                if field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_STRING:
+                    style = STRING
+                elif field.cpp_type == descriptor.FieldDescriptor.CPPTYPE_BOOL:
+                    style = BOOLEAN
+                elif field.cpp_type in (
+                    descriptor.FieldDescriptor.CPPTYPE_FLOAT,
+                    descriptor.FieldDescriptor.CPPTYPE_DOUBLE,
+                ):
+                    style = NUMBER
+                elif field.cpp_type in (
+                    descriptor.FieldDescriptor.CPPTYPE_INT32,
+                    descriptor.FieldDescriptor.CPPTYPE_INT64,
+                    descriptor.FieldDescriptor.CPPTYPE_UINT32,
+                    descriptor.FieldDescriptor.CPPTYPE_UINT64,
+                ):
+                    style = NUMBER
+                else:
+                    style = OTHERVALUE
+
+                self.append(type_name, style=style)
+                _add_repeated()
+            else:
+                if type_name is not None and self._types:
+                    self.append(f"{type_name} ", style=TYPE)
+                self.append(field.name)
 
     def print_field_value(self, field: descriptor.FieldDescriptor, value: Any) -> None:
         """Print a single field value (not including name).
