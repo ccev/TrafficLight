@@ -37,7 +37,7 @@ class CommandOverview(Widget):
             yield CommandEntryContainer(command)
 
     def update_toggle(self, toggle: Toggle, value: bool) -> None:
-        entry: CommandEntry = self.query_one(f"#{toggle.id}")
+        entry: CommandEntry = self.query_one(f"#{toggle.id}", expect_type=CommandEntry)
         entry.update_text(value)
 
 

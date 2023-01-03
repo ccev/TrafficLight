@@ -10,7 +10,7 @@ from google.protobuf import text_format, descriptor
 from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
 from google.protobuf.message import Message as ProtobufMessage
 
-import protos
+from trafficlight import protos
 
 if TYPE_CHECKING:
     from trafficlight.model import ProtoModel
@@ -85,7 +85,7 @@ class Message:
         if self.name is None:
             return None
 
-        message = getattr(sys.modules["protos"], self.name)
+        message = getattr(sys.modules["trafficlight.protos"], self.name)
 
         if message is None:
             return None

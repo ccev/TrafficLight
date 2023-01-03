@@ -14,19 +14,22 @@ class Output(Enum):
 
 
 class Config(BaseModel):
-    host: str
-    port: int
-    output: Output
-    webhook: str
+    host: str = "0.0.0.0"
+    port: int = 3335
+    output: Output = Output.UI
+    webhook: str = ""
 
-
-with open("config.toml", mode="r") as _config_file:
-    _raw_config = rtoml.load(_config_file)
 
 try:
-    _config = Config(**_raw_config)
-except ValidationError as e:
-    print(f"Config validation error!\n{e}")
-    sys.exit(1)
+    with open("config.toml", mode="r") as _config_file:
+        _raw_config = rtoml.load(_config_file)
+
+    try:
+        _config = Config(**_raw_config)
+    except ValidationError as e:
+        print(f"Config validation error!\n{e}")
+        sys.exit(1)
+except FileNotFoundError:
+    _config = Config()
 
 config = _config

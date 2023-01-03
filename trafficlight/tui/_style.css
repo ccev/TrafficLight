@@ -48,6 +48,7 @@ ScreenWidget {
 InputContainer {
     height: 3;
     layout: horizontal;
+    background: rgb(16, 16, 16);
 }
 
 InputWidget {
@@ -58,24 +59,26 @@ InputWidget {
 CommandInput {
     border-top: hkey rgb(0, 0, 0);
     background: rgb(28, 28, 28);
-    /*dock: left;*/
     width: auto;
     padding: 0 4;
     height: 3;
 }
 
-SearchInput {
+CustomInput {
     border-top: hkey rgb(0, 0, 0);
     background: rgb(16, 16, 16);
-    padding: 0 3;
-    height: 3;
 }
 
-TextInput {
-    background: rgb(16, 16, 16);
-    height: 1;
-    padding: 0;
-    width: 100%;
+/*Input>.input--cursor {*/
+/*        color: $text;*/
+/*        text-style: reverse;*/
+/*    }*/
+/*Input>.input--placeholder {*/
+/*    color: $text-disabled;*/
+/*}*/
+
+CustomInput:focus {
+    border: none;
 }
 
 CommandOverview {

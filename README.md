@@ -7,6 +7,8 @@ Beautiful traffic logging for PGO.
 Traffic Light takes specially formatted data from a mitm app and displays them in real-time, 
 allowing to see exactly what's going on.
 
+It comes bundled in a CLI that offers a few more utilities.
+
 ### TUI
 
 The tool comes with a fully featured UI running in your Terminal.
@@ -41,17 +43,32 @@ the clutter
 There's also an option to simply print all requests or send them to Discord. You can use those 
 if you don't like the UI.
 
-## Setup
+## TrafficLight CLI
 
-- It's made to be used on your local computer with a local phone
+- `trafficlight run` to run the TUI
+- `trafficlight show MESSAGENAME` to show the definition for any Message to Enum. Uses fuzzy search to display 
+the closest match
+
+## Installation
+
+- The TUI is made to be used on your local computer with a local phone
+
+### Install using pipx (or pip)
+
+- `pipx install git+https://github.com/ccev/TrafficLight@cli`
+  - I highly recommend using pipx. You can install it using `pip install pipx` if you prefer pip
+- If you installed pipx correctly, the `trafficlight` command will now be available in your PATH
+- Running the TUI opens its endpoint at port `3335` of your computer. You can now open a supported MITM on your phone.
+
+### Locally
+
 - Clone repo, copy `config.example.toml` to `config.toml`, fill out the config
+- Make sure you use python 3.10+
+- [install Poetry](https://python-poetry.org/docs/#installation) if you haven't already
+- Run `poetry install`
+- To start, run `poetry run trafficlight run` in your TrafficLight root directory
 - Open a supported MITM on your phone. Set POST destination to your endpoint from config.toml
 (default: http://{computer IP}:3335)
-- If you're on Linux, you might need to `sudo ufw allow 3335:3335/tcp`
-- Make sure you use python 3.10+
-- [Install Poetry](https://python-poetry.org/docs/#installation) if haven't already. I recommend using pipx: `pip install pipx`, `pipx install poetry` and follow instructions to make sure PATH is all set
-- Run `poetry install`
-- To start, run `poetry run trafficlight` in your TrafficLight root directory
 
 ### Supporting MITMs
 
