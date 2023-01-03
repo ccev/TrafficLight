@@ -7,7 +7,7 @@ Beautiful traffic logging for PGO.
 Traffic Light takes specially formatted data from a mitm app and displays them in real-time, 
 allowing to see exactly what's going on.
 
-There's an additional CLI that allows to explore the Proto definitions.
+It comes bundled in a CLI that offers a few more utilities.
 
 ### TUI
 
@@ -53,11 +53,10 @@ the closest match
 
 - The TUI is made to be used on your local computer with a local phone
 
-### As a CLI
+### Install using pipx (or pip)
 
 - `pipx install git+https://github.com/ccev/TrafficLight@cli`
-  - I highly recommend using pipx. You can install it using `pip install pipx`. 
-  If you prefer, you can also use pip to install TrafficLight
+  - I highly recommend using pipx. You can install it using `pip install pipx` if you prefer pip
 - If you installed pipx correctly, the `trafficlight` command will now be available in your PATH
 - Running the TUI opens its endpoint at port `3335` of your computer. You can now open a supported MITM on your phone.
 
