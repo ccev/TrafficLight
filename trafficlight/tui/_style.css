@@ -48,6 +48,7 @@ ScreenWidget {
 InputContainer {
     height: 3;
     layout: horizontal;
+    background: rgb(16, 16, 16);
 }
 
 InputWidget {
@@ -66,13 +67,6 @@ CommandInput {
 CustomInput {
     border-top: hkey rgb(0, 0, 0);
     background: rgb(16, 16, 16);
-    padding: 1 3;
-    height: 3;
-
-    /*background: rgb(16, 16, 16);*/
-    /*height: 1;*/
-    /*padding: 0;*/
-    /*width: 100%;*/
 }
 
 /*Input>.input--cursor {*/

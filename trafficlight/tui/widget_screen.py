@@ -3,13 +3,12 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Iterable
 
 from textual.containers import Vertical
-from textual.dom import NodeList
 
 from .models import Toggle
+from .widget_request import RequestWidget
 
 if TYPE_CHECKING:
     from .app import TrafficLightGui
-    from .widget_request import RequestWidget
 
 
 class ScreenWidget(Vertical):
@@ -33,6 +32,5 @@ class ScreenWidget(Vertical):
             requests[-1].scroll_visible()
 
     def clear(self) -> None:
-        for child in self.children:
-            if isinstance(child, RequestWidget):
-                child.remove()
+        children = self.query(RequestWidget)
+        children.remove()

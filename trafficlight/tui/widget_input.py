@@ -148,6 +148,8 @@ class CustomInput(Input):
         event.prevent_default()
         event.stop()
 
+        self.app.filter_text = self.value
+
 
 class InputWidget(Widget):
     command_mode: bool = False

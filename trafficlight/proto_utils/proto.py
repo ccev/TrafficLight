@@ -85,7 +85,7 @@ class Message:
         if self.name is None:
             return None
 
-        message = getattr(sys.modules["protos"], self.name)
+        message = getattr(sys.modules["trafficlight.protos"], self.name)
 
         if message is None:
             return None
