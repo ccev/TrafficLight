@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 import pyperclip
 from textual import events
 from textual.app import App, ComposeResult
-from textual.layout import Horizontal
+from textual.containers import Horizontal
 from textual.reactive import reactive, Reactive, var
 
 from .models import Mode, Toggle, Action
