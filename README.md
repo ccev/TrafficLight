@@ -55,8 +55,8 @@ the closest match
 
 ### Install using pipx (or pip)
 
-- `pipx install git+https://github.com/ccev/TrafficLight@cli`
-  - I highly recommend using pipx. You can install it using `pip install pipx` if you prefer pip
+- `pipx install git+https://github.com/ccev/TrafficLight`
+  - I highly recommend using pipx. You can install it using `pip install pipx`. If you prefer, you can also use pip instead
 - If you installed pipx correctly, the `trafficlight` command will now be available in your PATH
 - Running the TUI opens its endpoint at port `3335` of your computer. You can now open a supported MITM on your phone.
 
