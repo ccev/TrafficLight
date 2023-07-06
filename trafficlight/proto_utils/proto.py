@@ -188,4 +188,9 @@ class Proto:
 
     @classmethod
     def from_raw(cls, rpc_id: int, data: ProtoModel) -> Proto:
-        return cls(rpc_id=rpc_id, method_value=data.method, raw_request=data.request, raw_response=data.response)
+        return cls(
+            rpc_id=rpc_id,
+            method_value=data.method,
+            raw_request=data.request if data.request else "",
+            raw_response=data.response if data.response else "",
+        )

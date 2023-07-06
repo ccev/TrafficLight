@@ -3,8 +3,8 @@ from pydantic import BaseModel
 
 class ProtoModel(BaseModel):
     method: int
-    request: str
-    response: str
+    request: str | None
+    response: str | None
 
 
 class RequestModel(BaseModel):
