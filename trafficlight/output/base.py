@@ -13,5 +13,5 @@ class BaseOutput(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]) -> None:
+    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto], rpc_handle: int | None = None) -> None:
         pass

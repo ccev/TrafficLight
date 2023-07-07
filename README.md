@@ -80,6 +80,7 @@ the game, so you can play it normally while inspecting the traffic.
 {
     "rpcid": 1,
     "rpcstatus": 1,
+    "rpchandle": 1, // optional field
     "protos": [
         {
             "method": 1,

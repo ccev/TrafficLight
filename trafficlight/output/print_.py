@@ -13,9 +13,13 @@ class PrintOutput(BaseOutput):
     async def start(self) -> None:
         pass
 
-    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]) -> None:
+    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto], rpc_handle: int | None = None) -> None:
         time = datetime.now()
-        text = f"{time} | RPC ID {rpc_id} | RPC STATUS {rpc_status}\n\n"
+        text = f"{time} | RPC ID {rpc_id} | RPC STATUS {rpc_status}"
+        if rpc_handle is not None:
+            text = f"{text} | RPC HANDLE {rpc_handle}"
+
+        text += "\n\n"
 
         for proto in protos:
             text += self._get_text(proto) + "\n"
