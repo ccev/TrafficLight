@@ -3,7 +3,7 @@ from __future__ import annotations
 import sys
 from enum import Enum
 
-import rtoml
+import tomllib
 from pydantic import BaseModel, ValidationError
 
 
@@ -21,8 +21,8 @@ class Config(BaseModel):
 
 
 try:
-    with open("config.toml", mode="r") as _config_file:
-        _raw_config = rtoml.load(_config_file)
+    with open("config.toml", mode="rb") as _config_file:
+        _raw_config = tomllib.load(_config_file)
 
     try:
         _config = Config(**_raw_config)
