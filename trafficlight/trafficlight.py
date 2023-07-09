@@ -25,12 +25,18 @@ class TrafficReceiver:
         except json.JSONDecodeError:
             return web.Response(status=400, text="bad json")
 
-        try:
+        async def _handle_data(data: dict):
             model = RequestModel(**data)
+            await TrafficReceiver.process_data(model)
+
+        try:
+            if isinstance(data, list):
+                for entry in data:
+                    await _handle_data(entry)
+            else:
+                await _handle_data(data)
         except ValidationError as e:
             return web.Response(status=400, text=f"malformed data: {e}")
-
-        await TrafficReceiver.process_data(model)
 
         return web.Response(text="OK")
 
