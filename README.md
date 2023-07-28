@@ -63,7 +63,7 @@ the closest match
 ### Locally
 
 - Clone repo, copy `config.example.toml` to `config.toml`, fill out the config
-- Make sure you use python 3.10+
+- Make sure you use python 3.11+
 - [install Poetry](https://python-poetry.org/docs/#installation) if you haven't already
 - Run `poetry install`
 - To start, run `poetry run trafficlight run` in your TrafficLight root directory

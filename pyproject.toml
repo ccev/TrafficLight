@@ -12,13 +12,12 @@ readme = "README.md"
 packages = [{include = "trafficlight"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
 aiohttp = "^3.8.0"
 msgpack = "^1.0.4"
 requests = "^2.28.1"
 bbpb = "^1.0.0"
 Pygments = "2.13.0"
-rtoml = "0.8.0"
 pydantic = "1.10.2"
 pyperclip = "1.8.2"
 "discord.py" = "^2.0.1"
