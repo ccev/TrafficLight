@@ -100,11 +100,11 @@ class TrafficLightGui(App):
             await self.screen_widget.add_requests(self.incoming_requests)
             self.incoming_requests.clear()
 
-    def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]) -> None:
+    def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto], rpc_handle: int | None = None) -> None:
         if self.toggles[Toggle.PAUSE]:
             return
 
-        request = RequestWidget(time=datetime.now(), rpc_id=rpc_id, rpc_status=rpc_status, protos=protos)
+        request = RequestWidget(time=datetime.now(), rpc_id=rpc_id, rpc_status=rpc_status, protos=protos, rpc_handle=rpc_handle)
         self.incoming_requests.append(request)
 
     async def run_app(self) -> None:

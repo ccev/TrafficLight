@@ -120,7 +120,7 @@ class ProtoWidget(NoPostStatic):
 class RequestWidget(Widget):
     text: Text
 
-    def __init__(self, time: datetime, rpc_id: int, rpc_status: int, protos: list[Proto]):
+    def __init__(self, time: datetime, rpc_id: int, rpc_status: int, protos: list[Proto], rpc_handle: int | None = None):
         super().__init__()
 
         self.protos: list[ProtoWidget] = []
@@ -128,6 +128,7 @@ class RequestWidget(Widget):
 
         self._rpc_id: int = rpc_id
         self._rpc_status: int = rpc_status
+        self._rpc_handle: int | None = rpc_handle
         self._time: datetime = time
 
         self.make_text()
@@ -141,7 +142,13 @@ class RequestWidget(Widget):
         self.text.append(" | ")
         self.text.append(f"RPC ID {self._rpc_id}", style=REQUEST_HEADER)
         self.text.append(" | ")
-        self.text.append(f"RPC Status {self._rpc_status}\n", style=REQUEST_HEADER)
+        self.text.append(f"RPC Status {self._rpc_status}", style=REQUEST_HEADER)
+
+        if self._rpc_handle is not None:
+            self.text.append(" | ")
+            self.text.append(f"RPC Handle {self._rpc_handle}", style=REQUEST_HEADER)
+
+        self.text.append("\n")
 
     def compose(self) -> ComposeResult:
         yield NoPostStatic(self.text, id="request-head")

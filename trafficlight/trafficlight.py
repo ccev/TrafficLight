@@ -16,7 +16,7 @@ class TrafficReceiver:
     @staticmethod
     async def process_data(data: RequestModel):
         processed_protos = [Proto.from_raw(data.rpcid, p) for p in data.protos]
-        await output.add_record(rpc_id=data.rpcid, rpc_status=data.rpcstatus, protos=processed_protos)
+        await output.add_record(rpc_id=data.rpcid, rpc_status=data.rpcstatus, protos=processed_protos, rpc_handle=data.rpchandle)
 
     @staticmethod
     async def __traffic_post(request: web.Request):

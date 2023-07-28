@@ -24,13 +24,17 @@ class DiscordOutput(BaseOutput):
     async def start(self) -> None:
         pass
 
-    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto]) -> None:
+    async def add_record(self, rpc_id: int, rpc_status: int, protos: list[Proto], rpc_handle: int | None = None) -> None:
         now = discord.utils.utcnow()
         embeds = []
 
+        footer_text = f"RPC ID {rpc_id} | RPC STATUS {rpc_status}"
+        if rpc_handle is not None:
+            footer_text = f"{footer_text} | RPC HANDLE {rpc_handle}"
+
         for proto in protos:
             embed = discord.Embed(title=f"{proto.method_value} | {proto.method_name}")
-            embed.set_footer(text=f"RPC ID {rpc_id} | RPC STATUS {rpc_status}")
+            embed.set_footer(text=footer_text)
             embed.timestamp = now
             self._add_discord_field(proto, embed)
             embeds.append(embed)

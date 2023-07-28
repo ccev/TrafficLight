@@ -9,5 +9,6 @@ class ProtoModel(BaseModel):
 
 class RequestModel(BaseModel):
     rpcid: int
+    rpchandle: int | None
     rpcstatus: int
     protos: list[ProtoModel]
