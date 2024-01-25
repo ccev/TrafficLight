@@ -36,10 +36,10 @@ MESSAGE_NAMES: list[str] = _get_message_names(all_types.AllMessagesProto) + _get
 )
 
 METHOD_NAMES: list[str] = _get_method_names(protos.Method)  # type: ignore
-SOCIAL_ACTION_NAMES: list[str] = _get_method_names(protos.SocialAction)  # type: ignore
-CLIENT_ACTION_NAMES: list[str] = _get_method_names(protos.ClientAction)  # type: ignore
+SOCIAL_ACTION_NAMES: list[str] = _get_method_names(protos.InternalSocialAction)  # type: ignore
+CLIENT_ACTION_NAMES: list[str] = _get_method_names(protos.PlatformClientAction)  # type: ignore
 ADVENTURE_SYNC_ACTION_NAMES: list[str] = _get_method_names(protos.GameAdventureSyncAction)  # type: ignore
-PLAYER_SUBMISSION_ACTION_NAMES: list[str] = _get_method_names(protos.PlayerSubmissionAction)  # type: ignore
+PLAYER_SUBMISSION_ACTION_NAMES: list[str] = _get_method_names(protos.TitanPlayerSubmissionAction)  # type: ignore
 FITNESS_ACTION_NAMES: list[str] = _get_method_names(protos.GameFitnessAction)  # type: ignore
 ALL_ACTION_NAMES: list[str] = (
     METHOD_NAMES
