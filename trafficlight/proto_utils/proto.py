@@ -23,7 +23,7 @@ METHODS: dict[int, descriptor.EnumValueDescriptor] = all_types.AllResquestTypesP
 MESSAGE_TYPE_TO_ID: dict[str, int] = {m.message_type.name: n for n, m in MESSAGES.items()}
 
 
-def _get_method_names(method_enum: EnumTypeWrapper) -> list[str]:
+def _get_method_names(method_enum: Type[EnumTypeWrapper]) -> list[str]:
     return [d.name for d in method_enum.DESCRIPTOR.values]
 
 
@@ -35,60 +35,7 @@ MESSAGE_NAMES: list[str] = _get_message_names(all_types.AllMessagesProto) + _get
     all_types.AllResponsesProto
 )
 
-# NOTE not all game* still in all_types.AllResquestTypesProto but.
-# Maybe uses all in one, ex:
-# ALL_ACTION_NAMES: list[str] = _get_method_names(all_types.AllResquestTypesProto)  # type: ignore
-# ACTION_PREFIXES: list[str] = ["REQUEST_TYPE_"] # type: ignore
-
-METHOD_NAMES: list[str] = _get_method_names(protos.Method)  # type: ignore
-SOCIAL_ACTION_NAMES: list[str] = _get_method_names(protos.InternalSocialAction)  # type: ignore
-CLIENT_ACTION_NAMES: list[str] = _get_method_names(protos.PlatformClientAction)  # type: ignore
-ADVENTURE_SYNC_ACTION_NAMES: list[str] = _get_method_names(protos.GameAdventureSyncAction)  # type: ignore
-PLAYER_SUBMISSION_ACTION_NAMES: list[str] = _get_method_names(protos.TitanPlayerSubmissionAction)  # type: ignore
-FITNESS_ACTION_NAMES: list[str] = _get_method_names(protos.GameFitnessAction)  # type: ignore
-GAME_REGISTRY_ACTIONS: list[str] = _get_method_names(protos.GameAccountRegistryActions)  # type: ignore
-GAME_ANTI_CHEAT_ACTIONS: list[str] = _get_method_names(protos.GameAnticheatAction)  # type: ignore
-GAME_AUTH_ACTIONS: list[str] = _get_method_names(protos.GameAuthenticationActionMethod)  # type: ignore
-GAME_BACKGROUND_ACTIONS: list[str] = _get_method_names(protos.GameBackgroundModeAction)  # type: ignore
-GAME_CHAT_ACTIONS: list[str] = _get_method_names(protos.GameChatActions)  # type: ignore
-GAME_CRM_ACTIONS: list[str] = _get_method_names(protos.GameCrmActions)  # type: ignore
-GAME_GM_TEMPLATE_ACTIONS: list[str] = _get_method_names(protos.GameGmTemplatesAction)  # type: ignore
-GAME_IAP_ACTIONS: list[str] = _get_method_names(protos.GameIapAction)  # type: ignore
-GAME_NOTIFICATION_ACTIONS: list[str] = _get_method_names(protos.GameNotificationAction)  # type: ignore
-GAME_PASSCODE_ACTIONS: list[str] = _get_method_names(protos.GamePasscodeAction)  # type: ignore
-GAME_PING_ACTIONS: list[str] = _get_method_names(protos.GamePingAction)  # type: ignore
-GAME_PLAYER_ACTIONS: list[str] = _get_method_names(protos.GamePlayerAction)  # type: ignore
-GAME_POI_ACTIONS: list[str] = _get_method_names(protos.GamePoiAction)  # type: ignore
-GAME_PUSH_NOTIFICATION_ACTIONS: list[str] = _get_method_names(protos.GamePushNotificationAction)  # type: ignore
-GAME_SOCIAL_ACTIONS: list[str] = _get_method_names(protos.GameSocialAction)  # type: ignore
-GAME_TELEMETRY_ACTIONS: list[str] = _get_method_names(protos.GameTelemetryAction)  # type: ignore
-GAME_WEB_TOKEN_ACTIONS: list[str] = _get_method_names(protos.GameWebTokenAction)  # type: ignore
-
-ALL_ACTION_NAMES: list[str] = (
-    METHOD_NAMES
-    + SOCIAL_ACTION_NAMES
-    + CLIENT_ACTION_NAMES
-    + ADVENTURE_SYNC_ACTION_NAMES
-    + PLAYER_SUBMISSION_ACTION_NAMES
-    + FITNESS_ACTION_NAMES
-    + GAME_REGISTRY_ACTIONS
-    + GAME_ANTI_CHEAT_ACTIONS
-    + GAME_AUTH_ACTIONS
-    + GAME_BACKGROUND_ACTIONS
-    + GAME_CHAT_ACTIONS
-    + GAME_CRM_ACTIONS
-    + GAME_GM_TEMPLATE_ACTIONS
-    + GAME_IAP_ACTIONS
-    + GAME_NOTIFICATION_ACTIONS
-    + GAME_PASSCODE_ACTIONS
-    + GAME_PING_ACTIONS
-    + GAME_PLAYER_ACTIONS
-    + GAME_POI_ACTIONS
-    + GAME_PUSH_NOTIFICATION_ACTIONS
-    + GAME_SOCIAL_ACTIONS
-    + GAME_TELEMETRY_ACTIONS
-    + GAME_WEB_TOKEN_ACTIONS
-)
+ALL_ACTION_NAMES = _get_method_names(protos.AllTypesAndMessagesResponsesProto.AllResquestTypesProto)
 
 ACTION_PREFIXES: list[str] = [
     "METHOD_",
