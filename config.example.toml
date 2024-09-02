@@ -2,6 +2,9 @@ host = "0.0.0.0"
 port = 3335
 # Host and Port for the Receiver
 
+use_golbat_raws = true
+# inofficial support for golbat raws
+
 output = "ui/print/discord"
 # ui      = cool interactive ui
 # print   = simple log
