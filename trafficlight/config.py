@@ -18,7 +18,7 @@ class Config(BaseModel):
     port: int = 3335
     output: Output = Output.UI
     webhook: str = ""
-    use_golbat_raws: bool = True
+    use_golbat_raws: bool = False
 
 
 try:
