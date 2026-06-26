@@ -17,7 +17,7 @@ Licensed under the
 	or implied. See the License for the specific language governing
 	permissions and limitations under the License.
 
-Version: Base compatible 0.415.x.
+Version: Base compatible 0.417.x.
 """
 
 from collections import abc as _abc
@@ -9482,6 +9482,8 @@ class _HoloPokemonMoveEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_HoloP
     VM_MOVE_TEMP_EVOLUTION_PRIMAL_V0383_POKEMON_GROUDON: _HoloPokemonMove.ValueType  # 589
     GLAIVE_RUSH: _HoloPokemonMove.ValueType  # 590
     SNIPE_SHOT: _HoloPokemonMove.ValueType  # 592
+    GULP_MISSILE_GULPING: _HoloPokemonMove.ValueType  # 594
+    GULP_MISSILE_GORGING: _HoloPokemonMove.ValueType  # 595
 
 class HoloPokemonMove(_HoloPokemonMove, metaclass=_HoloPokemonMoveEnumTypeWrapper): ...
 
@@ -10015,6 +10017,8 @@ VM_MOVE_TEMP_EVOLUTION_PRIMAL_V0382_POKEMON_KYOGRE: HoloPokemonMove.ValueType  #
 VM_MOVE_TEMP_EVOLUTION_PRIMAL_V0383_POKEMON_GROUDON: HoloPokemonMove.ValueType  # 589
 GLAIVE_RUSH: HoloPokemonMove.ValueType  # 590
 SNIPE_SHOT: HoloPokemonMove.ValueType  # 592
+GULP_MISSILE_GULPING: HoloPokemonMove.ValueType  # 594
+GULP_MISSILE_GORGING: HoloPokemonMove.ValueType  # 595
 Global___HoloPokemonMove: _TypeAlias = HoloPokemonMove  # noqa: Y015
 
 class _HoloPokemonMovementType:
@@ -12288,7 +12292,14 @@ class _LocationCardEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Location
     LC_JAPAN_STAMP_RALLY_17: _LocationCard.ValueType  # 328
     LC_JAPAN_STAMP_RALLY_18: _LocationCard.ValueType  # 329
     LC_JAPAN_STAMP_RALLY_19: _LocationCard.ValueType  # 330
+    LC_SPECIALBACKGROUND_2026_GLOBAL_MEGA_002: _LocationCard.ValueType  # 331
+    LC_2026_SANFRANCISCO_WCS_001: _LocationCard.ValueType  # 332
     LC_SPECIALBACKGROUND_GG2026: _LocationCard.ValueType  # 333
+    LC_TPC30_MY: _LocationCard.ValueType  # 334
+    LC_TPC30_TW: _LocationCard.ValueType  # 335
+    LC_TPC30_SG: _LocationCard.ValueType  # 336
+    LC_TPC30_PH: _LocationCard.ValueType  # 337
+    LC_TPC30_TH: _LocationCard.ValueType  # 338
 
 class LocationCard(_LocationCard, metaclass=_LocationCardEnumTypeWrapper): ...
 
@@ -12621,7 +12632,14 @@ LC_JAPAN_STAMP_RALLY_16: LocationCard.ValueType  # 327
 LC_JAPAN_STAMP_RALLY_17: LocationCard.ValueType  # 328
 LC_JAPAN_STAMP_RALLY_18: LocationCard.ValueType  # 329
 LC_JAPAN_STAMP_RALLY_19: LocationCard.ValueType  # 330
+LC_SPECIALBACKGROUND_2026_GLOBAL_MEGA_002: LocationCard.ValueType  # 331
+LC_2026_SANFRANCISCO_WCS_001: LocationCard.ValueType  # 332
 LC_SPECIALBACKGROUND_GG2026: LocationCard.ValueType  # 333
+LC_TPC30_MY: LocationCard.ValueType  # 334
+LC_TPC30_TW: LocationCard.ValueType  # 335
+LC_TPC30_SG: LocationCard.ValueType  # 336
+LC_TPC30_PH: LocationCard.ValueType  # 337
+LC_TPC30_TH: LocationCard.ValueType  # 338
 Global___LocationCard: _TypeAlias = LocationCard  # noqa: Y015
 
 class _LoginActionTelemetryIds:
@@ -13901,38 +13919,38 @@ class _NotificationCategoryEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_
     NOTIFICATION_CATEGORY_UNSET: _NotificationCategory.ValueType  # 0
     NOTIFICATION_CATEGORY_GYM_REMOVAL: _NotificationCategory.ValueType  # 1
     NOTIFICATION_CATEGORY_POKEMON_HUNGRY: _NotificationCategory.ValueType  # 2
-    NOTIFICATION_CATEGORY_POKEMON_WON: _NotificationCategory.ValueType  # 3
+    NOTIFICATION_CATEGORY_EXCLUSIVE_RAID_INVITE: _NotificationCategory.ValueType  # 3
+    NOTIFICATION_CATEGORY_EXCLUSIVE_RAID_CANCELLATION: _NotificationCategory.ValueType  # 4
+    NOTIFICATION_CATEGORY_SHARED_EXCLUSIVE_RAID_INVITE: _NotificationCategory.ValueType  # 5
     NOTIFICATION_CATEGORY_GIFTBOX_INCOMING: _NotificationCategory.ValueType  # 6
     NOTIFICATION_CATEGORY_GIFTBOX_DELIVERED: _NotificationCategory.ValueType  # 7
     NOTIFICATION_CATEGORY_FRIENDSHIP_MILESTONE_REWARD: _NotificationCategory.ValueType  # 8
     NOTIFICATION_CATEGORY_GYM_BATTLE_FRIENDSHIP_INCREMENT: _NotificationCategory.ValueType  # 9
-    NOTIFICATION_CATEGORY_BGMODE_EGG_HATCH: _NotificationCategory.ValueType  # 11
-    NOTIFICATION_CATEGORY_BGMODE_BUDDY_CANDY: _NotificationCategory.ValueType  # 12
-    NOTIFICATION_CATEGORY_BGMODE_WEEKLY_FITNESS_REPORT: _NotificationCategory.ValueType  # 13
-    NOTIFICATION_CATEGORY_COMBAT_CHALLENGE_OPENED: _NotificationCategory.ValueType  # 14
-    NOTIFICATION_CATEGORY_BGMODE_OFF_SESSION_DISTANCE: _NotificationCategory.ValueType  # 15
-    NOTIFICATION_CATEGORY_BGMODE_POI_PROXIMITY: _NotificationCategory.ValueType  # 16
-    NOTIFICATION_CATEGORY_LUCKY_FRIEND: _NotificationCategory.ValueType  # 17
-    NOTIFICATION_CATEGORY_BGMODE_NAMED_BUDDY_CANDY: _NotificationCategory.ValueType  # 18
-    NOTIFICATION_CATEGORY_APP_BADGE_ONLY: _NotificationCategory.ValueType  # 19
-    NOTIFICATION_CATEGORY_COMBAT_VS_SEEKER_CHARGED: _NotificationCategory.ValueType  # 20
-    NOTIFICATION_CATEGORY_COMBAT_COMPETITIVE_SEASON_END: _NotificationCategory.ValueType  # 21
-    NOTIFICATION_CATEGORY_BUDDY_HUNGRY: _NotificationCategory.ValueType  # 22
-    NOTIFICATION_CATEGORY_BUDDY_FOUND_GIFT: _NotificationCategory.ValueType  # 24
-    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_LEVEL_MILESTONE: _NotificationCategory.ValueType  # 25
-    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_WALKING: _NotificationCategory.ValueType  # 26
-    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_CARE: _NotificationCategory.ValueType  # 27
-    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_BATTLE: _NotificationCategory.ValueType  # 28
-    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_PHOTO: _NotificationCategory.ValueType  # 29
-    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_POI: _NotificationCategory.ValueType  # 30
-    NOTIFICATION_CATEGORY_BGMODE_BUDDY_FOUND_GIFT: _NotificationCategory.ValueType  # 31
-    NOTIFICATION_CATEGORY_BUDDY_ATTRACTIVE_POI: _NotificationCategory.ValueType  # 32
-    NOTIFICATION_CATEGORY_BGMODE_BUDDY_ATTRACTIVE_POI: _NotificationCategory.ValueType  # 33
-    NOTIFICATION_CATEGORY_ROUTE_SUBMISSION_ACCEPTED: _NotificationCategory.ValueType  # 34
-    NOTIFICATION_CATEGORY_ROUTE_SUBMISSION_REJECTED: _NotificationCategory.ValueType  # 35
-    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_ATTRACTIVE_POI: _NotificationCategory.ValueType  # 36
-    NOTIFICATION_CATEGORY_POI_PASSCODE_REDEEMED: _NotificationCategory.ValueType  # 37
-    NOTIFICATION_CATEGORY_NO_EGGS_INCUBATING: _NotificationCategory.ValueType  # 38
+    NOTIFICATION_CATEGORY_BGMODE_EGG_HATCH: _NotificationCategory.ValueType  # 10
+    NOTIFICATION_CATEGORY_BGMODE_BUDDY_CANDY: _NotificationCategory.ValueType  # 11
+    NOTIFICATION_CATEGORY_BGMODE_WEEKLY_FITNESS_REPORT: _NotificationCategory.ValueType  # 12
+    NOTIFICATION_CATEGORY_BGMODE_OFF_SESSION_DISTANCE: _NotificationCategory.ValueType  # 13
+    NOTIFICATION_CATEGORY_BGMODE_POI_PROXIMITY: _NotificationCategory.ValueType  # 14
+    NOTIFICATION_CATEGORY_BGMODE_NAMED_BUDDY_CANDY: _NotificationCategory.ValueType  # 15
+    NOTIFICATION_CATEGORY_APP_BADGE_ONLY: _NotificationCategory.ValueType  # 16
+    NOTIFICATION_CATEGORY_COMBAT_CHALLENGE_OPENED: _NotificationCategory.ValueType  # 17
+    NOTIFICATION_CATEGORY_LUCKY_FRIEND: _NotificationCategory.ValueType  # 18
+    NOTIFICATION_CATEGORY_BUDDY_HUNGRY: _NotificationCategory.ValueType  # 19
+    NOTIFICATION_CATEGORY_BUDDY_FOUND_GIFT: _NotificationCategory.ValueType  # 20
+    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_LEVEL_MILESTONE: _NotificationCategory.ValueType  # 21
+    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_WALKING: _NotificationCategory.ValueType  # 22
+    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_CARE: _NotificationCategory.ValueType  # 23
+    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_BATTLE: _NotificationCategory.ValueType  # 24
+    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_PHOTO: _NotificationCategory.ValueType  # 25
+    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_POI: _NotificationCategory.ValueType  # 26
+    NOTIFICATION_CATEGORY_BUDDY_ATTRACTIVE_POI: _NotificationCategory.ValueType  # 27
+    NOTIFICATION_CATEGORY_FRIEND_INVITE_RECEIVED: _NotificationCategory.ValueType  # 28
+    NOTIFICATION_CATEGORY_FRIEND_INVITE_ACCEPTED: _NotificationCategory.ValueType  # 29
+    NOTIFICATION_CATEGORY_COMBAT_VS_SEEKER_CHARGED: _NotificationCategory.ValueType  # 30
+    NOTIFICATION_CATEGORY_COMBAT_COMPETITIVE_SEASON_END: _NotificationCategory.ValueType  # 31
+    NOTIFICATION_CATEGORY_BUDDY_AFFECTION_ATTRACTIVE_POI: _NotificationCategory.ValueType  # 32
+    NOTIFICATION_CATEGORY_POI_PASSCODE_REDEEMED: _NotificationCategory.ValueType  # 33
+    NOTIFICATION_CATEGORY_NO_EGGS_INCUBATING: _NotificationCategory.ValueType  # 34
     NOTIFICATION_CATEGORY_RETENTION_UNOPENED_GIFTS: _NotificationCategory.ValueType  # 39
     NOTIFICATION_CATEGORY_RETENTION_STARPIECE: _NotificationCategory.ValueType  # 40
     NOTIFICATION_CATEGORY_RETENTION_INCENSE: _NotificationCategory.ValueType  # 41
@@ -13993,64 +14011,65 @@ class _NotificationCategoryEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_
     NOTIFICATION_CATEGORY_EVENT_RSVP_MAX_GENERIC_STARTS_NOW: _NotificationCategory.ValueType  # 96
     NOTIFICATION_CATEGORY_REMOTE_MAX_BATTLE_INVITATION: _NotificationCategory.ValueType  # 97
     NOTIFICATION_CATEGORY_ITEM_EXPIRATION_GRANT_CONSOLATION: _NotificationCategory.ValueType  # 98
-    NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_PROGRESS: _NotificationCategory.ValueType  # 99
-    NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_QUEST_COMPLETED: _NotificationCategory.ValueType  # 100
-    NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_START: _NotificationCategory.ValueType  # 101
-    NOTIFICATION_CATEGORY_PARTY_MEMBER_JOINED: _NotificationCategory.ValueType  # 102
-    NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_ALMOST_END: _NotificationCategory.ValueType  # 103
-    NOTIFICATION_CATEGORY_HATCH_SPECIAL_EGG: _NotificationCategory.ValueType  # 104
-    NOTIFICATION_CATEGORY_REMOTE_TRADE_COMPLETE: _NotificationCategory.ValueType  # 109
-    NOTIFICATION_CATEGORY_REMOTE_TRADE_INFO: _NotificationCategory.ValueType  # 110
-    NOTIFICATION_CATEGORY_REMOTE_TRADE_INITIATE: _NotificationCategory.ValueType  # 111
-    NOTIFICATION_CATEGORY_REMOTE_TRADE_EXPIRE_SOON: _NotificationCategory.ValueType  # 112
-    NOTIFICATION_CATEGORY_REMOTE_TRADE_EXPIRE: _NotificationCategory.ValueType  # 113
-    NOTIFICATION_CATEGORY_REMOTE_TRADE_CANCEL: _NotificationCategory.ValueType  # 114
-    NOTIFICATION_CATEGORY_REMOTE_TRADE_CONFIRM: _NotificationCategory.ValueType  # 115
-    NOTIFICATION_CATEGORY_LUCKY_REMOTE_TRADE_INITIATE: _NotificationCategory.ValueType  # 116
-    NOTIFICATION_CATEGORY_LUCKY_REMOTE_TRADE_CONFIRM: _NotificationCategory.ValueType  # 117
-    NOTIFICATION_CATEGORY_SOFT_SFIDA_REMINDER: _NotificationCategory.ValueType  # 118
-    NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_POKEMON_STORAGE: _NotificationCategory.ValueType  # 119
-    NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_ITEM_STORAGE: _NotificationCategory.ValueType  # 120
-    NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_NO_POKEBALLS: _NotificationCategory.ValueType  # 121
-    NOTIFICATION_CATEGORY_SOFT_SFIDA_READY_FOR_REVIEW: _NotificationCategory.ValueType  # 122
+    NOTIFICATION_CATEGORY_ACTIVITY_INVITE_RECEIVED: _NotificationCategory.ValueType  # 99
+    NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_START: _NotificationCategory.ValueType  # 100
+    NOTIFICATION_CATEGORY_WEEKLY_CHALLENGES_NEW_CHALLENGE: _NotificationCategory.ValueType  # 101
+    NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_ALMOST_END: _NotificationCategory.ValueType  # 102
+    NOTIFICATION_CATEGORY_HATCH_SPECIAL_EGG: _NotificationCategory.ValueType  # 103
+    NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_PROGRESS: _NotificationCategory.ValueType  # 104
+    NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_QUEST_COMPLETED: _NotificationCategory.ValueType  # 105
+    NOTIFICATION_CATEGORY_REMOTE_TRADE_COMPLETE: _NotificationCategory.ValueType  # 106
+    NOTIFICATION_CATEGORY_REMOTE_TRADE_INFO: _NotificationCategory.ValueType  # 107
+    NOTIFICATION_CATEGORY_REMOTE_TRADE_INITIATE: _NotificationCategory.ValueType  # 108
+    NOTIFICATION_CATEGORY_REMOTE_TRADE_EXPIRE_SOON: _NotificationCategory.ValueType  # 109
+    NOTIFICATION_CATEGORY_REMOTE_TRADE_EXPIRE: _NotificationCategory.ValueType  # 110
+    NOTIFICATION_CATEGORY_REMOTE_TRADE_CANCEL: _NotificationCategory.ValueType  # 111
+    NOTIFICATION_CATEGORY_REMOTE_TRADE_CONFIRM: _NotificationCategory.ValueType  # 112
+    NOTIFICATION_CATEGORY_LUCKY_REMOTE_TRADE_INITIATE: _NotificationCategory.ValueType  # 113
+    NOTIFICATION_CATEGORY_LUCKY_REMOTE_TRADE_CONFIRM: _NotificationCategory.ValueType  # 114
+    NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_ITEM_STORAGE: _NotificationCategory.ValueType  # 115
+    NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_NO_POKEBALLS: _NotificationCategory.ValueType  # 116
+    NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_POKEMON_STORAGE: _NotificationCategory.ValueType  # 117
+    NOTIFICATION_CATEGORY_SOFT_SFIDA_READY_FOR_REVIEW: _NotificationCategory.ValueType  # 118
+    NOTIFICATION_CATEGORY_SOFT_SFIDA_REMINDER: _NotificationCategory.ValueType  # 119
 
 class NotificationCategory(_NotificationCategory, metaclass=_NotificationCategoryEnumTypeWrapper): ...
 
 NOTIFICATION_CATEGORY_UNSET: NotificationCategory.ValueType  # 0
 NOTIFICATION_CATEGORY_GYM_REMOVAL: NotificationCategory.ValueType  # 1
 NOTIFICATION_CATEGORY_POKEMON_HUNGRY: NotificationCategory.ValueType  # 2
-NOTIFICATION_CATEGORY_POKEMON_WON: NotificationCategory.ValueType  # 3
+NOTIFICATION_CATEGORY_EXCLUSIVE_RAID_INVITE: NotificationCategory.ValueType  # 3
+NOTIFICATION_CATEGORY_EXCLUSIVE_RAID_CANCELLATION: NotificationCategory.ValueType  # 4
+NOTIFICATION_CATEGORY_SHARED_EXCLUSIVE_RAID_INVITE: NotificationCategory.ValueType  # 5
 NOTIFICATION_CATEGORY_GIFTBOX_INCOMING: NotificationCategory.ValueType  # 6
 NOTIFICATION_CATEGORY_GIFTBOX_DELIVERED: NotificationCategory.ValueType  # 7
 NOTIFICATION_CATEGORY_FRIENDSHIP_MILESTONE_REWARD: NotificationCategory.ValueType  # 8
 NOTIFICATION_CATEGORY_GYM_BATTLE_FRIENDSHIP_INCREMENT: NotificationCategory.ValueType  # 9
-NOTIFICATION_CATEGORY_BGMODE_EGG_HATCH: NotificationCategory.ValueType  # 11
-NOTIFICATION_CATEGORY_BGMODE_BUDDY_CANDY: NotificationCategory.ValueType  # 12
-NOTIFICATION_CATEGORY_BGMODE_WEEKLY_FITNESS_REPORT: NotificationCategory.ValueType  # 13
-NOTIFICATION_CATEGORY_COMBAT_CHALLENGE_OPENED: NotificationCategory.ValueType  # 14
-NOTIFICATION_CATEGORY_BGMODE_OFF_SESSION_DISTANCE: NotificationCategory.ValueType  # 15
-NOTIFICATION_CATEGORY_BGMODE_POI_PROXIMITY: NotificationCategory.ValueType  # 16
-NOTIFICATION_CATEGORY_LUCKY_FRIEND: NotificationCategory.ValueType  # 17
-NOTIFICATION_CATEGORY_BGMODE_NAMED_BUDDY_CANDY: NotificationCategory.ValueType  # 18
-NOTIFICATION_CATEGORY_APP_BADGE_ONLY: NotificationCategory.ValueType  # 19
-NOTIFICATION_CATEGORY_COMBAT_VS_SEEKER_CHARGED: NotificationCategory.ValueType  # 20
-NOTIFICATION_CATEGORY_COMBAT_COMPETITIVE_SEASON_END: NotificationCategory.ValueType  # 21
-NOTIFICATION_CATEGORY_BUDDY_HUNGRY: NotificationCategory.ValueType  # 22
-NOTIFICATION_CATEGORY_BUDDY_FOUND_GIFT: NotificationCategory.ValueType  # 24
-NOTIFICATION_CATEGORY_BUDDY_AFFECTION_LEVEL_MILESTONE: NotificationCategory.ValueType  # 25
-NOTIFICATION_CATEGORY_BUDDY_AFFECTION_WALKING: NotificationCategory.ValueType  # 26
-NOTIFICATION_CATEGORY_BUDDY_AFFECTION_CARE: NotificationCategory.ValueType  # 27
-NOTIFICATION_CATEGORY_BUDDY_AFFECTION_BATTLE: NotificationCategory.ValueType  # 28
-NOTIFICATION_CATEGORY_BUDDY_AFFECTION_PHOTO: NotificationCategory.ValueType  # 29
-NOTIFICATION_CATEGORY_BUDDY_AFFECTION_POI: NotificationCategory.ValueType  # 30
-NOTIFICATION_CATEGORY_BGMODE_BUDDY_FOUND_GIFT: NotificationCategory.ValueType  # 31
-NOTIFICATION_CATEGORY_BUDDY_ATTRACTIVE_POI: NotificationCategory.ValueType  # 32
-NOTIFICATION_CATEGORY_BGMODE_BUDDY_ATTRACTIVE_POI: NotificationCategory.ValueType  # 33
-NOTIFICATION_CATEGORY_ROUTE_SUBMISSION_ACCEPTED: NotificationCategory.ValueType  # 34
-NOTIFICATION_CATEGORY_ROUTE_SUBMISSION_REJECTED: NotificationCategory.ValueType  # 35
-NOTIFICATION_CATEGORY_BUDDY_AFFECTION_ATTRACTIVE_POI: NotificationCategory.ValueType  # 36
-NOTIFICATION_CATEGORY_POI_PASSCODE_REDEEMED: NotificationCategory.ValueType  # 37
-NOTIFICATION_CATEGORY_NO_EGGS_INCUBATING: NotificationCategory.ValueType  # 38
+NOTIFICATION_CATEGORY_BGMODE_EGG_HATCH: NotificationCategory.ValueType  # 10
+NOTIFICATION_CATEGORY_BGMODE_BUDDY_CANDY: NotificationCategory.ValueType  # 11
+NOTIFICATION_CATEGORY_BGMODE_WEEKLY_FITNESS_REPORT: NotificationCategory.ValueType  # 12
+NOTIFICATION_CATEGORY_BGMODE_OFF_SESSION_DISTANCE: NotificationCategory.ValueType  # 13
+NOTIFICATION_CATEGORY_BGMODE_POI_PROXIMITY: NotificationCategory.ValueType  # 14
+NOTIFICATION_CATEGORY_BGMODE_NAMED_BUDDY_CANDY: NotificationCategory.ValueType  # 15
+NOTIFICATION_CATEGORY_APP_BADGE_ONLY: NotificationCategory.ValueType  # 16
+NOTIFICATION_CATEGORY_COMBAT_CHALLENGE_OPENED: NotificationCategory.ValueType  # 17
+NOTIFICATION_CATEGORY_LUCKY_FRIEND: NotificationCategory.ValueType  # 18
+NOTIFICATION_CATEGORY_BUDDY_HUNGRY: NotificationCategory.ValueType  # 19
+NOTIFICATION_CATEGORY_BUDDY_FOUND_GIFT: NotificationCategory.ValueType  # 20
+NOTIFICATION_CATEGORY_BUDDY_AFFECTION_LEVEL_MILESTONE: NotificationCategory.ValueType  # 21
+NOTIFICATION_CATEGORY_BUDDY_AFFECTION_WALKING: NotificationCategory.ValueType  # 22
+NOTIFICATION_CATEGORY_BUDDY_AFFECTION_CARE: NotificationCategory.ValueType  # 23
+NOTIFICATION_CATEGORY_BUDDY_AFFECTION_BATTLE: NotificationCategory.ValueType  # 24
+NOTIFICATION_CATEGORY_BUDDY_AFFECTION_PHOTO: NotificationCategory.ValueType  # 25
+NOTIFICATION_CATEGORY_BUDDY_AFFECTION_POI: NotificationCategory.ValueType  # 26
+NOTIFICATION_CATEGORY_BUDDY_ATTRACTIVE_POI: NotificationCategory.ValueType  # 27
+NOTIFICATION_CATEGORY_FRIEND_INVITE_RECEIVED: NotificationCategory.ValueType  # 28
+NOTIFICATION_CATEGORY_FRIEND_INVITE_ACCEPTED: NotificationCategory.ValueType  # 29
+NOTIFICATION_CATEGORY_COMBAT_VS_SEEKER_CHARGED: NotificationCategory.ValueType  # 30
+NOTIFICATION_CATEGORY_COMBAT_COMPETITIVE_SEASON_END: NotificationCategory.ValueType  # 31
+NOTIFICATION_CATEGORY_BUDDY_AFFECTION_ATTRACTIVE_POI: NotificationCategory.ValueType  # 32
+NOTIFICATION_CATEGORY_POI_PASSCODE_REDEEMED: NotificationCategory.ValueType  # 33
+NOTIFICATION_CATEGORY_NO_EGGS_INCUBATING: NotificationCategory.ValueType  # 34
 NOTIFICATION_CATEGORY_RETENTION_UNOPENED_GIFTS: NotificationCategory.ValueType  # 39
 NOTIFICATION_CATEGORY_RETENTION_STARPIECE: NotificationCategory.ValueType  # 40
 NOTIFICATION_CATEGORY_RETENTION_INCENSE: NotificationCategory.ValueType  # 41
@@ -14111,26 +14130,27 @@ NOTIFICATION_CATEGORY_EVENT_RSVP_MAX_GENERIC_WARNING: NotificationCategory.Value
 NOTIFICATION_CATEGORY_EVENT_RSVP_MAX_GENERIC_STARTS_NOW: NotificationCategory.ValueType  # 96
 NOTIFICATION_CATEGORY_REMOTE_MAX_BATTLE_INVITATION: NotificationCategory.ValueType  # 97
 NOTIFICATION_CATEGORY_ITEM_EXPIRATION_GRANT_CONSOLATION: NotificationCategory.ValueType  # 98
-NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_PROGRESS: NotificationCategory.ValueType  # 99
-NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_QUEST_COMPLETED: NotificationCategory.ValueType  # 100
-NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_START: NotificationCategory.ValueType  # 101
-NOTIFICATION_CATEGORY_PARTY_MEMBER_JOINED: NotificationCategory.ValueType  # 102
-NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_ALMOST_END: NotificationCategory.ValueType  # 103
-NOTIFICATION_CATEGORY_HATCH_SPECIAL_EGG: NotificationCategory.ValueType  # 104
-NOTIFICATION_CATEGORY_REMOTE_TRADE_COMPLETE: NotificationCategory.ValueType  # 109
-NOTIFICATION_CATEGORY_REMOTE_TRADE_INFO: NotificationCategory.ValueType  # 110
-NOTIFICATION_CATEGORY_REMOTE_TRADE_INITIATE: NotificationCategory.ValueType  # 111
-NOTIFICATION_CATEGORY_REMOTE_TRADE_EXPIRE_SOON: NotificationCategory.ValueType  # 112
-NOTIFICATION_CATEGORY_REMOTE_TRADE_EXPIRE: NotificationCategory.ValueType  # 113
-NOTIFICATION_CATEGORY_REMOTE_TRADE_CANCEL: NotificationCategory.ValueType  # 114
-NOTIFICATION_CATEGORY_REMOTE_TRADE_CONFIRM: NotificationCategory.ValueType  # 115
-NOTIFICATION_CATEGORY_LUCKY_REMOTE_TRADE_INITIATE: NotificationCategory.ValueType  # 116
-NOTIFICATION_CATEGORY_LUCKY_REMOTE_TRADE_CONFIRM: NotificationCategory.ValueType  # 117
-NOTIFICATION_CATEGORY_SOFT_SFIDA_REMINDER: NotificationCategory.ValueType  # 118
-NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_POKEMON_STORAGE: NotificationCategory.ValueType  # 119
-NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_ITEM_STORAGE: NotificationCategory.ValueType  # 120
-NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_NO_POKEBALLS: NotificationCategory.ValueType  # 121
-NOTIFICATION_CATEGORY_SOFT_SFIDA_READY_FOR_REVIEW: NotificationCategory.ValueType  # 122
+NOTIFICATION_CATEGORY_ACTIVITY_INVITE_RECEIVED: NotificationCategory.ValueType  # 99
+NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_START: NotificationCategory.ValueType  # 100
+NOTIFICATION_CATEGORY_WEEKLY_CHALLENGES_NEW_CHALLENGE: NotificationCategory.ValueType  # 101
+NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_ALMOST_END: NotificationCategory.ValueType  # 102
+NOTIFICATION_CATEGORY_HATCH_SPECIAL_EGG: NotificationCategory.ValueType  # 103
+NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_PROGRESS: NotificationCategory.ValueType  # 104
+NOTIFICATION_CATEGORY_WEEKLY_CHALLENGE_QUEST_COMPLETED: NotificationCategory.ValueType  # 105
+NOTIFICATION_CATEGORY_REMOTE_TRADE_COMPLETE: NotificationCategory.ValueType  # 106
+NOTIFICATION_CATEGORY_REMOTE_TRADE_INFO: NotificationCategory.ValueType  # 107
+NOTIFICATION_CATEGORY_REMOTE_TRADE_INITIATE: NotificationCategory.ValueType  # 108
+NOTIFICATION_CATEGORY_REMOTE_TRADE_EXPIRE_SOON: NotificationCategory.ValueType  # 109
+NOTIFICATION_CATEGORY_REMOTE_TRADE_EXPIRE: NotificationCategory.ValueType  # 110
+NOTIFICATION_CATEGORY_REMOTE_TRADE_CANCEL: NotificationCategory.ValueType  # 111
+NOTIFICATION_CATEGORY_REMOTE_TRADE_CONFIRM: NotificationCategory.ValueType  # 112
+NOTIFICATION_CATEGORY_LUCKY_REMOTE_TRADE_INITIATE: NotificationCategory.ValueType  # 113
+NOTIFICATION_CATEGORY_LUCKY_REMOTE_TRADE_CONFIRM: NotificationCategory.ValueType  # 114
+NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_ITEM_STORAGE: NotificationCategory.ValueType  # 115
+NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_NO_POKEBALLS: NotificationCategory.ValueType  # 116
+NOTIFICATION_CATEGORY_SOFT_SFIDA_PAUSED_POKEMON_STORAGE: NotificationCategory.ValueType  # 117
+NOTIFICATION_CATEGORY_SOFT_SFIDA_READY_FOR_REVIEW: NotificationCategory.ValueType  # 118
+NOTIFICATION_CATEGORY_SOFT_SFIDA_REMINDER: NotificationCategory.ValueType  # 119
 Global___NotificationCategory: _TypeAlias = NotificationCategory  # noqa: Y015
 
 class _NotificationState:
@@ -14780,7 +14800,6 @@ class _PlayerSubmissionTypeProtoEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrap
     DESCRIPTOR: _descriptor.EnumDescriptor
     PLAYER_SUBMISSION_TYPE_PROTO_TYPE_UNSPECIFIED: _PlayerSubmissionTypeProto.ValueType  # 0
     PLAYER_SUBMISSION_TYPE_PROTO_POI_SUBMISSION: _PlayerSubmissionTypeProto.ValueType  # 1
-    PLAYER_SUBMISSION_TYPE_PROTO_ROUTE_SUBMISSION: _PlayerSubmissionTypeProto.ValueType  # 2
     PLAYER_SUBMISSION_TYPE_PROTO_POI_IMAGE_SUBMISSION: _PlayerSubmissionTypeProto.ValueType  # 3
     PLAYER_SUBMISSION_TYPE_PROTO_POI_TEXT_METADATA_UPDATE: _PlayerSubmissionTypeProto.ValueType  # 4
     PLAYER_SUBMISSION_TYPE_PROTO_POI_LOCATION_UPDATE: _PlayerSubmissionTypeProto.ValueType  # 5
@@ -14789,14 +14808,11 @@ class _PlayerSubmissionTypeProtoEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrap
     PLAYER_SUBMISSION_TYPE_PROTO_SPONSOR_POI_REPORT: _PlayerSubmissionTypeProto.ValueType  # 8
     PLAYER_SUBMISSION_TYPE_PROTO_SPONSOR_POI_LOCATION_UPDATE: _PlayerSubmissionTypeProto.ValueType  # 9
     PLAYER_SUBMISSION_TYPE_PROTO_POI_CATEGORY_VOTE_SUBMISSION: _PlayerSubmissionTypeProto.ValueType  # 10
-    PLAYER_SUBMISSION_TYPE_PROTO_MAPPING_REQUEST: _PlayerSubmissionTypeProto.ValueType  # 11
-    PLAYER_SUBMISSION_TYPE_PROTO_NEW_PRIVATE_POI: _PlayerSubmissionTypeProto.ValueType  # 12
 
 class PlayerSubmissionTypeProto(_PlayerSubmissionTypeProto, metaclass=_PlayerSubmissionTypeProtoEnumTypeWrapper): ...
 
 PLAYER_SUBMISSION_TYPE_PROTO_TYPE_UNSPECIFIED: PlayerSubmissionTypeProto.ValueType  # 0
 PLAYER_SUBMISSION_TYPE_PROTO_POI_SUBMISSION: PlayerSubmissionTypeProto.ValueType  # 1
-PLAYER_SUBMISSION_TYPE_PROTO_ROUTE_SUBMISSION: PlayerSubmissionTypeProto.ValueType  # 2
 PLAYER_SUBMISSION_TYPE_PROTO_POI_IMAGE_SUBMISSION: PlayerSubmissionTypeProto.ValueType  # 3
 PLAYER_SUBMISSION_TYPE_PROTO_POI_TEXT_METADATA_UPDATE: PlayerSubmissionTypeProto.ValueType  # 4
 PLAYER_SUBMISSION_TYPE_PROTO_POI_LOCATION_UPDATE: PlayerSubmissionTypeProto.ValueType  # 5
@@ -14805,8 +14821,6 @@ PLAYER_SUBMISSION_TYPE_PROTO_POI_AR_VIDEO_SUBMISSION: PlayerSubmissionTypeProto.
 PLAYER_SUBMISSION_TYPE_PROTO_SPONSOR_POI_REPORT: PlayerSubmissionTypeProto.ValueType  # 8
 PLAYER_SUBMISSION_TYPE_PROTO_SPONSOR_POI_LOCATION_UPDATE: PlayerSubmissionTypeProto.ValueType  # 9
 PLAYER_SUBMISSION_TYPE_PROTO_POI_CATEGORY_VOTE_SUBMISSION: PlayerSubmissionTypeProto.ValueType  # 10
-PLAYER_SUBMISSION_TYPE_PROTO_MAPPING_REQUEST: PlayerSubmissionTypeProto.ValueType  # 11
-PLAYER_SUBMISSION_TYPE_PROTO_NEW_PRIVATE_POI: PlayerSubmissionTypeProto.ValueType  # 12
 Global___PlayerSubmissionTypeProto: _TypeAlias = PlayerSubmissionTypeProto  # noqa: Y015
 
 class _PlayerZoneCompliance:
@@ -15999,38 +16013,38 @@ class _RpcNotificationCategoryEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrappe
     UNSET_NOTIFICATION_CATEGORY: _RpcNotificationCategory.ValueType  # 0
     GYM_REMOVAL: _RpcNotificationCategory.ValueType  # 1
     POKEMON_HUNGRY: _RpcNotificationCategory.ValueType  # 2
-    POKEMON_WON: _RpcNotificationCategory.ValueType  # 3
+    EXCLUSIVE_RAID_INVITE: _RpcNotificationCategory.ValueType  # 3
+    EXCLUSIVE_RAID_CANCELLATION: _RpcNotificationCategory.ValueType  # 4
+    SHARED_EXCLUSIVE_RAID_INVITE: _RpcNotificationCategory.ValueType  # 5
     GIFTBOX_INCOMING: _RpcNotificationCategory.ValueType  # 6
     GIFTBOX_DELIVERED: _RpcNotificationCategory.ValueType  # 7
     FRIENDSHIP_MILESTONE_REWARD: _RpcNotificationCategory.ValueType  # 8
     GYM_BATTLE_FRIENDSHIP_INCREMENT: _RpcNotificationCategory.ValueType  # 9
-    BGMODE_EGG_HATCH: _RpcNotificationCategory.ValueType  # 11
-    BGMODE_BUDDY_CANDY: _RpcNotificationCategory.ValueType  # 12
-    BGMODE_WEEKLY_FITNESS_REPORT: _RpcNotificationCategory.ValueType  # 13
-    COMBAT_CHALLENGE_OPENED: _RpcNotificationCategory.ValueType  # 14
-    BGMODE_OFF_SESSION_DISTANCE: _RpcNotificationCategory.ValueType  # 15
-    BGMODE_POI_PROXIMITY: _RpcNotificationCategory.ValueType  # 16
-    LUCKY_FRIEND: _RpcNotificationCategory.ValueType  # 17
-    BGMODE_NAMED_BUDDY_CANDY: _RpcNotificationCategory.ValueType  # 18
-    APP_BADGE_ONLY: _RpcNotificationCategory.ValueType  # 19
-    COMBAT_VS_SEEKER_CHARGED: _RpcNotificationCategory.ValueType  # 20
-    COMBAT_COMPETITIVE_SEASON_END: _RpcNotificationCategory.ValueType  # 21
-    BUDDY_HUNGRY: _RpcNotificationCategory.ValueType  # 22
-    BUDDY_FOUND_GIFT: _RpcNotificationCategory.ValueType  # 24
-    BUDDY_AFFECTION_LEVEL_MILESTONE: _RpcNotificationCategory.ValueType  # 25
-    BUDDY_AFFECTION_WALKING: _RpcNotificationCategory.ValueType  # 26
-    BUDDY_AFFECTION_CARE: _RpcNotificationCategory.ValueType  # 27
-    BUDDY_AFFECTION_BATTLE: _RpcNotificationCategory.ValueType  # 28
-    BUDDY_AFFECTION_PHOTO: _RpcNotificationCategory.ValueType  # 29
-    BUDDY_AFFECTION_POI: _RpcNotificationCategory.ValueType  # 30
-    BGMODE_BUDDY_FOUND_GIFT: _RpcNotificationCategory.ValueType  # 31
-    BUDDY_ATTRACTIVE_POI: _RpcNotificationCategory.ValueType  # 32
-    BGMODE_BUDDY_ATTRACTIVE_POI: _RpcNotificationCategory.ValueType  # 33
-    ROUTE_SUBMISSION_ACCEPTED: _RpcNotificationCategory.ValueType  # 34
-    ROUTE_SUBMISSION_REJECTED: _RpcNotificationCategory.ValueType  # 35
-    BUDDY_AFFECTION_ATTRACTIVE_POI: _RpcNotificationCategory.ValueType  # 36
-    POI_PASSCODE_REDEEMED: _RpcNotificationCategory.ValueType  # 37
-    NO_EGGS_INCUBATING: _RpcNotificationCategory.ValueType  # 38
+    BGMODE_EGG_HATCH: _RpcNotificationCategory.ValueType  # 10
+    BGMODE_BUDDY_CANDY: _RpcNotificationCategory.ValueType  # 11
+    BGMODE_WEEKLY_FITNESS_REPORT: _RpcNotificationCategory.ValueType  # 12
+    BGMODE_OFF_SESSION_DISTANCE: _RpcNotificationCategory.ValueType  # 13
+    BGMODE_POI_PROXIMITY: _RpcNotificationCategory.ValueType  # 14
+    BGMODE_NAMED_BUDDY_CANDY: _RpcNotificationCategory.ValueType  # 15
+    APP_BADGE_ONLY: _RpcNotificationCategory.ValueType  # 16
+    COMBAT_CHALLENGE_OPENED: _RpcNotificationCategory.ValueType  # 17
+    LUCKY_FRIEND: _RpcNotificationCategory.ValueType  # 18
+    BUDDY_HUNGRY: _RpcNotificationCategory.ValueType  # 19
+    BUDDY_FOUND_GIFT: _RpcNotificationCategory.ValueType  # 20
+    BUDDY_AFFECTION_LEVEL_MILESTONE: _RpcNotificationCategory.ValueType  # 21
+    BUDDY_AFFECTION_WALKING: _RpcNotificationCategory.ValueType  # 22
+    BUDDY_AFFECTION_CARE: _RpcNotificationCategory.ValueType  # 23
+    BUDDY_AFFECTION_BATTLE: _RpcNotificationCategory.ValueType  # 24
+    BUDDY_AFFECTION_PHOTO: _RpcNotificationCategory.ValueType  # 25
+    BUDDY_AFFECTION_POI: _RpcNotificationCategory.ValueType  # 26
+    BUDDY_ATTRACTIVE_POI: _RpcNotificationCategory.ValueType  # 27
+    FRIEND_INVITE_RECEIVED: _RpcNotificationCategory.ValueType  # 28
+    FRIEND_INVITE_ACCEPTED: _RpcNotificationCategory.ValueType  # 29
+    COMBAT_VS_SEEKER_CHARGED: _RpcNotificationCategory.ValueType  # 30
+    COMBAT_COMPETITIVE_SEASON_END: _RpcNotificationCategory.ValueType  # 31
+    BUDDY_AFFECTION_ATTRACTIVE_POI: _RpcNotificationCategory.ValueType  # 32
+    POI_PASSCODE_REDEEMED: _RpcNotificationCategory.ValueType  # 33
+    NO_EGGS_INCUBATING: _RpcNotificationCategory.ValueType  # 34
     RETENTION_UNOPENED_GIFTS: _RpcNotificationCategory.ValueType  # 39
     RETENTION_STARPIECE: _RpcNotificationCategory.ValueType  # 40
     RETENTION_INCENSE: _RpcNotificationCategory.ValueType  # 41
@@ -16091,64 +16105,65 @@ class _RpcNotificationCategoryEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrappe
     EVENT_RSVP_MAX_GENERIC_STARTS_NOW: _RpcNotificationCategory.ValueType  # 96
     REMOTE_MAX_BATTLE_INVITATION: _RpcNotificationCategory.ValueType  # 97
     ITEM_EXPIRATION_GRANT_CONSOLATION: _RpcNotificationCategory.ValueType  # 98
-    WEEKLY_CHALLENGE_PROGRESS: _RpcNotificationCategory.ValueType  # 99
-    WEEKLY_CHALLENGE_QUEST_COMPLETED: _RpcNotificationCategory.ValueType  # 100
-    WEEKLY_CHALLENGE_START: _RpcNotificationCategory.ValueType  # 101
-    PARTY_MEMBER_JOINED: _RpcNotificationCategory.ValueType  # 102
-    WEEKLY_CHALLENGE_ALMOST_END: _RpcNotificationCategory.ValueType  # 103
-    HATCH_SPECIAL_EGG: _RpcNotificationCategory.ValueType  # 104
-    REMOTE_TRADE_COMPLETE: _RpcNotificationCategory.ValueType  # 109
-    REMOTE_TRADE_INFO: _RpcNotificationCategory.ValueType  # 110
-    REMOTE_TRADE_INITIATE: _RpcNotificationCategory.ValueType  # 111
-    REMOTE_TRADE_EXPIRE_SOON: _RpcNotificationCategory.ValueType  # 112
-    REMOTE_TRADE_EXPIRE: _RpcNotificationCategory.ValueType  # 113
-    REMOTE_TRADE_CANCEL: _RpcNotificationCategory.ValueType  # 114
-    REMOTE_TRADE_CONFIRM: _RpcNotificationCategory.ValueType  # 115
-    LUCKY_REMOTE_TRADE_INITIATE: _RpcNotificationCategory.ValueType  # 116
-    LUCKY_REMOTE_TRADE_CONFIRM: _RpcNotificationCategory.ValueType  # 117
-    SOFT_SFIDA_REMINDER: _RpcNotificationCategory.ValueType  # 118
-    SOFT_SFIDA_PAUSED_POKEMON_STORAGE: _RpcNotificationCategory.ValueType  # 119
-    SOFT_SFIDA_PAUSED_ITEM_STORAGE: _RpcNotificationCategory.ValueType  # 120
-    SOFT_SFIDA_PAUSED_NO_POKEBALLS: _RpcNotificationCategory.ValueType  # 121
-    SOFT_SFIDA_READY_FOR_REVIEW: _RpcNotificationCategory.ValueType  # 122
+    ACTIVITY_INVITE_RECEIVED: _RpcNotificationCategory.ValueType  # 99
+    WEEKLY_CHALLENGE_START: _RpcNotificationCategory.ValueType  # 100
+    WEEKLY_CHALLENGES_NEW_CHALLENGE: _RpcNotificationCategory.ValueType  # 101
+    WEEKLY_CHALLENGE_ALMOST_END: _RpcNotificationCategory.ValueType  # 102
+    HATCH_SPECIAL_EGG: _RpcNotificationCategory.ValueType  # 103
+    WEEKLY_CHALLENGE_PROGRESS: _RpcNotificationCategory.ValueType  # 104
+    WEEKLY_CHALLENGE_QUEST_COMPLETED: _RpcNotificationCategory.ValueType  # 105
+    REMOTE_TRADE_COMPLETE: _RpcNotificationCategory.ValueType  # 106
+    REMOTE_TRADE_INFO: _RpcNotificationCategory.ValueType  # 107
+    REMOTE_TRADE_INITIATE: _RpcNotificationCategory.ValueType  # 108
+    REMOTE_TRADE_EXPIRE_SOON: _RpcNotificationCategory.ValueType  # 109
+    REMOTE_TRADE_EXPIRE: _RpcNotificationCategory.ValueType  # 110
+    REMOTE_TRADE_CANCEL: _RpcNotificationCategory.ValueType  # 111
+    REMOTE_TRADE_CONFIRM: _RpcNotificationCategory.ValueType  # 112
+    LUCKY_REMOTE_TRADE_INITIATE: _RpcNotificationCategory.ValueType  # 113
+    LUCKY_REMOTE_TRADE_CONFIRM: _RpcNotificationCategory.ValueType  # 114
+    SOFT_SFIDA_PAUSED_ITEM_STORAGE: _RpcNotificationCategory.ValueType  # 115
+    SOFT_SFIDA_PAUSED_NO_POKEBALLS: _RpcNotificationCategory.ValueType  # 116
+    SOFT_SFIDA_PAUSED_POKEMON_STORAGE: _RpcNotificationCategory.ValueType  # 117
+    SOFT_SFIDA_READY_FOR_REVIEW: _RpcNotificationCategory.ValueType  # 118
+    SOFT_SFIDA_REMINDER: _RpcNotificationCategory.ValueType  # 119
 
 class RpcNotificationCategory(_RpcNotificationCategory, metaclass=_RpcNotificationCategoryEnumTypeWrapper): ...
 
 UNSET_NOTIFICATION_CATEGORY: RpcNotificationCategory.ValueType  # 0
 GYM_REMOVAL: RpcNotificationCategory.ValueType  # 1
 POKEMON_HUNGRY: RpcNotificationCategory.ValueType  # 2
-POKEMON_WON: RpcNotificationCategory.ValueType  # 3
+EXCLUSIVE_RAID_INVITE: RpcNotificationCategory.ValueType  # 3
+EXCLUSIVE_RAID_CANCELLATION: RpcNotificationCategory.ValueType  # 4
+SHARED_EXCLUSIVE_RAID_INVITE: RpcNotificationCategory.ValueType  # 5
 GIFTBOX_INCOMING: RpcNotificationCategory.ValueType  # 6
 GIFTBOX_DELIVERED: RpcNotificationCategory.ValueType  # 7
 FRIENDSHIP_MILESTONE_REWARD: RpcNotificationCategory.ValueType  # 8
 GYM_BATTLE_FRIENDSHIP_INCREMENT: RpcNotificationCategory.ValueType  # 9
-BGMODE_EGG_HATCH: RpcNotificationCategory.ValueType  # 11
-BGMODE_BUDDY_CANDY: RpcNotificationCategory.ValueType  # 12
-BGMODE_WEEKLY_FITNESS_REPORT: RpcNotificationCategory.ValueType  # 13
-COMBAT_CHALLENGE_OPENED: RpcNotificationCategory.ValueType  # 14
-BGMODE_OFF_SESSION_DISTANCE: RpcNotificationCategory.ValueType  # 15
-BGMODE_POI_PROXIMITY: RpcNotificationCategory.ValueType  # 16
-LUCKY_FRIEND: RpcNotificationCategory.ValueType  # 17
-BGMODE_NAMED_BUDDY_CANDY: RpcNotificationCategory.ValueType  # 18
-APP_BADGE_ONLY: RpcNotificationCategory.ValueType  # 19
-COMBAT_VS_SEEKER_CHARGED: RpcNotificationCategory.ValueType  # 20
-COMBAT_COMPETITIVE_SEASON_END: RpcNotificationCategory.ValueType  # 21
-BUDDY_HUNGRY: RpcNotificationCategory.ValueType  # 22
-BUDDY_FOUND_GIFT: RpcNotificationCategory.ValueType  # 24
-BUDDY_AFFECTION_LEVEL_MILESTONE: RpcNotificationCategory.ValueType  # 25
-BUDDY_AFFECTION_WALKING: RpcNotificationCategory.ValueType  # 26
-BUDDY_AFFECTION_CARE: RpcNotificationCategory.ValueType  # 27
-BUDDY_AFFECTION_BATTLE: RpcNotificationCategory.ValueType  # 28
-BUDDY_AFFECTION_PHOTO: RpcNotificationCategory.ValueType  # 29
-BUDDY_AFFECTION_POI: RpcNotificationCategory.ValueType  # 30
-BGMODE_BUDDY_FOUND_GIFT: RpcNotificationCategory.ValueType  # 31
-BUDDY_ATTRACTIVE_POI: RpcNotificationCategory.ValueType  # 32
-BGMODE_BUDDY_ATTRACTIVE_POI: RpcNotificationCategory.ValueType  # 33
-ROUTE_SUBMISSION_ACCEPTED: RpcNotificationCategory.ValueType  # 34
-ROUTE_SUBMISSION_REJECTED: RpcNotificationCategory.ValueType  # 35
-BUDDY_AFFECTION_ATTRACTIVE_POI: RpcNotificationCategory.ValueType  # 36
-POI_PASSCODE_REDEEMED: RpcNotificationCategory.ValueType  # 37
-NO_EGGS_INCUBATING: RpcNotificationCategory.ValueType  # 38
+BGMODE_EGG_HATCH: RpcNotificationCategory.ValueType  # 10
+BGMODE_BUDDY_CANDY: RpcNotificationCategory.ValueType  # 11
+BGMODE_WEEKLY_FITNESS_REPORT: RpcNotificationCategory.ValueType  # 12
+BGMODE_OFF_SESSION_DISTANCE: RpcNotificationCategory.ValueType  # 13
+BGMODE_POI_PROXIMITY: RpcNotificationCategory.ValueType  # 14
+BGMODE_NAMED_BUDDY_CANDY: RpcNotificationCategory.ValueType  # 15
+APP_BADGE_ONLY: RpcNotificationCategory.ValueType  # 16
+COMBAT_CHALLENGE_OPENED: RpcNotificationCategory.ValueType  # 17
+LUCKY_FRIEND: RpcNotificationCategory.ValueType  # 18
+BUDDY_HUNGRY: RpcNotificationCategory.ValueType  # 19
+BUDDY_FOUND_GIFT: RpcNotificationCategory.ValueType  # 20
+BUDDY_AFFECTION_LEVEL_MILESTONE: RpcNotificationCategory.ValueType  # 21
+BUDDY_AFFECTION_WALKING: RpcNotificationCategory.ValueType  # 22
+BUDDY_AFFECTION_CARE: RpcNotificationCategory.ValueType  # 23
+BUDDY_AFFECTION_BATTLE: RpcNotificationCategory.ValueType  # 24
+BUDDY_AFFECTION_PHOTO: RpcNotificationCategory.ValueType  # 25
+BUDDY_AFFECTION_POI: RpcNotificationCategory.ValueType  # 26
+BUDDY_ATTRACTIVE_POI: RpcNotificationCategory.ValueType  # 27
+FRIEND_INVITE_RECEIVED: RpcNotificationCategory.ValueType  # 28
+FRIEND_INVITE_ACCEPTED: RpcNotificationCategory.ValueType  # 29
+COMBAT_VS_SEEKER_CHARGED: RpcNotificationCategory.ValueType  # 30
+COMBAT_COMPETITIVE_SEASON_END: RpcNotificationCategory.ValueType  # 31
+BUDDY_AFFECTION_ATTRACTIVE_POI: RpcNotificationCategory.ValueType  # 32
+POI_PASSCODE_REDEEMED: RpcNotificationCategory.ValueType  # 33
+NO_EGGS_INCUBATING: RpcNotificationCategory.ValueType  # 34
 RETENTION_UNOPENED_GIFTS: RpcNotificationCategory.ValueType  # 39
 RETENTION_STARPIECE: RpcNotificationCategory.ValueType  # 40
 RETENTION_INCENSE: RpcNotificationCategory.ValueType  # 41
@@ -16209,26 +16224,27 @@ EVENT_RSVP_MAX_GENERIC_WARNING: RpcNotificationCategory.ValueType  # 95
 EVENT_RSVP_MAX_GENERIC_STARTS_NOW: RpcNotificationCategory.ValueType  # 96
 REMOTE_MAX_BATTLE_INVITATION: RpcNotificationCategory.ValueType  # 97
 ITEM_EXPIRATION_GRANT_CONSOLATION: RpcNotificationCategory.ValueType  # 98
-WEEKLY_CHALLENGE_PROGRESS: RpcNotificationCategory.ValueType  # 99
-WEEKLY_CHALLENGE_QUEST_COMPLETED: RpcNotificationCategory.ValueType  # 100
-WEEKLY_CHALLENGE_START: RpcNotificationCategory.ValueType  # 101
-PARTY_MEMBER_JOINED: RpcNotificationCategory.ValueType  # 102
-WEEKLY_CHALLENGE_ALMOST_END: RpcNotificationCategory.ValueType  # 103
-HATCH_SPECIAL_EGG: RpcNotificationCategory.ValueType  # 104
-REMOTE_TRADE_COMPLETE: RpcNotificationCategory.ValueType  # 109
-REMOTE_TRADE_INFO: RpcNotificationCategory.ValueType  # 110
-REMOTE_TRADE_INITIATE: RpcNotificationCategory.ValueType  # 111
-REMOTE_TRADE_EXPIRE_SOON: RpcNotificationCategory.ValueType  # 112
-REMOTE_TRADE_EXPIRE: RpcNotificationCategory.ValueType  # 113
-REMOTE_TRADE_CANCEL: RpcNotificationCategory.ValueType  # 114
-REMOTE_TRADE_CONFIRM: RpcNotificationCategory.ValueType  # 115
-LUCKY_REMOTE_TRADE_INITIATE: RpcNotificationCategory.ValueType  # 116
-LUCKY_REMOTE_TRADE_CONFIRM: RpcNotificationCategory.ValueType  # 117
-SOFT_SFIDA_REMINDER: RpcNotificationCategory.ValueType  # 118
-SOFT_SFIDA_PAUSED_POKEMON_STORAGE: RpcNotificationCategory.ValueType  # 119
-SOFT_SFIDA_PAUSED_ITEM_STORAGE: RpcNotificationCategory.ValueType  # 120
-SOFT_SFIDA_PAUSED_NO_POKEBALLS: RpcNotificationCategory.ValueType  # 121
-SOFT_SFIDA_READY_FOR_REVIEW: RpcNotificationCategory.ValueType  # 122
+ACTIVITY_INVITE_RECEIVED: RpcNotificationCategory.ValueType  # 99
+WEEKLY_CHALLENGE_START: RpcNotificationCategory.ValueType  # 100
+WEEKLY_CHALLENGES_NEW_CHALLENGE: RpcNotificationCategory.ValueType  # 101
+WEEKLY_CHALLENGE_ALMOST_END: RpcNotificationCategory.ValueType  # 102
+HATCH_SPECIAL_EGG: RpcNotificationCategory.ValueType  # 103
+WEEKLY_CHALLENGE_PROGRESS: RpcNotificationCategory.ValueType  # 104
+WEEKLY_CHALLENGE_QUEST_COMPLETED: RpcNotificationCategory.ValueType  # 105
+REMOTE_TRADE_COMPLETE: RpcNotificationCategory.ValueType  # 106
+REMOTE_TRADE_INFO: RpcNotificationCategory.ValueType  # 107
+REMOTE_TRADE_INITIATE: RpcNotificationCategory.ValueType  # 108
+REMOTE_TRADE_EXPIRE_SOON: RpcNotificationCategory.ValueType  # 109
+REMOTE_TRADE_EXPIRE: RpcNotificationCategory.ValueType  # 110
+REMOTE_TRADE_CANCEL: RpcNotificationCategory.ValueType  # 111
+REMOTE_TRADE_CONFIRM: RpcNotificationCategory.ValueType  # 112
+LUCKY_REMOTE_TRADE_INITIATE: RpcNotificationCategory.ValueType  # 113
+LUCKY_REMOTE_TRADE_CONFIRM: RpcNotificationCategory.ValueType  # 114
+SOFT_SFIDA_PAUSED_ITEM_STORAGE: RpcNotificationCategory.ValueType  # 115
+SOFT_SFIDA_PAUSED_NO_POKEBALLS: RpcNotificationCategory.ValueType  # 116
+SOFT_SFIDA_PAUSED_POKEMON_STORAGE: RpcNotificationCategory.ValueType  # 117
+SOFT_SFIDA_READY_FOR_REVIEW: RpcNotificationCategory.ValueType  # 118
+SOFT_SFIDA_REMINDER: RpcNotificationCategory.ValueType  # 119
 Global___RpcNotificationCategory: _TypeAlias = RpcNotificationCategory  # noqa: Y015
 
 class _RsvpSelection:
@@ -16921,10 +16937,7 @@ class _TitanPlayerSubmissionActionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWr
     TITAN_PLAYER_SUBMISSION_ACTION_GET_AVAILABLE_SUBMISSIONS: _TitanPlayerSubmissionAction.ValueType  # 620001
     TITAN_PLAYER_SUBMISSION_ACTION_GET_SIGNED_URL_FOR_PHOTO_UPLOAD: _TitanPlayerSubmissionAction.ValueType  # 620002
     TITAN_PLAYER_SUBMISSION_ACTION_GET_PLAYER_SUBMISSION_VALIDATION_SETTINGS: _TitanPlayerSubmissionAction.ValueType  # 620003
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_ADD_NEW_POI: _TitanPlayerSubmissionAction.ValueType  # 620004
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_GET_SIGNED_URL_FOR_PHOTO_UPLOAD: _TitanPlayerSubmissionAction.ValueType  # 620005
     TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_NEW_PRIVATE_POI: _TitanPlayerSubmissionAction.ValueType  # 620006
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_NEW_PRIVATE_POI: _TitanPlayerSubmissionAction.ValueType  # 620007
     TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_IMAGE: _TitanPlayerSubmissionAction.ValueType  # 620100
     TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_TEXT_METADATA_UPDATE: _TitanPlayerSubmissionAction.ValueType  # 620101
     TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_LOCATION_UPDATE: _TitanPlayerSubmissionAction.ValueType  # 620102
@@ -16932,23 +16945,12 @@ class _TitanPlayerSubmissionActionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWr
     TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_SPONSOR_POI_REPORT: _TitanPlayerSubmissionAction.ValueType  # 620104
     TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_SPONSOR_POI_LOCATION_UPDATE: _TitanPlayerSubmissionAction.ValueType  # 620105
     TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_CATEGORY_VOTE: _TitanPlayerSubmissionAction.ValueType  # 620106
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_IMAGE: _TitanPlayerSubmissionAction.ValueType  # 620107
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_TEXT_METADATA_UPDATE: _TitanPlayerSubmissionAction.ValueType  # 620108
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_LOCATION_UPDATE: _TitanPlayerSubmissionAction.ValueType  # 620109
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_TAKEDOWN_REQUEST: _TitanPlayerSubmissionAction.ValueType  # 620110
-    TITAN_PLAYER_SUBMISSION_ACTION_ADD_NEW_ROUTE: _TitanPlayerSubmissionAction.ValueType  # 620200
     TITAN_PLAYER_SUBMISSION_ACTION_GENERATE_GMAP_SIGNED_URL: _TitanPlayerSubmissionAction.ValueType  # 620300
     TITAN_PLAYER_SUBMISSION_ACTION_GET_GMAP_SETTINGS: _TitanPlayerSubmissionAction.ValueType  # 620301
     TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_AR_VIDEO_METADATA: _TitanPlayerSubmissionAction.ValueType  # 620400
     TITAN_PLAYER_SUBMISSION_ACTION_GET_GRAPESHOT_FILE_UPLOAD_URL: _TitanPlayerSubmissionAction.ValueType  # 620401
     TITAN_PLAYER_SUBMISSION_ACTION_ASYNC_FILE_UPLOAD_COMPLETE: _TitanPlayerSubmissionAction.ValueType  # 620402
     TITAN_PLAYER_SUBMISSION_ACTION_GET_AR_MAPPING_SETTINGS: _TitanPlayerSubmissionAction.ValueType  # 620403
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_AR_VIDEO_METADATA: _TitanPlayerSubmissionAction.ValueType  # 620404
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_GET_GRAPESHOT_FILE_UPLOAD_URL: _TitanPlayerSubmissionAction.ValueType  # 620405
-    TITAN_PLAYER_SUBMISSION_ACTION_D2D_ASYNC_FILE_UPLOAD_COMPLETE: _TitanPlayerSubmissionAction.ValueType  # 620406
-    TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_MAPPING_REQUEST: _TitanPlayerSubmissionAction.ValueType  # 620407
-    TITAN_PLAYER_SUBMISSION_ACTION_D2_D_SUBMIT_MAPPING_REQUEST: _TitanPlayerSubmissionAction.ValueType  # 620408
-    TITAN_PLAYER_SUBMISSION_ACTION_D2_D_UPDATE_POI_AR_VIDEO_METADATA: _TitanPlayerSubmissionAction.ValueType  # 620409
     TITAN_PLAYER_SUBMISSION_ACTION_GET_IMAGES_FOR_POI: _TitanPlayerSubmissionAction.ValueType  # 620500
     TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_PLAYER_IMAGE_VOTE_FOR_POI: _TitanPlayerSubmissionAction.ValueType  # 620501
     TITAN_PLAYER_SUBMISSION_ACTION_GET_IMAGE_GALLERY_SETTINGS: _TitanPlayerSubmissionAction.ValueType  # 620502
@@ -16962,10 +16964,7 @@ TITAN_PLAYER_SUBMISSION_ACTION_ADD_NEW_POI: TitanPlayerSubmissionAction.ValueTyp
 TITAN_PLAYER_SUBMISSION_ACTION_GET_AVAILABLE_SUBMISSIONS: TitanPlayerSubmissionAction.ValueType  # 620001
 TITAN_PLAYER_SUBMISSION_ACTION_GET_SIGNED_URL_FOR_PHOTO_UPLOAD: TitanPlayerSubmissionAction.ValueType  # 620002
 TITAN_PLAYER_SUBMISSION_ACTION_GET_PLAYER_SUBMISSION_VALIDATION_SETTINGS: TitanPlayerSubmissionAction.ValueType  # 620003
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_ADD_NEW_POI: TitanPlayerSubmissionAction.ValueType  # 620004
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_GET_SIGNED_URL_FOR_PHOTO_UPLOAD: TitanPlayerSubmissionAction.ValueType  # 620005
 TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_NEW_PRIVATE_POI: TitanPlayerSubmissionAction.ValueType  # 620006
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_NEW_PRIVATE_POI: TitanPlayerSubmissionAction.ValueType  # 620007
 TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_IMAGE: TitanPlayerSubmissionAction.ValueType  # 620100
 TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_TEXT_METADATA_UPDATE: TitanPlayerSubmissionAction.ValueType  # 620101
 TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_LOCATION_UPDATE: TitanPlayerSubmissionAction.ValueType  # 620102
@@ -16973,23 +16972,12 @@ TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_TAKEDOWN_REQUEST: TitanPlayerSubmissio
 TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_SPONSOR_POI_REPORT: TitanPlayerSubmissionAction.ValueType  # 620104
 TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_SPONSOR_POI_LOCATION_UPDATE: TitanPlayerSubmissionAction.ValueType  # 620105
 TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_CATEGORY_VOTE: TitanPlayerSubmissionAction.ValueType  # 620106
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_IMAGE: TitanPlayerSubmissionAction.ValueType  # 620107
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_TEXT_METADATA_UPDATE: TitanPlayerSubmissionAction.ValueType  # 620108
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_LOCATION_UPDATE: TitanPlayerSubmissionAction.ValueType  # 620109
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_TAKEDOWN_REQUEST: TitanPlayerSubmissionAction.ValueType  # 620110
-TITAN_PLAYER_SUBMISSION_ACTION_ADD_NEW_ROUTE: TitanPlayerSubmissionAction.ValueType  # 620200
 TITAN_PLAYER_SUBMISSION_ACTION_GENERATE_GMAP_SIGNED_URL: TitanPlayerSubmissionAction.ValueType  # 620300
 TITAN_PLAYER_SUBMISSION_ACTION_GET_GMAP_SETTINGS: TitanPlayerSubmissionAction.ValueType  # 620301
 TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_AR_VIDEO_METADATA: TitanPlayerSubmissionAction.ValueType  # 620400
 TITAN_PLAYER_SUBMISSION_ACTION_GET_GRAPESHOT_FILE_UPLOAD_URL: TitanPlayerSubmissionAction.ValueType  # 620401
 TITAN_PLAYER_SUBMISSION_ACTION_ASYNC_FILE_UPLOAD_COMPLETE: TitanPlayerSubmissionAction.ValueType  # 620402
 TITAN_PLAYER_SUBMISSION_ACTION_GET_AR_MAPPING_SETTINGS: TitanPlayerSubmissionAction.ValueType  # 620403
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_AR_VIDEO_METADATA: TitanPlayerSubmissionAction.ValueType  # 620404
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_GET_GRAPESHOT_FILE_UPLOAD_URL: TitanPlayerSubmissionAction.ValueType  # 620405
-TITAN_PLAYER_SUBMISSION_ACTION_D2D_ASYNC_FILE_UPLOAD_COMPLETE: TitanPlayerSubmissionAction.ValueType  # 620406
-TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_MAPPING_REQUEST: TitanPlayerSubmissionAction.ValueType  # 620407
-TITAN_PLAYER_SUBMISSION_ACTION_D2_D_SUBMIT_MAPPING_REQUEST: TitanPlayerSubmissionAction.ValueType  # 620408
-TITAN_PLAYER_SUBMISSION_ACTION_D2_D_UPDATE_POI_AR_VIDEO_METADATA: TitanPlayerSubmissionAction.ValueType  # 620409
 TITAN_PLAYER_SUBMISSION_ACTION_GET_IMAGES_FOR_POI: TitanPlayerSubmissionAction.ValueType  # 620500
 TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_PLAYER_IMAGE_VOTE_FOR_POI: TitanPlayerSubmissionAction.ValueType  # 620501
 TITAN_PLAYER_SUBMISSION_ACTION_GET_IMAGE_GALLERY_SETTINGS: TitanPlayerSubmissionAction.ValueType  # 620502
@@ -22592,10 +22580,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_AVAILABLE_SUBMISSIONS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620001
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_SIGNED_URL_FOR_PHOTO_UPLOAD: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620002
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_PLAYER_SUBMISSION_VALIDATION_SETTINGS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620003
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_ADD_NEW_POI: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620004
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_GET_SIGNED_URL_FOR_PHOTO_UPLOAD: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620005
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_NEW_PRIVATE_POI: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620006
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_NEW_PRIVATE_POI: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620007
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_IMAGE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620100
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_TEXT_METADATA_UPDATE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620101
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_LOCATION_UPDATE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620102
@@ -22603,23 +22588,12 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_SPONSOR_POI_REPORT: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620104
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_SPONSOR_POI_LOCATION_UPDATE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620105
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_CATEGORY_VOTE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620106
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_IMAGE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620107
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_TEXT_METADATA_UPDATE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620108
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_LOCATION_UPDATE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620109
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_TAKEDOWN_REQUEST: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620110
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_ADD_NEW_ROUTE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620200
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GENERATE_GMAP_SIGNED_URL: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620300
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_GMAP_SETTINGS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620301
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_AR_VIDEO_METADATA: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620400
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_GRAPESHOT_FILE_UPLOAD_URL: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620401
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_ASYNC_FILE_UPLOAD_COMPLETE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620402
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_AR_MAPPING_SETTINGS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620403
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_AR_VIDEO_METADATA: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620404
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_GET_GRAPESHOT_FILE_UPLOAD_URL: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620405
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_ASYNC_FILE_UPLOAD_COMPLETE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620406
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_MAPPING_REQUEST: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620407
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2_D_SUBMIT_MAPPING_REQUEST: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620408
-        REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2_D_UPDATE_POI_AR_VIDEO_METADATA: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620409
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_IMAGES_FOR_POI: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620500
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_PLAYER_IMAGE_VOTE_FOR_POI: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620501
         REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_IMAGE_GALLERY_SETTINGS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 620502
@@ -23276,10 +23250,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_AVAILABLE_SUBMISSIONS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620001
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_SIGNED_URL_FOR_PHOTO_UPLOAD: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620002
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_PLAYER_SUBMISSION_VALIDATION_SETTINGS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620003
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_ADD_NEW_POI: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620004
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_GET_SIGNED_URL_FOR_PHOTO_UPLOAD: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620005
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_NEW_PRIVATE_POI: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620006
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_NEW_PRIVATE_POI: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620007
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_IMAGE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620100
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_TEXT_METADATA_UPDATE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620101
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_LOCATION_UPDATE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620102
@@ -23287,23 +23258,12 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_SPONSOR_POI_REPORT: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620104
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_SPONSOR_POI_LOCATION_UPDATE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620105
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_CATEGORY_VOTE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620106
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_IMAGE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620107
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_TEXT_METADATA_UPDATE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620108
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_LOCATION_UPDATE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620109
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_TAKEDOWN_REQUEST: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620110
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_ADD_NEW_ROUTE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620200
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GENERATE_GMAP_SIGNED_URL: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620300
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_GMAP_SETTINGS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620301
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_POI_AR_VIDEO_METADATA: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620400
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_GRAPESHOT_FILE_UPLOAD_URL: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620401
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_ASYNC_FILE_UPLOAD_COMPLETE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620402
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_AR_MAPPING_SETTINGS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620403
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_SUBMIT_POI_AR_VIDEO_METADATA: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620404
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_GET_GRAPESHOT_FILE_UPLOAD_URL: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620405
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2D_ASYNC_FILE_UPLOAD_COMPLETE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620406
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_MAPPING_REQUEST: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620407
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2_D_SUBMIT_MAPPING_REQUEST: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620408
-    REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_D2_D_UPDATE_POI_AR_VIDEO_METADATA: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620409
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_IMAGES_FOR_POI: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620500
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_SUBMIT_PLAYER_IMAGE_VOTE_FOR_POI: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620501
     REQUEST_TYPE_TITAN_PLAYER_SUBMISSION_ACTION_GET_IMAGE_GALLERY_SETTINGS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 620502
@@ -32619,19 +32579,22 @@ class BattleAnimationConfigProto(_message.Message):
         TIME_TO_WAIT_CHARGE_ATTACK_CAMERA_PAN_SECONDS_FIELD_NUMBER: _builtins.int
         CHARGE_MOVE_FAINT_DELAY_SECONDS_FIELD_NUMBER: _builtins.int
         POKEMON_ATTACK_TEXT_DURATION_SECONDS_FIELD_NUMBER: _builtins.int
+        TIME_TO_WAIT_COUNTER_ATTACK_CAMERA_PAN_SECONDS_FIELD_NUMBER: _builtins.int
         time_to_wait_charge_attack_camera_pan_seconds: _builtins.float
         charge_move_faint_delay_seconds: _builtins.float
         pokemon_attack_text_duration_seconds: _builtins.float
+        time_to_wait_counter_attack_camera_pan_seconds: _builtins.float
         def __init__(
             self,
             *,
             time_to_wait_charge_attack_camera_pan_seconds: _builtins.float = ...,
             charge_move_faint_delay_seconds: _builtins.float = ...,
             pokemon_attack_text_duration_seconds: _builtins.float = ...,
+            time_to_wait_counter_attack_camera_pan_seconds: _builtins.float = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["charge_move_faint_delay_seconds", b"charge_move_faint_delay_seconds", "pokemon_attack_text_duration_seconds", b"pokemon_attack_text_duration_seconds", "time_to_wait_charge_attack_camera_pan_seconds", b"time_to_wait_charge_attack_camera_pan_seconds"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["charge_move_faint_delay_seconds", b"charge_move_faint_delay_seconds", "pokemon_attack_text_duration_seconds", b"pokemon_attack_text_duration_seconds", "time_to_wait_charge_attack_camera_pan_seconds", b"time_to_wait_charge_attack_camera_pan_seconds", "time_to_wait_counter_attack_camera_pan_seconds", b"time_to_wait_counter_attack_camera_pan_seconds"]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
         def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -33451,6 +33414,9 @@ class BattleEventProto(_message.Message):
             AEGISLASH_SHIELD_TO_BLADE: BattleEventProto.Cinematic._CinematicType.ValueType  # 52
             AEGISLASH_BLADE_TO_SHIELD: BattleEventProto.Cinematic._CinematicType.ValueType  # 53
             MIMIKYU_DISGUISE_BREAK: BattleEventProto.Cinematic._CinematicType.ValueType  # 54
+            CRAMORANT_GULP_MISSILE_LOAD: BattleEventProto.Cinematic._CinematicType.ValueType  # 55
+            CRAMORANT_GULP_MISSILE_LAUNCH_GULPING_FORM: BattleEventProto.Cinematic._CinematicType.ValueType  # 56
+            CRAMORANT_GULP_MISSILE_LAUNCH_GORGING_FORM: BattleEventProto.Cinematic._CinematicType.ValueType  # 57
 
         class CinematicType(_CinematicType, metaclass=_CinematicTypeEnumTypeWrapper): ...
         UNSET: BattleEventProto.Cinematic.CinematicType.ValueType  # 0
@@ -33474,6 +33440,9 @@ class BattleEventProto(_message.Message):
         AEGISLASH_SHIELD_TO_BLADE: BattleEventProto.Cinematic.CinematicType.ValueType  # 52
         AEGISLASH_BLADE_TO_SHIELD: BattleEventProto.Cinematic.CinematicType.ValueType  # 53
         MIMIKYU_DISGUISE_BREAK: BattleEventProto.Cinematic.CinematicType.ValueType  # 54
+        CRAMORANT_GULP_MISSILE_LOAD: BattleEventProto.Cinematic.CinematicType.ValueType  # 55
+        CRAMORANT_GULP_MISSILE_LAUNCH_GULPING_FORM: BattleEventProto.Cinematic.CinematicType.ValueType  # 56
+        CRAMORANT_GULP_MISSILE_LAUNCH_GORGING_FORM: BattleEventProto.Cinematic.CinematicType.ValueType  # 57
 
         @_typing.final
         class BreadMoveMetadata(_message.Message):
@@ -34774,6 +34743,7 @@ class BattlePokemonProto(_message.Message):
         BREAD_HEAL: BattlePokemonProto._MoveType.ValueType  # 7
         SPECIAL_CHARGE: BattlePokemonProto._MoveType.ValueType  # 8
         COORDINATED_MODE: BattlePokemonProto._MoveType.ValueType  # 9
+        ABILITY: BattlePokemonProto._MoveType.ValueType  # 10
 
     class MoveType(_MoveType, metaclass=_MoveTypeEnumTypeWrapper): ...
     UNSET_MOVE_TYPE: BattlePokemonProto.MoveType.ValueType  # 0
@@ -34786,6 +34756,7 @@ class BattlePokemonProto(_message.Message):
     BREAD_HEAL: BattlePokemonProto.MoveType.ValueType  # 7
     SPECIAL_CHARGE: BattlePokemonProto.MoveType.ValueType  # 8
     COORDINATED_MODE: BattlePokemonProto.MoveType.ValueType  # 9
+    ABILITY: BattlePokemonProto.MoveType.ValueType  # 10
 
     @_typing.final
     class Modifier(_message.Message):
@@ -54444,6 +54415,7 @@ class DeepLinkingEnumWrapperProto(_message.Message):
         OPEN_REMOTE_TRADE: DeepLinkingEnumWrapperProto._DeepLinkingActionName.ValueType  # 37
         OPEN_SOFT_SFIDA: DeepLinkingEnumWrapperProto._DeepLinkingActionName.ValueType  # 38
         OPEN_APS: DeepLinkingEnumWrapperProto._DeepLinkingActionName.ValueType  # 39
+        OPEN_GAMESITE_WEBVIEW: DeepLinkingEnumWrapperProto._DeepLinkingActionName.ValueType  # 40
 
     class DeepLinkingActionName(_DeepLinkingActionName, metaclass=_DeepLinkingActionNameEnumTypeWrapper): ...
     UNSET: DeepLinkingEnumWrapperProto.DeepLinkingActionName.ValueType  # 0
@@ -54486,6 +54458,7 @@ class DeepLinkingEnumWrapperProto(_message.Message):
     OPEN_REMOTE_TRADE: DeepLinkingEnumWrapperProto.DeepLinkingActionName.ValueType  # 37
     OPEN_SOFT_SFIDA: DeepLinkingEnumWrapperProto.DeepLinkingActionName.ValueType  # 38
     OPEN_APS: DeepLinkingEnumWrapperProto.DeepLinkingActionName.ValueType  # 39
+    OPEN_GAMESITE_WEBVIEW: DeepLinkingEnumWrapperProto.DeepLinkingActionName.ValueType  # 40
 
     class _PermissionsFlow:
         ValueType = _typing.NewType("ValueType", _builtins.int)
@@ -67150,11 +67123,13 @@ class GetBattleRejoinStatusOutProto(_message.Message):
         UNSET: GetBattleRejoinStatusOutProto._Result.ValueType  # 0
         SUCCESS_BATTLE_FOUND: GetBattleRejoinStatusOutProto._Result.ValueType  # 1
         ERROR_NO_ELIGIBLE_BATTLES: GetBattleRejoinStatusOutProto._Result.ValueType  # 2
+        SUCCESS_BATTLE_COMPLETED: GetBattleRejoinStatusOutProto._Result.ValueType  # 3
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: GetBattleRejoinStatusOutProto.Result.ValueType  # 0
     SUCCESS_BATTLE_FOUND: GetBattleRejoinStatusOutProto.Result.ValueType  # 1
     ERROR_NO_ELIGIBLE_BATTLES: GetBattleRejoinStatusOutProto.Result.ValueType  # 2
+    SUCCESS_BATTLE_COMPLETED: GetBattleRejoinStatusOutProto.Result.ValueType  # 3
 
     RESULT_FIELD_NUMBER: _builtins.int
     BATTLE_TYPE_FIELD_NUMBER: _builtins.int
@@ -80687,6 +80662,7 @@ class IbfcProto(_message.Message):
     ALTERNATE_FORM_FIELD_NUMBER: _builtins.int
     DEFAULT_TO_ALTERNATE_IBFC_SETTINGS_FIELD_NUMBER: _builtins.int
     ALTERNATE_TO_DEFAULT_IBFC_SETTINGS_FIELD_NUMBER: _builtins.int
+    ALTERNATE_FORMS_FIELD_NUMBER: _builtins.int
     raid_enable: _builtins.bool
     gym_battle_enable: _builtins.bool
     combat_enable: _builtins.bool
@@ -80696,6 +80672,8 @@ class IbfcProto(_message.Message):
     def default_to_alternate_ibfc_settings(self) -> Global___IbfcTransitionSettings: ...
     @_builtins.property
     def alternate_to_default_ibfc_settings(self) -> Global___IbfcTransitionSettings: ...
+    @_builtins.property
+    def alternate_forms(self) -> _containers.RepeatedScalarFieldContainer[Global___PokemonDisplayProto.Form.ValueType]: ...
     def __init__(
         self,
         *,
@@ -80706,10 +80684,11 @@ class IbfcProto(_message.Message):
         alternate_form: Global___PokemonDisplayProto.Form.ValueType = ...,
         default_to_alternate_ibfc_settings: Global___IbfcTransitionSettings | None = ...,
         alternate_to_default_ibfc_settings: Global___IbfcTransitionSettings | None = ...,
+        alternate_forms: _abc.Iterable[Global___PokemonDisplayProto.Form.ValueType] | None = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["alternate_to_default_ibfc_settings", b"alternate_to_default_ibfc_settings", "default_to_alternate_ibfc_settings", b"default_to_alternate_ibfc_settings"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["alternate_form", b"alternate_form", "alternate_to_default_ibfc_settings", b"alternate_to_default_ibfc_settings", "combat_enable", b"combat_enable", "default_form", b"default_form", "default_to_alternate_ibfc_settings", b"default_to_alternate_ibfc_settings", "gym_battle_enable", b"gym_battle_enable", "raid_enable", b"raid_enable"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["alternate_form", b"alternate_form", "alternate_forms", b"alternate_forms", "alternate_to_default_ibfc_settings", b"alternate_to_default_ibfc_settings", "combat_enable", b"combat_enable", "default_form", b"default_form", "default_to_alternate_ibfc_settings", b"default_to_alternate_ibfc_settings", "gym_battle_enable", b"gym_battle_enable", "raid_enable", b"raid_enable"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -118877,6 +118856,15 @@ class PokemonDisplayProto(_message.Message):
         PIKACHU_GOFEST_2026_CAP_YELLOW: PokemonDisplayProto._Form.ValueType  # 3345
         CATERPIE_GOFEST_2026: PokemonDisplayProto._Form.ValueType  # 3346
         PIKACHU_ANNIVERSARY_2026: PokemonDisplayProto._Form.ValueType  # 3348
+        CRAMORANT_GULPING: PokemonDisplayProto._Form.ValueType  # 3349
+        CRAMORANT_GORGING: PokemonDisplayProto._Form.ValueType  # 3350
+        GIMMIGHOUL_COIN_A2_2026: PokemonDisplayProto._Form.ValueType  # 3351
+        PIKACHU_PXP_2026: PokemonDisplayProto._Form.ValueType  # 3352
+        PIKACHU_WCS_2026: PokemonDisplayProto._Form.ValueType  # 3353
+        CHARMANDER_GOGGLES_2026: PokemonDisplayProto._Form.ValueType  # 3354
+        CHARMELEON_GOGGLES_2026: PokemonDisplayProto._Form.ValueType  # 3355
+        CHARIZARD_GOGGLES_2026: PokemonDisplayProto._Form.ValueType  # 3356
+        PIKACHU_GLASS_HELMET_2026: PokemonDisplayProto._Form.ValueType  # 3357
 
     class Form(_Form, metaclass=_FormEnumTypeWrapper): ...
     FORM_UNSET: PokemonDisplayProto.Form.ValueType  # 0
@@ -120358,6 +120346,15 @@ class PokemonDisplayProto(_message.Message):
     PIKACHU_GOFEST_2026_CAP_YELLOW: PokemonDisplayProto.Form.ValueType  # 3345
     CATERPIE_GOFEST_2026: PokemonDisplayProto.Form.ValueType  # 3346
     PIKACHU_ANNIVERSARY_2026: PokemonDisplayProto.Form.ValueType  # 3348
+    CRAMORANT_GULPING: PokemonDisplayProto.Form.ValueType  # 3349
+    CRAMORANT_GORGING: PokemonDisplayProto.Form.ValueType  # 3350
+    GIMMIGHOUL_COIN_A2_2026: PokemonDisplayProto.Form.ValueType  # 3351
+    PIKACHU_PXP_2026: PokemonDisplayProto.Form.ValueType  # 3352
+    PIKACHU_WCS_2026: PokemonDisplayProto.Form.ValueType  # 3353
+    CHARMANDER_GOGGLES_2026: PokemonDisplayProto.Form.ValueType  # 3354
+    CHARMELEON_GOGGLES_2026: PokemonDisplayProto.Form.ValueType  # 3355
+    CHARIZARD_GOGGLES_2026: PokemonDisplayProto.Form.ValueType  # 3356
+    PIKACHU_GLASS_HELMET_2026: PokemonDisplayProto.Form.ValueType  # 3357
 
     class _NaturalArtType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
@@ -126879,7 +126876,12 @@ class QuestDialogueInboxSettingsProto(_message.Message):
     DISTRIBUTE_FIELD_NUMBER: _builtins.int
     COOLDOWN_DURATION_MS_FIELD_NUMBER: _builtins.int
     QUEST_DIALOGUE_TRIGGERS_FIELD_NUMBER: _builtins.int
-    distribute: _builtins.bool
+    @_builtins.property
+    @_deprecated("""This field has been marked as deprecated using proto field options.""")
+    def distribute(self) -> _builtins.bool: ...
+    @distribute.setter
+    @_deprecated("""This field has been marked as deprecated using proto field options.""")
+    def distribute(self, value: _builtins.bool) -> None: ...
     cooldown_duration_ms: _builtins.int
     @_builtins.property
     def quest_dialogue_triggers(self) -> _containers.RepeatedCompositeFieldContainer[Global___QuestDialogueTriggerProto]: ...
@@ -135272,6 +135274,7 @@ class RouteValidation(_message.Message):
         BAD_NAME: RouteValidation._Error.ValueType  # 13
         BAD_DESCRIPTION: RouteValidation._Error.ValueType  # 14
         END_ANCHOR_TOO_FAR: RouteValidation._Error.ValueType  # 15
+        INVALID_SPEED: RouteValidation._Error.ValueType  # 16
 
     class Error(_Error, metaclass=_ErrorEnumTypeWrapper): ...
     UNSET: RouteValidation.Error.ValueType  # 0
@@ -135290,6 +135293,7 @@ class RouteValidation(_message.Message):
     BAD_NAME: RouteValidation.Error.ValueType  # 13
     BAD_DESCRIPTION: RouteValidation.Error.ValueType  # 14
     END_ANCHOR_TOO_FAR: RouteValidation.Error.ValueType  # 15
+    INVALID_SPEED: RouteValidation.Error.ValueType  # 16
 
     ERROR_FIELD_NUMBER: _builtins.int
     @_builtins.property
@@ -141496,6 +141500,8 @@ class SoftSfidaSettingsProto(_message.Message):
     GEOFENCE_SIZE_M_FIELD_NUMBER: _builtins.int
     MARKED_CAPTURE_DELAY_FIELD_NUMBER: _builtins.int
     MARKED_CAPTURE_DELAY_POKESTOP_FIELD_NUMBER: _builtins.int
+    LOGGING_LEVEL_FIELD_NUMBER: _builtins.int
+    ENABLE_FOREGROUND_FTUE_FIELD_NUMBER: _builtins.int
     enable: _builtins.bool
     enable_forground: _builtins.bool
     enable_recap: _builtins.bool
@@ -141506,6 +141512,8 @@ class SoftSfidaSettingsProto(_message.Message):
     geofence_size_m: _builtins.float
     marked_capture_delay: _builtins.float
     marked_capture_delay_pokestop: _builtins.float
+    logging_level: _builtins.int
+    enable_foreground_ftue: _builtins.int
     def __init__(
         self,
         *,
@@ -141519,10 +141527,12 @@ class SoftSfidaSettingsProto(_message.Message):
         geofence_size_m: _builtins.float = ...,
         marked_capture_delay: _builtins.float = ...,
         marked_capture_delay_pokestop: _builtins.float = ...,
+        logging_level: _builtins.int = ...,
+        enable_foreground_ftue: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["catch_action_delay_ms", b"catch_action_delay_ms", "enable", b"enable", "enable_forground", b"enable_forground", "enable_recap", b"enable_recap", "geofence_size_m", b"geofence_size_m", "marked_capture_delay", b"marked_capture_delay", "marked_capture_delay_pokestop", b"marked_capture_delay_pokestop", "min_player_level", b"min_player_level", "reserved_geofence_count", b"reserved_geofence_count", "spin_action_delay_ms", b"spin_action_delay_ms"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["catch_action_delay_ms", b"catch_action_delay_ms", "enable", b"enable", "enable_foreground_ftue", b"enable_foreground_ftue", "enable_forground", b"enable_forground", "enable_recap", b"enable_recap", "geofence_size_m", b"geofence_size_m", "logging_level", b"logging_level", "marked_capture_delay", b"marked_capture_delay", "marked_capture_delay_pokestop", b"marked_capture_delay_pokestop", "min_player_level", b"min_player_level", "reserved_geofence_count", b"reserved_geofence_count", "spin_action_delay_ms", b"spin_action_delay_ms"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -141618,6 +141628,7 @@ class SoftSfidaTelemetry(_message.Message):
         LOCATION_UPDATE_RPC_FAILED: SoftSfidaTelemetry._EventType.ValueType  # 7
         LOCATION_UPDATE_AUTH_FAILED: SoftSfidaTelemetry._EventType.ValueType  # 8
         BACKGROUND_TASK_EXPIRED: SoftSfidaTelemetry._EventType.ValueType  # 9
+        LOCATION_FETCH_FAILED: SoftSfidaTelemetry._EventType.ValueType  # 10
 
     class EventType(_EventType, metaclass=_EventTypeEnumTypeWrapper): ...
     UNSET: SoftSfidaTelemetry.EventType.ValueType  # 0
@@ -141630,23 +141641,30 @@ class SoftSfidaTelemetry(_message.Message):
     LOCATION_UPDATE_RPC_FAILED: SoftSfidaTelemetry.EventType.ValueType  # 7
     LOCATION_UPDATE_AUTH_FAILED: SoftSfidaTelemetry.EventType.ValueType  # 8
     BACKGROUND_TASK_EXPIRED: SoftSfidaTelemetry.EventType.ValueType  # 9
+    LOCATION_FETCH_FAILED: SoftSfidaTelemetry.EventType.ValueType  # 10
 
     EVENT_TYPE_FIELD_NUMBER: _builtins.int
     BACKGROUND_TASK_DURATION_MS_FIELD_NUMBER: _builtins.int
     GEOFENCE_DISTANCE_SINCE_LAST_TRIGGER_KM_FIELD_NUMBER: _builtins.int
+    ERROR_CODE_FIELD_NUMBER: _builtins.int
+    ERROR_MESSAGE_FIELD_NUMBER: _builtins.int
     event_type: Global___SoftSfidaTelemetry.EventType.ValueType
     background_task_duration_ms: _builtins.int
     geofence_distance_since_last_trigger_km: _builtins.int
+    error_code: _builtins.int
+    error_message: _builtins.str
     def __init__(
         self,
         *,
         event_type: Global___SoftSfidaTelemetry.EventType.ValueType = ...,
         background_task_duration_ms: _builtins.int = ...,
         geofence_distance_since_last_trigger_km: _builtins.int = ...,
+        error_code: _builtins.int = ...,
+        error_message: _builtins.str = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["background_task_duration_ms", b"background_task_duration_ms", "event_type", b"event_type", "geofence_distance_since_last_trigger_km", b"geofence_distance_since_last_trigger_km"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["background_task_duration_ms", b"background_task_duration_ms", "error_code", b"error_code", "error_message", b"error_message", "event_type", b"event_type", "geofence_distance_since_last_trigger_km", b"geofence_distance_since_last_trigger_km"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -143746,6 +143764,7 @@ class StartRaidBattleOutProto(_message.Message):
         ERROR_INVALID_SERVER: StartRaidBattleOutProto._Result.ValueType  # 11
         ERROR_NEVER_JOINED_BATTLE: StartRaidBattleOutProto._Result.ValueType  # 12
         ERROR_DATA: StartRaidBattleOutProto._Result.ValueType  # 13
+        ERROR_INSUFFICIENT_PLAYER_COUNT: StartRaidBattleOutProto._Result.ValueType  # 14
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: StartRaidBattleOutProto.Result.ValueType  # 0
@@ -143762,6 +143781,7 @@ class StartRaidBattleOutProto(_message.Message):
     ERROR_INVALID_SERVER: StartRaidBattleOutProto.Result.ValueType  # 11
     ERROR_NEVER_JOINED_BATTLE: StartRaidBattleOutProto.Result.ValueType  # 12
     ERROR_DATA: StartRaidBattleOutProto.Result.ValueType  # 13
+    ERROR_INSUFFICIENT_PLAYER_COUNT: StartRaidBattleOutProto.Result.ValueType  # 14
 
     RESULT_FIELD_NUMBER: _builtins.int
     BATTLE_FIELD_NUMBER: _builtins.int
@@ -147374,6 +147394,7 @@ class TitanGameClientPhotoGalleryPoiImageProto(_message.Message):
     CREATION_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
     HAS_PLAYER_VOTED_FIELD_NUMBER: _builtins.int
     NUM_VOTES_FROM_GAME_FIELD_NUMBER: _builtins.int
+    NUM_VOTES_NIANTIC_WIDE_FIELD_NUMBER: _builtins.int
     image_id: _builtins.str
     poi_id: _builtins.str
     submitter_codename: _builtins.str
@@ -147381,6 +147402,7 @@ class TitanGameClientPhotoGalleryPoiImageProto(_message.Message):
     creation_timestamp_ms: _builtins.int
     has_player_voted: _builtins.bool
     num_votes_from_game: _builtins.int
+    num_votes_niantic_wide: _builtins.int
     def __init__(
         self,
         *,
@@ -147391,10 +147413,11 @@ class TitanGameClientPhotoGalleryPoiImageProto(_message.Message):
         creation_timestamp_ms: _builtins.int = ...,
         has_player_voted: _builtins.bool = ...,
         num_votes_from_game: _builtins.int = ...,
+        num_votes_niantic_wide: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["creation_timestamp_ms", b"creation_timestamp_ms", "has_player_voted", b"has_player_voted", "image_id", b"image_id", "image_url", b"image_url", "num_votes_from_game", b"num_votes_from_game", "poi_id", b"poi_id", "submitter_codename", b"submitter_codename"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["creation_timestamp_ms", b"creation_timestamp_ms", "has_player_voted", b"has_player_voted", "image_id", b"image_id", "image_url", b"image_url", "num_votes_from_game", b"num_votes_from_game", "num_votes_niantic_wide", b"num_votes_niantic_wide", "poi_id", b"poi_id", "submitter_codename", b"submitter_codename"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -148122,6 +148145,8 @@ class TitanGetUploadUrlOutProto(_message.Message):
         MISSING_IMAGE_CONTEXTS: TitanGetUploadUrlOutProto._Status.ValueType  # 3
         DUPLICATE_IMAGE_CONTEXTS: TitanGetUploadUrlOutProto._Status.ValueType  # 4
         ALREADY_UPLOADED: TitanGetUploadUrlOutProto._Status.ValueType  # 5
+        MISSING_REQUIRED_IMAGE_CONTEXTS: TitanGetUploadUrlOutProto._Status.ValueType  # 6
+        TOO_MANY_IMAGE_CONTEXTS: TitanGetUploadUrlOutProto._Status.ValueType  # 7
 
     class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
     UNSET: TitanGetUploadUrlOutProto.Status.ValueType  # 0
@@ -148130,6 +148155,8 @@ class TitanGetUploadUrlOutProto(_message.Message):
     MISSING_IMAGE_CONTEXTS: TitanGetUploadUrlOutProto.Status.ValueType  # 3
     DUPLICATE_IMAGE_CONTEXTS: TitanGetUploadUrlOutProto.Status.ValueType  # 4
     ALREADY_UPLOADED: TitanGetUploadUrlOutProto.Status.ValueType  # 5
+    MISSING_REQUIRED_IMAGE_CONTEXTS: TitanGetUploadUrlOutProto.Status.ValueType  # 6
+    TOO_MANY_IMAGE_CONTEXTS: TitanGetUploadUrlOutProto.Status.ValueType  # 7
 
     @_typing.final
     class ContextSignedUrlsEntry(_message.Message):
@@ -148335,7 +148362,6 @@ class TitanPlayerSubmissionResponseProto(_message.Message):
         INVALID_INPUT: TitanPlayerSubmissionResponseProto._Status.ValueType  # 6
         MISSING_IMAGE: TitanPlayerSubmissionResponseProto._Status.ValueType  # 7
         DISTANCE_VALIDATION_FAILED: TitanPlayerSubmissionResponseProto._Status.ValueType  # 8
-        ACTIVATION_REQUEST_FAILED: TitanPlayerSubmissionResponseProto._Status.ValueType  # 9
 
     class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
     STATUS_UNSPECIFIED: TitanPlayerSubmissionResponseProto.Status.ValueType  # 0
@@ -148347,13 +148373,14 @@ class TitanPlayerSubmissionResponseProto(_message.Message):
     INVALID_INPUT: TitanPlayerSubmissionResponseProto.Status.ValueType  # 6
     MISSING_IMAGE: TitanPlayerSubmissionResponseProto.Status.ValueType  # 7
     DISTANCE_VALIDATION_FAILED: TitanPlayerSubmissionResponseProto.Status.ValueType  # 8
-    ACTIVATION_REQUEST_FAILED: TitanPlayerSubmissionResponseProto.Status.ValueType  # 9
 
     STATUS_FIELD_NUMBER: _builtins.int
     SUBMISSION_ID_FIELD_NUMBER: _builtins.int
     MESSAGES_FIELD_NUMBER: _builtins.int
+    POST_ACTION_GAME_INFO_FIELD_NUMBER: _builtins.int
     status: Global___TitanPlayerSubmissionResponseProto.Status.ValueType
     submission_id: _builtins.str
+    post_action_game_info: _builtins.bytes
     @_builtins.property
     def messages(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
     def __init__(
@@ -148362,10 +148389,11 @@ class TitanPlayerSubmissionResponseProto(_message.Message):
         status: Global___TitanPlayerSubmissionResponseProto.Status.ValueType = ...,
         submission_id: _builtins.str = ...,
         messages: _abc.Iterable[_builtins.str] | None = ...,
+        post_action_game_info: _builtins.bytes = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["messages", b"messages", "status", b"status", "submission_id", b"submission_id"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["messages", b"messages", "post_action_game_info", b"post_action_game_info", "status", b"status", "submission_id", b"submission_id"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -153681,6 +153709,7 @@ class UseItemEggIncubatorOutProto(_message.Message):
         ERROR_INCUBATOR_ALREADY_IN_USE: UseItemEggIncubatorOutProto._Result.ValueType  # 5
         ERROR_POKEMON_ALREADY_INCUBATING: UseItemEggIncubatorOutProto._Result.ValueType  # 6
         ERROR_INCUBATOR_NO_USES_REMAINING: UseItemEggIncubatorOutProto._Result.ValueType  # 7
+        ERROR_LOCATION_UNSET: UseItemEggIncubatorOutProto._Result.ValueType  # 10
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: UseItemEggIncubatorOutProto.Result.ValueType  # 0
@@ -153691,6 +153720,7 @@ class UseItemEggIncubatorOutProto(_message.Message):
     ERROR_INCUBATOR_ALREADY_IN_USE: UseItemEggIncubatorOutProto.Result.ValueType  # 5
     ERROR_POKEMON_ALREADY_INCUBATING: UseItemEggIncubatorOutProto.Result.ValueType  # 6
     ERROR_INCUBATOR_NO_USES_REMAINING: UseItemEggIncubatorOutProto.Result.ValueType  # 7
+    ERROR_LOCATION_UNSET: UseItemEggIncubatorOutProto.Result.ValueType  # 10
 
     RESULT_FIELD_NUMBER: _builtins.int
     EGG_INCUBATOR_FIELD_NUMBER: _builtins.int
@@ -154472,19 +154502,22 @@ class UseNonCombatMoveRequestProto(_message.Message):
     POKEMON_ID_FIELD_NUMBER: _builtins.int
     MOVE_TYPE_FIELD_NUMBER: _builtins.int
     NUMBER_OF_USES_FIELD_NUMBER: _builtins.int
+    TEMP_EVO_ID_FIELD_NUMBER: _builtins.int
     pokemon_id: _builtins.int
     move_type: Global___NonCombatMoveType.ValueType
     number_of_uses: _builtins.int
+    temp_evo_id: Global___HoloTemporaryEvolutionId.ValueType
     def __init__(
         self,
         *,
         pokemon_id: _builtins.int = ...,
         move_type: Global___NonCombatMoveType.ValueType = ...,
         number_of_uses: _builtins.int = ...,
+        temp_evo_id: Global___HoloTemporaryEvolutionId.ValueType = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["move_type", b"move_type", "number_of_uses", b"number_of_uses", "pokemon_id", b"pokemon_id"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["move_type", b"move_type", "number_of_uses", b"number_of_uses", "pokemon_id", b"pokemon_id", "temp_evo_id", b"temp_evo_id"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
