@@ -2,10 +2,11 @@ host = "0.0.0.0"
 port = 3335
 # Host and Port for the Receiver
 
-output = "ui/print/discord"
+output = "ui/print/discord/json"
 # ui      = cool interactive ui
 # print   = simple log
 # discord = discord webhooks
+# json    = one decoded-JSON object per rpc (JSONL) to stdout — pipe to a file / jq
 
 webhook = ""
 # your webhook url in case you set "discord" for output

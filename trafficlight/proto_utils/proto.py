@@ -8,6 +8,7 @@ from typing import Type, Iterable, TYPE_CHECKING
 from blackboxprotobuf.lib.api import decode_message, _json_safe_transform
 from google.protobuf import text_format, descriptor
 from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
+from google.protobuf.json_format import MessageToDict
 from google.protobuf.message import Message as ProtobufMessage
 
 from trafficlight import protos
@@ -122,6 +123,24 @@ class Message:
         else:
             return text_format.MessageToString(self.payload, as_one_line=one_line)
 
+    def to_json_obj(self) -> dict:
+        """A JSON-safe view of this message: the proto decoded to a dict (never a base64 blob).
+
+        - decoded proto  -> {"type": <ProtoName>, "decoded": True,  "data": {..}}
+        - undecodable    -> {"type": <name|None>, "decoded": False, "data": <blackbox|None>}
+
+        `data` holds the actual field values, keyed by proto field name (blackbox falls back to
+        wire field numbers). Genuine `bytes` sub-fields still render base64 — JSON has no bytes type —
+        but the message envelope itself is never dumped as one opaque base64 string.
+        """
+        if self.payload is not None:
+            return {
+                "type": self.name,
+                "decoded": True,
+                "data": MessageToDict(self.payload, preserving_proto_field_name=True),
+            }
+        return {"type": self.name, "decoded": False, "data": self.blackbox}
+
 
 class Request(Message):
     messages = MESSAGES
@@ -154,6 +173,18 @@ class Proto:
     def messages(self) -> Iterable[Message]:
         yield self.request
         yield self.response
+
+    def to_json_obj(self) -> dict:
+        """This RPC method's request+response as decoded JSON, plus a nested proxy when present."""
+        obj = {
+            "method": self.method_value,
+            "method_name": self.method_name,
+            "request": self.request.to_json_obj(),
+            "response": self.response.to_json_obj(),
+        }
+        if self.proxy is not None:
+            obj["proxy"] = self.proxy.to_json_obj()
+        return obj
 
     @staticmethod
     def get_message_name(messages: dict, value: int) -> str | None:
