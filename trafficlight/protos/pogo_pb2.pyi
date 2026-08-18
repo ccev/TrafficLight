@@ -17,7 +17,7 @@ Licensed under the
 	or implied. See the License for the specific language governing
 	permissions and limitations under the License.
 
-Version: Base compatible 0.421.x.
+Version: Base compatible 0.425.x.
 """
 
 from collections import abc as _abc
@@ -480,6 +480,7 @@ class _AuthIdentityProviderEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_
     GUEST_LOGIN_TOKEN: _AuthIdentityProvider.ValueType  # 14
     EIGHTH_WALL: _AuthIdentityProvider.ValueType  # 15
     PTC_OAUTH: _AuthIdentityProvider.ValueType  # 16
+    NIANTIC_EXCHANGED_TOKEN: _AuthIdentityProvider.ValueType  # 17
 
 class AuthIdentityProvider(_AuthIdentityProvider, metaclass=_AuthIdentityProviderEnumTypeWrapper): ...
 
@@ -500,6 +501,7 @@ NIANTIC_SHARED_LOGIN_TOKEN: AuthIdentityProvider.ValueType  # 13
 GUEST_LOGIN_TOKEN: AuthIdentityProvider.ValueType  # 14
 EIGHTH_WALL: AuthIdentityProvider.ValueType  # 15
 PTC_OAUTH: AuthIdentityProvider.ValueType  # 16
+NIANTIC_EXCHANGED_TOKEN: AuthIdentityProvider.ValueType  # 17
 Global___AuthIdentityProvider: _TypeAlias = AuthIdentityProvider  # noqa: Y015
 
 class _AutoModeConfigType:
@@ -1410,6 +1412,29 @@ WAINA: DeviceType.ValueType  # 1
 SOFT_SFIDA: DeviceType.ValueType  # 2
 Global___DeviceType: _TypeAlias = DeviceType  # noqa: Y015
 
+class _DeviceVerificationStatus:
+    ValueType = _typing.NewType("ValueType", _builtins.int)
+    V: _TypeAlias = ValueType  # noqa: Y015
+
+class _DeviceVerificationStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_DeviceVerificationStatus.ValueType], _builtins.type):
+    DESCRIPTOR: _descriptor.EnumDescriptor
+    UNKNOWN: _DeviceVerificationStatus.ValueType  # 0
+    AUTO_VERIFIED: _DeviceVerificationStatus.ValueType  # 1
+    PENDING_EMAIL_VERIFICATION: _DeviceVerificationStatus.ValueType  # 2
+    PLAYER_VERIFIED: _DeviceVerificationStatus.ValueType  # 3
+    OPS_VERIFIED: _DeviceVerificationStatus.ValueType  # 4
+    OPS_BLOCKED: _DeviceVerificationStatus.ValueType  # 5
+
+class DeviceVerificationStatus(_DeviceVerificationStatus, metaclass=_DeviceVerificationStatusEnumTypeWrapper): ...
+
+UNKNOWN: DeviceVerificationStatus.ValueType  # 0
+AUTO_VERIFIED: DeviceVerificationStatus.ValueType  # 1
+PENDING_EMAIL_VERIFICATION: DeviceVerificationStatus.ValueType  # 2
+PLAYER_VERIFIED: DeviceVerificationStatus.ValueType  # 3
+OPS_VERIFIED: DeviceVerificationStatus.ValueType  # 4
+OPS_BLOCKED: DeviceVerificationStatus.ValueType  # 5
+Global___DeviceVerificationStatus: _TypeAlias = DeviceVerificationStatus  # noqa: Y015
+
 class _DownstreamActionMethod:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
@@ -2315,6 +2340,31 @@ CRM_ACTION_UNKNOWN_CRM_ACTION: GameCrmActions.ValueType  # 0
 CRM_ACTION_CRM_PROXY_ACTION: GameCrmActions.ValueType  # 680000
 Global___GameCrmActions: _TypeAlias = GameCrmActions  # noqa: Y015
 
+class _GameDeviceRegistrationActionMethod:
+    ValueType = _typing.NewType("ValueType", _builtins.int)
+    V: _TypeAlias = ValueType  # noqa: Y015
+
+class _GameDeviceRegistrationActionMethodEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_GameDeviceRegistrationActionMethod.ValueType], _builtins.type):
+    DESCRIPTOR: _descriptor.EnumDescriptor
+    UNKNOWN_GAME_DEVICE_REGISTRATION_ACTION: _GameDeviceRegistrationActionMethod.ValueType  # 0
+    REGISTER_DEVICE: _GameDeviceRegistrationActionMethod.ValueType  # 250100
+    LIST_PLAYER_DEVICES: _GameDeviceRegistrationActionMethod.ValueType  # 250101
+    LIST_DEVICE_VERIFICATION_CHALLENGES: _GameDeviceRegistrationActionMethod.ValueType  # 250102
+    UPDATE_DEVICE_VERIFICATION: _GameDeviceRegistrationActionMethod.ValueType  # 250103
+    REMOVE_PLAYER_DEVICE: _GameDeviceRegistrationActionMethod.ValueType  # 250104
+    RESEND_DEVICE_VERIFICATION_EMAIL: _GameDeviceRegistrationActionMethod.ValueType  # 250105
+
+class GameDeviceRegistrationActionMethod(_GameDeviceRegistrationActionMethod, metaclass=_GameDeviceRegistrationActionMethodEnumTypeWrapper): ...
+
+UNKNOWN_GAME_DEVICE_REGISTRATION_ACTION: GameDeviceRegistrationActionMethod.ValueType  # 0
+REGISTER_DEVICE: GameDeviceRegistrationActionMethod.ValueType  # 250100
+LIST_PLAYER_DEVICES: GameDeviceRegistrationActionMethod.ValueType  # 250101
+LIST_DEVICE_VERIFICATION_CHALLENGES: GameDeviceRegistrationActionMethod.ValueType  # 250102
+UPDATE_DEVICE_VERIFICATION: GameDeviceRegistrationActionMethod.ValueType  # 250103
+REMOVE_PLAYER_DEVICE: GameDeviceRegistrationActionMethod.ValueType  # 250104
+RESEND_DEVICE_VERIFICATION_EMAIL: GameDeviceRegistrationActionMethod.ValueType  # 250105
+Global___GameDeviceRegistrationActionMethod: _TypeAlias = GameDeviceRegistrationActionMethod  # noqa: Y015
+
 class _GameFitnessAction:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
@@ -2783,6 +2833,8 @@ class _HoloActivityTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Holo
     ACTIVITY_REMOTE_RAID_LEVEL_COORDINATED_1_ADDITIONAL_XP: _HoloActivityType.ValueType  # 117
     ACTIVITY_REMOTE_RAID_LEVEL_COORDINATED_2_ADDITIONAL_XP: _HoloActivityType.ValueType  # 118
     ACTIVITY_FRIENDSHIP_LEVEL_UP_5: _HoloActivityType.ValueType  # 119
+    ACTIVITY_RAID_LOCAL_PLAYER_TIMEZONE_ADDITIONAL_XP: _HoloActivityType.ValueType  # 120
+    ACTIVITY_REMOTE_RAID_LOCAL_PLAYER_TIMEZONE_ADDITIONAL_XP: _HoloActivityType.ValueType  # 121
 
 class HoloActivityType(_HoloActivityType, metaclass=_HoloActivityTypeEnumTypeWrapper): ...
 
@@ -2883,6 +2935,8 @@ ACTIVITY_RAID_LEVEL_COORDINATED_2_ADDITIONAL_XP: HoloActivityType.ValueType  # 1
 ACTIVITY_REMOTE_RAID_LEVEL_COORDINATED_1_ADDITIONAL_XP: HoloActivityType.ValueType  # 117
 ACTIVITY_REMOTE_RAID_LEVEL_COORDINATED_2_ADDITIONAL_XP: HoloActivityType.ValueType  # 118
 ACTIVITY_FRIENDSHIP_LEVEL_UP_5: HoloActivityType.ValueType  # 119
+ACTIVITY_RAID_LOCAL_PLAYER_TIMEZONE_ADDITIONAL_XP: HoloActivityType.ValueType  # 120
+ACTIVITY_REMOTE_RAID_LOCAL_PLAYER_TIMEZONE_ADDITIONAL_XP: HoloActivityType.ValueType  # 121
 Global___HoloActivityType: _TypeAlias = HoloActivityType  # noqa: Y015
 
 class _HoloBadgeType:
@@ -4224,6 +4278,7 @@ class _HoloBadgeTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_HoloBad
     BADGE_SAFARI_2026_BOSTON_ADD_ON_HATCH_TEST: _HoloBadgeType.ValueType  # 6258
     BADGE_SAFARI_2026_BOSTON_ADD_ON_RAID: _HoloBadgeType.ValueType  # 6259
     BADGE_SAFARI_2026_BOSTON_ADD_ON_RAID_TEST: _HoloBadgeType.ValueType  # 6260
+    BADGE_GOFEST_FINALE_2026_EVENT_PASS_DELUXE: _HoloBadgeType.ValueType  # 6261
 
 class HoloBadgeType(_HoloBadgeType, metaclass=_HoloBadgeTypeEnumTypeWrapper): ...
 
@@ -5560,6 +5615,7 @@ BADGE_SAFARI_2026_BOSTON_ADD_ON_HATCH: HoloBadgeType.ValueType  # 6257
 BADGE_SAFARI_2026_BOSTON_ADD_ON_HATCH_TEST: HoloBadgeType.ValueType  # 6258
 BADGE_SAFARI_2026_BOSTON_ADD_ON_RAID: HoloBadgeType.ValueType  # 6259
 BADGE_SAFARI_2026_BOSTON_ADD_ON_RAID_TEST: HoloBadgeType.ValueType  # 6260
+BADGE_GOFEST_FINALE_2026_EVENT_PASS_DELUXE: HoloBadgeType.ValueType  # 6261
 Global___HoloBadgeType: _TypeAlias = HoloBadgeType  # noqa: Y015
 
 class _HoloIapItemCategory:
@@ -5652,6 +5708,7 @@ class _HoloItemCategoryEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Holo
     ITEM_CATEGORY_EXPIRING: _HoloItemCategory.ValueType  # 31
     ITEM_CATEGORY_ENHANCED_CURRENCY: _HoloItemCategory.ValueType  # 32
     ITEM_CATEGORY_ENHANCED_CURRENCY_HOLDER: _HoloItemCategory.ValueType  # 33
+    ITEM_CATEGORY_PENDING_PREMIUM_GIFT: _HoloItemCategory.ValueType  # 34
 
 class HoloItemCategory(_HoloItemCategory, metaclass=_HoloItemCategoryEnumTypeWrapper): ...
 
@@ -5690,6 +5747,7 @@ ITEM_CATEGORY_STAT_INCREASE: HoloItemCategory.ValueType  # 30
 ITEM_CATEGORY_EXPIRING: HoloItemCategory.ValueType  # 31
 ITEM_CATEGORY_ENHANCED_CURRENCY: HoloItemCategory.ValueType  # 32
 ITEM_CATEGORY_ENHANCED_CURRENCY_HOLDER: HoloItemCategory.ValueType  # 33
+ITEM_CATEGORY_PENDING_PREMIUM_GIFT: HoloItemCategory.ValueType  # 34
 Global___HoloItemCategory: _TypeAlias = HoloItemCategory  # noqa: Y015
 
 class _HoloItemEffect:
@@ -5780,6 +5838,7 @@ class _HoloItemTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_HoloItem
     ITEM_TYPE_ENHANCED_CURRENCY: _HoloItemType.ValueType  # 33
     ITEM_TYPE_SOFT_SFIDA: _HoloItemType.ValueType  # 34
     ITEM_TYPE_ENHANCED_CURRENCY_HOLDER: _HoloItemType.ValueType  # 35
+    ITEM_TYPE_PENDING_PREMIUM_GIFT_INVENTORY: _HoloItemType.ValueType  # 36
 
 class HoloItemType(_HoloItemType, metaclass=_HoloItemTypeEnumTypeWrapper): ...
 
@@ -5820,6 +5879,7 @@ ITEM_TYPE_STAT_INCREASE: HoloItemType.ValueType  # 32
 ITEM_TYPE_ENHANCED_CURRENCY: HoloItemType.ValueType  # 33
 ITEM_TYPE_SOFT_SFIDA: HoloItemType.ValueType  # 34
 ITEM_TYPE_ENHANCED_CURRENCY_HOLDER: HoloItemType.ValueType  # 35
+ITEM_TYPE_PENDING_PREMIUM_GIFT_INVENTORY: HoloItemType.ValueType  # 36
 Global___HoloItemType: _TypeAlias = HoloItemType  # noqa: Y015
 
 class _HoloPokemonClass:
@@ -10828,6 +10888,7 @@ class _InternalIdentityProviderEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapp
     INTERNAL_GUEST_LOGIN_TOKEN: _InternalIdentityProvider.ValueType  # 14
     INTERNAL_EIGHTH_WALL: _InternalIdentityProvider.ValueType  # 15
     INTERNAL_PTC_OAUTH: _InternalIdentityProvider.ValueType  # 16
+    INTERNAL_NIANTIC_EXCHANGED_TOKEN: _InternalIdentityProvider.ValueType  # 17
 
 class InternalIdentityProvider(_InternalIdentityProvider, metaclass=_InternalIdentityProviderEnumTypeWrapper): ...
 
@@ -10848,6 +10909,7 @@ INTERNAL_NIANTIC_SHARED_LOGIN_TOKEN: InternalIdentityProvider.ValueType  # 13
 INTERNAL_GUEST_LOGIN_TOKEN: InternalIdentityProvider.ValueType  # 14
 INTERNAL_EIGHTH_WALL: InternalIdentityProvider.ValueType  # 15
 INTERNAL_PTC_OAUTH: InternalIdentityProvider.ValueType  # 16
+INTERNAL_NIANTIC_EXCHANGED_TOKEN: InternalIdentityProvider.ValueType  # 17
 Global___InternalIdentityProvider: _TypeAlias = InternalIdentityProvider  # noqa: Y015
 
 class _InternalInvitationType:
@@ -11013,6 +11075,7 @@ class _InternalPlatformWarningTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWr
     INTERNAL_PLATFORM_WARNING_STRIKE1: _InternalPlatformWarningType.ValueType  # 1
     INTERNAL_PLATFORM_WARNING_STRIKE2: _InternalPlatformWarningType.ValueType  # 2
     INTERNAL_PLATFORM_WARNING_STRIKE3: _InternalPlatformWarningType.ValueType  # 3
+    INTERNAL_PLATFORM_WARNING_BLOCK: _InternalPlatformWarningType.ValueType  # 4
 
 class InternalPlatformWarningType(_InternalPlatformWarningType, metaclass=_InternalPlatformWarningTypeEnumTypeWrapper): ...
 
@@ -11020,6 +11083,7 @@ INTERNAL_PLATFORM_WARNING_UNSET: InternalPlatformWarningType.ValueType  # 0
 INTERNAL_PLATFORM_WARNING_STRIKE1: InternalPlatformWarningType.ValueType  # 1
 INTERNAL_PLATFORM_WARNING_STRIKE2: InternalPlatformWarningType.ValueType  # 2
 INTERNAL_PLATFORM_WARNING_STRIKE3: InternalPlatformWarningType.ValueType  # 3
+INTERNAL_PLATFORM_WARNING_BLOCK: InternalPlatformWarningType.ValueType  # 4
 Global___InternalPlatformWarningType: _TypeAlias = InternalPlatformWarningType  # noqa: Y015
 
 class _InternalSocialAction:
@@ -11532,6 +11596,7 @@ class _ItemEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Item.ValueType],
     ITEM_POSTCARD_INVENTORY: _Item.ValueType  # 803
     ITEM_SOFT_SFIDA: _Item.ValueType  # 804
     ITEM_SOFT_SFIDA_LIMIT_UPGRADE_EARNED: _Item.ValueType  # 805
+    ITEM_PENDING_PREMIUM_GIFT_INVENTORY: _Item.ValueType  # 806
     ITEM_INCUBATOR_BASIC_UNLIMITED: _Item.ValueType  # 901
     ITEM_INCUBATOR_BASIC: _Item.ValueType  # 902
     ITEM_INCUBATOR_SUPER: _Item.ValueType  # 903
@@ -11716,6 +11781,28 @@ class _ItemEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Item.ValueType],
     ITEM_EVENT_TICKET_S23_2026_14_TO_GIFT: _Item.ValueType  # 2250
     ITEM_EVENT_TICKET_S23_2026_15_TO_GIFT: _Item.ValueType  # 2251
     ITEM_EVENT_TICKET_S23_2026_16_TO_GIFT: _Item.ValueType  # 2252
+    ITEM_EVENT_TICKET_S24_SEP_12_COMMUNITY: _Item.ValueType  # 2253
+    ITEM_EVENT_TICKET_S24_SEP_12_COMMUNITY_TO_GIFT: _Item.ValueType  # 2254
+    ITEM_EVENT_TICKET_S24_SEP_19_MEGARAID: _Item.ValueType  # 2255
+    ITEM_EVENT_TICKET_S24_SEP_19_MEGARAID_TO_GIFT: _Item.ValueType  # 2256
+    ITEM_EVENT_TICKET_S24_SEP_26_CATCH: _Item.ValueType  # 2257
+    ITEM_EVENT_TICKET_S24_SEP_26_CATCH_TO_GIFT: _Item.ValueType  # 2258
+    ITEM_EVENT_TICKET_S24_OCT_3_MAXBATTLE: _Item.ValueType  # 2259
+    ITEM_EVENT_TICKET_S24_OCT_3_MAXBATTLE_TO_GIFT: _Item.ValueType  # 2260
+    ITEM_EVENT_TICKET_S24_OCT_10_COMMUNITY: _Item.ValueType  # 2261
+    ITEM_EVENT_TICKET_S24_OCT_10_COMMUNITY_TO_GIFT: _Item.ValueType  # 2262
+    ITEM_EVENT_TICKET_S24_OCT_17_HATCH: _Item.ValueType  # 2263
+    ITEM_EVENT_TICKET_S24_OCT_17_HATCH_TO_GIFT: _Item.ValueType  # 2264
+    ITEM_EVENT_TICKET_S24_OCT_24_MAXBATTLE: _Item.ValueType  # 2265
+    ITEM_EVENT_TICKET_S24_OCT_24_MAXBATTLE_TO_GIFT: _Item.ValueType  # 2266
+    ITEM_EVENT_TICKET_S24_OCT31_MEGARAID: _Item.ValueType  # 2267
+    ITEM_EVENT_TICKET_S24_OCT31_MEGARAID_TO_GIFT: _Item.ValueType  # 2268
+    ITEM_EVENT_TICKET_S24_NOV9_GOWAOL: _Item.ValueType  # 2269
+    ITEM_EVENT_TICKET_S24_NOV9_GOWAOL_TO_GIFT: _Item.ValueType  # 2270
+    ITEM_EVENT_TICKET_S24_NOV21_COMMUNITY: _Item.ValueType  # 2271
+    ITEM_EVENT_TICKET_S24_NOV21_COMMUNITY_TO_GIFT: _Item.ValueType  # 2272
+    ITEM_EVENT_TICKET_S24_NOV28_MEGARAID: _Item.ValueType  # 2273
+    ITEM_EVENT_TICKET_S24_NOV28_MEGARAID_TO_GIFT: _Item.ValueType  # 2274
 
 class Item(_Item, metaclass=_ItemEnumTypeWrapper): ...
 
@@ -11773,6 +11860,7 @@ ITEM_STICKER_INVENTORY: Item.ValueType  # 802
 ITEM_POSTCARD_INVENTORY: Item.ValueType  # 803
 ITEM_SOFT_SFIDA: Item.ValueType  # 804
 ITEM_SOFT_SFIDA_LIMIT_UPGRADE_EARNED: Item.ValueType  # 805
+ITEM_PENDING_PREMIUM_GIFT_INVENTORY: Item.ValueType  # 806
 ITEM_INCUBATOR_BASIC_UNLIMITED: Item.ValueType  # 901
 ITEM_INCUBATOR_BASIC: Item.ValueType  # 902
 ITEM_INCUBATOR_SUPER: Item.ValueType  # 903
@@ -11957,6 +12045,28 @@ ITEM_EVENT_TICKET_S23_2026_13_TO_GIFT: Item.ValueType  # 2249
 ITEM_EVENT_TICKET_S23_2026_14_TO_GIFT: Item.ValueType  # 2250
 ITEM_EVENT_TICKET_S23_2026_15_TO_GIFT: Item.ValueType  # 2251
 ITEM_EVENT_TICKET_S23_2026_16_TO_GIFT: Item.ValueType  # 2252
+ITEM_EVENT_TICKET_S24_SEP_12_COMMUNITY: Item.ValueType  # 2253
+ITEM_EVENT_TICKET_S24_SEP_12_COMMUNITY_TO_GIFT: Item.ValueType  # 2254
+ITEM_EVENT_TICKET_S24_SEP_19_MEGARAID: Item.ValueType  # 2255
+ITEM_EVENT_TICKET_S24_SEP_19_MEGARAID_TO_GIFT: Item.ValueType  # 2256
+ITEM_EVENT_TICKET_S24_SEP_26_CATCH: Item.ValueType  # 2257
+ITEM_EVENT_TICKET_S24_SEP_26_CATCH_TO_GIFT: Item.ValueType  # 2258
+ITEM_EVENT_TICKET_S24_OCT_3_MAXBATTLE: Item.ValueType  # 2259
+ITEM_EVENT_TICKET_S24_OCT_3_MAXBATTLE_TO_GIFT: Item.ValueType  # 2260
+ITEM_EVENT_TICKET_S24_OCT_10_COMMUNITY: Item.ValueType  # 2261
+ITEM_EVENT_TICKET_S24_OCT_10_COMMUNITY_TO_GIFT: Item.ValueType  # 2262
+ITEM_EVENT_TICKET_S24_OCT_17_HATCH: Item.ValueType  # 2263
+ITEM_EVENT_TICKET_S24_OCT_17_HATCH_TO_GIFT: Item.ValueType  # 2264
+ITEM_EVENT_TICKET_S24_OCT_24_MAXBATTLE: Item.ValueType  # 2265
+ITEM_EVENT_TICKET_S24_OCT_24_MAXBATTLE_TO_GIFT: Item.ValueType  # 2266
+ITEM_EVENT_TICKET_S24_OCT31_MEGARAID: Item.ValueType  # 2267
+ITEM_EVENT_TICKET_S24_OCT31_MEGARAID_TO_GIFT: Item.ValueType  # 2268
+ITEM_EVENT_TICKET_S24_NOV9_GOWAOL: Item.ValueType  # 2269
+ITEM_EVENT_TICKET_S24_NOV9_GOWAOL_TO_GIFT: Item.ValueType  # 2270
+ITEM_EVENT_TICKET_S24_NOV21_COMMUNITY: Item.ValueType  # 2271
+ITEM_EVENT_TICKET_S24_NOV21_COMMUNITY_TO_GIFT: Item.ValueType  # 2272
+ITEM_EVENT_TICKET_S24_NOV28_MEGARAID: Item.ValueType  # 2273
+ITEM_EVENT_TICKET_S24_NOV28_MEGARAID_TO_GIFT: Item.ValueType  # 2274
 Global___Item: _TypeAlias = Item  # noqa: Y015
 
 class _ItemUseTelemetryIds:
@@ -12393,6 +12503,65 @@ class _LocationCardEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Location
     LC_SAFARI_2026_LISBON: _LocationCard.ValueType  # 345
     LC_SAFARI_2026_RDJ: _LocationCard.ValueType  # 346
     LC_SAFARI_2026_BOSTON: _LocationCard.ValueType  # 347
+    LC_SPECIALBACKGROUND_S24_SEP_2026: _LocationCard.ValueType  # 349
+    LC_SPECIALBACKGROUND_MIDAUTUMN_2026: _LocationCard.ValueType  # 350
+    LC_2026_LATW_ARTICUNO: _LocationCard.ValueType  # 351
+    LC_2026_LATW_ZAPDOS: _LocationCard.ValueType  # 352
+    LC_2026_LATW_MOLTRES: _LocationCard.ValueType  # 353
+    LC_2026_LATW_MEWTWO: _LocationCard.ValueType  # 354
+    LC_2026_LATW_RAIKOU: _LocationCard.ValueType  # 355
+    LC_2026_LATW_ENTEI: _LocationCard.ValueType  # 356
+    LC_2026_LATW_SUICUNE: _LocationCard.ValueType  # 357
+    LC_2026_LATW_LUGIA: _LocationCard.ValueType  # 358
+    LC_2026_LATW_HO_OH: _LocationCard.ValueType  # 359
+    LC_2026_LATW_REGIROCK: _LocationCard.ValueType  # 360
+    LC_2026_LATW_REGICE: _LocationCard.ValueType  # 361
+    LC_2026_LATW_REGISTEEL: _LocationCard.ValueType  # 362
+    LC_2026_LATW_KYOGRE: _LocationCard.ValueType  # 363
+    LC_2026_LATW_GROUDON: _LocationCard.ValueType  # 364
+    LC_2026_LATW_RAYQUAZA: _LocationCard.ValueType  # 365
+    LC_2026_LATW_LATIAS: _LocationCard.ValueType  # 366
+    LC_2026_LATW_LATIOS: _LocationCard.ValueType  # 367
+    LC_2026_LATW_UXIE: _LocationCard.ValueType  # 368
+    LC_2026_LATW_MESPRIT: _LocationCard.ValueType  # 369
+    LC_2026_LATW_AZELF: _LocationCard.ValueType  # 370
+    LC_2026_LATW_DIALGA: _LocationCard.ValueType  # 371
+    LC_2026_LATW_PALKIA: _LocationCard.ValueType  # 372
+    LC_2026_LATW_HEATRAN: _LocationCard.ValueType  # 373
+    LC_2026_LATW_REGIGIGAS: _LocationCard.ValueType  # 374
+    LC_2026_LATW_GIRATINA: _LocationCard.ValueType  # 375
+    LC_2026_LATW_CRESSELIA: _LocationCard.ValueType  # 376
+    LC_2026_LATW_COBALION: _LocationCard.ValueType  # 377
+    LC_2026_LATW_TERRAKION: _LocationCard.ValueType  # 378
+    LC_2026_LATW_VIRIZION: _LocationCard.ValueType  # 379
+    LC_2026_LATW_TORNADUS: _LocationCard.ValueType  # 380
+    LC_2026_LATW_THUNDURUS: _LocationCard.ValueType  # 381
+    LC_2026_LATW_RESHIRAM: _LocationCard.ValueType  # 382
+    LC_2026_LATW_ZEKROM: _LocationCard.ValueType  # 383
+    LC_2026_LATW_KYUREM: _LocationCard.ValueType  # 384
+    LC_2026_LATW_LANDORUS: _LocationCard.ValueType  # 385
+    LC_2026_LATW_XERNEAS: _LocationCard.ValueType  # 386
+    LC_2026_LATW_YVELTAL: _LocationCard.ValueType  # 387
+    LC_2026_LATW_TAPU_KOKO: _LocationCard.ValueType  # 388
+    LC_2026_LATW_TAPU_LELE: _LocationCard.ValueType  # 389
+    LC_2026_LATW_TAPU_BULU: _LocationCard.ValueType  # 390
+    LC_2026_LATW_TAPU_FINI: _LocationCard.ValueType  # 391
+    LC_2026_LATW_NECROZMA: _LocationCard.ValueType  # 392
+    LC_2026_LATW_REGIELEKI: _LocationCard.ValueType  # 393
+    LC_2026_LATW_REGIDRAGO: _LocationCard.ValueType  # 394
+    LC_2026_LATW_NIHILEGO: _LocationCard.ValueType  # 395
+    LC_2026_LATW_BUZZWOLE: _LocationCard.ValueType  # 396
+    LC_2026_LATW_PHEROMOSA: _LocationCard.ValueType  # 397
+    LC_2026_LATW_XURKITREE: _LocationCard.ValueType  # 398
+    LC_2026_LATW_CELESTEELA: _LocationCard.ValueType  # 399
+    LC_2026_LATW_KARTANA: _LocationCard.ValueType  # 400
+    LC_2026_LATW_GUZZLORD: _LocationCard.ValueType  # 401
+    LC_2026_LATW_NAGANADEL: _LocationCard.ValueType  # 402
+    LC_2026_LATW_BLACEPHALON: _LocationCard.ValueType  # 403
+    LC_2026_LATW_STAKATAKA: _LocationCard.ValueType  # 404
+    LC_2026_LATW_POIPOLE: _LocationCard.ValueType  # 405
+    LC_SPECIALBACKGROUND_BATIK_2026: _LocationCard.ValueType  # 406
+    LC_SPECIALBACKGROUND_2026_10TH_ANNIVERSARY_001: _LocationCard.ValueType  # 407
 
 class LocationCard(_LocationCard, metaclass=_LocationCardEnumTypeWrapper): ...
 
@@ -12740,6 +12909,65 @@ LC_SAFARI_2026_MARSEILLE: LocationCard.ValueType  # 344
 LC_SAFARI_2026_LISBON: LocationCard.ValueType  # 345
 LC_SAFARI_2026_RDJ: LocationCard.ValueType  # 346
 LC_SAFARI_2026_BOSTON: LocationCard.ValueType  # 347
+LC_SPECIALBACKGROUND_S24_SEP_2026: LocationCard.ValueType  # 349
+LC_SPECIALBACKGROUND_MIDAUTUMN_2026: LocationCard.ValueType  # 350
+LC_2026_LATW_ARTICUNO: LocationCard.ValueType  # 351
+LC_2026_LATW_ZAPDOS: LocationCard.ValueType  # 352
+LC_2026_LATW_MOLTRES: LocationCard.ValueType  # 353
+LC_2026_LATW_MEWTWO: LocationCard.ValueType  # 354
+LC_2026_LATW_RAIKOU: LocationCard.ValueType  # 355
+LC_2026_LATW_ENTEI: LocationCard.ValueType  # 356
+LC_2026_LATW_SUICUNE: LocationCard.ValueType  # 357
+LC_2026_LATW_LUGIA: LocationCard.ValueType  # 358
+LC_2026_LATW_HO_OH: LocationCard.ValueType  # 359
+LC_2026_LATW_REGIROCK: LocationCard.ValueType  # 360
+LC_2026_LATW_REGICE: LocationCard.ValueType  # 361
+LC_2026_LATW_REGISTEEL: LocationCard.ValueType  # 362
+LC_2026_LATW_KYOGRE: LocationCard.ValueType  # 363
+LC_2026_LATW_GROUDON: LocationCard.ValueType  # 364
+LC_2026_LATW_RAYQUAZA: LocationCard.ValueType  # 365
+LC_2026_LATW_LATIAS: LocationCard.ValueType  # 366
+LC_2026_LATW_LATIOS: LocationCard.ValueType  # 367
+LC_2026_LATW_UXIE: LocationCard.ValueType  # 368
+LC_2026_LATW_MESPRIT: LocationCard.ValueType  # 369
+LC_2026_LATW_AZELF: LocationCard.ValueType  # 370
+LC_2026_LATW_DIALGA: LocationCard.ValueType  # 371
+LC_2026_LATW_PALKIA: LocationCard.ValueType  # 372
+LC_2026_LATW_HEATRAN: LocationCard.ValueType  # 373
+LC_2026_LATW_REGIGIGAS: LocationCard.ValueType  # 374
+LC_2026_LATW_GIRATINA: LocationCard.ValueType  # 375
+LC_2026_LATW_CRESSELIA: LocationCard.ValueType  # 376
+LC_2026_LATW_COBALION: LocationCard.ValueType  # 377
+LC_2026_LATW_TERRAKION: LocationCard.ValueType  # 378
+LC_2026_LATW_VIRIZION: LocationCard.ValueType  # 379
+LC_2026_LATW_TORNADUS: LocationCard.ValueType  # 380
+LC_2026_LATW_THUNDURUS: LocationCard.ValueType  # 381
+LC_2026_LATW_RESHIRAM: LocationCard.ValueType  # 382
+LC_2026_LATW_ZEKROM: LocationCard.ValueType  # 383
+LC_2026_LATW_KYUREM: LocationCard.ValueType  # 384
+LC_2026_LATW_LANDORUS: LocationCard.ValueType  # 385
+LC_2026_LATW_XERNEAS: LocationCard.ValueType  # 386
+LC_2026_LATW_YVELTAL: LocationCard.ValueType  # 387
+LC_2026_LATW_TAPU_KOKO: LocationCard.ValueType  # 388
+LC_2026_LATW_TAPU_LELE: LocationCard.ValueType  # 389
+LC_2026_LATW_TAPU_BULU: LocationCard.ValueType  # 390
+LC_2026_LATW_TAPU_FINI: LocationCard.ValueType  # 391
+LC_2026_LATW_NECROZMA: LocationCard.ValueType  # 392
+LC_2026_LATW_REGIELEKI: LocationCard.ValueType  # 393
+LC_2026_LATW_REGIDRAGO: LocationCard.ValueType  # 394
+LC_2026_LATW_NIHILEGO: LocationCard.ValueType  # 395
+LC_2026_LATW_BUZZWOLE: LocationCard.ValueType  # 396
+LC_2026_LATW_PHEROMOSA: LocationCard.ValueType  # 397
+LC_2026_LATW_XURKITREE: LocationCard.ValueType  # 398
+LC_2026_LATW_CELESTEELA: LocationCard.ValueType  # 399
+LC_2026_LATW_KARTANA: LocationCard.ValueType  # 400
+LC_2026_LATW_GUZZLORD: LocationCard.ValueType  # 401
+LC_2026_LATW_NAGANADEL: LocationCard.ValueType  # 402
+LC_2026_LATW_BLACEPHALON: LocationCard.ValueType  # 403
+LC_2026_LATW_STAKATAKA: LocationCard.ValueType  # 404
+LC_2026_LATW_POIPOLE: LocationCard.ValueType  # 405
+LC_SPECIALBACKGROUND_BATIK_2026: LocationCard.ValueType  # 406
+LC_SPECIALBACKGROUND_2026_10TH_ANNIVERSARY_001: LocationCard.ValueType  # 407
 Global___LocationCard: _TypeAlias = LocationCard  # noqa: Y015
 
 class _LoginActionTelemetryIds:
@@ -13055,6 +13283,7 @@ class _MethodEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Method.ValueTy
     METHOD_SET_FRIEND_NICKNAME: _Method.ValueType  # 957
     METHOD_DELETE_GIFT_FROM_INVENTORY: _Method.ValueType  # 958
     METHOD_SAVE_SOCIAL_PLAYER_SETTINGS: _Method.ValueType  # 959
+    METHOD_SET_FRIEND_PREMIUM_GIFT_PREFERENCE: _Method.ValueType  # 963
     METHOD_OPEN_TRADING: _Method.ValueType  # 970
     METHOD_UPDATE_TRADING: _Method.ValueType  # 971
     METHOD_CONFIRM_TRADING: _Method.ValueType  # 972
@@ -13246,6 +13475,7 @@ class _MethodEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Method.ValueTy
     METHOD_NPC_SEND_GIFT: _Method.ValueType  # 2401
     METHOD_NPC_OPEN_GIFT: _Method.ValueType  # 2402
     METHOD_JOIN_BREAD_LOBBY: _Method.ValueType  # 2450
+    METHOD_SET_BREAD_LOBBY_PUBLIC: _Method.ValueType  # 2452
     METHOD_PREPARE_BREAD_LOBBY: _Method.ValueType  # 2453
     METHOD_LEAVE_BREAD_LOBBY: _Method.ValueType  # 2455
     METHOD_START_BREAD_BATTLE: _Method.ValueType  # 2456
@@ -13268,8 +13498,8 @@ class _MethodEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Method.ValueTy
     METHOD_ENCOUNTER_STATION_SPAWN: _Method.ValueType  # 2475
     METHOD_GET_NUM_STATION_ASSISTS: _Method.ValueType  # 2476
     METHOD_PT_TWO: _Method.ValueType  # 2501
-    METHOD_PT_THREE: _Method.ValueType  # 2502
     METHOD_PROPOSE_REMOTE_TRADE: _Method.ValueType  # 2600
+    """METHOD_PT_THREE = 2502;"""
     METHOD_CANCEL_REMOTE_TRADE: _Method.ValueType  # 2601
     METHOD_MARK_REMOTE_TRADABLE: _Method.ValueType  # 2602
     METHOD_GET_REMOTE_TRADABLE_FROM_OTHER_PLAYER: _Method.ValueType  # 2603
@@ -13350,6 +13580,8 @@ class _MethodEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Method.ValueTy
     METHOD_FLEE_BATTLE_ENCOUNTER: _Method.ValueType  # 3084
     METHOD_DEBUG_TEST_SETUP: _Method.ValueType  # 3085
     METHOD_CREATE_BUG_REPORT: _Method.ValueType  # 3088
+    METHOD_REDEEM_PREMIUM_GIFT_FOR_USER: _Method.ValueType  # 3089
+    METHOD_GET_COMBAT_DOWNSCALED_STATS: _Method.ValueType  # 3090
 
 class Method(_Method, metaclass=_MethodEnumTypeWrapper): ...
 
@@ -13495,6 +13727,7 @@ METHOD_CHECK_SEND_GIFT: Method.ValueType  # 956
 METHOD_SET_FRIEND_NICKNAME: Method.ValueType  # 957
 METHOD_DELETE_GIFT_FROM_INVENTORY: Method.ValueType  # 958
 METHOD_SAVE_SOCIAL_PLAYER_SETTINGS: Method.ValueType  # 959
+METHOD_SET_FRIEND_PREMIUM_GIFT_PREFERENCE: Method.ValueType  # 963
 METHOD_OPEN_TRADING: Method.ValueType  # 970
 METHOD_UPDATE_TRADING: Method.ValueType  # 971
 METHOD_CONFIRM_TRADING: Method.ValueType  # 972
@@ -13686,6 +13919,7 @@ METHOD_NPC_UPDATE_STATE: Method.ValueType  # 2400
 METHOD_NPC_SEND_GIFT: Method.ValueType  # 2401
 METHOD_NPC_OPEN_GIFT: Method.ValueType  # 2402
 METHOD_JOIN_BREAD_LOBBY: Method.ValueType  # 2450
+METHOD_SET_BREAD_LOBBY_PUBLIC: Method.ValueType  # 2452
 METHOD_PREPARE_BREAD_LOBBY: Method.ValueType  # 2453
 METHOD_LEAVE_BREAD_LOBBY: Method.ValueType  # 2455
 METHOD_START_BREAD_BATTLE: Method.ValueType  # 2456
@@ -13708,8 +13942,8 @@ METHOD_COMPLETE_BREAD_BATTLE: Method.ValueType  # 2473
 METHOD_ENCOUNTER_STATION_SPAWN: Method.ValueType  # 2475
 METHOD_GET_NUM_STATION_ASSISTS: Method.ValueType  # 2476
 METHOD_PT_TWO: Method.ValueType  # 2501
-METHOD_PT_THREE: Method.ValueType  # 2502
 METHOD_PROPOSE_REMOTE_TRADE: Method.ValueType  # 2600
+"""METHOD_PT_THREE = 2502;"""
 METHOD_CANCEL_REMOTE_TRADE: Method.ValueType  # 2601
 METHOD_MARK_REMOTE_TRADABLE: Method.ValueType  # 2602
 METHOD_GET_REMOTE_TRADABLE_FROM_OTHER_PLAYER: Method.ValueType  # 2603
@@ -13788,6 +14022,8 @@ METHOD_GET_DEBUG_EGG_STATISTICS_ACTION: Method.ValueType  # 3083
 METHOD_FLEE_BATTLE_ENCOUNTER: Method.ValueType  # 3084
 METHOD_DEBUG_TEST_SETUP: Method.ValueType  # 3085
 METHOD_CREATE_BUG_REPORT: Method.ValueType  # 3088
+METHOD_REDEEM_PREMIUM_GIFT_FOR_USER: Method.ValueType  # 3089
+METHOD_GET_COMBAT_DOWNSCALED_STATS: Method.ValueType  # 3090
 Global___Method: _TypeAlias = Method  # noqa: Y015
 
 class _NMAMethod:
@@ -14835,6 +15071,7 @@ class _PlatformWarningTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_P
     PLATFORM_WARNING_STRIKE1: _PlatformWarningType.ValueType  # 1
     PLATFORM_WARNING_STRIKE2: _PlatformWarningType.ValueType  # 2
     PLATFORM_WARNING_STRIKE3: _PlatformWarningType.ValueType  # 3
+    PLATFORM_WARNING_BLOCK: _PlatformWarningType.ValueType  # 4
 
 class PlatformWarningType(_PlatformWarningType, metaclass=_PlatformWarningTypeEnumTypeWrapper): ...
 
@@ -14842,6 +15079,7 @@ PLATFORM_WARNING_UNSET: PlatformWarningType.ValueType  # 0
 PLATFORM_WARNING_STRIKE1: PlatformWarningType.ValueType  # 1
 PLATFORM_WARNING_STRIKE2: PlatformWarningType.ValueType  # 2
 PLATFORM_WARNING_STRIKE3: PlatformWarningType.ValueType  # 3
+PLATFORM_WARNING_BLOCK: PlatformWarningType.ValueType  # 4
 Global___PlatformWarningType: _TypeAlias = PlatformWarningType  # noqa: Y015
 
 class _PlayerAvatarType:
@@ -15041,6 +15279,7 @@ class _PokedexCategoryEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Poked
     POKEDEX_CATEGORY_COSTUME: _PokedexCategory.ValueType  # 17
     POKEDEX_CATEGORY_BREAD_MODE: _PokedexCategory.ValueType  # 18
     POKEDEX_CATEGORY_BREAD_DOUGH_MODE: _PokedexCategory.ValueType  # 19
+    POKEDEX_CATEGORY_FORM: _PokedexCategory.ValueType  # 20
     POKEDEX_CATEGORY_SHINY_THREE_STAR: _PokedexCategory.ValueType  # 101
     POKEDEX_CATEGORY_SHINY_FOUR_STAR: _PokedexCategory.ValueType  # 102
     POKEDEX_CATEGORY_SIZE_XXS: _PokedexCategory.ValueType  # 201
@@ -15060,6 +15299,7 @@ POKEDEX_CATEGORY_PURIFIED: PokedexCategory.ValueType  # 16
 POKEDEX_CATEGORY_COSTUME: PokedexCategory.ValueType  # 17
 POKEDEX_CATEGORY_BREAD_MODE: PokedexCategory.ValueType  # 18
 POKEDEX_CATEGORY_BREAD_DOUGH_MODE: PokedexCategory.ValueType  # 19
+POKEDEX_CATEGORY_FORM: PokedexCategory.ValueType  # 20
 POKEDEX_CATEGORY_SHINY_THREE_STAR: PokedexCategory.ValueType  # 101
 POKEDEX_CATEGORY_SHINY_FOUR_STAR: PokedexCategory.ValueType  # 102
 POKEDEX_CATEGORY_SIZE_XXS: PokedexCategory.ValueType  # 201
@@ -17119,6 +17359,7 @@ class _TodayViewInnerLayerTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrappe
     SPECIAL_RESEARCH_INNER_LAYER: _TodayViewInnerLayerType.ValueType  # 4
     WEEKLY_RESEARCH_INNER_LAYER: _TodayViewInnerLayerType.ValueType  # 5
     EVENT_RESEARCH_INNER_LAYER: _TodayViewInnerLayerType.ValueType  # 6
+    WELCOME_BACK_INNER_LAYER: _TodayViewInnerLayerType.ValueType  # 7
 
 class TodayViewInnerLayerType(_TodayViewInnerLayerType, metaclass=_TodayViewInnerLayerTypeEnumTypeWrapper): ...
 
@@ -17129,6 +17370,7 @@ TIMED_RESEARCH_INNER_LAYER: TodayViewInnerLayerType.ValueType  # 3
 SPECIAL_RESEARCH_INNER_LAYER: TodayViewInnerLayerType.ValueType  # 4
 WEEKLY_RESEARCH_INNER_LAYER: TodayViewInnerLayerType.ValueType  # 5
 EVENT_RESEARCH_INNER_LAYER: TodayViewInnerLayerType.ValueType  # 6
+WELCOME_BACK_INNER_LAYER: TodayViewInnerLayerType.ValueType  # 7
 Global___TodayViewInnerLayerType: _TypeAlias = TodayViewInnerLayerType  # noqa: Y015
 
 class _TodayViewOuterLayerType:
@@ -17140,7 +17382,9 @@ class _TodayViewOuterLayerTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrappe
     UNSET_OUTER_LAYER: _TodayViewOuterLayerType.ValueType  # 0
     GO_PASS_OUTER_LAYER: _TodayViewOuterLayerType.ValueType  # 1
     RESEARCH_OUTER_LAYER: _TodayViewOuterLayerType.ValueType  # 2
-    FIELD_BOOK_OUTER_LAYER: _TodayViewOuterLayerType.ValueType  # 3
+    @_builtins.property
+    @_deprecated("""This enum value has been marked as deprecated using proto enum value options.""")
+    def FIELD_BOOK_OUTER_LAYER(self) -> _TodayViewOuterLayerType.ValueType: ...  # 3
 
 class TodayViewOuterLayerType(_TodayViewOuterLayerType, metaclass=_TodayViewOuterLayerTypeEnumTypeWrapper): ...
 
@@ -17425,7 +17669,11 @@ class _TutorialCompletionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Tu
     REACTIVATION_2026_FIRST_HUB_VISIT: _TutorialCompletion.ValueType  # 205
     IBFC_DETAILS_CRAMORANT_TUTORIAL: _TutorialCompletion.ValueType  # 206
     REACTIVATION_2026_RECEIVE_FIELD_BOOK: _TutorialCompletion.ValueType  # 207
+    LOCATION_CARD_BACKGROUND_POKEMON_DETAIL_TUTORIAL: _TutorialCompletion.ValueType  # 208
+    LOCATION_CARD_BACKGROUND_PROFILE_TUTORIAL: _TutorialCompletion.ValueType  # 209
     REACTIVATION_2026_FIELD_BOOK_ENCOUNTER: _TutorialCompletion.ValueType  # 210
+    PREMIUM_GIFTING_ACKNOWLEDGEMENT_SHOWN: _TutorialCompletion.ValueType  # 211
+    IBFC_DETAILS_MINIOR_TUTORIAL: _TutorialCompletion.ValueType  # 212
 
 class TutorialCompletion(_TutorialCompletion, metaclass=_TutorialCompletionEnumTypeWrapper): ...
 
@@ -17636,7 +17884,11 @@ COORDINATED_RAID_TUTORIAL: TutorialCompletion.ValueType  # 204
 REACTIVATION_2026_FIRST_HUB_VISIT: TutorialCompletion.ValueType  # 205
 IBFC_DETAILS_CRAMORANT_TUTORIAL: TutorialCompletion.ValueType  # 206
 REACTIVATION_2026_RECEIVE_FIELD_BOOK: TutorialCompletion.ValueType  # 207
+LOCATION_CARD_BACKGROUND_POKEMON_DETAIL_TUTORIAL: TutorialCompletion.ValueType  # 208
+LOCATION_CARD_BACKGROUND_PROFILE_TUTORIAL: TutorialCompletion.ValueType  # 209
 REACTIVATION_2026_FIELD_BOOK_ENCOUNTER: TutorialCompletion.ValueType  # 210
+PREMIUM_GIFTING_ACKNOWLEDGEMENT_SHOWN: TutorialCompletion.ValueType  # 211
+IBFC_DETAILS_MINIOR_TUTORIAL: TutorialCompletion.ValueType  # 212
 Global___TutorialCompletion: _TypeAlias = TutorialCompletion  # noqa: Y015
 
 class _TweenAction:
@@ -20106,9 +20358,10 @@ class AbilityProto(_message.Message):
         SHADOW_SUPPRESS: AbilityProto._AbilityType.ValueType  # 3
         PARTY_POWER: AbilityProto._AbilityType.ValueType  # 4
         ENRAGE: AbilityProto._AbilityType.ValueType  # 6
-        HUNGER_SWITCH: AbilityProto._AbilityType.ValueType  # 7
-        STANCE_CHANGE: AbilityProto._AbilityType.ValueType  # 8
         MEGA_ENRAGE: AbilityProto._AbilityType.ValueType  # 9
+        """HUNGER_SWITCH = 7;
+        STANCE_CHANGE = 8;
+        """
 
     class AbilityType(_AbilityType, metaclass=_AbilityTypeEnumTypeWrapper): ...
     UNSET_ABILITY_TYPE: AbilityProto.AbilityType.ValueType  # 0
@@ -20117,9 +20370,10 @@ class AbilityProto(_message.Message):
     SHADOW_SUPPRESS: AbilityProto.AbilityType.ValueType  # 3
     PARTY_POWER: AbilityProto.AbilityType.ValueType  # 4
     ENRAGE: AbilityProto.AbilityType.ValueType  # 6
-    HUNGER_SWITCH: AbilityProto.AbilityType.ValueType  # 7
-    STANCE_CHANGE: AbilityProto.AbilityType.ValueType  # 8
     MEGA_ENRAGE: AbilityProto.AbilityType.ValueType  # 9
+    """HUNGER_SWITCH = 7;
+    STANCE_CHANGE = 8;
+    """
 
     def __init__(
         self,
@@ -20631,6 +20885,34 @@ class ActionLogEntry(_message.Message):
     def WhichOneof(self, oneof_group: _WhichOneofArgType_Action) -> _WhichOneofReturnType_Action | None: ...
 
 Global___ActionLogEntry: _TypeAlias = ActionLogEntry  # noqa: Y015
+
+@_typing.final
+class ActionMenuOptionsSettingsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    REMOVE_CATCH_CARD_FIELD_NUMBER: _builtins.int
+    REMOVE_ITEMS_FIELD_NUMBER: _builtins.int
+    REMOVE_FAVORITE_FIELD_NUMBER: _builtins.int
+    REMOVE_APPRAISAL_FIELD_NUMBER: _builtins.int
+    remove_catch_card: _builtins.bool
+    remove_items: _builtins.bool
+    remove_favorite: _builtins.bool
+    remove_appraisal: _builtins.bool
+    def __init__(
+        self,
+        *,
+        remove_catch_card: _builtins.bool = ...,
+        remove_items: _builtins.bool = ...,
+        remove_favorite: _builtins.bool = ...,
+        remove_appraisal: _builtins.bool = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["remove_appraisal", b"remove_appraisal", "remove_catch_card", b"remove_catch_card", "remove_favorite", b"remove_favorite", "remove_items", b"remove_items"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ActionMenuOptionsSettingsProto: _TypeAlias = ActionMenuOptionsSettingsProto  # noqa: Y015
 
 @_typing.final
 class ActivateVsSeekerOutProto(_message.Message):
@@ -22217,6 +22499,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         REQUEST_TYPE_METHOD_SET_FRIEND_NICKNAME: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 957
         REQUEST_TYPE_METHOD_DELETE_GIFT_FROM_INVENTORY: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 958
         REQUEST_TYPE_METHOD_SAVE_SOCIAL_PLAYER_SETTINGS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 959
+        REQUEST_TYPE_METHOD_SET_FRIEND_PREMIUM_GIFT_PREFERENCE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 963
         REQUEST_TYPE_METHOD_OPEN_TRADING: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 970
         REQUEST_TYPE_METHOD_UPDATE_TRADING: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 971
         REQUEST_TYPE_METHOD_CONFIRM_TRADING: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 972
@@ -22408,6 +22691,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         REQUEST_TYPE_METHOD_NPC_SEND_GIFT: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2401
         REQUEST_TYPE_METHOD_NPC_OPEN_GIFT: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2402
         REQUEST_TYPE_METHOD_JOIN_BREAD_LOBBY: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2450
+        REQUEST_TYPE_METHOD_SET_BREAD_LOBBY_PUBLIC: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2452
         REQUEST_TYPE_METHOD_PREPARE_BREAD_LOBBY: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2453
         REQUEST_TYPE_METHOD_LEAVE_BREAD_LOBBY: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2455
         REQUEST_TYPE_METHOD_START_BREAD_BATTLE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2456
@@ -22430,7 +22714,6 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         REQUEST_TYPE_METHOD_ENCOUNTER_STATION_SPAWN: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2475
         REQUEST_TYPE_METHOD_GET_NUM_STATION_ASSISTS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2476
         REQUEST_TYPE_METHOD_PT_TWO: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2501
-        REQUEST_TYPE_METHOD_PT_THREE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2502
         REQUEST_TYPE_METHOD_PROPOSE_REMOTE_TRADE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2600
         REQUEST_TYPE_METHOD_CANCEL_REMOTE_TRADE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2601
         REQUEST_TYPE_METHOD_MARK_REMOTE_TRADABLE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 2602
@@ -22510,6 +22793,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         REQUEST_TYPE_METHOD_FLEE_BATTLE_ENCOUNTER: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 3084
         REQUEST_TYPE_METHOD_DEBUG_TEST_SETUP: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 3085
         REQUEST_TYPE_METHOD_CREATE_BUG_REPORT: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 3088
+        REQUEST_TYPE_METHOD_REDEEM_PREMIUM_GIFT_FOR_USER: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 3089
+        REQUEST_TYPE_METHOD_GET_COMBAT_DOWNSCALED_STATS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 3090
         REQUEST_TYPE_PLATFORM_REGISTER_PUSH_NOTIFICATION: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 5000
         REQUEST_TYPE_PLATFORM_UNREGISTER_PUSH_NOTIFICATION: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 5001
         REQUEST_TYPE_PLATFORM_UPDATE_NOTIFICATION_STATUS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 5002
@@ -22668,6 +22953,12 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         REQUEST_TYPE_GAME_BACKGROUND_MODE_ACTION_GET_CLIENT_BGMODE_SETTINGS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 230001
         REQUEST_TYPE_GAME_BACKGROUND_MODE_ACTION_GET_ADVENTURE_SYNC_PROGRESS: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 230002
         REQUEST_TYPE_GAME_AUTHENTICATION_ACTION_ROTATE_GUEST_LOGIN_SECRET_TOKEN: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 250011
+        REQUEST_TYPE_REGISTER_DEVICE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 250100
+        REQUEST_TYPE_LIST_PLAYER_DEVICES: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 250101
+        REQUEST_TYPE_LIST_DEVICE_VERIFICATION_CHALLENGES: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 250102
+        REQUEST_TYPE_UPDATE_DEVICE_VERIFICATION: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 250103
+        REQUEST_TYPE_REMOVE_PLAYER_DEVICE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 250104
+        REQUEST_TYPE_RESEND_DEVICE_VERIFICATION_EMAIL: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 250105
         REQUEST_TYPE_GAME_IAP_ACTION_PURCHASE_SKU: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 310000
         REQUEST_TYPE_GAME_IAP_ACTION_GET_AVAILABLE_SKUS_AND_BALANCES: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 310001
         REQUEST_TYPE_GAME_IAP_ACTION_SET_IN_GAME_CURRENCY_EXCHANGE_RATE: AllTypesAndMessagesResponsesProto._AllResquestTypesProto.ValueType  # 310002
@@ -22889,6 +23180,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
     REQUEST_TYPE_METHOD_SET_FRIEND_NICKNAME: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 957
     REQUEST_TYPE_METHOD_DELETE_GIFT_FROM_INVENTORY: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 958
     REQUEST_TYPE_METHOD_SAVE_SOCIAL_PLAYER_SETTINGS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 959
+    REQUEST_TYPE_METHOD_SET_FRIEND_PREMIUM_GIFT_PREFERENCE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 963
     REQUEST_TYPE_METHOD_OPEN_TRADING: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 970
     REQUEST_TYPE_METHOD_UPDATE_TRADING: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 971
     REQUEST_TYPE_METHOD_CONFIRM_TRADING: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 972
@@ -23080,6 +23372,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
     REQUEST_TYPE_METHOD_NPC_SEND_GIFT: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2401
     REQUEST_TYPE_METHOD_NPC_OPEN_GIFT: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2402
     REQUEST_TYPE_METHOD_JOIN_BREAD_LOBBY: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2450
+    REQUEST_TYPE_METHOD_SET_BREAD_LOBBY_PUBLIC: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2452
     REQUEST_TYPE_METHOD_PREPARE_BREAD_LOBBY: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2453
     REQUEST_TYPE_METHOD_LEAVE_BREAD_LOBBY: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2455
     REQUEST_TYPE_METHOD_START_BREAD_BATTLE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2456
@@ -23102,7 +23395,6 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
     REQUEST_TYPE_METHOD_ENCOUNTER_STATION_SPAWN: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2475
     REQUEST_TYPE_METHOD_GET_NUM_STATION_ASSISTS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2476
     REQUEST_TYPE_METHOD_PT_TWO: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2501
-    REQUEST_TYPE_METHOD_PT_THREE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2502
     REQUEST_TYPE_METHOD_PROPOSE_REMOTE_TRADE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2600
     REQUEST_TYPE_METHOD_CANCEL_REMOTE_TRADE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2601
     REQUEST_TYPE_METHOD_MARK_REMOTE_TRADABLE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 2602
@@ -23182,6 +23474,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
     REQUEST_TYPE_METHOD_FLEE_BATTLE_ENCOUNTER: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 3084
     REQUEST_TYPE_METHOD_DEBUG_TEST_SETUP: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 3085
     REQUEST_TYPE_METHOD_CREATE_BUG_REPORT: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 3088
+    REQUEST_TYPE_METHOD_REDEEM_PREMIUM_GIFT_FOR_USER: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 3089
+    REQUEST_TYPE_METHOD_GET_COMBAT_DOWNSCALED_STATS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 3090
     REQUEST_TYPE_PLATFORM_REGISTER_PUSH_NOTIFICATION: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 5000
     REQUEST_TYPE_PLATFORM_UNREGISTER_PUSH_NOTIFICATION: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 5001
     REQUEST_TYPE_PLATFORM_UPDATE_NOTIFICATION_STATUS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 5002
@@ -23340,6 +23634,12 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
     REQUEST_TYPE_GAME_BACKGROUND_MODE_ACTION_GET_CLIENT_BGMODE_SETTINGS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 230001
     REQUEST_TYPE_GAME_BACKGROUND_MODE_ACTION_GET_ADVENTURE_SYNC_PROGRESS: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 230002
     REQUEST_TYPE_GAME_AUTHENTICATION_ACTION_ROTATE_GUEST_LOGIN_SECRET_TOKEN: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 250011
+    REQUEST_TYPE_REGISTER_DEVICE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 250100
+    REQUEST_TYPE_LIST_PLAYER_DEVICES: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 250101
+    REQUEST_TYPE_LIST_DEVICE_VERIFICATION_CHALLENGES: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 250102
+    REQUEST_TYPE_UPDATE_DEVICE_VERIFICATION: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 250103
+    REQUEST_TYPE_REMOVE_PLAYER_DEVICE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 250104
+    REQUEST_TYPE_RESEND_DEVICE_VERIFICATION_EMAIL: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 250105
     REQUEST_TYPE_GAME_IAP_ACTION_PURCHASE_SKU: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 310000
     REQUEST_TYPE_GAME_IAP_ACTION_GET_AVAILABLE_SKUS_AND_BALANCES: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 310001
     REQUEST_TYPE_GAME_IAP_ACTION_SET_IN_GAME_CURRENCY_EXCHANGE_RATE: AllTypesAndMessagesResponsesProto.AllResquestTypesProto.ValueType  # 310002
@@ -23556,6 +23856,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         SET_FRIEND_NICKNAME_PROTO_957_FIELD_NUMBER: _builtins.int
         DELETE_GIFT_FROM_INVENTORY_PROTO_958_FIELD_NUMBER: _builtins.int
         SAVESOCIAL_PLAYERSETTINGS_PROTO_959_FIELD_NUMBER: _builtins.int
+        SET_FRIEND_PREMIUM_GIFT_PREFERENCE_PROTO_963_FIELD_NUMBER: _builtins.int
         OPEN_TRADING_PROTO_970_FIELD_NUMBER: _builtins.int
         UPDATE_TRADING_PROTO_971_FIELD_NUMBER: _builtins.int
         CONFIRM_TRADING_PROTO_972_FIELD_NUMBER: _builtins.int
@@ -23742,6 +24043,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         NPC_SEND_GIFT_PROTO_2401_FIELD_NUMBER: _builtins.int
         NPC_OPEN_GIFT_PROTO_2402_FIELD_NUMBER: _builtins.int
         JOIN_BREAD_LOBBY_PROTO_2450_FIELD_NUMBER: _builtins.int
+        SET_BREAD_LOBBY_PUBLIC_PROTO_2452_FIELD_NUMBER: _builtins.int
         PREPARE_BREAD_LOBBYPROTO_2453_FIELD_NUMBER: _builtins.int
         LEAVE_BREADLOBBY_PROTO_2455_FIELD_NUMBER: _builtins.int
         START_BREAD_BATTLE_PROTO_2456_FIELD_NUMBER: _builtins.int
@@ -23840,6 +24142,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         FLEE_BATTLE_ENCOUNTER_PROTO_3084_FIELD_NUMBER: _builtins.int
         DEBUG_TEST_SETUP_PROTO_3085_FIELD_NUMBER: _builtins.int
         CREATE_BUG_REPORT_PROTO_3088_FIELD_NUMBER: _builtins.int
+        REDEEM_PREMIUM_GIFT_FOR_USER_PROTO_3089_FIELD_NUMBER: _builtins.int
+        GETCOMBAT_DOWNSCALED_STATS_PROTO_3090_FIELD_NUMBER: _builtins.int
         PUSH_NOTIFICATION_REGISTRYPROTO_5000_FIELD_NUMBER: _builtins.int
         UPDATE_NOTIFICATION_PROTO_5002_FIELD_NUMBER: _builtins.int
         DOWNLOAD_GM_TEMPLATES_REQUEST_PROTO_5004_FIELD_NUMBER: _builtins.int
@@ -23940,6 +24244,12 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         ACKNOWLEDGE_WARNINGS_REQUEST_PROTO_200001_FIELD_NUMBER: _builtins.int
         REGISTER_BACKGROUND_DEVICE_ACTION_PROTO_230000_FIELD_NUMBER: _builtins.int
         GET_ADVENTURE_SYNC_PROGRESS_PROTO_230002_FIELD_NUMBER: _builtins.int
+        REGISTER_DEVICE_ACTION_PROTO_250100_FIELD_NUMBER: _builtins.int
+        LIST_PLAYER_DEVICES_REQUEST_PROTO_250101_FIELD_NUMBER: _builtins.int
+        LIST_DEVICE_VERIFICATION_CHALLENGES_REQUEST_PROTO_250102_FIELD_NUMBER: _builtins.int
+        UPDATE_DEVICE_VERIFICATION_REQUEST_PROTO_250103_FIELD_NUMBER: _builtins.int
+        REMOVE_PLAYER_DEVICEREQUEST_PROTO_250104_FIELD_NUMBER: _builtins.int
+        RESEND_DEVICE_VERIFICATION_EMAILREQUEST_PROTO_250105_FIELD_NUMBER: _builtins.int
         IAP_PURCHASE_SKU_PROTO_310000_FIELD_NUMBER: _builtins.int
         IAP_GET_AVAILABLE_SKUS_AND_BALANCES_PROTO_310001_FIELD_NUMBER: _builtins.int
         IAP_SETIN_GAME_CURRENCY_EXCHANGE_RATE_PROTO_310002_FIELD_NUMBER: _builtins.int
@@ -24261,6 +24571,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         def delete_gift_from_inventory_proto_958(self) -> Global___DeleteGiftFromInventoryProto: ...
         @_builtins.property
         def savesocial_playersettings_proto_959(self) -> Global___SaveSocialPlayerSettingsProto: ...
+        @_builtins.property
+        def set_friend_premium_gift_preference_proto_963(self) -> Global___SetFriendPremiumGiftPreferenceProto: ...
         @_builtins.property
         def open_trading_proto_970(self) -> Global___OpenTradingProto: ...
         @_builtins.property
@@ -24634,6 +24946,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         @_builtins.property
         def join_bread_lobby_proto_2450(self) -> Global___JoinBreadLobbyProto: ...
         @_builtins.property
+        def set_bread_lobby_public_proto_2452(self) -> Global___SetBreadLobbyPublicProto: ...
+        @_builtins.property
         def prepare_bread_lobbyproto_2453(self) -> Global___PrepareBreadLobbyProto: ...
         @_builtins.property
         def leave_breadlobby_proto_2455(self) -> Global___LeaveBreadLobbyProto: ...
@@ -24829,6 +25143,10 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         def debug_test_setup_proto_3085(self) -> Global___DebugTestSetupProto: ...
         @_builtins.property
         def create_bug_report_proto_3088(self) -> Global___CreateBugReportProto: ...
+        @_builtins.property
+        def redeem_premium_gift_for_user_proto_3089(self) -> Global___RedeemPremiumGiftForUserProto: ...
+        @_builtins.property
+        def getcombat_downscaled_stats_proto_3090(self) -> Global___CombatProto.GetCombatDownscaledStatsProto: ...
         @_builtins.property
         def push_notification_registryproto_5000(self) -> Global___PushNotificationRegistryProto: ...
         @_builtins.property
@@ -25029,6 +25347,18 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         def register_background_device_action_proto_230000(self) -> Global___RegisterBackgroundDeviceActionProto: ...
         @_builtins.property
         def get_adventure_sync_progress_proto_230002(self) -> Global___GetAdventureSyncProgressProto: ...
+        @_builtins.property
+        def register_device_action_proto_250100(self) -> Global___RegisterDeviceActionProto: ...
+        @_builtins.property
+        def list_player_devices_request_proto_250101(self) -> Global___ListPlayerDevicesRequestProto: ...
+        @_builtins.property
+        def list_device_verification_challenges_request_proto_250102(self) -> Global___ListDeviceVerificationChallengesRequestProto: ...
+        @_builtins.property
+        def update_device_verification_request_proto_250103(self) -> Global___UpdateDeviceVerificationRequestProto: ...
+        @_builtins.property
+        def remove_player_devicerequest_proto_250104(self) -> Global___RemovePlayerDeviceRequestProto: ...
+        @_builtins.property
+        def resend_device_verification_emailrequest_proto_250105(self) -> Global___ResendDeviceVerificationEmailRequestProto: ...
         @_builtins.property
         def iap_purchase_sku_proto_310000(self) -> Global___IapPurchaseSkuProto: ...
         @_builtins.property
@@ -25272,6 +25602,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             set_friend_nickname_proto_957: Global___SetFriendNicknameProto | None = ...,
             delete_gift_from_inventory_proto_958: Global___DeleteGiftFromInventoryProto | None = ...,
             savesocial_playersettings_proto_959: Global___SaveSocialPlayerSettingsProto | None = ...,
+            set_friend_premium_gift_preference_proto_963: Global___SetFriendPremiumGiftPreferenceProto | None = ...,
             open_trading_proto_970: Global___OpenTradingProto | None = ...,
             update_trading_proto_971: Global___UpdateTradingProto | None = ...,
             confirm_trading_proto_972: Global___ConfirmTradingProto | None = ...,
@@ -25458,6 +25789,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             npc_send_gift_proto_2401: Global___NpcSendGiftProto | None = ...,
             npc_open_gift_proto_2402: Global___NpcOpenGiftProto | None = ...,
             join_bread_lobby_proto_2450: Global___JoinBreadLobbyProto | None = ...,
+            set_bread_lobby_public_proto_2452: Global___SetBreadLobbyPublicProto | None = ...,
             prepare_bread_lobbyproto_2453: Global___PrepareBreadLobbyProto | None = ...,
             leave_breadlobby_proto_2455: Global___LeaveBreadLobbyProto | None = ...,
             start_bread_battle_proto_2456: Global___StartBreadBattleProto | None = ...,
@@ -25556,6 +25888,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             flee_battle_encounter_proto_3084: Global___FleeBattleEncounterProto | None = ...,
             debug_test_setup_proto_3085: Global___DebugTestSetupProto | None = ...,
             create_bug_report_proto_3088: Global___CreateBugReportProto | None = ...,
+            redeem_premium_gift_for_user_proto_3089: Global___RedeemPremiumGiftForUserProto | None = ...,
+            getcombat_downscaled_stats_proto_3090: Global___CombatProto.GetCombatDownscaledStatsProto | None = ...,
             push_notification_registryproto_5000: Global___PushNotificationRegistryProto | None = ...,
             update_notification_proto_5002: Global___UpdateNotificationProto | None = ...,
             download_gm_templates_request_proto_5004: Global___DownloadGmTemplatesRequestProto | None = ...,
@@ -25656,6 +25990,12 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             acknowledge_warnings_request_proto_200001: Global___AcknowledgeWarningsRequestProto | None = ...,
             register_background_device_action_proto_230000: Global___RegisterBackgroundDeviceActionProto | None = ...,
             get_adventure_sync_progress_proto_230002: Global___GetAdventureSyncProgressProto | None = ...,
+            register_device_action_proto_250100: Global___RegisterDeviceActionProto | None = ...,
+            list_player_devices_request_proto_250101: Global___ListPlayerDevicesRequestProto | None = ...,
+            list_device_verification_challenges_request_proto_250102: Global___ListDeviceVerificationChallengesRequestProto | None = ...,
+            update_device_verification_request_proto_250103: Global___UpdateDeviceVerificationRequestProto | None = ...,
+            remove_player_devicerequest_proto_250104: Global___RemovePlayerDeviceRequestProto | None = ...,
+            resend_device_verification_emailrequest_proto_250105: Global___ResendDeviceVerificationEmailRequestProto | None = ...,
             iap_purchase_sku_proto_310000: Global___IapPurchaseSkuProto | None = ...,
             iap_get_available_skus_and_balances_proto_310001: Global___IapGetAvailableSkusAndBalancesProto | None = ...,
             iap_setin_game_currency_exchange_rate_proto_310002: Global___IapSetInGameCurrencyExchangeRateProto | None = ...,
@@ -25710,9 +26050,9 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             update_adventure_sync_fitness_request_proto_640004: Global___UpdateAdventureSyncFitnessRequestProto | None = ...,
             get_adventure_sync_fitness_report_request_proto_640005: Global___GetAdventureSyncFitnessReportRequestProto | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["accept_combat_challenge_proto_995", b"accept_combat_challenge_proto_995", "acknowledge_punishment_proto_10", b"acknowledge_punishment_proto_10", "acknowledge_view_latest_incense_recap_proto_2003", b"acknowledge_view_latest_incense_recap_proto_2003", "acknowledge_warnings_request_proto_200001", b"acknowledge_warnings_request_proto_200001", "acknowledge_warnings_request_proto_5040", b"acknowledge_warnings_request_proto_5040", "activate_vs_seeker_proto_1308", b"activate_vs_seeker_proto_1308", "add_fort_modifier_proto_144", b"add_fort_modifier_proto_144", "add_loginaction_proto_5008", b"add_loginaction_proto_5008", "add_ptc_loginaction_proto_3002", b"add_ptc_loginaction_proto_3002", "add_referrer_proto_1801", b"add_referrer_proto_1801", "age_confirmation_proto_3052", b"age_confirmation_proto_3052", "appeal_route_proto_1425", b"appeal_route_proto_1425", "asset_digest_request_proto_300", b"asset_digest_request_proto_300", "asset_version_proto_302", b"asset_version_proto_302", "attack_raid_battle_proto_166", b"attack_raid_battle_proto_166", "attracted_pokemon_encounter_proto_1417", b"attracted_pokemon_encounter_proto_1417", "auth_register_background_deviceaction_proto_5028", b"auth_register_background_deviceaction_proto_5028", "award_free_raid_ticket_proto_815", b"award_free_raid_ticket_proto_815", "badge_reward_encounter_request_proto_2360", b"badge_reward_encounter_request_proto_2360", "beluga_transaction_complete_proto_820", b"beluga_transaction_complete_proto_820", "beluga_transaction_start_proto_819", b"beluga_transaction_start_proto_819", "boot_raid_proto_2004", b"boot_raid_proto_2004", "buddy_feeding_proto_1352", b"buddy_feeding_proto_1352", "buddy_map_proto_1350", b"buddy_map_proto_1350", "buddy_petting_proto_1354", b"buddy_petting_proto_1354", "buddy_stats_proto_1351", b"buddy_stats_proto_1351", "butterfly_collector_reward_encounter_proto_request_1724", b"butterfly_collector_reward_encounter_proto_request_1724", "can_report_route_proto_1418", b"can_report_route_proto_1418", "cancel_event_rsvp_proto_3033", b"cancel_event_rsvp_proto_3033", "cancel_matchmaking_proto_1301", b"cancel_matchmaking_proto_1301", "cancel_party_invite_proto_2312", b"cancel_party_invite_proto_2312", "cancel_remote_trade_proto_2601", b"cancel_remote_trade_proto_2601", "cancel_route_proto_1410", b"cancel_route_proto_1410", "cancel_trading_proto_973", b"cancel_trading_proto_973", "cancelcombatchallenge_proto_997", b"cancelcombatchallenge_proto_997", "canclaim_ptc_reward_action_proto_3004", b"canclaim_ptc_reward_action_proto_3004", "catch_pokemon_proto_103", b"catch_pokemon_proto_103", "change_pokemon_form_proto_1722", b"change_pokemon_form_proto_1722", "change_stampcollection_player_data_proto_1905", b"change_stampcollection_player_data_proto_1905", "change_stat_increase_goal_proto_3053", b"change_stat_increase_goal_proto_3053", "change_team_proto_1106", b"change_team_proto_1106", "check_awarded_badges_proto_129", b"check_awarded_badges_proto_129", "check_gifting_eligibility_proto_2000", b"check_gifting_eligibility_proto_2000", "check_photobomb_proto_1101", b"check_photobomb_proto_1101", "check_pokemon_size_leaderboard_eligibility_proto_2100", b"check_pokemon_size_leaderboard_eligibility_proto_2100", "check_send_gift_proto_956", b"check_send_gift_proto_956", "check_stamp_giftability_proto_1906", b"check_stamp_giftability_proto_1906", "checkchallenge_proto_600", b"checkchallenge_proto_600", "checkcontest_eligibility_proto_2150", b"checkcontest_eligibility_proto_2150", "choose_global_ticketed_event_variant_proto_1723", b"choose_global_ticketed_event_variant_proto_1723", "claim_event_pass_rewards_request_proto_3034", b"claim_event_pass_rewards_request_proto_3034", "claim_event_pass_rewards_request_proto_3035", b"claim_event_pass_rewards_request_proto_3035", "claim_ptc_linking_reward_proto_3003", b"claim_ptc_linking_reward_proto_3003", "claim_stampcollection_reward_proto_1904", b"claim_stampcollection_reward_proto_1904", "claim_vs_seeker_rewards_proto_1306", b"claim_vs_seeker_rewards_proto_1306", "claimcodename_request_proto_403", b"claimcodename_request_proto_403", "claimcontests_rewards_proto_2107", b"claimcontests_rewards_proto_2107", "client_telemetry_batch_proto_5018", b"client_telemetry_batch_proto_5018", "client_telemetry_settings_request_proto_5026", b"client_telemetry_settings_request_proto_5026", "client_telemetry_settings_request_proto_610001", b"client_telemetry_settings_request_proto_610001", "collect_daily_bonus_proto_138", b"collect_daily_bonus_proto_138", "combat_friend_request_proto_1006", b"combat_friend_request_proto_1006", "combat_sync_server_offset_proto_1917", b"combat_sync_server_offset_proto_1917", "complete_all_quest_proto_3063", b"complete_all_quest_proto_3063", "complete_bread_battle_proto_2473", b"complete_bread_battle_proto_2473", "complete_invasion_dialogue_proto_1201", b"complete_invasion_dialogue_proto_1201", "complete_milestone_proto_1806", b"complete_milestone_proto_1806", "complete_party_quest_proto_2309", b"complete_party_quest_proto_2309", "complete_pvp_battle_proto_3072", b"complete_pvp_battle_proto_3072", "complete_quest_proto_902", b"complete_quest_proto_902", "complete_quest_stampcard_proto_905", b"complete_quest_stampcard_proto_905", "complete_raid_battle_proto_3010", b"complete_raid_battle_proto_3010", "complete_snapshot_session_proto_1110", b"complete_snapshot_session_proto_1110", "complete_team_leader_battle_proto_3060", b"complete_team_leader_battle_proto_3060", "complete_tgr_battle_proto_3058", b"complete_tgr_battle_proto_3058", "complete_visit_page_quest_proto_3030", b"complete_visit_page_quest_proto_3030", "complete_vs_seeker_and_restartcharging_proto_1303", b"complete_vs_seeker_and_restartcharging_proto_1303", "complete_wild_snapshot_session_proto_1111", b"complete_wild_snapshot_session_proto_1111", "completecompetitive_season_proto_1305", b"completecompetitive_season_proto_1305", "confirm_photobomb_proto_1102", b"confirm_photobomb_proto_1102", "confirm_trading_proto_972", b"confirm_trading_proto_972", "consume_party_items_proto_3006", b"consume_party_items_proto_3006", "consume_stickers_proto_3009", b"consume_stickers_proto_3009", "contribute_party_item_proto_3005", b"contribute_party_item_proto_3005", "convertcandy_to_xlcandy_proto_171", b"convertcandy_to_xlcandy_proto_171", "create_buddy_multiplayer_session_proto_1456", b"create_buddy_multiplayer_session_proto_1456", "create_bug_report_proto_3088", b"create_bug_report_proto_3088", "create_event_rsvp_proto_3032", b"create_event_rsvp_proto_3032", "create_party_proto_2300", b"create_party_proto_2300", "create_pokemon_tag_proto_1717", b"create_pokemon_tag_proto_1717", "create_postcard_proto_1910", b"create_postcard_proto_1910", "create_route_draft_proto_1413", b"create_route_draft_proto_1413", "create_route_pin_proto_1726", b"create_route_pin_proto_1726", "create_route_shortcode_proto_1428", b"create_route_shortcode_proto_1428", "createcombatchallenge_proto_992", b"createcombatchallenge_proto_992", "daily_bonus_spawn_encounter_proto_3067", b"daily_bonus_spawn_encounter_proto_3067", "daily_encounter_proto_1602", b"daily_encounter_proto_1602", "day_night_poi_encounter_proto_3077", b"day_night_poi_encounter_proto_3077", "debug_egg_statistics_proto_3083", b"debug_egg_statistics_proto_3083", "debug_encounter_statistics_proto_3061", b"debug_encounter_statistics_proto_3061", "debug_resetdaily_mp_progress_proto_2471", b"debug_resetdaily_mp_progress_proto_2471", "debug_test_setup_proto_3085", b"debug_test_setup_proto_3085", "decline_combat_challenge_proto_996", b"decline_combat_challenge_proto_996", "delete_gift_from_inventory_proto_958", b"delete_gift_from_inventory_proto_958", "delete_gift_proto_953", b"delete_gift_proto_953", "delete_pokemon_tag_proto_1718", b"delete_pokemon_tag_proto_1718", "delete_postcard_proto_1912", b"delete_postcard_proto_1912", "delete_postcards_proto_1909", b"delete_postcards_proto_1909", "delete_routedraft_proto_1414", b"delete_routedraft_proto_1414", "dequeue_questdialogue_proto_909", b"dequeue_questdialogue_proto_909", "disk_encounter_proto_145", b"disk_encounter_proto_145", "download_gm_templates_request_proto_5004", b"download_gm_templates_request_proto_5004", "download_settings_action_proto_5", b"download_settings_action_proto_5", "download_url_request_proto_301", b"download_url_request_proto_301", "echo_proto_666", b"echo_proto_666", "edit_pokemon_tag_proto_1719", b"edit_pokemon_tag_proto_1719", "enable_campfire_for_referee_proto_6001", b"enable_campfire_for_referee_proto_6001", "encounter_photobomb_proto_1104", b"encounter_photobomb_proto_1104", "encounter_pokestopencounter_proto_2006", b"encounter_pokestopencounter_proto_2006", "encounter_proto_102", b"encounter_proto_102", "encounter_station_spawn_proto_2475", b"encounter_station_spawn_proto_2475", "encounter_tutorial_complete_proto_127", b"encounter_tutorial_complete_proto_127", "end_pokemon_training_proto_3054", b"end_pokemon_training_proto_3054", "enhance_bread_move_proto_2459", b"enhance_bread_move_proto_2459", "evolve_pokemon_proto_125", b"evolve_pokemon_proto_125", "favorite_route_proto_1427", b"favorite_route_proto_1427", "fetch_all_news_proto_816", b"fetch_all_news_proto_816", "fitness_update_proto_5024", b"fitness_update_proto_5024", "fitness_update_proto_640000", b"fitness_update_proto_640000", "flee_battle_encounter_proto_3084", b"flee_battle_encounter_proto_3084", "fort_deploy_proto_110", b"fort_deploy_proto_110", "fort_details_proto_104", b"fort_details_proto_104", "fort_recall_proto_111", b"fort_recall_proto_111", "fort_search_proto_101", b"fort_search_proto_101", "fuse_pokemon_request_proto_3017", b"fuse_pokemon_request_proto_3017", "generate_combat_challenge_id_proto_991", b"generate_combat_challenge_id_proto_991", "generategmap_signed_url_proto_5035", b"generategmap_signed_url_proto_5035", "geofence_update_proto_360000", b"geofence_update_proto_360000", "geofence_update_proto_5033", b"geofence_update_proto_5033", "get_action_log_request_801", b"get_action_log_request_801", "get_additional_pokemon_details_proto_1725", b"get_additional_pokemon_details_proto_1725", "get_adventure_sync_fitness_report_request_proto_640005", b"get_adventure_sync_fitness_report_request_proto_640005", "get_adventure_sync_progress_proto_230002", b"get_adventure_sync_progress_proto_230002", "get_adventure_sync_settings_request_proto_5046", b"get_adventure_sync_settings_request_proto_5046", "get_adventure_sync_settings_request_proto_640002", b"get_adventure_sync_settings_request_proto_640002", "get_app_request_token_redirect_u_r_l_platform_request_proto_600007", b"get_app_request_token_redirect_u_r_l_platform_request_proto_600007", "get_available_submissions_proto_5014", b"get_available_submissions_proto_5014", "get_battle_rejoin_status_proto_3062", b"get_battle_rejoin_status_proto_3062", "get_bonus_attracted_pokemon_proto_2350", b"get_bonus_attracted_pokemon_proto_2350", "get_bonuses_proto_2352", b"get_bonuses_proto_2352", "get_bread_lobby_details_proto_2457", b"get_bread_lobby_details_proto_2457", "get_buddy_history_proto_1355", b"get_buddy_history_proto_1355", "get_buddy_walked_proto_153", b"get_buddy_walked_proto_153", "get_change_pokemon_form_preview_request_proto_3021", b"get_change_pokemon_form_preview_request_proto_3021", "get_combat_challenge_proto_994", b"get_combat_challenge_proto_994", "get_combat_player_profile_proto_990", b"get_combat_player_profile_proto_990", "get_combat_results_proto_1003", b"get_combat_results_proto_1003", "get_contest_data_proto_2105", b"get_contest_data_proto_2105", "get_contest_entry_proto_2154", b"get_contest_entry_proto_2154", "get_contest_friend_entry_proto_2153", b"get_contest_friend_entry_proto_2153", "get_contests_unclaimed_rewards_proto_2106", b"get_contests_unclaimed_rewards_proto_2106", "get_daily_bonus_spawn_proto_3066", b"get_daily_bonus_spawn_proto_3066", "get_daily_encounter_proto_1601", b"get_daily_encounter_proto_1601", "get_eligible_combat_leagues_proto_2009", b"get_eligible_combat_leagues_proto_2009", "get_entered_contest_proto_2108", b"get_entered_contest_proto_2108", "get_event_rsvp_count_proto_3036", b"get_event_rsvp_count_proto_3036", "get_event_rsvps_proto_3031", b"get_event_rsvps_proto_3031", "get_fitness_report_proto_5025", b"get_fitness_report_proto_5025", "get_fitness_report_proto_640001", b"get_fitness_report_proto_640001", "get_fitness_rewards_proto_980", b"get_fitness_rewards_proto_980", "get_friendship_rewards_proto_955", b"get_friendship_rewards_proto_955", "get_hatched_eggs_proto_126", b"get_hatched_eggs_proto_126", "get_holoholo_inventory_proto_4", b"get_holoholo_inventory_proto_4", "get_inbox_proto_10105", b"get_inbox_proto_10105", "get_inbox_proto_809", b"get_inbox_proto_809", "get_incense_pokemon_proto_142", b"get_incense_pokemon_proto_142", "get_incense_recap_proto_2002", b"get_incense_recap_proto_2002", "get_inventory_proto_5005", b"get_inventory_proto_5005", "get_iris_social_scene_proto_3019", b"get_iris_social_scene_proto_3019", "get_local_time_proto_12", b"get_local_time_proto_12", "get_map_forts_proto_1401", b"get_map_forts_proto_1401", "get_map_objects_detail_for_campfire_proto_6013", b"get_map_objects_detail_for_campfire_proto_6013", "get_map_objects_for_campfire_proto_6012", b"get_map_objects_for_campfire_proto_6012", "get_map_objects_proto_106", b"get_map_objects_proto_106", "get_matchmaking_status_proto_1302", b"get_matchmaking_status_proto_1302", "get_mega_level_up_preview_proto_3080", b"get_mega_level_up_preview_proto_3080", "get_memento_list_proto_1913", b"get_memento_list_proto_1913", "get_milestones_preview_proto_1805", b"get_milestones_preview_proto_1805", "get_milestones_proto_1803", b"get_milestones_proto_1803", "get_mp_summary_proto_2467", b"get_mp_summary_proto_2467", "get_new_quests_proto_900", b"get_new_quests_proto_900", "get_nintendo_account_proto_1710", b"get_nintendo_account_proto_1710", "get_nintendo_o_auth2_url_proto_1712", b"get_nintendo_o_auth2_url_proto_1712", "get_non_remote_tradable_pokemon_proto_2604", b"get_non_remote_tradable_pokemon_proto_2604", "get_npc_combat_rewards_proto_1005", b"get_npc_combat_rewards_proto_1005", "get_num_pokemon_in_iris_social_scene_proto_6005", b"get_num_pokemon_in_iris_social_scene_proto_6005", "get_num_station_assists_proto_2476", b"get_num_station_assists_proto_2476", "get_outstanding_warnings_request_proto_200000", b"get_outstanding_warnings_request_proto_200000", "get_outstanding_warnings_request_proto_5039", b"get_outstanding_warnings_request_proto_5039", "get_party_proto_2304", b"get_party_proto_2304", "get_pending_remote_trade_proto_2605", b"get_pending_remote_trade_proto_2605", "get_photobomb_proto_1103", b"get_photobomb_proto_1103", "get_player_day_proto_9", b"get_player_day_proto_9", "get_player_pokemon_field_book_proto_3065", b"get_player_pokemon_field_book_proto_3065", "get_player_proto_2", b"get_player_proto_2", "get_player_raid_eligibility_proto_6003", b"get_player_raid_eligibility_proto_6003", "get_player_stamp_collections_proto_1901", b"get_player_stamp_collections_proto_1901", "get_player_status_proxy_proto_177", b"get_player_status_proxy_proto_177", "get_playergps_bookmarks_proto_22", b"get_playergps_bookmarks_proto_22", "get_pokemon_remote_trading_details_proto_2607", b"get_pokemon_remote_trading_details_proto_2607", "get_pokemon_size_leaderboard_entry_proto_2104", b"get_pokemon_size_leaderboard_entry_proto_2104", "get_pokemon_size_leaderboard_friend_entry_proto_2109", b"get_pokemon_size_leaderboard_friend_entry_proto_2109", "get_pokemon_tags_proto_1721", b"get_pokemon_tags_proto_1721", "get_pokemon_trading_cost_proto_2608", b"get_pokemon_trading_cost_proto_2608", "get_pokestop_encounter_proto_2005", b"get_pokestop_encounter_proto_2005", "get_published_routes_proto_1403", b"get_published_routes_proto_1403", "get_quest_details_proto_901", b"get_quest_details_proto_901", "get_quest_ui_proto_2008", b"get_quest_ui_proto_2008", "get_raid_details_proto_163", b"get_raid_details_proto_163", "get_raid_lobby_counter_proto_2011", b"get_raid_lobby_counter_proto_2011", "get_referral_code_proto_1800", b"get_referral_code_proto_1800", "get_remote_config_versions_proto_7", b"get_remote_config_versions_proto_7", "get_remote_tradable_pokemon_from_other_player_proto_2603", b"get_remote_tradable_pokemon_from_other_player_proto_2603", "get_reward_tiers_request_proto_310300", b"get_reward_tiers_request_proto_310300", "get_rocket_balloon_proto_1206", b"get_rocket_balloon_proto_1206", "get_route_by_short_code_proto_1429", b"get_route_by_short_code_proto_1429", "get_route_creations_proto_1424", b"get_route_creations_proto_1424", "get_route_draft_proto_1426", b"get_route_draft_proto_1426", "get_routes_proto_1405", b"get_routes_proto_1405", "get_save_for_later_entries_proto_2466", b"get_save_for_later_entries_proto_2466", "get_server_time_proto_11", b"get_server_time_proto_11", "get_station_info_proto_3051", b"get_station_info_proto_3051", "get_stationed_pokemon_details_proto_2462", b"get_stationed_pokemon_details_proto_2462", "get_suggested_players_social_proto_3055", b"get_suggested_players_social_proto_3055", "get_supply_balloon_proto_3068", b"get_supply_balloon_proto_3068", "get_survey_eligibility_proto_3025", b"get_survey_eligibility_proto_3025", "get_time_travel_information_proto_3076", b"get_time_travel_information_proto_3076", "get_timedgroup_challenge_proto_1700", b"get_timedgroup_challenge_proto_1700", "get_trading_proto_974", b"get_trading_proto_974", "get_unfuse_pokemon_preview_request_proto_3023", b"get_unfuse_pokemon_preview_request_proto_3023", "get_vps_event_proto_3000", b"get_vps_event_proto_3000", "get_vs_seeker_status_proto_1304", b"get_vs_seeker_status_proto_1304", "get_web_token_proto_1107", b"get_web_token_proto_1107", "get_web_token_proto_5045", b"get_web_token_proto_5045", "get_weekly_challenge_info_proto_3041", b"get_weekly_challenge_info_proto_3041", "getgame_config_versions_proto_21", b"getgame_config_versions_proto_21", "getgame_master_client_templates_proto_6", b"getgame_master_client_templates_proto_6", "getgeofenced_ad_proto_1820", b"getgeofenced_ad_proto_1820", "getgift_box_details_proto_952", b"getgift_box_details_proto_952", "getgmap_settings_proto_1105", b"getgmap_settings_proto_1105", "getgmap_settings_proto_5036", b"getgmap_settings_proto_5036", "getgym_badge_details_proto_812", b"getgym_badge_details_proto_812", "grant_expired_item_consolation_proto_3057", b"grant_expired_item_consolation_proto_3057", "gym_battle_attack_proto_158", b"gym_battle_attack_proto_158", "gym_deploy_proto_155", b"gym_deploy_proto_155", "gym_feed_pokemon_proto_164", b"gym_feed_pokemon_proto_164", "gym_start_session_proto_157", b"gym_start_session_proto_157", "gymget_info_proto_156", b"gymget_info_proto_156", "iap_get_active_subscriptions_request_proto_310201", b"iap_get_active_subscriptions_request_proto_310201", "iap_get_available_skus_and_balances_proto_310001", b"iap_get_available_skus_and_balances_proto_310001", "iap_get_available_skus_and_balances_proto_5020", b"iap_get_available_skus_and_balances_proto_5020", "iap_get_available_subscriptions_request_proto_310200", b"iap_get_available_subscriptions_request_proto_310200", "iap_get_user_request_proto_311101", b"iap_get_user_request_proto_311101", "iap_purchase_sku_proto_310000", b"iap_purchase_sku_proto_310000", "iap_purchase_sku_proto_5019", b"iap_purchase_sku_proto_5019", "iap_redeem_apple_receipt_proto_310101", b"iap_redeem_apple_receipt_proto_310101", "iap_redeem_apple_receipt_proto_5022", b"iap_redeem_apple_receipt_proto_5022", "iap_redeem_desktop_receipt_proto_310102", b"iap_redeem_desktop_receipt_proto_310102", "iap_redeem_desktop_receipt_proto_5023", b"iap_redeem_desktop_receipt_proto_5023", "iap_redeem_google_receipt_proto_310100", b"iap_redeem_google_receipt_proto_310100", "iap_redeem_google_receipt_proto_5021", b"iap_redeem_google_receipt_proto_5021", "iap_redeem_samsung_receipt_proto_310103", b"iap_redeem_samsung_receipt_proto_310103", "iap_redeem_samsung_receipt_proto_5037", b"iap_redeem_samsung_receipt_proto_5037", "iap_redeem_xsolla_receipt_request_proto_311100", b"iap_redeem_xsolla_receipt_request_proto_311100", "iap_setin_game_currency_exchange_rate_proto_310002", b"iap_setin_game_currency_exchange_rate_proto_310002", "incense_encounter_proto_143", b"incense_encounter_proto_143", "internal_accept_friendinvite_proto_10004", b"internal_accept_friendinvite_proto_10004", "internal_add_favorite_friend_request_10023", b"internal_add_favorite_friend_request_10023", "internal_add_login_action_proto_600000", b"internal_add_login_action_proto_600000", "internal_block_account_proto_10025", b"internal_block_account_proto_10025", "internal_cancel_friendinvite_proto_10003", b"internal_cancel_friendinvite_proto_10003", "internal_decline_friendinvite_proto_10005", b"internal_decline_friendinvite_proto_10005", "internal_dismiss_contact_list_update_request_20017", b"internal_dismiss_contact_list_update_request_20017", "internal_dismiss_outgoing_gameinvites_request_20012", b"internal_dismiss_outgoing_gameinvites_request_20012", "internal_gar_proxy_request_proto_600005", b"internal_gar_proxy_request_proto_600005", "internal_get_account_settings_proto_10022", b"internal_get_account_settings_proto_10022", "internal_get_client_feature_flags_request_20008", b"internal_get_client_feature_flags_request_20008", "internal_get_contact_listinfo_request_20016", b"internal_get_contact_listinfo_request_20016", "internal_get_facebook_friend_list_proto_10014", b"internal_get_facebook_friend_list_proto_10014", "internal_get_friend_code_proto_10013", b"internal_get_friend_code_proto_10013", "internal_get_friend_details_proto_10010", b"internal_get_friend_details_proto_10010", "internal_get_friend_details_proto_20007", b"internal_get_friend_details_proto_20007", "internal_get_friend_recommendation_request_20500", b"internal_get_friend_recommendation_request_20500", "internal_get_friends_list_proto_10006", b"internal_get_friends_list_proto_10006", "internal_get_outgoing_blocks_proto_10027", b"internal_get_outgoing_blocks_proto_10027", "internal_get_outgoing_friendinvites_proto_10007", b"internal_get_outgoing_friendinvites_proto_10007", "internal_get_photos_proto_10203", b"internal_get_photos_proto_10203", "internal_get_player_settings_proto_10017", b"internal_get_player_settings_proto_10017", "internal_get_player_settings_proto_818", b"internal_get_player_settings_proto_818", "internal_get_profile_request_20003", b"internal_get_profile_request_20003", "internal_get_signed_url_proto_10201", b"internal_get_signed_url_proto_10201", "internal_getincoming_friendinvites_proto_10008", b"internal_getincoming_friendinvites_proto_10008", "internal_getincoming_gameinvites_request_20010", b"internal_getincoming_gameinvites_request_20010", "internal_link_to_account_login_request_proto_600006", b"internal_link_to_account_login_request_proto_600006", "internal_list_friends_request_20006", b"internal_list_friends_request_20006", "internal_list_opt_out_notification_categories_request_proto_10106", b"internal_list_opt_out_notification_categories_request_proto_10106", "internal_notify_contact_list_friends_request_20018", b"internal_notify_contact_list_friends_request_20018", "internal_push_notification_registry_proto_10101", b"internal_push_notification_registry_proto_10101", "internal_refer_contact_list_friend_request_20015", b"internal_refer_contact_list_friend_request_20015", "internal_remove_favorite_friend_request_10024", b"internal_remove_favorite_friend_request_10024", "internal_remove_friend_proto_10009", b"internal_remove_friend_proto_10009", "internal_remove_login_action_proto_600001", b"internal_remove_login_action_proto_600001", "internal_replace_login_action_proto_600003", b"internal_replace_login_action_proto_600003", "internal_search_player_proto_10000", b"internal_search_player_proto_10000", "internal_send_contact_list_friendinvite_request_20014", b"internal_send_contact_list_friendinvite_request_20014", "internal_send_friendinvite_proto_10002", b"internal_send_friendinvite_proto_10002", "internal_set_account_settings_proto_10021", b"internal_set_account_settings_proto_10021", "internal_set_birthday_request_proto_600004", b"internal_set_birthday_request_proto_600004", "internal_setin_game_currency_exchange_rate_proto_5032", b"internal_setin_game_currency_exchange_rate_proto_5032", "internal_submitimage_proto_10202", b"internal_submitimage_proto_10202", "internal_sync_contact_list_request_20013", b"internal_sync_contact_list_request_20013", "internal_unblock_account_proto_10026", b"internal_unblock_account_proto_10026", "internal_update_facebook_status_proto_10015", b"internal_update_facebook_status_proto_10015", "internal_update_friendship_request_20002", b"internal_update_friendship_request_20002", "internal_update_notification_proto_10103", b"internal_update_notification_proto_10103", "internal_update_profile_request_20001", b"internal_update_profile_request_20001", "internal_updateincoming_gameinvite_request_20011", b"internal_updateincoming_gameinvite_request_20011", "internalinvite_facebook_friend_proto_10011", b"internalinvite_facebook_friend_proto_10011", "internalinvite_game_request_20004", b"internalinvite_game_request_20004", "internalis_account_blocked_proto_10028", b"internalis_account_blocked_proto_10028", "internalis_my_friend_proto_10012", b"internalis_my_friend_proto_10012", "invasion_encounter_proto_1204", b"invasion_encounter_proto_1204", "is_sku_available_proto_172", b"is_sku_available_proto_172", "join_bread_lobby_proto_2450", b"join_bread_lobby_proto_2450", "join_buddy_multiplayer_session_proto_1457", b"join_buddy_multiplayer_session_proto_1457", "join_lobby_proto_159", b"join_lobby_proto_159", "join_party_proto_2301", b"join_party_proto_2301", "kick_other_player_from_party_proto_3016", b"kick_other_player_from_party_proto_3016", "leave_breadlobby_proto_2455", b"leave_breadlobby_proto_2455", "leave_buddy_multiplayer_session_proto_1458", b"leave_buddy_multiplayer_session_proto_1458", "leave_party_proto_2303", b"leave_party_proto_2303", "leave_weekly_challenge_matchmaking_proto_3064", b"leave_weekly_challenge_matchmaking_proto_3064", "leavelobby_proto_160", b"leavelobby_proto_160", "level_up_rewards_proto_128", b"level_up_rewards_proto_128", "lift_user_age_gate_confirmation_proto_830", b"lift_user_age_gate_confirmation_proto_830", "like_route_pin_proto_1727", b"like_route_pin_proto_1727", "list_avatar_appearance_items_proto_410", b"list_avatar_appearance_items_proto_410", "list_avatar_customizations_proto_807", b"list_avatar_customizations_proto_807", "list_avatar_store_items_proto_409", b"list_avatar_store_items_proto_409", "list_friend_activities_request_proto_10029", b"list_friend_activities_request_proto_10029", "list_gym_badges_proto_811", b"list_gym_badges_proto_811", "list_route_badges_proto_1409", b"list_route_badges_proto_1409", "list_route_stamps_proto_1411", b"list_route_stamps_proto_1411", "location_ping_proto_360001", b"location_ping_proto_360001", "location_ping_proto_5034", b"location_ping_proto_5034", "loot_station_proto_2461", b"loot_station_proto_2461", "maps_client_telemetry_batch_proto_610000", b"maps_client_telemetry_batch_proto_610000", "mark_fieldbook_seen_request_proto_3078", b"mark_fieldbook_seen_request_proto_3078", "mark_read_news_article_proto_817", b"mark_read_news_article_proto_817", "mark_remote_tradable_proto_2602", b"mark_remote_tradable_proto_2602", "mark_save_for_later_proto_2463", b"mark_save_for_later_proto_2463", "mark_tutorial_complete_proto_406", b"mark_tutorial_complete_proto_406", "markmilestone_as_viewed_proto_1804", b"markmilestone_as_viewed_proto_1804", "mega_evolve_pokemon_proto_1502", b"mega_evolve_pokemon_proto_1502", "mega_level_up_proto_3079", b"mega_level_up_proto_3079", "natural_art_poi_encounter_proto_3070", b"natural_art_poi_encounter_proto_3070", "neutral_avatar_badge_reward_proto_450", b"neutral_avatar_badge_reward_proto_450", "nickname_pokemon_proto_149", b"nickname_pokemon_proto_149", "npc_open_gift_proto_2402", b"npc_open_gift_proto_2402", "npc_route_gift_proto_1423", b"npc_route_gift_proto_1423", "npc_send_gift_proto_2401", b"npc_send_gift_proto_2401", "npc_update_state_proto_2400", b"npc_update_state_proto_2400", "open_buddy_gift_proto_1353", b"open_buddy_gift_proto_1353", "open_combat_challenge_proto_993", b"open_combat_challenge_proto_993", "open_combat_session_proto_1000", b"open_combat_session_proto_1000", "open_gift_proto_951", b"open_gift_proto_951", "open_invasion_combat_session_proto_1202", b"open_invasion_combat_session_proto_1202", "open_npc_combat_session_proto_1007", b"open_npc_combat_session_proto_1007", "open_sponsored_gift_proto_1650", b"open_sponsored_gift_proto_1650", "open_supply_balloon_proto_3069", b"open_supply_balloon_proto_3069", "open_trading_proto_970", b"open_trading_proto_970", "party_send_dark_launch_logproto_2306", b"party_send_dark_launch_logproto_2306", "party_update_locationproto_2305", b"party_update_locationproto_2305", "ping_requestproto_5007", b"ping_requestproto_5007", "platform_fetch_newsfeed_request_5049", b"platform_fetch_newsfeed_request_5049", "platform_mark_newsfeed_read_request_5050", b"platform_mark_newsfeed_read_request_5050", "player_spawnablepokemonproto_2007", b"player_spawnablepokemonproto_2007", "playerprofileproto_121", b"playerprofileproto_121", "power_uppokestop_encounterproto_1900", b"power_uppokestop_encounterproto_1900", "prepare_bread_lobbyproto_2453", b"prepare_bread_lobbyproto_2453", "preview_contributeparty_itemproto_3015", b"preview_contributeparty_itemproto_3015", "process_tappableproto_1408", b"process_tappableproto_1408", "process_tappableproto_1416", b"process_tappableproto_1416", "processplayer_inboxproto_3024", b"processplayer_inboxproto_3024", "profanity_checkproto_1653", b"profanity_checkproto_1653", "progress_questproto_906", b"progress_questproto_906", "progress_routeproto_1406", b"progress_routeproto_1406", "propose_remote_tradeproto_2600", b"propose_remote_tradeproto_2600", "proxy_requestproto_5012", b"proxy_requestproto_5012", "purifypokemonproto_1205", b"purifypokemonproto_1205", "push_notification_registryproto_5000", b"push_notification_registryproto_5000", "quest_encounter_proto_904", b"quest_encounter_proto_904", "quit_combat_proto_1002", b"quit_combat_proto_1002", "rateroute_proto_1412", b"rateroute_proto_1412", "read_quest_dialog_proto_908", b"read_quest_dialog_proto_908", "reassign_player_proto_169", b"reassign_player_proto_169", "recallroute_draft_proto_1421", b"recallroute_draft_proto_1421", "recycle_item_proto_137", b"recycle_item_proto_137", "redeem_passcoderequest_proto_5006", b"redeem_passcoderequest_proto_5006", "redeem_ticket_gift_for_friend_proto_2001", b"redeem_ticket_gift_for_friend_proto_2001", "refresh_proximity_tokensrequest_proto_362000", b"refresh_proximity_tokensrequest_proto_362000", "register_background_device_action_proto_230000", b"register_background_device_action_proto_230000", "register_background_device_action_proto_8", b"register_background_device_action_proto_8", "register_sfidarequest_800", b"register_sfidarequest_800", "release_pokemon_proto_112", b"release_pokemon_proto_112", "release_stationed_pokemon_proto_2472", b"release_stationed_pokemon_proto_2472", "remote_gift_pingrequest_proto_1503", b"remote_gift_pingrequest_proto_1503", "remove_campfire_forreferee_proto_6002", b"remove_campfire_forreferee_proto_6002", "remove_login_action_proto_5009", b"remove_login_action_proto_5009", "remove_pokemon_size_leaderboard_entry_proto_2103", b"remove_pokemon_size_leaderboard_entry_proto_2103", "remove_ptc_login_action_proto_3007", b"remove_ptc_login_action_proto_3007", "remove_quest_proto_903", b"remove_quest_proto_903", "remove_save_for_later_proto_2465", b"remove_save_for_later_proto_2465", "replace_login_action_proto_5015", b"replace_login_action_proto_5015", "report_ad_feedbackrequest_1716", b"report_ad_feedbackrequest_1716", "report_ad_interaction_proto_1651", b"report_ad_interaction_proto_1651", "report_proximity_contactsrequest_proto_362001", b"report_proximity_contactsrequest_proto_362001", "report_station_proto_2470", b"report_station_proto_2470", "reportroute_proto_1415", b"reportroute_proto_1415", "respondremote_trade_proto_2606", b"respondremote_trade_proto_2606", "route_nearby_notif_shown_proto_1422", b"route_nearby_notif_shown_proto_1422", "route_update_seen_proto_1420", b"route_update_seen_proto_1420", "saturday_complete_proto_828", b"saturday_complete_proto_828", "saturdaystart_proto_827", b"saturdaystart_proto_827", "save_combat_player_preferences_proto_999", b"save_combat_player_preferences_proto_999", "save_player_preferences_proto_1652", b"save_player_preferences_proto_1652", "save_playersnapshot_proto_954", b"save_playersnapshot_proto_954", "savesocial_playersettings_proto_10016", b"savesocial_playersettings_proto_10016", "savesocial_playersettings_proto_959", b"savesocial_playersettings_proto_959", "savestamp_proto_1902", b"savestamp_proto_1902", "send_bread_battle_invitation_proto_1505", b"send_bread_battle_invitation_proto_1505", "send_event_rsvp_invitation_proto_3039", b"send_event_rsvp_invitation_proto_3039", "send_friend_invite_via_referral_code_proto_1802", b"send_friend_invite_via_referral_code_proto_1802", "send_friend_request_via_player_id_proto_2010", b"send_friend_request_via_player_id_proto_2010", "send_gift_proto_950", b"send_gift_proto_950", "send_party_invitation_proto_2310", b"send_party_invitation_proto_2310", "send_party_invitation_proto_3008", b"send_party_invitation_proto_3008", "send_probe_proto_1020", b"send_probe_proto_1020", "send_raid_invitation_proto_1504", b"send_raid_invitation_proto_1504", "set_avatar_item_as_viewed_proto_808", b"set_avatar_item_as_viewed_proto_808", "set_avatar_proto_404", b"set_avatar_proto_404", "set_birthday_request_proto_5048", b"set_birthday_request_proto_5048", "set_buddy_pokemon_proto_152", b"set_buddy_pokemon_proto_152", "set_contactsettings_proto_151", b"set_contactsettings_proto_151", "set_favorite_pokemon_proto_148", b"set_favorite_pokemon_proto_148", "set_friend_nickname_proto_957", b"set_friend_nickname_proto_957", "set_lobby_pokemon_proto_162", b"set_lobby_pokemon_proto_162", "set_lobby_visibility_proto_161", b"set_lobby_visibility_proto_161", "set_neutral_avatar_proto_408", b"set_neutral_avatar_proto_408", "set_player_team_proto_405", b"set_player_team_proto_405", "set_playerstatus_proto_20", b"set_playerstatus_proto_20", "set_pokemon_tags_for_pokemon_proto_1720", b"set_pokemon_tags_for_pokemon_proto_1720", "sfida_associate_request_822", b"sfida_associate_request_822", "sfida_capture_request_806", b"sfida_capture_request_806", "sfida_certification_request_802", b"sfida_certification_request_802", "sfida_check_pairing_request_823", b"sfida_check_pairing_request_823", "sfida_disassociate_request_824", b"sfida_disassociate_request_824", "sfida_dowser_request_805", b"sfida_dowser_request_805", "sfida_update_request_803", b"sfida_update_request_803", "skip_enter_referral_code_proto_1915", b"skip_enter_referral_code_proto_1915", "smart_glassessyncsettings_request_proto_3027", b"smart_glassessyncsettings_request_proto_3027", "softsfida_capture_proto_833", b"softsfida_capture_proto_833", "softsfida_location_update_proto_834", b"softsfida_location_update_proto_834", "softsfida_pause_proto_832", b"softsfida_pause_proto_832", "softsfida_recap_proto_835", b"softsfida_recap_proto_835", "softsfidastart_proto_831", b"softsfidastart_proto_831", "start_bread_battle_proto_2456", b"start_bread_battle_proto_2456", "start_incident_proto_1200", b"start_incident_proto_1200", "start_mp_walk_quest_proto_2458", b"start_mp_walk_quest_proto_2458", "start_party_proto_2302", b"start_party_proto_2302", "start_party_quest_proto_2308", b"start_party_quest_proto_2308", "start_pvp_battle_proto_3071", b"start_pvp_battle_proto_3071", "start_quest_incident_proto_907", b"start_quest_incident_proto_907", "start_raid_battle_proto_165", b"start_raid_battle_proto_165", "start_rocket_balloon_incident_proto_1207", b"start_rocket_balloon_incident_proto_1207", "start_route_proto_1404", b"start_route_proto_1404", "start_team_leader_battle_proto_3059", b"start_team_leader_battle_proto_3059", "start_tgr_battle_proto_3056", b"start_tgr_battle_proto_3056", "start_weekly_challenge_group_matchmaking_proto_3047", b"start_weekly_challenge_group_matchmaking_proto_3047", "station_pokemon_proto_2460", b"station_pokemon_proto_2460", "submit_combat_challenge_pokemons_proto_998", b"submit_combat_challenge_pokemons_proto_998", "submit_new_poi_proto_5011", b"submit_new_poi_proto_5011", "submit_route_draft_proto_1402", b"submit_route_draft_proto_1402", "sync_battle_inventory_proto_3011", b"sync_battle_inventory_proto_3011", "sync_weekly_challenge_matchmakingstatus_proto_3048", b"sync_weekly_challenge_matchmakingstatus_proto_3048", "titan_async_file_upload_complete_proto_620402", b"titan_async_file_upload_complete_proto_620402", "titan_generate_gmap_signed_url_proto_620300", b"titan_generate_gmap_signed_url_proto_620300", "titan_get_a_r_mapping_settings_proto_620403", b"titan_get_a_r_mapping_settings_proto_620403", "titan_get_available_submissions_proto_620001", b"titan_get_available_submissions_proto_620001", "titan_get_gmap_settings_proto_620301", b"titan_get_gmap_settings_proto_620301", "titan_get_grapeshot_upload_url_proto_620401", b"titan_get_grapeshot_upload_url_proto_620401", "titan_get_image_gallery_settings_proto_620502", b"titan_get_image_gallery_settings_proto_620502", "titan_get_images_for_poi_proto_620500", b"titan_get_images_for_poi_proto_620500", "titan_get_player_submission_validation_settings_proto_620003", b"titan_get_player_submission_validation_settings_proto_620003", "titan_get_pois_in_radius_proto_620601", b"titan_get_pois_in_radius_proto_620601", "titan_poi_video_submission_metadata_proto_620400", b"titan_poi_video_submission_metadata_proto_620400", "titan_submit_new_poi_proto_620000", b"titan_submit_new_poi_proto_620000", "titan_submit_player_image_vote_for_poi_proto_620501", b"titan_submit_player_image_vote_for_poi_proto_620501", "titan_submit_poi_category_vote_record_proto_620106", b"titan_submit_poi_category_vote_record_proto_620106", "titan_submit_poi_image_proto_5041", b"titan_submit_poi_image_proto_5041", "titan_submit_poi_image_proto_620100", b"titan_submit_poi_image_proto_620100", "titan_submit_poi_location_update_proto_5043", b"titan_submit_poi_location_update_proto_5043", "titan_submit_poi_location_update_proto_620102", b"titan_submit_poi_location_update_proto_620102", "titan_submit_poitakedown_request_proto_5044", b"titan_submit_poitakedown_request_proto_5044", "titan_submit_poitakedown_request_proto_620103", b"titan_submit_poitakedown_request_proto_620103", "titan_submit_poitext_metadata_update_proto_5042", b"titan_submit_poitext_metadata_update_proto_5042", "titan_submit_poitext_metadata_update_proto_620101", b"titan_submit_poitext_metadata_update_proto_620101", "titan_submit_sponsor_poi_location_update_proto_620105", b"titan_submit_sponsor_poi_location_update_proto_620105", "titan_submit_sponsor_poi_report_proto_620104", b"titan_submit_sponsor_poi_report_proto_620104", "transfer_contest_entry_proto_2152", b"transfer_contest_entry_proto_2152", "transfer_pokemon_size_leaderboard_entry_proto_2102", b"transfer_pokemon_size_leaderboard_entry_proto_2102", "transfer_pokemonto_pokemon_home_proto_1713", b"transfer_pokemonto_pokemon_home_proto_1713", "unfuse_pokemon_request_proto_3018", b"unfuse_pokemon_request_proto_3018", "unlink_nintendo_account_proto_1711", b"unlink_nintendo_account_proto_1711", "unlock_pokemon_move_proto_1004", b"unlock_pokemon_move_proto_1004", "unlock_temporary_evolution_level_proto_1506", b"unlock_temporary_evolution_level_proto_1506", "update_adventure_sync_fitness_request_proto_640004", b"update_adventure_sync_fitness_request_proto_640004", "update_adventure_sync_settings_request_proto_5047", b"update_adventure_sync_settings_request_proto_5047", "update_adventure_sync_settings_request_proto_640003", b"update_adventure_sync_settings_request_proto_640003", "update_breadcrumb_history_request_proto_361000", b"update_breadcrumb_history_request_proto_361000", "update_bulk_player_location_request_proto_360002", b"update_bulk_player_location_request_proto_360002", "update_combat_proto_1001", b"update_combat_proto_1001", "update_contest_entry_proto_2151", b"update_contest_entry_proto_2151", "update_event_rsvp_selection_proto_3040", b"update_event_rsvp_selection_proto_3040", "update_field_book_post_catch_pokemon_proto_3075", b"update_field_book_post_catch_pokemon_proto_3075", "update_invasion_battle_proto_1203", b"update_invasion_battle_proto_1203", "update_iris_social_scene_proto_3020", b"update_iris_social_scene_proto_3020", "update_notification_proto_5002", b"update_notification_proto_5002", "update_player_gps_bookmarks_proto_23", b"update_player_gps_bookmarks_proto_23", "update_pokemon_size_leaderboard_entry_proto_2101", b"update_pokemon_size_leaderboard_entry_proto_2101", "update_postcard_proto_1911", b"update_postcard_proto_1911", "update_route_draft_proto_1400", b"update_route_draft_proto_1400", "update_survey_eligibility_proto_3026", b"update_survey_eligibility_proto_3026", "update_trading_proto_971", b"update_trading_proto_971", "update_vps_event_proto_3001", b"update_vps_event_proto_3001", "upgrade_pokemon_proto_147", b"upgrade_pokemon_proto_147", "upload_combat_client_log_proto_1916", b"upload_combat_client_log_proto_1916", "upload_raid_client_log_proto_1914", b"upload_raid_client_log_proto_1914", "use_incense_action_proto_141", b"use_incense_action_proto_141", "use_item_battle_boost_proto_174", b"use_item_battle_boost_proto_174", "use_item_bulk_heal_proto_173", b"use_item_bulk_heal_proto_173", "use_item_capture_proto_114", b"use_item_capture_proto_114", "use_item_egg_incubator_proto_140", b"use_item_egg_incubator_proto_140", "use_item_encounter_proto_154", b"use_item_encounter_proto_154", "use_item_lucky_friend_applicator_proto_175", b"use_item_lucky_friend_applicator_proto_175", "use_item_move_reroll_proto_813", b"use_item_move_reroll_proto_813", "use_item_mp_replenish_proto_2468", b"use_item_mp_replenish_proto_2468", "use_item_potion_proto_113", b"use_item_potion_proto_113", "use_item_rare_candy_proto_814", b"use_item_rare_candy_proto_814", "use_item_revive_proto_116", b"use_item_revive_proto_116", "use_item_stardust_boost_proto_168", b"use_item_stardust_boost_proto_168", "use_item_stat_increase_proto_176", b"use_item_stat_increase_proto_176", "use_item_xp_boost_proto_139", b"use_item_xp_boost_proto_139", "use_non_combat_move_request_proto_2014", b"use_non_combat_move_request_proto_2014", "use_save_for_later_proto_2464", b"use_save_for_later_proto_2464", "verify_challenge_proto_601", b"verify_challenge_proto_601", "view_route_pin_proto_1728", b"view_route_pin_proto_1728", "vs_seeker_reward_encounter_proto_1307", b"vs_seeker_reward_encounter_proto_1307", "vs_seeker_start_matchmaking_proto_1300", b"vs_seeker_start_matchmaking_proto_1300", "waina_get_rewards_request_825", b"waina_get_rewards_request_825", "waina_submit_sleep_data_request_826", b"waina_submit_sleep_data_request_826"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal["accept_combat_challenge_proto_995", b"accept_combat_challenge_proto_995", "acknowledge_punishment_proto_10", b"acknowledge_punishment_proto_10", "acknowledge_view_latest_incense_recap_proto_2003", b"acknowledge_view_latest_incense_recap_proto_2003", "acknowledge_warnings_request_proto_200001", b"acknowledge_warnings_request_proto_200001", "acknowledge_warnings_request_proto_5040", b"acknowledge_warnings_request_proto_5040", "activate_vs_seeker_proto_1308", b"activate_vs_seeker_proto_1308", "add_fort_modifier_proto_144", b"add_fort_modifier_proto_144", "add_loginaction_proto_5008", b"add_loginaction_proto_5008", "add_ptc_loginaction_proto_3002", b"add_ptc_loginaction_proto_3002", "add_referrer_proto_1801", b"add_referrer_proto_1801", "age_confirmation_proto_3052", b"age_confirmation_proto_3052", "appeal_route_proto_1425", b"appeal_route_proto_1425", "asset_digest_request_proto_300", b"asset_digest_request_proto_300", "asset_version_proto_302", b"asset_version_proto_302", "attack_raid_battle_proto_166", b"attack_raid_battle_proto_166", "attracted_pokemon_encounter_proto_1417", b"attracted_pokemon_encounter_proto_1417", "auth_register_background_deviceaction_proto_5028", b"auth_register_background_deviceaction_proto_5028", "award_free_raid_ticket_proto_815", b"award_free_raid_ticket_proto_815", "badge_reward_encounter_request_proto_2360", b"badge_reward_encounter_request_proto_2360", "beluga_transaction_complete_proto_820", b"beluga_transaction_complete_proto_820", "beluga_transaction_start_proto_819", b"beluga_transaction_start_proto_819", "boot_raid_proto_2004", b"boot_raid_proto_2004", "buddy_feeding_proto_1352", b"buddy_feeding_proto_1352", "buddy_map_proto_1350", b"buddy_map_proto_1350", "buddy_petting_proto_1354", b"buddy_petting_proto_1354", "buddy_stats_proto_1351", b"buddy_stats_proto_1351", "butterfly_collector_reward_encounter_proto_request_1724", b"butterfly_collector_reward_encounter_proto_request_1724", "can_report_route_proto_1418", b"can_report_route_proto_1418", "cancel_event_rsvp_proto_3033", b"cancel_event_rsvp_proto_3033", "cancel_matchmaking_proto_1301", b"cancel_matchmaking_proto_1301", "cancel_party_invite_proto_2312", b"cancel_party_invite_proto_2312", "cancel_remote_trade_proto_2601", b"cancel_remote_trade_proto_2601", "cancel_route_proto_1410", b"cancel_route_proto_1410", "cancel_trading_proto_973", b"cancel_trading_proto_973", "cancelcombatchallenge_proto_997", b"cancelcombatchallenge_proto_997", "canclaim_ptc_reward_action_proto_3004", b"canclaim_ptc_reward_action_proto_3004", "catch_pokemon_proto_103", b"catch_pokemon_proto_103", "change_pokemon_form_proto_1722", b"change_pokemon_form_proto_1722", "change_stampcollection_player_data_proto_1905", b"change_stampcollection_player_data_proto_1905", "change_stat_increase_goal_proto_3053", b"change_stat_increase_goal_proto_3053", "change_team_proto_1106", b"change_team_proto_1106", "check_awarded_badges_proto_129", b"check_awarded_badges_proto_129", "check_gifting_eligibility_proto_2000", b"check_gifting_eligibility_proto_2000", "check_photobomb_proto_1101", b"check_photobomb_proto_1101", "check_pokemon_size_leaderboard_eligibility_proto_2100", b"check_pokemon_size_leaderboard_eligibility_proto_2100", "check_send_gift_proto_956", b"check_send_gift_proto_956", "check_stamp_giftability_proto_1906", b"check_stamp_giftability_proto_1906", "checkchallenge_proto_600", b"checkchallenge_proto_600", "checkcontest_eligibility_proto_2150", b"checkcontest_eligibility_proto_2150", "choose_global_ticketed_event_variant_proto_1723", b"choose_global_ticketed_event_variant_proto_1723", "claim_event_pass_rewards_request_proto_3034", b"claim_event_pass_rewards_request_proto_3034", "claim_event_pass_rewards_request_proto_3035", b"claim_event_pass_rewards_request_proto_3035", "claim_ptc_linking_reward_proto_3003", b"claim_ptc_linking_reward_proto_3003", "claim_stampcollection_reward_proto_1904", b"claim_stampcollection_reward_proto_1904", "claim_vs_seeker_rewards_proto_1306", b"claim_vs_seeker_rewards_proto_1306", "claimcodename_request_proto_403", b"claimcodename_request_proto_403", "claimcontests_rewards_proto_2107", b"claimcontests_rewards_proto_2107", "client_telemetry_batch_proto_5018", b"client_telemetry_batch_proto_5018", "client_telemetry_settings_request_proto_5026", b"client_telemetry_settings_request_proto_5026", "client_telemetry_settings_request_proto_610001", b"client_telemetry_settings_request_proto_610001", "collect_daily_bonus_proto_138", b"collect_daily_bonus_proto_138", "combat_friend_request_proto_1006", b"combat_friend_request_proto_1006", "combat_sync_server_offset_proto_1917", b"combat_sync_server_offset_proto_1917", "complete_all_quest_proto_3063", b"complete_all_quest_proto_3063", "complete_bread_battle_proto_2473", b"complete_bread_battle_proto_2473", "complete_invasion_dialogue_proto_1201", b"complete_invasion_dialogue_proto_1201", "complete_milestone_proto_1806", b"complete_milestone_proto_1806", "complete_party_quest_proto_2309", b"complete_party_quest_proto_2309", "complete_pvp_battle_proto_3072", b"complete_pvp_battle_proto_3072", "complete_quest_proto_902", b"complete_quest_proto_902", "complete_quest_stampcard_proto_905", b"complete_quest_stampcard_proto_905", "complete_raid_battle_proto_3010", b"complete_raid_battle_proto_3010", "complete_snapshot_session_proto_1110", b"complete_snapshot_session_proto_1110", "complete_team_leader_battle_proto_3060", b"complete_team_leader_battle_proto_3060", "complete_tgr_battle_proto_3058", b"complete_tgr_battle_proto_3058", "complete_visit_page_quest_proto_3030", b"complete_visit_page_quest_proto_3030", "complete_vs_seeker_and_restartcharging_proto_1303", b"complete_vs_seeker_and_restartcharging_proto_1303", "complete_wild_snapshot_session_proto_1111", b"complete_wild_snapshot_session_proto_1111", "completecompetitive_season_proto_1305", b"completecompetitive_season_proto_1305", "confirm_photobomb_proto_1102", b"confirm_photobomb_proto_1102", "confirm_trading_proto_972", b"confirm_trading_proto_972", "consume_party_items_proto_3006", b"consume_party_items_proto_3006", "consume_stickers_proto_3009", b"consume_stickers_proto_3009", "contribute_party_item_proto_3005", b"contribute_party_item_proto_3005", "convertcandy_to_xlcandy_proto_171", b"convertcandy_to_xlcandy_proto_171", "create_buddy_multiplayer_session_proto_1456", b"create_buddy_multiplayer_session_proto_1456", "create_bug_report_proto_3088", b"create_bug_report_proto_3088", "create_event_rsvp_proto_3032", b"create_event_rsvp_proto_3032", "create_party_proto_2300", b"create_party_proto_2300", "create_pokemon_tag_proto_1717", b"create_pokemon_tag_proto_1717", "create_postcard_proto_1910", b"create_postcard_proto_1910", "create_route_draft_proto_1413", b"create_route_draft_proto_1413", "create_route_pin_proto_1726", b"create_route_pin_proto_1726", "create_route_shortcode_proto_1428", b"create_route_shortcode_proto_1428", "createcombatchallenge_proto_992", b"createcombatchallenge_proto_992", "daily_bonus_spawn_encounter_proto_3067", b"daily_bonus_spawn_encounter_proto_3067", "daily_encounter_proto_1602", b"daily_encounter_proto_1602", "day_night_poi_encounter_proto_3077", b"day_night_poi_encounter_proto_3077", "debug_egg_statistics_proto_3083", b"debug_egg_statistics_proto_3083", "debug_encounter_statistics_proto_3061", b"debug_encounter_statistics_proto_3061", "debug_resetdaily_mp_progress_proto_2471", b"debug_resetdaily_mp_progress_proto_2471", "debug_test_setup_proto_3085", b"debug_test_setup_proto_3085", "decline_combat_challenge_proto_996", b"decline_combat_challenge_proto_996", "delete_gift_from_inventory_proto_958", b"delete_gift_from_inventory_proto_958", "delete_gift_proto_953", b"delete_gift_proto_953", "delete_pokemon_tag_proto_1718", b"delete_pokemon_tag_proto_1718", "delete_postcard_proto_1912", b"delete_postcard_proto_1912", "delete_postcards_proto_1909", b"delete_postcards_proto_1909", "delete_routedraft_proto_1414", b"delete_routedraft_proto_1414", "dequeue_questdialogue_proto_909", b"dequeue_questdialogue_proto_909", "disk_encounter_proto_145", b"disk_encounter_proto_145", "download_gm_templates_request_proto_5004", b"download_gm_templates_request_proto_5004", "download_settings_action_proto_5", b"download_settings_action_proto_5", "download_url_request_proto_301", b"download_url_request_proto_301", "echo_proto_666", b"echo_proto_666", "edit_pokemon_tag_proto_1719", b"edit_pokemon_tag_proto_1719", "enable_campfire_for_referee_proto_6001", b"enable_campfire_for_referee_proto_6001", "encounter_photobomb_proto_1104", b"encounter_photobomb_proto_1104", "encounter_pokestopencounter_proto_2006", b"encounter_pokestopencounter_proto_2006", "encounter_proto_102", b"encounter_proto_102", "encounter_station_spawn_proto_2475", b"encounter_station_spawn_proto_2475", "encounter_tutorial_complete_proto_127", b"encounter_tutorial_complete_proto_127", "end_pokemon_training_proto_3054", b"end_pokemon_training_proto_3054", "enhance_bread_move_proto_2459", b"enhance_bread_move_proto_2459", "evolve_pokemon_proto_125", b"evolve_pokemon_proto_125", "favorite_route_proto_1427", b"favorite_route_proto_1427", "fetch_all_news_proto_816", b"fetch_all_news_proto_816", "fitness_update_proto_5024", b"fitness_update_proto_5024", "fitness_update_proto_640000", b"fitness_update_proto_640000", "flee_battle_encounter_proto_3084", b"flee_battle_encounter_proto_3084", "fort_deploy_proto_110", b"fort_deploy_proto_110", "fort_details_proto_104", b"fort_details_proto_104", "fort_recall_proto_111", b"fort_recall_proto_111", "fort_search_proto_101", b"fort_search_proto_101", "fuse_pokemon_request_proto_3017", b"fuse_pokemon_request_proto_3017", "generate_combat_challenge_id_proto_991", b"generate_combat_challenge_id_proto_991", "generategmap_signed_url_proto_5035", b"generategmap_signed_url_proto_5035", "geofence_update_proto_360000", b"geofence_update_proto_360000", "geofence_update_proto_5033", b"geofence_update_proto_5033", "get_action_log_request_801", b"get_action_log_request_801", "get_additional_pokemon_details_proto_1725", b"get_additional_pokemon_details_proto_1725", "get_adventure_sync_fitness_report_request_proto_640005", b"get_adventure_sync_fitness_report_request_proto_640005", "get_adventure_sync_progress_proto_230002", b"get_adventure_sync_progress_proto_230002", "get_adventure_sync_settings_request_proto_5046", b"get_adventure_sync_settings_request_proto_5046", "get_adventure_sync_settings_request_proto_640002", b"get_adventure_sync_settings_request_proto_640002", "get_app_request_token_redirect_u_r_l_platform_request_proto_600007", b"get_app_request_token_redirect_u_r_l_platform_request_proto_600007", "get_available_submissions_proto_5014", b"get_available_submissions_proto_5014", "get_battle_rejoin_status_proto_3062", b"get_battle_rejoin_status_proto_3062", "get_bonus_attracted_pokemon_proto_2350", b"get_bonus_attracted_pokemon_proto_2350", "get_bonuses_proto_2352", b"get_bonuses_proto_2352", "get_bread_lobby_details_proto_2457", b"get_bread_lobby_details_proto_2457", "get_buddy_history_proto_1355", b"get_buddy_history_proto_1355", "get_buddy_walked_proto_153", b"get_buddy_walked_proto_153", "get_change_pokemon_form_preview_request_proto_3021", b"get_change_pokemon_form_preview_request_proto_3021", "get_combat_challenge_proto_994", b"get_combat_challenge_proto_994", "get_combat_player_profile_proto_990", b"get_combat_player_profile_proto_990", "get_combat_results_proto_1003", b"get_combat_results_proto_1003", "get_contest_data_proto_2105", b"get_contest_data_proto_2105", "get_contest_entry_proto_2154", b"get_contest_entry_proto_2154", "get_contest_friend_entry_proto_2153", b"get_contest_friend_entry_proto_2153", "get_contests_unclaimed_rewards_proto_2106", b"get_contests_unclaimed_rewards_proto_2106", "get_daily_bonus_spawn_proto_3066", b"get_daily_bonus_spawn_proto_3066", "get_daily_encounter_proto_1601", b"get_daily_encounter_proto_1601", "get_eligible_combat_leagues_proto_2009", b"get_eligible_combat_leagues_proto_2009", "get_entered_contest_proto_2108", b"get_entered_contest_proto_2108", "get_event_rsvp_count_proto_3036", b"get_event_rsvp_count_proto_3036", "get_event_rsvps_proto_3031", b"get_event_rsvps_proto_3031", "get_fitness_report_proto_5025", b"get_fitness_report_proto_5025", "get_fitness_report_proto_640001", b"get_fitness_report_proto_640001", "get_fitness_rewards_proto_980", b"get_fitness_rewards_proto_980", "get_friendship_rewards_proto_955", b"get_friendship_rewards_proto_955", "get_hatched_eggs_proto_126", b"get_hatched_eggs_proto_126", "get_holoholo_inventory_proto_4", b"get_holoholo_inventory_proto_4", "get_inbox_proto_10105", b"get_inbox_proto_10105", "get_inbox_proto_809", b"get_inbox_proto_809", "get_incense_pokemon_proto_142", b"get_incense_pokemon_proto_142", "get_incense_recap_proto_2002", b"get_incense_recap_proto_2002", "get_inventory_proto_5005", b"get_inventory_proto_5005", "get_iris_social_scene_proto_3019", b"get_iris_social_scene_proto_3019", "get_local_time_proto_12", b"get_local_time_proto_12", "get_map_forts_proto_1401", b"get_map_forts_proto_1401", "get_map_objects_detail_for_campfire_proto_6013", b"get_map_objects_detail_for_campfire_proto_6013", "get_map_objects_for_campfire_proto_6012", b"get_map_objects_for_campfire_proto_6012", "get_map_objects_proto_106", b"get_map_objects_proto_106", "get_matchmaking_status_proto_1302", b"get_matchmaking_status_proto_1302", "get_mega_level_up_preview_proto_3080", b"get_mega_level_up_preview_proto_3080", "get_memento_list_proto_1913", b"get_memento_list_proto_1913", "get_milestones_preview_proto_1805", b"get_milestones_preview_proto_1805", "get_milestones_proto_1803", b"get_milestones_proto_1803", "get_mp_summary_proto_2467", b"get_mp_summary_proto_2467", "get_new_quests_proto_900", b"get_new_quests_proto_900", "get_nintendo_account_proto_1710", b"get_nintendo_account_proto_1710", "get_nintendo_o_auth2_url_proto_1712", b"get_nintendo_o_auth2_url_proto_1712", "get_non_remote_tradable_pokemon_proto_2604", b"get_non_remote_tradable_pokemon_proto_2604", "get_npc_combat_rewards_proto_1005", b"get_npc_combat_rewards_proto_1005", "get_num_pokemon_in_iris_social_scene_proto_6005", b"get_num_pokemon_in_iris_social_scene_proto_6005", "get_num_station_assists_proto_2476", b"get_num_station_assists_proto_2476", "get_outstanding_warnings_request_proto_200000", b"get_outstanding_warnings_request_proto_200000", "get_outstanding_warnings_request_proto_5039", b"get_outstanding_warnings_request_proto_5039", "get_party_proto_2304", b"get_party_proto_2304", "get_pending_remote_trade_proto_2605", b"get_pending_remote_trade_proto_2605", "get_photobomb_proto_1103", b"get_photobomb_proto_1103", "get_player_day_proto_9", b"get_player_day_proto_9", "get_player_pokemon_field_book_proto_3065", b"get_player_pokemon_field_book_proto_3065", "get_player_proto_2", b"get_player_proto_2", "get_player_raid_eligibility_proto_6003", b"get_player_raid_eligibility_proto_6003", "get_player_stamp_collections_proto_1901", b"get_player_stamp_collections_proto_1901", "get_player_status_proxy_proto_177", b"get_player_status_proxy_proto_177", "get_playergps_bookmarks_proto_22", b"get_playergps_bookmarks_proto_22", "get_pokemon_remote_trading_details_proto_2607", b"get_pokemon_remote_trading_details_proto_2607", "get_pokemon_size_leaderboard_entry_proto_2104", b"get_pokemon_size_leaderboard_entry_proto_2104", "get_pokemon_size_leaderboard_friend_entry_proto_2109", b"get_pokemon_size_leaderboard_friend_entry_proto_2109", "get_pokemon_tags_proto_1721", b"get_pokemon_tags_proto_1721", "get_pokemon_trading_cost_proto_2608", b"get_pokemon_trading_cost_proto_2608", "get_pokestop_encounter_proto_2005", b"get_pokestop_encounter_proto_2005", "get_published_routes_proto_1403", b"get_published_routes_proto_1403", "get_quest_details_proto_901", b"get_quest_details_proto_901", "get_quest_ui_proto_2008", b"get_quest_ui_proto_2008", "get_raid_details_proto_163", b"get_raid_details_proto_163", "get_raid_lobby_counter_proto_2011", b"get_raid_lobby_counter_proto_2011", "get_referral_code_proto_1800", b"get_referral_code_proto_1800", "get_remote_config_versions_proto_7", b"get_remote_config_versions_proto_7", "get_remote_tradable_pokemon_from_other_player_proto_2603", b"get_remote_tradable_pokemon_from_other_player_proto_2603", "get_reward_tiers_request_proto_310300", b"get_reward_tiers_request_proto_310300", "get_rocket_balloon_proto_1206", b"get_rocket_balloon_proto_1206", "get_route_by_short_code_proto_1429", b"get_route_by_short_code_proto_1429", "get_route_creations_proto_1424", b"get_route_creations_proto_1424", "get_route_draft_proto_1426", b"get_route_draft_proto_1426", "get_routes_proto_1405", b"get_routes_proto_1405", "get_save_for_later_entries_proto_2466", b"get_save_for_later_entries_proto_2466", "get_server_time_proto_11", b"get_server_time_proto_11", "get_station_info_proto_3051", b"get_station_info_proto_3051", "get_stationed_pokemon_details_proto_2462", b"get_stationed_pokemon_details_proto_2462", "get_suggested_players_social_proto_3055", b"get_suggested_players_social_proto_3055", "get_supply_balloon_proto_3068", b"get_supply_balloon_proto_3068", "get_survey_eligibility_proto_3025", b"get_survey_eligibility_proto_3025", "get_time_travel_information_proto_3076", b"get_time_travel_information_proto_3076", "get_timedgroup_challenge_proto_1700", b"get_timedgroup_challenge_proto_1700", "get_trading_proto_974", b"get_trading_proto_974", "get_unfuse_pokemon_preview_request_proto_3023", b"get_unfuse_pokemon_preview_request_proto_3023", "get_vps_event_proto_3000", b"get_vps_event_proto_3000", "get_vs_seeker_status_proto_1304", b"get_vs_seeker_status_proto_1304", "get_web_token_proto_1107", b"get_web_token_proto_1107", "get_web_token_proto_5045", b"get_web_token_proto_5045", "get_weekly_challenge_info_proto_3041", b"get_weekly_challenge_info_proto_3041", "getcombat_downscaled_stats_proto_3090", b"getcombat_downscaled_stats_proto_3090", "getgame_config_versions_proto_21", b"getgame_config_versions_proto_21", "getgame_master_client_templates_proto_6", b"getgame_master_client_templates_proto_6", "getgeofenced_ad_proto_1820", b"getgeofenced_ad_proto_1820", "getgift_box_details_proto_952", b"getgift_box_details_proto_952", "getgmap_settings_proto_1105", b"getgmap_settings_proto_1105", "getgmap_settings_proto_5036", b"getgmap_settings_proto_5036", "getgym_badge_details_proto_812", b"getgym_badge_details_proto_812", "grant_expired_item_consolation_proto_3057", b"grant_expired_item_consolation_proto_3057", "gym_battle_attack_proto_158", b"gym_battle_attack_proto_158", "gym_deploy_proto_155", b"gym_deploy_proto_155", "gym_feed_pokemon_proto_164", b"gym_feed_pokemon_proto_164", "gym_start_session_proto_157", b"gym_start_session_proto_157", "gymget_info_proto_156", b"gymget_info_proto_156", "iap_get_active_subscriptions_request_proto_310201", b"iap_get_active_subscriptions_request_proto_310201", "iap_get_available_skus_and_balances_proto_310001", b"iap_get_available_skus_and_balances_proto_310001", "iap_get_available_skus_and_balances_proto_5020", b"iap_get_available_skus_and_balances_proto_5020", "iap_get_available_subscriptions_request_proto_310200", b"iap_get_available_subscriptions_request_proto_310200", "iap_get_user_request_proto_311101", b"iap_get_user_request_proto_311101", "iap_purchase_sku_proto_310000", b"iap_purchase_sku_proto_310000", "iap_purchase_sku_proto_5019", b"iap_purchase_sku_proto_5019", "iap_redeem_apple_receipt_proto_310101", b"iap_redeem_apple_receipt_proto_310101", "iap_redeem_apple_receipt_proto_5022", b"iap_redeem_apple_receipt_proto_5022", "iap_redeem_desktop_receipt_proto_310102", b"iap_redeem_desktop_receipt_proto_310102", "iap_redeem_desktop_receipt_proto_5023", b"iap_redeem_desktop_receipt_proto_5023", "iap_redeem_google_receipt_proto_310100", b"iap_redeem_google_receipt_proto_310100", "iap_redeem_google_receipt_proto_5021", b"iap_redeem_google_receipt_proto_5021", "iap_redeem_samsung_receipt_proto_310103", b"iap_redeem_samsung_receipt_proto_310103", "iap_redeem_samsung_receipt_proto_5037", b"iap_redeem_samsung_receipt_proto_5037", "iap_redeem_xsolla_receipt_request_proto_311100", b"iap_redeem_xsolla_receipt_request_proto_311100", "iap_setin_game_currency_exchange_rate_proto_310002", b"iap_setin_game_currency_exchange_rate_proto_310002", "incense_encounter_proto_143", b"incense_encounter_proto_143", "internal_accept_friendinvite_proto_10004", b"internal_accept_friendinvite_proto_10004", "internal_add_favorite_friend_request_10023", b"internal_add_favorite_friend_request_10023", "internal_add_login_action_proto_600000", b"internal_add_login_action_proto_600000", "internal_block_account_proto_10025", b"internal_block_account_proto_10025", "internal_cancel_friendinvite_proto_10003", b"internal_cancel_friendinvite_proto_10003", "internal_decline_friendinvite_proto_10005", b"internal_decline_friendinvite_proto_10005", "internal_dismiss_contact_list_update_request_20017", b"internal_dismiss_contact_list_update_request_20017", "internal_dismiss_outgoing_gameinvites_request_20012", b"internal_dismiss_outgoing_gameinvites_request_20012", "internal_gar_proxy_request_proto_600005", b"internal_gar_proxy_request_proto_600005", "internal_get_account_settings_proto_10022", b"internal_get_account_settings_proto_10022", "internal_get_client_feature_flags_request_20008", b"internal_get_client_feature_flags_request_20008", "internal_get_contact_listinfo_request_20016", b"internal_get_contact_listinfo_request_20016", "internal_get_facebook_friend_list_proto_10014", b"internal_get_facebook_friend_list_proto_10014", "internal_get_friend_code_proto_10013", b"internal_get_friend_code_proto_10013", "internal_get_friend_details_proto_10010", b"internal_get_friend_details_proto_10010", "internal_get_friend_details_proto_20007", b"internal_get_friend_details_proto_20007", "internal_get_friend_recommendation_request_20500", b"internal_get_friend_recommendation_request_20500", "internal_get_friends_list_proto_10006", b"internal_get_friends_list_proto_10006", "internal_get_outgoing_blocks_proto_10027", b"internal_get_outgoing_blocks_proto_10027", "internal_get_outgoing_friendinvites_proto_10007", b"internal_get_outgoing_friendinvites_proto_10007", "internal_get_photos_proto_10203", b"internal_get_photos_proto_10203", "internal_get_player_settings_proto_10017", b"internal_get_player_settings_proto_10017", "internal_get_player_settings_proto_818", b"internal_get_player_settings_proto_818", "internal_get_profile_request_20003", b"internal_get_profile_request_20003", "internal_get_signed_url_proto_10201", b"internal_get_signed_url_proto_10201", "internal_getincoming_friendinvites_proto_10008", b"internal_getincoming_friendinvites_proto_10008", "internal_getincoming_gameinvites_request_20010", b"internal_getincoming_gameinvites_request_20010", "internal_link_to_account_login_request_proto_600006", b"internal_link_to_account_login_request_proto_600006", "internal_list_friends_request_20006", b"internal_list_friends_request_20006", "internal_list_opt_out_notification_categories_request_proto_10106", b"internal_list_opt_out_notification_categories_request_proto_10106", "internal_notify_contact_list_friends_request_20018", b"internal_notify_contact_list_friends_request_20018", "internal_push_notification_registry_proto_10101", b"internal_push_notification_registry_proto_10101", "internal_refer_contact_list_friend_request_20015", b"internal_refer_contact_list_friend_request_20015", "internal_remove_favorite_friend_request_10024", b"internal_remove_favorite_friend_request_10024", "internal_remove_friend_proto_10009", b"internal_remove_friend_proto_10009", "internal_remove_login_action_proto_600001", b"internal_remove_login_action_proto_600001", "internal_replace_login_action_proto_600003", b"internal_replace_login_action_proto_600003", "internal_search_player_proto_10000", b"internal_search_player_proto_10000", "internal_send_contact_list_friendinvite_request_20014", b"internal_send_contact_list_friendinvite_request_20014", "internal_send_friendinvite_proto_10002", b"internal_send_friendinvite_proto_10002", "internal_set_account_settings_proto_10021", b"internal_set_account_settings_proto_10021", "internal_set_birthday_request_proto_600004", b"internal_set_birthday_request_proto_600004", "internal_setin_game_currency_exchange_rate_proto_5032", b"internal_setin_game_currency_exchange_rate_proto_5032", "internal_submitimage_proto_10202", b"internal_submitimage_proto_10202", "internal_sync_contact_list_request_20013", b"internal_sync_contact_list_request_20013", "internal_unblock_account_proto_10026", b"internal_unblock_account_proto_10026", "internal_update_facebook_status_proto_10015", b"internal_update_facebook_status_proto_10015", "internal_update_friendship_request_20002", b"internal_update_friendship_request_20002", "internal_update_notification_proto_10103", b"internal_update_notification_proto_10103", "internal_update_profile_request_20001", b"internal_update_profile_request_20001", "internal_updateincoming_gameinvite_request_20011", b"internal_updateincoming_gameinvite_request_20011", "internalinvite_facebook_friend_proto_10011", b"internalinvite_facebook_friend_proto_10011", "internalinvite_game_request_20004", b"internalinvite_game_request_20004", "internalis_account_blocked_proto_10028", b"internalis_account_blocked_proto_10028", "internalis_my_friend_proto_10012", b"internalis_my_friend_proto_10012", "invasion_encounter_proto_1204", b"invasion_encounter_proto_1204", "is_sku_available_proto_172", b"is_sku_available_proto_172", "join_bread_lobby_proto_2450", b"join_bread_lobby_proto_2450", "join_buddy_multiplayer_session_proto_1457", b"join_buddy_multiplayer_session_proto_1457", "join_lobby_proto_159", b"join_lobby_proto_159", "join_party_proto_2301", b"join_party_proto_2301", "kick_other_player_from_party_proto_3016", b"kick_other_player_from_party_proto_3016", "leave_breadlobby_proto_2455", b"leave_breadlobby_proto_2455", "leave_buddy_multiplayer_session_proto_1458", b"leave_buddy_multiplayer_session_proto_1458", "leave_party_proto_2303", b"leave_party_proto_2303", "leave_weekly_challenge_matchmaking_proto_3064", b"leave_weekly_challenge_matchmaking_proto_3064", "leavelobby_proto_160", b"leavelobby_proto_160", "level_up_rewards_proto_128", b"level_up_rewards_proto_128", "lift_user_age_gate_confirmation_proto_830", b"lift_user_age_gate_confirmation_proto_830", "like_route_pin_proto_1727", b"like_route_pin_proto_1727", "list_avatar_appearance_items_proto_410", b"list_avatar_appearance_items_proto_410", "list_avatar_customizations_proto_807", b"list_avatar_customizations_proto_807", "list_avatar_store_items_proto_409", b"list_avatar_store_items_proto_409", "list_device_verification_challenges_request_proto_250102", b"list_device_verification_challenges_request_proto_250102", "list_friend_activities_request_proto_10029", b"list_friend_activities_request_proto_10029", "list_gym_badges_proto_811", b"list_gym_badges_proto_811", "list_player_devices_request_proto_250101", b"list_player_devices_request_proto_250101", "list_route_badges_proto_1409", b"list_route_badges_proto_1409", "list_route_stamps_proto_1411", b"list_route_stamps_proto_1411", "location_ping_proto_360001", b"location_ping_proto_360001", "location_ping_proto_5034", b"location_ping_proto_5034", "loot_station_proto_2461", b"loot_station_proto_2461", "maps_client_telemetry_batch_proto_610000", b"maps_client_telemetry_batch_proto_610000", "mark_fieldbook_seen_request_proto_3078", b"mark_fieldbook_seen_request_proto_3078", "mark_read_news_article_proto_817", b"mark_read_news_article_proto_817", "mark_remote_tradable_proto_2602", b"mark_remote_tradable_proto_2602", "mark_save_for_later_proto_2463", b"mark_save_for_later_proto_2463", "mark_tutorial_complete_proto_406", b"mark_tutorial_complete_proto_406", "markmilestone_as_viewed_proto_1804", b"markmilestone_as_viewed_proto_1804", "mega_evolve_pokemon_proto_1502", b"mega_evolve_pokemon_proto_1502", "mega_level_up_proto_3079", b"mega_level_up_proto_3079", "natural_art_poi_encounter_proto_3070", b"natural_art_poi_encounter_proto_3070", "neutral_avatar_badge_reward_proto_450", b"neutral_avatar_badge_reward_proto_450", "nickname_pokemon_proto_149", b"nickname_pokemon_proto_149", "npc_open_gift_proto_2402", b"npc_open_gift_proto_2402", "npc_route_gift_proto_1423", b"npc_route_gift_proto_1423", "npc_send_gift_proto_2401", b"npc_send_gift_proto_2401", "npc_update_state_proto_2400", b"npc_update_state_proto_2400", "open_buddy_gift_proto_1353", b"open_buddy_gift_proto_1353", "open_combat_challenge_proto_993", b"open_combat_challenge_proto_993", "open_combat_session_proto_1000", b"open_combat_session_proto_1000", "open_gift_proto_951", b"open_gift_proto_951", "open_invasion_combat_session_proto_1202", b"open_invasion_combat_session_proto_1202", "open_npc_combat_session_proto_1007", b"open_npc_combat_session_proto_1007", "open_sponsored_gift_proto_1650", b"open_sponsored_gift_proto_1650", "open_supply_balloon_proto_3069", b"open_supply_balloon_proto_3069", "open_trading_proto_970", b"open_trading_proto_970", "party_send_dark_launch_logproto_2306", b"party_send_dark_launch_logproto_2306", "party_update_locationproto_2305", b"party_update_locationproto_2305", "ping_requestproto_5007", b"ping_requestproto_5007", "platform_fetch_newsfeed_request_5049", b"platform_fetch_newsfeed_request_5049", "platform_mark_newsfeed_read_request_5050", b"platform_mark_newsfeed_read_request_5050", "player_spawnablepokemonproto_2007", b"player_spawnablepokemonproto_2007", "playerprofileproto_121", b"playerprofileproto_121", "power_uppokestop_encounterproto_1900", b"power_uppokestop_encounterproto_1900", "prepare_bread_lobbyproto_2453", b"prepare_bread_lobbyproto_2453", "preview_contributeparty_itemproto_3015", b"preview_contributeparty_itemproto_3015", "process_tappableproto_1408", b"process_tappableproto_1408", "process_tappableproto_1416", b"process_tappableproto_1416", "processplayer_inboxproto_3024", b"processplayer_inboxproto_3024", "profanity_checkproto_1653", b"profanity_checkproto_1653", "progress_questproto_906", b"progress_questproto_906", "progress_routeproto_1406", b"progress_routeproto_1406", "propose_remote_tradeproto_2600", b"propose_remote_tradeproto_2600", "proxy_requestproto_5012", b"proxy_requestproto_5012", "purifypokemonproto_1205", b"purifypokemonproto_1205", "push_notification_registryproto_5000", b"push_notification_registryproto_5000", "quest_encounter_proto_904", b"quest_encounter_proto_904", "quit_combat_proto_1002", b"quit_combat_proto_1002", "rateroute_proto_1412", b"rateroute_proto_1412", "read_quest_dialog_proto_908", b"read_quest_dialog_proto_908", "reassign_player_proto_169", b"reassign_player_proto_169", "recallroute_draft_proto_1421", b"recallroute_draft_proto_1421", "recycle_item_proto_137", b"recycle_item_proto_137", "redeem_passcoderequest_proto_5006", b"redeem_passcoderequest_proto_5006", "redeem_premium_gift_for_user_proto_3089", b"redeem_premium_gift_for_user_proto_3089", "redeem_ticket_gift_for_friend_proto_2001", b"redeem_ticket_gift_for_friend_proto_2001", "refresh_proximity_tokensrequest_proto_362000", b"refresh_proximity_tokensrequest_proto_362000", "register_background_device_action_proto_230000", b"register_background_device_action_proto_230000", "register_background_device_action_proto_8", b"register_background_device_action_proto_8", "register_device_action_proto_250100", b"register_device_action_proto_250100", "register_sfidarequest_800", b"register_sfidarequest_800", "release_pokemon_proto_112", b"release_pokemon_proto_112", "release_stationed_pokemon_proto_2472", b"release_stationed_pokemon_proto_2472", "remote_gift_pingrequest_proto_1503", b"remote_gift_pingrequest_proto_1503", "remove_campfire_forreferee_proto_6002", b"remove_campfire_forreferee_proto_6002", "remove_login_action_proto_5009", b"remove_login_action_proto_5009", "remove_player_devicerequest_proto_250104", b"remove_player_devicerequest_proto_250104", "remove_pokemon_size_leaderboard_entry_proto_2103", b"remove_pokemon_size_leaderboard_entry_proto_2103", "remove_ptc_login_action_proto_3007", b"remove_ptc_login_action_proto_3007", "remove_quest_proto_903", b"remove_quest_proto_903", "remove_save_for_later_proto_2465", b"remove_save_for_later_proto_2465", "replace_login_action_proto_5015", b"replace_login_action_proto_5015", "report_ad_feedbackrequest_1716", b"report_ad_feedbackrequest_1716", "report_ad_interaction_proto_1651", b"report_ad_interaction_proto_1651", "report_proximity_contactsrequest_proto_362001", b"report_proximity_contactsrequest_proto_362001", "report_station_proto_2470", b"report_station_proto_2470", "reportroute_proto_1415", b"reportroute_proto_1415", "resend_device_verification_emailrequest_proto_250105", b"resend_device_verification_emailrequest_proto_250105", "respondremote_trade_proto_2606", b"respondremote_trade_proto_2606", "route_nearby_notif_shown_proto_1422", b"route_nearby_notif_shown_proto_1422", "route_update_seen_proto_1420", b"route_update_seen_proto_1420", "saturday_complete_proto_828", b"saturday_complete_proto_828", "saturdaystart_proto_827", b"saturdaystart_proto_827", "save_combat_player_preferences_proto_999", b"save_combat_player_preferences_proto_999", "save_player_preferences_proto_1652", b"save_player_preferences_proto_1652", "save_playersnapshot_proto_954", b"save_playersnapshot_proto_954", "savesocial_playersettings_proto_10016", b"savesocial_playersettings_proto_10016", "savesocial_playersettings_proto_959", b"savesocial_playersettings_proto_959", "savestamp_proto_1902", b"savestamp_proto_1902", "send_bread_battle_invitation_proto_1505", b"send_bread_battle_invitation_proto_1505", "send_event_rsvp_invitation_proto_3039", b"send_event_rsvp_invitation_proto_3039", "send_friend_invite_via_referral_code_proto_1802", b"send_friend_invite_via_referral_code_proto_1802", "send_friend_request_via_player_id_proto_2010", b"send_friend_request_via_player_id_proto_2010", "send_gift_proto_950", b"send_gift_proto_950", "send_party_invitation_proto_2310", b"send_party_invitation_proto_2310", "send_party_invitation_proto_3008", b"send_party_invitation_proto_3008", "send_probe_proto_1020", b"send_probe_proto_1020", "send_raid_invitation_proto_1504", b"send_raid_invitation_proto_1504", "set_avatar_item_as_viewed_proto_808", b"set_avatar_item_as_viewed_proto_808", "set_avatar_proto_404", b"set_avatar_proto_404", "set_birthday_request_proto_5048", b"set_birthday_request_proto_5048", "set_bread_lobby_public_proto_2452", b"set_bread_lobby_public_proto_2452", "set_buddy_pokemon_proto_152", b"set_buddy_pokemon_proto_152", "set_contactsettings_proto_151", b"set_contactsettings_proto_151", "set_favorite_pokemon_proto_148", b"set_favorite_pokemon_proto_148", "set_friend_nickname_proto_957", b"set_friend_nickname_proto_957", "set_friend_premium_gift_preference_proto_963", b"set_friend_premium_gift_preference_proto_963", "set_lobby_pokemon_proto_162", b"set_lobby_pokemon_proto_162", "set_lobby_visibility_proto_161", b"set_lobby_visibility_proto_161", "set_neutral_avatar_proto_408", b"set_neutral_avatar_proto_408", "set_player_team_proto_405", b"set_player_team_proto_405", "set_playerstatus_proto_20", b"set_playerstatus_proto_20", "set_pokemon_tags_for_pokemon_proto_1720", b"set_pokemon_tags_for_pokemon_proto_1720", "sfida_associate_request_822", b"sfida_associate_request_822", "sfida_capture_request_806", b"sfida_capture_request_806", "sfida_certification_request_802", b"sfida_certification_request_802", "sfida_check_pairing_request_823", b"sfida_check_pairing_request_823", "sfida_disassociate_request_824", b"sfida_disassociate_request_824", "sfida_dowser_request_805", b"sfida_dowser_request_805", "sfida_update_request_803", b"sfida_update_request_803", "skip_enter_referral_code_proto_1915", b"skip_enter_referral_code_proto_1915", "smart_glassessyncsettings_request_proto_3027", b"smart_glassessyncsettings_request_proto_3027", "softsfida_capture_proto_833", b"softsfida_capture_proto_833", "softsfida_location_update_proto_834", b"softsfida_location_update_proto_834", "softsfida_pause_proto_832", b"softsfida_pause_proto_832", "softsfida_recap_proto_835", b"softsfida_recap_proto_835", "softsfidastart_proto_831", b"softsfidastart_proto_831", "start_bread_battle_proto_2456", b"start_bread_battle_proto_2456", "start_incident_proto_1200", b"start_incident_proto_1200", "start_mp_walk_quest_proto_2458", b"start_mp_walk_quest_proto_2458", "start_party_proto_2302", b"start_party_proto_2302", "start_party_quest_proto_2308", b"start_party_quest_proto_2308", "start_pvp_battle_proto_3071", b"start_pvp_battle_proto_3071", "start_quest_incident_proto_907", b"start_quest_incident_proto_907", "start_raid_battle_proto_165", b"start_raid_battle_proto_165", "start_rocket_balloon_incident_proto_1207", b"start_rocket_balloon_incident_proto_1207", "start_route_proto_1404", b"start_route_proto_1404", "start_team_leader_battle_proto_3059", b"start_team_leader_battle_proto_3059", "start_tgr_battle_proto_3056", b"start_tgr_battle_proto_3056", "start_weekly_challenge_group_matchmaking_proto_3047", b"start_weekly_challenge_group_matchmaking_proto_3047", "station_pokemon_proto_2460", b"station_pokemon_proto_2460", "submit_combat_challenge_pokemons_proto_998", b"submit_combat_challenge_pokemons_proto_998", "submit_new_poi_proto_5011", b"submit_new_poi_proto_5011", "submit_route_draft_proto_1402", b"submit_route_draft_proto_1402", "sync_battle_inventory_proto_3011", b"sync_battle_inventory_proto_3011", "sync_weekly_challenge_matchmakingstatus_proto_3048", b"sync_weekly_challenge_matchmakingstatus_proto_3048", "titan_async_file_upload_complete_proto_620402", b"titan_async_file_upload_complete_proto_620402", "titan_generate_gmap_signed_url_proto_620300", b"titan_generate_gmap_signed_url_proto_620300", "titan_get_a_r_mapping_settings_proto_620403", b"titan_get_a_r_mapping_settings_proto_620403", "titan_get_available_submissions_proto_620001", b"titan_get_available_submissions_proto_620001", "titan_get_gmap_settings_proto_620301", b"titan_get_gmap_settings_proto_620301", "titan_get_grapeshot_upload_url_proto_620401", b"titan_get_grapeshot_upload_url_proto_620401", "titan_get_image_gallery_settings_proto_620502", b"titan_get_image_gallery_settings_proto_620502", "titan_get_images_for_poi_proto_620500", b"titan_get_images_for_poi_proto_620500", "titan_get_player_submission_validation_settings_proto_620003", b"titan_get_player_submission_validation_settings_proto_620003", "titan_get_pois_in_radius_proto_620601", b"titan_get_pois_in_radius_proto_620601", "titan_poi_video_submission_metadata_proto_620400", b"titan_poi_video_submission_metadata_proto_620400", "titan_submit_new_poi_proto_620000", b"titan_submit_new_poi_proto_620000", "titan_submit_player_image_vote_for_poi_proto_620501", b"titan_submit_player_image_vote_for_poi_proto_620501", "titan_submit_poi_category_vote_record_proto_620106", b"titan_submit_poi_category_vote_record_proto_620106", "titan_submit_poi_image_proto_5041", b"titan_submit_poi_image_proto_5041", "titan_submit_poi_image_proto_620100", b"titan_submit_poi_image_proto_620100", "titan_submit_poi_location_update_proto_5043", b"titan_submit_poi_location_update_proto_5043", "titan_submit_poi_location_update_proto_620102", b"titan_submit_poi_location_update_proto_620102", "titan_submit_poitakedown_request_proto_5044", b"titan_submit_poitakedown_request_proto_5044", "titan_submit_poitakedown_request_proto_620103", b"titan_submit_poitakedown_request_proto_620103", "titan_submit_poitext_metadata_update_proto_5042", b"titan_submit_poitext_metadata_update_proto_5042", "titan_submit_poitext_metadata_update_proto_620101", b"titan_submit_poitext_metadata_update_proto_620101", "titan_submit_sponsor_poi_location_update_proto_620105", b"titan_submit_sponsor_poi_location_update_proto_620105", "titan_submit_sponsor_poi_report_proto_620104", b"titan_submit_sponsor_poi_report_proto_620104", "transfer_contest_entry_proto_2152", b"transfer_contest_entry_proto_2152", "transfer_pokemon_size_leaderboard_entry_proto_2102", b"transfer_pokemon_size_leaderboard_entry_proto_2102", "transfer_pokemonto_pokemon_home_proto_1713", b"transfer_pokemonto_pokemon_home_proto_1713", "unfuse_pokemon_request_proto_3018", b"unfuse_pokemon_request_proto_3018", "unlink_nintendo_account_proto_1711", b"unlink_nintendo_account_proto_1711", "unlock_pokemon_move_proto_1004", b"unlock_pokemon_move_proto_1004", "unlock_temporary_evolution_level_proto_1506", b"unlock_temporary_evolution_level_proto_1506", "update_adventure_sync_fitness_request_proto_640004", b"update_adventure_sync_fitness_request_proto_640004", "update_adventure_sync_settings_request_proto_5047", b"update_adventure_sync_settings_request_proto_5047", "update_adventure_sync_settings_request_proto_640003", b"update_adventure_sync_settings_request_proto_640003", "update_breadcrumb_history_request_proto_361000", b"update_breadcrumb_history_request_proto_361000", "update_bulk_player_location_request_proto_360002", b"update_bulk_player_location_request_proto_360002", "update_combat_proto_1001", b"update_combat_proto_1001", "update_contest_entry_proto_2151", b"update_contest_entry_proto_2151", "update_device_verification_request_proto_250103", b"update_device_verification_request_proto_250103", "update_event_rsvp_selection_proto_3040", b"update_event_rsvp_selection_proto_3040", "update_field_book_post_catch_pokemon_proto_3075", b"update_field_book_post_catch_pokemon_proto_3075", "update_invasion_battle_proto_1203", b"update_invasion_battle_proto_1203", "update_iris_social_scene_proto_3020", b"update_iris_social_scene_proto_3020", "update_notification_proto_5002", b"update_notification_proto_5002", "update_player_gps_bookmarks_proto_23", b"update_player_gps_bookmarks_proto_23", "update_pokemon_size_leaderboard_entry_proto_2101", b"update_pokemon_size_leaderboard_entry_proto_2101", "update_postcard_proto_1911", b"update_postcard_proto_1911", "update_route_draft_proto_1400", b"update_route_draft_proto_1400", "update_survey_eligibility_proto_3026", b"update_survey_eligibility_proto_3026", "update_trading_proto_971", b"update_trading_proto_971", "update_vps_event_proto_3001", b"update_vps_event_proto_3001", "upgrade_pokemon_proto_147", b"upgrade_pokemon_proto_147", "upload_combat_client_log_proto_1916", b"upload_combat_client_log_proto_1916", "upload_raid_client_log_proto_1914", b"upload_raid_client_log_proto_1914", "use_incense_action_proto_141", b"use_incense_action_proto_141", "use_item_battle_boost_proto_174", b"use_item_battle_boost_proto_174", "use_item_bulk_heal_proto_173", b"use_item_bulk_heal_proto_173", "use_item_capture_proto_114", b"use_item_capture_proto_114", "use_item_egg_incubator_proto_140", b"use_item_egg_incubator_proto_140", "use_item_encounter_proto_154", b"use_item_encounter_proto_154", "use_item_lucky_friend_applicator_proto_175", b"use_item_lucky_friend_applicator_proto_175", "use_item_move_reroll_proto_813", b"use_item_move_reroll_proto_813", "use_item_mp_replenish_proto_2468", b"use_item_mp_replenish_proto_2468", "use_item_potion_proto_113", b"use_item_potion_proto_113", "use_item_rare_candy_proto_814", b"use_item_rare_candy_proto_814", "use_item_revive_proto_116", b"use_item_revive_proto_116", "use_item_stardust_boost_proto_168", b"use_item_stardust_boost_proto_168", "use_item_stat_increase_proto_176", b"use_item_stat_increase_proto_176", "use_item_xp_boost_proto_139", b"use_item_xp_boost_proto_139", "use_non_combat_move_request_proto_2014", b"use_non_combat_move_request_proto_2014", "use_save_for_later_proto_2464", b"use_save_for_later_proto_2464", "verify_challenge_proto_601", b"verify_challenge_proto_601", "view_route_pin_proto_1728", b"view_route_pin_proto_1728", "vs_seeker_reward_encounter_proto_1307", b"vs_seeker_reward_encounter_proto_1307", "vs_seeker_start_matchmaking_proto_1300", b"vs_seeker_start_matchmaking_proto_1300", "waina_get_rewards_request_825", b"waina_get_rewards_request_825", "waina_submit_sleep_data_request_826", b"waina_submit_sleep_data_request_826"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["accept_combat_challenge_proto_995", b"accept_combat_challenge_proto_995", "acknowledge_punishment_proto_10", b"acknowledge_punishment_proto_10", "acknowledge_view_latest_incense_recap_proto_2003", b"acknowledge_view_latest_incense_recap_proto_2003", "acknowledge_warnings_request_proto_200001", b"acknowledge_warnings_request_proto_200001", "acknowledge_warnings_request_proto_5040", b"acknowledge_warnings_request_proto_5040", "activate_vs_seeker_proto_1308", b"activate_vs_seeker_proto_1308", "add_fort_modifier_proto_144", b"add_fort_modifier_proto_144", "add_loginaction_proto_5008", b"add_loginaction_proto_5008", "add_ptc_loginaction_proto_3002", b"add_ptc_loginaction_proto_3002", "add_referrer_proto_1801", b"add_referrer_proto_1801", "age_confirmation_proto_3052", b"age_confirmation_proto_3052", "appeal_route_proto_1425", b"appeal_route_proto_1425", "asset_digest_request_proto_300", b"asset_digest_request_proto_300", "asset_version_proto_302", b"asset_version_proto_302", "attack_raid_battle_proto_166", b"attack_raid_battle_proto_166", "attracted_pokemon_encounter_proto_1417", b"attracted_pokemon_encounter_proto_1417", "auth_register_background_deviceaction_proto_5028", b"auth_register_background_deviceaction_proto_5028", "award_free_raid_ticket_proto_815", b"award_free_raid_ticket_proto_815", "badge_reward_encounter_request_proto_2360", b"badge_reward_encounter_request_proto_2360", "beluga_transaction_complete_proto_820", b"beluga_transaction_complete_proto_820", "beluga_transaction_start_proto_819", b"beluga_transaction_start_proto_819", "boot_raid_proto_2004", b"boot_raid_proto_2004", "buddy_feeding_proto_1352", b"buddy_feeding_proto_1352", "buddy_map_proto_1350", b"buddy_map_proto_1350", "buddy_petting_proto_1354", b"buddy_petting_proto_1354", "buddy_stats_proto_1351", b"buddy_stats_proto_1351", "butterfly_collector_reward_encounter_proto_request_1724", b"butterfly_collector_reward_encounter_proto_request_1724", "can_report_route_proto_1418", b"can_report_route_proto_1418", "cancel_event_rsvp_proto_3033", b"cancel_event_rsvp_proto_3033", "cancel_matchmaking_proto_1301", b"cancel_matchmaking_proto_1301", "cancel_party_invite_proto_2312", b"cancel_party_invite_proto_2312", "cancel_remote_trade_proto_2601", b"cancel_remote_trade_proto_2601", "cancel_route_proto_1410", b"cancel_route_proto_1410", "cancel_trading_proto_973", b"cancel_trading_proto_973", "cancelcombatchallenge_proto_997", b"cancelcombatchallenge_proto_997", "canclaim_ptc_reward_action_proto_3004", b"canclaim_ptc_reward_action_proto_3004", "catch_pokemon_proto_103", b"catch_pokemon_proto_103", "change_pokemon_form_proto_1722", b"change_pokemon_form_proto_1722", "change_stampcollection_player_data_proto_1905", b"change_stampcollection_player_data_proto_1905", "change_stat_increase_goal_proto_3053", b"change_stat_increase_goal_proto_3053", "change_team_proto_1106", b"change_team_proto_1106", "check_awarded_badges_proto_129", b"check_awarded_badges_proto_129", "check_gifting_eligibility_proto_2000", b"check_gifting_eligibility_proto_2000", "check_photobomb_proto_1101", b"check_photobomb_proto_1101", "check_pokemon_size_leaderboard_eligibility_proto_2100", b"check_pokemon_size_leaderboard_eligibility_proto_2100", "check_send_gift_proto_956", b"check_send_gift_proto_956", "check_stamp_giftability_proto_1906", b"check_stamp_giftability_proto_1906", "checkchallenge_proto_600", b"checkchallenge_proto_600", "checkcontest_eligibility_proto_2150", b"checkcontest_eligibility_proto_2150", "choose_global_ticketed_event_variant_proto_1723", b"choose_global_ticketed_event_variant_proto_1723", "claim_event_pass_rewards_request_proto_3034", b"claim_event_pass_rewards_request_proto_3034", "claim_event_pass_rewards_request_proto_3035", b"claim_event_pass_rewards_request_proto_3035", "claim_ptc_linking_reward_proto_3003", b"claim_ptc_linking_reward_proto_3003", "claim_stampcollection_reward_proto_1904", b"claim_stampcollection_reward_proto_1904", "claim_vs_seeker_rewards_proto_1306", b"claim_vs_seeker_rewards_proto_1306", "claimcodename_request_proto_403", b"claimcodename_request_proto_403", "claimcontests_rewards_proto_2107", b"claimcontests_rewards_proto_2107", "client_telemetry_batch_proto_5018", b"client_telemetry_batch_proto_5018", "client_telemetry_settings_request_proto_5026", b"client_telemetry_settings_request_proto_5026", "client_telemetry_settings_request_proto_610001", b"client_telemetry_settings_request_proto_610001", "collect_daily_bonus_proto_138", b"collect_daily_bonus_proto_138", "combat_friend_request_proto_1006", b"combat_friend_request_proto_1006", "combat_sync_server_offset_proto_1917", b"combat_sync_server_offset_proto_1917", "complete_all_quest_proto_3063", b"complete_all_quest_proto_3063", "complete_bread_battle_proto_2473", b"complete_bread_battle_proto_2473", "complete_invasion_dialogue_proto_1201", b"complete_invasion_dialogue_proto_1201", "complete_milestone_proto_1806", b"complete_milestone_proto_1806", "complete_party_quest_proto_2309", b"complete_party_quest_proto_2309", "complete_pvp_battle_proto_3072", b"complete_pvp_battle_proto_3072", "complete_quest_proto_902", b"complete_quest_proto_902", "complete_quest_stampcard_proto_905", b"complete_quest_stampcard_proto_905", "complete_raid_battle_proto_3010", b"complete_raid_battle_proto_3010", "complete_snapshot_session_proto_1110", b"complete_snapshot_session_proto_1110", "complete_team_leader_battle_proto_3060", b"complete_team_leader_battle_proto_3060", "complete_tgr_battle_proto_3058", b"complete_tgr_battle_proto_3058", "complete_visit_page_quest_proto_3030", b"complete_visit_page_quest_proto_3030", "complete_vs_seeker_and_restartcharging_proto_1303", b"complete_vs_seeker_and_restartcharging_proto_1303", "complete_wild_snapshot_session_proto_1111", b"complete_wild_snapshot_session_proto_1111", "completecompetitive_season_proto_1305", b"completecompetitive_season_proto_1305", "confirm_photobomb_proto_1102", b"confirm_photobomb_proto_1102", "confirm_trading_proto_972", b"confirm_trading_proto_972", "consume_party_items_proto_3006", b"consume_party_items_proto_3006", "consume_stickers_proto_3009", b"consume_stickers_proto_3009", "contribute_party_item_proto_3005", b"contribute_party_item_proto_3005", "convertcandy_to_xlcandy_proto_171", b"convertcandy_to_xlcandy_proto_171", "create_buddy_multiplayer_session_proto_1456", b"create_buddy_multiplayer_session_proto_1456", "create_bug_report_proto_3088", b"create_bug_report_proto_3088", "create_event_rsvp_proto_3032", b"create_event_rsvp_proto_3032", "create_party_proto_2300", b"create_party_proto_2300", "create_pokemon_tag_proto_1717", b"create_pokemon_tag_proto_1717", "create_postcard_proto_1910", b"create_postcard_proto_1910", "create_route_draft_proto_1413", b"create_route_draft_proto_1413", "create_route_pin_proto_1726", b"create_route_pin_proto_1726", "create_route_shortcode_proto_1428", b"create_route_shortcode_proto_1428", "createcombatchallenge_proto_992", b"createcombatchallenge_proto_992", "daily_bonus_spawn_encounter_proto_3067", b"daily_bonus_spawn_encounter_proto_3067", "daily_encounter_proto_1602", b"daily_encounter_proto_1602", "day_night_poi_encounter_proto_3077", b"day_night_poi_encounter_proto_3077", "debug_egg_statistics_proto_3083", b"debug_egg_statistics_proto_3083", "debug_encounter_statistics_proto_3061", b"debug_encounter_statistics_proto_3061", "debug_resetdaily_mp_progress_proto_2471", b"debug_resetdaily_mp_progress_proto_2471", "debug_test_setup_proto_3085", b"debug_test_setup_proto_3085", "decline_combat_challenge_proto_996", b"decline_combat_challenge_proto_996", "delete_gift_from_inventory_proto_958", b"delete_gift_from_inventory_proto_958", "delete_gift_proto_953", b"delete_gift_proto_953", "delete_pokemon_tag_proto_1718", b"delete_pokemon_tag_proto_1718", "delete_postcard_proto_1912", b"delete_postcard_proto_1912", "delete_postcards_proto_1909", b"delete_postcards_proto_1909", "delete_routedraft_proto_1414", b"delete_routedraft_proto_1414", "dequeue_questdialogue_proto_909", b"dequeue_questdialogue_proto_909", "disk_encounter_proto_145", b"disk_encounter_proto_145", "download_gm_templates_request_proto_5004", b"download_gm_templates_request_proto_5004", "download_settings_action_proto_5", b"download_settings_action_proto_5", "download_url_request_proto_301", b"download_url_request_proto_301", "echo_proto_666", b"echo_proto_666", "edit_pokemon_tag_proto_1719", b"edit_pokemon_tag_proto_1719", "enable_campfire_for_referee_proto_6001", b"enable_campfire_for_referee_proto_6001", "encounter_photobomb_proto_1104", b"encounter_photobomb_proto_1104", "encounter_pokestopencounter_proto_2006", b"encounter_pokestopencounter_proto_2006", "encounter_proto_102", b"encounter_proto_102", "encounter_station_spawn_proto_2475", b"encounter_station_spawn_proto_2475", "encounter_tutorial_complete_proto_127", b"encounter_tutorial_complete_proto_127", "end_pokemon_training_proto_3054", b"end_pokemon_training_proto_3054", "enhance_bread_move_proto_2459", b"enhance_bread_move_proto_2459", "evolve_pokemon_proto_125", b"evolve_pokemon_proto_125", "favorite_route_proto_1427", b"favorite_route_proto_1427", "fetch_all_news_proto_816", b"fetch_all_news_proto_816", "fitness_update_proto_5024", b"fitness_update_proto_5024", "fitness_update_proto_640000", b"fitness_update_proto_640000", "flee_battle_encounter_proto_3084", b"flee_battle_encounter_proto_3084", "fort_deploy_proto_110", b"fort_deploy_proto_110", "fort_details_proto_104", b"fort_details_proto_104", "fort_recall_proto_111", b"fort_recall_proto_111", "fort_search_proto_101", b"fort_search_proto_101", "fuse_pokemon_request_proto_3017", b"fuse_pokemon_request_proto_3017", "generate_combat_challenge_id_proto_991", b"generate_combat_challenge_id_proto_991", "generategmap_signed_url_proto_5035", b"generategmap_signed_url_proto_5035", "geofence_update_proto_360000", b"geofence_update_proto_360000", "geofence_update_proto_5033", b"geofence_update_proto_5033", "get_action_log_request_801", b"get_action_log_request_801", "get_additional_pokemon_details_proto_1725", b"get_additional_pokemon_details_proto_1725", "get_adventure_sync_fitness_report_request_proto_640005", b"get_adventure_sync_fitness_report_request_proto_640005", "get_adventure_sync_progress_proto_230002", b"get_adventure_sync_progress_proto_230002", "get_adventure_sync_settings_request_proto_5046", b"get_adventure_sync_settings_request_proto_5046", "get_adventure_sync_settings_request_proto_640002", b"get_adventure_sync_settings_request_proto_640002", "get_app_request_token_redirect_u_r_l_platform_request_proto_600007", b"get_app_request_token_redirect_u_r_l_platform_request_proto_600007", "get_available_submissions_proto_5014", b"get_available_submissions_proto_5014", "get_battle_rejoin_status_proto_3062", b"get_battle_rejoin_status_proto_3062", "get_bonus_attracted_pokemon_proto_2350", b"get_bonus_attracted_pokemon_proto_2350", "get_bonuses_proto_2352", b"get_bonuses_proto_2352", "get_bread_lobby_details_proto_2457", b"get_bread_lobby_details_proto_2457", "get_buddy_history_proto_1355", b"get_buddy_history_proto_1355", "get_buddy_walked_proto_153", b"get_buddy_walked_proto_153", "get_change_pokemon_form_preview_request_proto_3021", b"get_change_pokemon_form_preview_request_proto_3021", "get_combat_challenge_proto_994", b"get_combat_challenge_proto_994", "get_combat_player_profile_proto_990", b"get_combat_player_profile_proto_990", "get_combat_results_proto_1003", b"get_combat_results_proto_1003", "get_contest_data_proto_2105", b"get_contest_data_proto_2105", "get_contest_entry_proto_2154", b"get_contest_entry_proto_2154", "get_contest_friend_entry_proto_2153", b"get_contest_friend_entry_proto_2153", "get_contests_unclaimed_rewards_proto_2106", b"get_contests_unclaimed_rewards_proto_2106", "get_daily_bonus_spawn_proto_3066", b"get_daily_bonus_spawn_proto_3066", "get_daily_encounter_proto_1601", b"get_daily_encounter_proto_1601", "get_eligible_combat_leagues_proto_2009", b"get_eligible_combat_leagues_proto_2009", "get_entered_contest_proto_2108", b"get_entered_contest_proto_2108", "get_event_rsvp_count_proto_3036", b"get_event_rsvp_count_proto_3036", "get_event_rsvps_proto_3031", b"get_event_rsvps_proto_3031", "get_fitness_report_proto_5025", b"get_fitness_report_proto_5025", "get_fitness_report_proto_640001", b"get_fitness_report_proto_640001", "get_fitness_rewards_proto_980", b"get_fitness_rewards_proto_980", "get_friendship_rewards_proto_955", b"get_friendship_rewards_proto_955", "get_hatched_eggs_proto_126", b"get_hatched_eggs_proto_126", "get_holoholo_inventory_proto_4", b"get_holoholo_inventory_proto_4", "get_inbox_proto_10105", b"get_inbox_proto_10105", "get_inbox_proto_809", b"get_inbox_proto_809", "get_incense_pokemon_proto_142", b"get_incense_pokemon_proto_142", "get_incense_recap_proto_2002", b"get_incense_recap_proto_2002", "get_inventory_proto_5005", b"get_inventory_proto_5005", "get_iris_social_scene_proto_3019", b"get_iris_social_scene_proto_3019", "get_local_time_proto_12", b"get_local_time_proto_12", "get_map_forts_proto_1401", b"get_map_forts_proto_1401", "get_map_objects_detail_for_campfire_proto_6013", b"get_map_objects_detail_for_campfire_proto_6013", "get_map_objects_for_campfire_proto_6012", b"get_map_objects_for_campfire_proto_6012", "get_map_objects_proto_106", b"get_map_objects_proto_106", "get_matchmaking_status_proto_1302", b"get_matchmaking_status_proto_1302", "get_mega_level_up_preview_proto_3080", b"get_mega_level_up_preview_proto_3080", "get_memento_list_proto_1913", b"get_memento_list_proto_1913", "get_milestones_preview_proto_1805", b"get_milestones_preview_proto_1805", "get_milestones_proto_1803", b"get_milestones_proto_1803", "get_mp_summary_proto_2467", b"get_mp_summary_proto_2467", "get_new_quests_proto_900", b"get_new_quests_proto_900", "get_nintendo_account_proto_1710", b"get_nintendo_account_proto_1710", "get_nintendo_o_auth2_url_proto_1712", b"get_nintendo_o_auth2_url_proto_1712", "get_non_remote_tradable_pokemon_proto_2604", b"get_non_remote_tradable_pokemon_proto_2604", "get_npc_combat_rewards_proto_1005", b"get_npc_combat_rewards_proto_1005", "get_num_pokemon_in_iris_social_scene_proto_6005", b"get_num_pokemon_in_iris_social_scene_proto_6005", "get_num_station_assists_proto_2476", b"get_num_station_assists_proto_2476", "get_outstanding_warnings_request_proto_200000", b"get_outstanding_warnings_request_proto_200000", "get_outstanding_warnings_request_proto_5039", b"get_outstanding_warnings_request_proto_5039", "get_party_proto_2304", b"get_party_proto_2304", "get_pending_remote_trade_proto_2605", b"get_pending_remote_trade_proto_2605", "get_photobomb_proto_1103", b"get_photobomb_proto_1103", "get_player_day_proto_9", b"get_player_day_proto_9", "get_player_pokemon_field_book_proto_3065", b"get_player_pokemon_field_book_proto_3065", "get_player_proto_2", b"get_player_proto_2", "get_player_raid_eligibility_proto_6003", b"get_player_raid_eligibility_proto_6003", "get_player_stamp_collections_proto_1901", b"get_player_stamp_collections_proto_1901", "get_player_status_proxy_proto_177", b"get_player_status_proxy_proto_177", "get_playergps_bookmarks_proto_22", b"get_playergps_bookmarks_proto_22", "get_pokemon_remote_trading_details_proto_2607", b"get_pokemon_remote_trading_details_proto_2607", "get_pokemon_size_leaderboard_entry_proto_2104", b"get_pokemon_size_leaderboard_entry_proto_2104", "get_pokemon_size_leaderboard_friend_entry_proto_2109", b"get_pokemon_size_leaderboard_friend_entry_proto_2109", "get_pokemon_tags_proto_1721", b"get_pokemon_tags_proto_1721", "get_pokemon_trading_cost_proto_2608", b"get_pokemon_trading_cost_proto_2608", "get_pokestop_encounter_proto_2005", b"get_pokestop_encounter_proto_2005", "get_published_routes_proto_1403", b"get_published_routes_proto_1403", "get_quest_details_proto_901", b"get_quest_details_proto_901", "get_quest_ui_proto_2008", b"get_quest_ui_proto_2008", "get_raid_details_proto_163", b"get_raid_details_proto_163", "get_raid_lobby_counter_proto_2011", b"get_raid_lobby_counter_proto_2011", "get_referral_code_proto_1800", b"get_referral_code_proto_1800", "get_remote_config_versions_proto_7", b"get_remote_config_versions_proto_7", "get_remote_tradable_pokemon_from_other_player_proto_2603", b"get_remote_tradable_pokemon_from_other_player_proto_2603", "get_reward_tiers_request_proto_310300", b"get_reward_tiers_request_proto_310300", "get_rocket_balloon_proto_1206", b"get_rocket_balloon_proto_1206", "get_route_by_short_code_proto_1429", b"get_route_by_short_code_proto_1429", "get_route_creations_proto_1424", b"get_route_creations_proto_1424", "get_route_draft_proto_1426", b"get_route_draft_proto_1426", "get_routes_proto_1405", b"get_routes_proto_1405", "get_save_for_later_entries_proto_2466", b"get_save_for_later_entries_proto_2466", "get_server_time_proto_11", b"get_server_time_proto_11", "get_station_info_proto_3051", b"get_station_info_proto_3051", "get_stationed_pokemon_details_proto_2462", b"get_stationed_pokemon_details_proto_2462", "get_suggested_players_social_proto_3055", b"get_suggested_players_social_proto_3055", "get_supply_balloon_proto_3068", b"get_supply_balloon_proto_3068", "get_survey_eligibility_proto_3025", b"get_survey_eligibility_proto_3025", "get_time_travel_information_proto_3076", b"get_time_travel_information_proto_3076", "get_timedgroup_challenge_proto_1700", b"get_timedgroup_challenge_proto_1700", "get_trading_proto_974", b"get_trading_proto_974", "get_unfuse_pokemon_preview_request_proto_3023", b"get_unfuse_pokemon_preview_request_proto_3023", "get_vps_event_proto_3000", b"get_vps_event_proto_3000", "get_vs_seeker_status_proto_1304", b"get_vs_seeker_status_proto_1304", "get_web_token_proto_1107", b"get_web_token_proto_1107", "get_web_token_proto_5045", b"get_web_token_proto_5045", "get_weekly_challenge_info_proto_3041", b"get_weekly_challenge_info_proto_3041", "getgame_config_versions_proto_21", b"getgame_config_versions_proto_21", "getgame_master_client_templates_proto_6", b"getgame_master_client_templates_proto_6", "getgeofenced_ad_proto_1820", b"getgeofenced_ad_proto_1820", "getgift_box_details_proto_952", b"getgift_box_details_proto_952", "getgmap_settings_proto_1105", b"getgmap_settings_proto_1105", "getgmap_settings_proto_5036", b"getgmap_settings_proto_5036", "getgym_badge_details_proto_812", b"getgym_badge_details_proto_812", "grant_expired_item_consolation_proto_3057", b"grant_expired_item_consolation_proto_3057", "gym_battle_attack_proto_158", b"gym_battle_attack_proto_158", "gym_deploy_proto_155", b"gym_deploy_proto_155", "gym_feed_pokemon_proto_164", b"gym_feed_pokemon_proto_164", "gym_start_session_proto_157", b"gym_start_session_proto_157", "gymget_info_proto_156", b"gymget_info_proto_156", "iap_get_active_subscriptions_request_proto_310201", b"iap_get_active_subscriptions_request_proto_310201", "iap_get_available_skus_and_balances_proto_310001", b"iap_get_available_skus_and_balances_proto_310001", "iap_get_available_skus_and_balances_proto_5020", b"iap_get_available_skus_and_balances_proto_5020", "iap_get_available_subscriptions_request_proto_310200", b"iap_get_available_subscriptions_request_proto_310200", "iap_get_user_request_proto_311101", b"iap_get_user_request_proto_311101", "iap_purchase_sku_proto_310000", b"iap_purchase_sku_proto_310000", "iap_purchase_sku_proto_5019", b"iap_purchase_sku_proto_5019", "iap_redeem_apple_receipt_proto_310101", b"iap_redeem_apple_receipt_proto_310101", "iap_redeem_apple_receipt_proto_5022", b"iap_redeem_apple_receipt_proto_5022", "iap_redeem_desktop_receipt_proto_310102", b"iap_redeem_desktop_receipt_proto_310102", "iap_redeem_desktop_receipt_proto_5023", b"iap_redeem_desktop_receipt_proto_5023", "iap_redeem_google_receipt_proto_310100", b"iap_redeem_google_receipt_proto_310100", "iap_redeem_google_receipt_proto_5021", b"iap_redeem_google_receipt_proto_5021", "iap_redeem_samsung_receipt_proto_310103", b"iap_redeem_samsung_receipt_proto_310103", "iap_redeem_samsung_receipt_proto_5037", b"iap_redeem_samsung_receipt_proto_5037", "iap_redeem_xsolla_receipt_request_proto_311100", b"iap_redeem_xsolla_receipt_request_proto_311100", "iap_setin_game_currency_exchange_rate_proto_310002", b"iap_setin_game_currency_exchange_rate_proto_310002", "incense_encounter_proto_143", b"incense_encounter_proto_143", "internal_accept_friendinvite_proto_10004", b"internal_accept_friendinvite_proto_10004", "internal_add_favorite_friend_request_10023", b"internal_add_favorite_friend_request_10023", "internal_add_login_action_proto_600000", b"internal_add_login_action_proto_600000", "internal_block_account_proto_10025", b"internal_block_account_proto_10025", "internal_cancel_friendinvite_proto_10003", b"internal_cancel_friendinvite_proto_10003", "internal_decline_friendinvite_proto_10005", b"internal_decline_friendinvite_proto_10005", "internal_dismiss_contact_list_update_request_20017", b"internal_dismiss_contact_list_update_request_20017", "internal_dismiss_outgoing_gameinvites_request_20012", b"internal_dismiss_outgoing_gameinvites_request_20012", "internal_gar_proxy_request_proto_600005", b"internal_gar_proxy_request_proto_600005", "internal_get_account_settings_proto_10022", b"internal_get_account_settings_proto_10022", "internal_get_client_feature_flags_request_20008", b"internal_get_client_feature_flags_request_20008", "internal_get_contact_listinfo_request_20016", b"internal_get_contact_listinfo_request_20016", "internal_get_facebook_friend_list_proto_10014", b"internal_get_facebook_friend_list_proto_10014", "internal_get_friend_code_proto_10013", b"internal_get_friend_code_proto_10013", "internal_get_friend_details_proto_10010", b"internal_get_friend_details_proto_10010", "internal_get_friend_details_proto_20007", b"internal_get_friend_details_proto_20007", "internal_get_friend_recommendation_request_20500", b"internal_get_friend_recommendation_request_20500", "internal_get_friends_list_proto_10006", b"internal_get_friends_list_proto_10006", "internal_get_outgoing_blocks_proto_10027", b"internal_get_outgoing_blocks_proto_10027", "internal_get_outgoing_friendinvites_proto_10007", b"internal_get_outgoing_friendinvites_proto_10007", "internal_get_photos_proto_10203", b"internal_get_photos_proto_10203", "internal_get_player_settings_proto_10017", b"internal_get_player_settings_proto_10017", "internal_get_player_settings_proto_818", b"internal_get_player_settings_proto_818", "internal_get_profile_request_20003", b"internal_get_profile_request_20003", "internal_get_signed_url_proto_10201", b"internal_get_signed_url_proto_10201", "internal_getincoming_friendinvites_proto_10008", b"internal_getincoming_friendinvites_proto_10008", "internal_getincoming_gameinvites_request_20010", b"internal_getincoming_gameinvites_request_20010", "internal_link_to_account_login_request_proto_600006", b"internal_link_to_account_login_request_proto_600006", "internal_list_friends_request_20006", b"internal_list_friends_request_20006", "internal_list_opt_out_notification_categories_request_proto_10106", b"internal_list_opt_out_notification_categories_request_proto_10106", "internal_notify_contact_list_friends_request_20018", b"internal_notify_contact_list_friends_request_20018", "internal_push_notification_registry_proto_10101", b"internal_push_notification_registry_proto_10101", "internal_refer_contact_list_friend_request_20015", b"internal_refer_contact_list_friend_request_20015", "internal_remove_favorite_friend_request_10024", b"internal_remove_favorite_friend_request_10024", "internal_remove_friend_proto_10009", b"internal_remove_friend_proto_10009", "internal_remove_login_action_proto_600001", b"internal_remove_login_action_proto_600001", "internal_replace_login_action_proto_600003", b"internal_replace_login_action_proto_600003", "internal_search_player_proto_10000", b"internal_search_player_proto_10000", "internal_send_contact_list_friendinvite_request_20014", b"internal_send_contact_list_friendinvite_request_20014", "internal_send_friendinvite_proto_10002", b"internal_send_friendinvite_proto_10002", "internal_set_account_settings_proto_10021", b"internal_set_account_settings_proto_10021", "internal_set_birthday_request_proto_600004", b"internal_set_birthday_request_proto_600004", "internal_setin_game_currency_exchange_rate_proto_5032", b"internal_setin_game_currency_exchange_rate_proto_5032", "internal_submitimage_proto_10202", b"internal_submitimage_proto_10202", "internal_sync_contact_list_request_20013", b"internal_sync_contact_list_request_20013", "internal_unblock_account_proto_10026", b"internal_unblock_account_proto_10026", "internal_update_facebook_status_proto_10015", b"internal_update_facebook_status_proto_10015", "internal_update_friendship_request_20002", b"internal_update_friendship_request_20002", "internal_update_notification_proto_10103", b"internal_update_notification_proto_10103", "internal_update_profile_request_20001", b"internal_update_profile_request_20001", "internal_updateincoming_gameinvite_request_20011", b"internal_updateincoming_gameinvite_request_20011", "internalinvite_facebook_friend_proto_10011", b"internalinvite_facebook_friend_proto_10011", "internalinvite_game_request_20004", b"internalinvite_game_request_20004", "internalis_account_blocked_proto_10028", b"internalis_account_blocked_proto_10028", "internalis_my_friend_proto_10012", b"internalis_my_friend_proto_10012", "invasion_encounter_proto_1204", b"invasion_encounter_proto_1204", "is_sku_available_proto_172", b"is_sku_available_proto_172", "join_bread_lobby_proto_2450", b"join_bread_lobby_proto_2450", "join_buddy_multiplayer_session_proto_1457", b"join_buddy_multiplayer_session_proto_1457", "join_lobby_proto_159", b"join_lobby_proto_159", "join_party_proto_2301", b"join_party_proto_2301", "kick_other_player_from_party_proto_3016", b"kick_other_player_from_party_proto_3016", "leave_breadlobby_proto_2455", b"leave_breadlobby_proto_2455", "leave_buddy_multiplayer_session_proto_1458", b"leave_buddy_multiplayer_session_proto_1458", "leave_party_proto_2303", b"leave_party_proto_2303", "leave_weekly_challenge_matchmaking_proto_3064", b"leave_weekly_challenge_matchmaking_proto_3064", "leavelobby_proto_160", b"leavelobby_proto_160", "level_up_rewards_proto_128", b"level_up_rewards_proto_128", "lift_user_age_gate_confirmation_proto_830", b"lift_user_age_gate_confirmation_proto_830", "like_route_pin_proto_1727", b"like_route_pin_proto_1727", "list_avatar_appearance_items_proto_410", b"list_avatar_appearance_items_proto_410", "list_avatar_customizations_proto_807", b"list_avatar_customizations_proto_807", "list_avatar_store_items_proto_409", b"list_avatar_store_items_proto_409", "list_friend_activities_request_proto_10029", b"list_friend_activities_request_proto_10029", "list_gym_badges_proto_811", b"list_gym_badges_proto_811", "list_route_badges_proto_1409", b"list_route_badges_proto_1409", "list_route_stamps_proto_1411", b"list_route_stamps_proto_1411", "location_ping_proto_360001", b"location_ping_proto_360001", "location_ping_proto_5034", b"location_ping_proto_5034", "loot_station_proto_2461", b"loot_station_proto_2461", "maps_client_telemetry_batch_proto_610000", b"maps_client_telemetry_batch_proto_610000", "mark_fieldbook_seen_request_proto_3078", b"mark_fieldbook_seen_request_proto_3078", "mark_read_news_article_proto_817", b"mark_read_news_article_proto_817", "mark_remote_tradable_proto_2602", b"mark_remote_tradable_proto_2602", "mark_save_for_later_proto_2463", b"mark_save_for_later_proto_2463", "mark_tutorial_complete_proto_406", b"mark_tutorial_complete_proto_406", "markmilestone_as_viewed_proto_1804", b"markmilestone_as_viewed_proto_1804", "mega_evolve_pokemon_proto_1502", b"mega_evolve_pokemon_proto_1502", "mega_level_up_proto_3079", b"mega_level_up_proto_3079", "natural_art_poi_encounter_proto_3070", b"natural_art_poi_encounter_proto_3070", "neutral_avatar_badge_reward_proto_450", b"neutral_avatar_badge_reward_proto_450", "nickname_pokemon_proto_149", b"nickname_pokemon_proto_149", "npc_open_gift_proto_2402", b"npc_open_gift_proto_2402", "npc_route_gift_proto_1423", b"npc_route_gift_proto_1423", "npc_send_gift_proto_2401", b"npc_send_gift_proto_2401", "npc_update_state_proto_2400", b"npc_update_state_proto_2400", "open_buddy_gift_proto_1353", b"open_buddy_gift_proto_1353", "open_combat_challenge_proto_993", b"open_combat_challenge_proto_993", "open_combat_session_proto_1000", b"open_combat_session_proto_1000", "open_gift_proto_951", b"open_gift_proto_951", "open_invasion_combat_session_proto_1202", b"open_invasion_combat_session_proto_1202", "open_npc_combat_session_proto_1007", b"open_npc_combat_session_proto_1007", "open_sponsored_gift_proto_1650", b"open_sponsored_gift_proto_1650", "open_supply_balloon_proto_3069", b"open_supply_balloon_proto_3069", "open_trading_proto_970", b"open_trading_proto_970", "party_send_dark_launch_logproto_2306", b"party_send_dark_launch_logproto_2306", "party_update_locationproto_2305", b"party_update_locationproto_2305", "ping_requestproto_5007", b"ping_requestproto_5007", "platform_fetch_newsfeed_request_5049", b"platform_fetch_newsfeed_request_5049", "platform_mark_newsfeed_read_request_5050", b"platform_mark_newsfeed_read_request_5050", "player_spawnablepokemonproto_2007", b"player_spawnablepokemonproto_2007", "playerprofileproto_121", b"playerprofileproto_121", "power_uppokestop_encounterproto_1900", b"power_uppokestop_encounterproto_1900", "prepare_bread_lobbyproto_2453", b"prepare_bread_lobbyproto_2453", "preview_contributeparty_itemproto_3015", b"preview_contributeparty_itemproto_3015", "process_tappableproto_1408", b"process_tappableproto_1408", "process_tappableproto_1416", b"process_tappableproto_1416", "processplayer_inboxproto_3024", b"processplayer_inboxproto_3024", "profanity_checkproto_1653", b"profanity_checkproto_1653", "progress_questproto_906", b"progress_questproto_906", "progress_routeproto_1406", b"progress_routeproto_1406", "propose_remote_tradeproto_2600", b"propose_remote_tradeproto_2600", "proxy_requestproto_5012", b"proxy_requestproto_5012", "purifypokemonproto_1205", b"purifypokemonproto_1205", "push_notification_registryproto_5000", b"push_notification_registryproto_5000", "quest_encounter_proto_904", b"quest_encounter_proto_904", "quit_combat_proto_1002", b"quit_combat_proto_1002", "rateroute_proto_1412", b"rateroute_proto_1412", "read_quest_dialog_proto_908", b"read_quest_dialog_proto_908", "reassign_player_proto_169", b"reassign_player_proto_169", "recallroute_draft_proto_1421", b"recallroute_draft_proto_1421", "recycle_item_proto_137", b"recycle_item_proto_137", "redeem_passcoderequest_proto_5006", b"redeem_passcoderequest_proto_5006", "redeem_ticket_gift_for_friend_proto_2001", b"redeem_ticket_gift_for_friend_proto_2001", "refresh_proximity_tokensrequest_proto_362000", b"refresh_proximity_tokensrequest_proto_362000", "register_background_device_action_proto_230000", b"register_background_device_action_proto_230000", "register_background_device_action_proto_8", b"register_background_device_action_proto_8", "register_sfidarequest_800", b"register_sfidarequest_800", "release_pokemon_proto_112", b"release_pokemon_proto_112", "release_stationed_pokemon_proto_2472", b"release_stationed_pokemon_proto_2472", "remote_gift_pingrequest_proto_1503", b"remote_gift_pingrequest_proto_1503", "remove_campfire_forreferee_proto_6002", b"remove_campfire_forreferee_proto_6002", "remove_login_action_proto_5009", b"remove_login_action_proto_5009", "remove_pokemon_size_leaderboard_entry_proto_2103", b"remove_pokemon_size_leaderboard_entry_proto_2103", "remove_ptc_login_action_proto_3007", b"remove_ptc_login_action_proto_3007", "remove_quest_proto_903", b"remove_quest_proto_903", "remove_save_for_later_proto_2465", b"remove_save_for_later_proto_2465", "replace_login_action_proto_5015", b"replace_login_action_proto_5015", "report_ad_feedbackrequest_1716", b"report_ad_feedbackrequest_1716", "report_ad_interaction_proto_1651", b"report_ad_interaction_proto_1651", "report_proximity_contactsrequest_proto_362001", b"report_proximity_contactsrequest_proto_362001", "report_station_proto_2470", b"report_station_proto_2470", "reportroute_proto_1415", b"reportroute_proto_1415", "respondremote_trade_proto_2606", b"respondremote_trade_proto_2606", "route_nearby_notif_shown_proto_1422", b"route_nearby_notif_shown_proto_1422", "route_update_seen_proto_1420", b"route_update_seen_proto_1420", "saturday_complete_proto_828", b"saturday_complete_proto_828", "saturdaystart_proto_827", b"saturdaystart_proto_827", "save_combat_player_preferences_proto_999", b"save_combat_player_preferences_proto_999", "save_player_preferences_proto_1652", b"save_player_preferences_proto_1652", "save_playersnapshot_proto_954", b"save_playersnapshot_proto_954", "savesocial_playersettings_proto_10016", b"savesocial_playersettings_proto_10016", "savesocial_playersettings_proto_959", b"savesocial_playersettings_proto_959", "savestamp_proto_1902", b"savestamp_proto_1902", "send_bread_battle_invitation_proto_1505", b"send_bread_battle_invitation_proto_1505", "send_event_rsvp_invitation_proto_3039", b"send_event_rsvp_invitation_proto_3039", "send_friend_invite_via_referral_code_proto_1802", b"send_friend_invite_via_referral_code_proto_1802", "send_friend_request_via_player_id_proto_2010", b"send_friend_request_via_player_id_proto_2010", "send_gift_proto_950", b"send_gift_proto_950", "send_party_invitation_proto_2310", b"send_party_invitation_proto_2310", "send_party_invitation_proto_3008", b"send_party_invitation_proto_3008", "send_probe_proto_1020", b"send_probe_proto_1020", "send_raid_invitation_proto_1504", b"send_raid_invitation_proto_1504", "set_avatar_item_as_viewed_proto_808", b"set_avatar_item_as_viewed_proto_808", "set_avatar_proto_404", b"set_avatar_proto_404", "set_birthday_request_proto_5048", b"set_birthday_request_proto_5048", "set_buddy_pokemon_proto_152", b"set_buddy_pokemon_proto_152", "set_contactsettings_proto_151", b"set_contactsettings_proto_151", "set_favorite_pokemon_proto_148", b"set_favorite_pokemon_proto_148", "set_friend_nickname_proto_957", b"set_friend_nickname_proto_957", "set_lobby_pokemon_proto_162", b"set_lobby_pokemon_proto_162", "set_lobby_visibility_proto_161", b"set_lobby_visibility_proto_161", "set_neutral_avatar_proto_408", b"set_neutral_avatar_proto_408", "set_player_team_proto_405", b"set_player_team_proto_405", "set_playerstatus_proto_20", b"set_playerstatus_proto_20", "set_pokemon_tags_for_pokemon_proto_1720", b"set_pokemon_tags_for_pokemon_proto_1720", "sfida_associate_request_822", b"sfida_associate_request_822", "sfida_capture_request_806", b"sfida_capture_request_806", "sfida_certification_request_802", b"sfida_certification_request_802", "sfida_check_pairing_request_823", b"sfida_check_pairing_request_823", "sfida_disassociate_request_824", b"sfida_disassociate_request_824", "sfida_dowser_request_805", b"sfida_dowser_request_805", "sfida_update_request_803", b"sfida_update_request_803", "skip_enter_referral_code_proto_1915", b"skip_enter_referral_code_proto_1915", "smart_glassessyncsettings_request_proto_3027", b"smart_glassessyncsettings_request_proto_3027", "softsfida_capture_proto_833", b"softsfida_capture_proto_833", "softsfida_location_update_proto_834", b"softsfida_location_update_proto_834", "softsfida_pause_proto_832", b"softsfida_pause_proto_832", "softsfida_recap_proto_835", b"softsfida_recap_proto_835", "softsfidastart_proto_831", b"softsfidastart_proto_831", "start_bread_battle_proto_2456", b"start_bread_battle_proto_2456", "start_incident_proto_1200", b"start_incident_proto_1200", "start_mp_walk_quest_proto_2458", b"start_mp_walk_quest_proto_2458", "start_party_proto_2302", b"start_party_proto_2302", "start_party_quest_proto_2308", b"start_party_quest_proto_2308", "start_pvp_battle_proto_3071", b"start_pvp_battle_proto_3071", "start_quest_incident_proto_907", b"start_quest_incident_proto_907", "start_raid_battle_proto_165", b"start_raid_battle_proto_165", "start_rocket_balloon_incident_proto_1207", b"start_rocket_balloon_incident_proto_1207", "start_route_proto_1404", b"start_route_proto_1404", "start_team_leader_battle_proto_3059", b"start_team_leader_battle_proto_3059", "start_tgr_battle_proto_3056", b"start_tgr_battle_proto_3056", "start_weekly_challenge_group_matchmaking_proto_3047", b"start_weekly_challenge_group_matchmaking_proto_3047", "station_pokemon_proto_2460", b"station_pokemon_proto_2460", "submit_combat_challenge_pokemons_proto_998", b"submit_combat_challenge_pokemons_proto_998", "submit_new_poi_proto_5011", b"submit_new_poi_proto_5011", "submit_route_draft_proto_1402", b"submit_route_draft_proto_1402", "sync_battle_inventory_proto_3011", b"sync_battle_inventory_proto_3011", "sync_weekly_challenge_matchmakingstatus_proto_3048", b"sync_weekly_challenge_matchmakingstatus_proto_3048", "titan_async_file_upload_complete_proto_620402", b"titan_async_file_upload_complete_proto_620402", "titan_generate_gmap_signed_url_proto_620300", b"titan_generate_gmap_signed_url_proto_620300", "titan_get_a_r_mapping_settings_proto_620403", b"titan_get_a_r_mapping_settings_proto_620403", "titan_get_available_submissions_proto_620001", b"titan_get_available_submissions_proto_620001", "titan_get_gmap_settings_proto_620301", b"titan_get_gmap_settings_proto_620301", "titan_get_grapeshot_upload_url_proto_620401", b"titan_get_grapeshot_upload_url_proto_620401", "titan_get_image_gallery_settings_proto_620502", b"titan_get_image_gallery_settings_proto_620502", "titan_get_images_for_poi_proto_620500", b"titan_get_images_for_poi_proto_620500", "titan_get_player_submission_validation_settings_proto_620003", b"titan_get_player_submission_validation_settings_proto_620003", "titan_get_pois_in_radius_proto_620601", b"titan_get_pois_in_radius_proto_620601", "titan_poi_video_submission_metadata_proto_620400", b"titan_poi_video_submission_metadata_proto_620400", "titan_submit_new_poi_proto_620000", b"titan_submit_new_poi_proto_620000", "titan_submit_player_image_vote_for_poi_proto_620501", b"titan_submit_player_image_vote_for_poi_proto_620501", "titan_submit_poi_category_vote_record_proto_620106", b"titan_submit_poi_category_vote_record_proto_620106", "titan_submit_poi_image_proto_5041", b"titan_submit_poi_image_proto_5041", "titan_submit_poi_image_proto_620100", b"titan_submit_poi_image_proto_620100", "titan_submit_poi_location_update_proto_5043", b"titan_submit_poi_location_update_proto_5043", "titan_submit_poi_location_update_proto_620102", b"titan_submit_poi_location_update_proto_620102", "titan_submit_poitakedown_request_proto_5044", b"titan_submit_poitakedown_request_proto_5044", "titan_submit_poitakedown_request_proto_620103", b"titan_submit_poitakedown_request_proto_620103", "titan_submit_poitext_metadata_update_proto_5042", b"titan_submit_poitext_metadata_update_proto_5042", "titan_submit_poitext_metadata_update_proto_620101", b"titan_submit_poitext_metadata_update_proto_620101", "titan_submit_sponsor_poi_location_update_proto_620105", b"titan_submit_sponsor_poi_location_update_proto_620105", "titan_submit_sponsor_poi_report_proto_620104", b"titan_submit_sponsor_poi_report_proto_620104", "transfer_contest_entry_proto_2152", b"transfer_contest_entry_proto_2152", "transfer_pokemon_size_leaderboard_entry_proto_2102", b"transfer_pokemon_size_leaderboard_entry_proto_2102", "transfer_pokemonto_pokemon_home_proto_1713", b"transfer_pokemonto_pokemon_home_proto_1713", "unfuse_pokemon_request_proto_3018", b"unfuse_pokemon_request_proto_3018", "unlink_nintendo_account_proto_1711", b"unlink_nintendo_account_proto_1711", "unlock_pokemon_move_proto_1004", b"unlock_pokemon_move_proto_1004", "unlock_temporary_evolution_level_proto_1506", b"unlock_temporary_evolution_level_proto_1506", "update_adventure_sync_fitness_request_proto_640004", b"update_adventure_sync_fitness_request_proto_640004", "update_adventure_sync_settings_request_proto_5047", b"update_adventure_sync_settings_request_proto_5047", "update_adventure_sync_settings_request_proto_640003", b"update_adventure_sync_settings_request_proto_640003", "update_breadcrumb_history_request_proto_361000", b"update_breadcrumb_history_request_proto_361000", "update_bulk_player_location_request_proto_360002", b"update_bulk_player_location_request_proto_360002", "update_combat_proto_1001", b"update_combat_proto_1001", "update_contest_entry_proto_2151", b"update_contest_entry_proto_2151", "update_event_rsvp_selection_proto_3040", b"update_event_rsvp_selection_proto_3040", "update_field_book_post_catch_pokemon_proto_3075", b"update_field_book_post_catch_pokemon_proto_3075", "update_invasion_battle_proto_1203", b"update_invasion_battle_proto_1203", "update_iris_social_scene_proto_3020", b"update_iris_social_scene_proto_3020", "update_notification_proto_5002", b"update_notification_proto_5002", "update_player_gps_bookmarks_proto_23", b"update_player_gps_bookmarks_proto_23", "update_pokemon_size_leaderboard_entry_proto_2101", b"update_pokemon_size_leaderboard_entry_proto_2101", "update_postcard_proto_1911", b"update_postcard_proto_1911", "update_route_draft_proto_1400", b"update_route_draft_proto_1400", "update_survey_eligibility_proto_3026", b"update_survey_eligibility_proto_3026", "update_trading_proto_971", b"update_trading_proto_971", "update_vps_event_proto_3001", b"update_vps_event_proto_3001", "upgrade_pokemon_proto_147", b"upgrade_pokemon_proto_147", "upload_combat_client_log_proto_1916", b"upload_combat_client_log_proto_1916", "upload_raid_client_log_proto_1914", b"upload_raid_client_log_proto_1914", "use_incense_action_proto_141", b"use_incense_action_proto_141", "use_item_battle_boost_proto_174", b"use_item_battle_boost_proto_174", "use_item_bulk_heal_proto_173", b"use_item_bulk_heal_proto_173", "use_item_capture_proto_114", b"use_item_capture_proto_114", "use_item_egg_incubator_proto_140", b"use_item_egg_incubator_proto_140", "use_item_encounter_proto_154", b"use_item_encounter_proto_154", "use_item_lucky_friend_applicator_proto_175", b"use_item_lucky_friend_applicator_proto_175", "use_item_move_reroll_proto_813", b"use_item_move_reroll_proto_813", "use_item_mp_replenish_proto_2468", b"use_item_mp_replenish_proto_2468", "use_item_potion_proto_113", b"use_item_potion_proto_113", "use_item_rare_candy_proto_814", b"use_item_rare_candy_proto_814", "use_item_revive_proto_116", b"use_item_revive_proto_116", "use_item_stardust_boost_proto_168", b"use_item_stardust_boost_proto_168", "use_item_stat_increase_proto_176", b"use_item_stat_increase_proto_176", "use_item_xp_boost_proto_139", b"use_item_xp_boost_proto_139", "use_non_combat_move_request_proto_2014", b"use_non_combat_move_request_proto_2014", "use_save_for_later_proto_2464", b"use_save_for_later_proto_2464", "verify_challenge_proto_601", b"verify_challenge_proto_601", "view_route_pin_proto_1728", b"view_route_pin_proto_1728", "vs_seeker_reward_encounter_proto_1307", b"vs_seeker_reward_encounter_proto_1307", "vs_seeker_start_matchmaking_proto_1300", b"vs_seeker_start_matchmaking_proto_1300", "waina_get_rewards_request_825", b"waina_get_rewards_request_825", "waina_submit_sleep_data_request_826", b"waina_submit_sleep_data_request_826"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["accept_combat_challenge_proto_995", b"accept_combat_challenge_proto_995", "acknowledge_punishment_proto_10", b"acknowledge_punishment_proto_10", "acknowledge_view_latest_incense_recap_proto_2003", b"acknowledge_view_latest_incense_recap_proto_2003", "acknowledge_warnings_request_proto_200001", b"acknowledge_warnings_request_proto_200001", "acknowledge_warnings_request_proto_5040", b"acknowledge_warnings_request_proto_5040", "activate_vs_seeker_proto_1308", b"activate_vs_seeker_proto_1308", "add_fort_modifier_proto_144", b"add_fort_modifier_proto_144", "add_loginaction_proto_5008", b"add_loginaction_proto_5008", "add_ptc_loginaction_proto_3002", b"add_ptc_loginaction_proto_3002", "add_referrer_proto_1801", b"add_referrer_proto_1801", "age_confirmation_proto_3052", b"age_confirmation_proto_3052", "appeal_route_proto_1425", b"appeal_route_proto_1425", "asset_digest_request_proto_300", b"asset_digest_request_proto_300", "asset_version_proto_302", b"asset_version_proto_302", "attack_raid_battle_proto_166", b"attack_raid_battle_proto_166", "attracted_pokemon_encounter_proto_1417", b"attracted_pokemon_encounter_proto_1417", "auth_register_background_deviceaction_proto_5028", b"auth_register_background_deviceaction_proto_5028", "award_free_raid_ticket_proto_815", b"award_free_raid_ticket_proto_815", "badge_reward_encounter_request_proto_2360", b"badge_reward_encounter_request_proto_2360", "beluga_transaction_complete_proto_820", b"beluga_transaction_complete_proto_820", "beluga_transaction_start_proto_819", b"beluga_transaction_start_proto_819", "boot_raid_proto_2004", b"boot_raid_proto_2004", "buddy_feeding_proto_1352", b"buddy_feeding_proto_1352", "buddy_map_proto_1350", b"buddy_map_proto_1350", "buddy_petting_proto_1354", b"buddy_petting_proto_1354", "buddy_stats_proto_1351", b"buddy_stats_proto_1351", "butterfly_collector_reward_encounter_proto_request_1724", b"butterfly_collector_reward_encounter_proto_request_1724", "can_report_route_proto_1418", b"can_report_route_proto_1418", "cancel_event_rsvp_proto_3033", b"cancel_event_rsvp_proto_3033", "cancel_matchmaking_proto_1301", b"cancel_matchmaking_proto_1301", "cancel_party_invite_proto_2312", b"cancel_party_invite_proto_2312", "cancel_remote_trade_proto_2601", b"cancel_remote_trade_proto_2601", "cancel_route_proto_1410", b"cancel_route_proto_1410", "cancel_trading_proto_973", b"cancel_trading_proto_973", "cancelcombatchallenge_proto_997", b"cancelcombatchallenge_proto_997", "canclaim_ptc_reward_action_proto_3004", b"canclaim_ptc_reward_action_proto_3004", "catch_pokemon_proto_103", b"catch_pokemon_proto_103", "change_pokemon_form_proto_1722", b"change_pokemon_form_proto_1722", "change_stampcollection_player_data_proto_1905", b"change_stampcollection_player_data_proto_1905", "change_stat_increase_goal_proto_3053", b"change_stat_increase_goal_proto_3053", "change_team_proto_1106", b"change_team_proto_1106", "check_awarded_badges_proto_129", b"check_awarded_badges_proto_129", "check_gifting_eligibility_proto_2000", b"check_gifting_eligibility_proto_2000", "check_photobomb_proto_1101", b"check_photobomb_proto_1101", "check_pokemon_size_leaderboard_eligibility_proto_2100", b"check_pokemon_size_leaderboard_eligibility_proto_2100", "check_send_gift_proto_956", b"check_send_gift_proto_956", "check_stamp_giftability_proto_1906", b"check_stamp_giftability_proto_1906", "checkchallenge_proto_600", b"checkchallenge_proto_600", "checkcontest_eligibility_proto_2150", b"checkcontest_eligibility_proto_2150", "choose_global_ticketed_event_variant_proto_1723", b"choose_global_ticketed_event_variant_proto_1723", "claim_event_pass_rewards_request_proto_3034", b"claim_event_pass_rewards_request_proto_3034", "claim_event_pass_rewards_request_proto_3035", b"claim_event_pass_rewards_request_proto_3035", "claim_ptc_linking_reward_proto_3003", b"claim_ptc_linking_reward_proto_3003", "claim_stampcollection_reward_proto_1904", b"claim_stampcollection_reward_proto_1904", "claim_vs_seeker_rewards_proto_1306", b"claim_vs_seeker_rewards_proto_1306", "claimcodename_request_proto_403", b"claimcodename_request_proto_403", "claimcontests_rewards_proto_2107", b"claimcontests_rewards_proto_2107", "client_telemetry_batch_proto_5018", b"client_telemetry_batch_proto_5018", "client_telemetry_settings_request_proto_5026", b"client_telemetry_settings_request_proto_5026", "client_telemetry_settings_request_proto_610001", b"client_telemetry_settings_request_proto_610001", "collect_daily_bonus_proto_138", b"collect_daily_bonus_proto_138", "combat_friend_request_proto_1006", b"combat_friend_request_proto_1006", "combat_sync_server_offset_proto_1917", b"combat_sync_server_offset_proto_1917", "complete_all_quest_proto_3063", b"complete_all_quest_proto_3063", "complete_bread_battle_proto_2473", b"complete_bread_battle_proto_2473", "complete_invasion_dialogue_proto_1201", b"complete_invasion_dialogue_proto_1201", "complete_milestone_proto_1806", b"complete_milestone_proto_1806", "complete_party_quest_proto_2309", b"complete_party_quest_proto_2309", "complete_pvp_battle_proto_3072", b"complete_pvp_battle_proto_3072", "complete_quest_proto_902", b"complete_quest_proto_902", "complete_quest_stampcard_proto_905", b"complete_quest_stampcard_proto_905", "complete_raid_battle_proto_3010", b"complete_raid_battle_proto_3010", "complete_snapshot_session_proto_1110", b"complete_snapshot_session_proto_1110", "complete_team_leader_battle_proto_3060", b"complete_team_leader_battle_proto_3060", "complete_tgr_battle_proto_3058", b"complete_tgr_battle_proto_3058", "complete_visit_page_quest_proto_3030", b"complete_visit_page_quest_proto_3030", "complete_vs_seeker_and_restartcharging_proto_1303", b"complete_vs_seeker_and_restartcharging_proto_1303", "complete_wild_snapshot_session_proto_1111", b"complete_wild_snapshot_session_proto_1111", "completecompetitive_season_proto_1305", b"completecompetitive_season_proto_1305", "confirm_photobomb_proto_1102", b"confirm_photobomb_proto_1102", "confirm_trading_proto_972", b"confirm_trading_proto_972", "consume_party_items_proto_3006", b"consume_party_items_proto_3006", "consume_stickers_proto_3009", b"consume_stickers_proto_3009", "contribute_party_item_proto_3005", b"contribute_party_item_proto_3005", "convertcandy_to_xlcandy_proto_171", b"convertcandy_to_xlcandy_proto_171", "create_buddy_multiplayer_session_proto_1456", b"create_buddy_multiplayer_session_proto_1456", "create_bug_report_proto_3088", b"create_bug_report_proto_3088", "create_event_rsvp_proto_3032", b"create_event_rsvp_proto_3032", "create_party_proto_2300", b"create_party_proto_2300", "create_pokemon_tag_proto_1717", b"create_pokemon_tag_proto_1717", "create_postcard_proto_1910", b"create_postcard_proto_1910", "create_route_draft_proto_1413", b"create_route_draft_proto_1413", "create_route_pin_proto_1726", b"create_route_pin_proto_1726", "create_route_shortcode_proto_1428", b"create_route_shortcode_proto_1428", "createcombatchallenge_proto_992", b"createcombatchallenge_proto_992", "daily_bonus_spawn_encounter_proto_3067", b"daily_bonus_spawn_encounter_proto_3067", "daily_encounter_proto_1602", b"daily_encounter_proto_1602", "day_night_poi_encounter_proto_3077", b"day_night_poi_encounter_proto_3077", "debug_egg_statistics_proto_3083", b"debug_egg_statistics_proto_3083", "debug_encounter_statistics_proto_3061", b"debug_encounter_statistics_proto_3061", "debug_resetdaily_mp_progress_proto_2471", b"debug_resetdaily_mp_progress_proto_2471", "debug_test_setup_proto_3085", b"debug_test_setup_proto_3085", "decline_combat_challenge_proto_996", b"decline_combat_challenge_proto_996", "delete_gift_from_inventory_proto_958", b"delete_gift_from_inventory_proto_958", "delete_gift_proto_953", b"delete_gift_proto_953", "delete_pokemon_tag_proto_1718", b"delete_pokemon_tag_proto_1718", "delete_postcard_proto_1912", b"delete_postcard_proto_1912", "delete_postcards_proto_1909", b"delete_postcards_proto_1909", "delete_routedraft_proto_1414", b"delete_routedraft_proto_1414", "dequeue_questdialogue_proto_909", b"dequeue_questdialogue_proto_909", "disk_encounter_proto_145", b"disk_encounter_proto_145", "download_gm_templates_request_proto_5004", b"download_gm_templates_request_proto_5004", "download_settings_action_proto_5", b"download_settings_action_proto_5", "download_url_request_proto_301", b"download_url_request_proto_301", "echo_proto_666", b"echo_proto_666", "edit_pokemon_tag_proto_1719", b"edit_pokemon_tag_proto_1719", "enable_campfire_for_referee_proto_6001", b"enable_campfire_for_referee_proto_6001", "encounter_photobomb_proto_1104", b"encounter_photobomb_proto_1104", "encounter_pokestopencounter_proto_2006", b"encounter_pokestopencounter_proto_2006", "encounter_proto_102", b"encounter_proto_102", "encounter_station_spawn_proto_2475", b"encounter_station_spawn_proto_2475", "encounter_tutorial_complete_proto_127", b"encounter_tutorial_complete_proto_127", "end_pokemon_training_proto_3054", b"end_pokemon_training_proto_3054", "enhance_bread_move_proto_2459", b"enhance_bread_move_proto_2459", "evolve_pokemon_proto_125", b"evolve_pokemon_proto_125", "favorite_route_proto_1427", b"favorite_route_proto_1427", "fetch_all_news_proto_816", b"fetch_all_news_proto_816", "fitness_update_proto_5024", b"fitness_update_proto_5024", "fitness_update_proto_640000", b"fitness_update_proto_640000", "flee_battle_encounter_proto_3084", b"flee_battle_encounter_proto_3084", "fort_deploy_proto_110", b"fort_deploy_proto_110", "fort_details_proto_104", b"fort_details_proto_104", "fort_recall_proto_111", b"fort_recall_proto_111", "fort_search_proto_101", b"fort_search_proto_101", "fuse_pokemon_request_proto_3017", b"fuse_pokemon_request_proto_3017", "generate_combat_challenge_id_proto_991", b"generate_combat_challenge_id_proto_991", "generategmap_signed_url_proto_5035", b"generategmap_signed_url_proto_5035", "geofence_update_proto_360000", b"geofence_update_proto_360000", "geofence_update_proto_5033", b"geofence_update_proto_5033", "get_action_log_request_801", b"get_action_log_request_801", "get_additional_pokemon_details_proto_1725", b"get_additional_pokemon_details_proto_1725", "get_adventure_sync_fitness_report_request_proto_640005", b"get_adventure_sync_fitness_report_request_proto_640005", "get_adventure_sync_progress_proto_230002", b"get_adventure_sync_progress_proto_230002", "get_adventure_sync_settings_request_proto_5046", b"get_adventure_sync_settings_request_proto_5046", "get_adventure_sync_settings_request_proto_640002", b"get_adventure_sync_settings_request_proto_640002", "get_app_request_token_redirect_u_r_l_platform_request_proto_600007", b"get_app_request_token_redirect_u_r_l_platform_request_proto_600007", "get_available_submissions_proto_5014", b"get_available_submissions_proto_5014", "get_battle_rejoin_status_proto_3062", b"get_battle_rejoin_status_proto_3062", "get_bonus_attracted_pokemon_proto_2350", b"get_bonus_attracted_pokemon_proto_2350", "get_bonuses_proto_2352", b"get_bonuses_proto_2352", "get_bread_lobby_details_proto_2457", b"get_bread_lobby_details_proto_2457", "get_buddy_history_proto_1355", b"get_buddy_history_proto_1355", "get_buddy_walked_proto_153", b"get_buddy_walked_proto_153", "get_change_pokemon_form_preview_request_proto_3021", b"get_change_pokemon_form_preview_request_proto_3021", "get_combat_challenge_proto_994", b"get_combat_challenge_proto_994", "get_combat_player_profile_proto_990", b"get_combat_player_profile_proto_990", "get_combat_results_proto_1003", b"get_combat_results_proto_1003", "get_contest_data_proto_2105", b"get_contest_data_proto_2105", "get_contest_entry_proto_2154", b"get_contest_entry_proto_2154", "get_contest_friend_entry_proto_2153", b"get_contest_friend_entry_proto_2153", "get_contests_unclaimed_rewards_proto_2106", b"get_contests_unclaimed_rewards_proto_2106", "get_daily_bonus_spawn_proto_3066", b"get_daily_bonus_spawn_proto_3066", "get_daily_encounter_proto_1601", b"get_daily_encounter_proto_1601", "get_eligible_combat_leagues_proto_2009", b"get_eligible_combat_leagues_proto_2009", "get_entered_contest_proto_2108", b"get_entered_contest_proto_2108", "get_event_rsvp_count_proto_3036", b"get_event_rsvp_count_proto_3036", "get_event_rsvps_proto_3031", b"get_event_rsvps_proto_3031", "get_fitness_report_proto_5025", b"get_fitness_report_proto_5025", "get_fitness_report_proto_640001", b"get_fitness_report_proto_640001", "get_fitness_rewards_proto_980", b"get_fitness_rewards_proto_980", "get_friendship_rewards_proto_955", b"get_friendship_rewards_proto_955", "get_hatched_eggs_proto_126", b"get_hatched_eggs_proto_126", "get_holoholo_inventory_proto_4", b"get_holoholo_inventory_proto_4", "get_inbox_proto_10105", b"get_inbox_proto_10105", "get_inbox_proto_809", b"get_inbox_proto_809", "get_incense_pokemon_proto_142", b"get_incense_pokemon_proto_142", "get_incense_recap_proto_2002", b"get_incense_recap_proto_2002", "get_inventory_proto_5005", b"get_inventory_proto_5005", "get_iris_social_scene_proto_3019", b"get_iris_social_scene_proto_3019", "get_local_time_proto_12", b"get_local_time_proto_12", "get_map_forts_proto_1401", b"get_map_forts_proto_1401", "get_map_objects_detail_for_campfire_proto_6013", b"get_map_objects_detail_for_campfire_proto_6013", "get_map_objects_for_campfire_proto_6012", b"get_map_objects_for_campfire_proto_6012", "get_map_objects_proto_106", b"get_map_objects_proto_106", "get_matchmaking_status_proto_1302", b"get_matchmaking_status_proto_1302", "get_mega_level_up_preview_proto_3080", b"get_mega_level_up_preview_proto_3080", "get_memento_list_proto_1913", b"get_memento_list_proto_1913", "get_milestones_preview_proto_1805", b"get_milestones_preview_proto_1805", "get_milestones_proto_1803", b"get_milestones_proto_1803", "get_mp_summary_proto_2467", b"get_mp_summary_proto_2467", "get_new_quests_proto_900", b"get_new_quests_proto_900", "get_nintendo_account_proto_1710", b"get_nintendo_account_proto_1710", "get_nintendo_o_auth2_url_proto_1712", b"get_nintendo_o_auth2_url_proto_1712", "get_non_remote_tradable_pokemon_proto_2604", b"get_non_remote_tradable_pokemon_proto_2604", "get_npc_combat_rewards_proto_1005", b"get_npc_combat_rewards_proto_1005", "get_num_pokemon_in_iris_social_scene_proto_6005", b"get_num_pokemon_in_iris_social_scene_proto_6005", "get_num_station_assists_proto_2476", b"get_num_station_assists_proto_2476", "get_outstanding_warnings_request_proto_200000", b"get_outstanding_warnings_request_proto_200000", "get_outstanding_warnings_request_proto_5039", b"get_outstanding_warnings_request_proto_5039", "get_party_proto_2304", b"get_party_proto_2304", "get_pending_remote_trade_proto_2605", b"get_pending_remote_trade_proto_2605", "get_photobomb_proto_1103", b"get_photobomb_proto_1103", "get_player_day_proto_9", b"get_player_day_proto_9", "get_player_pokemon_field_book_proto_3065", b"get_player_pokemon_field_book_proto_3065", "get_player_proto_2", b"get_player_proto_2", "get_player_raid_eligibility_proto_6003", b"get_player_raid_eligibility_proto_6003", "get_player_stamp_collections_proto_1901", b"get_player_stamp_collections_proto_1901", "get_player_status_proxy_proto_177", b"get_player_status_proxy_proto_177", "get_playergps_bookmarks_proto_22", b"get_playergps_bookmarks_proto_22", "get_pokemon_remote_trading_details_proto_2607", b"get_pokemon_remote_trading_details_proto_2607", "get_pokemon_size_leaderboard_entry_proto_2104", b"get_pokemon_size_leaderboard_entry_proto_2104", "get_pokemon_size_leaderboard_friend_entry_proto_2109", b"get_pokemon_size_leaderboard_friend_entry_proto_2109", "get_pokemon_tags_proto_1721", b"get_pokemon_tags_proto_1721", "get_pokemon_trading_cost_proto_2608", b"get_pokemon_trading_cost_proto_2608", "get_pokestop_encounter_proto_2005", b"get_pokestop_encounter_proto_2005", "get_published_routes_proto_1403", b"get_published_routes_proto_1403", "get_quest_details_proto_901", b"get_quest_details_proto_901", "get_quest_ui_proto_2008", b"get_quest_ui_proto_2008", "get_raid_details_proto_163", b"get_raid_details_proto_163", "get_raid_lobby_counter_proto_2011", b"get_raid_lobby_counter_proto_2011", "get_referral_code_proto_1800", b"get_referral_code_proto_1800", "get_remote_config_versions_proto_7", b"get_remote_config_versions_proto_7", "get_remote_tradable_pokemon_from_other_player_proto_2603", b"get_remote_tradable_pokemon_from_other_player_proto_2603", "get_reward_tiers_request_proto_310300", b"get_reward_tiers_request_proto_310300", "get_rocket_balloon_proto_1206", b"get_rocket_balloon_proto_1206", "get_route_by_short_code_proto_1429", b"get_route_by_short_code_proto_1429", "get_route_creations_proto_1424", b"get_route_creations_proto_1424", "get_route_draft_proto_1426", b"get_route_draft_proto_1426", "get_routes_proto_1405", b"get_routes_proto_1405", "get_save_for_later_entries_proto_2466", b"get_save_for_later_entries_proto_2466", "get_server_time_proto_11", b"get_server_time_proto_11", "get_station_info_proto_3051", b"get_station_info_proto_3051", "get_stationed_pokemon_details_proto_2462", b"get_stationed_pokemon_details_proto_2462", "get_suggested_players_social_proto_3055", b"get_suggested_players_social_proto_3055", "get_supply_balloon_proto_3068", b"get_supply_balloon_proto_3068", "get_survey_eligibility_proto_3025", b"get_survey_eligibility_proto_3025", "get_time_travel_information_proto_3076", b"get_time_travel_information_proto_3076", "get_timedgroup_challenge_proto_1700", b"get_timedgroup_challenge_proto_1700", "get_trading_proto_974", b"get_trading_proto_974", "get_unfuse_pokemon_preview_request_proto_3023", b"get_unfuse_pokemon_preview_request_proto_3023", "get_vps_event_proto_3000", b"get_vps_event_proto_3000", "get_vs_seeker_status_proto_1304", b"get_vs_seeker_status_proto_1304", "get_web_token_proto_1107", b"get_web_token_proto_1107", "get_web_token_proto_5045", b"get_web_token_proto_5045", "get_weekly_challenge_info_proto_3041", b"get_weekly_challenge_info_proto_3041", "getcombat_downscaled_stats_proto_3090", b"getcombat_downscaled_stats_proto_3090", "getgame_config_versions_proto_21", b"getgame_config_versions_proto_21", "getgame_master_client_templates_proto_6", b"getgame_master_client_templates_proto_6", "getgeofenced_ad_proto_1820", b"getgeofenced_ad_proto_1820", "getgift_box_details_proto_952", b"getgift_box_details_proto_952", "getgmap_settings_proto_1105", b"getgmap_settings_proto_1105", "getgmap_settings_proto_5036", b"getgmap_settings_proto_5036", "getgym_badge_details_proto_812", b"getgym_badge_details_proto_812", "grant_expired_item_consolation_proto_3057", b"grant_expired_item_consolation_proto_3057", "gym_battle_attack_proto_158", b"gym_battle_attack_proto_158", "gym_deploy_proto_155", b"gym_deploy_proto_155", "gym_feed_pokemon_proto_164", b"gym_feed_pokemon_proto_164", "gym_start_session_proto_157", b"gym_start_session_proto_157", "gymget_info_proto_156", b"gymget_info_proto_156", "iap_get_active_subscriptions_request_proto_310201", b"iap_get_active_subscriptions_request_proto_310201", "iap_get_available_skus_and_balances_proto_310001", b"iap_get_available_skus_and_balances_proto_310001", "iap_get_available_skus_and_balances_proto_5020", b"iap_get_available_skus_and_balances_proto_5020", "iap_get_available_subscriptions_request_proto_310200", b"iap_get_available_subscriptions_request_proto_310200", "iap_get_user_request_proto_311101", b"iap_get_user_request_proto_311101", "iap_purchase_sku_proto_310000", b"iap_purchase_sku_proto_310000", "iap_purchase_sku_proto_5019", b"iap_purchase_sku_proto_5019", "iap_redeem_apple_receipt_proto_310101", b"iap_redeem_apple_receipt_proto_310101", "iap_redeem_apple_receipt_proto_5022", b"iap_redeem_apple_receipt_proto_5022", "iap_redeem_desktop_receipt_proto_310102", b"iap_redeem_desktop_receipt_proto_310102", "iap_redeem_desktop_receipt_proto_5023", b"iap_redeem_desktop_receipt_proto_5023", "iap_redeem_google_receipt_proto_310100", b"iap_redeem_google_receipt_proto_310100", "iap_redeem_google_receipt_proto_5021", b"iap_redeem_google_receipt_proto_5021", "iap_redeem_samsung_receipt_proto_310103", b"iap_redeem_samsung_receipt_proto_310103", "iap_redeem_samsung_receipt_proto_5037", b"iap_redeem_samsung_receipt_proto_5037", "iap_redeem_xsolla_receipt_request_proto_311100", b"iap_redeem_xsolla_receipt_request_proto_311100", "iap_setin_game_currency_exchange_rate_proto_310002", b"iap_setin_game_currency_exchange_rate_proto_310002", "incense_encounter_proto_143", b"incense_encounter_proto_143", "internal_accept_friendinvite_proto_10004", b"internal_accept_friendinvite_proto_10004", "internal_add_favorite_friend_request_10023", b"internal_add_favorite_friend_request_10023", "internal_add_login_action_proto_600000", b"internal_add_login_action_proto_600000", "internal_block_account_proto_10025", b"internal_block_account_proto_10025", "internal_cancel_friendinvite_proto_10003", b"internal_cancel_friendinvite_proto_10003", "internal_decline_friendinvite_proto_10005", b"internal_decline_friendinvite_proto_10005", "internal_dismiss_contact_list_update_request_20017", b"internal_dismiss_contact_list_update_request_20017", "internal_dismiss_outgoing_gameinvites_request_20012", b"internal_dismiss_outgoing_gameinvites_request_20012", "internal_gar_proxy_request_proto_600005", b"internal_gar_proxy_request_proto_600005", "internal_get_account_settings_proto_10022", b"internal_get_account_settings_proto_10022", "internal_get_client_feature_flags_request_20008", b"internal_get_client_feature_flags_request_20008", "internal_get_contact_listinfo_request_20016", b"internal_get_contact_listinfo_request_20016", "internal_get_facebook_friend_list_proto_10014", b"internal_get_facebook_friend_list_proto_10014", "internal_get_friend_code_proto_10013", b"internal_get_friend_code_proto_10013", "internal_get_friend_details_proto_10010", b"internal_get_friend_details_proto_10010", "internal_get_friend_details_proto_20007", b"internal_get_friend_details_proto_20007", "internal_get_friend_recommendation_request_20500", b"internal_get_friend_recommendation_request_20500", "internal_get_friends_list_proto_10006", b"internal_get_friends_list_proto_10006", "internal_get_outgoing_blocks_proto_10027", b"internal_get_outgoing_blocks_proto_10027", "internal_get_outgoing_friendinvites_proto_10007", b"internal_get_outgoing_friendinvites_proto_10007", "internal_get_photos_proto_10203", b"internal_get_photos_proto_10203", "internal_get_player_settings_proto_10017", b"internal_get_player_settings_proto_10017", "internal_get_player_settings_proto_818", b"internal_get_player_settings_proto_818", "internal_get_profile_request_20003", b"internal_get_profile_request_20003", "internal_get_signed_url_proto_10201", b"internal_get_signed_url_proto_10201", "internal_getincoming_friendinvites_proto_10008", b"internal_getincoming_friendinvites_proto_10008", "internal_getincoming_gameinvites_request_20010", b"internal_getincoming_gameinvites_request_20010", "internal_link_to_account_login_request_proto_600006", b"internal_link_to_account_login_request_proto_600006", "internal_list_friends_request_20006", b"internal_list_friends_request_20006", "internal_list_opt_out_notification_categories_request_proto_10106", b"internal_list_opt_out_notification_categories_request_proto_10106", "internal_notify_contact_list_friends_request_20018", b"internal_notify_contact_list_friends_request_20018", "internal_push_notification_registry_proto_10101", b"internal_push_notification_registry_proto_10101", "internal_refer_contact_list_friend_request_20015", b"internal_refer_contact_list_friend_request_20015", "internal_remove_favorite_friend_request_10024", b"internal_remove_favorite_friend_request_10024", "internal_remove_friend_proto_10009", b"internal_remove_friend_proto_10009", "internal_remove_login_action_proto_600001", b"internal_remove_login_action_proto_600001", "internal_replace_login_action_proto_600003", b"internal_replace_login_action_proto_600003", "internal_search_player_proto_10000", b"internal_search_player_proto_10000", "internal_send_contact_list_friendinvite_request_20014", b"internal_send_contact_list_friendinvite_request_20014", "internal_send_friendinvite_proto_10002", b"internal_send_friendinvite_proto_10002", "internal_set_account_settings_proto_10021", b"internal_set_account_settings_proto_10021", "internal_set_birthday_request_proto_600004", b"internal_set_birthday_request_proto_600004", "internal_setin_game_currency_exchange_rate_proto_5032", b"internal_setin_game_currency_exchange_rate_proto_5032", "internal_submitimage_proto_10202", b"internal_submitimage_proto_10202", "internal_sync_contact_list_request_20013", b"internal_sync_contact_list_request_20013", "internal_unblock_account_proto_10026", b"internal_unblock_account_proto_10026", "internal_update_facebook_status_proto_10015", b"internal_update_facebook_status_proto_10015", "internal_update_friendship_request_20002", b"internal_update_friendship_request_20002", "internal_update_notification_proto_10103", b"internal_update_notification_proto_10103", "internal_update_profile_request_20001", b"internal_update_profile_request_20001", "internal_updateincoming_gameinvite_request_20011", b"internal_updateincoming_gameinvite_request_20011", "internalinvite_facebook_friend_proto_10011", b"internalinvite_facebook_friend_proto_10011", "internalinvite_game_request_20004", b"internalinvite_game_request_20004", "internalis_account_blocked_proto_10028", b"internalis_account_blocked_proto_10028", "internalis_my_friend_proto_10012", b"internalis_my_friend_proto_10012", "invasion_encounter_proto_1204", b"invasion_encounter_proto_1204", "is_sku_available_proto_172", b"is_sku_available_proto_172", "join_bread_lobby_proto_2450", b"join_bread_lobby_proto_2450", "join_buddy_multiplayer_session_proto_1457", b"join_buddy_multiplayer_session_proto_1457", "join_lobby_proto_159", b"join_lobby_proto_159", "join_party_proto_2301", b"join_party_proto_2301", "kick_other_player_from_party_proto_3016", b"kick_other_player_from_party_proto_3016", "leave_breadlobby_proto_2455", b"leave_breadlobby_proto_2455", "leave_buddy_multiplayer_session_proto_1458", b"leave_buddy_multiplayer_session_proto_1458", "leave_party_proto_2303", b"leave_party_proto_2303", "leave_weekly_challenge_matchmaking_proto_3064", b"leave_weekly_challenge_matchmaking_proto_3064", "leavelobby_proto_160", b"leavelobby_proto_160", "level_up_rewards_proto_128", b"level_up_rewards_proto_128", "lift_user_age_gate_confirmation_proto_830", b"lift_user_age_gate_confirmation_proto_830", "like_route_pin_proto_1727", b"like_route_pin_proto_1727", "list_avatar_appearance_items_proto_410", b"list_avatar_appearance_items_proto_410", "list_avatar_customizations_proto_807", b"list_avatar_customizations_proto_807", "list_avatar_store_items_proto_409", b"list_avatar_store_items_proto_409", "list_device_verification_challenges_request_proto_250102", b"list_device_verification_challenges_request_proto_250102", "list_friend_activities_request_proto_10029", b"list_friend_activities_request_proto_10029", "list_gym_badges_proto_811", b"list_gym_badges_proto_811", "list_player_devices_request_proto_250101", b"list_player_devices_request_proto_250101", "list_route_badges_proto_1409", b"list_route_badges_proto_1409", "list_route_stamps_proto_1411", b"list_route_stamps_proto_1411", "location_ping_proto_360001", b"location_ping_proto_360001", "location_ping_proto_5034", b"location_ping_proto_5034", "loot_station_proto_2461", b"loot_station_proto_2461", "maps_client_telemetry_batch_proto_610000", b"maps_client_telemetry_batch_proto_610000", "mark_fieldbook_seen_request_proto_3078", b"mark_fieldbook_seen_request_proto_3078", "mark_read_news_article_proto_817", b"mark_read_news_article_proto_817", "mark_remote_tradable_proto_2602", b"mark_remote_tradable_proto_2602", "mark_save_for_later_proto_2463", b"mark_save_for_later_proto_2463", "mark_tutorial_complete_proto_406", b"mark_tutorial_complete_proto_406", "markmilestone_as_viewed_proto_1804", b"markmilestone_as_viewed_proto_1804", "mega_evolve_pokemon_proto_1502", b"mega_evolve_pokemon_proto_1502", "mega_level_up_proto_3079", b"mega_level_up_proto_3079", "natural_art_poi_encounter_proto_3070", b"natural_art_poi_encounter_proto_3070", "neutral_avatar_badge_reward_proto_450", b"neutral_avatar_badge_reward_proto_450", "nickname_pokemon_proto_149", b"nickname_pokemon_proto_149", "npc_open_gift_proto_2402", b"npc_open_gift_proto_2402", "npc_route_gift_proto_1423", b"npc_route_gift_proto_1423", "npc_send_gift_proto_2401", b"npc_send_gift_proto_2401", "npc_update_state_proto_2400", b"npc_update_state_proto_2400", "open_buddy_gift_proto_1353", b"open_buddy_gift_proto_1353", "open_combat_challenge_proto_993", b"open_combat_challenge_proto_993", "open_combat_session_proto_1000", b"open_combat_session_proto_1000", "open_gift_proto_951", b"open_gift_proto_951", "open_invasion_combat_session_proto_1202", b"open_invasion_combat_session_proto_1202", "open_npc_combat_session_proto_1007", b"open_npc_combat_session_proto_1007", "open_sponsored_gift_proto_1650", b"open_sponsored_gift_proto_1650", "open_supply_balloon_proto_3069", b"open_supply_balloon_proto_3069", "open_trading_proto_970", b"open_trading_proto_970", "party_send_dark_launch_logproto_2306", b"party_send_dark_launch_logproto_2306", "party_update_locationproto_2305", b"party_update_locationproto_2305", "ping_requestproto_5007", b"ping_requestproto_5007", "platform_fetch_newsfeed_request_5049", b"platform_fetch_newsfeed_request_5049", "platform_mark_newsfeed_read_request_5050", b"platform_mark_newsfeed_read_request_5050", "player_spawnablepokemonproto_2007", b"player_spawnablepokemonproto_2007", "playerprofileproto_121", b"playerprofileproto_121", "power_uppokestop_encounterproto_1900", b"power_uppokestop_encounterproto_1900", "prepare_bread_lobbyproto_2453", b"prepare_bread_lobbyproto_2453", "preview_contributeparty_itemproto_3015", b"preview_contributeparty_itemproto_3015", "process_tappableproto_1408", b"process_tappableproto_1408", "process_tappableproto_1416", b"process_tappableproto_1416", "processplayer_inboxproto_3024", b"processplayer_inboxproto_3024", "profanity_checkproto_1653", b"profanity_checkproto_1653", "progress_questproto_906", b"progress_questproto_906", "progress_routeproto_1406", b"progress_routeproto_1406", "propose_remote_tradeproto_2600", b"propose_remote_tradeproto_2600", "proxy_requestproto_5012", b"proxy_requestproto_5012", "purifypokemonproto_1205", b"purifypokemonproto_1205", "push_notification_registryproto_5000", b"push_notification_registryproto_5000", "quest_encounter_proto_904", b"quest_encounter_proto_904", "quit_combat_proto_1002", b"quit_combat_proto_1002", "rateroute_proto_1412", b"rateroute_proto_1412", "read_quest_dialog_proto_908", b"read_quest_dialog_proto_908", "reassign_player_proto_169", b"reassign_player_proto_169", "recallroute_draft_proto_1421", b"recallroute_draft_proto_1421", "recycle_item_proto_137", b"recycle_item_proto_137", "redeem_passcoderequest_proto_5006", b"redeem_passcoderequest_proto_5006", "redeem_premium_gift_for_user_proto_3089", b"redeem_premium_gift_for_user_proto_3089", "redeem_ticket_gift_for_friend_proto_2001", b"redeem_ticket_gift_for_friend_proto_2001", "refresh_proximity_tokensrequest_proto_362000", b"refresh_proximity_tokensrequest_proto_362000", "register_background_device_action_proto_230000", b"register_background_device_action_proto_230000", "register_background_device_action_proto_8", b"register_background_device_action_proto_8", "register_device_action_proto_250100", b"register_device_action_proto_250100", "register_sfidarequest_800", b"register_sfidarequest_800", "release_pokemon_proto_112", b"release_pokemon_proto_112", "release_stationed_pokemon_proto_2472", b"release_stationed_pokemon_proto_2472", "remote_gift_pingrequest_proto_1503", b"remote_gift_pingrequest_proto_1503", "remove_campfire_forreferee_proto_6002", b"remove_campfire_forreferee_proto_6002", "remove_login_action_proto_5009", b"remove_login_action_proto_5009", "remove_player_devicerequest_proto_250104", b"remove_player_devicerequest_proto_250104", "remove_pokemon_size_leaderboard_entry_proto_2103", b"remove_pokemon_size_leaderboard_entry_proto_2103", "remove_ptc_login_action_proto_3007", b"remove_ptc_login_action_proto_3007", "remove_quest_proto_903", b"remove_quest_proto_903", "remove_save_for_later_proto_2465", b"remove_save_for_later_proto_2465", "replace_login_action_proto_5015", b"replace_login_action_proto_5015", "report_ad_feedbackrequest_1716", b"report_ad_feedbackrequest_1716", "report_ad_interaction_proto_1651", b"report_ad_interaction_proto_1651", "report_proximity_contactsrequest_proto_362001", b"report_proximity_contactsrequest_proto_362001", "report_station_proto_2470", b"report_station_proto_2470", "reportroute_proto_1415", b"reportroute_proto_1415", "resend_device_verification_emailrequest_proto_250105", b"resend_device_verification_emailrequest_proto_250105", "respondremote_trade_proto_2606", b"respondremote_trade_proto_2606", "route_nearby_notif_shown_proto_1422", b"route_nearby_notif_shown_proto_1422", "route_update_seen_proto_1420", b"route_update_seen_proto_1420", "saturday_complete_proto_828", b"saturday_complete_proto_828", "saturdaystart_proto_827", b"saturdaystart_proto_827", "save_combat_player_preferences_proto_999", b"save_combat_player_preferences_proto_999", "save_player_preferences_proto_1652", b"save_player_preferences_proto_1652", "save_playersnapshot_proto_954", b"save_playersnapshot_proto_954", "savesocial_playersettings_proto_10016", b"savesocial_playersettings_proto_10016", "savesocial_playersettings_proto_959", b"savesocial_playersettings_proto_959", "savestamp_proto_1902", b"savestamp_proto_1902", "send_bread_battle_invitation_proto_1505", b"send_bread_battle_invitation_proto_1505", "send_event_rsvp_invitation_proto_3039", b"send_event_rsvp_invitation_proto_3039", "send_friend_invite_via_referral_code_proto_1802", b"send_friend_invite_via_referral_code_proto_1802", "send_friend_request_via_player_id_proto_2010", b"send_friend_request_via_player_id_proto_2010", "send_gift_proto_950", b"send_gift_proto_950", "send_party_invitation_proto_2310", b"send_party_invitation_proto_2310", "send_party_invitation_proto_3008", b"send_party_invitation_proto_3008", "send_probe_proto_1020", b"send_probe_proto_1020", "send_raid_invitation_proto_1504", b"send_raid_invitation_proto_1504", "set_avatar_item_as_viewed_proto_808", b"set_avatar_item_as_viewed_proto_808", "set_avatar_proto_404", b"set_avatar_proto_404", "set_birthday_request_proto_5048", b"set_birthday_request_proto_5048", "set_bread_lobby_public_proto_2452", b"set_bread_lobby_public_proto_2452", "set_buddy_pokemon_proto_152", b"set_buddy_pokemon_proto_152", "set_contactsettings_proto_151", b"set_contactsettings_proto_151", "set_favorite_pokemon_proto_148", b"set_favorite_pokemon_proto_148", "set_friend_nickname_proto_957", b"set_friend_nickname_proto_957", "set_friend_premium_gift_preference_proto_963", b"set_friend_premium_gift_preference_proto_963", "set_lobby_pokemon_proto_162", b"set_lobby_pokemon_proto_162", "set_lobby_visibility_proto_161", b"set_lobby_visibility_proto_161", "set_neutral_avatar_proto_408", b"set_neutral_avatar_proto_408", "set_player_team_proto_405", b"set_player_team_proto_405", "set_playerstatus_proto_20", b"set_playerstatus_proto_20", "set_pokemon_tags_for_pokemon_proto_1720", b"set_pokemon_tags_for_pokemon_proto_1720", "sfida_associate_request_822", b"sfida_associate_request_822", "sfida_capture_request_806", b"sfida_capture_request_806", "sfida_certification_request_802", b"sfida_certification_request_802", "sfida_check_pairing_request_823", b"sfida_check_pairing_request_823", "sfida_disassociate_request_824", b"sfida_disassociate_request_824", "sfida_dowser_request_805", b"sfida_dowser_request_805", "sfida_update_request_803", b"sfida_update_request_803", "skip_enter_referral_code_proto_1915", b"skip_enter_referral_code_proto_1915", "smart_glassessyncsettings_request_proto_3027", b"smart_glassessyncsettings_request_proto_3027", "softsfida_capture_proto_833", b"softsfida_capture_proto_833", "softsfida_location_update_proto_834", b"softsfida_location_update_proto_834", "softsfida_pause_proto_832", b"softsfida_pause_proto_832", "softsfida_recap_proto_835", b"softsfida_recap_proto_835", "softsfidastart_proto_831", b"softsfidastart_proto_831", "start_bread_battle_proto_2456", b"start_bread_battle_proto_2456", "start_incident_proto_1200", b"start_incident_proto_1200", "start_mp_walk_quest_proto_2458", b"start_mp_walk_quest_proto_2458", "start_party_proto_2302", b"start_party_proto_2302", "start_party_quest_proto_2308", b"start_party_quest_proto_2308", "start_pvp_battle_proto_3071", b"start_pvp_battle_proto_3071", "start_quest_incident_proto_907", b"start_quest_incident_proto_907", "start_raid_battle_proto_165", b"start_raid_battle_proto_165", "start_rocket_balloon_incident_proto_1207", b"start_rocket_balloon_incident_proto_1207", "start_route_proto_1404", b"start_route_proto_1404", "start_team_leader_battle_proto_3059", b"start_team_leader_battle_proto_3059", "start_tgr_battle_proto_3056", b"start_tgr_battle_proto_3056", "start_weekly_challenge_group_matchmaking_proto_3047", b"start_weekly_challenge_group_matchmaking_proto_3047", "station_pokemon_proto_2460", b"station_pokemon_proto_2460", "submit_combat_challenge_pokemons_proto_998", b"submit_combat_challenge_pokemons_proto_998", "submit_new_poi_proto_5011", b"submit_new_poi_proto_5011", "submit_route_draft_proto_1402", b"submit_route_draft_proto_1402", "sync_battle_inventory_proto_3011", b"sync_battle_inventory_proto_3011", "sync_weekly_challenge_matchmakingstatus_proto_3048", b"sync_weekly_challenge_matchmakingstatus_proto_3048", "titan_async_file_upload_complete_proto_620402", b"titan_async_file_upload_complete_proto_620402", "titan_generate_gmap_signed_url_proto_620300", b"titan_generate_gmap_signed_url_proto_620300", "titan_get_a_r_mapping_settings_proto_620403", b"titan_get_a_r_mapping_settings_proto_620403", "titan_get_available_submissions_proto_620001", b"titan_get_available_submissions_proto_620001", "titan_get_gmap_settings_proto_620301", b"titan_get_gmap_settings_proto_620301", "titan_get_grapeshot_upload_url_proto_620401", b"titan_get_grapeshot_upload_url_proto_620401", "titan_get_image_gallery_settings_proto_620502", b"titan_get_image_gallery_settings_proto_620502", "titan_get_images_for_poi_proto_620500", b"titan_get_images_for_poi_proto_620500", "titan_get_player_submission_validation_settings_proto_620003", b"titan_get_player_submission_validation_settings_proto_620003", "titan_get_pois_in_radius_proto_620601", b"titan_get_pois_in_radius_proto_620601", "titan_poi_video_submission_metadata_proto_620400", b"titan_poi_video_submission_metadata_proto_620400", "titan_submit_new_poi_proto_620000", b"titan_submit_new_poi_proto_620000", "titan_submit_player_image_vote_for_poi_proto_620501", b"titan_submit_player_image_vote_for_poi_proto_620501", "titan_submit_poi_category_vote_record_proto_620106", b"titan_submit_poi_category_vote_record_proto_620106", "titan_submit_poi_image_proto_5041", b"titan_submit_poi_image_proto_5041", "titan_submit_poi_image_proto_620100", b"titan_submit_poi_image_proto_620100", "titan_submit_poi_location_update_proto_5043", b"titan_submit_poi_location_update_proto_5043", "titan_submit_poi_location_update_proto_620102", b"titan_submit_poi_location_update_proto_620102", "titan_submit_poitakedown_request_proto_5044", b"titan_submit_poitakedown_request_proto_5044", "titan_submit_poitakedown_request_proto_620103", b"titan_submit_poitakedown_request_proto_620103", "titan_submit_poitext_metadata_update_proto_5042", b"titan_submit_poitext_metadata_update_proto_5042", "titan_submit_poitext_metadata_update_proto_620101", b"titan_submit_poitext_metadata_update_proto_620101", "titan_submit_sponsor_poi_location_update_proto_620105", b"titan_submit_sponsor_poi_location_update_proto_620105", "titan_submit_sponsor_poi_report_proto_620104", b"titan_submit_sponsor_poi_report_proto_620104", "transfer_contest_entry_proto_2152", b"transfer_contest_entry_proto_2152", "transfer_pokemon_size_leaderboard_entry_proto_2102", b"transfer_pokemon_size_leaderboard_entry_proto_2102", "transfer_pokemonto_pokemon_home_proto_1713", b"transfer_pokemonto_pokemon_home_proto_1713", "unfuse_pokemon_request_proto_3018", b"unfuse_pokemon_request_proto_3018", "unlink_nintendo_account_proto_1711", b"unlink_nintendo_account_proto_1711", "unlock_pokemon_move_proto_1004", b"unlock_pokemon_move_proto_1004", "unlock_temporary_evolution_level_proto_1506", b"unlock_temporary_evolution_level_proto_1506", "update_adventure_sync_fitness_request_proto_640004", b"update_adventure_sync_fitness_request_proto_640004", "update_adventure_sync_settings_request_proto_5047", b"update_adventure_sync_settings_request_proto_5047", "update_adventure_sync_settings_request_proto_640003", b"update_adventure_sync_settings_request_proto_640003", "update_breadcrumb_history_request_proto_361000", b"update_breadcrumb_history_request_proto_361000", "update_bulk_player_location_request_proto_360002", b"update_bulk_player_location_request_proto_360002", "update_combat_proto_1001", b"update_combat_proto_1001", "update_contest_entry_proto_2151", b"update_contest_entry_proto_2151", "update_device_verification_request_proto_250103", b"update_device_verification_request_proto_250103", "update_event_rsvp_selection_proto_3040", b"update_event_rsvp_selection_proto_3040", "update_field_book_post_catch_pokemon_proto_3075", b"update_field_book_post_catch_pokemon_proto_3075", "update_invasion_battle_proto_1203", b"update_invasion_battle_proto_1203", "update_iris_social_scene_proto_3020", b"update_iris_social_scene_proto_3020", "update_notification_proto_5002", b"update_notification_proto_5002", "update_player_gps_bookmarks_proto_23", b"update_player_gps_bookmarks_proto_23", "update_pokemon_size_leaderboard_entry_proto_2101", b"update_pokemon_size_leaderboard_entry_proto_2101", "update_postcard_proto_1911", b"update_postcard_proto_1911", "update_route_draft_proto_1400", b"update_route_draft_proto_1400", "update_survey_eligibility_proto_3026", b"update_survey_eligibility_proto_3026", "update_trading_proto_971", b"update_trading_proto_971", "update_vps_event_proto_3001", b"update_vps_event_proto_3001", "upgrade_pokemon_proto_147", b"upgrade_pokemon_proto_147", "upload_combat_client_log_proto_1916", b"upload_combat_client_log_proto_1916", "upload_raid_client_log_proto_1914", b"upload_raid_client_log_proto_1914", "use_incense_action_proto_141", b"use_incense_action_proto_141", "use_item_battle_boost_proto_174", b"use_item_battle_boost_proto_174", "use_item_bulk_heal_proto_173", b"use_item_bulk_heal_proto_173", "use_item_capture_proto_114", b"use_item_capture_proto_114", "use_item_egg_incubator_proto_140", b"use_item_egg_incubator_proto_140", "use_item_encounter_proto_154", b"use_item_encounter_proto_154", "use_item_lucky_friend_applicator_proto_175", b"use_item_lucky_friend_applicator_proto_175", "use_item_move_reroll_proto_813", b"use_item_move_reroll_proto_813", "use_item_mp_replenish_proto_2468", b"use_item_mp_replenish_proto_2468", "use_item_potion_proto_113", b"use_item_potion_proto_113", "use_item_rare_candy_proto_814", b"use_item_rare_candy_proto_814", "use_item_revive_proto_116", b"use_item_revive_proto_116", "use_item_stardust_boost_proto_168", b"use_item_stardust_boost_proto_168", "use_item_stat_increase_proto_176", b"use_item_stat_increase_proto_176", "use_item_xp_boost_proto_139", b"use_item_xp_boost_proto_139", "use_non_combat_move_request_proto_2014", b"use_non_combat_move_request_proto_2014", "use_save_for_later_proto_2464", b"use_save_for_later_proto_2464", "verify_challenge_proto_601", b"verify_challenge_proto_601", "view_route_pin_proto_1728", b"view_route_pin_proto_1728", "vs_seeker_reward_encounter_proto_1307", b"vs_seeker_reward_encounter_proto_1307", "vs_seeker_start_matchmaking_proto_1300", b"vs_seeker_start_matchmaking_proto_1300", "waina_get_rewards_request_825", b"waina_get_rewards_request_825", "waina_submit_sleep_data_request_826", b"waina_submit_sleep_data_request_826"]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
         def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -25853,6 +26193,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         SET_FRIEND_NICKNAME_OUT_PROTO_957_FIELD_NUMBER: _builtins.int
         DELETE_GIFT_FROM_INVENTORY_OUT_PROTO_958_FIELD_NUMBER: _builtins.int
         SAVESOCIAL_PLAYERSETTINGS_OUT_PROTO_959_FIELD_NUMBER: _builtins.int
+        SET_FRIEND_PREMIUM_GIFT_PREFERENCE_OUT_PROTO_963_FIELD_NUMBER: _builtins.int
         OPEN_TRADINGOUT_PROTO_970_FIELD_NUMBER: _builtins.int
         UPDATE_TRADING_OUT_PROTO_971_FIELD_NUMBER: _builtins.int
         CONFIRM_TRADING_OUT_PROTO_972_FIELD_NUMBER: _builtins.int
@@ -26039,6 +26380,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         NPC_SEND_GIFT_OUT_PROTO_2401_FIELD_NUMBER: _builtins.int
         NPC_OPEN_GIFT_OUT_PROTO_2402_FIELD_NUMBER: _builtins.int
         JOIN_BREAD_LOBBY_OUT_PROTO_2450_FIELD_NUMBER: _builtins.int
+        SET_BREAD_LOBBY_PUBLIC_OUT_PROTO_2452_FIELD_NUMBER: _builtins.int
         PREPARE_BREAD_LOBBY_OUTPROTO_2453_FIELD_NUMBER: _builtins.int
         LEAVE_BREADLOBBY_OUT_PROTO_2455_FIELD_NUMBER: _builtins.int
         START_BREAD_BATTLE_OUT_PROTO_2456_FIELD_NUMBER: _builtins.int
@@ -26137,6 +26479,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         FLEE_BATTLE_ENCOUNTER_OUT_PROTO_3084_FIELD_NUMBER: _builtins.int
         DEBUG_TEST_SETUP_OUT_PROTO_3085_FIELD_NUMBER: _builtins.int
         CREATE_BUG_REPORT_OUT_PROTO_3088_FIELD_NUMBER: _builtins.int
+        REDEEM_PREMIUM_GIFT_FOR_USER_OUT_PROTO_3089_FIELD_NUMBER: _builtins.int
+        GETCOMBAT_DOWNSCALED_STATS_OUT_PROTO_3090_FIELD_NUMBER: _builtins.int
         PUSH_NOTIFICATION_REGISTRY_OUTPROTO_5000_FIELD_NUMBER: _builtins.int
         UPDATE_NOTIFICATION_OUT_PROTO_5002_FIELD_NUMBER: _builtins.int
         OPTOUT_PROTO_5003_FIELD_NUMBER: _builtins.int
@@ -26235,6 +26579,12 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         ACKNOWLEDGE_WARNINGS_RESPONSE_PROTO_200001_FIELD_NUMBER: _builtins.int
         REGISTER_BACKGROUND_DEVICERESPONSE_PROTO_230000_FIELD_NUMBER: _builtins.int
         GET_ADVENTURE_SYNC_PROGRESS_OUT_PROTO_230002_FIELD_NUMBER: _builtins.int
+        REGISTER_DEVICERESPONSE_PROTO_250100_FIELD_NUMBER: _builtins.int
+        LIST_PLAYER_DEVICES_RESPONSE_PROTO_250101_FIELD_NUMBER: _builtins.int
+        LIST_DEVICE_VERIFICATION_CHALLENGES_RESPONSE_PROTO_250102_FIELD_NUMBER: _builtins.int
+        UPDATE_DEVICE_VERIFICATION_RESPONSE_PROTO_250103_FIELD_NUMBER: _builtins.int
+        REMOVE_PLAYER_DEVICERESPONSE_PROTO_250104_FIELD_NUMBER: _builtins.int
+        RESEND_DEVICE_VERIFICATION_EMAILRESPONSE_PROTO_250105_FIELD_NUMBER: _builtins.int
         IAP_PURCHASE_SKU_OUT_PROTO_310000_FIELD_NUMBER: _builtins.int
         IAP_GET_AVAILABLE_SKUS_AND_BALANCES_OUT_PROTO_310001_FIELD_NUMBER: _builtins.int
         IAP_SETIN_GAME_CURRENCY_EXCHANGE_RATE_OUT_PROTO_310002_FIELD_NUMBER: _builtins.int
@@ -26547,6 +26897,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         def delete_gift_from_inventory_out_proto_958(self) -> Global___DeleteGiftFromInventoryOutProto: ...
         @_builtins.property
         def savesocial_playersettings_out_proto_959(self) -> Global___SaveSocialPlayerSettingsOutProto: ...
+        @_builtins.property
+        def set_friend_premium_gift_preference_out_proto_963(self) -> Global___SetFriendPremiumGiftPreferenceOutProto: ...
         @_builtins.property
         def open_tradingout_proto_970(self) -> Global___OpenTradingOutProto: ...
         @_builtins.property
@@ -26920,6 +27272,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         @_builtins.property
         def join_bread_lobby_out_proto_2450(self) -> Global___JoinBreadLobbyOutProto: ...
         @_builtins.property
+        def set_bread_lobby_public_out_proto_2452(self) -> Global___SetBreadLobbyPublicOutProto: ...
+        @_builtins.property
         def prepare_bread_lobby_outproto_2453(self) -> Global___PrepareBreadLobbyOutProto: ...
         @_builtins.property
         def leave_breadlobby_out_proto_2455(self) -> Global___LeaveBreadLobbyOutProto: ...
@@ -27116,6 +27470,10 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         @_builtins.property
         def create_bug_report_out_proto_3088(self) -> Global___CreateBugReportOutProto: ...
         @_builtins.property
+        def redeem_premium_gift_for_user_out_proto_3089(self) -> Global___RedeemPremiumGiftForUserOutProto: ...
+        @_builtins.property
+        def getcombat_downscaled_stats_out_proto_3090(self) -> Global___CombatProto.GetCombatDownscaledStatsOutProto: ...
+        @_builtins.property
         def push_notification_registry_outproto_5000(self) -> Global___PushNotificationRegistryOutProto: ...
         @_builtins.property
         def update_notification_out_proto_5002(self) -> Global___UpdateNotificationOutProto: ...
@@ -27311,6 +27669,18 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
         def register_background_deviceresponse_proto_230000(self) -> Global___RegisterBackgroundDeviceResponseProto: ...
         @_builtins.property
         def get_adventure_sync_progress_out_proto_230002(self) -> Global___GetAdventureSyncProgressOutProto: ...
+        @_builtins.property
+        def register_deviceresponse_proto_250100(self) -> Global___RegisterDeviceResponseProto: ...
+        @_builtins.property
+        def list_player_devices_response_proto_250101(self) -> Global___ListPlayerDevicesResponseProto: ...
+        @_builtins.property
+        def list_device_verification_challenges_response_proto_250102(self) -> Global___ListDeviceVerificationChallengesResponseProto: ...
+        @_builtins.property
+        def update_device_verification_response_proto_250103(self) -> Global___UpdateDeviceVerificationResponseProto: ...
+        @_builtins.property
+        def remove_player_deviceresponse_proto_250104(self) -> Global___RemovePlayerDeviceResponseProto: ...
+        @_builtins.property
+        def resend_device_verification_emailresponse_proto_250105(self) -> Global___ResendDeviceVerificationEmailResponseProto: ...
         @_builtins.property
         def iap_purchase_sku_out_proto_310000(self) -> Global___IapPurchaseSkuOutProto: ...
         @_builtins.property
@@ -27539,6 +27909,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             set_friend_nickname_out_proto_957: Global___SetFriendNicknameOutProto | None = ...,
             delete_gift_from_inventory_out_proto_958: Global___DeleteGiftFromInventoryOutProto | None = ...,
             savesocial_playersettings_out_proto_959: Global___SaveSocialPlayerSettingsOutProto | None = ...,
+            set_friend_premium_gift_preference_out_proto_963: Global___SetFriendPremiumGiftPreferenceOutProto | None = ...,
             open_tradingout_proto_970: Global___OpenTradingOutProto | None = ...,
             update_trading_out_proto_971: Global___UpdateTradingOutProto | None = ...,
             confirm_trading_out_proto_972: Global___ConfirmTradingOutProto | None = ...,
@@ -27725,6 +28096,7 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             npc_send_gift_out_proto_2401: Global___NpcSendGiftOutProto | None = ...,
             npc_open_gift_out_proto_2402: Global___NpcOpenGiftOutProto | None = ...,
             join_bread_lobby_out_proto_2450: Global___JoinBreadLobbyOutProto | None = ...,
+            set_bread_lobby_public_out_proto_2452: Global___SetBreadLobbyPublicOutProto | None = ...,
             prepare_bread_lobby_outproto_2453: Global___PrepareBreadLobbyOutProto | None = ...,
             leave_breadlobby_out_proto_2455: Global___LeaveBreadLobbyOutProto | None = ...,
             start_bread_battle_out_proto_2456: Global___StartBreadBattleOutProto | None = ...,
@@ -27823,6 +28195,8 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             flee_battle_encounter_out_proto_3084: Global___FleeBattleEncounterOutProto | None = ...,
             debug_test_setup_out_proto_3085: Global___DebugTestSetupOutProto | None = ...,
             create_bug_report_out_proto_3088: Global___CreateBugReportOutProto | None = ...,
+            redeem_premium_gift_for_user_out_proto_3089: Global___RedeemPremiumGiftForUserOutProto | None = ...,
+            getcombat_downscaled_stats_out_proto_3090: Global___CombatProto.GetCombatDownscaledStatsOutProto | None = ...,
             push_notification_registry_outproto_5000: Global___PushNotificationRegistryOutProto | None = ...,
             update_notification_out_proto_5002: Global___UpdateNotificationOutProto | None = ...,
             optout_proto_5003: Global___OptOutProto | None = ...,
@@ -27921,6 +28295,12 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             acknowledge_warnings_response_proto_200001: Global___AcknowledgeWarningsResponseProto | None = ...,
             register_background_deviceresponse_proto_230000: Global___RegisterBackgroundDeviceResponseProto | None = ...,
             get_adventure_sync_progress_out_proto_230002: Global___GetAdventureSyncProgressOutProto | None = ...,
+            register_deviceresponse_proto_250100: Global___RegisterDeviceResponseProto | None = ...,
+            list_player_devices_response_proto_250101: Global___ListPlayerDevicesResponseProto | None = ...,
+            list_device_verification_challenges_response_proto_250102: Global___ListDeviceVerificationChallengesResponseProto | None = ...,
+            update_device_verification_response_proto_250103: Global___UpdateDeviceVerificationResponseProto | None = ...,
+            remove_player_deviceresponse_proto_250104: Global___RemovePlayerDeviceResponseProto | None = ...,
+            resend_device_verification_emailresponse_proto_250105: Global___ResendDeviceVerificationEmailResponseProto | None = ...,
             iap_purchase_sku_out_proto_310000: Global___IapPurchaseSkuOutProto | None = ...,
             iap_get_available_skus_and_balances_out_proto_310001: Global___IapGetAvailableSkusAndBalancesOutProto | None = ...,
             iap_setin_game_currency_exchange_rate_out_proto_310002: Global___IapSetInGameCurrencyExchangeRateOutProto | None = ...,
@@ -27968,9 +28348,9 @@ class AllTypesAndMessagesResponsesProto(_message.Message):
             update_adventure_sync_fitness_response_proto_640004: Global___UpdateAdventureSyncFitnessResponseProto | None = ...,
             get_adventure_sync_fitness_report_response_proto_640005: Global___GetAdventureSyncFitnessReportResponseProto | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _typing.Literal["accept_combat_challenge_out_proto_995", b"accept_combat_challenge_out_proto_995", "acknowledge_punishment_out_proto_10", b"acknowledge_punishment_out_proto_10", "acknowledge_view_latest_incense_recap_out_proto_2003", b"acknowledge_view_latest_incense_recap_out_proto_2003", "acknowledge_warnings_response_proto_200001", b"acknowledge_warnings_response_proto_200001", "acknowledge_warnings_response_proto_5040", b"acknowledge_warnings_response_proto_5040", "activate_vs_seeker_out_proto_1308", b"activate_vs_seeker_out_proto_1308", "add_fort_modifier_out_proto_144", b"add_fort_modifier_out_proto_144", "add_loginaction_out_proto_5008", b"add_loginaction_out_proto_5008", "add_ptc_loginaction_out_proto_3002", b"add_ptc_loginaction_out_proto_3002", "add_referrer_out_proto_1801", b"add_referrer_out_proto_1801", "age_confirmation_out_proto_3052", b"age_confirmation_out_proto_3052", "appeal_route_out_proto_1425", b"appeal_route_out_proto_1425", "asset_digest_out_proto_300", b"asset_digest_out_proto_300", "asset_version_out_proto_302", b"asset_version_out_proto_302", "attack_raid_battle_out_proto_166", b"attack_raid_battle_out_proto_166", "attracted_pokemon_encounter_out_proto_1417", b"attracted_pokemon_encounter_out_proto_1417", "auth_register_background_device_response_proto_5028", b"auth_register_background_device_response_proto_5028", "award_free_raid_ticket_out_proto_815", b"award_free_raid_ticket_out_proto_815", "badge_reward_encounter_response_proto_2360", b"badge_reward_encounter_response_proto_2360", "beluga_transaction_complete_out_proto_820", b"beluga_transaction_complete_out_proto_820", "beluga_transaction_start_out_proto_819", b"beluga_transaction_start_out_proto_819", "boot_raid_out_proto_2004", b"boot_raid_out_proto_2004", "buddy_feeding_out_proto_1352", b"buddy_feeding_out_proto_1352", "buddy_map_out_proto_1350", b"buddy_map_out_proto_1350", "buddy_petting_out_proto_1354", b"buddy_petting_out_proto_1354", "buddy_stats_out_proto_1351", b"buddy_stats_out_proto_1351", "butterfly_collector_reward_encounter_proto_response_1724", b"butterfly_collector_reward_encounter_proto_response_1724", "can_report_route_out_proto_1418", b"can_report_route_out_proto_1418", "cancel_event_rsvp_out_proto_3033", b"cancel_event_rsvp_out_proto_3033", "cancel_matchmaking_out_proto_1301", b"cancel_matchmaking_out_proto_1301", "cancel_party_invite_out_proto_2312", b"cancel_party_invite_out_proto_2312", "cancel_remote_trade_out_proto_2601", b"cancel_remote_trade_out_proto_2601", "cancel_route_out_proto_1410", b"cancel_route_out_proto_1410", "cancel_trading_out_proto_973", b"cancel_trading_out_proto_973", "cancelcombatchallenge_out_proto_997", b"cancelcombatchallenge_out_proto_997", "canclaim_ptc_reward_action_out_proto_3004", b"canclaim_ptc_reward_action_out_proto_3004", "catch_pokemon_out_proto_103", b"catch_pokemon_out_proto_103", "change_pokemon_form_out_proto_1722", b"change_pokemon_form_out_proto_1722", "change_stampcollection_player_data_out_proto_1905", b"change_stampcollection_player_data_out_proto_1905", "change_stat_increase_goal_out_proto_3053", b"change_stat_increase_goal_out_proto_3053", "change_team_out_proto_1106", b"change_team_out_proto_1106", "check_awarded_badges_out_proto_129", b"check_awarded_badges_out_proto_129", "check_gifting_eligibility_out_proto_2000", b"check_gifting_eligibility_out_proto_2000", "check_photobomb_out_proto_1101", b"check_photobomb_out_proto_1101", "check_pokemon_size_leaderboard_eligibility_out_proto_2100", b"check_pokemon_size_leaderboard_eligibility_out_proto_2100", "check_send_gift_out_proto_956", b"check_send_gift_out_proto_956", "check_stamp_giftability_out_proto_1906", b"check_stamp_giftability_out_proto_1906", "checkchallenge_out_proto_600", b"checkchallenge_out_proto_600", "checkcontest_eligibility_out_proto_2150", b"checkcontest_eligibility_out_proto_2150", "choose_global_ticketed_event_variant_out_proto_1723", b"choose_global_ticketed_event_variant_out_proto_1723", "claim_event_pass_rewards_response_proto_3034", b"claim_event_pass_rewards_response_proto_3034", "claim_event_pass_rewards_response_proto_3035", b"claim_event_pass_rewards_response_proto_3035", "claim_ptc_linking_reward_out_proto_3003", b"claim_ptc_linking_reward_out_proto_3003", "claim_stampcollection_reward_out_proto_1904", b"claim_stampcollection_reward_out_proto_1904", "claim_vs_seeker_rewards_out_proto_1306", b"claim_vs_seeker_rewards_out_proto_1306", "claimcontests_rewards_out_proto_2107", b"claimcontests_rewards_out_proto_2107", "client_telemetryclient_settings_proto_5026", b"client_telemetryclient_settings_proto_5026", "client_telemetryclient_settings_proto_610001", b"client_telemetryclient_settings_proto_610001", "codename_result_proto_403", b"codename_result_proto_403", "collect_daily_bonus_out_proto_138", b"collect_daily_bonus_out_proto_138", "combat_friend_request_out_proto_1006", b"combat_friend_request_out_proto_1006", "combat_sync_server_offset_out_proto_1917", b"combat_sync_server_offset_out_proto_1917", "complete_all_quest_out_proto_3063", b"complete_all_quest_out_proto_3063", "complete_bread_battle_out_proto_2473", b"complete_bread_battle_out_proto_2473", "complete_invasion_dialogue_out_proto_1201", b"complete_invasion_dialogue_out_proto_1201", "complete_milestone_out_proto_1806", b"complete_milestone_out_proto_1806", "complete_party_quest_out_proto_2309", b"complete_party_quest_out_proto_2309", "complete_pvp_battle_out_proto_3072", b"complete_pvp_battle_out_proto_3072", "complete_quest_out_proto_902", b"complete_quest_out_proto_902", "complete_quest_stampcard_out_proto_905", b"complete_quest_stampcard_out_proto_905", "complete_raid_battle_out_proto_3010", b"complete_raid_battle_out_proto_3010", "complete_snapshot_session_out_proto_1110", b"complete_snapshot_session_out_proto_1110", "complete_team_leader_battle_out_proto_3060", b"complete_team_leader_battle_out_proto_3060", "complete_tgr_battle_out_proto_3058", b"complete_tgr_battle_out_proto_3058", "complete_visit_page_quest_out_proto_3030", b"complete_visit_page_quest_out_proto_3030", "complete_vs_seeker_and_restartcharging_out_proto_1303", b"complete_vs_seeker_and_restartcharging_out_proto_1303", "complete_wild_snapshot_session_out_proto_1111", b"complete_wild_snapshot_session_out_proto_1111", "completecompetitive_season_out_proto_1305", b"completecompetitive_season_out_proto_1305", "confirm_photobomb_out_proto_1102", b"confirm_photobomb_out_proto_1102", "confirm_trading_out_proto_972", b"confirm_trading_out_proto_972", "consume_party_items_out_proto_3006", b"consume_party_items_out_proto_3006", "consume_stickers_out_proto_3009", b"consume_stickers_out_proto_3009", "contribute_party_item_out_proto_3005", b"contribute_party_item_out_proto_3005", "convertcandy_to_xlcandy_out_proto_171", b"convertcandy_to_xlcandy_out_proto_171", "create_buddy_multiplayer_session_out_proto_1456", b"create_buddy_multiplayer_session_out_proto_1456", "create_bug_report_out_proto_3088", b"create_bug_report_out_proto_3088", "create_event_rsvp_out_proto_3032", b"create_event_rsvp_out_proto_3032", "create_party_out_proto_2300", b"create_party_out_proto_2300", "create_pokemon_tag_out_proto_1717", b"create_pokemon_tag_out_proto_1717", "create_postcard_out_proto_1910", b"create_postcard_out_proto_1910", "create_route_draft_out_proto_1413", b"create_route_draft_out_proto_1413", "create_route_pin_out_proto_1726", b"create_route_pin_out_proto_1726", "create_route_shortcode_out_proto_1428", b"create_route_shortcode_out_proto_1428", "createcombatchallenge_out_proto_992", b"createcombatchallenge_out_proto_992", "daily_bonus_spawn_encounter_out_proto_3067", b"daily_bonus_spawn_encounter_out_proto_3067", "daily_encounter_out_proto_1602", b"daily_encounter_out_proto_1602", "day_night_poi_encounter_out_proto_3077", b"day_night_poi_encounter_out_proto_3077", "debug_egg_statistics_out_proto_3083", b"debug_egg_statistics_out_proto_3083", "debug_encounter_statistics_out_proto_3061", b"debug_encounter_statistics_out_proto_3061", "debug_resetdaily_mp_progress_out_proto_2471", b"debug_resetdaily_mp_progress_out_proto_2471", "debug_test_setup_out_proto_3085", b"debug_test_setup_out_proto_3085", "decline_combat_challenge_out_proto_996", b"decline_combat_challenge_out_proto_996", "delete_gift_from_inventory_out_proto_958", b"delete_gift_from_inventory_out_proto_958", "delete_gift_out_proto_953", b"delete_gift_out_proto_953", "delete_pokemon_tag_out_proto_1718", b"delete_pokemon_tag_out_proto_1718", "delete_postcard_out_proto_1912", b"delete_postcard_out_proto_1912", "delete_postcards_out_proto_1909", b"delete_postcards_out_proto_1909", "delete_routedraft_out_proto_1414", b"delete_routedraft_out_proto_1414", "dequeue_questdialogue_out_proto_909", b"dequeue_questdialogue_out_proto_909", "disk_encounter_out_proto_145", b"disk_encounter_out_proto_145", "download_gm_templates_response_proto_5004", b"download_gm_templates_response_proto_5004", "download_settings_response_proto_5", b"download_settings_response_proto_5", "download_url_out_proto_301", b"download_url_out_proto_301", "echo_out_proto_666", b"echo_out_proto_666", "edit_pokemon_tag_out_proto_1719", b"edit_pokemon_tag_out_proto_1719", "enable_campfire_for_referee_out_proto_6001", b"enable_campfire_for_referee_out_proto_6001", "encounter_out_proto_102", b"encounter_out_proto_102", "encounter_photobomb_out_proto_1104", b"encounter_photobomb_out_proto_1104", "encounter_pokestopencounter_out_proto_2006", b"encounter_pokestopencounter_out_proto_2006", "encounter_station_spawn_out_proto_2475", b"encounter_station_spawn_out_proto_2475", "encounter_tutorial_complete_out_proto_127", b"encounter_tutorial_complete_out_proto_127", "end_pokemon_training_out_proto_3054", b"end_pokemon_training_out_proto_3054", "enhance_bread_move_out_proto_2459", b"enhance_bread_move_out_proto_2459", "evolve_pokemon_out_proto_125", b"evolve_pokemon_out_proto_125", "favorite_route_out_proto_1427", b"favorite_route_out_proto_1427", "fetch_all_news_out_proto_816", b"fetch_all_news_out_proto_816", "fetch_newsfeed_response_5049", b"fetch_newsfeed_response_5049", "fitness_update_out_proto_5024", b"fitness_update_out_proto_5024", "fitness_update_out_proto_640000", b"fitness_update_out_proto_640000", "flee_battle_encounter_out_proto_3084", b"flee_battle_encounter_out_proto_3084", "fort_deploy_out_proto_110", b"fort_deploy_out_proto_110", "fort_details_out_proto_104", b"fort_details_out_proto_104", "fort_recall_out_proto_111", b"fort_recall_out_proto_111", "fort_search_out_proto_101", b"fort_search_out_proto_101", "fuse_pokemon_response_proto_3017", b"fuse_pokemon_response_proto_3017", "generate_combat_challenge_id_out_proto_991", b"generate_combat_challenge_id_out_proto_991", "generategmap_signed_url_out_proto_5035", b"generategmap_signed_url_out_proto_5035", "geofence_update_out_proto_360000", b"geofence_update_out_proto_360000", "geofence_update_out_proto_5033", b"geofence_update_out_proto_5033", "get_action_log_response_801", b"get_action_log_response_801", "get_additional_pokemon_details_out_proto_1725", b"get_additional_pokemon_details_out_proto_1725", "get_adventure_sync_fitness_report_response_proto_640005", b"get_adventure_sync_fitness_report_response_proto_640005", "get_adventure_sync_progress_out_proto_230002", b"get_adventure_sync_progress_out_proto_230002", "get_adventure_sync_settings_response_proto_5046", b"get_adventure_sync_settings_response_proto_5046", "get_adventure_sync_settings_response_proto_640002", b"get_adventure_sync_settings_response_proto_640002", "get_app_request_token_redirect_u_r_l_platform_response_proto_600007", b"get_app_request_token_redirect_u_r_l_platform_response_proto_600007", "get_available_submissions_out_proto_5014", b"get_available_submissions_out_proto_5014", "get_battle_rejoin_status_out_proto_3062", b"get_battle_rejoin_status_out_proto_3062", "get_bonus_attracted_pokemon_out_proto_2350", b"get_bonus_attracted_pokemon_out_proto_2350", "get_bonuses_out_proto_2352", b"get_bonuses_out_proto_2352", "get_bread_lobby_details_out_proto_2457", b"get_bread_lobby_details_out_proto_2457", "get_buddy_history_out_proto_1355", b"get_buddy_history_out_proto_1355", "get_buddy_walked_out_proto_153", b"get_buddy_walked_out_proto_153", "get_change_pokemon_form_preview_response_proto_3021", b"get_change_pokemon_form_preview_response_proto_3021", "get_combat_challenge_out_proto_994", b"get_combat_challenge_out_proto_994", "get_combat_player_profile_out_proto_990", b"get_combat_player_profile_out_proto_990", "get_combat_results_out_proto_1003", b"get_combat_results_out_proto_1003", "get_contest_data_out_proto_2105", b"get_contest_data_out_proto_2105", "get_contest_entry_out_proto_2154", b"get_contest_entry_out_proto_2154", "get_contest_friend_entry_out_proto_2153", b"get_contest_friend_entry_out_proto_2153", "get_contests_unclaimed_rewards_out_proto_2106", b"get_contests_unclaimed_rewards_out_proto_2106", "get_daily_bonus_spawn_out_proto_3066", b"get_daily_bonus_spawn_out_proto_3066", "get_daily_encounter_out_proto_1601", b"get_daily_encounter_out_proto_1601", "get_eligible_combat_leagues_out_proto_2009", b"get_eligible_combat_leagues_out_proto_2009", "get_entered_contest_out_proto_2108", b"get_entered_contest_out_proto_2108", "get_event_rsvp_count_out_proto_3036", b"get_event_rsvp_count_out_proto_3036", "get_event_rsvps_out_proto_3031", b"get_event_rsvps_out_proto_3031", "get_fitness_report_out_proto_5025", b"get_fitness_report_out_proto_5025", "get_fitness_report_out_proto_640001", b"get_fitness_report_out_proto_640001", "get_fitness_rewards_out_proto_980", b"get_fitness_rewards_out_proto_980", "get_friendship_rewards_out_proto_955", b"get_friendship_rewards_out_proto_955", "get_hatched_eggs_out_proto_126", b"get_hatched_eggs_out_proto_126", "get_holoholo_inventory_out_proto_4", b"get_holoholo_inventory_out_proto_4", "get_inbox_out_proto_10105", b"get_inbox_out_proto_10105", "get_inbox_out_proto_809", b"get_inbox_out_proto_809", "get_incense_pokemon_out_proto_142", b"get_incense_pokemon_out_proto_142", "get_incense_recap_out_proto_2002", b"get_incense_recap_out_proto_2002", "get_inventory_response_proto_5005", b"get_inventory_response_proto_5005", "get_iris_social_scene_out_proto_3019", b"get_iris_social_scene_out_proto_3019", "get_local_time_out_proto_12", b"get_local_time_out_proto_12", "get_map_forts_out_proto_1401", b"get_map_forts_out_proto_1401", "get_map_objects_detail_for_campfire_out_proto_6013", b"get_map_objects_detail_for_campfire_out_proto_6013", "get_map_objects_for_campfire_out_proto_6012", b"get_map_objects_for_campfire_out_proto_6012", "get_map_objects_out_proto_106", b"get_map_objects_out_proto_106", "get_matchmaking_status_out_proto_1302", b"get_matchmaking_status_out_proto_1302", "get_mega_level_up_preview_out_proto_3080", b"get_mega_level_up_preview_out_proto_3080", "get_memento_list_out_proto_1913", b"get_memento_list_out_proto_1913", "get_milestones_out_proto_1803", b"get_milestones_out_proto_1803", "get_milestones_preview_out_proto_1805", b"get_milestones_preview_out_proto_1805", "get_mp_summary_out_proto_2467", b"get_mp_summary_out_proto_2467", "get_new_quests_out_proto_900", b"get_new_quests_out_proto_900", "get_nintendo_account_out_proto_1710", b"get_nintendo_account_out_proto_1710", "get_nintendo_o_auth2_url_out_proto_1712", b"get_nintendo_o_auth2_url_out_proto_1712", "get_non_remote_tradable_pokemon_out_proto_2604", b"get_non_remote_tradable_pokemon_out_proto_2604", "get_npc_combat_rewards_out_proto_1005", b"get_npc_combat_rewards_out_proto_1005", "get_num_pokemon_in_iris_social_scene_out_proto_6005", b"get_num_pokemon_in_iris_social_scene_out_proto_6005", "get_num_station_assists_out_proto_2476", b"get_num_station_assists_out_proto_2476", "get_outstanding_warnings_response_proto_200000", b"get_outstanding_warnings_response_proto_200000", "get_outstanding_warnings_response_proto_5039", b"get_outstanding_warnings_response_proto_5039", "get_party_out_proto_2304", b"get_party_out_proto_2304", "get_pending_remote_trade_out_proto_2605", b"get_pending_remote_trade_out_proto_2605", "get_photobomb_out_proto_1103", b"get_photobomb_out_proto_1103", "get_player_day_out_proto_9", b"get_player_day_out_proto_9", "get_player_out_proto_2", b"get_player_out_proto_2", "get_player_pokemon_field_book_out_proto_3065", b"get_player_pokemon_field_book_out_proto_3065", "get_player_raid_eligibility_out_proto_6003", b"get_player_raid_eligibility_out_proto_6003", "get_player_stamp_collections_out_proto_1901", b"get_player_stamp_collections_out_proto_1901", "get_player_status_proxy_out_proto_177", b"get_player_status_proxy_out_proto_177", "get_playergps_bookmarks_out_proto_22", b"get_playergps_bookmarks_out_proto_22", "get_pokemon_remote_trading_details_out_proto_2607", b"get_pokemon_remote_trading_details_out_proto_2607", "get_pokemon_size_leaderboard_entry_out_proto_2104", b"get_pokemon_size_leaderboard_entry_out_proto_2104", "get_pokemon_size_leaderboard_friend_entry_out_proto_2109", b"get_pokemon_size_leaderboard_friend_entry_out_proto_2109", "get_pokemon_tags_out_proto_1721", b"get_pokemon_tags_out_proto_1721", "get_pokemon_trading_cost_out_proto_2608", b"get_pokemon_trading_cost_out_proto_2608", "get_pokestop_encounter_out_proto_2005", b"get_pokestop_encounter_out_proto_2005", "get_published_routes_out_proto_1403", b"get_published_routes_out_proto_1403", "get_quest_details_out_proto_901", b"get_quest_details_out_proto_901", "get_quest_ui_out_proto_2008", b"get_quest_ui_out_proto_2008", "get_raid_details_out_proto_163", b"get_raid_details_out_proto_163", "get_raid_lobby_counter_out_proto_2011", b"get_raid_lobby_counter_out_proto_2011", "get_referral_code_out_proto_1800", b"get_referral_code_out_proto_1800", "get_remote_config_versions_out_proto_7", b"get_remote_config_versions_out_proto_7", "get_remote_tradable_pokemon_from_other_player_out_proto_2603", b"get_remote_tradable_pokemon_from_other_player_out_proto_2603", "get_reward_tiers_response_proto_310300", b"get_reward_tiers_response_proto_310300", "get_rocket_balloon_out_proto_1206", b"get_rocket_balloon_out_proto_1206", "get_route_by_short_code_out_proto_1429", b"get_route_by_short_code_out_proto_1429", "get_route_creations_out_proto_1424", b"get_route_creations_out_proto_1424", "get_route_draft_out_proto_1426", b"get_route_draft_out_proto_1426", "get_routes_out_proto_1405", b"get_routes_out_proto_1405", "get_save_for_later_entries_out_proto_2466", b"get_save_for_later_entries_out_proto_2466", "get_server_time_out_proto_11", b"get_server_time_out_proto_11", "get_station_info_out_proto_3051", b"get_station_info_out_proto_3051", "get_stationed_pokemon_details_out_proto_2462", b"get_stationed_pokemon_details_out_proto_2462", "get_suggested_players_social_out_proto_3055", b"get_suggested_players_social_out_proto_3055", "get_supply_balloon_out_proto_3068", b"get_supply_balloon_out_proto_3068", "get_survey_eligibility_out_proto_3025", b"get_survey_eligibility_out_proto_3025", "get_time_travel_information_out_proto_3076", b"get_time_travel_information_out_proto_3076", "get_timedgroup_challenge_out_proto_1700", b"get_timedgroup_challenge_out_proto_1700", "get_trading_out_proto_974", b"get_trading_out_proto_974", "get_unfuse_pokemon_preview_response_proto_3023", b"get_unfuse_pokemon_preview_response_proto_3023", "get_vps_event_out_proto_3000", b"get_vps_event_out_proto_3000", "get_vs_seeker_status_out_proto_1304", b"get_vs_seeker_status_out_proto_1304", "get_web_token_out_proto_1107", b"get_web_token_out_proto_1107", "get_web_token_out_proto_5045", b"get_web_token_out_proto_5045", "get_weekly_challenge_info_out_proto_3041", b"get_weekly_challenge_info_out_proto_3041", "getgame_config_versions_out_proto_21", b"getgame_config_versions_out_proto_21", "getgame_master_client_templates_out_proto_6", b"getgame_master_client_templates_out_proto_6", "getgeofenced_ad_out_proto_1820", b"getgeofenced_ad_out_proto_1820", "getgift_box_details_out_proto_952", b"getgift_box_details_out_proto_952", "getgmap_settings_out_proto_1105", b"getgmap_settings_out_proto_1105", "getgmap_settings_out_proto_5036", b"getgmap_settings_out_proto_5036", "getgym_badge_details_out_proto_812", b"getgym_badge_details_out_proto_812", "grant_expired_item_consolation_out_proto_3057", b"grant_expired_item_consolation_out_proto_3057", "gym_battle_attack_out_proto_158", b"gym_battle_attack_out_proto_158", "gym_deploy_out_proto_155", b"gym_deploy_out_proto_155", "gym_feed_pokemon_out_proto_164", b"gym_feed_pokemon_out_proto_164", "gym_start_session_out_proto_157", b"gym_start_session_out_proto_157", "gymget_info_out_proto_156", b"gymget_info_out_proto_156", "iap_get_active_subscriptions_response_proto_310201", b"iap_get_active_subscriptions_response_proto_310201", "iap_get_available_skus_and_balances_out_proto_310001", b"iap_get_available_skus_and_balances_out_proto_310001", "iap_get_available_skus_and_balances_out_proto_5020", b"iap_get_available_skus_and_balances_out_proto_5020", "iap_get_available_subscriptions_response_proto_310200", b"iap_get_available_subscriptions_response_proto_310200", "iap_get_user_response_proto_311101", b"iap_get_user_response_proto_311101", "iap_purchase_sku_out_proto_310000", b"iap_purchase_sku_out_proto_310000", "iap_purchase_sku_out_proto_5019", b"iap_purchase_sku_out_proto_5019", "iap_redeem_apple_receipt_out_proto_310101", b"iap_redeem_apple_receipt_out_proto_310101", "iap_redeem_apple_receipt_out_proto_5022", b"iap_redeem_apple_receipt_out_proto_5022", "iap_redeem_desktop_receipt_out_proto_310102", b"iap_redeem_desktop_receipt_out_proto_310102", "iap_redeem_desktop_receipt_out_proto_5023", b"iap_redeem_desktop_receipt_out_proto_5023", "iap_redeem_google_receipt_out_proto_310100", b"iap_redeem_google_receipt_out_proto_310100", "iap_redeem_google_receipt_out_proto_5021", b"iap_redeem_google_receipt_out_proto_5021", "iap_redeem_samsung_receipt_out_proto_310103", b"iap_redeem_samsung_receipt_out_proto_310103", "iap_redeem_samsung_receipt_out_proto_5037", b"iap_redeem_samsung_receipt_out_proto_5037", "iap_redeem_xsolla_receipt_response_proto_311100", b"iap_redeem_xsolla_receipt_response_proto_311100", "iap_setin_game_currency_exchange_rate_out_proto_310002", b"iap_setin_game_currency_exchange_rate_out_proto_310002", "incense_encounter_out_proto_143", b"incense_encounter_out_proto_143", "internal_accept_friendinvite_out_proto_10004", b"internal_accept_friendinvite_out_proto_10004", "internal_add_favorite_friend_response_10023", b"internal_add_favorite_friend_response_10023", "internal_add_login_action_out_proto_600000", b"internal_add_login_action_out_proto_600000", "internal_block_account_out_proto_10025", b"internal_block_account_out_proto_10025", "internal_cancel_friendinvite_out_proto_10003", b"internal_cancel_friendinvite_out_proto_10003", "internal_decline_friendinvite_out_proto_10005", b"internal_decline_friendinvite_out_proto_10005", "internal_dismiss_contact_list_update_response_20017", b"internal_dismiss_contact_list_update_response_20017", "internal_dismiss_outgoing_gameinvites_response_20012", b"internal_dismiss_outgoing_gameinvites_response_20012", "internal_gar_proxy_response_proto_600005", b"internal_gar_proxy_response_proto_600005", "internal_get_account_settings_out_proto_10022", b"internal_get_account_settings_out_proto_10022", "internal_get_client_feature_flags_response_20008", b"internal_get_client_feature_flags_response_20008", "internal_get_contact_listinfo_response_20016", b"internal_get_contact_listinfo_response_20016", "internal_get_facebook_friend_list_out_proto_10014", b"internal_get_facebook_friend_list_out_proto_10014", "internal_get_friend_code_out_proto_10013", b"internal_get_friend_code_out_proto_10013", "internal_get_friend_details_out_proto_10010", b"internal_get_friend_details_out_proto_10010", "internal_get_friend_details_out_proto_20007", b"internal_get_friend_details_out_proto_20007", "internal_get_friend_recommendation_response_20500", b"internal_get_friend_recommendation_response_20500", "internal_get_friends_list_out_proto_10006", b"internal_get_friends_list_out_proto_10006", "internal_get_outgoing_blocks_out_proto_10027", b"internal_get_outgoing_blocks_out_proto_10027", "internal_get_outgoing_friendinvites_out_proto_10007", b"internal_get_outgoing_friendinvites_out_proto_10007", "internal_get_photos_out_proto_10203", b"internal_get_photos_out_proto_10203", "internal_get_player_settings_out_proto_10017", b"internal_get_player_settings_out_proto_10017", "internal_get_player_settings_out_proto_818", b"internal_get_player_settings_out_proto_818", "internal_get_profile_response_20003", b"internal_get_profile_response_20003", "internal_get_signed_url_out_proto_10201", b"internal_get_signed_url_out_proto_10201", "internal_getincoming_friendinvites_out_proto_10008", b"internal_getincoming_friendinvites_out_proto_10008", "internal_getincoming_gameinvites_response_20010", b"internal_getincoming_gameinvites_response_20010", "internal_link_to_account_login_response_proto_600006", b"internal_link_to_account_login_response_proto_600006", "internal_list_friends_response_20006", b"internal_list_friends_response_20006", "internal_list_login_action_out_proto_600002", b"internal_list_login_action_out_proto_600002", "internal_list_opt_out_notification_categories_response_proto_10106", b"internal_list_opt_out_notification_categories_response_proto_10106", "internal_notify_contact_list_friends_response_20018", b"internal_notify_contact_list_friends_response_20018", "internal_push_notification_registry_out_proto_10101", b"internal_push_notification_registry_out_proto_10101", "internal_refer_contact_list_friend_response_20015", b"internal_refer_contact_list_friend_response_20015", "internal_remove_favorite_friend_response_10024", b"internal_remove_favorite_friend_response_10024", "internal_remove_friend_out_proto_10009", b"internal_remove_friend_out_proto_10009", "internal_remove_login_action_out_proto_600001", b"internal_remove_login_action_out_proto_600001", "internal_replace_login_action_out_proto_600003", b"internal_replace_login_action_out_proto_600003", "internal_search_player_out_proto_10000", b"internal_search_player_out_proto_10000", "internal_send_contact_list_friendinvite_response_20014", b"internal_send_contact_list_friendinvite_response_20014", "internal_send_friendinvite_out_proto_10002", b"internal_send_friendinvite_out_proto_10002", "internal_set_account_settings_out_proto_10021", b"internal_set_account_settings_out_proto_10021", "internal_set_birthday_response_proto_600004", b"internal_set_birthday_response_proto_600004", "internal_setin_game_currency_exchange_rate_out_proto_5032", b"internal_setin_game_currency_exchange_rate_out_proto_5032", "internal_submitimage_out_proto_10202", b"internal_submitimage_out_proto_10202", "internal_sync_contact_list_response_20013", b"internal_sync_contact_list_response_20013", "internal_unblock_account_out_proto_10026", b"internal_unblock_account_out_proto_10026", "internal_update_facebook_status_out_proto_10015", b"internal_update_facebook_status_out_proto_10015", "internal_update_friendship_response_20002", b"internal_update_friendship_response_20002", "internal_update_notification_out_proto_10103", b"internal_update_notification_out_proto_10103", "internal_update_profile_response_20001", b"internal_update_profile_response_20001", "internal_updateincoming_gameinvite_response_20011", b"internal_updateincoming_gameinvite_response_20011", "internalinvite_facebook_friend_out_proto_10011", b"internalinvite_facebook_friend_out_proto_10011", "internalinvite_game_response_20004", b"internalinvite_game_response_20004", "internalis_account_blocked_out_proto_10028", b"internalis_account_blocked_out_proto_10028", "internalis_my_friend_out_proto_10012", b"internalis_my_friend_out_proto_10012", "invasion_encounter_out_proto_1204", b"invasion_encounter_out_proto_1204", "is_sku_available_out_proto_172", b"is_sku_available_out_proto_172", "join_bread_lobby_out_proto_2450", b"join_bread_lobby_out_proto_2450", "join_buddy_multiplayer_session_out_proto_1457", b"join_buddy_multiplayer_session_out_proto_1457", "join_lobby_out_proto_159", b"join_lobby_out_proto_159", "join_party_out_proto_2301", b"join_party_out_proto_2301", "kick_other_player_from_party_out_proto_3016", b"kick_other_player_from_party_out_proto_3016", "leave_breadlobby_out_proto_2455", b"leave_breadlobby_out_proto_2455", "leave_buddy_multiplayer_session_out_proto_1458", b"leave_buddy_multiplayer_session_out_proto_1458", "leave_party_out_proto_2303", b"leave_party_out_proto_2303", "leave_weekly_challenge_matchmaking_out_proto_3064", b"leave_weekly_challenge_matchmaking_out_proto_3064", "leavelobby_out_proto_160", b"leavelobby_out_proto_160", "level_up_rewards_out_proto_128", b"level_up_rewards_out_proto_128", "lift_user_age_gate_confirmation_out_proto_830", b"lift_user_age_gate_confirmation_out_proto_830", "like_route_pin_out_proto_1727", b"like_route_pin_out_proto_1727", "list_avatar_appearance_items_out_proto_410", b"list_avatar_appearance_items_out_proto_410", "list_avatar_customizations_out_proto_807", b"list_avatar_customizations_out_proto_807", "list_avatar_store_items_out_proto_409", b"list_avatar_store_items_out_proto_409", "list_friend_activities_response_proto_10029", b"list_friend_activities_response_proto_10029", "list_gym_badges_out_proto_811", b"list_gym_badges_out_proto_811", "list_route_badges_out_proto_1409", b"list_route_badges_out_proto_1409", "list_route_stamps_out_proto_1411", b"list_route_stamps_out_proto_1411", "listlogin_action_out_proto_5010", b"listlogin_action_out_proto_5010", "location_ping_out_proto_360001", b"location_ping_out_proto_360001", "location_ping_out_proto_5034", b"location_ping_out_proto_5034", "loot_station_out_proto_2461", b"loot_station_out_proto_2461", "maps_client_telemetry_response_proto_610000", b"maps_client_telemetry_response_proto_610000", "mark_fieldbook_seen_response_proto_3078", b"mark_fieldbook_seen_response_proto_3078", "mark_newsfeed_read_response_5050", b"mark_newsfeed_read_response_5050", "mark_read_news_article_out_proto_817", b"mark_read_news_article_out_proto_817", "mark_remote_tradable_out_proto_2602", b"mark_remote_tradable_out_proto_2602", "mark_save_for_later_out_proto_2463", b"mark_save_for_later_out_proto_2463", "mark_tutorial_complete_out_proto_406", b"mark_tutorial_complete_out_proto_406", "markmilestone_as_viewed_out_proto_1804", b"markmilestone_as_viewed_out_proto_1804", "mega_evolve_pokemon_out_proto_1502", b"mega_evolve_pokemon_out_proto_1502", "mega_level_up_out_proto_3079", b"mega_level_up_out_proto_3079", "natural_art_poi_encounter_out_proto_3070", b"natural_art_poi_encounter_out_proto_3070", "neutral_avatar_badge_reward_out_proto_450", b"neutral_avatar_badge_reward_out_proto_450", "nickname_pokemon_out_proto_149", b"nickname_pokemon_out_proto_149", "npc_open_gift_out_proto_2402", b"npc_open_gift_out_proto_2402", "npc_route_gift_out_proto_1423", b"npc_route_gift_out_proto_1423", "npc_send_gift_out_proto_2401", b"npc_send_gift_out_proto_2401", "npc_update_state_out_proto_2400", b"npc_update_state_out_proto_2400", "open_buddy_giftout_proto_1353", b"open_buddy_giftout_proto_1353", "open_combat_challengeout_proto_993", b"open_combat_challengeout_proto_993", "open_combat_sessionout_proto_1000", b"open_combat_sessionout_proto_1000", "open_giftout_proto_951", b"open_giftout_proto_951", "open_invasion_combat_sessionout_proto_1202", b"open_invasion_combat_sessionout_proto_1202", "open_npc_combat_sessionout_proto_1007", b"open_npc_combat_sessionout_proto_1007", "open_sponsored_giftout_proto_1650", b"open_sponsored_giftout_proto_1650", "open_supply_balloonout_proto_3069", b"open_supply_balloonout_proto_3069", "open_tradingout_proto_970", b"open_tradingout_proto_970", "optout_proto_10104", b"optout_proto_10104", "optout_proto_5003", b"optout_proto_5003", "party_send_dark_launch_log_outproto_2306", b"party_send_dark_launch_log_outproto_2306", "party_update_location_outproto_2305", b"party_update_location_outproto_2305", "ping_responseproto_5007", b"ping_responseproto_5007", "player_spawnablepokemon_outproto_2007", b"player_spawnablepokemon_outproto_2007", "playerprofile_outproto_121", b"playerprofile_outproto_121", "power_uppokestop_encounter_outproto_1900", b"power_uppokestop_encounter_outproto_1900", "prepare_bread_lobby_outproto_2453", b"prepare_bread_lobby_outproto_2453", "preview_contributeparty_item_outproto_3015", b"preview_contributeparty_item_outproto_3015", "process_tappable_outproto_1408", b"process_tappable_outproto_1408", "process_tappable_outproto_1416", b"process_tappable_outproto_1416", "processplayer_inbox_outproto_3024", b"processplayer_inbox_outproto_3024", "profanity_check_outproto_1653", b"profanity_check_outproto_1653", "progress_quest_outproto_906", b"progress_quest_outproto_906", "progress_route_outproto_1406", b"progress_route_outproto_1406", "propose_remote_trade_outproto_2600", b"propose_remote_trade_outproto_2600", "proxy_responseproto_5012", b"proxy_responseproto_5012", "purifypokemon_outproto_1205", b"purifypokemon_outproto_1205", "push_notification_registry_outproto_5000", b"push_notification_registry_outproto_5000", "quest_encounter_out_proto_904", b"quest_encounter_out_proto_904", "quit_combat_out_proto_1002", b"quit_combat_out_proto_1002", "rateroute_out_proto_1412", b"rateroute_out_proto_1412", "read_quest_dialog_out_proto_908", b"read_quest_dialog_out_proto_908", "reassign_player_out_proto_169", b"reassign_player_out_proto_169", "recallroute_draft_out_proto_1421", b"recallroute_draft_out_proto_1421", "recycle_item_out_proto_137", b"recycle_item_out_proto_137", "redeem_passcoderesponse_proto_5006", b"redeem_passcoderesponse_proto_5006", "redeem_ticket_gift_for_friend_out_proto_2001", b"redeem_ticket_gift_for_friend_out_proto_2001", "refresh_proximity_tokensresponse_proto_362000", b"refresh_proximity_tokensresponse_proto_362000", "register_background_deviceresponse_proto_230000", b"register_background_deviceresponse_proto_230000", "register_background_deviceresponse_proto_8", b"register_background_deviceresponse_proto_8", "register_sfidaresponse_800", b"register_sfidaresponse_800", "release_pokemon_out_proto_112", b"release_pokemon_out_proto_112", "release_stationed_pokemon_out_proto_2472", b"release_stationed_pokemon_out_proto_2472", "remote_gift_pingresponse_proto_1503", b"remote_gift_pingresponse_proto_1503", "remove_campfire_forreferee_out_proto_6002", b"remove_campfire_forreferee_out_proto_6002", "remove_login_action_out_proto_5009", b"remove_login_action_out_proto_5009", "remove_pokemon_size_leaderboard_entry_out_proto_2103", b"remove_pokemon_size_leaderboard_entry_out_proto_2103", "remove_ptc_login_action_out_proto_3007", b"remove_ptc_login_action_out_proto_3007", "remove_quest_out_proto_903", b"remove_quest_out_proto_903", "remove_save_for_later_out_proto_2465", b"remove_save_for_later_out_proto_2465", "replace_login_action_out_proto_5015", b"replace_login_action_out_proto_5015", "report_ad_feedbackresponse_1716", b"report_ad_feedbackresponse_1716", "report_ad_interactionresponse_1651", b"report_ad_interactionresponse_1651", "report_proximity_contactsresponse_proto_362001", b"report_proximity_contactsresponse_proto_362001", "report_station_out_proto_2470", b"report_station_out_proto_2470", "reportroute_out_proto_1415", b"reportroute_out_proto_1415", "respondremote_trade_out_proto_2606", b"respondremote_trade_out_proto_2606", "route_nearby_notif_shown_out_proto_1422", b"route_nearby_notif_shown_out_proto_1422", "route_update_seen_out_proto_1420", b"route_update_seen_out_proto_1420", "saturday_complete_out_proto_828", b"saturday_complete_out_proto_828", "saturdaystart_out_proto_827", b"saturdaystart_out_proto_827", "save_combat_player_preferences_out_proto_999", b"save_combat_player_preferences_out_proto_999", "save_player_preferences_out_proto_1652", b"save_player_preferences_out_proto_1652", "save_playersnapshot_out_proto_954", b"save_playersnapshot_out_proto_954", "savesocial_playersettings_out_proto_10016", b"savesocial_playersettings_out_proto_10016", "savesocial_playersettings_out_proto_959", b"savesocial_playersettings_out_proto_959", "savestamp_out_proto_1902", b"savestamp_out_proto_1902", "send_bread_battle_invitation_out_proto_1505", b"send_bread_battle_invitation_out_proto_1505", "send_event_rsvp_invitation_out_proto_3039", b"send_event_rsvp_invitation_out_proto_3039", "send_friend_invite_via_referral_code_out_proto_1802", b"send_friend_invite_via_referral_code_out_proto_1802", "send_friend_request_via_player_id_out_proto_2010", b"send_friend_request_via_player_id_out_proto_2010", "send_gift_out_proto_950", b"send_gift_out_proto_950", "send_party_invitation_out_proto_2310", b"send_party_invitation_out_proto_2310", "send_party_invitation_out_proto_3008", b"send_party_invitation_out_proto_3008", "send_probe_out_proto_1020", b"send_probe_out_proto_1020", "send_raid_invitation_out_proto_1504", b"send_raid_invitation_out_proto_1504", "set_avatar_item_as_viewed_out_proto_808", b"set_avatar_item_as_viewed_out_proto_808", "set_avatar_out_proto_404", b"set_avatar_out_proto_404", "set_birthday_response_proto_5048", b"set_birthday_response_proto_5048", "set_buddy_pokemon_out_proto_152", b"set_buddy_pokemon_out_proto_152", "set_contactsettings_out_proto_151", b"set_contactsettings_out_proto_151", "set_favorite_pokemon_out_proto_148", b"set_favorite_pokemon_out_proto_148", "set_friend_nickname_out_proto_957", b"set_friend_nickname_out_proto_957", "set_lobby_pokemon_out_proto_162", b"set_lobby_pokemon_out_proto_162", "set_lobby_visibility_out_proto_161", b"set_lobby_visibility_out_proto_161", "set_neutral_avatar_out_proto_408", b"set_neutral_avatar_out_proto_408", "set_player_team_out_proto_405", b"set_player_team_out_proto_405", "set_playerstatus_out_proto_20", b"set_playerstatus_out_proto_20", "set_pokemon_tags_for_pokemon_out_proto_1720", b"set_pokemon_tags_for_pokemon_out_proto_1720", "sfida_associate_response_822", b"sfida_associate_response_822", "sfida_capture_response_806", b"sfida_capture_response_806", "sfida_certification_response_802", b"sfida_certification_response_802", "sfida_check_pairing_response_823", b"sfida_check_pairing_response_823", "sfida_disassociate_response_824", b"sfida_disassociate_response_824", "sfida_dowser_response_805", b"sfida_dowser_response_805", "sfida_update_response_803", b"sfida_update_response_803", "skip_enter_referral_code_out_proto_1915", b"skip_enter_referral_code_out_proto_1915", "smart_glassessyncsettings_response_proto_3027", b"smart_glassessyncsettings_response_proto_3027", "softsfida_capture_out_proto_833", b"softsfida_capture_out_proto_833", "softsfida_location_update_out_proto_834", b"softsfida_location_update_out_proto_834", "softsfida_pause_out_proto_832", b"softsfida_pause_out_proto_832", "softsfida_recap_out_proto_835", b"softsfida_recap_out_proto_835", "softsfidastart_out_proto_831", b"softsfidastart_out_proto_831", "start_bread_battle_out_proto_2456", b"start_bread_battle_out_proto_2456", "start_incident_out_proto_1200", b"start_incident_out_proto_1200", "start_incident_out_proto_1207", b"start_incident_out_proto_1207", "start_mp_walk_quest_out_proto_2458", b"start_mp_walk_quest_out_proto_2458", "start_party_out_proto_2302", b"start_party_out_proto_2302", "start_party_quest_out_proto_2308", b"start_party_quest_out_proto_2308", "start_pvp_battle_out_proto_3071", b"start_pvp_battle_out_proto_3071", "start_raid_battle_out_proto_165", b"start_raid_battle_out_proto_165", "start_route_out_proto_1404", b"start_route_out_proto_1404", "start_team_leader_battle_out_proto_3059", b"start_team_leader_battle_out_proto_3059", "start_tgr_battle_out_proto_3056", b"start_tgr_battle_out_proto_3056", "start_weekly_challenge_group_matchmaking_out_proto_3047", b"start_weekly_challenge_group_matchmaking_out_proto_3047", "station_pokemon_out_proto_2460", b"station_pokemon_out_proto_2460", "submit_combat_challenge_pokemons_out_proto_998", b"submit_combat_challenge_pokemons_out_proto_998", "submit_new_poi_out_proto_5011", b"submit_new_poi_out_proto_5011", "submit_route_draft_out_proto_1402", b"submit_route_draft_out_proto_1402", "sync_battle_inventory_out_proto_3011", b"sync_battle_inventory_out_proto_3011", "sync_weekly_challenge_matchmakingstatus_out_proto_3048", b"sync_weekly_challenge_matchmakingstatus_out_proto_3048", "titan_async_file_upload_complete_out_proto_620402", b"titan_async_file_upload_complete_out_proto_620402", "titan_generate_gmap_signed_url_out_proto_620300", b"titan_generate_gmap_signed_url_out_proto_620300", "titan_get_a_r_mapping_settings_out_proto_620403", b"titan_get_a_r_mapping_settings_out_proto_620403", "titan_get_available_submissions_out_proto_620001", b"titan_get_available_submissions_out_proto_620001", "titan_get_gmap_settings_out_proto_620301", b"titan_get_gmap_settings_out_proto_620301", "titan_get_grapeshot_upload_url_out_proto_620401", b"titan_get_grapeshot_upload_url_out_proto_620401", "titan_get_image_gallery_settings_out_proto_620502", b"titan_get_image_gallery_settings_out_proto_620502", "titan_get_images_for_poi_out_proto_620500", b"titan_get_images_for_poi_out_proto_620500", "titan_get_player_submission_validation_settings_out_proto_620003", b"titan_get_player_submission_validation_settings_out_proto_620003", "titan_get_pois_in_radius_out_proto_620601", b"titan_get_pois_in_radius_out_proto_620601", "titan_submit_new_poi_out_proto_620000", b"titan_submit_new_poi_out_proto_620000", "titan_submit_player_image_vote_for_poi_out_proto_620501", b"titan_submit_player_image_vote_for_poi_out_proto_620501", "transfer_contest_entry_out_proto_2152", b"transfer_contest_entry_out_proto_2152", "transfer_pokemon_size_leaderboard_entry_out_proto_2102", b"transfer_pokemon_size_leaderboard_entry_out_proto_2102", "transfer_pokemonto_pokemon_home_out_proto_1713", b"transfer_pokemonto_pokemon_home_out_proto_1713", "unfuse_pokemon_response_proto_3018", b"unfuse_pokemon_response_proto_3018", "unlink_nintendo_account_out_proto_1711", b"unlink_nintendo_account_out_proto_1711", "unlock_pokemon_move_out_proto_1004", b"unlock_pokemon_move_out_proto_1004", "unlock_temporary_evolution_level_out_proto_1506", b"unlock_temporary_evolution_level_out_proto_1506", "update_adventure_sync_fitness_response_proto_640004", b"update_adventure_sync_fitness_response_proto_640004", "update_adventure_sync_settings_response_proto_5047", b"update_adventure_sync_settings_response_proto_5047", "update_adventure_sync_settings_response_proto_640003", b"update_adventure_sync_settings_response_proto_640003", "update_breadcrumb_history_response_proto_361000", b"update_breadcrumb_history_response_proto_361000", "update_bulk_player_location_response_proto_360002", b"update_bulk_player_location_response_proto_360002", "update_combat_out_proto_1001", b"update_combat_out_proto_1001", "update_contest_entry_out_proto_2151", b"update_contest_entry_out_proto_2151", "update_event_rsvp_selection_out_proto_3040", b"update_event_rsvp_selection_out_proto_3040", "update_field_book_post_catch_pokemon_out_proto_3075", b"update_field_book_post_catch_pokemon_out_proto_3075", "update_invasion_battle_out_proto_1203", b"update_invasion_battle_out_proto_1203", "update_iris_social_scene_out_proto_3020", b"update_iris_social_scene_out_proto_3020", "update_notification_out_proto_5002", b"update_notification_out_proto_5002", "update_player_gps_bookmarks_out_proto_23", b"update_player_gps_bookmarks_out_proto_23", "update_pokemon_size_leaderboard_entry_out_proto_2101", b"update_pokemon_size_leaderboard_entry_out_proto_2101", "update_postcard_out_proto_1911", b"update_postcard_out_proto_1911", "update_route_draft_out_proto_1400", b"update_route_draft_out_proto_1400", "update_survey_eligibility_out_proto_3026", b"update_survey_eligibility_out_proto_3026", "update_trading_out_proto_971", b"update_trading_out_proto_971", "update_vps_event_out_proto_3001", b"update_vps_event_out_proto_3001", "upgrade_pokemon_out_proto_147", b"upgrade_pokemon_out_proto_147", "upload_combat_client_log_out_proto_1916", b"upload_combat_client_log_out_proto_1916", "upload_raid_client_log_out_proto_1914", b"upload_raid_client_log_out_proto_1914", "use_incense_action_out_proto_141", b"use_incense_action_out_proto_141", "use_item_battle_boost_out_proto_174", b"use_item_battle_boost_out_proto_174", "use_item_bulk_heal_out_proto_173", b"use_item_bulk_heal_out_proto_173", "use_item_capture_out_proto_114", b"use_item_capture_out_proto_114", "use_item_egg_incubator_out_proto_140", b"use_item_egg_incubator_out_proto_140", "use_item_encounter_out_proto_154", b"use_item_encounter_out_proto_154", "use_item_lucky_friend_applicator_out_proto_175", b"use_item_lucky_friend_applicator_out_proto_175", "use_item_move_reroll_out_proto_813", b"use_item_move_reroll_out_proto_813", "use_item_mp_replenish_out_proto_2468", b"use_item_mp_replenish_out_proto_2468", "use_item_potion_out_proto_113", b"use_item_potion_out_proto_113", "use_item_rare_candy_out_proto_814", b"use_item_rare_candy_out_proto_814", "use_item_revive_out_proto_116", b"use_item_revive_out_proto_116", "use_item_stardust_boost_out_proto_168", b"use_item_stardust_boost_out_proto_168", "use_item_stat_increase_out_proto_176", b"use_item_stat_increase_out_proto_176", "use_item_xp_boost_out_proto_139", b"use_item_xp_boost_out_proto_139", "use_non_combat_move_response_proto_2014", b"use_non_combat_move_response_proto_2014", "use_save_for_later_out_proto_2464", b"use_save_for_later_out_proto_2464", "verify_challenge_out_proto_601", b"verify_challenge_out_proto_601", "view_route_pin_out_proto_1728", b"view_route_pin_out_proto_1728", "vs_seeker_reward_encounter_out_proto_1307", b"vs_seeker_reward_encounter_out_proto_1307", "vs_seeker_start_matchmaking_out_proto_1300", b"vs_seeker_start_matchmaking_out_proto_1300", "waina_get_rewards_response_825", b"waina_get_rewards_response_825", "waina_submit_sleep_data_response_826", b"waina_submit_sleep_data_response_826"]  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal["accept_combat_challenge_out_proto_995", b"accept_combat_challenge_out_proto_995", "acknowledge_punishment_out_proto_10", b"acknowledge_punishment_out_proto_10", "acknowledge_view_latest_incense_recap_out_proto_2003", b"acknowledge_view_latest_incense_recap_out_proto_2003", "acknowledge_warnings_response_proto_200001", b"acknowledge_warnings_response_proto_200001", "acknowledge_warnings_response_proto_5040", b"acknowledge_warnings_response_proto_5040", "activate_vs_seeker_out_proto_1308", b"activate_vs_seeker_out_proto_1308", "add_fort_modifier_out_proto_144", b"add_fort_modifier_out_proto_144", "add_loginaction_out_proto_5008", b"add_loginaction_out_proto_5008", "add_ptc_loginaction_out_proto_3002", b"add_ptc_loginaction_out_proto_3002", "add_referrer_out_proto_1801", b"add_referrer_out_proto_1801", "age_confirmation_out_proto_3052", b"age_confirmation_out_proto_3052", "appeal_route_out_proto_1425", b"appeal_route_out_proto_1425", "asset_digest_out_proto_300", b"asset_digest_out_proto_300", "asset_version_out_proto_302", b"asset_version_out_proto_302", "attack_raid_battle_out_proto_166", b"attack_raid_battle_out_proto_166", "attracted_pokemon_encounter_out_proto_1417", b"attracted_pokemon_encounter_out_proto_1417", "auth_register_background_device_response_proto_5028", b"auth_register_background_device_response_proto_5028", "award_free_raid_ticket_out_proto_815", b"award_free_raid_ticket_out_proto_815", "badge_reward_encounter_response_proto_2360", b"badge_reward_encounter_response_proto_2360", "beluga_transaction_complete_out_proto_820", b"beluga_transaction_complete_out_proto_820", "beluga_transaction_start_out_proto_819", b"beluga_transaction_start_out_proto_819", "boot_raid_out_proto_2004", b"boot_raid_out_proto_2004", "buddy_feeding_out_proto_1352", b"buddy_feeding_out_proto_1352", "buddy_map_out_proto_1350", b"buddy_map_out_proto_1350", "buddy_petting_out_proto_1354", b"buddy_petting_out_proto_1354", "buddy_stats_out_proto_1351", b"buddy_stats_out_proto_1351", "butterfly_collector_reward_encounter_proto_response_1724", b"butterfly_collector_reward_encounter_proto_response_1724", "can_report_route_out_proto_1418", b"can_report_route_out_proto_1418", "cancel_event_rsvp_out_proto_3033", b"cancel_event_rsvp_out_proto_3033", "cancel_matchmaking_out_proto_1301", b"cancel_matchmaking_out_proto_1301", "cancel_party_invite_out_proto_2312", b"cancel_party_invite_out_proto_2312", "cancel_remote_trade_out_proto_2601", b"cancel_remote_trade_out_proto_2601", "cancel_route_out_proto_1410", b"cancel_route_out_proto_1410", "cancel_trading_out_proto_973", b"cancel_trading_out_proto_973", "cancelcombatchallenge_out_proto_997", b"cancelcombatchallenge_out_proto_997", "canclaim_ptc_reward_action_out_proto_3004", b"canclaim_ptc_reward_action_out_proto_3004", "catch_pokemon_out_proto_103", b"catch_pokemon_out_proto_103", "change_pokemon_form_out_proto_1722", b"change_pokemon_form_out_proto_1722", "change_stampcollection_player_data_out_proto_1905", b"change_stampcollection_player_data_out_proto_1905", "change_stat_increase_goal_out_proto_3053", b"change_stat_increase_goal_out_proto_3053", "change_team_out_proto_1106", b"change_team_out_proto_1106", "check_awarded_badges_out_proto_129", b"check_awarded_badges_out_proto_129", "check_gifting_eligibility_out_proto_2000", b"check_gifting_eligibility_out_proto_2000", "check_photobomb_out_proto_1101", b"check_photobomb_out_proto_1101", "check_pokemon_size_leaderboard_eligibility_out_proto_2100", b"check_pokemon_size_leaderboard_eligibility_out_proto_2100", "check_send_gift_out_proto_956", b"check_send_gift_out_proto_956", "check_stamp_giftability_out_proto_1906", b"check_stamp_giftability_out_proto_1906", "checkchallenge_out_proto_600", b"checkchallenge_out_proto_600", "checkcontest_eligibility_out_proto_2150", b"checkcontest_eligibility_out_proto_2150", "choose_global_ticketed_event_variant_out_proto_1723", b"choose_global_ticketed_event_variant_out_proto_1723", "claim_event_pass_rewards_response_proto_3034", b"claim_event_pass_rewards_response_proto_3034", "claim_event_pass_rewards_response_proto_3035", b"claim_event_pass_rewards_response_proto_3035", "claim_ptc_linking_reward_out_proto_3003", b"claim_ptc_linking_reward_out_proto_3003", "claim_stampcollection_reward_out_proto_1904", b"claim_stampcollection_reward_out_proto_1904", "claim_vs_seeker_rewards_out_proto_1306", b"claim_vs_seeker_rewards_out_proto_1306", "claimcontests_rewards_out_proto_2107", b"claimcontests_rewards_out_proto_2107", "client_telemetryclient_settings_proto_5026", b"client_telemetryclient_settings_proto_5026", "client_telemetryclient_settings_proto_610001", b"client_telemetryclient_settings_proto_610001", "codename_result_proto_403", b"codename_result_proto_403", "collect_daily_bonus_out_proto_138", b"collect_daily_bonus_out_proto_138", "combat_friend_request_out_proto_1006", b"combat_friend_request_out_proto_1006", "combat_sync_server_offset_out_proto_1917", b"combat_sync_server_offset_out_proto_1917", "complete_all_quest_out_proto_3063", b"complete_all_quest_out_proto_3063", "complete_bread_battle_out_proto_2473", b"complete_bread_battle_out_proto_2473", "complete_invasion_dialogue_out_proto_1201", b"complete_invasion_dialogue_out_proto_1201", "complete_milestone_out_proto_1806", b"complete_milestone_out_proto_1806", "complete_party_quest_out_proto_2309", b"complete_party_quest_out_proto_2309", "complete_pvp_battle_out_proto_3072", b"complete_pvp_battle_out_proto_3072", "complete_quest_out_proto_902", b"complete_quest_out_proto_902", "complete_quest_stampcard_out_proto_905", b"complete_quest_stampcard_out_proto_905", "complete_raid_battle_out_proto_3010", b"complete_raid_battle_out_proto_3010", "complete_snapshot_session_out_proto_1110", b"complete_snapshot_session_out_proto_1110", "complete_team_leader_battle_out_proto_3060", b"complete_team_leader_battle_out_proto_3060", "complete_tgr_battle_out_proto_3058", b"complete_tgr_battle_out_proto_3058", "complete_visit_page_quest_out_proto_3030", b"complete_visit_page_quest_out_proto_3030", "complete_vs_seeker_and_restartcharging_out_proto_1303", b"complete_vs_seeker_and_restartcharging_out_proto_1303", "complete_wild_snapshot_session_out_proto_1111", b"complete_wild_snapshot_session_out_proto_1111", "completecompetitive_season_out_proto_1305", b"completecompetitive_season_out_proto_1305", "confirm_photobomb_out_proto_1102", b"confirm_photobomb_out_proto_1102", "confirm_trading_out_proto_972", b"confirm_trading_out_proto_972", "consume_party_items_out_proto_3006", b"consume_party_items_out_proto_3006", "consume_stickers_out_proto_3009", b"consume_stickers_out_proto_3009", "contribute_party_item_out_proto_3005", b"contribute_party_item_out_proto_3005", "convertcandy_to_xlcandy_out_proto_171", b"convertcandy_to_xlcandy_out_proto_171", "create_buddy_multiplayer_session_out_proto_1456", b"create_buddy_multiplayer_session_out_proto_1456", "create_bug_report_out_proto_3088", b"create_bug_report_out_proto_3088", "create_event_rsvp_out_proto_3032", b"create_event_rsvp_out_proto_3032", "create_party_out_proto_2300", b"create_party_out_proto_2300", "create_pokemon_tag_out_proto_1717", b"create_pokemon_tag_out_proto_1717", "create_postcard_out_proto_1910", b"create_postcard_out_proto_1910", "create_route_draft_out_proto_1413", b"create_route_draft_out_proto_1413", "create_route_pin_out_proto_1726", b"create_route_pin_out_proto_1726", "create_route_shortcode_out_proto_1428", b"create_route_shortcode_out_proto_1428", "createcombatchallenge_out_proto_992", b"createcombatchallenge_out_proto_992", "daily_bonus_spawn_encounter_out_proto_3067", b"daily_bonus_spawn_encounter_out_proto_3067", "daily_encounter_out_proto_1602", b"daily_encounter_out_proto_1602", "day_night_poi_encounter_out_proto_3077", b"day_night_poi_encounter_out_proto_3077", "debug_egg_statistics_out_proto_3083", b"debug_egg_statistics_out_proto_3083", "debug_encounter_statistics_out_proto_3061", b"debug_encounter_statistics_out_proto_3061", "debug_resetdaily_mp_progress_out_proto_2471", b"debug_resetdaily_mp_progress_out_proto_2471", "debug_test_setup_out_proto_3085", b"debug_test_setup_out_proto_3085", "decline_combat_challenge_out_proto_996", b"decline_combat_challenge_out_proto_996", "delete_gift_from_inventory_out_proto_958", b"delete_gift_from_inventory_out_proto_958", "delete_gift_out_proto_953", b"delete_gift_out_proto_953", "delete_pokemon_tag_out_proto_1718", b"delete_pokemon_tag_out_proto_1718", "delete_postcard_out_proto_1912", b"delete_postcard_out_proto_1912", "delete_postcards_out_proto_1909", b"delete_postcards_out_proto_1909", "delete_routedraft_out_proto_1414", b"delete_routedraft_out_proto_1414", "dequeue_questdialogue_out_proto_909", b"dequeue_questdialogue_out_proto_909", "disk_encounter_out_proto_145", b"disk_encounter_out_proto_145", "download_gm_templates_response_proto_5004", b"download_gm_templates_response_proto_5004", "download_settings_response_proto_5", b"download_settings_response_proto_5", "download_url_out_proto_301", b"download_url_out_proto_301", "echo_out_proto_666", b"echo_out_proto_666", "edit_pokemon_tag_out_proto_1719", b"edit_pokemon_tag_out_proto_1719", "enable_campfire_for_referee_out_proto_6001", b"enable_campfire_for_referee_out_proto_6001", "encounter_out_proto_102", b"encounter_out_proto_102", "encounter_photobomb_out_proto_1104", b"encounter_photobomb_out_proto_1104", "encounter_pokestopencounter_out_proto_2006", b"encounter_pokestopencounter_out_proto_2006", "encounter_station_spawn_out_proto_2475", b"encounter_station_spawn_out_proto_2475", "encounter_tutorial_complete_out_proto_127", b"encounter_tutorial_complete_out_proto_127", "end_pokemon_training_out_proto_3054", b"end_pokemon_training_out_proto_3054", "enhance_bread_move_out_proto_2459", b"enhance_bread_move_out_proto_2459", "evolve_pokemon_out_proto_125", b"evolve_pokemon_out_proto_125", "favorite_route_out_proto_1427", b"favorite_route_out_proto_1427", "fetch_all_news_out_proto_816", b"fetch_all_news_out_proto_816", "fetch_newsfeed_response_5049", b"fetch_newsfeed_response_5049", "fitness_update_out_proto_5024", b"fitness_update_out_proto_5024", "fitness_update_out_proto_640000", b"fitness_update_out_proto_640000", "flee_battle_encounter_out_proto_3084", b"flee_battle_encounter_out_proto_3084", "fort_deploy_out_proto_110", b"fort_deploy_out_proto_110", "fort_details_out_proto_104", b"fort_details_out_proto_104", "fort_recall_out_proto_111", b"fort_recall_out_proto_111", "fort_search_out_proto_101", b"fort_search_out_proto_101", "fuse_pokemon_response_proto_3017", b"fuse_pokemon_response_proto_3017", "generate_combat_challenge_id_out_proto_991", b"generate_combat_challenge_id_out_proto_991", "generategmap_signed_url_out_proto_5035", b"generategmap_signed_url_out_proto_5035", "geofence_update_out_proto_360000", b"geofence_update_out_proto_360000", "geofence_update_out_proto_5033", b"geofence_update_out_proto_5033", "get_action_log_response_801", b"get_action_log_response_801", "get_additional_pokemon_details_out_proto_1725", b"get_additional_pokemon_details_out_proto_1725", "get_adventure_sync_fitness_report_response_proto_640005", b"get_adventure_sync_fitness_report_response_proto_640005", "get_adventure_sync_progress_out_proto_230002", b"get_adventure_sync_progress_out_proto_230002", "get_adventure_sync_settings_response_proto_5046", b"get_adventure_sync_settings_response_proto_5046", "get_adventure_sync_settings_response_proto_640002", b"get_adventure_sync_settings_response_proto_640002", "get_app_request_token_redirect_u_r_l_platform_response_proto_600007", b"get_app_request_token_redirect_u_r_l_platform_response_proto_600007", "get_available_submissions_out_proto_5014", b"get_available_submissions_out_proto_5014", "get_battle_rejoin_status_out_proto_3062", b"get_battle_rejoin_status_out_proto_3062", "get_bonus_attracted_pokemon_out_proto_2350", b"get_bonus_attracted_pokemon_out_proto_2350", "get_bonuses_out_proto_2352", b"get_bonuses_out_proto_2352", "get_bread_lobby_details_out_proto_2457", b"get_bread_lobby_details_out_proto_2457", "get_buddy_history_out_proto_1355", b"get_buddy_history_out_proto_1355", "get_buddy_walked_out_proto_153", b"get_buddy_walked_out_proto_153", "get_change_pokemon_form_preview_response_proto_3021", b"get_change_pokemon_form_preview_response_proto_3021", "get_combat_challenge_out_proto_994", b"get_combat_challenge_out_proto_994", "get_combat_player_profile_out_proto_990", b"get_combat_player_profile_out_proto_990", "get_combat_results_out_proto_1003", b"get_combat_results_out_proto_1003", "get_contest_data_out_proto_2105", b"get_contest_data_out_proto_2105", "get_contest_entry_out_proto_2154", b"get_contest_entry_out_proto_2154", "get_contest_friend_entry_out_proto_2153", b"get_contest_friend_entry_out_proto_2153", "get_contests_unclaimed_rewards_out_proto_2106", b"get_contests_unclaimed_rewards_out_proto_2106", "get_daily_bonus_spawn_out_proto_3066", b"get_daily_bonus_spawn_out_proto_3066", "get_daily_encounter_out_proto_1601", b"get_daily_encounter_out_proto_1601", "get_eligible_combat_leagues_out_proto_2009", b"get_eligible_combat_leagues_out_proto_2009", "get_entered_contest_out_proto_2108", b"get_entered_contest_out_proto_2108", "get_event_rsvp_count_out_proto_3036", b"get_event_rsvp_count_out_proto_3036", "get_event_rsvps_out_proto_3031", b"get_event_rsvps_out_proto_3031", "get_fitness_report_out_proto_5025", b"get_fitness_report_out_proto_5025", "get_fitness_report_out_proto_640001", b"get_fitness_report_out_proto_640001", "get_fitness_rewards_out_proto_980", b"get_fitness_rewards_out_proto_980", "get_friendship_rewards_out_proto_955", b"get_friendship_rewards_out_proto_955", "get_hatched_eggs_out_proto_126", b"get_hatched_eggs_out_proto_126", "get_holoholo_inventory_out_proto_4", b"get_holoholo_inventory_out_proto_4", "get_inbox_out_proto_10105", b"get_inbox_out_proto_10105", "get_inbox_out_proto_809", b"get_inbox_out_proto_809", "get_incense_pokemon_out_proto_142", b"get_incense_pokemon_out_proto_142", "get_incense_recap_out_proto_2002", b"get_incense_recap_out_proto_2002", "get_inventory_response_proto_5005", b"get_inventory_response_proto_5005", "get_iris_social_scene_out_proto_3019", b"get_iris_social_scene_out_proto_3019", "get_local_time_out_proto_12", b"get_local_time_out_proto_12", "get_map_forts_out_proto_1401", b"get_map_forts_out_proto_1401", "get_map_objects_detail_for_campfire_out_proto_6013", b"get_map_objects_detail_for_campfire_out_proto_6013", "get_map_objects_for_campfire_out_proto_6012", b"get_map_objects_for_campfire_out_proto_6012", "get_map_objects_out_proto_106", b"get_map_objects_out_proto_106", "get_matchmaking_status_out_proto_1302", b"get_matchmaking_status_out_proto_1302", "get_mega_level_up_preview_out_proto_3080", b"get_mega_level_up_preview_out_proto_3080", "get_memento_list_out_proto_1913", b"get_memento_list_out_proto_1913", "get_milestones_out_proto_1803", b"get_milestones_out_proto_1803", "get_milestones_preview_out_proto_1805", b"get_milestones_preview_out_proto_1805", "get_mp_summary_out_proto_2467", b"get_mp_summary_out_proto_2467", "get_new_quests_out_proto_900", b"get_new_quests_out_proto_900", "get_nintendo_account_out_proto_1710", b"get_nintendo_account_out_proto_1710", "get_nintendo_o_auth2_url_out_proto_1712", b"get_nintendo_o_auth2_url_out_proto_1712", "get_non_remote_tradable_pokemon_out_proto_2604", b"get_non_remote_tradable_pokemon_out_proto_2604", "get_npc_combat_rewards_out_proto_1005", b"get_npc_combat_rewards_out_proto_1005", "get_num_pokemon_in_iris_social_scene_out_proto_6005", b"get_num_pokemon_in_iris_social_scene_out_proto_6005", "get_num_station_assists_out_proto_2476", b"get_num_station_assists_out_proto_2476", "get_outstanding_warnings_response_proto_200000", b"get_outstanding_warnings_response_proto_200000", "get_outstanding_warnings_response_proto_5039", b"get_outstanding_warnings_response_proto_5039", "get_party_out_proto_2304", b"get_party_out_proto_2304", "get_pending_remote_trade_out_proto_2605", b"get_pending_remote_trade_out_proto_2605", "get_photobomb_out_proto_1103", b"get_photobomb_out_proto_1103", "get_player_day_out_proto_9", b"get_player_day_out_proto_9", "get_player_out_proto_2", b"get_player_out_proto_2", "get_player_pokemon_field_book_out_proto_3065", b"get_player_pokemon_field_book_out_proto_3065", "get_player_raid_eligibility_out_proto_6003", b"get_player_raid_eligibility_out_proto_6003", "get_player_stamp_collections_out_proto_1901", b"get_player_stamp_collections_out_proto_1901", "get_player_status_proxy_out_proto_177", b"get_player_status_proxy_out_proto_177", "get_playergps_bookmarks_out_proto_22", b"get_playergps_bookmarks_out_proto_22", "get_pokemon_remote_trading_details_out_proto_2607", b"get_pokemon_remote_trading_details_out_proto_2607", "get_pokemon_size_leaderboard_entry_out_proto_2104", b"get_pokemon_size_leaderboard_entry_out_proto_2104", "get_pokemon_size_leaderboard_friend_entry_out_proto_2109", b"get_pokemon_size_leaderboard_friend_entry_out_proto_2109", "get_pokemon_tags_out_proto_1721", b"get_pokemon_tags_out_proto_1721", "get_pokemon_trading_cost_out_proto_2608", b"get_pokemon_trading_cost_out_proto_2608", "get_pokestop_encounter_out_proto_2005", b"get_pokestop_encounter_out_proto_2005", "get_published_routes_out_proto_1403", b"get_published_routes_out_proto_1403", "get_quest_details_out_proto_901", b"get_quest_details_out_proto_901", "get_quest_ui_out_proto_2008", b"get_quest_ui_out_proto_2008", "get_raid_details_out_proto_163", b"get_raid_details_out_proto_163", "get_raid_lobby_counter_out_proto_2011", b"get_raid_lobby_counter_out_proto_2011", "get_referral_code_out_proto_1800", b"get_referral_code_out_proto_1800", "get_remote_config_versions_out_proto_7", b"get_remote_config_versions_out_proto_7", "get_remote_tradable_pokemon_from_other_player_out_proto_2603", b"get_remote_tradable_pokemon_from_other_player_out_proto_2603", "get_reward_tiers_response_proto_310300", b"get_reward_tiers_response_proto_310300", "get_rocket_balloon_out_proto_1206", b"get_rocket_balloon_out_proto_1206", "get_route_by_short_code_out_proto_1429", b"get_route_by_short_code_out_proto_1429", "get_route_creations_out_proto_1424", b"get_route_creations_out_proto_1424", "get_route_draft_out_proto_1426", b"get_route_draft_out_proto_1426", "get_routes_out_proto_1405", b"get_routes_out_proto_1405", "get_save_for_later_entries_out_proto_2466", b"get_save_for_later_entries_out_proto_2466", "get_server_time_out_proto_11", b"get_server_time_out_proto_11", "get_station_info_out_proto_3051", b"get_station_info_out_proto_3051", "get_stationed_pokemon_details_out_proto_2462", b"get_stationed_pokemon_details_out_proto_2462", "get_suggested_players_social_out_proto_3055", b"get_suggested_players_social_out_proto_3055", "get_supply_balloon_out_proto_3068", b"get_supply_balloon_out_proto_3068", "get_survey_eligibility_out_proto_3025", b"get_survey_eligibility_out_proto_3025", "get_time_travel_information_out_proto_3076", b"get_time_travel_information_out_proto_3076", "get_timedgroup_challenge_out_proto_1700", b"get_timedgroup_challenge_out_proto_1700", "get_trading_out_proto_974", b"get_trading_out_proto_974", "get_unfuse_pokemon_preview_response_proto_3023", b"get_unfuse_pokemon_preview_response_proto_3023", "get_vps_event_out_proto_3000", b"get_vps_event_out_proto_3000", "get_vs_seeker_status_out_proto_1304", b"get_vs_seeker_status_out_proto_1304", "get_web_token_out_proto_1107", b"get_web_token_out_proto_1107", "get_web_token_out_proto_5045", b"get_web_token_out_proto_5045", "get_weekly_challenge_info_out_proto_3041", b"get_weekly_challenge_info_out_proto_3041", "getcombat_downscaled_stats_out_proto_3090", b"getcombat_downscaled_stats_out_proto_3090", "getgame_config_versions_out_proto_21", b"getgame_config_versions_out_proto_21", "getgame_master_client_templates_out_proto_6", b"getgame_master_client_templates_out_proto_6", "getgeofenced_ad_out_proto_1820", b"getgeofenced_ad_out_proto_1820", "getgift_box_details_out_proto_952", b"getgift_box_details_out_proto_952", "getgmap_settings_out_proto_1105", b"getgmap_settings_out_proto_1105", "getgmap_settings_out_proto_5036", b"getgmap_settings_out_proto_5036", "getgym_badge_details_out_proto_812", b"getgym_badge_details_out_proto_812", "grant_expired_item_consolation_out_proto_3057", b"grant_expired_item_consolation_out_proto_3057", "gym_battle_attack_out_proto_158", b"gym_battle_attack_out_proto_158", "gym_deploy_out_proto_155", b"gym_deploy_out_proto_155", "gym_feed_pokemon_out_proto_164", b"gym_feed_pokemon_out_proto_164", "gym_start_session_out_proto_157", b"gym_start_session_out_proto_157", "gymget_info_out_proto_156", b"gymget_info_out_proto_156", "iap_get_active_subscriptions_response_proto_310201", b"iap_get_active_subscriptions_response_proto_310201", "iap_get_available_skus_and_balances_out_proto_310001", b"iap_get_available_skus_and_balances_out_proto_310001", "iap_get_available_skus_and_balances_out_proto_5020", b"iap_get_available_skus_and_balances_out_proto_5020", "iap_get_available_subscriptions_response_proto_310200", b"iap_get_available_subscriptions_response_proto_310200", "iap_get_user_response_proto_311101", b"iap_get_user_response_proto_311101", "iap_purchase_sku_out_proto_310000", b"iap_purchase_sku_out_proto_310000", "iap_purchase_sku_out_proto_5019", b"iap_purchase_sku_out_proto_5019", "iap_redeem_apple_receipt_out_proto_310101", b"iap_redeem_apple_receipt_out_proto_310101", "iap_redeem_apple_receipt_out_proto_5022", b"iap_redeem_apple_receipt_out_proto_5022", "iap_redeem_desktop_receipt_out_proto_310102", b"iap_redeem_desktop_receipt_out_proto_310102", "iap_redeem_desktop_receipt_out_proto_5023", b"iap_redeem_desktop_receipt_out_proto_5023", "iap_redeem_google_receipt_out_proto_310100", b"iap_redeem_google_receipt_out_proto_310100", "iap_redeem_google_receipt_out_proto_5021", b"iap_redeem_google_receipt_out_proto_5021", "iap_redeem_samsung_receipt_out_proto_310103", b"iap_redeem_samsung_receipt_out_proto_310103", "iap_redeem_samsung_receipt_out_proto_5037", b"iap_redeem_samsung_receipt_out_proto_5037", "iap_redeem_xsolla_receipt_response_proto_311100", b"iap_redeem_xsolla_receipt_response_proto_311100", "iap_setin_game_currency_exchange_rate_out_proto_310002", b"iap_setin_game_currency_exchange_rate_out_proto_310002", "incense_encounter_out_proto_143", b"incense_encounter_out_proto_143", "internal_accept_friendinvite_out_proto_10004", b"internal_accept_friendinvite_out_proto_10004", "internal_add_favorite_friend_response_10023", b"internal_add_favorite_friend_response_10023", "internal_add_login_action_out_proto_600000", b"internal_add_login_action_out_proto_600000", "internal_block_account_out_proto_10025", b"internal_block_account_out_proto_10025", "internal_cancel_friendinvite_out_proto_10003", b"internal_cancel_friendinvite_out_proto_10003", "internal_decline_friendinvite_out_proto_10005", b"internal_decline_friendinvite_out_proto_10005", "internal_dismiss_contact_list_update_response_20017", b"internal_dismiss_contact_list_update_response_20017", "internal_dismiss_outgoing_gameinvites_response_20012", b"internal_dismiss_outgoing_gameinvites_response_20012", "internal_gar_proxy_response_proto_600005", b"internal_gar_proxy_response_proto_600005", "internal_get_account_settings_out_proto_10022", b"internal_get_account_settings_out_proto_10022", "internal_get_client_feature_flags_response_20008", b"internal_get_client_feature_flags_response_20008", "internal_get_contact_listinfo_response_20016", b"internal_get_contact_listinfo_response_20016", "internal_get_facebook_friend_list_out_proto_10014", b"internal_get_facebook_friend_list_out_proto_10014", "internal_get_friend_code_out_proto_10013", b"internal_get_friend_code_out_proto_10013", "internal_get_friend_details_out_proto_10010", b"internal_get_friend_details_out_proto_10010", "internal_get_friend_details_out_proto_20007", b"internal_get_friend_details_out_proto_20007", "internal_get_friend_recommendation_response_20500", b"internal_get_friend_recommendation_response_20500", "internal_get_friends_list_out_proto_10006", b"internal_get_friends_list_out_proto_10006", "internal_get_outgoing_blocks_out_proto_10027", b"internal_get_outgoing_blocks_out_proto_10027", "internal_get_outgoing_friendinvites_out_proto_10007", b"internal_get_outgoing_friendinvites_out_proto_10007", "internal_get_photos_out_proto_10203", b"internal_get_photos_out_proto_10203", "internal_get_player_settings_out_proto_10017", b"internal_get_player_settings_out_proto_10017", "internal_get_player_settings_out_proto_818", b"internal_get_player_settings_out_proto_818", "internal_get_profile_response_20003", b"internal_get_profile_response_20003", "internal_get_signed_url_out_proto_10201", b"internal_get_signed_url_out_proto_10201", "internal_getincoming_friendinvites_out_proto_10008", b"internal_getincoming_friendinvites_out_proto_10008", "internal_getincoming_gameinvites_response_20010", b"internal_getincoming_gameinvites_response_20010", "internal_link_to_account_login_response_proto_600006", b"internal_link_to_account_login_response_proto_600006", "internal_list_friends_response_20006", b"internal_list_friends_response_20006", "internal_list_login_action_out_proto_600002", b"internal_list_login_action_out_proto_600002", "internal_list_opt_out_notification_categories_response_proto_10106", b"internal_list_opt_out_notification_categories_response_proto_10106", "internal_notify_contact_list_friends_response_20018", b"internal_notify_contact_list_friends_response_20018", "internal_push_notification_registry_out_proto_10101", b"internal_push_notification_registry_out_proto_10101", "internal_refer_contact_list_friend_response_20015", b"internal_refer_contact_list_friend_response_20015", "internal_remove_favorite_friend_response_10024", b"internal_remove_favorite_friend_response_10024", "internal_remove_friend_out_proto_10009", b"internal_remove_friend_out_proto_10009", "internal_remove_login_action_out_proto_600001", b"internal_remove_login_action_out_proto_600001", "internal_replace_login_action_out_proto_600003", b"internal_replace_login_action_out_proto_600003", "internal_search_player_out_proto_10000", b"internal_search_player_out_proto_10000", "internal_send_contact_list_friendinvite_response_20014", b"internal_send_contact_list_friendinvite_response_20014", "internal_send_friendinvite_out_proto_10002", b"internal_send_friendinvite_out_proto_10002", "internal_set_account_settings_out_proto_10021", b"internal_set_account_settings_out_proto_10021", "internal_set_birthday_response_proto_600004", b"internal_set_birthday_response_proto_600004", "internal_setin_game_currency_exchange_rate_out_proto_5032", b"internal_setin_game_currency_exchange_rate_out_proto_5032", "internal_submitimage_out_proto_10202", b"internal_submitimage_out_proto_10202", "internal_sync_contact_list_response_20013", b"internal_sync_contact_list_response_20013", "internal_unblock_account_out_proto_10026", b"internal_unblock_account_out_proto_10026", "internal_update_facebook_status_out_proto_10015", b"internal_update_facebook_status_out_proto_10015", "internal_update_friendship_response_20002", b"internal_update_friendship_response_20002", "internal_update_notification_out_proto_10103", b"internal_update_notification_out_proto_10103", "internal_update_profile_response_20001", b"internal_update_profile_response_20001", "internal_updateincoming_gameinvite_response_20011", b"internal_updateincoming_gameinvite_response_20011", "internalinvite_facebook_friend_out_proto_10011", b"internalinvite_facebook_friend_out_proto_10011", "internalinvite_game_response_20004", b"internalinvite_game_response_20004", "internalis_account_blocked_out_proto_10028", b"internalis_account_blocked_out_proto_10028", "internalis_my_friend_out_proto_10012", b"internalis_my_friend_out_proto_10012", "invasion_encounter_out_proto_1204", b"invasion_encounter_out_proto_1204", "is_sku_available_out_proto_172", b"is_sku_available_out_proto_172", "join_bread_lobby_out_proto_2450", b"join_bread_lobby_out_proto_2450", "join_buddy_multiplayer_session_out_proto_1457", b"join_buddy_multiplayer_session_out_proto_1457", "join_lobby_out_proto_159", b"join_lobby_out_proto_159", "join_party_out_proto_2301", b"join_party_out_proto_2301", "kick_other_player_from_party_out_proto_3016", b"kick_other_player_from_party_out_proto_3016", "leave_breadlobby_out_proto_2455", b"leave_breadlobby_out_proto_2455", "leave_buddy_multiplayer_session_out_proto_1458", b"leave_buddy_multiplayer_session_out_proto_1458", "leave_party_out_proto_2303", b"leave_party_out_proto_2303", "leave_weekly_challenge_matchmaking_out_proto_3064", b"leave_weekly_challenge_matchmaking_out_proto_3064", "leavelobby_out_proto_160", b"leavelobby_out_proto_160", "level_up_rewards_out_proto_128", b"level_up_rewards_out_proto_128", "lift_user_age_gate_confirmation_out_proto_830", b"lift_user_age_gate_confirmation_out_proto_830", "like_route_pin_out_proto_1727", b"like_route_pin_out_proto_1727", "list_avatar_appearance_items_out_proto_410", b"list_avatar_appearance_items_out_proto_410", "list_avatar_customizations_out_proto_807", b"list_avatar_customizations_out_proto_807", "list_avatar_store_items_out_proto_409", b"list_avatar_store_items_out_proto_409", "list_device_verification_challenges_response_proto_250102", b"list_device_verification_challenges_response_proto_250102", "list_friend_activities_response_proto_10029", b"list_friend_activities_response_proto_10029", "list_gym_badges_out_proto_811", b"list_gym_badges_out_proto_811", "list_player_devices_response_proto_250101", b"list_player_devices_response_proto_250101", "list_route_badges_out_proto_1409", b"list_route_badges_out_proto_1409", "list_route_stamps_out_proto_1411", b"list_route_stamps_out_proto_1411", "listlogin_action_out_proto_5010", b"listlogin_action_out_proto_5010", "location_ping_out_proto_360001", b"location_ping_out_proto_360001", "location_ping_out_proto_5034", b"location_ping_out_proto_5034", "loot_station_out_proto_2461", b"loot_station_out_proto_2461", "maps_client_telemetry_response_proto_610000", b"maps_client_telemetry_response_proto_610000", "mark_fieldbook_seen_response_proto_3078", b"mark_fieldbook_seen_response_proto_3078", "mark_newsfeed_read_response_5050", b"mark_newsfeed_read_response_5050", "mark_read_news_article_out_proto_817", b"mark_read_news_article_out_proto_817", "mark_remote_tradable_out_proto_2602", b"mark_remote_tradable_out_proto_2602", "mark_save_for_later_out_proto_2463", b"mark_save_for_later_out_proto_2463", "mark_tutorial_complete_out_proto_406", b"mark_tutorial_complete_out_proto_406", "markmilestone_as_viewed_out_proto_1804", b"markmilestone_as_viewed_out_proto_1804", "mega_evolve_pokemon_out_proto_1502", b"mega_evolve_pokemon_out_proto_1502", "mega_level_up_out_proto_3079", b"mega_level_up_out_proto_3079", "natural_art_poi_encounter_out_proto_3070", b"natural_art_poi_encounter_out_proto_3070", "neutral_avatar_badge_reward_out_proto_450", b"neutral_avatar_badge_reward_out_proto_450", "nickname_pokemon_out_proto_149", b"nickname_pokemon_out_proto_149", "npc_open_gift_out_proto_2402", b"npc_open_gift_out_proto_2402", "npc_route_gift_out_proto_1423", b"npc_route_gift_out_proto_1423", "npc_send_gift_out_proto_2401", b"npc_send_gift_out_proto_2401", "npc_update_state_out_proto_2400", b"npc_update_state_out_proto_2400", "open_buddy_giftout_proto_1353", b"open_buddy_giftout_proto_1353", "open_combat_challengeout_proto_993", b"open_combat_challengeout_proto_993", "open_combat_sessionout_proto_1000", b"open_combat_sessionout_proto_1000", "open_giftout_proto_951", b"open_giftout_proto_951", "open_invasion_combat_sessionout_proto_1202", b"open_invasion_combat_sessionout_proto_1202", "open_npc_combat_sessionout_proto_1007", b"open_npc_combat_sessionout_proto_1007", "open_sponsored_giftout_proto_1650", b"open_sponsored_giftout_proto_1650", "open_supply_balloonout_proto_3069", b"open_supply_balloonout_proto_3069", "open_tradingout_proto_970", b"open_tradingout_proto_970", "optout_proto_10104", b"optout_proto_10104", "optout_proto_5003", b"optout_proto_5003", "party_send_dark_launch_log_outproto_2306", b"party_send_dark_launch_log_outproto_2306", "party_update_location_outproto_2305", b"party_update_location_outproto_2305", "ping_responseproto_5007", b"ping_responseproto_5007", "player_spawnablepokemon_outproto_2007", b"player_spawnablepokemon_outproto_2007", "playerprofile_outproto_121", b"playerprofile_outproto_121", "power_uppokestop_encounter_outproto_1900", b"power_uppokestop_encounter_outproto_1900", "prepare_bread_lobby_outproto_2453", b"prepare_bread_lobby_outproto_2453", "preview_contributeparty_item_outproto_3015", b"preview_contributeparty_item_outproto_3015", "process_tappable_outproto_1408", b"process_tappable_outproto_1408", "process_tappable_outproto_1416", b"process_tappable_outproto_1416", "processplayer_inbox_outproto_3024", b"processplayer_inbox_outproto_3024", "profanity_check_outproto_1653", b"profanity_check_outproto_1653", "progress_quest_outproto_906", b"progress_quest_outproto_906", "progress_route_outproto_1406", b"progress_route_outproto_1406", "propose_remote_trade_outproto_2600", b"propose_remote_trade_outproto_2600", "proxy_responseproto_5012", b"proxy_responseproto_5012", "purifypokemon_outproto_1205", b"purifypokemon_outproto_1205", "push_notification_registry_outproto_5000", b"push_notification_registry_outproto_5000", "quest_encounter_out_proto_904", b"quest_encounter_out_proto_904", "quit_combat_out_proto_1002", b"quit_combat_out_proto_1002", "rateroute_out_proto_1412", b"rateroute_out_proto_1412", "read_quest_dialog_out_proto_908", b"read_quest_dialog_out_proto_908", "reassign_player_out_proto_169", b"reassign_player_out_proto_169", "recallroute_draft_out_proto_1421", b"recallroute_draft_out_proto_1421", "recycle_item_out_proto_137", b"recycle_item_out_proto_137", "redeem_passcoderesponse_proto_5006", b"redeem_passcoderesponse_proto_5006", "redeem_premium_gift_for_user_out_proto_3089", b"redeem_premium_gift_for_user_out_proto_3089", "redeem_ticket_gift_for_friend_out_proto_2001", b"redeem_ticket_gift_for_friend_out_proto_2001", "refresh_proximity_tokensresponse_proto_362000", b"refresh_proximity_tokensresponse_proto_362000", "register_background_deviceresponse_proto_230000", b"register_background_deviceresponse_proto_230000", "register_background_deviceresponse_proto_8", b"register_background_deviceresponse_proto_8", "register_deviceresponse_proto_250100", b"register_deviceresponse_proto_250100", "register_sfidaresponse_800", b"register_sfidaresponse_800", "release_pokemon_out_proto_112", b"release_pokemon_out_proto_112", "release_stationed_pokemon_out_proto_2472", b"release_stationed_pokemon_out_proto_2472", "remote_gift_pingresponse_proto_1503", b"remote_gift_pingresponse_proto_1503", "remove_campfire_forreferee_out_proto_6002", b"remove_campfire_forreferee_out_proto_6002", "remove_login_action_out_proto_5009", b"remove_login_action_out_proto_5009", "remove_player_deviceresponse_proto_250104", b"remove_player_deviceresponse_proto_250104", "remove_pokemon_size_leaderboard_entry_out_proto_2103", b"remove_pokemon_size_leaderboard_entry_out_proto_2103", "remove_ptc_login_action_out_proto_3007", b"remove_ptc_login_action_out_proto_3007", "remove_quest_out_proto_903", b"remove_quest_out_proto_903", "remove_save_for_later_out_proto_2465", b"remove_save_for_later_out_proto_2465", "replace_login_action_out_proto_5015", b"replace_login_action_out_proto_5015", "report_ad_feedbackresponse_1716", b"report_ad_feedbackresponse_1716", "report_ad_interactionresponse_1651", b"report_ad_interactionresponse_1651", "report_proximity_contactsresponse_proto_362001", b"report_proximity_contactsresponse_proto_362001", "report_station_out_proto_2470", b"report_station_out_proto_2470", "reportroute_out_proto_1415", b"reportroute_out_proto_1415", "resend_device_verification_emailresponse_proto_250105", b"resend_device_verification_emailresponse_proto_250105", "respondremote_trade_out_proto_2606", b"respondremote_trade_out_proto_2606", "route_nearby_notif_shown_out_proto_1422", b"route_nearby_notif_shown_out_proto_1422", "route_update_seen_out_proto_1420", b"route_update_seen_out_proto_1420", "saturday_complete_out_proto_828", b"saturday_complete_out_proto_828", "saturdaystart_out_proto_827", b"saturdaystart_out_proto_827", "save_combat_player_preferences_out_proto_999", b"save_combat_player_preferences_out_proto_999", "save_player_preferences_out_proto_1652", b"save_player_preferences_out_proto_1652", "save_playersnapshot_out_proto_954", b"save_playersnapshot_out_proto_954", "savesocial_playersettings_out_proto_10016", b"savesocial_playersettings_out_proto_10016", "savesocial_playersettings_out_proto_959", b"savesocial_playersettings_out_proto_959", "savestamp_out_proto_1902", b"savestamp_out_proto_1902", "send_bread_battle_invitation_out_proto_1505", b"send_bread_battle_invitation_out_proto_1505", "send_event_rsvp_invitation_out_proto_3039", b"send_event_rsvp_invitation_out_proto_3039", "send_friend_invite_via_referral_code_out_proto_1802", b"send_friend_invite_via_referral_code_out_proto_1802", "send_friend_request_via_player_id_out_proto_2010", b"send_friend_request_via_player_id_out_proto_2010", "send_gift_out_proto_950", b"send_gift_out_proto_950", "send_party_invitation_out_proto_2310", b"send_party_invitation_out_proto_2310", "send_party_invitation_out_proto_3008", b"send_party_invitation_out_proto_3008", "send_probe_out_proto_1020", b"send_probe_out_proto_1020", "send_raid_invitation_out_proto_1504", b"send_raid_invitation_out_proto_1504", "set_avatar_item_as_viewed_out_proto_808", b"set_avatar_item_as_viewed_out_proto_808", "set_avatar_out_proto_404", b"set_avatar_out_proto_404", "set_birthday_response_proto_5048", b"set_birthday_response_proto_5048", "set_bread_lobby_public_out_proto_2452", b"set_bread_lobby_public_out_proto_2452", "set_buddy_pokemon_out_proto_152", b"set_buddy_pokemon_out_proto_152", "set_contactsettings_out_proto_151", b"set_contactsettings_out_proto_151", "set_favorite_pokemon_out_proto_148", b"set_favorite_pokemon_out_proto_148", "set_friend_nickname_out_proto_957", b"set_friend_nickname_out_proto_957", "set_friend_premium_gift_preference_out_proto_963", b"set_friend_premium_gift_preference_out_proto_963", "set_lobby_pokemon_out_proto_162", b"set_lobby_pokemon_out_proto_162", "set_lobby_visibility_out_proto_161", b"set_lobby_visibility_out_proto_161", "set_neutral_avatar_out_proto_408", b"set_neutral_avatar_out_proto_408", "set_player_team_out_proto_405", b"set_player_team_out_proto_405", "set_playerstatus_out_proto_20", b"set_playerstatus_out_proto_20", "set_pokemon_tags_for_pokemon_out_proto_1720", b"set_pokemon_tags_for_pokemon_out_proto_1720", "sfida_associate_response_822", b"sfida_associate_response_822", "sfida_capture_response_806", b"sfida_capture_response_806", "sfida_certification_response_802", b"sfida_certification_response_802", "sfida_check_pairing_response_823", b"sfida_check_pairing_response_823", "sfida_disassociate_response_824", b"sfida_disassociate_response_824", "sfida_dowser_response_805", b"sfida_dowser_response_805", "sfida_update_response_803", b"sfida_update_response_803", "skip_enter_referral_code_out_proto_1915", b"skip_enter_referral_code_out_proto_1915", "smart_glassessyncsettings_response_proto_3027", b"smart_glassessyncsettings_response_proto_3027", "softsfida_capture_out_proto_833", b"softsfida_capture_out_proto_833", "softsfida_location_update_out_proto_834", b"softsfida_location_update_out_proto_834", "softsfida_pause_out_proto_832", b"softsfida_pause_out_proto_832", "softsfida_recap_out_proto_835", b"softsfida_recap_out_proto_835", "softsfidastart_out_proto_831", b"softsfidastart_out_proto_831", "start_bread_battle_out_proto_2456", b"start_bread_battle_out_proto_2456", "start_incident_out_proto_1200", b"start_incident_out_proto_1200", "start_incident_out_proto_1207", b"start_incident_out_proto_1207", "start_mp_walk_quest_out_proto_2458", b"start_mp_walk_quest_out_proto_2458", "start_party_out_proto_2302", b"start_party_out_proto_2302", "start_party_quest_out_proto_2308", b"start_party_quest_out_proto_2308", "start_pvp_battle_out_proto_3071", b"start_pvp_battle_out_proto_3071", "start_raid_battle_out_proto_165", b"start_raid_battle_out_proto_165", "start_route_out_proto_1404", b"start_route_out_proto_1404", "start_team_leader_battle_out_proto_3059", b"start_team_leader_battle_out_proto_3059", "start_tgr_battle_out_proto_3056", b"start_tgr_battle_out_proto_3056", "start_weekly_challenge_group_matchmaking_out_proto_3047", b"start_weekly_challenge_group_matchmaking_out_proto_3047", "station_pokemon_out_proto_2460", b"station_pokemon_out_proto_2460", "submit_combat_challenge_pokemons_out_proto_998", b"submit_combat_challenge_pokemons_out_proto_998", "submit_new_poi_out_proto_5011", b"submit_new_poi_out_proto_5011", "submit_route_draft_out_proto_1402", b"submit_route_draft_out_proto_1402", "sync_battle_inventory_out_proto_3011", b"sync_battle_inventory_out_proto_3011", "sync_weekly_challenge_matchmakingstatus_out_proto_3048", b"sync_weekly_challenge_matchmakingstatus_out_proto_3048", "titan_async_file_upload_complete_out_proto_620402", b"titan_async_file_upload_complete_out_proto_620402", "titan_generate_gmap_signed_url_out_proto_620300", b"titan_generate_gmap_signed_url_out_proto_620300", "titan_get_a_r_mapping_settings_out_proto_620403", b"titan_get_a_r_mapping_settings_out_proto_620403", "titan_get_available_submissions_out_proto_620001", b"titan_get_available_submissions_out_proto_620001", "titan_get_gmap_settings_out_proto_620301", b"titan_get_gmap_settings_out_proto_620301", "titan_get_grapeshot_upload_url_out_proto_620401", b"titan_get_grapeshot_upload_url_out_proto_620401", "titan_get_image_gallery_settings_out_proto_620502", b"titan_get_image_gallery_settings_out_proto_620502", "titan_get_images_for_poi_out_proto_620500", b"titan_get_images_for_poi_out_proto_620500", "titan_get_player_submission_validation_settings_out_proto_620003", b"titan_get_player_submission_validation_settings_out_proto_620003", "titan_get_pois_in_radius_out_proto_620601", b"titan_get_pois_in_radius_out_proto_620601", "titan_submit_new_poi_out_proto_620000", b"titan_submit_new_poi_out_proto_620000", "titan_submit_player_image_vote_for_poi_out_proto_620501", b"titan_submit_player_image_vote_for_poi_out_proto_620501", "transfer_contest_entry_out_proto_2152", b"transfer_contest_entry_out_proto_2152", "transfer_pokemon_size_leaderboard_entry_out_proto_2102", b"transfer_pokemon_size_leaderboard_entry_out_proto_2102", "transfer_pokemonto_pokemon_home_out_proto_1713", b"transfer_pokemonto_pokemon_home_out_proto_1713", "unfuse_pokemon_response_proto_3018", b"unfuse_pokemon_response_proto_3018", "unlink_nintendo_account_out_proto_1711", b"unlink_nintendo_account_out_proto_1711", "unlock_pokemon_move_out_proto_1004", b"unlock_pokemon_move_out_proto_1004", "unlock_temporary_evolution_level_out_proto_1506", b"unlock_temporary_evolution_level_out_proto_1506", "update_adventure_sync_fitness_response_proto_640004", b"update_adventure_sync_fitness_response_proto_640004", "update_adventure_sync_settings_response_proto_5047", b"update_adventure_sync_settings_response_proto_5047", "update_adventure_sync_settings_response_proto_640003", b"update_adventure_sync_settings_response_proto_640003", "update_breadcrumb_history_response_proto_361000", b"update_breadcrumb_history_response_proto_361000", "update_bulk_player_location_response_proto_360002", b"update_bulk_player_location_response_proto_360002", "update_combat_out_proto_1001", b"update_combat_out_proto_1001", "update_contest_entry_out_proto_2151", b"update_contest_entry_out_proto_2151", "update_device_verification_response_proto_250103", b"update_device_verification_response_proto_250103", "update_event_rsvp_selection_out_proto_3040", b"update_event_rsvp_selection_out_proto_3040", "update_field_book_post_catch_pokemon_out_proto_3075", b"update_field_book_post_catch_pokemon_out_proto_3075", "update_invasion_battle_out_proto_1203", b"update_invasion_battle_out_proto_1203", "update_iris_social_scene_out_proto_3020", b"update_iris_social_scene_out_proto_3020", "update_notification_out_proto_5002", b"update_notification_out_proto_5002", "update_player_gps_bookmarks_out_proto_23", b"update_player_gps_bookmarks_out_proto_23", "update_pokemon_size_leaderboard_entry_out_proto_2101", b"update_pokemon_size_leaderboard_entry_out_proto_2101", "update_postcard_out_proto_1911", b"update_postcard_out_proto_1911", "update_route_draft_out_proto_1400", b"update_route_draft_out_proto_1400", "update_survey_eligibility_out_proto_3026", b"update_survey_eligibility_out_proto_3026", "update_trading_out_proto_971", b"update_trading_out_proto_971", "update_vps_event_out_proto_3001", b"update_vps_event_out_proto_3001", "upgrade_pokemon_out_proto_147", b"upgrade_pokemon_out_proto_147", "upload_combat_client_log_out_proto_1916", b"upload_combat_client_log_out_proto_1916", "upload_raid_client_log_out_proto_1914", b"upload_raid_client_log_out_proto_1914", "use_incense_action_out_proto_141", b"use_incense_action_out_proto_141", "use_item_battle_boost_out_proto_174", b"use_item_battle_boost_out_proto_174", "use_item_bulk_heal_out_proto_173", b"use_item_bulk_heal_out_proto_173", "use_item_capture_out_proto_114", b"use_item_capture_out_proto_114", "use_item_egg_incubator_out_proto_140", b"use_item_egg_incubator_out_proto_140", "use_item_encounter_out_proto_154", b"use_item_encounter_out_proto_154", "use_item_lucky_friend_applicator_out_proto_175", b"use_item_lucky_friend_applicator_out_proto_175", "use_item_move_reroll_out_proto_813", b"use_item_move_reroll_out_proto_813", "use_item_mp_replenish_out_proto_2468", b"use_item_mp_replenish_out_proto_2468", "use_item_potion_out_proto_113", b"use_item_potion_out_proto_113", "use_item_rare_candy_out_proto_814", b"use_item_rare_candy_out_proto_814", "use_item_revive_out_proto_116", b"use_item_revive_out_proto_116", "use_item_stardust_boost_out_proto_168", b"use_item_stardust_boost_out_proto_168", "use_item_stat_increase_out_proto_176", b"use_item_stat_increase_out_proto_176", "use_item_xp_boost_out_proto_139", b"use_item_xp_boost_out_proto_139", "use_non_combat_move_response_proto_2014", b"use_non_combat_move_response_proto_2014", "use_save_for_later_out_proto_2464", b"use_save_for_later_out_proto_2464", "verify_challenge_out_proto_601", b"verify_challenge_out_proto_601", "view_route_pin_out_proto_1728", b"view_route_pin_out_proto_1728", "vs_seeker_reward_encounter_out_proto_1307", b"vs_seeker_reward_encounter_out_proto_1307", "vs_seeker_start_matchmaking_out_proto_1300", b"vs_seeker_start_matchmaking_out_proto_1300", "waina_get_rewards_response_825", b"waina_get_rewards_response_825", "waina_submit_sleep_data_response_826", b"waina_submit_sleep_data_response_826"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["accept_combat_challenge_out_proto_995", b"accept_combat_challenge_out_proto_995", "acknowledge_punishment_out_proto_10", b"acknowledge_punishment_out_proto_10", "acknowledge_view_latest_incense_recap_out_proto_2003", b"acknowledge_view_latest_incense_recap_out_proto_2003", "acknowledge_warnings_response_proto_200001", b"acknowledge_warnings_response_proto_200001", "acknowledge_warnings_response_proto_5040", b"acknowledge_warnings_response_proto_5040", "activate_vs_seeker_out_proto_1308", b"activate_vs_seeker_out_proto_1308", "add_fort_modifier_out_proto_144", b"add_fort_modifier_out_proto_144", "add_loginaction_out_proto_5008", b"add_loginaction_out_proto_5008", "add_ptc_loginaction_out_proto_3002", b"add_ptc_loginaction_out_proto_3002", "add_referrer_out_proto_1801", b"add_referrer_out_proto_1801", "age_confirmation_out_proto_3052", b"age_confirmation_out_proto_3052", "appeal_route_out_proto_1425", b"appeal_route_out_proto_1425", "asset_digest_out_proto_300", b"asset_digest_out_proto_300", "asset_version_out_proto_302", b"asset_version_out_proto_302", "attack_raid_battle_out_proto_166", b"attack_raid_battle_out_proto_166", "attracted_pokemon_encounter_out_proto_1417", b"attracted_pokemon_encounter_out_proto_1417", "auth_register_background_device_response_proto_5028", b"auth_register_background_device_response_proto_5028", "award_free_raid_ticket_out_proto_815", b"award_free_raid_ticket_out_proto_815", "badge_reward_encounter_response_proto_2360", b"badge_reward_encounter_response_proto_2360", "beluga_transaction_complete_out_proto_820", b"beluga_transaction_complete_out_proto_820", "beluga_transaction_start_out_proto_819", b"beluga_transaction_start_out_proto_819", "boot_raid_out_proto_2004", b"boot_raid_out_proto_2004", "buddy_feeding_out_proto_1352", b"buddy_feeding_out_proto_1352", "buddy_map_out_proto_1350", b"buddy_map_out_proto_1350", "buddy_petting_out_proto_1354", b"buddy_petting_out_proto_1354", "buddy_stats_out_proto_1351", b"buddy_stats_out_proto_1351", "butterfly_collector_reward_encounter_proto_response_1724", b"butterfly_collector_reward_encounter_proto_response_1724", "can_report_route_out_proto_1418", b"can_report_route_out_proto_1418", "cancel_event_rsvp_out_proto_3033", b"cancel_event_rsvp_out_proto_3033", "cancel_matchmaking_out_proto_1301", b"cancel_matchmaking_out_proto_1301", "cancel_party_invite_out_proto_2312", b"cancel_party_invite_out_proto_2312", "cancel_remote_trade_out_proto_2601", b"cancel_remote_trade_out_proto_2601", "cancel_route_out_proto_1410", b"cancel_route_out_proto_1410", "cancel_trading_out_proto_973", b"cancel_trading_out_proto_973", "cancelcombatchallenge_out_proto_997", b"cancelcombatchallenge_out_proto_997", "canclaim_ptc_reward_action_out_proto_3004", b"canclaim_ptc_reward_action_out_proto_3004", "catch_pokemon_out_proto_103", b"catch_pokemon_out_proto_103", "change_pokemon_form_out_proto_1722", b"change_pokemon_form_out_proto_1722", "change_stampcollection_player_data_out_proto_1905", b"change_stampcollection_player_data_out_proto_1905", "change_stat_increase_goal_out_proto_3053", b"change_stat_increase_goal_out_proto_3053", "change_team_out_proto_1106", b"change_team_out_proto_1106", "check_awarded_badges_out_proto_129", b"check_awarded_badges_out_proto_129", "check_gifting_eligibility_out_proto_2000", b"check_gifting_eligibility_out_proto_2000", "check_photobomb_out_proto_1101", b"check_photobomb_out_proto_1101", "check_pokemon_size_leaderboard_eligibility_out_proto_2100", b"check_pokemon_size_leaderboard_eligibility_out_proto_2100", "check_send_gift_out_proto_956", b"check_send_gift_out_proto_956", "check_stamp_giftability_out_proto_1906", b"check_stamp_giftability_out_proto_1906", "checkchallenge_out_proto_600", b"checkchallenge_out_proto_600", "checkcontest_eligibility_out_proto_2150", b"checkcontest_eligibility_out_proto_2150", "choose_global_ticketed_event_variant_out_proto_1723", b"choose_global_ticketed_event_variant_out_proto_1723", "claim_event_pass_rewards_response_proto_3034", b"claim_event_pass_rewards_response_proto_3034", "claim_event_pass_rewards_response_proto_3035", b"claim_event_pass_rewards_response_proto_3035", "claim_ptc_linking_reward_out_proto_3003", b"claim_ptc_linking_reward_out_proto_3003", "claim_stampcollection_reward_out_proto_1904", b"claim_stampcollection_reward_out_proto_1904", "claim_vs_seeker_rewards_out_proto_1306", b"claim_vs_seeker_rewards_out_proto_1306", "claimcontests_rewards_out_proto_2107", b"claimcontests_rewards_out_proto_2107", "client_telemetryclient_settings_proto_5026", b"client_telemetryclient_settings_proto_5026", "client_telemetryclient_settings_proto_610001", b"client_telemetryclient_settings_proto_610001", "codename_result_proto_403", b"codename_result_proto_403", "collect_daily_bonus_out_proto_138", b"collect_daily_bonus_out_proto_138", "combat_friend_request_out_proto_1006", b"combat_friend_request_out_proto_1006", "combat_sync_server_offset_out_proto_1917", b"combat_sync_server_offset_out_proto_1917", "complete_all_quest_out_proto_3063", b"complete_all_quest_out_proto_3063", "complete_bread_battle_out_proto_2473", b"complete_bread_battle_out_proto_2473", "complete_invasion_dialogue_out_proto_1201", b"complete_invasion_dialogue_out_proto_1201", "complete_milestone_out_proto_1806", b"complete_milestone_out_proto_1806", "complete_party_quest_out_proto_2309", b"complete_party_quest_out_proto_2309", "complete_pvp_battle_out_proto_3072", b"complete_pvp_battle_out_proto_3072", "complete_quest_out_proto_902", b"complete_quest_out_proto_902", "complete_quest_stampcard_out_proto_905", b"complete_quest_stampcard_out_proto_905", "complete_raid_battle_out_proto_3010", b"complete_raid_battle_out_proto_3010", "complete_snapshot_session_out_proto_1110", b"complete_snapshot_session_out_proto_1110", "complete_team_leader_battle_out_proto_3060", b"complete_team_leader_battle_out_proto_3060", "complete_tgr_battle_out_proto_3058", b"complete_tgr_battle_out_proto_3058", "complete_visit_page_quest_out_proto_3030", b"complete_visit_page_quest_out_proto_3030", "complete_vs_seeker_and_restartcharging_out_proto_1303", b"complete_vs_seeker_and_restartcharging_out_proto_1303", "complete_wild_snapshot_session_out_proto_1111", b"complete_wild_snapshot_session_out_proto_1111", "completecompetitive_season_out_proto_1305", b"completecompetitive_season_out_proto_1305", "confirm_photobomb_out_proto_1102", b"confirm_photobomb_out_proto_1102", "confirm_trading_out_proto_972", b"confirm_trading_out_proto_972", "consume_party_items_out_proto_3006", b"consume_party_items_out_proto_3006", "consume_stickers_out_proto_3009", b"consume_stickers_out_proto_3009", "contribute_party_item_out_proto_3005", b"contribute_party_item_out_proto_3005", "convertcandy_to_xlcandy_out_proto_171", b"convertcandy_to_xlcandy_out_proto_171", "create_buddy_multiplayer_session_out_proto_1456", b"create_buddy_multiplayer_session_out_proto_1456", "create_bug_report_out_proto_3088", b"create_bug_report_out_proto_3088", "create_event_rsvp_out_proto_3032", b"create_event_rsvp_out_proto_3032", "create_party_out_proto_2300", b"create_party_out_proto_2300", "create_pokemon_tag_out_proto_1717", b"create_pokemon_tag_out_proto_1717", "create_postcard_out_proto_1910", b"create_postcard_out_proto_1910", "create_route_draft_out_proto_1413", b"create_route_draft_out_proto_1413", "create_route_pin_out_proto_1726", b"create_route_pin_out_proto_1726", "create_route_shortcode_out_proto_1428", b"create_route_shortcode_out_proto_1428", "createcombatchallenge_out_proto_992", b"createcombatchallenge_out_proto_992", "daily_bonus_spawn_encounter_out_proto_3067", b"daily_bonus_spawn_encounter_out_proto_3067", "daily_encounter_out_proto_1602", b"daily_encounter_out_proto_1602", "day_night_poi_encounter_out_proto_3077", b"day_night_poi_encounter_out_proto_3077", "debug_egg_statistics_out_proto_3083", b"debug_egg_statistics_out_proto_3083", "debug_encounter_statistics_out_proto_3061", b"debug_encounter_statistics_out_proto_3061", "debug_resetdaily_mp_progress_out_proto_2471", b"debug_resetdaily_mp_progress_out_proto_2471", "debug_test_setup_out_proto_3085", b"debug_test_setup_out_proto_3085", "decline_combat_challenge_out_proto_996", b"decline_combat_challenge_out_proto_996", "delete_gift_from_inventory_out_proto_958", b"delete_gift_from_inventory_out_proto_958", "delete_gift_out_proto_953", b"delete_gift_out_proto_953", "delete_pokemon_tag_out_proto_1718", b"delete_pokemon_tag_out_proto_1718", "delete_postcard_out_proto_1912", b"delete_postcard_out_proto_1912", "delete_postcards_out_proto_1909", b"delete_postcards_out_proto_1909", "delete_routedraft_out_proto_1414", b"delete_routedraft_out_proto_1414", "dequeue_questdialogue_out_proto_909", b"dequeue_questdialogue_out_proto_909", "disk_encounter_out_proto_145", b"disk_encounter_out_proto_145", "download_gm_templates_response_proto_5004", b"download_gm_templates_response_proto_5004", "download_settings_response_proto_5", b"download_settings_response_proto_5", "download_url_out_proto_301", b"download_url_out_proto_301", "echo_out_proto_666", b"echo_out_proto_666", "edit_pokemon_tag_out_proto_1719", b"edit_pokemon_tag_out_proto_1719", "enable_campfire_for_referee_out_proto_6001", b"enable_campfire_for_referee_out_proto_6001", "encounter_out_proto_102", b"encounter_out_proto_102", "encounter_photobomb_out_proto_1104", b"encounter_photobomb_out_proto_1104", "encounter_pokestopencounter_out_proto_2006", b"encounter_pokestopencounter_out_proto_2006", "encounter_station_spawn_out_proto_2475", b"encounter_station_spawn_out_proto_2475", "encounter_tutorial_complete_out_proto_127", b"encounter_tutorial_complete_out_proto_127", "end_pokemon_training_out_proto_3054", b"end_pokemon_training_out_proto_3054", "enhance_bread_move_out_proto_2459", b"enhance_bread_move_out_proto_2459", "evolve_pokemon_out_proto_125", b"evolve_pokemon_out_proto_125", "favorite_route_out_proto_1427", b"favorite_route_out_proto_1427", "fetch_all_news_out_proto_816", b"fetch_all_news_out_proto_816", "fetch_newsfeed_response_5049", b"fetch_newsfeed_response_5049", "fitness_update_out_proto_5024", b"fitness_update_out_proto_5024", "fitness_update_out_proto_640000", b"fitness_update_out_proto_640000", "flee_battle_encounter_out_proto_3084", b"flee_battle_encounter_out_proto_3084", "fort_deploy_out_proto_110", b"fort_deploy_out_proto_110", "fort_details_out_proto_104", b"fort_details_out_proto_104", "fort_recall_out_proto_111", b"fort_recall_out_proto_111", "fort_search_out_proto_101", b"fort_search_out_proto_101", "fuse_pokemon_response_proto_3017", b"fuse_pokemon_response_proto_3017", "generate_combat_challenge_id_out_proto_991", b"generate_combat_challenge_id_out_proto_991", "generategmap_signed_url_out_proto_5035", b"generategmap_signed_url_out_proto_5035", "geofence_update_out_proto_360000", b"geofence_update_out_proto_360000", "geofence_update_out_proto_5033", b"geofence_update_out_proto_5033", "get_action_log_response_801", b"get_action_log_response_801", "get_additional_pokemon_details_out_proto_1725", b"get_additional_pokemon_details_out_proto_1725", "get_adventure_sync_fitness_report_response_proto_640005", b"get_adventure_sync_fitness_report_response_proto_640005", "get_adventure_sync_progress_out_proto_230002", b"get_adventure_sync_progress_out_proto_230002", "get_adventure_sync_settings_response_proto_5046", b"get_adventure_sync_settings_response_proto_5046", "get_adventure_sync_settings_response_proto_640002", b"get_adventure_sync_settings_response_proto_640002", "get_app_request_token_redirect_u_r_l_platform_response_proto_600007", b"get_app_request_token_redirect_u_r_l_platform_response_proto_600007", "get_available_submissions_out_proto_5014", b"get_available_submissions_out_proto_5014", "get_battle_rejoin_status_out_proto_3062", b"get_battle_rejoin_status_out_proto_3062", "get_bonus_attracted_pokemon_out_proto_2350", b"get_bonus_attracted_pokemon_out_proto_2350", "get_bonuses_out_proto_2352", b"get_bonuses_out_proto_2352", "get_bread_lobby_details_out_proto_2457", b"get_bread_lobby_details_out_proto_2457", "get_buddy_history_out_proto_1355", b"get_buddy_history_out_proto_1355", "get_buddy_walked_out_proto_153", b"get_buddy_walked_out_proto_153", "get_change_pokemon_form_preview_response_proto_3021", b"get_change_pokemon_form_preview_response_proto_3021", "get_combat_challenge_out_proto_994", b"get_combat_challenge_out_proto_994", "get_combat_player_profile_out_proto_990", b"get_combat_player_profile_out_proto_990", "get_combat_results_out_proto_1003", b"get_combat_results_out_proto_1003", "get_contest_data_out_proto_2105", b"get_contest_data_out_proto_2105", "get_contest_entry_out_proto_2154", b"get_contest_entry_out_proto_2154", "get_contest_friend_entry_out_proto_2153", b"get_contest_friend_entry_out_proto_2153", "get_contests_unclaimed_rewards_out_proto_2106", b"get_contests_unclaimed_rewards_out_proto_2106", "get_daily_bonus_spawn_out_proto_3066", b"get_daily_bonus_spawn_out_proto_3066", "get_daily_encounter_out_proto_1601", b"get_daily_encounter_out_proto_1601", "get_eligible_combat_leagues_out_proto_2009", b"get_eligible_combat_leagues_out_proto_2009", "get_entered_contest_out_proto_2108", b"get_entered_contest_out_proto_2108", "get_event_rsvp_count_out_proto_3036", b"get_event_rsvp_count_out_proto_3036", "get_event_rsvps_out_proto_3031", b"get_event_rsvps_out_proto_3031", "get_fitness_report_out_proto_5025", b"get_fitness_report_out_proto_5025", "get_fitness_report_out_proto_640001", b"get_fitness_report_out_proto_640001", "get_fitness_rewards_out_proto_980", b"get_fitness_rewards_out_proto_980", "get_friendship_rewards_out_proto_955", b"get_friendship_rewards_out_proto_955", "get_hatched_eggs_out_proto_126", b"get_hatched_eggs_out_proto_126", "get_holoholo_inventory_out_proto_4", b"get_holoholo_inventory_out_proto_4", "get_inbox_out_proto_10105", b"get_inbox_out_proto_10105", "get_inbox_out_proto_809", b"get_inbox_out_proto_809", "get_incense_pokemon_out_proto_142", b"get_incense_pokemon_out_proto_142", "get_incense_recap_out_proto_2002", b"get_incense_recap_out_proto_2002", "get_inventory_response_proto_5005", b"get_inventory_response_proto_5005", "get_iris_social_scene_out_proto_3019", b"get_iris_social_scene_out_proto_3019", "get_local_time_out_proto_12", b"get_local_time_out_proto_12", "get_map_forts_out_proto_1401", b"get_map_forts_out_proto_1401", "get_map_objects_detail_for_campfire_out_proto_6013", b"get_map_objects_detail_for_campfire_out_proto_6013", "get_map_objects_for_campfire_out_proto_6012", b"get_map_objects_for_campfire_out_proto_6012", "get_map_objects_out_proto_106", b"get_map_objects_out_proto_106", "get_matchmaking_status_out_proto_1302", b"get_matchmaking_status_out_proto_1302", "get_mega_level_up_preview_out_proto_3080", b"get_mega_level_up_preview_out_proto_3080", "get_memento_list_out_proto_1913", b"get_memento_list_out_proto_1913", "get_milestones_out_proto_1803", b"get_milestones_out_proto_1803", "get_milestones_preview_out_proto_1805", b"get_milestones_preview_out_proto_1805", "get_mp_summary_out_proto_2467", b"get_mp_summary_out_proto_2467", "get_new_quests_out_proto_900", b"get_new_quests_out_proto_900", "get_nintendo_account_out_proto_1710", b"get_nintendo_account_out_proto_1710", "get_nintendo_o_auth2_url_out_proto_1712", b"get_nintendo_o_auth2_url_out_proto_1712", "get_non_remote_tradable_pokemon_out_proto_2604", b"get_non_remote_tradable_pokemon_out_proto_2604", "get_npc_combat_rewards_out_proto_1005", b"get_npc_combat_rewards_out_proto_1005", "get_num_pokemon_in_iris_social_scene_out_proto_6005", b"get_num_pokemon_in_iris_social_scene_out_proto_6005", "get_num_station_assists_out_proto_2476", b"get_num_station_assists_out_proto_2476", "get_outstanding_warnings_response_proto_200000", b"get_outstanding_warnings_response_proto_200000", "get_outstanding_warnings_response_proto_5039", b"get_outstanding_warnings_response_proto_5039", "get_party_out_proto_2304", b"get_party_out_proto_2304", "get_pending_remote_trade_out_proto_2605", b"get_pending_remote_trade_out_proto_2605", "get_photobomb_out_proto_1103", b"get_photobomb_out_proto_1103", "get_player_day_out_proto_9", b"get_player_day_out_proto_9", "get_player_out_proto_2", b"get_player_out_proto_2", "get_player_pokemon_field_book_out_proto_3065", b"get_player_pokemon_field_book_out_proto_3065", "get_player_raid_eligibility_out_proto_6003", b"get_player_raid_eligibility_out_proto_6003", "get_player_stamp_collections_out_proto_1901", b"get_player_stamp_collections_out_proto_1901", "get_player_status_proxy_out_proto_177", b"get_player_status_proxy_out_proto_177", "get_playergps_bookmarks_out_proto_22", b"get_playergps_bookmarks_out_proto_22", "get_pokemon_remote_trading_details_out_proto_2607", b"get_pokemon_remote_trading_details_out_proto_2607", "get_pokemon_size_leaderboard_entry_out_proto_2104", b"get_pokemon_size_leaderboard_entry_out_proto_2104", "get_pokemon_size_leaderboard_friend_entry_out_proto_2109", b"get_pokemon_size_leaderboard_friend_entry_out_proto_2109", "get_pokemon_tags_out_proto_1721", b"get_pokemon_tags_out_proto_1721", "get_pokemon_trading_cost_out_proto_2608", b"get_pokemon_trading_cost_out_proto_2608", "get_pokestop_encounter_out_proto_2005", b"get_pokestop_encounter_out_proto_2005", "get_published_routes_out_proto_1403", b"get_published_routes_out_proto_1403", "get_quest_details_out_proto_901", b"get_quest_details_out_proto_901", "get_quest_ui_out_proto_2008", b"get_quest_ui_out_proto_2008", "get_raid_details_out_proto_163", b"get_raid_details_out_proto_163", "get_raid_lobby_counter_out_proto_2011", b"get_raid_lobby_counter_out_proto_2011", "get_referral_code_out_proto_1800", b"get_referral_code_out_proto_1800", "get_remote_config_versions_out_proto_7", b"get_remote_config_versions_out_proto_7", "get_remote_tradable_pokemon_from_other_player_out_proto_2603", b"get_remote_tradable_pokemon_from_other_player_out_proto_2603", "get_reward_tiers_response_proto_310300", b"get_reward_tiers_response_proto_310300", "get_rocket_balloon_out_proto_1206", b"get_rocket_balloon_out_proto_1206", "get_route_by_short_code_out_proto_1429", b"get_route_by_short_code_out_proto_1429", "get_route_creations_out_proto_1424", b"get_route_creations_out_proto_1424", "get_route_draft_out_proto_1426", b"get_route_draft_out_proto_1426", "get_routes_out_proto_1405", b"get_routes_out_proto_1405", "get_save_for_later_entries_out_proto_2466", b"get_save_for_later_entries_out_proto_2466", "get_server_time_out_proto_11", b"get_server_time_out_proto_11", "get_station_info_out_proto_3051", b"get_station_info_out_proto_3051", "get_stationed_pokemon_details_out_proto_2462", b"get_stationed_pokemon_details_out_proto_2462", "get_suggested_players_social_out_proto_3055", b"get_suggested_players_social_out_proto_3055", "get_supply_balloon_out_proto_3068", b"get_supply_balloon_out_proto_3068", "get_survey_eligibility_out_proto_3025", b"get_survey_eligibility_out_proto_3025", "get_time_travel_information_out_proto_3076", b"get_time_travel_information_out_proto_3076", "get_timedgroup_challenge_out_proto_1700", b"get_timedgroup_challenge_out_proto_1700", "get_trading_out_proto_974", b"get_trading_out_proto_974", "get_unfuse_pokemon_preview_response_proto_3023", b"get_unfuse_pokemon_preview_response_proto_3023", "get_vps_event_out_proto_3000", b"get_vps_event_out_proto_3000", "get_vs_seeker_status_out_proto_1304", b"get_vs_seeker_status_out_proto_1304", "get_web_token_out_proto_1107", b"get_web_token_out_proto_1107", "get_web_token_out_proto_5045", b"get_web_token_out_proto_5045", "get_weekly_challenge_info_out_proto_3041", b"get_weekly_challenge_info_out_proto_3041", "getgame_config_versions_out_proto_21", b"getgame_config_versions_out_proto_21", "getgame_master_client_templates_out_proto_6", b"getgame_master_client_templates_out_proto_6", "getgeofenced_ad_out_proto_1820", b"getgeofenced_ad_out_proto_1820", "getgift_box_details_out_proto_952", b"getgift_box_details_out_proto_952", "getgmap_settings_out_proto_1105", b"getgmap_settings_out_proto_1105", "getgmap_settings_out_proto_5036", b"getgmap_settings_out_proto_5036", "getgym_badge_details_out_proto_812", b"getgym_badge_details_out_proto_812", "grant_expired_item_consolation_out_proto_3057", b"grant_expired_item_consolation_out_proto_3057", "gym_battle_attack_out_proto_158", b"gym_battle_attack_out_proto_158", "gym_deploy_out_proto_155", b"gym_deploy_out_proto_155", "gym_feed_pokemon_out_proto_164", b"gym_feed_pokemon_out_proto_164", "gym_start_session_out_proto_157", b"gym_start_session_out_proto_157", "gymget_info_out_proto_156", b"gymget_info_out_proto_156", "iap_get_active_subscriptions_response_proto_310201", b"iap_get_active_subscriptions_response_proto_310201", "iap_get_available_skus_and_balances_out_proto_310001", b"iap_get_available_skus_and_balances_out_proto_310001", "iap_get_available_skus_and_balances_out_proto_5020", b"iap_get_available_skus_and_balances_out_proto_5020", "iap_get_available_subscriptions_response_proto_310200", b"iap_get_available_subscriptions_response_proto_310200", "iap_get_user_response_proto_311101", b"iap_get_user_response_proto_311101", "iap_purchase_sku_out_proto_310000", b"iap_purchase_sku_out_proto_310000", "iap_purchase_sku_out_proto_5019", b"iap_purchase_sku_out_proto_5019", "iap_redeem_apple_receipt_out_proto_310101", b"iap_redeem_apple_receipt_out_proto_310101", "iap_redeem_apple_receipt_out_proto_5022", b"iap_redeem_apple_receipt_out_proto_5022", "iap_redeem_desktop_receipt_out_proto_310102", b"iap_redeem_desktop_receipt_out_proto_310102", "iap_redeem_desktop_receipt_out_proto_5023", b"iap_redeem_desktop_receipt_out_proto_5023", "iap_redeem_google_receipt_out_proto_310100", b"iap_redeem_google_receipt_out_proto_310100", "iap_redeem_google_receipt_out_proto_5021", b"iap_redeem_google_receipt_out_proto_5021", "iap_redeem_samsung_receipt_out_proto_310103", b"iap_redeem_samsung_receipt_out_proto_310103", "iap_redeem_samsung_receipt_out_proto_5037", b"iap_redeem_samsung_receipt_out_proto_5037", "iap_redeem_xsolla_receipt_response_proto_311100", b"iap_redeem_xsolla_receipt_response_proto_311100", "iap_setin_game_currency_exchange_rate_out_proto_310002", b"iap_setin_game_currency_exchange_rate_out_proto_310002", "incense_encounter_out_proto_143", b"incense_encounter_out_proto_143", "internal_accept_friendinvite_out_proto_10004", b"internal_accept_friendinvite_out_proto_10004", "internal_add_favorite_friend_response_10023", b"internal_add_favorite_friend_response_10023", "internal_add_login_action_out_proto_600000", b"internal_add_login_action_out_proto_600000", "internal_block_account_out_proto_10025", b"internal_block_account_out_proto_10025", "internal_cancel_friendinvite_out_proto_10003", b"internal_cancel_friendinvite_out_proto_10003", "internal_decline_friendinvite_out_proto_10005", b"internal_decline_friendinvite_out_proto_10005", "internal_dismiss_contact_list_update_response_20017", b"internal_dismiss_contact_list_update_response_20017", "internal_dismiss_outgoing_gameinvites_response_20012", b"internal_dismiss_outgoing_gameinvites_response_20012", "internal_gar_proxy_response_proto_600005", b"internal_gar_proxy_response_proto_600005", "internal_get_account_settings_out_proto_10022", b"internal_get_account_settings_out_proto_10022", "internal_get_client_feature_flags_response_20008", b"internal_get_client_feature_flags_response_20008", "internal_get_contact_listinfo_response_20016", b"internal_get_contact_listinfo_response_20016", "internal_get_facebook_friend_list_out_proto_10014", b"internal_get_facebook_friend_list_out_proto_10014", "internal_get_friend_code_out_proto_10013", b"internal_get_friend_code_out_proto_10013", "internal_get_friend_details_out_proto_10010", b"internal_get_friend_details_out_proto_10010", "internal_get_friend_details_out_proto_20007", b"internal_get_friend_details_out_proto_20007", "internal_get_friend_recommendation_response_20500", b"internal_get_friend_recommendation_response_20500", "internal_get_friends_list_out_proto_10006", b"internal_get_friends_list_out_proto_10006", "internal_get_outgoing_blocks_out_proto_10027", b"internal_get_outgoing_blocks_out_proto_10027", "internal_get_outgoing_friendinvites_out_proto_10007", b"internal_get_outgoing_friendinvites_out_proto_10007", "internal_get_photos_out_proto_10203", b"internal_get_photos_out_proto_10203", "internal_get_player_settings_out_proto_10017", b"internal_get_player_settings_out_proto_10017", "internal_get_player_settings_out_proto_818", b"internal_get_player_settings_out_proto_818", "internal_get_profile_response_20003", b"internal_get_profile_response_20003", "internal_get_signed_url_out_proto_10201", b"internal_get_signed_url_out_proto_10201", "internal_getincoming_friendinvites_out_proto_10008", b"internal_getincoming_friendinvites_out_proto_10008", "internal_getincoming_gameinvites_response_20010", b"internal_getincoming_gameinvites_response_20010", "internal_link_to_account_login_response_proto_600006", b"internal_link_to_account_login_response_proto_600006", "internal_list_friends_response_20006", b"internal_list_friends_response_20006", "internal_list_login_action_out_proto_600002", b"internal_list_login_action_out_proto_600002", "internal_list_opt_out_notification_categories_response_proto_10106", b"internal_list_opt_out_notification_categories_response_proto_10106", "internal_notify_contact_list_friends_response_20018", b"internal_notify_contact_list_friends_response_20018", "internal_push_notification_registry_out_proto_10101", b"internal_push_notification_registry_out_proto_10101", "internal_refer_contact_list_friend_response_20015", b"internal_refer_contact_list_friend_response_20015", "internal_remove_favorite_friend_response_10024", b"internal_remove_favorite_friend_response_10024", "internal_remove_friend_out_proto_10009", b"internal_remove_friend_out_proto_10009", "internal_remove_login_action_out_proto_600001", b"internal_remove_login_action_out_proto_600001", "internal_replace_login_action_out_proto_600003", b"internal_replace_login_action_out_proto_600003", "internal_search_player_out_proto_10000", b"internal_search_player_out_proto_10000", "internal_send_contact_list_friendinvite_response_20014", b"internal_send_contact_list_friendinvite_response_20014", "internal_send_friendinvite_out_proto_10002", b"internal_send_friendinvite_out_proto_10002", "internal_set_account_settings_out_proto_10021", b"internal_set_account_settings_out_proto_10021", "internal_set_birthday_response_proto_600004", b"internal_set_birthday_response_proto_600004", "internal_setin_game_currency_exchange_rate_out_proto_5032", b"internal_setin_game_currency_exchange_rate_out_proto_5032", "internal_submitimage_out_proto_10202", b"internal_submitimage_out_proto_10202", "internal_sync_contact_list_response_20013", b"internal_sync_contact_list_response_20013", "internal_unblock_account_out_proto_10026", b"internal_unblock_account_out_proto_10026", "internal_update_facebook_status_out_proto_10015", b"internal_update_facebook_status_out_proto_10015", "internal_update_friendship_response_20002", b"internal_update_friendship_response_20002", "internal_update_notification_out_proto_10103", b"internal_update_notification_out_proto_10103", "internal_update_profile_response_20001", b"internal_update_profile_response_20001", "internal_updateincoming_gameinvite_response_20011", b"internal_updateincoming_gameinvite_response_20011", "internalinvite_facebook_friend_out_proto_10011", b"internalinvite_facebook_friend_out_proto_10011", "internalinvite_game_response_20004", b"internalinvite_game_response_20004", "internalis_account_blocked_out_proto_10028", b"internalis_account_blocked_out_proto_10028", "internalis_my_friend_out_proto_10012", b"internalis_my_friend_out_proto_10012", "invasion_encounter_out_proto_1204", b"invasion_encounter_out_proto_1204", "is_sku_available_out_proto_172", b"is_sku_available_out_proto_172", "join_bread_lobby_out_proto_2450", b"join_bread_lobby_out_proto_2450", "join_buddy_multiplayer_session_out_proto_1457", b"join_buddy_multiplayer_session_out_proto_1457", "join_lobby_out_proto_159", b"join_lobby_out_proto_159", "join_party_out_proto_2301", b"join_party_out_proto_2301", "kick_other_player_from_party_out_proto_3016", b"kick_other_player_from_party_out_proto_3016", "leave_breadlobby_out_proto_2455", b"leave_breadlobby_out_proto_2455", "leave_buddy_multiplayer_session_out_proto_1458", b"leave_buddy_multiplayer_session_out_proto_1458", "leave_party_out_proto_2303", b"leave_party_out_proto_2303", "leave_weekly_challenge_matchmaking_out_proto_3064", b"leave_weekly_challenge_matchmaking_out_proto_3064", "leavelobby_out_proto_160", b"leavelobby_out_proto_160", "level_up_rewards_out_proto_128", b"level_up_rewards_out_proto_128", "lift_user_age_gate_confirmation_out_proto_830", b"lift_user_age_gate_confirmation_out_proto_830", "like_route_pin_out_proto_1727", b"like_route_pin_out_proto_1727", "list_avatar_appearance_items_out_proto_410", b"list_avatar_appearance_items_out_proto_410", "list_avatar_customizations_out_proto_807", b"list_avatar_customizations_out_proto_807", "list_avatar_store_items_out_proto_409", b"list_avatar_store_items_out_proto_409", "list_friend_activities_response_proto_10029", b"list_friend_activities_response_proto_10029", "list_gym_badges_out_proto_811", b"list_gym_badges_out_proto_811", "list_route_badges_out_proto_1409", b"list_route_badges_out_proto_1409", "list_route_stamps_out_proto_1411", b"list_route_stamps_out_proto_1411", "listlogin_action_out_proto_5010", b"listlogin_action_out_proto_5010", "location_ping_out_proto_360001", b"location_ping_out_proto_360001", "location_ping_out_proto_5034", b"location_ping_out_proto_5034", "loot_station_out_proto_2461", b"loot_station_out_proto_2461", "maps_client_telemetry_response_proto_610000", b"maps_client_telemetry_response_proto_610000", "mark_fieldbook_seen_response_proto_3078", b"mark_fieldbook_seen_response_proto_3078", "mark_newsfeed_read_response_5050", b"mark_newsfeed_read_response_5050", "mark_read_news_article_out_proto_817", b"mark_read_news_article_out_proto_817", "mark_remote_tradable_out_proto_2602", b"mark_remote_tradable_out_proto_2602", "mark_save_for_later_out_proto_2463", b"mark_save_for_later_out_proto_2463", "mark_tutorial_complete_out_proto_406", b"mark_tutorial_complete_out_proto_406", "markmilestone_as_viewed_out_proto_1804", b"markmilestone_as_viewed_out_proto_1804", "mega_evolve_pokemon_out_proto_1502", b"mega_evolve_pokemon_out_proto_1502", "mega_level_up_out_proto_3079", b"mega_level_up_out_proto_3079", "natural_art_poi_encounter_out_proto_3070", b"natural_art_poi_encounter_out_proto_3070", "neutral_avatar_badge_reward_out_proto_450", b"neutral_avatar_badge_reward_out_proto_450", "nickname_pokemon_out_proto_149", b"nickname_pokemon_out_proto_149", "npc_open_gift_out_proto_2402", b"npc_open_gift_out_proto_2402", "npc_route_gift_out_proto_1423", b"npc_route_gift_out_proto_1423", "npc_send_gift_out_proto_2401", b"npc_send_gift_out_proto_2401", "npc_update_state_out_proto_2400", b"npc_update_state_out_proto_2400", "open_buddy_giftout_proto_1353", b"open_buddy_giftout_proto_1353", "open_combat_challengeout_proto_993", b"open_combat_challengeout_proto_993", "open_combat_sessionout_proto_1000", b"open_combat_sessionout_proto_1000", "open_giftout_proto_951", b"open_giftout_proto_951", "open_invasion_combat_sessionout_proto_1202", b"open_invasion_combat_sessionout_proto_1202", "open_npc_combat_sessionout_proto_1007", b"open_npc_combat_sessionout_proto_1007", "open_sponsored_giftout_proto_1650", b"open_sponsored_giftout_proto_1650", "open_supply_balloonout_proto_3069", b"open_supply_balloonout_proto_3069", "open_tradingout_proto_970", b"open_tradingout_proto_970", "optout_proto_10104", b"optout_proto_10104", "optout_proto_5003", b"optout_proto_5003", "party_send_dark_launch_log_outproto_2306", b"party_send_dark_launch_log_outproto_2306", "party_update_location_outproto_2305", b"party_update_location_outproto_2305", "ping_responseproto_5007", b"ping_responseproto_5007", "player_spawnablepokemon_outproto_2007", b"player_spawnablepokemon_outproto_2007", "playerprofile_outproto_121", b"playerprofile_outproto_121", "power_uppokestop_encounter_outproto_1900", b"power_uppokestop_encounter_outproto_1900", "prepare_bread_lobby_outproto_2453", b"prepare_bread_lobby_outproto_2453", "preview_contributeparty_item_outproto_3015", b"preview_contributeparty_item_outproto_3015", "process_tappable_outproto_1408", b"process_tappable_outproto_1408", "process_tappable_outproto_1416", b"process_tappable_outproto_1416", "processplayer_inbox_outproto_3024", b"processplayer_inbox_outproto_3024", "profanity_check_outproto_1653", b"profanity_check_outproto_1653", "progress_quest_outproto_906", b"progress_quest_outproto_906", "progress_route_outproto_1406", b"progress_route_outproto_1406", "propose_remote_trade_outproto_2600", b"propose_remote_trade_outproto_2600", "proxy_responseproto_5012", b"proxy_responseproto_5012", "purifypokemon_outproto_1205", b"purifypokemon_outproto_1205", "push_notification_registry_outproto_5000", b"push_notification_registry_outproto_5000", "quest_encounter_out_proto_904", b"quest_encounter_out_proto_904", "quit_combat_out_proto_1002", b"quit_combat_out_proto_1002", "rateroute_out_proto_1412", b"rateroute_out_proto_1412", "read_quest_dialog_out_proto_908", b"read_quest_dialog_out_proto_908", "reassign_player_out_proto_169", b"reassign_player_out_proto_169", "recallroute_draft_out_proto_1421", b"recallroute_draft_out_proto_1421", "recycle_item_out_proto_137", b"recycle_item_out_proto_137", "redeem_passcoderesponse_proto_5006", b"redeem_passcoderesponse_proto_5006", "redeem_ticket_gift_for_friend_out_proto_2001", b"redeem_ticket_gift_for_friend_out_proto_2001", "refresh_proximity_tokensresponse_proto_362000", b"refresh_proximity_tokensresponse_proto_362000", "register_background_deviceresponse_proto_230000", b"register_background_deviceresponse_proto_230000", "register_background_deviceresponse_proto_8", b"register_background_deviceresponse_proto_8", "register_sfidaresponse_800", b"register_sfidaresponse_800", "release_pokemon_out_proto_112", b"release_pokemon_out_proto_112", "release_stationed_pokemon_out_proto_2472", b"release_stationed_pokemon_out_proto_2472", "remote_gift_pingresponse_proto_1503", b"remote_gift_pingresponse_proto_1503", "remove_campfire_forreferee_out_proto_6002", b"remove_campfire_forreferee_out_proto_6002", "remove_login_action_out_proto_5009", b"remove_login_action_out_proto_5009", "remove_pokemon_size_leaderboard_entry_out_proto_2103", b"remove_pokemon_size_leaderboard_entry_out_proto_2103", "remove_ptc_login_action_out_proto_3007", b"remove_ptc_login_action_out_proto_3007", "remove_quest_out_proto_903", b"remove_quest_out_proto_903", "remove_save_for_later_out_proto_2465", b"remove_save_for_later_out_proto_2465", "replace_login_action_out_proto_5015", b"replace_login_action_out_proto_5015", "report_ad_feedbackresponse_1716", b"report_ad_feedbackresponse_1716", "report_ad_interactionresponse_1651", b"report_ad_interactionresponse_1651", "report_proximity_contactsresponse_proto_362001", b"report_proximity_contactsresponse_proto_362001", "report_station_out_proto_2470", b"report_station_out_proto_2470", "reportroute_out_proto_1415", b"reportroute_out_proto_1415", "respondremote_trade_out_proto_2606", b"respondremote_trade_out_proto_2606", "route_nearby_notif_shown_out_proto_1422", b"route_nearby_notif_shown_out_proto_1422", "route_update_seen_out_proto_1420", b"route_update_seen_out_proto_1420", "saturday_complete_out_proto_828", b"saturday_complete_out_proto_828", "saturdaystart_out_proto_827", b"saturdaystart_out_proto_827", "save_combat_player_preferences_out_proto_999", b"save_combat_player_preferences_out_proto_999", "save_player_preferences_out_proto_1652", b"save_player_preferences_out_proto_1652", "save_playersnapshot_out_proto_954", b"save_playersnapshot_out_proto_954", "savesocial_playersettings_out_proto_10016", b"savesocial_playersettings_out_proto_10016", "savesocial_playersettings_out_proto_959", b"savesocial_playersettings_out_proto_959", "savestamp_out_proto_1902", b"savestamp_out_proto_1902", "send_bread_battle_invitation_out_proto_1505", b"send_bread_battle_invitation_out_proto_1505", "send_event_rsvp_invitation_out_proto_3039", b"send_event_rsvp_invitation_out_proto_3039", "send_friend_invite_via_referral_code_out_proto_1802", b"send_friend_invite_via_referral_code_out_proto_1802", "send_friend_request_via_player_id_out_proto_2010", b"send_friend_request_via_player_id_out_proto_2010", "send_gift_out_proto_950", b"send_gift_out_proto_950", "send_party_invitation_out_proto_2310", b"send_party_invitation_out_proto_2310", "send_party_invitation_out_proto_3008", b"send_party_invitation_out_proto_3008", "send_probe_out_proto_1020", b"send_probe_out_proto_1020", "send_raid_invitation_out_proto_1504", b"send_raid_invitation_out_proto_1504", "set_avatar_item_as_viewed_out_proto_808", b"set_avatar_item_as_viewed_out_proto_808", "set_avatar_out_proto_404", b"set_avatar_out_proto_404", "set_birthday_response_proto_5048", b"set_birthday_response_proto_5048", "set_buddy_pokemon_out_proto_152", b"set_buddy_pokemon_out_proto_152", "set_contactsettings_out_proto_151", b"set_contactsettings_out_proto_151", "set_favorite_pokemon_out_proto_148", b"set_favorite_pokemon_out_proto_148", "set_friend_nickname_out_proto_957", b"set_friend_nickname_out_proto_957", "set_lobby_pokemon_out_proto_162", b"set_lobby_pokemon_out_proto_162", "set_lobby_visibility_out_proto_161", b"set_lobby_visibility_out_proto_161", "set_neutral_avatar_out_proto_408", b"set_neutral_avatar_out_proto_408", "set_player_team_out_proto_405", b"set_player_team_out_proto_405", "set_playerstatus_out_proto_20", b"set_playerstatus_out_proto_20", "set_pokemon_tags_for_pokemon_out_proto_1720", b"set_pokemon_tags_for_pokemon_out_proto_1720", "sfida_associate_response_822", b"sfida_associate_response_822", "sfida_capture_response_806", b"sfida_capture_response_806", "sfida_certification_response_802", b"sfida_certification_response_802", "sfida_check_pairing_response_823", b"sfida_check_pairing_response_823", "sfida_disassociate_response_824", b"sfida_disassociate_response_824", "sfida_dowser_response_805", b"sfida_dowser_response_805", "sfida_update_response_803", b"sfida_update_response_803", "skip_enter_referral_code_out_proto_1915", b"skip_enter_referral_code_out_proto_1915", "smart_glassessyncsettings_response_proto_3027", b"smart_glassessyncsettings_response_proto_3027", "softsfida_capture_out_proto_833", b"softsfida_capture_out_proto_833", "softsfida_location_update_out_proto_834", b"softsfida_location_update_out_proto_834", "softsfida_pause_out_proto_832", b"softsfida_pause_out_proto_832", "softsfida_recap_out_proto_835", b"softsfida_recap_out_proto_835", "softsfidastart_out_proto_831", b"softsfidastart_out_proto_831", "start_bread_battle_out_proto_2456", b"start_bread_battle_out_proto_2456", "start_incident_out_proto_1200", b"start_incident_out_proto_1200", "start_incident_out_proto_1207", b"start_incident_out_proto_1207", "start_mp_walk_quest_out_proto_2458", b"start_mp_walk_quest_out_proto_2458", "start_party_out_proto_2302", b"start_party_out_proto_2302", "start_party_quest_out_proto_2308", b"start_party_quest_out_proto_2308", "start_pvp_battle_out_proto_3071", b"start_pvp_battle_out_proto_3071", "start_raid_battle_out_proto_165", b"start_raid_battle_out_proto_165", "start_route_out_proto_1404", b"start_route_out_proto_1404", "start_team_leader_battle_out_proto_3059", b"start_team_leader_battle_out_proto_3059", "start_tgr_battle_out_proto_3056", b"start_tgr_battle_out_proto_3056", "start_weekly_challenge_group_matchmaking_out_proto_3047", b"start_weekly_challenge_group_matchmaking_out_proto_3047", "station_pokemon_out_proto_2460", b"station_pokemon_out_proto_2460", "submit_combat_challenge_pokemons_out_proto_998", b"submit_combat_challenge_pokemons_out_proto_998", "submit_new_poi_out_proto_5011", b"submit_new_poi_out_proto_5011", "submit_route_draft_out_proto_1402", b"submit_route_draft_out_proto_1402", "sync_battle_inventory_out_proto_3011", b"sync_battle_inventory_out_proto_3011", "sync_weekly_challenge_matchmakingstatus_out_proto_3048", b"sync_weekly_challenge_matchmakingstatus_out_proto_3048", "titan_async_file_upload_complete_out_proto_620402", b"titan_async_file_upload_complete_out_proto_620402", "titan_generate_gmap_signed_url_out_proto_620300", b"titan_generate_gmap_signed_url_out_proto_620300", "titan_get_a_r_mapping_settings_out_proto_620403", b"titan_get_a_r_mapping_settings_out_proto_620403", "titan_get_available_submissions_out_proto_620001", b"titan_get_available_submissions_out_proto_620001", "titan_get_gmap_settings_out_proto_620301", b"titan_get_gmap_settings_out_proto_620301", "titan_get_grapeshot_upload_url_out_proto_620401", b"titan_get_grapeshot_upload_url_out_proto_620401", "titan_get_image_gallery_settings_out_proto_620502", b"titan_get_image_gallery_settings_out_proto_620502", "titan_get_images_for_poi_out_proto_620500", b"titan_get_images_for_poi_out_proto_620500", "titan_get_player_submission_validation_settings_out_proto_620003", b"titan_get_player_submission_validation_settings_out_proto_620003", "titan_get_pois_in_radius_out_proto_620601", b"titan_get_pois_in_radius_out_proto_620601", "titan_submit_new_poi_out_proto_620000", b"titan_submit_new_poi_out_proto_620000", "titan_submit_player_image_vote_for_poi_out_proto_620501", b"titan_submit_player_image_vote_for_poi_out_proto_620501", "transfer_contest_entry_out_proto_2152", b"transfer_contest_entry_out_proto_2152", "transfer_pokemon_size_leaderboard_entry_out_proto_2102", b"transfer_pokemon_size_leaderboard_entry_out_proto_2102", "transfer_pokemonto_pokemon_home_out_proto_1713", b"transfer_pokemonto_pokemon_home_out_proto_1713", "unfuse_pokemon_response_proto_3018", b"unfuse_pokemon_response_proto_3018", "unlink_nintendo_account_out_proto_1711", b"unlink_nintendo_account_out_proto_1711", "unlock_pokemon_move_out_proto_1004", b"unlock_pokemon_move_out_proto_1004", "unlock_temporary_evolution_level_out_proto_1506", b"unlock_temporary_evolution_level_out_proto_1506", "update_adventure_sync_fitness_response_proto_640004", b"update_adventure_sync_fitness_response_proto_640004", "update_adventure_sync_settings_response_proto_5047", b"update_adventure_sync_settings_response_proto_5047", "update_adventure_sync_settings_response_proto_640003", b"update_adventure_sync_settings_response_proto_640003", "update_breadcrumb_history_response_proto_361000", b"update_breadcrumb_history_response_proto_361000", "update_bulk_player_location_response_proto_360002", b"update_bulk_player_location_response_proto_360002", "update_combat_out_proto_1001", b"update_combat_out_proto_1001", "update_contest_entry_out_proto_2151", b"update_contest_entry_out_proto_2151", "update_event_rsvp_selection_out_proto_3040", b"update_event_rsvp_selection_out_proto_3040", "update_field_book_post_catch_pokemon_out_proto_3075", b"update_field_book_post_catch_pokemon_out_proto_3075", "update_invasion_battle_out_proto_1203", b"update_invasion_battle_out_proto_1203", "update_iris_social_scene_out_proto_3020", b"update_iris_social_scene_out_proto_3020", "update_notification_out_proto_5002", b"update_notification_out_proto_5002", "update_player_gps_bookmarks_out_proto_23", b"update_player_gps_bookmarks_out_proto_23", "update_pokemon_size_leaderboard_entry_out_proto_2101", b"update_pokemon_size_leaderboard_entry_out_proto_2101", "update_postcard_out_proto_1911", b"update_postcard_out_proto_1911", "update_route_draft_out_proto_1400", b"update_route_draft_out_proto_1400", "update_survey_eligibility_out_proto_3026", b"update_survey_eligibility_out_proto_3026", "update_trading_out_proto_971", b"update_trading_out_proto_971", "update_vps_event_out_proto_3001", b"update_vps_event_out_proto_3001", "upgrade_pokemon_out_proto_147", b"upgrade_pokemon_out_proto_147", "upload_combat_client_log_out_proto_1916", b"upload_combat_client_log_out_proto_1916", "upload_raid_client_log_out_proto_1914", b"upload_raid_client_log_out_proto_1914", "use_incense_action_out_proto_141", b"use_incense_action_out_proto_141", "use_item_battle_boost_out_proto_174", b"use_item_battle_boost_out_proto_174", "use_item_bulk_heal_out_proto_173", b"use_item_bulk_heal_out_proto_173", "use_item_capture_out_proto_114", b"use_item_capture_out_proto_114", "use_item_egg_incubator_out_proto_140", b"use_item_egg_incubator_out_proto_140", "use_item_encounter_out_proto_154", b"use_item_encounter_out_proto_154", "use_item_lucky_friend_applicator_out_proto_175", b"use_item_lucky_friend_applicator_out_proto_175", "use_item_move_reroll_out_proto_813", b"use_item_move_reroll_out_proto_813", "use_item_mp_replenish_out_proto_2468", b"use_item_mp_replenish_out_proto_2468", "use_item_potion_out_proto_113", b"use_item_potion_out_proto_113", "use_item_rare_candy_out_proto_814", b"use_item_rare_candy_out_proto_814", "use_item_revive_out_proto_116", b"use_item_revive_out_proto_116", "use_item_stardust_boost_out_proto_168", b"use_item_stardust_boost_out_proto_168", "use_item_stat_increase_out_proto_176", b"use_item_stat_increase_out_proto_176", "use_item_xp_boost_out_proto_139", b"use_item_xp_boost_out_proto_139", "use_non_combat_move_response_proto_2014", b"use_non_combat_move_response_proto_2014", "use_save_for_later_out_proto_2464", b"use_save_for_later_out_proto_2464", "verify_challenge_out_proto_601", b"verify_challenge_out_proto_601", "view_route_pin_out_proto_1728", b"view_route_pin_out_proto_1728", "vs_seeker_reward_encounter_out_proto_1307", b"vs_seeker_reward_encounter_out_proto_1307", "vs_seeker_start_matchmaking_out_proto_1300", b"vs_seeker_start_matchmaking_out_proto_1300", "waina_get_rewards_response_825", b"waina_get_rewards_response_825", "waina_submit_sleep_data_response_826", b"waina_submit_sleep_data_response_826"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["accept_combat_challenge_out_proto_995", b"accept_combat_challenge_out_proto_995", "acknowledge_punishment_out_proto_10", b"acknowledge_punishment_out_proto_10", "acknowledge_view_latest_incense_recap_out_proto_2003", b"acknowledge_view_latest_incense_recap_out_proto_2003", "acknowledge_warnings_response_proto_200001", b"acknowledge_warnings_response_proto_200001", "acknowledge_warnings_response_proto_5040", b"acknowledge_warnings_response_proto_5040", "activate_vs_seeker_out_proto_1308", b"activate_vs_seeker_out_proto_1308", "add_fort_modifier_out_proto_144", b"add_fort_modifier_out_proto_144", "add_loginaction_out_proto_5008", b"add_loginaction_out_proto_5008", "add_ptc_loginaction_out_proto_3002", b"add_ptc_loginaction_out_proto_3002", "add_referrer_out_proto_1801", b"add_referrer_out_proto_1801", "age_confirmation_out_proto_3052", b"age_confirmation_out_proto_3052", "appeal_route_out_proto_1425", b"appeal_route_out_proto_1425", "asset_digest_out_proto_300", b"asset_digest_out_proto_300", "asset_version_out_proto_302", b"asset_version_out_proto_302", "attack_raid_battle_out_proto_166", b"attack_raid_battle_out_proto_166", "attracted_pokemon_encounter_out_proto_1417", b"attracted_pokemon_encounter_out_proto_1417", "auth_register_background_device_response_proto_5028", b"auth_register_background_device_response_proto_5028", "award_free_raid_ticket_out_proto_815", b"award_free_raid_ticket_out_proto_815", "badge_reward_encounter_response_proto_2360", b"badge_reward_encounter_response_proto_2360", "beluga_transaction_complete_out_proto_820", b"beluga_transaction_complete_out_proto_820", "beluga_transaction_start_out_proto_819", b"beluga_transaction_start_out_proto_819", "boot_raid_out_proto_2004", b"boot_raid_out_proto_2004", "buddy_feeding_out_proto_1352", b"buddy_feeding_out_proto_1352", "buddy_map_out_proto_1350", b"buddy_map_out_proto_1350", "buddy_petting_out_proto_1354", b"buddy_petting_out_proto_1354", "buddy_stats_out_proto_1351", b"buddy_stats_out_proto_1351", "butterfly_collector_reward_encounter_proto_response_1724", b"butterfly_collector_reward_encounter_proto_response_1724", "can_report_route_out_proto_1418", b"can_report_route_out_proto_1418", "cancel_event_rsvp_out_proto_3033", b"cancel_event_rsvp_out_proto_3033", "cancel_matchmaking_out_proto_1301", b"cancel_matchmaking_out_proto_1301", "cancel_party_invite_out_proto_2312", b"cancel_party_invite_out_proto_2312", "cancel_remote_trade_out_proto_2601", b"cancel_remote_trade_out_proto_2601", "cancel_route_out_proto_1410", b"cancel_route_out_proto_1410", "cancel_trading_out_proto_973", b"cancel_trading_out_proto_973", "cancelcombatchallenge_out_proto_997", b"cancelcombatchallenge_out_proto_997", "canclaim_ptc_reward_action_out_proto_3004", b"canclaim_ptc_reward_action_out_proto_3004", "catch_pokemon_out_proto_103", b"catch_pokemon_out_proto_103", "change_pokemon_form_out_proto_1722", b"change_pokemon_form_out_proto_1722", "change_stampcollection_player_data_out_proto_1905", b"change_stampcollection_player_data_out_proto_1905", "change_stat_increase_goal_out_proto_3053", b"change_stat_increase_goal_out_proto_3053", "change_team_out_proto_1106", b"change_team_out_proto_1106", "check_awarded_badges_out_proto_129", b"check_awarded_badges_out_proto_129", "check_gifting_eligibility_out_proto_2000", b"check_gifting_eligibility_out_proto_2000", "check_photobomb_out_proto_1101", b"check_photobomb_out_proto_1101", "check_pokemon_size_leaderboard_eligibility_out_proto_2100", b"check_pokemon_size_leaderboard_eligibility_out_proto_2100", "check_send_gift_out_proto_956", b"check_send_gift_out_proto_956", "check_stamp_giftability_out_proto_1906", b"check_stamp_giftability_out_proto_1906", "checkchallenge_out_proto_600", b"checkchallenge_out_proto_600", "checkcontest_eligibility_out_proto_2150", b"checkcontest_eligibility_out_proto_2150", "choose_global_ticketed_event_variant_out_proto_1723", b"choose_global_ticketed_event_variant_out_proto_1723", "claim_event_pass_rewards_response_proto_3034", b"claim_event_pass_rewards_response_proto_3034", "claim_event_pass_rewards_response_proto_3035", b"claim_event_pass_rewards_response_proto_3035", "claim_ptc_linking_reward_out_proto_3003", b"claim_ptc_linking_reward_out_proto_3003", "claim_stampcollection_reward_out_proto_1904", b"claim_stampcollection_reward_out_proto_1904", "claim_vs_seeker_rewards_out_proto_1306", b"claim_vs_seeker_rewards_out_proto_1306", "claimcontests_rewards_out_proto_2107", b"claimcontests_rewards_out_proto_2107", "client_telemetryclient_settings_proto_5026", b"client_telemetryclient_settings_proto_5026", "client_telemetryclient_settings_proto_610001", b"client_telemetryclient_settings_proto_610001", "codename_result_proto_403", b"codename_result_proto_403", "collect_daily_bonus_out_proto_138", b"collect_daily_bonus_out_proto_138", "combat_friend_request_out_proto_1006", b"combat_friend_request_out_proto_1006", "combat_sync_server_offset_out_proto_1917", b"combat_sync_server_offset_out_proto_1917", "complete_all_quest_out_proto_3063", b"complete_all_quest_out_proto_3063", "complete_bread_battle_out_proto_2473", b"complete_bread_battle_out_proto_2473", "complete_invasion_dialogue_out_proto_1201", b"complete_invasion_dialogue_out_proto_1201", "complete_milestone_out_proto_1806", b"complete_milestone_out_proto_1806", "complete_party_quest_out_proto_2309", b"complete_party_quest_out_proto_2309", "complete_pvp_battle_out_proto_3072", b"complete_pvp_battle_out_proto_3072", "complete_quest_out_proto_902", b"complete_quest_out_proto_902", "complete_quest_stampcard_out_proto_905", b"complete_quest_stampcard_out_proto_905", "complete_raid_battle_out_proto_3010", b"complete_raid_battle_out_proto_3010", "complete_snapshot_session_out_proto_1110", b"complete_snapshot_session_out_proto_1110", "complete_team_leader_battle_out_proto_3060", b"complete_team_leader_battle_out_proto_3060", "complete_tgr_battle_out_proto_3058", b"complete_tgr_battle_out_proto_3058", "complete_visit_page_quest_out_proto_3030", b"complete_visit_page_quest_out_proto_3030", "complete_vs_seeker_and_restartcharging_out_proto_1303", b"complete_vs_seeker_and_restartcharging_out_proto_1303", "complete_wild_snapshot_session_out_proto_1111", b"complete_wild_snapshot_session_out_proto_1111", "completecompetitive_season_out_proto_1305", b"completecompetitive_season_out_proto_1305", "confirm_photobomb_out_proto_1102", b"confirm_photobomb_out_proto_1102", "confirm_trading_out_proto_972", b"confirm_trading_out_proto_972", "consume_party_items_out_proto_3006", b"consume_party_items_out_proto_3006", "consume_stickers_out_proto_3009", b"consume_stickers_out_proto_3009", "contribute_party_item_out_proto_3005", b"contribute_party_item_out_proto_3005", "convertcandy_to_xlcandy_out_proto_171", b"convertcandy_to_xlcandy_out_proto_171", "create_buddy_multiplayer_session_out_proto_1456", b"create_buddy_multiplayer_session_out_proto_1456", "create_bug_report_out_proto_3088", b"create_bug_report_out_proto_3088", "create_event_rsvp_out_proto_3032", b"create_event_rsvp_out_proto_3032", "create_party_out_proto_2300", b"create_party_out_proto_2300", "create_pokemon_tag_out_proto_1717", b"create_pokemon_tag_out_proto_1717", "create_postcard_out_proto_1910", b"create_postcard_out_proto_1910", "create_route_draft_out_proto_1413", b"create_route_draft_out_proto_1413", "create_route_pin_out_proto_1726", b"create_route_pin_out_proto_1726", "create_route_shortcode_out_proto_1428", b"create_route_shortcode_out_proto_1428", "createcombatchallenge_out_proto_992", b"createcombatchallenge_out_proto_992", "daily_bonus_spawn_encounter_out_proto_3067", b"daily_bonus_spawn_encounter_out_proto_3067", "daily_encounter_out_proto_1602", b"daily_encounter_out_proto_1602", "day_night_poi_encounter_out_proto_3077", b"day_night_poi_encounter_out_proto_3077", "debug_egg_statistics_out_proto_3083", b"debug_egg_statistics_out_proto_3083", "debug_encounter_statistics_out_proto_3061", b"debug_encounter_statistics_out_proto_3061", "debug_resetdaily_mp_progress_out_proto_2471", b"debug_resetdaily_mp_progress_out_proto_2471", "debug_test_setup_out_proto_3085", b"debug_test_setup_out_proto_3085", "decline_combat_challenge_out_proto_996", b"decline_combat_challenge_out_proto_996", "delete_gift_from_inventory_out_proto_958", b"delete_gift_from_inventory_out_proto_958", "delete_gift_out_proto_953", b"delete_gift_out_proto_953", "delete_pokemon_tag_out_proto_1718", b"delete_pokemon_tag_out_proto_1718", "delete_postcard_out_proto_1912", b"delete_postcard_out_proto_1912", "delete_postcards_out_proto_1909", b"delete_postcards_out_proto_1909", "delete_routedraft_out_proto_1414", b"delete_routedraft_out_proto_1414", "dequeue_questdialogue_out_proto_909", b"dequeue_questdialogue_out_proto_909", "disk_encounter_out_proto_145", b"disk_encounter_out_proto_145", "download_gm_templates_response_proto_5004", b"download_gm_templates_response_proto_5004", "download_settings_response_proto_5", b"download_settings_response_proto_5", "download_url_out_proto_301", b"download_url_out_proto_301", "echo_out_proto_666", b"echo_out_proto_666", "edit_pokemon_tag_out_proto_1719", b"edit_pokemon_tag_out_proto_1719", "enable_campfire_for_referee_out_proto_6001", b"enable_campfire_for_referee_out_proto_6001", "encounter_out_proto_102", b"encounter_out_proto_102", "encounter_photobomb_out_proto_1104", b"encounter_photobomb_out_proto_1104", "encounter_pokestopencounter_out_proto_2006", b"encounter_pokestopencounter_out_proto_2006", "encounter_station_spawn_out_proto_2475", b"encounter_station_spawn_out_proto_2475", "encounter_tutorial_complete_out_proto_127", b"encounter_tutorial_complete_out_proto_127", "end_pokemon_training_out_proto_3054", b"end_pokemon_training_out_proto_3054", "enhance_bread_move_out_proto_2459", b"enhance_bread_move_out_proto_2459", "evolve_pokemon_out_proto_125", b"evolve_pokemon_out_proto_125", "favorite_route_out_proto_1427", b"favorite_route_out_proto_1427", "fetch_all_news_out_proto_816", b"fetch_all_news_out_proto_816", "fetch_newsfeed_response_5049", b"fetch_newsfeed_response_5049", "fitness_update_out_proto_5024", b"fitness_update_out_proto_5024", "fitness_update_out_proto_640000", b"fitness_update_out_proto_640000", "flee_battle_encounter_out_proto_3084", b"flee_battle_encounter_out_proto_3084", "fort_deploy_out_proto_110", b"fort_deploy_out_proto_110", "fort_details_out_proto_104", b"fort_details_out_proto_104", "fort_recall_out_proto_111", b"fort_recall_out_proto_111", "fort_search_out_proto_101", b"fort_search_out_proto_101", "fuse_pokemon_response_proto_3017", b"fuse_pokemon_response_proto_3017", "generate_combat_challenge_id_out_proto_991", b"generate_combat_challenge_id_out_proto_991", "generategmap_signed_url_out_proto_5035", b"generategmap_signed_url_out_proto_5035", "geofence_update_out_proto_360000", b"geofence_update_out_proto_360000", "geofence_update_out_proto_5033", b"geofence_update_out_proto_5033", "get_action_log_response_801", b"get_action_log_response_801", "get_additional_pokemon_details_out_proto_1725", b"get_additional_pokemon_details_out_proto_1725", "get_adventure_sync_fitness_report_response_proto_640005", b"get_adventure_sync_fitness_report_response_proto_640005", "get_adventure_sync_progress_out_proto_230002", b"get_adventure_sync_progress_out_proto_230002", "get_adventure_sync_settings_response_proto_5046", b"get_adventure_sync_settings_response_proto_5046", "get_adventure_sync_settings_response_proto_640002", b"get_adventure_sync_settings_response_proto_640002", "get_app_request_token_redirect_u_r_l_platform_response_proto_600007", b"get_app_request_token_redirect_u_r_l_platform_response_proto_600007", "get_available_submissions_out_proto_5014", b"get_available_submissions_out_proto_5014", "get_battle_rejoin_status_out_proto_3062", b"get_battle_rejoin_status_out_proto_3062", "get_bonus_attracted_pokemon_out_proto_2350", b"get_bonus_attracted_pokemon_out_proto_2350", "get_bonuses_out_proto_2352", b"get_bonuses_out_proto_2352", "get_bread_lobby_details_out_proto_2457", b"get_bread_lobby_details_out_proto_2457", "get_buddy_history_out_proto_1355", b"get_buddy_history_out_proto_1355", "get_buddy_walked_out_proto_153", b"get_buddy_walked_out_proto_153", "get_change_pokemon_form_preview_response_proto_3021", b"get_change_pokemon_form_preview_response_proto_3021", "get_combat_challenge_out_proto_994", b"get_combat_challenge_out_proto_994", "get_combat_player_profile_out_proto_990", b"get_combat_player_profile_out_proto_990", "get_combat_results_out_proto_1003", b"get_combat_results_out_proto_1003", "get_contest_data_out_proto_2105", b"get_contest_data_out_proto_2105", "get_contest_entry_out_proto_2154", b"get_contest_entry_out_proto_2154", "get_contest_friend_entry_out_proto_2153", b"get_contest_friend_entry_out_proto_2153", "get_contests_unclaimed_rewards_out_proto_2106", b"get_contests_unclaimed_rewards_out_proto_2106", "get_daily_bonus_spawn_out_proto_3066", b"get_daily_bonus_spawn_out_proto_3066", "get_daily_encounter_out_proto_1601", b"get_daily_encounter_out_proto_1601", "get_eligible_combat_leagues_out_proto_2009", b"get_eligible_combat_leagues_out_proto_2009", "get_entered_contest_out_proto_2108", b"get_entered_contest_out_proto_2108", "get_event_rsvp_count_out_proto_3036", b"get_event_rsvp_count_out_proto_3036", "get_event_rsvps_out_proto_3031", b"get_event_rsvps_out_proto_3031", "get_fitness_report_out_proto_5025", b"get_fitness_report_out_proto_5025", "get_fitness_report_out_proto_640001", b"get_fitness_report_out_proto_640001", "get_fitness_rewards_out_proto_980", b"get_fitness_rewards_out_proto_980", "get_friendship_rewards_out_proto_955", b"get_friendship_rewards_out_proto_955", "get_hatched_eggs_out_proto_126", b"get_hatched_eggs_out_proto_126", "get_holoholo_inventory_out_proto_4", b"get_holoholo_inventory_out_proto_4", "get_inbox_out_proto_10105", b"get_inbox_out_proto_10105", "get_inbox_out_proto_809", b"get_inbox_out_proto_809", "get_incense_pokemon_out_proto_142", b"get_incense_pokemon_out_proto_142", "get_incense_recap_out_proto_2002", b"get_incense_recap_out_proto_2002", "get_inventory_response_proto_5005", b"get_inventory_response_proto_5005", "get_iris_social_scene_out_proto_3019", b"get_iris_social_scene_out_proto_3019", "get_local_time_out_proto_12", b"get_local_time_out_proto_12", "get_map_forts_out_proto_1401", b"get_map_forts_out_proto_1401", "get_map_objects_detail_for_campfire_out_proto_6013", b"get_map_objects_detail_for_campfire_out_proto_6013", "get_map_objects_for_campfire_out_proto_6012", b"get_map_objects_for_campfire_out_proto_6012", "get_map_objects_out_proto_106", b"get_map_objects_out_proto_106", "get_matchmaking_status_out_proto_1302", b"get_matchmaking_status_out_proto_1302", "get_mega_level_up_preview_out_proto_3080", b"get_mega_level_up_preview_out_proto_3080", "get_memento_list_out_proto_1913", b"get_memento_list_out_proto_1913", "get_milestones_out_proto_1803", b"get_milestones_out_proto_1803", "get_milestones_preview_out_proto_1805", b"get_milestones_preview_out_proto_1805", "get_mp_summary_out_proto_2467", b"get_mp_summary_out_proto_2467", "get_new_quests_out_proto_900", b"get_new_quests_out_proto_900", "get_nintendo_account_out_proto_1710", b"get_nintendo_account_out_proto_1710", "get_nintendo_o_auth2_url_out_proto_1712", b"get_nintendo_o_auth2_url_out_proto_1712", "get_non_remote_tradable_pokemon_out_proto_2604", b"get_non_remote_tradable_pokemon_out_proto_2604", "get_npc_combat_rewards_out_proto_1005", b"get_npc_combat_rewards_out_proto_1005", "get_num_pokemon_in_iris_social_scene_out_proto_6005", b"get_num_pokemon_in_iris_social_scene_out_proto_6005", "get_num_station_assists_out_proto_2476", b"get_num_station_assists_out_proto_2476", "get_outstanding_warnings_response_proto_200000", b"get_outstanding_warnings_response_proto_200000", "get_outstanding_warnings_response_proto_5039", b"get_outstanding_warnings_response_proto_5039", "get_party_out_proto_2304", b"get_party_out_proto_2304", "get_pending_remote_trade_out_proto_2605", b"get_pending_remote_trade_out_proto_2605", "get_photobomb_out_proto_1103", b"get_photobomb_out_proto_1103", "get_player_day_out_proto_9", b"get_player_day_out_proto_9", "get_player_out_proto_2", b"get_player_out_proto_2", "get_player_pokemon_field_book_out_proto_3065", b"get_player_pokemon_field_book_out_proto_3065", "get_player_raid_eligibility_out_proto_6003", b"get_player_raid_eligibility_out_proto_6003", "get_player_stamp_collections_out_proto_1901", b"get_player_stamp_collections_out_proto_1901", "get_player_status_proxy_out_proto_177", b"get_player_status_proxy_out_proto_177", "get_playergps_bookmarks_out_proto_22", b"get_playergps_bookmarks_out_proto_22", "get_pokemon_remote_trading_details_out_proto_2607", b"get_pokemon_remote_trading_details_out_proto_2607", "get_pokemon_size_leaderboard_entry_out_proto_2104", b"get_pokemon_size_leaderboard_entry_out_proto_2104", "get_pokemon_size_leaderboard_friend_entry_out_proto_2109", b"get_pokemon_size_leaderboard_friend_entry_out_proto_2109", "get_pokemon_tags_out_proto_1721", b"get_pokemon_tags_out_proto_1721", "get_pokemon_trading_cost_out_proto_2608", b"get_pokemon_trading_cost_out_proto_2608", "get_pokestop_encounter_out_proto_2005", b"get_pokestop_encounter_out_proto_2005", "get_published_routes_out_proto_1403", b"get_published_routes_out_proto_1403", "get_quest_details_out_proto_901", b"get_quest_details_out_proto_901", "get_quest_ui_out_proto_2008", b"get_quest_ui_out_proto_2008", "get_raid_details_out_proto_163", b"get_raid_details_out_proto_163", "get_raid_lobby_counter_out_proto_2011", b"get_raid_lobby_counter_out_proto_2011", "get_referral_code_out_proto_1800", b"get_referral_code_out_proto_1800", "get_remote_config_versions_out_proto_7", b"get_remote_config_versions_out_proto_7", "get_remote_tradable_pokemon_from_other_player_out_proto_2603", b"get_remote_tradable_pokemon_from_other_player_out_proto_2603", "get_reward_tiers_response_proto_310300", b"get_reward_tiers_response_proto_310300", "get_rocket_balloon_out_proto_1206", b"get_rocket_balloon_out_proto_1206", "get_route_by_short_code_out_proto_1429", b"get_route_by_short_code_out_proto_1429", "get_route_creations_out_proto_1424", b"get_route_creations_out_proto_1424", "get_route_draft_out_proto_1426", b"get_route_draft_out_proto_1426", "get_routes_out_proto_1405", b"get_routes_out_proto_1405", "get_save_for_later_entries_out_proto_2466", b"get_save_for_later_entries_out_proto_2466", "get_server_time_out_proto_11", b"get_server_time_out_proto_11", "get_station_info_out_proto_3051", b"get_station_info_out_proto_3051", "get_stationed_pokemon_details_out_proto_2462", b"get_stationed_pokemon_details_out_proto_2462", "get_suggested_players_social_out_proto_3055", b"get_suggested_players_social_out_proto_3055", "get_supply_balloon_out_proto_3068", b"get_supply_balloon_out_proto_3068", "get_survey_eligibility_out_proto_3025", b"get_survey_eligibility_out_proto_3025", "get_time_travel_information_out_proto_3076", b"get_time_travel_information_out_proto_3076", "get_timedgroup_challenge_out_proto_1700", b"get_timedgroup_challenge_out_proto_1700", "get_trading_out_proto_974", b"get_trading_out_proto_974", "get_unfuse_pokemon_preview_response_proto_3023", b"get_unfuse_pokemon_preview_response_proto_3023", "get_vps_event_out_proto_3000", b"get_vps_event_out_proto_3000", "get_vs_seeker_status_out_proto_1304", b"get_vs_seeker_status_out_proto_1304", "get_web_token_out_proto_1107", b"get_web_token_out_proto_1107", "get_web_token_out_proto_5045", b"get_web_token_out_proto_5045", "get_weekly_challenge_info_out_proto_3041", b"get_weekly_challenge_info_out_proto_3041", "getcombat_downscaled_stats_out_proto_3090", b"getcombat_downscaled_stats_out_proto_3090", "getgame_config_versions_out_proto_21", b"getgame_config_versions_out_proto_21", "getgame_master_client_templates_out_proto_6", b"getgame_master_client_templates_out_proto_6", "getgeofenced_ad_out_proto_1820", b"getgeofenced_ad_out_proto_1820", "getgift_box_details_out_proto_952", b"getgift_box_details_out_proto_952", "getgmap_settings_out_proto_1105", b"getgmap_settings_out_proto_1105", "getgmap_settings_out_proto_5036", b"getgmap_settings_out_proto_5036", "getgym_badge_details_out_proto_812", b"getgym_badge_details_out_proto_812", "grant_expired_item_consolation_out_proto_3057", b"grant_expired_item_consolation_out_proto_3057", "gym_battle_attack_out_proto_158", b"gym_battle_attack_out_proto_158", "gym_deploy_out_proto_155", b"gym_deploy_out_proto_155", "gym_feed_pokemon_out_proto_164", b"gym_feed_pokemon_out_proto_164", "gym_start_session_out_proto_157", b"gym_start_session_out_proto_157", "gymget_info_out_proto_156", b"gymget_info_out_proto_156", "iap_get_active_subscriptions_response_proto_310201", b"iap_get_active_subscriptions_response_proto_310201", "iap_get_available_skus_and_balances_out_proto_310001", b"iap_get_available_skus_and_balances_out_proto_310001", "iap_get_available_skus_and_balances_out_proto_5020", b"iap_get_available_skus_and_balances_out_proto_5020", "iap_get_available_subscriptions_response_proto_310200", b"iap_get_available_subscriptions_response_proto_310200", "iap_get_user_response_proto_311101", b"iap_get_user_response_proto_311101", "iap_purchase_sku_out_proto_310000", b"iap_purchase_sku_out_proto_310000", "iap_purchase_sku_out_proto_5019", b"iap_purchase_sku_out_proto_5019", "iap_redeem_apple_receipt_out_proto_310101", b"iap_redeem_apple_receipt_out_proto_310101", "iap_redeem_apple_receipt_out_proto_5022", b"iap_redeem_apple_receipt_out_proto_5022", "iap_redeem_desktop_receipt_out_proto_310102", b"iap_redeem_desktop_receipt_out_proto_310102", "iap_redeem_desktop_receipt_out_proto_5023", b"iap_redeem_desktop_receipt_out_proto_5023", "iap_redeem_google_receipt_out_proto_310100", b"iap_redeem_google_receipt_out_proto_310100", "iap_redeem_google_receipt_out_proto_5021", b"iap_redeem_google_receipt_out_proto_5021", "iap_redeem_samsung_receipt_out_proto_310103", b"iap_redeem_samsung_receipt_out_proto_310103", "iap_redeem_samsung_receipt_out_proto_5037", b"iap_redeem_samsung_receipt_out_proto_5037", "iap_redeem_xsolla_receipt_response_proto_311100", b"iap_redeem_xsolla_receipt_response_proto_311100", "iap_setin_game_currency_exchange_rate_out_proto_310002", b"iap_setin_game_currency_exchange_rate_out_proto_310002", "incense_encounter_out_proto_143", b"incense_encounter_out_proto_143", "internal_accept_friendinvite_out_proto_10004", b"internal_accept_friendinvite_out_proto_10004", "internal_add_favorite_friend_response_10023", b"internal_add_favorite_friend_response_10023", "internal_add_login_action_out_proto_600000", b"internal_add_login_action_out_proto_600000", "internal_block_account_out_proto_10025", b"internal_block_account_out_proto_10025", "internal_cancel_friendinvite_out_proto_10003", b"internal_cancel_friendinvite_out_proto_10003", "internal_decline_friendinvite_out_proto_10005", b"internal_decline_friendinvite_out_proto_10005", "internal_dismiss_contact_list_update_response_20017", b"internal_dismiss_contact_list_update_response_20017", "internal_dismiss_outgoing_gameinvites_response_20012", b"internal_dismiss_outgoing_gameinvites_response_20012", "internal_gar_proxy_response_proto_600005", b"internal_gar_proxy_response_proto_600005", "internal_get_account_settings_out_proto_10022", b"internal_get_account_settings_out_proto_10022", "internal_get_client_feature_flags_response_20008", b"internal_get_client_feature_flags_response_20008", "internal_get_contact_listinfo_response_20016", b"internal_get_contact_listinfo_response_20016", "internal_get_facebook_friend_list_out_proto_10014", b"internal_get_facebook_friend_list_out_proto_10014", "internal_get_friend_code_out_proto_10013", b"internal_get_friend_code_out_proto_10013", "internal_get_friend_details_out_proto_10010", b"internal_get_friend_details_out_proto_10010", "internal_get_friend_details_out_proto_20007", b"internal_get_friend_details_out_proto_20007", "internal_get_friend_recommendation_response_20500", b"internal_get_friend_recommendation_response_20500", "internal_get_friends_list_out_proto_10006", b"internal_get_friends_list_out_proto_10006", "internal_get_outgoing_blocks_out_proto_10027", b"internal_get_outgoing_blocks_out_proto_10027", "internal_get_outgoing_friendinvites_out_proto_10007", b"internal_get_outgoing_friendinvites_out_proto_10007", "internal_get_photos_out_proto_10203", b"internal_get_photos_out_proto_10203", "internal_get_player_settings_out_proto_10017", b"internal_get_player_settings_out_proto_10017", "internal_get_player_settings_out_proto_818", b"internal_get_player_settings_out_proto_818", "internal_get_profile_response_20003", b"internal_get_profile_response_20003", "internal_get_signed_url_out_proto_10201", b"internal_get_signed_url_out_proto_10201", "internal_getincoming_friendinvites_out_proto_10008", b"internal_getincoming_friendinvites_out_proto_10008", "internal_getincoming_gameinvites_response_20010", b"internal_getincoming_gameinvites_response_20010", "internal_link_to_account_login_response_proto_600006", b"internal_link_to_account_login_response_proto_600006", "internal_list_friends_response_20006", b"internal_list_friends_response_20006", "internal_list_login_action_out_proto_600002", b"internal_list_login_action_out_proto_600002", "internal_list_opt_out_notification_categories_response_proto_10106", b"internal_list_opt_out_notification_categories_response_proto_10106", "internal_notify_contact_list_friends_response_20018", b"internal_notify_contact_list_friends_response_20018", "internal_push_notification_registry_out_proto_10101", b"internal_push_notification_registry_out_proto_10101", "internal_refer_contact_list_friend_response_20015", b"internal_refer_contact_list_friend_response_20015", "internal_remove_favorite_friend_response_10024", b"internal_remove_favorite_friend_response_10024", "internal_remove_friend_out_proto_10009", b"internal_remove_friend_out_proto_10009", "internal_remove_login_action_out_proto_600001", b"internal_remove_login_action_out_proto_600001", "internal_replace_login_action_out_proto_600003", b"internal_replace_login_action_out_proto_600003", "internal_search_player_out_proto_10000", b"internal_search_player_out_proto_10000", "internal_send_contact_list_friendinvite_response_20014", b"internal_send_contact_list_friendinvite_response_20014", "internal_send_friendinvite_out_proto_10002", b"internal_send_friendinvite_out_proto_10002", "internal_set_account_settings_out_proto_10021", b"internal_set_account_settings_out_proto_10021", "internal_set_birthday_response_proto_600004", b"internal_set_birthday_response_proto_600004", "internal_setin_game_currency_exchange_rate_out_proto_5032", b"internal_setin_game_currency_exchange_rate_out_proto_5032", "internal_submitimage_out_proto_10202", b"internal_submitimage_out_proto_10202", "internal_sync_contact_list_response_20013", b"internal_sync_contact_list_response_20013", "internal_unblock_account_out_proto_10026", b"internal_unblock_account_out_proto_10026", "internal_update_facebook_status_out_proto_10015", b"internal_update_facebook_status_out_proto_10015", "internal_update_friendship_response_20002", b"internal_update_friendship_response_20002", "internal_update_notification_out_proto_10103", b"internal_update_notification_out_proto_10103", "internal_update_profile_response_20001", b"internal_update_profile_response_20001", "internal_updateincoming_gameinvite_response_20011", b"internal_updateincoming_gameinvite_response_20011", "internalinvite_facebook_friend_out_proto_10011", b"internalinvite_facebook_friend_out_proto_10011", "internalinvite_game_response_20004", b"internalinvite_game_response_20004", "internalis_account_blocked_out_proto_10028", b"internalis_account_blocked_out_proto_10028", "internalis_my_friend_out_proto_10012", b"internalis_my_friend_out_proto_10012", "invasion_encounter_out_proto_1204", b"invasion_encounter_out_proto_1204", "is_sku_available_out_proto_172", b"is_sku_available_out_proto_172", "join_bread_lobby_out_proto_2450", b"join_bread_lobby_out_proto_2450", "join_buddy_multiplayer_session_out_proto_1457", b"join_buddy_multiplayer_session_out_proto_1457", "join_lobby_out_proto_159", b"join_lobby_out_proto_159", "join_party_out_proto_2301", b"join_party_out_proto_2301", "kick_other_player_from_party_out_proto_3016", b"kick_other_player_from_party_out_proto_3016", "leave_breadlobby_out_proto_2455", b"leave_breadlobby_out_proto_2455", "leave_buddy_multiplayer_session_out_proto_1458", b"leave_buddy_multiplayer_session_out_proto_1458", "leave_party_out_proto_2303", b"leave_party_out_proto_2303", "leave_weekly_challenge_matchmaking_out_proto_3064", b"leave_weekly_challenge_matchmaking_out_proto_3064", "leavelobby_out_proto_160", b"leavelobby_out_proto_160", "level_up_rewards_out_proto_128", b"level_up_rewards_out_proto_128", "lift_user_age_gate_confirmation_out_proto_830", b"lift_user_age_gate_confirmation_out_proto_830", "like_route_pin_out_proto_1727", b"like_route_pin_out_proto_1727", "list_avatar_appearance_items_out_proto_410", b"list_avatar_appearance_items_out_proto_410", "list_avatar_customizations_out_proto_807", b"list_avatar_customizations_out_proto_807", "list_avatar_store_items_out_proto_409", b"list_avatar_store_items_out_proto_409", "list_device_verification_challenges_response_proto_250102", b"list_device_verification_challenges_response_proto_250102", "list_friend_activities_response_proto_10029", b"list_friend_activities_response_proto_10029", "list_gym_badges_out_proto_811", b"list_gym_badges_out_proto_811", "list_player_devices_response_proto_250101", b"list_player_devices_response_proto_250101", "list_route_badges_out_proto_1409", b"list_route_badges_out_proto_1409", "list_route_stamps_out_proto_1411", b"list_route_stamps_out_proto_1411", "listlogin_action_out_proto_5010", b"listlogin_action_out_proto_5010", "location_ping_out_proto_360001", b"location_ping_out_proto_360001", "location_ping_out_proto_5034", b"location_ping_out_proto_5034", "loot_station_out_proto_2461", b"loot_station_out_proto_2461", "maps_client_telemetry_response_proto_610000", b"maps_client_telemetry_response_proto_610000", "mark_fieldbook_seen_response_proto_3078", b"mark_fieldbook_seen_response_proto_3078", "mark_newsfeed_read_response_5050", b"mark_newsfeed_read_response_5050", "mark_read_news_article_out_proto_817", b"mark_read_news_article_out_proto_817", "mark_remote_tradable_out_proto_2602", b"mark_remote_tradable_out_proto_2602", "mark_save_for_later_out_proto_2463", b"mark_save_for_later_out_proto_2463", "mark_tutorial_complete_out_proto_406", b"mark_tutorial_complete_out_proto_406", "markmilestone_as_viewed_out_proto_1804", b"markmilestone_as_viewed_out_proto_1804", "mega_evolve_pokemon_out_proto_1502", b"mega_evolve_pokemon_out_proto_1502", "mega_level_up_out_proto_3079", b"mega_level_up_out_proto_3079", "natural_art_poi_encounter_out_proto_3070", b"natural_art_poi_encounter_out_proto_3070", "neutral_avatar_badge_reward_out_proto_450", b"neutral_avatar_badge_reward_out_proto_450", "nickname_pokemon_out_proto_149", b"nickname_pokemon_out_proto_149", "npc_open_gift_out_proto_2402", b"npc_open_gift_out_proto_2402", "npc_route_gift_out_proto_1423", b"npc_route_gift_out_proto_1423", "npc_send_gift_out_proto_2401", b"npc_send_gift_out_proto_2401", "npc_update_state_out_proto_2400", b"npc_update_state_out_proto_2400", "open_buddy_giftout_proto_1353", b"open_buddy_giftout_proto_1353", "open_combat_challengeout_proto_993", b"open_combat_challengeout_proto_993", "open_combat_sessionout_proto_1000", b"open_combat_sessionout_proto_1000", "open_giftout_proto_951", b"open_giftout_proto_951", "open_invasion_combat_sessionout_proto_1202", b"open_invasion_combat_sessionout_proto_1202", "open_npc_combat_sessionout_proto_1007", b"open_npc_combat_sessionout_proto_1007", "open_sponsored_giftout_proto_1650", b"open_sponsored_giftout_proto_1650", "open_supply_balloonout_proto_3069", b"open_supply_balloonout_proto_3069", "open_tradingout_proto_970", b"open_tradingout_proto_970", "optout_proto_10104", b"optout_proto_10104", "optout_proto_5003", b"optout_proto_5003", "party_send_dark_launch_log_outproto_2306", b"party_send_dark_launch_log_outproto_2306", "party_update_location_outproto_2305", b"party_update_location_outproto_2305", "ping_responseproto_5007", b"ping_responseproto_5007", "player_spawnablepokemon_outproto_2007", b"player_spawnablepokemon_outproto_2007", "playerprofile_outproto_121", b"playerprofile_outproto_121", "power_uppokestop_encounter_outproto_1900", b"power_uppokestop_encounter_outproto_1900", "prepare_bread_lobby_outproto_2453", b"prepare_bread_lobby_outproto_2453", "preview_contributeparty_item_outproto_3015", b"preview_contributeparty_item_outproto_3015", "process_tappable_outproto_1408", b"process_tappable_outproto_1408", "process_tappable_outproto_1416", b"process_tappable_outproto_1416", "processplayer_inbox_outproto_3024", b"processplayer_inbox_outproto_3024", "profanity_check_outproto_1653", b"profanity_check_outproto_1653", "progress_quest_outproto_906", b"progress_quest_outproto_906", "progress_route_outproto_1406", b"progress_route_outproto_1406", "propose_remote_trade_outproto_2600", b"propose_remote_trade_outproto_2600", "proxy_responseproto_5012", b"proxy_responseproto_5012", "purifypokemon_outproto_1205", b"purifypokemon_outproto_1205", "push_notification_registry_outproto_5000", b"push_notification_registry_outproto_5000", "quest_encounter_out_proto_904", b"quest_encounter_out_proto_904", "quit_combat_out_proto_1002", b"quit_combat_out_proto_1002", "rateroute_out_proto_1412", b"rateroute_out_proto_1412", "read_quest_dialog_out_proto_908", b"read_quest_dialog_out_proto_908", "reassign_player_out_proto_169", b"reassign_player_out_proto_169", "recallroute_draft_out_proto_1421", b"recallroute_draft_out_proto_1421", "recycle_item_out_proto_137", b"recycle_item_out_proto_137", "redeem_passcoderesponse_proto_5006", b"redeem_passcoderesponse_proto_5006", "redeem_premium_gift_for_user_out_proto_3089", b"redeem_premium_gift_for_user_out_proto_3089", "redeem_ticket_gift_for_friend_out_proto_2001", b"redeem_ticket_gift_for_friend_out_proto_2001", "refresh_proximity_tokensresponse_proto_362000", b"refresh_proximity_tokensresponse_proto_362000", "register_background_deviceresponse_proto_230000", b"register_background_deviceresponse_proto_230000", "register_background_deviceresponse_proto_8", b"register_background_deviceresponse_proto_8", "register_deviceresponse_proto_250100", b"register_deviceresponse_proto_250100", "register_sfidaresponse_800", b"register_sfidaresponse_800", "release_pokemon_out_proto_112", b"release_pokemon_out_proto_112", "release_stationed_pokemon_out_proto_2472", b"release_stationed_pokemon_out_proto_2472", "remote_gift_pingresponse_proto_1503", b"remote_gift_pingresponse_proto_1503", "remove_campfire_forreferee_out_proto_6002", b"remove_campfire_forreferee_out_proto_6002", "remove_login_action_out_proto_5009", b"remove_login_action_out_proto_5009", "remove_player_deviceresponse_proto_250104", b"remove_player_deviceresponse_proto_250104", "remove_pokemon_size_leaderboard_entry_out_proto_2103", b"remove_pokemon_size_leaderboard_entry_out_proto_2103", "remove_ptc_login_action_out_proto_3007", b"remove_ptc_login_action_out_proto_3007", "remove_quest_out_proto_903", b"remove_quest_out_proto_903", "remove_save_for_later_out_proto_2465", b"remove_save_for_later_out_proto_2465", "replace_login_action_out_proto_5015", b"replace_login_action_out_proto_5015", "report_ad_feedbackresponse_1716", b"report_ad_feedbackresponse_1716", "report_ad_interactionresponse_1651", b"report_ad_interactionresponse_1651", "report_proximity_contactsresponse_proto_362001", b"report_proximity_contactsresponse_proto_362001", "report_station_out_proto_2470", b"report_station_out_proto_2470", "reportroute_out_proto_1415", b"reportroute_out_proto_1415", "resend_device_verification_emailresponse_proto_250105", b"resend_device_verification_emailresponse_proto_250105", "respondremote_trade_out_proto_2606", b"respondremote_trade_out_proto_2606", "route_nearby_notif_shown_out_proto_1422", b"route_nearby_notif_shown_out_proto_1422", "route_update_seen_out_proto_1420", b"route_update_seen_out_proto_1420", "saturday_complete_out_proto_828", b"saturday_complete_out_proto_828", "saturdaystart_out_proto_827", b"saturdaystart_out_proto_827", "save_combat_player_preferences_out_proto_999", b"save_combat_player_preferences_out_proto_999", "save_player_preferences_out_proto_1652", b"save_player_preferences_out_proto_1652", "save_playersnapshot_out_proto_954", b"save_playersnapshot_out_proto_954", "savesocial_playersettings_out_proto_10016", b"savesocial_playersettings_out_proto_10016", "savesocial_playersettings_out_proto_959", b"savesocial_playersettings_out_proto_959", "savestamp_out_proto_1902", b"savestamp_out_proto_1902", "send_bread_battle_invitation_out_proto_1505", b"send_bread_battle_invitation_out_proto_1505", "send_event_rsvp_invitation_out_proto_3039", b"send_event_rsvp_invitation_out_proto_3039", "send_friend_invite_via_referral_code_out_proto_1802", b"send_friend_invite_via_referral_code_out_proto_1802", "send_friend_request_via_player_id_out_proto_2010", b"send_friend_request_via_player_id_out_proto_2010", "send_gift_out_proto_950", b"send_gift_out_proto_950", "send_party_invitation_out_proto_2310", b"send_party_invitation_out_proto_2310", "send_party_invitation_out_proto_3008", b"send_party_invitation_out_proto_3008", "send_probe_out_proto_1020", b"send_probe_out_proto_1020", "send_raid_invitation_out_proto_1504", b"send_raid_invitation_out_proto_1504", "set_avatar_item_as_viewed_out_proto_808", b"set_avatar_item_as_viewed_out_proto_808", "set_avatar_out_proto_404", b"set_avatar_out_proto_404", "set_birthday_response_proto_5048", b"set_birthday_response_proto_5048", "set_bread_lobby_public_out_proto_2452", b"set_bread_lobby_public_out_proto_2452", "set_buddy_pokemon_out_proto_152", b"set_buddy_pokemon_out_proto_152", "set_contactsettings_out_proto_151", b"set_contactsettings_out_proto_151", "set_favorite_pokemon_out_proto_148", b"set_favorite_pokemon_out_proto_148", "set_friend_nickname_out_proto_957", b"set_friend_nickname_out_proto_957", "set_friend_premium_gift_preference_out_proto_963", b"set_friend_premium_gift_preference_out_proto_963", "set_lobby_pokemon_out_proto_162", b"set_lobby_pokemon_out_proto_162", "set_lobby_visibility_out_proto_161", b"set_lobby_visibility_out_proto_161", "set_neutral_avatar_out_proto_408", b"set_neutral_avatar_out_proto_408", "set_player_team_out_proto_405", b"set_player_team_out_proto_405", "set_playerstatus_out_proto_20", b"set_playerstatus_out_proto_20", "set_pokemon_tags_for_pokemon_out_proto_1720", b"set_pokemon_tags_for_pokemon_out_proto_1720", "sfida_associate_response_822", b"sfida_associate_response_822", "sfida_capture_response_806", b"sfida_capture_response_806", "sfida_certification_response_802", b"sfida_certification_response_802", "sfida_check_pairing_response_823", b"sfida_check_pairing_response_823", "sfida_disassociate_response_824", b"sfida_disassociate_response_824", "sfida_dowser_response_805", b"sfida_dowser_response_805", "sfida_update_response_803", b"sfida_update_response_803", "skip_enter_referral_code_out_proto_1915", b"skip_enter_referral_code_out_proto_1915", "smart_glassessyncsettings_response_proto_3027", b"smart_glassessyncsettings_response_proto_3027", "softsfida_capture_out_proto_833", b"softsfida_capture_out_proto_833", "softsfida_location_update_out_proto_834", b"softsfida_location_update_out_proto_834", "softsfida_pause_out_proto_832", b"softsfida_pause_out_proto_832", "softsfida_recap_out_proto_835", b"softsfida_recap_out_proto_835", "softsfidastart_out_proto_831", b"softsfidastart_out_proto_831", "start_bread_battle_out_proto_2456", b"start_bread_battle_out_proto_2456", "start_incident_out_proto_1200", b"start_incident_out_proto_1200", "start_incident_out_proto_1207", b"start_incident_out_proto_1207", "start_mp_walk_quest_out_proto_2458", b"start_mp_walk_quest_out_proto_2458", "start_party_out_proto_2302", b"start_party_out_proto_2302", "start_party_quest_out_proto_2308", b"start_party_quest_out_proto_2308", "start_pvp_battle_out_proto_3071", b"start_pvp_battle_out_proto_3071", "start_raid_battle_out_proto_165", b"start_raid_battle_out_proto_165", "start_route_out_proto_1404", b"start_route_out_proto_1404", "start_team_leader_battle_out_proto_3059", b"start_team_leader_battle_out_proto_3059", "start_tgr_battle_out_proto_3056", b"start_tgr_battle_out_proto_3056", "start_weekly_challenge_group_matchmaking_out_proto_3047", b"start_weekly_challenge_group_matchmaking_out_proto_3047", "station_pokemon_out_proto_2460", b"station_pokemon_out_proto_2460", "submit_combat_challenge_pokemons_out_proto_998", b"submit_combat_challenge_pokemons_out_proto_998", "submit_new_poi_out_proto_5011", b"submit_new_poi_out_proto_5011", "submit_route_draft_out_proto_1402", b"submit_route_draft_out_proto_1402", "sync_battle_inventory_out_proto_3011", b"sync_battle_inventory_out_proto_3011", "sync_weekly_challenge_matchmakingstatus_out_proto_3048", b"sync_weekly_challenge_matchmakingstatus_out_proto_3048", "titan_async_file_upload_complete_out_proto_620402", b"titan_async_file_upload_complete_out_proto_620402", "titan_generate_gmap_signed_url_out_proto_620300", b"titan_generate_gmap_signed_url_out_proto_620300", "titan_get_a_r_mapping_settings_out_proto_620403", b"titan_get_a_r_mapping_settings_out_proto_620403", "titan_get_available_submissions_out_proto_620001", b"titan_get_available_submissions_out_proto_620001", "titan_get_gmap_settings_out_proto_620301", b"titan_get_gmap_settings_out_proto_620301", "titan_get_grapeshot_upload_url_out_proto_620401", b"titan_get_grapeshot_upload_url_out_proto_620401", "titan_get_image_gallery_settings_out_proto_620502", b"titan_get_image_gallery_settings_out_proto_620502", "titan_get_images_for_poi_out_proto_620500", b"titan_get_images_for_poi_out_proto_620500", "titan_get_player_submission_validation_settings_out_proto_620003", b"titan_get_player_submission_validation_settings_out_proto_620003", "titan_get_pois_in_radius_out_proto_620601", b"titan_get_pois_in_radius_out_proto_620601", "titan_submit_new_poi_out_proto_620000", b"titan_submit_new_poi_out_proto_620000", "titan_submit_player_image_vote_for_poi_out_proto_620501", b"titan_submit_player_image_vote_for_poi_out_proto_620501", "transfer_contest_entry_out_proto_2152", b"transfer_contest_entry_out_proto_2152", "transfer_pokemon_size_leaderboard_entry_out_proto_2102", b"transfer_pokemon_size_leaderboard_entry_out_proto_2102", "transfer_pokemonto_pokemon_home_out_proto_1713", b"transfer_pokemonto_pokemon_home_out_proto_1713", "unfuse_pokemon_response_proto_3018", b"unfuse_pokemon_response_proto_3018", "unlink_nintendo_account_out_proto_1711", b"unlink_nintendo_account_out_proto_1711", "unlock_pokemon_move_out_proto_1004", b"unlock_pokemon_move_out_proto_1004", "unlock_temporary_evolution_level_out_proto_1506", b"unlock_temporary_evolution_level_out_proto_1506", "update_adventure_sync_fitness_response_proto_640004", b"update_adventure_sync_fitness_response_proto_640004", "update_adventure_sync_settings_response_proto_5047", b"update_adventure_sync_settings_response_proto_5047", "update_adventure_sync_settings_response_proto_640003", b"update_adventure_sync_settings_response_proto_640003", "update_breadcrumb_history_response_proto_361000", b"update_breadcrumb_history_response_proto_361000", "update_bulk_player_location_response_proto_360002", b"update_bulk_player_location_response_proto_360002", "update_combat_out_proto_1001", b"update_combat_out_proto_1001", "update_contest_entry_out_proto_2151", b"update_contest_entry_out_proto_2151", "update_device_verification_response_proto_250103", b"update_device_verification_response_proto_250103", "update_event_rsvp_selection_out_proto_3040", b"update_event_rsvp_selection_out_proto_3040", "update_field_book_post_catch_pokemon_out_proto_3075", b"update_field_book_post_catch_pokemon_out_proto_3075", "update_invasion_battle_out_proto_1203", b"update_invasion_battle_out_proto_1203", "update_iris_social_scene_out_proto_3020", b"update_iris_social_scene_out_proto_3020", "update_notification_out_proto_5002", b"update_notification_out_proto_5002", "update_player_gps_bookmarks_out_proto_23", b"update_player_gps_bookmarks_out_proto_23", "update_pokemon_size_leaderboard_entry_out_proto_2101", b"update_pokemon_size_leaderboard_entry_out_proto_2101", "update_postcard_out_proto_1911", b"update_postcard_out_proto_1911", "update_route_draft_out_proto_1400", b"update_route_draft_out_proto_1400", "update_survey_eligibility_out_proto_3026", b"update_survey_eligibility_out_proto_3026", "update_trading_out_proto_971", b"update_trading_out_proto_971", "update_vps_event_out_proto_3001", b"update_vps_event_out_proto_3001", "upgrade_pokemon_out_proto_147", b"upgrade_pokemon_out_proto_147", "upload_combat_client_log_out_proto_1916", b"upload_combat_client_log_out_proto_1916", "upload_raid_client_log_out_proto_1914", b"upload_raid_client_log_out_proto_1914", "use_incense_action_out_proto_141", b"use_incense_action_out_proto_141", "use_item_battle_boost_out_proto_174", b"use_item_battle_boost_out_proto_174", "use_item_bulk_heal_out_proto_173", b"use_item_bulk_heal_out_proto_173", "use_item_capture_out_proto_114", b"use_item_capture_out_proto_114", "use_item_egg_incubator_out_proto_140", b"use_item_egg_incubator_out_proto_140", "use_item_encounter_out_proto_154", b"use_item_encounter_out_proto_154", "use_item_lucky_friend_applicator_out_proto_175", b"use_item_lucky_friend_applicator_out_proto_175", "use_item_move_reroll_out_proto_813", b"use_item_move_reroll_out_proto_813", "use_item_mp_replenish_out_proto_2468", b"use_item_mp_replenish_out_proto_2468", "use_item_potion_out_proto_113", b"use_item_potion_out_proto_113", "use_item_rare_candy_out_proto_814", b"use_item_rare_candy_out_proto_814", "use_item_revive_out_proto_116", b"use_item_revive_out_proto_116", "use_item_stardust_boost_out_proto_168", b"use_item_stardust_boost_out_proto_168", "use_item_stat_increase_out_proto_176", b"use_item_stat_increase_out_proto_176", "use_item_xp_boost_out_proto_139", b"use_item_xp_boost_out_proto_139", "use_non_combat_move_response_proto_2014", b"use_non_combat_move_response_proto_2014", "use_save_for_later_out_proto_2464", b"use_save_for_later_out_proto_2464", "verify_challenge_out_proto_601", b"verify_challenge_out_proto_601", "view_route_pin_out_proto_1728", b"view_route_pin_out_proto_1728", "vs_seeker_reward_encounter_out_proto_1307", b"vs_seeker_reward_encounter_out_proto_1307", "vs_seeker_start_matchmaking_out_proto_1300", b"vs_seeker_start_matchmaking_out_proto_1300", "waina_get_rewards_response_825", b"waina_get_rewards_response_825", "waina_submit_sleep_data_response_826", b"waina_submit_sleep_data_response_826"]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
         def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -30318,6 +30698,7 @@ class AttackRaidBattleOutProto(_message.Message):
         ERROR_INVALID_ATTACK_ACTIONS: AttackRaidBattleOutProto._Result.ValueType  # 4
         ERROR_NOT_PART_OF_BATTLE: AttackRaidBattleOutProto._Result.ValueType  # 5
         ERROR_BATTLE_ID_NOT_RAID: AttackRaidBattleOutProto._Result.ValueType  # 6
+        ERROR_PLAYER_NOT_ELIGIBLE: AttackRaidBattleOutProto._Result.ValueType  # 7
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: AttackRaidBattleOutProto.Result.ValueType  # 0
@@ -30327,6 +30708,7 @@ class AttackRaidBattleOutProto(_message.Message):
     ERROR_INVALID_ATTACK_ACTIONS: AttackRaidBattleOutProto.Result.ValueType  # 4
     ERROR_NOT_PART_OF_BATTLE: AttackRaidBattleOutProto.Result.ValueType  # 5
     ERROR_BATTLE_ID_NOT_RAID: AttackRaidBattleOutProto.Result.ValueType  # 6
+    ERROR_PLAYER_NOT_ELIGIBLE: AttackRaidBattleOutProto.Result.ValueType  # 7
 
     RESULT_FIELD_NUMBER: _builtins.int
     BATTLE_UPDATE_FIELD_NUMBER: _builtins.int
@@ -31408,6 +31790,7 @@ class AwardFreeRaidTicketOutProto(_message.Message):
         ERROR_PLAYER_DOES_NOT_MEET_MIN_LEVEL: AwardFreeRaidTicketOutProto._Result.ValueType  # 2
         ERROR_DAILY_TICKET_ALREADY_AWARDED: AwardFreeRaidTicketOutProto._Result.ValueType  # 3
         ERROR_PLAYER_OUT_OF_RANGE: AwardFreeRaidTicketOutProto._Result.ValueType  # 4
+        ERROR_PLAYER_NOT_ELIGIBLE: AwardFreeRaidTicketOutProto._Result.ValueType  # 5
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     NO_RESULT_SET: AwardFreeRaidTicketOutProto.Result.ValueType  # 0
@@ -31415,6 +31798,7 @@ class AwardFreeRaidTicketOutProto(_message.Message):
     ERROR_PLAYER_DOES_NOT_MEET_MIN_LEVEL: AwardFreeRaidTicketOutProto.Result.ValueType  # 2
     ERROR_DAILY_TICKET_ALREADY_AWARDED: AwardFreeRaidTicketOutProto.Result.ValueType  # 3
     ERROR_PLAYER_OUT_OF_RANGE: AwardFreeRaidTicketOutProto.Result.ValueType  # 4
+    ERROR_PLAYER_NOT_ELIGIBLE: AwardFreeRaidTicketOutProto.Result.ValueType  # 5
 
     RESULT_FIELD_NUMBER: _builtins.int
     result: Global___AwardFreeRaidTicketOutProto.Result.ValueType
@@ -33675,6 +34059,8 @@ class BattleEventProto(_message.Message):
             CRAMORANT_GULP_MISSILE_LOAD: BattleEventProto.Cinematic._CinematicType.ValueType  # 55
             CRAMORANT_GULP_MISSILE_LAUNCH_GULPING_FORM: BattleEventProto.Cinematic._CinematicType.ValueType  # 56
             CRAMORANT_GULP_MISSILE_LAUNCH_GORGING_FORM: BattleEventProto.Cinematic._CinematicType.ValueType  # 57
+            MINIOR_METEOR_TO_CORE: BattleEventProto.Cinematic._CinematicType.ValueType  # 58
+            MINIOR_CORE_TO_METEOR: BattleEventProto.Cinematic._CinematicType.ValueType  # 59
 
         class CinematicType(_CinematicType, metaclass=_CinematicTypeEnumTypeWrapper): ...
         UNSET: BattleEventProto.Cinematic.CinematicType.ValueType  # 0
@@ -33701,6 +34087,8 @@ class BattleEventProto(_message.Message):
         CRAMORANT_GULP_MISSILE_LOAD: BattleEventProto.Cinematic.CinematicType.ValueType  # 55
         CRAMORANT_GULP_MISSILE_LAUNCH_GULPING_FORM: BattleEventProto.Cinematic.CinematicType.ValueType  # 56
         CRAMORANT_GULP_MISSILE_LAUNCH_GORGING_FORM: BattleEventProto.Cinematic.CinematicType.ValueType  # 57
+        MINIOR_METEOR_TO_CORE: BattleEventProto.Cinematic.CinematicType.ValueType  # 58
+        MINIOR_CORE_TO_METEOR: BattleEventProto.Cinematic.CinematicType.ValueType  # 59
 
         @_typing.final
         class BreadMoveMetadata(_message.Message):
@@ -34794,6 +35182,7 @@ class BattleParticipantProto(_message.Message):
     IS_SELF_INVITE_FIELD_NUMBER: _builtins.int
     CHARGE_ATTACK_DATA_FIELD_NUMBER: _builtins.int
     HAS_ACTIVE_PRIMAL_EVOLVED_POKEMON_FIELD_NUMBER: _builtins.int
+    MEGA_RAID_SHIELD_BREAK_POWER_FIELD_NUMBER: _builtins.int
     damage_dealt: _builtins.int
     @_builtins.property
     @_deprecated("""This field has been marked as deprecated using proto field options.""")
@@ -34823,6 +35212,7 @@ class BattleParticipantProto(_message.Message):
     enabled_raid_friend_requests: _builtins.bool
     is_self_invite: _builtins.bool
     has_active_primal_evolved_pokemon: _builtins.bool
+    mega_raid_shield_break_power: _builtins.int
     @_builtins.property
     def active_pokemon(self) -> Global___PokemonInfo: ...
     @_builtins.property
@@ -34892,10 +35282,11 @@ class BattleParticipantProto(_message.Message):
         is_self_invite: _builtins.bool = ...,
         charge_attack_data: Global___ChargeAttackDataProto | None = ...,
         has_active_primal_evolved_pokemon: _builtins.bool = ...,
+        mega_raid_shield_break_power: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["active_pokemon", b"active_pokemon", "charge_attack_data", b"charge_attack_data", "pokemon_survival", b"pokemon_survival", "trainer_public_profile", b"trainer_public_profile"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["ability_activation_count", b"ability_activation_count", "ability_energy", b"ability_energy", "active_pokemon", b"active_pokemon", "active_pokemon_stat_modifiers", b"active_pokemon_stat_modifiers", "battle_buddy_pokemon_id", b"battle_buddy_pokemon_id", "battle_mega_pokemon_id", b"battle_mega_pokemon_id", "boot_raid_state", b"boot_raid_state", "charge_attack_data", b"charge_attack_data", "damage_dealt", b"damage_dealt", "defeated_pokemon", b"defeated_pokemon", "enabled_raid_friend_requests", b"enabled_raid_friend_requests", "friend_codename", b"friend_codename", "has_active_mega_evolved_pokemon", b"has_active_mega_evolved_pokemon", "has_active_primal_evolved_pokemon", b"has_active_primal_evolved_pokemon", "highest_friendship_milestone", b"highest_friendship_milestone", "is_remote", b"is_remote", "is_self_invite", b"is_self_invite", "is_social_invite", b"is_social_invite", "join_buddy_pokemon_id", b"join_buddy_pokemon_id", "last_player_join_time_ms", b"last_player_join_time_ms", "last_player_quit_time_ms", b"last_player_quit_time_ms", "last_update_time_ms", b"last_update_time_ms", "lobby_join_time_ms", b"lobby_join_time_ms", "lobby_pokemon", b"lobby_pokemon", "local_friends", b"local_friends", "notable_action_history", b"notable_action_history", "number_of_charge_attacks_used", b"number_of_charge_attacks_used", "player_id", b"player_id", "pokemon_survival", b"pokemon_survival", "referenced_pokemon", b"referenced_pokemon", "remote_friends", b"remote_friends", "reserve_pokemon", b"reserve_pokemon", "super_effective_charge_attacks_used", b"super_effective_charge_attacks_used", "super_effective_charge_move", b"super_effective_charge_move", "tall_pokemon_id", b"tall_pokemon_id", "trainer_public_profile", b"trainer_public_profile", "used_pokemon", b"used_pokemon", "weather_boosted", b"weather_boosted"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["ability_activation_count", b"ability_activation_count", "ability_energy", b"ability_energy", "active_pokemon", b"active_pokemon", "active_pokemon_stat_modifiers", b"active_pokemon_stat_modifiers", "battle_buddy_pokemon_id", b"battle_buddy_pokemon_id", "battle_mega_pokemon_id", b"battle_mega_pokemon_id", "boot_raid_state", b"boot_raid_state", "charge_attack_data", b"charge_attack_data", "damage_dealt", b"damage_dealt", "defeated_pokemon", b"defeated_pokemon", "enabled_raid_friend_requests", b"enabled_raid_friend_requests", "friend_codename", b"friend_codename", "has_active_mega_evolved_pokemon", b"has_active_mega_evolved_pokemon", "has_active_primal_evolved_pokemon", b"has_active_primal_evolved_pokemon", "highest_friendship_milestone", b"highest_friendship_milestone", "is_remote", b"is_remote", "is_self_invite", b"is_self_invite", "is_social_invite", b"is_social_invite", "join_buddy_pokemon_id", b"join_buddy_pokemon_id", "last_player_join_time_ms", b"last_player_join_time_ms", "last_player_quit_time_ms", b"last_player_quit_time_ms", "last_update_time_ms", b"last_update_time_ms", "lobby_join_time_ms", b"lobby_join_time_ms", "lobby_pokemon", b"lobby_pokemon", "local_friends", b"local_friends", "mega_raid_shield_break_power", b"mega_raid_shield_break_power", "notable_action_history", b"notable_action_history", "number_of_charge_attacks_used", b"number_of_charge_attacks_used", "player_id", b"player_id", "pokemon_survival", b"pokemon_survival", "referenced_pokemon", b"referenced_pokemon", "remote_friends", b"remote_friends", "reserve_pokemon", b"reserve_pokemon", "super_effective_charge_attacks_used", b"super_effective_charge_attacks_used", "super_effective_charge_move", b"super_effective_charge_move", "tall_pokemon_id", b"tall_pokemon_id", "trainer_public_profile", b"trainer_public_profile", "used_pokemon", b"used_pokemon", "weather_boosted", b"weather_boosted"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -37022,6 +37413,7 @@ class BootRaidOutProto(_message.Message):
         ERROR_LOBBY_NOT_FOUND: BootRaidOutProto._Result.ValueType  # 3
         ERROR_RAID_UNAVAILABLE: BootRaidOutProto._Result.ValueType  # 4
         ERROR_NOT_ENOUGH_TIME: BootRaidOutProto._Result.ValueType  # 5
+        ERROR_PLAYER_NOT_ELIGIBLE: BootRaidOutProto._Result.ValueType  # 6
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: BootRaidOutProto.Result.ValueType  # 0
@@ -37030,6 +37422,7 @@ class BootRaidOutProto(_message.Message):
     ERROR_LOBBY_NOT_FOUND: BootRaidOutProto.Result.ValueType  # 3
     ERROR_RAID_UNAVAILABLE: BootRaidOutProto.Result.ValueType  # 4
     ERROR_NOT_ENOUGH_TIME: BootRaidOutProto.Result.ValueType  # 5
+    ERROR_PLAYER_NOT_ELIGIBLE: BootRaidOutProto.Result.ValueType  # 6
 
     RESULT_FIELD_NUMBER: _builtins.int
     LOBBY_FIELD_NUMBER: _builtins.int
@@ -38219,6 +38612,7 @@ class BreadLobbyProto(_message.Message):
     RVN_VERSION_FIELD_NUMBER: _builtins.int
     IS_PRIVATE_FIELD_NUMBER: _builtins.int
     STATION_BOOST_LEVEL_FIELD_NUMBER: _builtins.int
+    PRIVATE_LOBBY_CODE_FIELD_NUMBER: _builtins.int
     bread_lobby_id: _builtins.int
     player_join_end_ms: _builtins.int
     pokemon_selection_end_ms: _builtins.int
@@ -38232,6 +38626,7 @@ class BreadLobbyProto(_message.Message):
     rvn_version: _builtins.int
     is_private: _builtins.bool
     station_boost_level: _builtins.int
+    private_lobby_code: _builtins.int
     @_builtins.property
     def players(self) -> _containers.RepeatedCompositeFieldContainer[Global___BreadBattleParticipantProto]: ...
     @_builtins.property
@@ -38257,10 +38652,11 @@ class BreadLobbyProto(_message.Message):
         rvn_version: _builtins.int = ...,
         is_private: _builtins.bool = ...,
         station_boost_level: _builtins.int = ...,
+        private_lobby_code: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["rvn_connection", b"rvn_connection"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["bread_battle_end_ms", b"bread_battle_end_ms", "bread_battle_id", b"bread_battle_id", "bread_battle_start_ms", b"bread_battle_start_ms", "bread_dough_mode", b"bread_dough_mode", "bread_lobby_id", b"bread_lobby_id", "creation_ms", b"creation_ms", "invited_player_ids", b"invited_player_ids", "is_private", b"is_private", "owner_nickname", b"owner_nickname", "player_join_end_ms", b"player_join_end_ms", "players", b"players", "pokemon_selection_end_ms", b"pokemon_selection_end_ms", "rvn_connection", b"rvn_connection", "rvn_version", b"rvn_version", "station_boost_level", b"station_boost_level", "weather_condition", b"weather_condition"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["bread_battle_end_ms", b"bread_battle_end_ms", "bread_battle_id", b"bread_battle_id", "bread_battle_start_ms", b"bread_battle_start_ms", "bread_dough_mode", b"bread_dough_mode", "bread_lobby_id", b"bread_lobby_id", "creation_ms", b"creation_ms", "invited_player_ids", b"invited_player_ids", "is_private", b"is_private", "owner_nickname", b"owner_nickname", "player_join_end_ms", b"player_join_end_ms", "players", b"players", "pokemon_selection_end_ms", b"pokemon_selection_end_ms", "private_lobby_code", b"private_lobby_code", "rvn_connection", b"rvn_connection", "rvn_version", b"rvn_version", "station_boost_level", b"station_boost_level", "weather_condition", b"weather_condition"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -40202,7 +40598,12 @@ class BuddyPokemonProto(_message.Message):
     last_km_awarded_ms: _builtins.int
     best_buddies_backfilled: _builtins.bool
     last_set_timestamp_ms: _builtins.int
-    pending_bonus_km: _builtins.float
+    @_builtins.property
+    @_deprecated("""This field has been marked as deprecated using proto field options.""")
+    def pending_bonus_km(self) -> _builtins.float: ...
+    @pending_bonus_km.setter
+    @_deprecated("""This field has been marked as deprecated using proto field options.""")
+    def pending_bonus_km(self, value: _builtins.float) -> None: ...
     @_builtins.property
     def daily_buddy_swaps(self) -> Global___DailyCounterProto: ...
     def __init__(
@@ -43509,6 +43910,7 @@ class ClientBattleConfigProto(_message.Message):
     LATENCY_TRACKING_SETTINGS_FIELD_NUMBER: _builtins.int
     SUBMIT_TURN_NUMBER_WITH_PLAYER_ACTION_FIELD_NUMBER: _builtins.int
     PRE_RESPONSE_INPUT_BLOCK_DURATION_MS_FIELD_NUMBER: _builtins.int
+    GET_STATE_TIMEOUT_MS_FIELD_NUMBER: _builtins.int
     battle_end_timeout_threshold_ms: _builtins.int
     bad_network_warning_threshold_turns: _builtins.int
     dead_network_disconnect_threshold_turns: _builtins.int
@@ -43516,6 +43918,7 @@ class ClientBattleConfigProto(_message.Message):
     enable_hold_to_tap: _builtins.bool
     submit_turn_number_with_player_action: _builtins.bool
     pre_response_input_block_duration_ms: _builtins.int
+    get_state_timeout_ms: _builtins.int
     @_builtins.property
     def latency_tracking_settings(self) -> Global___LatencyTrackingSettingsProto: ...
     def __init__(
@@ -43529,10 +43932,11 @@ class ClientBattleConfigProto(_message.Message):
         latency_tracking_settings: Global___LatencyTrackingSettingsProto | None = ...,
         submit_turn_number_with_player_action: _builtins.bool = ...,
         pre_response_input_block_duration_ms: _builtins.int = ...,
+        get_state_timeout_ms: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["latency_tracking_settings", b"latency_tracking_settings"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["bad_network_warning_threshold_turns", b"bad_network_warning_threshold_turns", "battle_end_timeout_threshold_ms", b"battle_end_timeout_threshold_ms", "dead_network_disconnect_threshold_turns", b"dead_network_disconnect_threshold_turns", "enable_hold_to_tap", b"enable_hold_to_tap", "latency_tracking_settings", b"latency_tracking_settings", "no_opponent_connection_disconnect_threshold_turns", b"no_opponent_connection_disconnect_threshold_turns", "pre_response_input_block_duration_ms", b"pre_response_input_block_duration_ms", "submit_turn_number_with_player_action", b"submit_turn_number_with_player_action"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["bad_network_warning_threshold_turns", b"bad_network_warning_threshold_turns", "battle_end_timeout_threshold_ms", b"battle_end_timeout_threshold_ms", "dead_network_disconnect_threshold_turns", b"dead_network_disconnect_threshold_turns", "enable_hold_to_tap", b"enable_hold_to_tap", "get_state_timeout_ms", b"get_state_timeout_ms", "latency_tracking_settings", b"latency_tracking_settings", "no_opponent_connection_disconnect_threshold_turns", b"no_opponent_connection_disconnect_threshold_turns", "pre_response_input_block_duration_ms", b"pre_response_input_block_duration_ms", "submit_turn_number_with_player_action", b"submit_turn_number_with_player_action"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -46585,7 +46989,7 @@ class CombatLeagueProto(_message.Message):
     BORDER_COLOR_HEX_FIELD_NUMBER: _builtins.int
     ALLOW_TEMP_EVOS_FIELD_NUMBER: _builtins.int
     COMBAT_EXPERIMENT_FIELD_NUMBER: _builtins.int
-    UNK_FIELD_INT_OR_BOOL_FIELD_NUMBER: _builtins.int
+    ALLOW_TEMP_EVO_CP_DOWNSCALING_FIELD_NUMBER: _builtins.int
     title: _builtins.str
     enabled: _builtins.bool
     icon_url: _builtins.str
@@ -46596,8 +47000,7 @@ class CombatLeagueProto(_message.Message):
     league_type: Global___CombatLeagueProto.LeagueType.ValueType
     border_color_hex: _builtins.str
     allow_temp_evos: _builtins.bool
-    unk_field_int_or_bool: _builtins.int
-    """TODO: not in apk"""
+    allow_temp_evo_cp_downscaling: _builtins.bool
     @_builtins.property
     def unlock_condition(self) -> _containers.RepeatedCompositeFieldContainer[Global___CombatLeagueProto.UnlockConditionProto]: ...
     @_builtins.property
@@ -46623,11 +47026,11 @@ class CombatLeagueProto(_message.Message):
         border_color_hex: _builtins.str = ...,
         allow_temp_evos: _builtins.bool = ...,
         combat_experiment: _abc.Iterable[Global___CombatExperiment.ValueType] | None = ...,
-        unk_field_int_or_bool: _builtins.int = ...,
+        allow_temp_evo_cp_downscaling: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["allow_temp_evos", b"allow_temp_evos", "badge_type", b"badge_type", "banned_pokemon", b"banned_pokemon", "battle_party_combat_league_template_id", b"battle_party_combat_league_template_id", "border_color_hex", b"border_color_hex", "combat_experiment", b"combat_experiment", "enabled", b"enabled", "icon_url", b"icon_url", "league_type", b"league_type", "minigame_defense_chance_limit", b"minigame_defense_chance_limit", "pokemon_condition", b"pokemon_condition", "pokemon_count", b"pokemon_count", "title", b"title", "unk_field_int_or_bool", b"unk_field_int_or_bool", "unlock_condition", b"unlock_condition"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["allow_temp_evo_cp_downscaling", b"allow_temp_evo_cp_downscaling", "allow_temp_evos", b"allow_temp_evos", "badge_type", b"badge_type", "banned_pokemon", b"banned_pokemon", "battle_party_combat_league_template_id", b"battle_party_combat_league_template_id", "border_color_hex", b"border_color_hex", "combat_experiment", b"combat_experiment", "enabled", b"enabled", "icon_url", b"icon_url", "league_type", b"league_type", "minigame_defense_chance_limit", b"minigame_defense_chance_limit", "pokemon_condition", b"pokemon_condition", "pokemon_count", b"pokemon_count", "title", b"title", "unlock_condition", b"unlock_condition"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -47819,13 +48222,32 @@ Global___CombatProgressTokenData: _TypeAlias = CombatProgressTokenData  # noqa: 
 class CombatProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[CombatProto._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: CombatProto._Result.ValueType  # 0
+        SUCCESS: CombatProto._Result.ValueType  # 1
+        FAILURE: CombatProto._Result.ValueType  # 2
+        ERROR_POKEMON_ID_NOT_FOUND: CombatProto._Result.ValueType  # 3
+        ERROR_COMBAT_LEAGUE_INVALID: CombatProto._Result.ValueType  # 4
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: CombatProto.Result.ValueType  # 0
+    SUCCESS: CombatProto.Result.ValueType  # 1
+    FAILURE: CombatProto.Result.ValueType  # 2
+    ERROR_POKEMON_ID_NOT_FOUND: CombatProto.Result.ValueType  # 3
+    ERROR_COMBAT_LEAGUE_INVALID: CombatProto.Result.ValueType  # 4
+
     class _CombatState:
         ValueType = _typing.NewType("ValueType", _builtins.int)
         V: _TypeAlias = ValueType  # noqa: Y015
 
     class _CombatStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[CombatProto._CombatState.ValueType], _builtins.type):
         DESCRIPTOR: _descriptor.EnumDescriptor
-        UNSET: CombatProto._CombatState.ValueType  # 0
+        STATE_UNSET: CombatProto._CombatState.ValueType  # 0
         WAITING_FOR_PLAYERS: CombatProto._CombatState.ValueType  # 1
         READY: CombatProto._CombatState.ValueType  # 2
         ACTIVE: CombatProto._CombatState.ValueType  # 3
@@ -47837,7 +48259,7 @@ class CombatProto(_message.Message):
         SYNC: CombatProto._CombatState.ValueType  # 9
 
     class CombatState(_CombatState, metaclass=_CombatStateEnumTypeWrapper): ...
-    UNSET: CombatProto.CombatState.ValueType  # 0
+    STATE_UNSET: CombatProto.CombatState.ValueType  # 0
     WAITING_FOR_PLAYERS: CombatProto.CombatState.ValueType  # 1
     READY: CombatProto.CombatState.ValueType  # 2
     ACTIVE: CombatProto.CombatState.ValueType  # 3
@@ -47847,6 +48269,75 @@ class CombatProto(_message.Message):
     PLAYER_QUIT: CombatProto.CombatState.ValueType  # 7
     TIMEOUT: CombatProto.CombatState.ValueType  # 8
     SYNC: CombatProto.CombatState.ValueType  # 9
+
+    @_typing.final
+    class GetCombatDownscaledStatsOutProto(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        @_typing.final
+        class DownscaledStatsEntry(_message.Message):
+            DESCRIPTOR: _descriptor.Descriptor
+
+            INVENTORY_POKEMON_ID_FIELD_NUMBER: _builtins.int
+            TEMP_EVOLUTION_ID_FIELD_NUMBER: _builtins.int
+            COMBAT_LEAGUE_TEMPLATE_ID_FIELD_NUMBER: _builtins.int
+            CP_FIELD_NUMBER: _builtins.int
+            inventory_pokemon_id: _builtins.int
+            temp_evolution_id: Global___HoloTemporaryEvolutionId.ValueType
+            combat_league_template_id: _builtins.str
+            cp: _builtins.int
+            def __init__(
+                self,
+                *,
+                inventory_pokemon_id: _builtins.int = ...,
+                temp_evolution_id: Global___HoloTemporaryEvolutionId.ValueType = ...,
+                combat_league_template_id: _builtins.str = ...,
+                cp: _builtins.int = ...,
+            ) -> None: ...
+            _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+            def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+            _ClearFieldArgType: _TypeAlias = _typing.Literal["combat_league_template_id", b"combat_league_template_id", "cp", b"cp", "inventory_pokemon_id", b"inventory_pokemon_id", "temp_evolution_id", b"temp_evolution_id"]  # noqa: Y015
+            def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+            def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+        ENTRIES_FIELD_NUMBER: _builtins.int
+        RESULT_FIELD_NUMBER: _builtins.int
+        result: Global___CombatProto.Result.ValueType
+        @_builtins.property
+        def entries(self) -> _containers.RepeatedCompositeFieldContainer[Global___CombatProto.GetCombatDownscaledStatsOutProto.DownscaledStatsEntry]: ...
+        def __init__(
+            self,
+            *,
+            entries: _abc.Iterable[Global___CombatProto.GetCombatDownscaledStatsOutProto.DownscaledStatsEntry] | None = ...,
+            result: Global___CombatProto.Result.ValueType = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["entries", b"entries", "result", b"result"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    @_typing.final
+    class GetCombatDownscaledStatsProto(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        COMBAT_LEAGUE_TEMPLATE_IDS_FIELD_NUMBER: _builtins.int
+        INVENTORY_POKEMON_IDS_FIELD_NUMBER: _builtins.int
+        @_builtins.property
+        def combat_league_template_ids(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+        @_builtins.property
+        def inventory_pokemon_ids(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+        def __init__(
+            self,
+            *,
+            combat_league_template_ids: _abc.Iterable[_builtins.str] | None = ...,
+            inventory_pokemon_ids: _abc.Iterable[_builtins.int] | None = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["combat_league_template_ids", b"combat_league_template_ids", "inventory_pokemon_ids", b"inventory_pokemon_ids"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
 
     @_typing.final
     class CombatIbfcPokemonFormTrackerProto(_message.Message):
@@ -49201,6 +49692,7 @@ class CompleteBreadBattleOutProto(_message.Message):
         ERROR_BATTLE_NOT_FOUND: CompleteBreadBattleOutProto._Result.ValueType  # 2
         ERROR_BATTLE_NOT_COMPLETED: CompleteBreadBattleOutProto._Result.ValueType  # 3
         ERROR_SERVER_FAILURE: CompleteBreadBattleOutProto._Result.ValueType  # 4
+        ERROR_PLAYER_NOT_ELIGIBLE: CompleteBreadBattleOutProto._Result.ValueType  # 5
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: CompleteBreadBattleOutProto.Result.ValueType  # 0
@@ -49208,6 +49700,7 @@ class CompleteBreadBattleOutProto(_message.Message):
     ERROR_BATTLE_NOT_FOUND: CompleteBreadBattleOutProto.Result.ValueType  # 2
     ERROR_BATTLE_NOT_COMPLETED: CompleteBreadBattleOutProto.Result.ValueType  # 3
     ERROR_SERVER_FAILURE: CompleteBreadBattleOutProto.Result.ValueType  # 4
+    ERROR_PLAYER_NOT_ELIGIBLE: CompleteBreadBattleOutProto.Result.ValueType  # 5
 
     RESULT_FIELD_NUMBER: _builtins.int
     BATTLE_RESULTS_FIELD_NUMBER: _builtins.int
@@ -49960,6 +50453,7 @@ class CompleteRaidBattleOutProto(_message.Message):
         ERROR_SERVER_FAILURE: CompleteRaidBattleOutProto._Result.ValueType  # 4
         ERROR_NOT_RVN: CompleteRaidBattleOutProto._Result.ValueType  # 5
         ERROR_BATTLE_NOT_RAID: CompleteRaidBattleOutProto._Result.ValueType  # 6
+        ERROR_PLAYER_NOT_ELIGIBLE: CompleteRaidBattleOutProto._Result.ValueType  # 7
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: CompleteRaidBattleOutProto.Result.ValueType  # 0
@@ -49969,6 +50463,7 @@ class CompleteRaidBattleOutProto(_message.Message):
     ERROR_SERVER_FAILURE: CompleteRaidBattleOutProto.Result.ValueType  # 4
     ERROR_NOT_RVN: CompleteRaidBattleOutProto.Result.ValueType  # 5
     ERROR_BATTLE_NOT_RAID: CompleteRaidBattleOutProto.Result.ValueType  # 6
+    ERROR_PLAYER_NOT_ELIGIBLE: CompleteRaidBattleOutProto.Result.ValueType  # 7
 
     RESULT_FIELD_NUMBER: _builtins.int
     BATTLE_RESULTS_FIELD_NUMBER: _builtins.int
@@ -52886,6 +53381,21 @@ class CreatePostcardProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___CreatePostcardProto: _TypeAlias = CreatePostcardProto  # noqa: Y015
+
+@_typing.final
+class CreatePrivateLobbyProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___CreatePrivateLobbyProto: _TypeAlias = CreatePrivateLobbyProto  # noqa: Y015
 
 @_typing.final
 class CreateRoomRequest(_message.Message):
@@ -55936,6 +56446,83 @@ class DeviceCompatibleTelemetry(_message.Message):
 Global___DeviceCompatibleTelemetry: _TypeAlias = DeviceCompatibleTelemetry  # noqa: Y015
 
 @_typing.final
+class DeviceFingerprintIndexProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    DEVICE_FINGERPRINT_FIELD_NUMBER: _builtins.int
+    USER_ID_FIELD_NUMBER: _builtins.int
+    AUTH_PROVIDER_ID_FIELD_NUMBER: _builtins.int
+    FIRST_SEEN_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    LAST_SEEN_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    FINGERPRINT_HMAC_KEY_VERSION_FIELD_NUMBER: _builtins.int
+    device_fingerprint: _builtins.str
+    user_id: _builtins.str
+    auth_provider_id: _builtins.str
+    first_seen_timestamp_ms: _builtins.int
+    last_seen_timestamp_ms: _builtins.int
+    fingerprint_hmac_key_version: _builtins.int
+    def __init__(
+        self,
+        *,
+        device_fingerprint: _builtins.str = ...,
+        user_id: _builtins.str = ...,
+        auth_provider_id: _builtins.str = ...,
+        first_seen_timestamp_ms: _builtins.int = ...,
+        last_seen_timestamp_ms: _builtins.int = ...,
+        fingerprint_hmac_key_version: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["auth_provider_id", b"auth_provider_id", "device_fingerprint", b"device_fingerprint", "fingerprint_hmac_key_version", b"fingerprint_hmac_key_version", "first_seen_timestamp_ms", b"first_seen_timestamp_ms", "last_seen_timestamp_ms", b"last_seen_timestamp_ms", "user_id", b"user_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___DeviceFingerprintIndexProto: _TypeAlias = DeviceFingerprintIndexProto  # noqa: Y015
+
+@_typing.final
+class DeviceInfoProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    SAFETY_NET_FIELD_NUMBER: _builtins.int
+    OPERATING_SYSTEM_FIELD_NUMBER: _builtins.int
+    RELEASE_VERSION_FIELD_NUMBER: _builtins.int
+    MODEL_FIELD_NUMBER: _builtins.int
+    BRAND_FIELD_NUMBER: _builtins.int
+    HARDWARE_FIELD_NUMBER: _builtins.int
+    DEVICE_FIELD_NUMBER: _builtins.int
+    DEVICE_OS_VERSION_FIELD_NUMBER: _builtins.int
+    DEVICE_SDK_VERSION_FIELD_NUMBER: _builtins.int
+    safety_net: _builtins.bool
+    operating_system: Global___ClientOperatingSystem.ValueType
+    release_version: _builtins.str
+    model: _builtins.str
+    brand: _builtins.str
+    hardware: _builtins.str
+    device: _builtins.str
+    device_os_version: _builtins.str
+    device_sdk_version: _builtins.str
+    def __init__(
+        self,
+        *,
+        safety_net: _builtins.bool = ...,
+        operating_system: Global___ClientOperatingSystem.ValueType = ...,
+        release_version: _builtins.str = ...,
+        model: _builtins.str = ...,
+        brand: _builtins.str = ...,
+        hardware: _builtins.str = ...,
+        device: _builtins.str = ...,
+        device_os_version: _builtins.str = ...,
+        device_sdk_version: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["brand", b"brand", "device", b"device", "device_os_version", b"device_os_version", "device_sdk_version", b"device_sdk_version", "hardware", b"hardware", "model", b"model", "operating_system", b"operating_system", "release_version", b"release_version", "safety_net", b"safety_net"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___DeviceInfoProto: _TypeAlias = DeviceInfoProto  # noqa: Y015
+
+@_typing.final
 class DeviceMap(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -56037,6 +56624,85 @@ class DeviceOSTelemetry(_message.Message):
 Global___DeviceOSTelemetry: _TypeAlias = DeviceOSTelemetry  # noqa: Y015
 
 @_typing.final
+class DeviceRegistrationProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    DEVICE_REGISTRATION_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_FINGERPRINT_FIELD_NUMBER: _builtins.int
+    FINGERPRINT_HMAC_KEY_VERSION_FIELD_NUMBER: _builtins.int
+    AUTH_PROVIDER_ID_FIELD_NUMBER: _builtins.int
+    CREATION_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    LAST_SEEN_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    OPERATING_SYSTEM_FIELD_NUMBER: _builtins.int
+    MODEL_FIELD_NUMBER: _builtins.int
+    BRAND_FIELD_NUMBER: _builtins.int
+    HARDWARE_FIELD_NUMBER: _builtins.int
+    DEVICE_FIELD_NUMBER: _builtins.int
+    DISPLAY_NAME_FIELD_NUMBER: _builtins.int
+    PLATFORM_FIELD_NUMBER: _builtins.int
+    LAST_ACTION_FIELD_NUMBER: _builtins.int
+    LAST_ACTION_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    VERIFICATION_STATUS_FIELD_NUMBER: _builtins.int
+    VERIFICATION_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    VERIFICATION_SOURCE_FIELD_NUMBER: _builtins.int
+    LAST_EMAIL_SENT_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    LATEST_CHALLENGE_GENERATION_FIELD_NUMBER: _builtins.int
+    LATEST_CHALLENGE_ID_FIELD_NUMBER: _builtins.int
+    device_registration_id: _builtins.str
+    device_fingerprint: _builtins.str
+    fingerprint_hmac_key_version: _builtins.int
+    auth_provider_id: _builtins.str
+    creation_timestamp_ms: _builtins.int
+    last_seen_timestamp_ms: _builtins.int
+    operating_system: _builtins.str
+    model: _builtins.str
+    brand: _builtins.str
+    hardware: _builtins.str
+    device: _builtins.str
+    display_name: _builtins.str
+    platform: _builtins.str
+    last_action: _builtins.str
+    last_action_timestamp_ms: _builtins.int
+    verification_status: Global___DeviceVerificationStatus.ValueType
+    verification_timestamp_ms: _builtins.int
+    verification_source: _builtins.str
+    last_email_sent_timestamp_ms: _builtins.int
+    latest_challenge_generation: _builtins.int
+    latest_challenge_id: _builtins.str
+    def __init__(
+        self,
+        *,
+        device_registration_id: _builtins.str = ...,
+        device_fingerprint: _builtins.str = ...,
+        fingerprint_hmac_key_version: _builtins.int = ...,
+        auth_provider_id: _builtins.str = ...,
+        creation_timestamp_ms: _builtins.int = ...,
+        last_seen_timestamp_ms: _builtins.int = ...,
+        operating_system: _builtins.str = ...,
+        model: _builtins.str = ...,
+        brand: _builtins.str = ...,
+        hardware: _builtins.str = ...,
+        device: _builtins.str = ...,
+        display_name: _builtins.str = ...,
+        platform: _builtins.str = ...,
+        last_action: _builtins.str = ...,
+        last_action_timestamp_ms: _builtins.int = ...,
+        verification_status: Global___DeviceVerificationStatus.ValueType = ...,
+        verification_timestamp_ms: _builtins.int = ...,
+        verification_source: _builtins.str = ...,
+        last_email_sent_timestamp_ms: _builtins.int = ...,
+        latest_challenge_generation: _builtins.int = ...,
+        latest_challenge_id: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["auth_provider_id", b"auth_provider_id", "brand", b"brand", "creation_timestamp_ms", b"creation_timestamp_ms", "device", b"device", "device_fingerprint", b"device_fingerprint", "device_registration_id", b"device_registration_id", "display_name", b"display_name", "fingerprint_hmac_key_version", b"fingerprint_hmac_key_version", "hardware", b"hardware", "last_action", b"last_action", "last_action_timestamp_ms", b"last_action_timestamp_ms", "last_email_sent_timestamp_ms", b"last_email_sent_timestamp_ms", "last_seen_timestamp_ms", b"last_seen_timestamp_ms", "latest_challenge_generation", b"latest_challenge_generation", "latest_challenge_id", b"latest_challenge_id", "model", b"model", "operating_system", b"operating_system", "platform", b"platform", "verification_source", b"verification_source", "verification_status", b"verification_status", "verification_timestamp_ms", b"verification_timestamp_ms"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___DeviceRegistrationProto: _TypeAlias = DeviceRegistrationProto  # noqa: Y015
+
+@_typing.final
 class DeviceServiceToggleTelemetry(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -56097,6 +56763,104 @@ class DeviceSpecificationsTelemetry(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___DeviceSpecificationsTelemetry: _TypeAlias = DeviceSpecificationsTelemetry  # noqa: Y015
+
+@_typing.final
+class DeviceVerificationAuditRecordProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _ActorType:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ActorTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DeviceVerificationAuditRecordProto._ActorType.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSPECIFIED: DeviceVerificationAuditRecordProto._ActorType.ValueType  # 0
+        PLAYER: DeviceVerificationAuditRecordProto._ActorType.ValueType  # 1
+        PX: DeviceVerificationAuditRecordProto._ActorType.ValueType  # 2
+        SYSTEM: DeviceVerificationAuditRecordProto._ActorType.ValueType  # 3
+
+    class ActorType(_ActorType, metaclass=_ActorTypeEnumTypeWrapper): ...
+    UNSPECIFIED: DeviceVerificationAuditRecordProto.ActorType.ValueType  # 0
+    PLAYER: DeviceVerificationAuditRecordProto.ActorType.ValueType  # 1
+    PX: DeviceVerificationAuditRecordProto.ActorType.ValueType  # 2
+    SYSTEM: DeviceVerificationAuditRecordProto.ActorType.ValueType  # 3
+
+    class _EventType:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _EventTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[DeviceVerificationAuditRecordProto._EventType.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        EVENT_UNSPECIFIED: DeviceVerificationAuditRecordProto._EventType.ValueType  # 0
+        CHALLENGE_CREATED: DeviceVerificationAuditRecordProto._EventType.ValueType  # 1
+        CHALLENGE_VIEWED: DeviceVerificationAuditRecordProto._EventType.ValueType  # 2
+        CHALLENGE_CONFIRMED: DeviceVerificationAuditRecordProto._EventType.ValueType  # 3
+        CHALLENGE_DENIED: DeviceVerificationAuditRecordProto._EventType.ValueType  # 4
+        CHALLENGE_EXPIRED: DeviceVerificationAuditRecordProto._EventType.ValueType  # 5
+        CHALLENGE_SUPERSEDED: DeviceVerificationAuditRecordProto._EventType.ValueType  # 6
+        DEVICE_PROMOTED: DeviceVerificationAuditRecordProto._EventType.ValueType  # 7
+        DEVICE_EVICTED: DeviceVerificationAuditRecordProto._EventType.ValueType  # 8
+        PX_OVERRIDE: DeviceVerificationAuditRecordProto._EventType.ValueType  # 9
+
+    class EventType(_EventType, metaclass=_EventTypeEnumTypeWrapper): ...
+    EVENT_UNSPECIFIED: DeviceVerificationAuditRecordProto.EventType.ValueType  # 0
+    CHALLENGE_CREATED: DeviceVerificationAuditRecordProto.EventType.ValueType  # 1
+    CHALLENGE_VIEWED: DeviceVerificationAuditRecordProto.EventType.ValueType  # 2
+    CHALLENGE_CONFIRMED: DeviceVerificationAuditRecordProto.EventType.ValueType  # 3
+    CHALLENGE_DENIED: DeviceVerificationAuditRecordProto.EventType.ValueType  # 4
+    CHALLENGE_EXPIRED: DeviceVerificationAuditRecordProto.EventType.ValueType  # 5
+    CHALLENGE_SUPERSEDED: DeviceVerificationAuditRecordProto.EventType.ValueType  # 6
+    DEVICE_PROMOTED: DeviceVerificationAuditRecordProto.EventType.ValueType  # 7
+    DEVICE_EVICTED: DeviceVerificationAuditRecordProto.EventType.ValueType  # 8
+    PX_OVERRIDE: DeviceVerificationAuditRecordProto.EventType.ValueType  # 9
+
+    AUDIT_RECORD_ID_FIELD_NUMBER: _builtins.int
+    USER_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_REGISTRATION_ID_FIELD_NUMBER: _builtins.int
+    CHALLENGE_ID_FIELD_NUMBER: _builtins.int
+    PREVIOUS_STATUS_FIELD_NUMBER: _builtins.int
+    NEW_STATUS_FIELD_NUMBER: _builtins.int
+    EVENT_TYPE_FIELD_NUMBER: _builtins.int
+    ACTOR_TYPE_FIELD_NUMBER: _builtins.int
+    ACTOR_ID_FIELD_NUMBER: _builtins.int
+    REASON_FIELD_NUMBER: _builtins.int
+    TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    REQUEST_ID_FIELD_NUMBER: _builtins.int
+    audit_record_id: _builtins.str
+    user_id: _builtins.str
+    device_registration_id: _builtins.str
+    challenge_id: _builtins.str
+    previous_status: Global___DeviceVerificationStatus.ValueType
+    new_status: Global___DeviceVerificationStatus.ValueType
+    event_type: Global___DeviceVerificationAuditRecordProto.EventType.ValueType
+    actor_type: Global___DeviceVerificationAuditRecordProto.ActorType.ValueType
+    actor_id: _builtins.str
+    reason: _builtins.str
+    timestamp_ms: _builtins.int
+    request_id: _builtins.str
+    def __init__(
+        self,
+        *,
+        audit_record_id: _builtins.str = ...,
+        user_id: _builtins.str = ...,
+        device_registration_id: _builtins.str = ...,
+        challenge_id: _builtins.str = ...,
+        previous_status: Global___DeviceVerificationStatus.ValueType = ...,
+        new_status: Global___DeviceVerificationStatus.ValueType = ...,
+        event_type: Global___DeviceVerificationAuditRecordProto.EventType.ValueType = ...,
+        actor_type: Global___DeviceVerificationAuditRecordProto.ActorType.ValueType = ...,
+        actor_id: _builtins.str = ...,
+        reason: _builtins.str = ...,
+        timestamp_ms: _builtins.int = ...,
+        request_id: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["actor_id", b"actor_id", "actor_type", b"actor_type", "audit_record_id", b"audit_record_id", "challenge_id", b"challenge_id", "device_registration_id", b"device_registration_id", "event_type", b"event_type", "new_status", b"new_status", "previous_status", b"previous_status", "reason", b"reason", "request_id", b"request_id", "timestamp_ms", b"timestamp_ms", "user_id", b"user_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___DeviceVerificationAuditRecordProto: _TypeAlias = DeviceVerificationAuditRecordProto  # noqa: Y015
 
 @_typing.final
 class DiffInventoryProto(_message.Message):
@@ -56547,10 +57311,14 @@ class DownloadGmTemplatesRequestProto(_message.Message):
     APPLY_EXPERIMENTS_FIELD_NUMBER: _builtins.int
     BASIS_EXPERIMENT_ID_FIELD_NUMBER: _builtins.int
     EXPERIMENT_ID_FIELD_NUMBER: _builtins.int
+    BASIS_GMS_BATCH_ID_FIELD_NUMBER: _builtins.int
+    GMS_BATCH_ID_FIELD_NUMBER: _builtins.int
     basis_batch_id: _builtins.int
     batch_id: _builtins.int
     page_offset: _builtins.int
     apply_experiments: _builtins.bool
+    basis_gms_batch_id: _builtins.bytes
+    gms_batch_id: _builtins.bytes
     @_builtins.property
     def basis_experiment_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
     @_builtins.property
@@ -56564,10 +57332,12 @@ class DownloadGmTemplatesRequestProto(_message.Message):
         apply_experiments: _builtins.bool = ...,
         basis_experiment_id: _abc.Iterable[_builtins.int] | None = ...,
         experiment_id: _abc.Iterable[_builtins.int] | None = ...,
+        basis_gms_batch_id: _builtins.bytes = ...,
+        gms_batch_id: _builtins.bytes = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["apply_experiments", b"apply_experiments", "basis_batch_id", b"basis_batch_id", "basis_experiment_id", b"basis_experiment_id", "batch_id", b"batch_id", "experiment_id", b"experiment_id", "page_offset", b"page_offset"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["apply_experiments", b"apply_experiments", "basis_batch_id", b"basis_batch_id", "basis_experiment_id", b"basis_experiment_id", "basis_gms_batch_id", b"basis_gms_batch_id", "batch_id", b"batch_id", "experiment_id", b"experiment_id", "gms_batch_id", b"gms_batch_id", "page_offset", b"page_offset"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -56604,9 +57374,11 @@ class DownloadGmTemplatesResponseProto(_message.Message):
     BATCH_ID_FIELD_NUMBER: _builtins.int
     PAGE_OFFSET_FIELD_NUMBER: _builtins.int
     EXPERIMENT_ID_FIELD_NUMBER: _builtins.int
+    GMS_BATCH_ID_FIELD_NUMBER: _builtins.int
     result: Global___DownloadGmTemplatesResponseProto.Result.ValueType
     batch_id: _builtins.int
     page_offset: _builtins.int
+    gms_batch_id: _builtins.bytes
     @_builtins.property
     def template(self) -> _containers.RepeatedCompositeFieldContainer[Global___ClientGameMasterTemplateProto]: ...
     @_builtins.property
@@ -56622,10 +57394,11 @@ class DownloadGmTemplatesResponseProto(_message.Message):
         batch_id: _builtins.int = ...,
         page_offset: _builtins.int = ...,
         experiment_id: _abc.Iterable[_builtins.int] | None = ...,
+        gms_batch_id: _builtins.bytes = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["batch_id", b"batch_id", "deleted_template", b"deleted_template", "experiment_id", b"experiment_id", "page_offset", b"page_offset", "result", b"result", "template", b"template"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["batch_id", b"batch_id", "deleted_template", b"deleted_template", "experiment_id", b"experiment_id", "gms_batch_id", b"gms_batch_id", "page_offset", b"page_offset", "result", b"result", "template", b"template"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -57650,6 +58423,28 @@ class EggIncubatorsProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___EggIncubatorsProto: _TypeAlias = EggIncubatorsProto  # noqa: Y015
+
+@_typing.final
+class EggListAdventureSyncCardSettingsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    DISABLE_SHOW_NEW_ADVENTURE_SYNC_CARD_FIELD_NUMBER: _builtins.int
+    CARD_RESURFACE_DELAY_DAYS_FIELD_NUMBER: _builtins.int
+    disable_show_new_adventure_sync_card: _builtins.bool
+    card_resurface_delay_days: _builtins.int
+    def __init__(
+        self,
+        *,
+        disable_show_new_adventure_sync_card: _builtins.bool = ...,
+        card_resurface_delay_days: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["card_resurface_delay_days", b"card_resurface_delay_days", "disable_show_new_adventure_sync_card", b"disable_show_new_adventure_sync_card"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___EggListAdventureSyncCardSettingsProto: _TypeAlias = EggListAdventureSyncCardSettingsProto  # noqa: Y015
 
 @_typing.final
 class EggTelemetryProto(_message.Message):
@@ -59356,6 +60151,7 @@ class ErrorReportingSettingsProto(_message.Message):
     SLIDING_WINDOW_LENGTH_S_FIELD_NUMBER: _builtins.int
     MAX_TOTAL_EVENTS_BEFORE_SHUTDOWN_FIELD_NUMBER: _builtins.int
     TRACES_SAMPLE_RATE_FIELD_NUMBER: _builtins.int
+    METRICKIT_ENABLED_FIELD_NUMBER: _builtins.int
     is_enabled: _builtins.bool
     event_sample_rate: _builtins.float
     percent_chance_player_sends: _builtins.float
@@ -59365,6 +60161,7 @@ class ErrorReportingSettingsProto(_message.Message):
     sliding_window_length_s: _builtins.int
     max_total_events_before_shutdown: _builtins.int
     traces_sample_rate: _builtins.float
+    metrickit_enabled: _builtins.bool
     def __init__(
         self,
         *,
@@ -59377,10 +60174,11 @@ class ErrorReportingSettingsProto(_message.Message):
         sliding_window_length_s: _builtins.int = ...,
         max_total_events_before_shutdown: _builtins.int = ...,
         traces_sample_rate: _builtins.float = ...,
+        metrickit_enabled: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["editor_enabled", b"editor_enabled", "editor_sample_rate", b"editor_sample_rate", "event_sample_rate", b"event_sample_rate", "is_enabled", b"is_enabled", "max_events_per_sliding_window", b"max_events_per_sliding_window", "max_total_events_before_shutdown", b"max_total_events_before_shutdown", "percent_chance_player_sends", b"percent_chance_player_sends", "sliding_window_length_s", b"sliding_window_length_s", "traces_sample_rate", b"traces_sample_rate"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["editor_enabled", b"editor_enabled", "editor_sample_rate", b"editor_sample_rate", "event_sample_rate", b"event_sample_rate", "is_enabled", b"is_enabled", "max_events_per_sliding_window", b"max_events_per_sliding_window", "max_total_events_before_shutdown", b"max_total_events_before_shutdown", "metrickit_enabled", b"metrickit_enabled", "percent_chance_player_sends", b"percent_chance_player_sends", "sliding_window_length_s", b"sliding_window_length_s", "traces_sample_rate", b"traces_sample_rate"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -65023,10 +65821,12 @@ class FriendshipDataProto(_message.Message):
     OPEN_TRADE_EXPIRE_MS_FIELD_NUMBER: _builtins.int
     IS_LUCKY_FIELD_NUMBER: _builtins.int
     LUCKY_COUNT_FIELD_NUMBER: _builtins.int
+    OPT_OUT_OF_RECEIVING_PREMIUM_GIFTS_FIELD_NUMBER: _builtins.int
     nickname: _builtins.str
     open_trade_expire_ms: _builtins.int
     is_lucky: _builtins.bool
     lucky_count: _builtins.int
+    opt_out_of_receiving_premium_gifts: _builtins.bool
     @_builtins.property
     def friendship_level_data(self) -> Global___FriendshipLevelDataProto: ...
     @_builtins.property
@@ -65040,10 +65840,11 @@ class FriendshipDataProto(_message.Message):
         open_trade_expire_ms: _builtins.int = ...,
         is_lucky: _builtins.bool = ...,
         lucky_count: _builtins.int = ...,
+        opt_out_of_receiving_premium_gifts: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["friendship_level_data", b"friendship_level_data"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["friendship_level_data", b"friendship_level_data", "giftbox_details", b"giftbox_details", "is_lucky", b"is_lucky", "lucky_count", b"lucky_count", "nickname", b"nickname", "open_trade_expire_ms", b"open_trade_expire_ms"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["friendship_level_data", b"friendship_level_data", "giftbox_details", b"giftbox_details", "is_lucky", b"is_lucky", "lucky_count", b"lucky_count", "nickname", b"nickname", "open_trade_expire_ms", b"open_trade_expire_ms", "opt_out_of_receiving_premium_gifts", b"opt_out_of_receiving_premium_gifts"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -65701,6 +66502,10 @@ class GameMasterClientTemplateProto(_message.Message):
     EVENT_CONDITIONAL_OVERRIDE_SETTINGS_PRIORITY_FIELD_NUMBER: _builtins.int
     EVENT_MAP_REFRESH_SETTINGS_FIELD_NUMBER: _builtins.int
     AR_BACKEND_SETTINGS_FIELD_NUMBER: _builtins.int
+    PROHIBITED_ITEM_SETTINGS_FIELD_NUMBER: _builtins.int
+    PLAYER_FLOW_IMPROVEMENTS_FIELD_NUMBER: _builtins.int
+    EGG_LIST_ADVENTURE_SYNC_CARD_SETTINGS_FIELD_NUMBER: _builtins.int
+    REGION_PROHIBITED_ITEM_SETTINGS_FIELD_NUMBER: _builtins.int
     template_id: _builtins.str
     @_builtins.property
     def pokemon(self) -> Global___PokemonSettingsProto: ...
@@ -66177,7 +66982,15 @@ class GameMasterClientTemplateProto(_message.Message):
     @_builtins.property
     def event_map_refresh_settings(self) -> Global___EventMapRefreshSettingsProto: ...
     @_builtins.property
-    def ar_backend_settings(self) -> Global___ArBackendSettingsProto:
+    def ar_backend_settings(self) -> Global___ArBackendSettingsProto: ...
+    @_builtins.property
+    def prohibited_item_settings(self) -> Global___ProhibitedItemSettingsProto: ...
+    @_builtins.property
+    def player_flow_improvements(self) -> Global___PlayerFlowImprovementsProto: ...
+    @_builtins.property
+    def egg_list_adventure_sync_card_settings(self) -> Global___EggListAdventureSyncCardSettingsProto: ...
+    @_builtins.property
+    def region_prohibited_item_settings(self) -> Global___RegionProhibitedItemsProto:
         """EcosystemNaturalArtSettingsProto ecosystem_natural_art_settings = xxx;"""
 
     def __init__(
@@ -66422,12 +67235,16 @@ class GameMasterClientTemplateProto(_message.Message):
         event_conditional_override_settings_priority: Global___EventConditionalOverridePrioritySettingsProto | None = ...,
         event_map_refresh_settings: Global___EventMapRefreshSettingsProto | None = ...,
         ar_backend_settings: Global___ArBackendSettingsProto | None = ...,
+        prohibited_item_settings: Global___ProhibitedItemSettingsProto | None = ...,
+        player_flow_improvements: Global___PlayerFlowImprovementsProto | None = ...,
+        egg_list_adventure_sync_card_settings: Global___EggListAdventureSyncCardSettingsProto | None = ...,
+        region_prohibited_item_settings: Global___RegionProhibitedItemsProto | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["Data", b"Data", "accessibility_settings", b"accessibility_settings", "additive_scene_settings", b"additive_scene_settings", "address_book_import_settings", b"address_book_import_settings", "addressable_pokemon_settings", b"addressable_pokemon_settings", "advanced_settings", b"advanced_settings", "anti_leak_settings", b"anti_leak_settings", "ar_backend_settings", b"ar_backend_settings", "ar_photo_feature_flags", b"ar_photo_feature_flags", "ar_telemetry_settings", b"ar_telemetry_settings", "asset_refresh_proto", b"asset_refresh_proto", "avatar_customization", b"avatar_customization", "avatar_feature_flags", b"avatar_feature_flags", "avatar_group_settings", b"avatar_group_settings", "avatar_item_display", b"avatar_item_display", "avatar_store_footer_flags", b"avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", b"avatar_store_subcategory_filtering_flags", "background_mode_settings", b"background_mode_settings", "badge", b"badge", "battle_animation_settings", b"battle_animation_settings", "battle_hub_badge_settings", b"battle_hub_badge_settings", "battle_hub_order_settings", b"battle_hub_order_settings", "battle_input_buffer_settings", b"battle_input_buffer_settings", "battle_party_settings", b"battle_party_settings", "battle_settings", b"battle_settings", "battle_visual_settings", b"battle_visual_settings", "beluga_pokemon_whitelist", b"beluga_pokemon_whitelist", "best_friends_plus_settings", b"best_friends_plus_settings", "bread_battle_client_settings", b"bread_battle_client_settings", "bread_feature_flags", b"bread_feature_flags", "bread_lobby_counter_settings", b"bread_lobby_counter_settings", "bread_lobby_update_settings", b"bread_lobby_update_settings", "bread_move_level_settings", b"bread_move_level_settings", "bread_move_mappings", b"bread_move_mappings", "bread_pokemon_scaling_settings", b"bread_pokemon_scaling_settings", "bread_settings", b"bread_settings", "buddy_activity_category_settings", b"buddy_activity_category_settings", "buddy_emotion_level_settings", b"buddy_emotion_level_settings", "buddy_encounter_cameo_settings", b"buddy_encounter_cameo_settings", "buddy_hunger_settings", b"buddy_hunger_settings", "buddy_interaction_settings", b"buddy_interaction_settings", "buddy_level_settings", b"buddy_level_settings", "buddy_swap_settings", b"buddy_swap_settings", "buddy_walk_settings", b"buddy_walk_settings", "bulk_healing_settings", b"bulk_healing_settings", "butterfly_collector_settings", b"butterfly_collector_settings", "campfire_settings", b"campfire_settings", "catch_radius_multiplier_settings", b"catch_radius_multiplier_settings", "client_poi_decoration_group", b"client_poi_decoration_group", "client_quest_template", b"client_quest_template", "code_gate_proto", b"code_gate_proto", "combat_competitive_season_settings", b"combat_competitive_season_settings", "combat_league", b"combat_league", "combat_league_settings", b"combat_league_settings", "combat_move", b"combat_move", "combat_npc_personality", b"combat_npc_personality", "combat_npc_trainer", b"combat_npc_trainer", "combat_ranking_proto_settings", b"combat_ranking_proto_settings", "combat_settings", b"combat_settings", "combat_stat_stage_settings", b"combat_stat_stage_settings", "combat_type", b"combat_type", "contest_settings", b"contest_settings", "conversation_settings", b"conversation_settings", "cross_game_social_settings", b"cross_game_social_settings", "daily_adventure_incense_settings", b"daily_adventure_incense_settings", "deep_linking_settings", b"deep_linking_settings", "egg_hatch_improvements_settings", b"egg_hatch_improvements_settings", "encounter_settings", b"encounter_settings", "error_reporting_settings", b"error_reporting_settings", "event_conditional_override_settings_priority", b"event_conditional_override_settings_priority", "event_map_decoration_settings", b"event_map_decoration_settings", "event_map_decoration_system_settings", b"event_map_decoration_system_settings", "event_map_refresh_settings", b"event_map_refresh_settings", "event_pass_settings", b"event_pass_settings", "event_pass_system_settings", b"event_pass_system_settings", "event_pass_tier_settings", b"event_pass_tier_settings", "event_planner_popular_notification_settings", b"event_planner_popular_notification_settings", "evolution_chain_display_settings", b"evolution_chain_display_settings", "evolution_quest_template", b"evolution_quest_template", "external_addressable_assets_settings", b"external_addressable_assets_settings", "feature_gate", b"feature_gate", "feature_unlock_level_settings", b"feature_unlock_level_settings", "field_book_settings", b"field_book_settings", "form_settings", b"form_settings", "fort_power_up_level_settings", b"fort_power_up_level_settings", "friendship_milestone_settings", b"friendship_milestone_settings", "garbage_collection_settings", b"garbage_collection_settings", "gender_settings", b"gender_settings", "geotargeted_quest_settings", b"geotargeted_quest_settings", "gifting_settings", b"gifting_settings", "graphics_capabilities_settings", b"graphics_capabilities_settings", "guest_account_game_settings_proto", b"guest_account_game_settings_proto", "gui_search_settings", b"gui_search_settings", "gym_badge_settings", b"gym_badge_settings", "haptics_settings", b"haptics_settings", "home_widget_settings", b"home_widget_settings", "iap_category_display", b"iap_category_display", "iap_item_display", b"iap_item_display", "iap_settings", b"iap_settings", "iap_store_banner", b"iap_store_banner", "ibfc_lightweight_settings", b"ibfc_lightweight_settings", "impression_tracking_settings", b"impression_tracking_settings", "in_app_survey_settings", b"in_app_survey_settings", "incident_priority_settings", b"incident_priority_settings", "incident_visibility_settings", b"incident_visibility_settings", "invasion_npc_display_settings", b"invasion_npc_display_settings", "inventory_settings", b"inventory_settings", "iris_social_settings", b"iris_social_settings", "iris_social_ux_funnel_settings", b"iris_social_ux_funnel_settings", "item", b"item", "item_currency_values", b"item_currency_values", "item_expiration_settings", b"item_expiration_settings", "item_inventory_update_settings", b"item_inventory_update_settings", "join_raid_via_friend_list_settings", b"join_raid_via_friend_list_settings", "language_bundle", b"language_bundle", "language_selector_settings", b"language_selector_settings", "language_settings", b"language_settings", "level_up_rewards", b"level_up_rewards", "limited_purchase_sku_settings", b"limited_purchase_sku_settings", "location_card_settings", b"location_card_settings", "lucky_pokemon_settings", b"lucky_pokemon_settings", "main_menu_camera_button_settings", b"main_menu_camera_button_settings", "map_buddy_settings", b"map_buddy_settings", "map_coord_overlay", b"map_coord_overlay", "map_display_settings", b"map_display_settings", "map_icon_sort_order", b"map_icon_sort_order", "map_objects_interaction_range_settings", b"map_objects_interaction_range_settings", "map_scene_feature_flags", b"map_scene_feature_flags", "mega_evo_level_settings", b"mega_evo_level_settings", "mega_evo_settings", b"mega_evo_settings", "monodepth_settings", b"monodepth_settings", "move", b"move", "move_sequence", b"move_sequence", "mp_settings", b"mp_settings", "music_settings", b"music_settings", "natural_art_day_night_feature_settings", b"natural_art_day_night_feature_settings", "nearby_pokemon_settings", b"nearby_pokemon_settings", "neutral_avatar_item_mapping", b"neutral_avatar_item_mapping", "neutral_avatar_mapping", b"neutral_avatar_mapping", "neutral_avatar_settings", b"neutral_avatar_settings", "nia_id_migration_settings", b"nia_id_migration_settings", "non_combat_move_settings", b"non_combat_move_settings", "onboarding_settings", b"onboarding_settings", "optimizations_proto", b"optimizations_proto", "party_dark_launch_settings", b"party_dark_launch_settings", "party_iap_boosts_settings", b"party_iap_boosts_settings", "party_play_general_settings", b"party_play_general_settings", "party_player_summary_settings", b"party_player_summary_settings", "party_recommendation_settings", b"party_recommendation_settings", "party_shared_quest_settings", b"party_shared_quest_settings", "photo_sets_settings_proto", b"photo_sets_settings_proto", "photo_settings", b"photo_settings", "planner_settings", b"planner_settings", "player_bonus_system_settings", b"player_bonus_system_settings", "player_level", b"player_level", "pokeball_throw_property_settings", b"pokeball_throw_property_settings", "pokecoin_purchase_display_gmt", b"pokecoin_purchase_display_gmt", "pokedex_categories_settings", b"pokedex_categories_settings", "pokedex_size_stats_system_settings", b"pokedex_size_stats_system_settings", "pokedex_v2_settings", b"pokedex_v2_settings", "pokedexv2_feature_flags", b"pokedexv2_feature_flags", "pokemon", b"pokemon", "pokemon_extended_settings", b"pokemon_extended_settings", "pokemon_family", b"pokemon_family", "pokemon_fx_settings", b"pokemon_fx_settings", "pokemon_home_energy_costs", b"pokemon_home_energy_costs", "pokemon_home_form_reversion", b"pokemon_home_form_reversion", "pokemon_home_settings", b"pokemon_home_settings", "pokemon_info_panel_settings", b"pokemon_info_panel_settings", "pokemon_inventory_rule_settings", b"pokemon_inventory_rule_settings", "pokemon_scale_settings", b"pokemon_scale_settings", "pokemon_tag_settings", b"pokemon_tag_settings", "pokemon_upgrades", b"pokemon_upgrades", "pokestop_invasion_availability_settings", b"pokestop_invasion_availability_settings", "popup_control_settings", b"popup_control_settings", "postcard_collection_settings", b"postcard_collection_settings", "power_up_pokestops_settings", b"power_up_pokestops_settings", "primal_evo_settings", b"primal_evo_settings", "project_vacation", b"project_vacation", "ptc_oauth_settings", b"ptc_oauth_settings", "pvp_next_feature_flags", b"pvp_next_feature_flags", "quest_dialogue_inbox_settings", b"quest_dialogue_inbox_settings", "quest_settings", b"quest_settings", "quick_invite_settings", b"quick_invite_settings", "raid_entry_cost_settings", b"raid_entry_cost_settings", "raid_lobby_counter_settings", b"raid_lobby_counter_settings", "raid_settings_proto", b"raid_settings_proto", "recommended_search_proto", b"recommended_search_proto", "reduced_entry_flow_settings", b"reduced_entry_flow_settings", "referral_settings", b"referral_settings", "remote_trade_settings", b"remote_trade_settings", "roll_back", b"roll_back", "route_badge_settings", b"route_badge_settings", "route_creation_settings", b"route_creation_settings", "route_discovery_settings", b"route_discovery_settings", "route_pin_settings", b"route_pin_settings", "route_play_settings", b"route_play_settings", "route_stamp_category_settings", b"route_stamp_category_settings", "routes_nearby_notif_settings", b"routes_nearby_notif_settings", "routes_party_play_interop_settings", b"routes_party_play_interop_settings", "save_for_later_settings", b"save_for_later_settings", "settings_override_rule", b"settings_override_rule", "shared_fusion_settings", b"shared_fusion_settings", "shared_move_settings", b"shared_move_settings", "smart_glasses_feature_flags", b"smart_glasses_feature_flags", "soft_sfida_settings", b"soft_sfida_settings", "sourdough_move_mapping_settings", b"sourdough_move_mapping_settings", "special_egg_settings", b"special_egg_settings", "special_research_visual_refresh_settings", b"special_research_visual_refresh_settings", "sponsored_geofence_gift_settings", b"sponsored_geofence_gift_settings", "squash_settings", b"squash_settings", "stamp_collection_settings", b"stamp_collection_settings", "station_reward_settings", b"station_reward_settings", "stationed_pokemon_table_settings", b"stationed_pokemon_table_settings", "sticker_category_settings", b"sticker_category_settings", "sticker_metadata", b"sticker_metadata", "streamer_mode_settings", b"streamer_mode_settings", "style_shop_settings", b"style_shop_settings", "supply_balloon_gift_settings", b"supply_balloon_gift_settings", "tappable_settings", b"tappable_settings", "temporary_evolution_settings", b"temporary_evolution_settings", "ticket_gifting_settings", b"ticket_gifting_settings", "today_view_settings", b"today_view_settings", "tutorial_settings", b"tutorial_settings", "two_for_one_flags", b"two_for_one_flags", "type_effective", b"type_effective", "username_suggestion_settings", b"username_suggestion_settings", "verbose_log_combat_settings", b"verbose_log_combat_settings", "verbose_log_raid_settings", b"verbose_log_raid_settings", "vista_general_settings", b"vista_general_settings", "vnext_battle_config", b"vnext_battle_config", "vps_event_settings", b"vps_event_settings", "vs_seeker_client_settings", b"vs_seeker_client_settings", "vs_seeker_loot_proto", b"vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", b"vs_seeker_pokemon_rewards", "vs_seeker_schedule_settings", b"vs_seeker_schedule_settings", "weather_affinities", b"weather_affinities", "weather_bonus_settings", b"weather_bonus_settings", "welcome_back_rewards_settings", b"welcome_back_rewards_settings"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["Data", b"Data", "accessibility_settings", b"accessibility_settings", "additive_scene_settings", b"additive_scene_settings", "address_book_import_settings", b"address_book_import_settings", "addressable_pokemon_settings", b"addressable_pokemon_settings", "advanced_settings", b"advanced_settings", "anti_leak_settings", b"anti_leak_settings", "ar_backend_settings", b"ar_backend_settings", "ar_photo_feature_flags", b"ar_photo_feature_flags", "ar_telemetry_settings", b"ar_telemetry_settings", "asset_refresh_proto", b"asset_refresh_proto", "avatar_customization", b"avatar_customization", "avatar_feature_flags", b"avatar_feature_flags", "avatar_group_settings", b"avatar_group_settings", "avatar_item_display", b"avatar_item_display", "avatar_store_footer_flags", b"avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", b"avatar_store_subcategory_filtering_flags", "background_mode_settings", b"background_mode_settings", "badge", b"badge", "battle_animation_settings", b"battle_animation_settings", "battle_hub_badge_settings", b"battle_hub_badge_settings", "battle_hub_order_settings", b"battle_hub_order_settings", "battle_input_buffer_settings", b"battle_input_buffer_settings", "battle_party_settings", b"battle_party_settings", "battle_settings", b"battle_settings", "battle_visual_settings", b"battle_visual_settings", "beluga_pokemon_whitelist", b"beluga_pokemon_whitelist", "best_friends_plus_settings", b"best_friends_plus_settings", "bread_battle_client_settings", b"bread_battle_client_settings", "bread_feature_flags", b"bread_feature_flags", "bread_lobby_counter_settings", b"bread_lobby_counter_settings", "bread_lobby_update_settings", b"bread_lobby_update_settings", "bread_move_level_settings", b"bread_move_level_settings", "bread_move_mappings", b"bread_move_mappings", "bread_pokemon_scaling_settings", b"bread_pokemon_scaling_settings", "bread_settings", b"bread_settings", "buddy_activity_category_settings", b"buddy_activity_category_settings", "buddy_emotion_level_settings", b"buddy_emotion_level_settings", "buddy_encounter_cameo_settings", b"buddy_encounter_cameo_settings", "buddy_hunger_settings", b"buddy_hunger_settings", "buddy_interaction_settings", b"buddy_interaction_settings", "buddy_level_settings", b"buddy_level_settings", "buddy_swap_settings", b"buddy_swap_settings", "buddy_walk_settings", b"buddy_walk_settings", "bulk_healing_settings", b"bulk_healing_settings", "butterfly_collector_settings", b"butterfly_collector_settings", "campfire_settings", b"campfire_settings", "catch_radius_multiplier_settings", b"catch_radius_multiplier_settings", "client_poi_decoration_group", b"client_poi_decoration_group", "client_quest_template", b"client_quest_template", "code_gate_proto", b"code_gate_proto", "combat_competitive_season_settings", b"combat_competitive_season_settings", "combat_league", b"combat_league", "combat_league_settings", b"combat_league_settings", "combat_move", b"combat_move", "combat_npc_personality", b"combat_npc_personality", "combat_npc_trainer", b"combat_npc_trainer", "combat_ranking_proto_settings", b"combat_ranking_proto_settings", "combat_settings", b"combat_settings", "combat_stat_stage_settings", b"combat_stat_stage_settings", "combat_type", b"combat_type", "contest_settings", b"contest_settings", "conversation_settings", b"conversation_settings", "cross_game_social_settings", b"cross_game_social_settings", "daily_adventure_incense_settings", b"daily_adventure_incense_settings", "deep_linking_settings", b"deep_linking_settings", "egg_hatch_improvements_settings", b"egg_hatch_improvements_settings", "egg_list_adventure_sync_card_settings", b"egg_list_adventure_sync_card_settings", "encounter_settings", b"encounter_settings", "error_reporting_settings", b"error_reporting_settings", "event_conditional_override_settings_priority", b"event_conditional_override_settings_priority", "event_map_decoration_settings", b"event_map_decoration_settings", "event_map_decoration_system_settings", b"event_map_decoration_system_settings", "event_map_refresh_settings", b"event_map_refresh_settings", "event_pass_settings", b"event_pass_settings", "event_pass_system_settings", b"event_pass_system_settings", "event_pass_tier_settings", b"event_pass_tier_settings", "event_planner_popular_notification_settings", b"event_planner_popular_notification_settings", "evolution_chain_display_settings", b"evolution_chain_display_settings", "evolution_quest_template", b"evolution_quest_template", "external_addressable_assets_settings", b"external_addressable_assets_settings", "feature_gate", b"feature_gate", "feature_unlock_level_settings", b"feature_unlock_level_settings", "field_book_settings", b"field_book_settings", "form_settings", b"form_settings", "fort_power_up_level_settings", b"fort_power_up_level_settings", "friendship_milestone_settings", b"friendship_milestone_settings", "garbage_collection_settings", b"garbage_collection_settings", "gender_settings", b"gender_settings", "geotargeted_quest_settings", b"geotargeted_quest_settings", "gifting_settings", b"gifting_settings", "graphics_capabilities_settings", b"graphics_capabilities_settings", "guest_account_game_settings_proto", b"guest_account_game_settings_proto", "gui_search_settings", b"gui_search_settings", "gym_badge_settings", b"gym_badge_settings", "haptics_settings", b"haptics_settings", "home_widget_settings", b"home_widget_settings", "iap_category_display", b"iap_category_display", "iap_item_display", b"iap_item_display", "iap_settings", b"iap_settings", "iap_store_banner", b"iap_store_banner", "ibfc_lightweight_settings", b"ibfc_lightweight_settings", "impression_tracking_settings", b"impression_tracking_settings", "in_app_survey_settings", b"in_app_survey_settings", "incident_priority_settings", b"incident_priority_settings", "incident_visibility_settings", b"incident_visibility_settings", "invasion_npc_display_settings", b"invasion_npc_display_settings", "inventory_settings", b"inventory_settings", "iris_social_settings", b"iris_social_settings", "iris_social_ux_funnel_settings", b"iris_social_ux_funnel_settings", "item", b"item", "item_currency_values", b"item_currency_values", "item_expiration_settings", b"item_expiration_settings", "item_inventory_update_settings", b"item_inventory_update_settings", "join_raid_via_friend_list_settings", b"join_raid_via_friend_list_settings", "language_bundle", b"language_bundle", "language_selector_settings", b"language_selector_settings", "language_settings", b"language_settings", "level_up_rewards", b"level_up_rewards", "limited_purchase_sku_settings", b"limited_purchase_sku_settings", "location_card_settings", b"location_card_settings", "lucky_pokemon_settings", b"lucky_pokemon_settings", "main_menu_camera_button_settings", b"main_menu_camera_button_settings", "map_buddy_settings", b"map_buddy_settings", "map_coord_overlay", b"map_coord_overlay", "map_display_settings", b"map_display_settings", "map_icon_sort_order", b"map_icon_sort_order", "map_objects_interaction_range_settings", b"map_objects_interaction_range_settings", "map_scene_feature_flags", b"map_scene_feature_flags", "mega_evo_level_settings", b"mega_evo_level_settings", "mega_evo_settings", b"mega_evo_settings", "monodepth_settings", b"monodepth_settings", "move", b"move", "move_sequence", b"move_sequence", "mp_settings", b"mp_settings", "music_settings", b"music_settings", "natural_art_day_night_feature_settings", b"natural_art_day_night_feature_settings", "nearby_pokemon_settings", b"nearby_pokemon_settings", "neutral_avatar_item_mapping", b"neutral_avatar_item_mapping", "neutral_avatar_mapping", b"neutral_avatar_mapping", "neutral_avatar_settings", b"neutral_avatar_settings", "nia_id_migration_settings", b"nia_id_migration_settings", "non_combat_move_settings", b"non_combat_move_settings", "onboarding_settings", b"onboarding_settings", "optimizations_proto", b"optimizations_proto", "party_dark_launch_settings", b"party_dark_launch_settings", "party_iap_boosts_settings", b"party_iap_boosts_settings", "party_play_general_settings", b"party_play_general_settings", "party_player_summary_settings", b"party_player_summary_settings", "party_recommendation_settings", b"party_recommendation_settings", "party_shared_quest_settings", b"party_shared_quest_settings", "photo_sets_settings_proto", b"photo_sets_settings_proto", "photo_settings", b"photo_settings", "planner_settings", b"planner_settings", "player_bonus_system_settings", b"player_bonus_system_settings", "player_flow_improvements", b"player_flow_improvements", "player_level", b"player_level", "pokeball_throw_property_settings", b"pokeball_throw_property_settings", "pokecoin_purchase_display_gmt", b"pokecoin_purchase_display_gmt", "pokedex_categories_settings", b"pokedex_categories_settings", "pokedex_size_stats_system_settings", b"pokedex_size_stats_system_settings", "pokedex_v2_settings", b"pokedex_v2_settings", "pokedexv2_feature_flags", b"pokedexv2_feature_flags", "pokemon", b"pokemon", "pokemon_extended_settings", b"pokemon_extended_settings", "pokemon_family", b"pokemon_family", "pokemon_fx_settings", b"pokemon_fx_settings", "pokemon_home_energy_costs", b"pokemon_home_energy_costs", "pokemon_home_form_reversion", b"pokemon_home_form_reversion", "pokemon_home_settings", b"pokemon_home_settings", "pokemon_info_panel_settings", b"pokemon_info_panel_settings", "pokemon_inventory_rule_settings", b"pokemon_inventory_rule_settings", "pokemon_scale_settings", b"pokemon_scale_settings", "pokemon_tag_settings", b"pokemon_tag_settings", "pokemon_upgrades", b"pokemon_upgrades", "pokestop_invasion_availability_settings", b"pokestop_invasion_availability_settings", "popup_control_settings", b"popup_control_settings", "postcard_collection_settings", b"postcard_collection_settings", "power_up_pokestops_settings", b"power_up_pokestops_settings", "primal_evo_settings", b"primal_evo_settings", "prohibited_item_settings", b"prohibited_item_settings", "project_vacation", b"project_vacation", "ptc_oauth_settings", b"ptc_oauth_settings", "pvp_next_feature_flags", b"pvp_next_feature_flags", "quest_dialogue_inbox_settings", b"quest_dialogue_inbox_settings", "quest_settings", b"quest_settings", "quick_invite_settings", b"quick_invite_settings", "raid_entry_cost_settings", b"raid_entry_cost_settings", "raid_lobby_counter_settings", b"raid_lobby_counter_settings", "raid_settings_proto", b"raid_settings_proto", "recommended_search_proto", b"recommended_search_proto", "reduced_entry_flow_settings", b"reduced_entry_flow_settings", "referral_settings", b"referral_settings", "region_prohibited_item_settings", b"region_prohibited_item_settings", "remote_trade_settings", b"remote_trade_settings", "roll_back", b"roll_back", "route_badge_settings", b"route_badge_settings", "route_creation_settings", b"route_creation_settings", "route_discovery_settings", b"route_discovery_settings", "route_pin_settings", b"route_pin_settings", "route_play_settings", b"route_play_settings", "route_stamp_category_settings", b"route_stamp_category_settings", "routes_nearby_notif_settings", b"routes_nearby_notif_settings", "routes_party_play_interop_settings", b"routes_party_play_interop_settings", "save_for_later_settings", b"save_for_later_settings", "settings_override_rule", b"settings_override_rule", "shared_fusion_settings", b"shared_fusion_settings", "shared_move_settings", b"shared_move_settings", "smart_glasses_feature_flags", b"smart_glasses_feature_flags", "soft_sfida_settings", b"soft_sfida_settings", "sourdough_move_mapping_settings", b"sourdough_move_mapping_settings", "special_egg_settings", b"special_egg_settings", "special_research_visual_refresh_settings", b"special_research_visual_refresh_settings", "sponsored_geofence_gift_settings", b"sponsored_geofence_gift_settings", "squash_settings", b"squash_settings", "stamp_collection_settings", b"stamp_collection_settings", "station_reward_settings", b"station_reward_settings", "stationed_pokemon_table_settings", b"stationed_pokemon_table_settings", "sticker_category_settings", b"sticker_category_settings", "sticker_metadata", b"sticker_metadata", "streamer_mode_settings", b"streamer_mode_settings", "style_shop_settings", b"style_shop_settings", "supply_balloon_gift_settings", b"supply_balloon_gift_settings", "tappable_settings", b"tappable_settings", "temporary_evolution_settings", b"temporary_evolution_settings", "ticket_gifting_settings", b"ticket_gifting_settings", "today_view_settings", b"today_view_settings", "tutorial_settings", b"tutorial_settings", "two_for_one_flags", b"two_for_one_flags", "type_effective", b"type_effective", "username_suggestion_settings", b"username_suggestion_settings", "verbose_log_combat_settings", b"verbose_log_combat_settings", "verbose_log_raid_settings", b"verbose_log_raid_settings", "vista_general_settings", b"vista_general_settings", "vnext_battle_config", b"vnext_battle_config", "vps_event_settings", b"vps_event_settings", "vs_seeker_client_settings", b"vs_seeker_client_settings", "vs_seeker_loot_proto", b"vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", b"vs_seeker_pokemon_rewards", "vs_seeker_schedule_settings", b"vs_seeker_schedule_settings", "weather_affinities", b"weather_affinities", "weather_bonus_settings", b"weather_bonus_settings", "welcome_back_rewards_settings", b"welcome_back_rewards_settings"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["Data", b"Data", "accessibility_settings", b"accessibility_settings", "additive_scene_settings", b"additive_scene_settings", "address_book_import_settings", b"address_book_import_settings", "addressable_pokemon_settings", b"addressable_pokemon_settings", "advanced_settings", b"advanced_settings", "anti_leak_settings", b"anti_leak_settings", "ar_backend_settings", b"ar_backend_settings", "ar_photo_feature_flags", b"ar_photo_feature_flags", "ar_telemetry_settings", b"ar_telemetry_settings", "asset_refresh_proto", b"asset_refresh_proto", "avatar_customization", b"avatar_customization", "avatar_feature_flags", b"avatar_feature_flags", "avatar_group_settings", b"avatar_group_settings", "avatar_item_display", b"avatar_item_display", "avatar_store_footer_flags", b"avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", b"avatar_store_subcategory_filtering_flags", "background_mode_settings", b"background_mode_settings", "badge", b"badge", "battle_animation_settings", b"battle_animation_settings", "battle_hub_badge_settings", b"battle_hub_badge_settings", "battle_hub_order_settings", b"battle_hub_order_settings", "battle_input_buffer_settings", b"battle_input_buffer_settings", "battle_party_settings", b"battle_party_settings", "battle_settings", b"battle_settings", "battle_visual_settings", b"battle_visual_settings", "beluga_pokemon_whitelist", b"beluga_pokemon_whitelist", "best_friends_plus_settings", b"best_friends_plus_settings", "bread_battle_client_settings", b"bread_battle_client_settings", "bread_feature_flags", b"bread_feature_flags", "bread_lobby_counter_settings", b"bread_lobby_counter_settings", "bread_lobby_update_settings", b"bread_lobby_update_settings", "bread_move_level_settings", b"bread_move_level_settings", "bread_move_mappings", b"bread_move_mappings", "bread_pokemon_scaling_settings", b"bread_pokemon_scaling_settings", "bread_settings", b"bread_settings", "buddy_activity_category_settings", b"buddy_activity_category_settings", "buddy_emotion_level_settings", b"buddy_emotion_level_settings", "buddy_encounter_cameo_settings", b"buddy_encounter_cameo_settings", "buddy_hunger_settings", b"buddy_hunger_settings", "buddy_interaction_settings", b"buddy_interaction_settings", "buddy_level_settings", b"buddy_level_settings", "buddy_swap_settings", b"buddy_swap_settings", "buddy_walk_settings", b"buddy_walk_settings", "bulk_healing_settings", b"bulk_healing_settings", "butterfly_collector_settings", b"butterfly_collector_settings", "campfire_settings", b"campfire_settings", "catch_radius_multiplier_settings", b"catch_radius_multiplier_settings", "client_poi_decoration_group", b"client_poi_decoration_group", "client_quest_template", b"client_quest_template", "code_gate_proto", b"code_gate_proto", "combat_competitive_season_settings", b"combat_competitive_season_settings", "combat_league", b"combat_league", "combat_league_settings", b"combat_league_settings", "combat_move", b"combat_move", "combat_npc_personality", b"combat_npc_personality", "combat_npc_trainer", b"combat_npc_trainer", "combat_ranking_proto_settings", b"combat_ranking_proto_settings", "combat_settings", b"combat_settings", "combat_stat_stage_settings", b"combat_stat_stage_settings", "combat_type", b"combat_type", "contest_settings", b"contest_settings", "conversation_settings", b"conversation_settings", "cross_game_social_settings", b"cross_game_social_settings", "daily_adventure_incense_settings", b"daily_adventure_incense_settings", "deep_linking_settings", b"deep_linking_settings", "egg_hatch_improvements_settings", b"egg_hatch_improvements_settings", "encounter_settings", b"encounter_settings", "error_reporting_settings", b"error_reporting_settings", "event_conditional_override_settings_priority", b"event_conditional_override_settings_priority", "event_map_decoration_settings", b"event_map_decoration_settings", "event_map_decoration_system_settings", b"event_map_decoration_system_settings", "event_map_refresh_settings", b"event_map_refresh_settings", "event_pass_settings", b"event_pass_settings", "event_pass_system_settings", b"event_pass_system_settings", "event_pass_tier_settings", b"event_pass_tier_settings", "event_planner_popular_notification_settings", b"event_planner_popular_notification_settings", "evolution_chain_display_settings", b"evolution_chain_display_settings", "evolution_quest_template", b"evolution_quest_template", "external_addressable_assets_settings", b"external_addressable_assets_settings", "feature_gate", b"feature_gate", "feature_unlock_level_settings", b"feature_unlock_level_settings", "field_book_settings", b"field_book_settings", "form_settings", b"form_settings", "fort_power_up_level_settings", b"fort_power_up_level_settings", "friendship_milestone_settings", b"friendship_milestone_settings", "garbage_collection_settings", b"garbage_collection_settings", "gender_settings", b"gender_settings", "geotargeted_quest_settings", b"geotargeted_quest_settings", "gifting_settings", b"gifting_settings", "graphics_capabilities_settings", b"graphics_capabilities_settings", "guest_account_game_settings_proto", b"guest_account_game_settings_proto", "gui_search_settings", b"gui_search_settings", "gym_badge_settings", b"gym_badge_settings", "haptics_settings", b"haptics_settings", "home_widget_settings", b"home_widget_settings", "iap_category_display", b"iap_category_display", "iap_item_display", b"iap_item_display", "iap_settings", b"iap_settings", "iap_store_banner", b"iap_store_banner", "ibfc_lightweight_settings", b"ibfc_lightweight_settings", "impression_tracking_settings", b"impression_tracking_settings", "in_app_survey_settings", b"in_app_survey_settings", "incident_priority_settings", b"incident_priority_settings", "incident_visibility_settings", b"incident_visibility_settings", "invasion_npc_display_settings", b"invasion_npc_display_settings", "inventory_settings", b"inventory_settings", "iris_social_settings", b"iris_social_settings", "iris_social_ux_funnel_settings", b"iris_social_ux_funnel_settings", "item", b"item", "item_currency_values", b"item_currency_values", "item_expiration_settings", b"item_expiration_settings", "item_inventory_update_settings", b"item_inventory_update_settings", "join_raid_via_friend_list_settings", b"join_raid_via_friend_list_settings", "language_bundle", b"language_bundle", "language_selector_settings", b"language_selector_settings", "language_settings", b"language_settings", "level_up_rewards", b"level_up_rewards", "limited_purchase_sku_settings", b"limited_purchase_sku_settings", "location_card_settings", b"location_card_settings", "lucky_pokemon_settings", b"lucky_pokemon_settings", "main_menu_camera_button_settings", b"main_menu_camera_button_settings", "map_buddy_settings", b"map_buddy_settings", "map_coord_overlay", b"map_coord_overlay", "map_display_settings", b"map_display_settings", "map_icon_sort_order", b"map_icon_sort_order", "map_objects_interaction_range_settings", b"map_objects_interaction_range_settings", "map_scene_feature_flags", b"map_scene_feature_flags", "mega_evo_level_settings", b"mega_evo_level_settings", "mega_evo_settings", b"mega_evo_settings", "monodepth_settings", b"monodepth_settings", "move", b"move", "move_sequence", b"move_sequence", "mp_settings", b"mp_settings", "music_settings", b"music_settings", "natural_art_day_night_feature_settings", b"natural_art_day_night_feature_settings", "nearby_pokemon_settings", b"nearby_pokemon_settings", "neutral_avatar_item_mapping", b"neutral_avatar_item_mapping", "neutral_avatar_mapping", b"neutral_avatar_mapping", "neutral_avatar_settings", b"neutral_avatar_settings", "nia_id_migration_settings", b"nia_id_migration_settings", "non_combat_move_settings", b"non_combat_move_settings", "onboarding_settings", b"onboarding_settings", "optimizations_proto", b"optimizations_proto", "party_dark_launch_settings", b"party_dark_launch_settings", "party_iap_boosts_settings", b"party_iap_boosts_settings", "party_play_general_settings", b"party_play_general_settings", "party_player_summary_settings", b"party_player_summary_settings", "party_recommendation_settings", b"party_recommendation_settings", "party_shared_quest_settings", b"party_shared_quest_settings", "photo_sets_settings_proto", b"photo_sets_settings_proto", "photo_settings", b"photo_settings", "planner_settings", b"planner_settings", "player_bonus_system_settings", b"player_bonus_system_settings", "player_level", b"player_level", "pokeball_throw_property_settings", b"pokeball_throw_property_settings", "pokecoin_purchase_display_gmt", b"pokecoin_purchase_display_gmt", "pokedex_categories_settings", b"pokedex_categories_settings", "pokedex_size_stats_system_settings", b"pokedex_size_stats_system_settings", "pokedex_v2_settings", b"pokedex_v2_settings", "pokedexv2_feature_flags", b"pokedexv2_feature_flags", "pokemon", b"pokemon", "pokemon_extended_settings", b"pokemon_extended_settings", "pokemon_family", b"pokemon_family", "pokemon_fx_settings", b"pokemon_fx_settings", "pokemon_home_energy_costs", b"pokemon_home_energy_costs", "pokemon_home_form_reversion", b"pokemon_home_form_reversion", "pokemon_home_settings", b"pokemon_home_settings", "pokemon_info_panel_settings", b"pokemon_info_panel_settings", "pokemon_inventory_rule_settings", b"pokemon_inventory_rule_settings", "pokemon_scale_settings", b"pokemon_scale_settings", "pokemon_tag_settings", b"pokemon_tag_settings", "pokemon_upgrades", b"pokemon_upgrades", "pokestop_invasion_availability_settings", b"pokestop_invasion_availability_settings", "popup_control_settings", b"popup_control_settings", "postcard_collection_settings", b"postcard_collection_settings", "power_up_pokestops_settings", b"power_up_pokestops_settings", "primal_evo_settings", b"primal_evo_settings", "project_vacation", b"project_vacation", "ptc_oauth_settings", b"ptc_oauth_settings", "pvp_next_feature_flags", b"pvp_next_feature_flags", "quest_dialogue_inbox_settings", b"quest_dialogue_inbox_settings", "quest_settings", b"quest_settings", "quick_invite_settings", b"quick_invite_settings", "raid_entry_cost_settings", b"raid_entry_cost_settings", "raid_lobby_counter_settings", b"raid_lobby_counter_settings", "raid_settings_proto", b"raid_settings_proto", "recommended_search_proto", b"recommended_search_proto", "reduced_entry_flow_settings", b"reduced_entry_flow_settings", "referral_settings", b"referral_settings", "remote_trade_settings", b"remote_trade_settings", "roll_back", b"roll_back", "route_badge_settings", b"route_badge_settings", "route_creation_settings", b"route_creation_settings", "route_discovery_settings", b"route_discovery_settings", "route_pin_settings", b"route_pin_settings", "route_play_settings", b"route_play_settings", "route_stamp_category_settings", b"route_stamp_category_settings", "routes_nearby_notif_settings", b"routes_nearby_notif_settings", "routes_party_play_interop_settings", b"routes_party_play_interop_settings", "save_for_later_settings", b"save_for_later_settings", "settings_override_rule", b"settings_override_rule", "shared_fusion_settings", b"shared_fusion_settings", "shared_move_settings", b"shared_move_settings", "smart_glasses_feature_flags", b"smart_glasses_feature_flags", "soft_sfida_settings", b"soft_sfida_settings", "sourdough_move_mapping_settings", b"sourdough_move_mapping_settings", "special_egg_settings", b"special_egg_settings", "special_research_visual_refresh_settings", b"special_research_visual_refresh_settings", "sponsored_geofence_gift_settings", b"sponsored_geofence_gift_settings", "squash_settings", b"squash_settings", "stamp_collection_settings", b"stamp_collection_settings", "station_reward_settings", b"station_reward_settings", "stationed_pokemon_table_settings", b"stationed_pokemon_table_settings", "sticker_category_settings", b"sticker_category_settings", "sticker_metadata", b"sticker_metadata", "streamer_mode_settings", b"streamer_mode_settings", "style_shop_settings", b"style_shop_settings", "supply_balloon_gift_settings", b"supply_balloon_gift_settings", "tappable_settings", b"tappable_settings", "template_id", b"template_id", "temporary_evolution_settings", b"temporary_evolution_settings", "ticket_gifting_settings", b"ticket_gifting_settings", "today_view_settings", b"today_view_settings", "tutorial_settings", b"tutorial_settings", "two_for_one_flags", b"two_for_one_flags", "type_effective", b"type_effective", "username_suggestion_settings", b"username_suggestion_settings", "verbose_log_combat_settings", b"verbose_log_combat_settings", "verbose_log_raid_settings", b"verbose_log_raid_settings", "vista_general_settings", b"vista_general_settings", "vnext_battle_config", b"vnext_battle_config", "vps_event_settings", b"vps_event_settings", "vs_seeker_client_settings", b"vs_seeker_client_settings", "vs_seeker_loot_proto", b"vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", b"vs_seeker_pokemon_rewards", "vs_seeker_schedule_settings", b"vs_seeker_schedule_settings", "weather_affinities", b"weather_affinities", "weather_bonus_settings", b"weather_bonus_settings", "welcome_back_rewards_settings", b"welcome_back_rewards_settings"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["Data", b"Data", "accessibility_settings", b"accessibility_settings", "additive_scene_settings", b"additive_scene_settings", "address_book_import_settings", b"address_book_import_settings", "addressable_pokemon_settings", b"addressable_pokemon_settings", "advanced_settings", b"advanced_settings", "anti_leak_settings", b"anti_leak_settings", "ar_backend_settings", b"ar_backend_settings", "ar_photo_feature_flags", b"ar_photo_feature_flags", "ar_telemetry_settings", b"ar_telemetry_settings", "asset_refresh_proto", b"asset_refresh_proto", "avatar_customization", b"avatar_customization", "avatar_feature_flags", b"avatar_feature_flags", "avatar_group_settings", b"avatar_group_settings", "avatar_item_display", b"avatar_item_display", "avatar_store_footer_flags", b"avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", b"avatar_store_subcategory_filtering_flags", "background_mode_settings", b"background_mode_settings", "badge", b"badge", "battle_animation_settings", b"battle_animation_settings", "battle_hub_badge_settings", b"battle_hub_badge_settings", "battle_hub_order_settings", b"battle_hub_order_settings", "battle_input_buffer_settings", b"battle_input_buffer_settings", "battle_party_settings", b"battle_party_settings", "battle_settings", b"battle_settings", "battle_visual_settings", b"battle_visual_settings", "beluga_pokemon_whitelist", b"beluga_pokemon_whitelist", "best_friends_plus_settings", b"best_friends_plus_settings", "bread_battle_client_settings", b"bread_battle_client_settings", "bread_feature_flags", b"bread_feature_flags", "bread_lobby_counter_settings", b"bread_lobby_counter_settings", "bread_lobby_update_settings", b"bread_lobby_update_settings", "bread_move_level_settings", b"bread_move_level_settings", "bread_move_mappings", b"bread_move_mappings", "bread_pokemon_scaling_settings", b"bread_pokemon_scaling_settings", "bread_settings", b"bread_settings", "buddy_activity_category_settings", b"buddy_activity_category_settings", "buddy_emotion_level_settings", b"buddy_emotion_level_settings", "buddy_encounter_cameo_settings", b"buddy_encounter_cameo_settings", "buddy_hunger_settings", b"buddy_hunger_settings", "buddy_interaction_settings", b"buddy_interaction_settings", "buddy_level_settings", b"buddy_level_settings", "buddy_swap_settings", b"buddy_swap_settings", "buddy_walk_settings", b"buddy_walk_settings", "bulk_healing_settings", b"bulk_healing_settings", "butterfly_collector_settings", b"butterfly_collector_settings", "campfire_settings", b"campfire_settings", "catch_radius_multiplier_settings", b"catch_radius_multiplier_settings", "client_poi_decoration_group", b"client_poi_decoration_group", "client_quest_template", b"client_quest_template", "code_gate_proto", b"code_gate_proto", "combat_competitive_season_settings", b"combat_competitive_season_settings", "combat_league", b"combat_league", "combat_league_settings", b"combat_league_settings", "combat_move", b"combat_move", "combat_npc_personality", b"combat_npc_personality", "combat_npc_trainer", b"combat_npc_trainer", "combat_ranking_proto_settings", b"combat_ranking_proto_settings", "combat_settings", b"combat_settings", "combat_stat_stage_settings", b"combat_stat_stage_settings", "combat_type", b"combat_type", "contest_settings", b"contest_settings", "conversation_settings", b"conversation_settings", "cross_game_social_settings", b"cross_game_social_settings", "daily_adventure_incense_settings", b"daily_adventure_incense_settings", "deep_linking_settings", b"deep_linking_settings", "egg_hatch_improvements_settings", b"egg_hatch_improvements_settings", "egg_list_adventure_sync_card_settings", b"egg_list_adventure_sync_card_settings", "encounter_settings", b"encounter_settings", "error_reporting_settings", b"error_reporting_settings", "event_conditional_override_settings_priority", b"event_conditional_override_settings_priority", "event_map_decoration_settings", b"event_map_decoration_settings", "event_map_decoration_system_settings", b"event_map_decoration_system_settings", "event_map_refresh_settings", b"event_map_refresh_settings", "event_pass_settings", b"event_pass_settings", "event_pass_system_settings", b"event_pass_system_settings", "event_pass_tier_settings", b"event_pass_tier_settings", "event_planner_popular_notification_settings", b"event_planner_popular_notification_settings", "evolution_chain_display_settings", b"evolution_chain_display_settings", "evolution_quest_template", b"evolution_quest_template", "external_addressable_assets_settings", b"external_addressable_assets_settings", "feature_gate", b"feature_gate", "feature_unlock_level_settings", b"feature_unlock_level_settings", "field_book_settings", b"field_book_settings", "form_settings", b"form_settings", "fort_power_up_level_settings", b"fort_power_up_level_settings", "friendship_milestone_settings", b"friendship_milestone_settings", "garbage_collection_settings", b"garbage_collection_settings", "gender_settings", b"gender_settings", "geotargeted_quest_settings", b"geotargeted_quest_settings", "gifting_settings", b"gifting_settings", "graphics_capabilities_settings", b"graphics_capabilities_settings", "guest_account_game_settings_proto", b"guest_account_game_settings_proto", "gui_search_settings", b"gui_search_settings", "gym_badge_settings", b"gym_badge_settings", "haptics_settings", b"haptics_settings", "home_widget_settings", b"home_widget_settings", "iap_category_display", b"iap_category_display", "iap_item_display", b"iap_item_display", "iap_settings", b"iap_settings", "iap_store_banner", b"iap_store_banner", "ibfc_lightweight_settings", b"ibfc_lightweight_settings", "impression_tracking_settings", b"impression_tracking_settings", "in_app_survey_settings", b"in_app_survey_settings", "incident_priority_settings", b"incident_priority_settings", "incident_visibility_settings", b"incident_visibility_settings", "invasion_npc_display_settings", b"invasion_npc_display_settings", "inventory_settings", b"inventory_settings", "iris_social_settings", b"iris_social_settings", "iris_social_ux_funnel_settings", b"iris_social_ux_funnel_settings", "item", b"item", "item_currency_values", b"item_currency_values", "item_expiration_settings", b"item_expiration_settings", "item_inventory_update_settings", b"item_inventory_update_settings", "join_raid_via_friend_list_settings", b"join_raid_via_friend_list_settings", "language_bundle", b"language_bundle", "language_selector_settings", b"language_selector_settings", "language_settings", b"language_settings", "level_up_rewards", b"level_up_rewards", "limited_purchase_sku_settings", b"limited_purchase_sku_settings", "location_card_settings", b"location_card_settings", "lucky_pokemon_settings", b"lucky_pokemon_settings", "main_menu_camera_button_settings", b"main_menu_camera_button_settings", "map_buddy_settings", b"map_buddy_settings", "map_coord_overlay", b"map_coord_overlay", "map_display_settings", b"map_display_settings", "map_icon_sort_order", b"map_icon_sort_order", "map_objects_interaction_range_settings", b"map_objects_interaction_range_settings", "map_scene_feature_flags", b"map_scene_feature_flags", "mega_evo_level_settings", b"mega_evo_level_settings", "mega_evo_settings", b"mega_evo_settings", "monodepth_settings", b"monodepth_settings", "move", b"move", "move_sequence", b"move_sequence", "mp_settings", b"mp_settings", "music_settings", b"music_settings", "natural_art_day_night_feature_settings", b"natural_art_day_night_feature_settings", "nearby_pokemon_settings", b"nearby_pokemon_settings", "neutral_avatar_item_mapping", b"neutral_avatar_item_mapping", "neutral_avatar_mapping", b"neutral_avatar_mapping", "neutral_avatar_settings", b"neutral_avatar_settings", "nia_id_migration_settings", b"nia_id_migration_settings", "non_combat_move_settings", b"non_combat_move_settings", "onboarding_settings", b"onboarding_settings", "optimizations_proto", b"optimizations_proto", "party_dark_launch_settings", b"party_dark_launch_settings", "party_iap_boosts_settings", b"party_iap_boosts_settings", "party_play_general_settings", b"party_play_general_settings", "party_player_summary_settings", b"party_player_summary_settings", "party_recommendation_settings", b"party_recommendation_settings", "party_shared_quest_settings", b"party_shared_quest_settings", "photo_sets_settings_proto", b"photo_sets_settings_proto", "photo_settings", b"photo_settings", "planner_settings", b"planner_settings", "player_bonus_system_settings", b"player_bonus_system_settings", "player_flow_improvements", b"player_flow_improvements", "player_level", b"player_level", "pokeball_throw_property_settings", b"pokeball_throw_property_settings", "pokecoin_purchase_display_gmt", b"pokecoin_purchase_display_gmt", "pokedex_categories_settings", b"pokedex_categories_settings", "pokedex_size_stats_system_settings", b"pokedex_size_stats_system_settings", "pokedex_v2_settings", b"pokedex_v2_settings", "pokedexv2_feature_flags", b"pokedexv2_feature_flags", "pokemon", b"pokemon", "pokemon_extended_settings", b"pokemon_extended_settings", "pokemon_family", b"pokemon_family", "pokemon_fx_settings", b"pokemon_fx_settings", "pokemon_home_energy_costs", b"pokemon_home_energy_costs", "pokemon_home_form_reversion", b"pokemon_home_form_reversion", "pokemon_home_settings", b"pokemon_home_settings", "pokemon_info_panel_settings", b"pokemon_info_panel_settings", "pokemon_inventory_rule_settings", b"pokemon_inventory_rule_settings", "pokemon_scale_settings", b"pokemon_scale_settings", "pokemon_tag_settings", b"pokemon_tag_settings", "pokemon_upgrades", b"pokemon_upgrades", "pokestop_invasion_availability_settings", b"pokestop_invasion_availability_settings", "popup_control_settings", b"popup_control_settings", "postcard_collection_settings", b"postcard_collection_settings", "power_up_pokestops_settings", b"power_up_pokestops_settings", "primal_evo_settings", b"primal_evo_settings", "prohibited_item_settings", b"prohibited_item_settings", "project_vacation", b"project_vacation", "ptc_oauth_settings", b"ptc_oauth_settings", "pvp_next_feature_flags", b"pvp_next_feature_flags", "quest_dialogue_inbox_settings", b"quest_dialogue_inbox_settings", "quest_settings", b"quest_settings", "quick_invite_settings", b"quick_invite_settings", "raid_entry_cost_settings", b"raid_entry_cost_settings", "raid_lobby_counter_settings", b"raid_lobby_counter_settings", "raid_settings_proto", b"raid_settings_proto", "recommended_search_proto", b"recommended_search_proto", "reduced_entry_flow_settings", b"reduced_entry_flow_settings", "referral_settings", b"referral_settings", "region_prohibited_item_settings", b"region_prohibited_item_settings", "remote_trade_settings", b"remote_trade_settings", "roll_back", b"roll_back", "route_badge_settings", b"route_badge_settings", "route_creation_settings", b"route_creation_settings", "route_discovery_settings", b"route_discovery_settings", "route_pin_settings", b"route_pin_settings", "route_play_settings", b"route_play_settings", "route_stamp_category_settings", b"route_stamp_category_settings", "routes_nearby_notif_settings", b"routes_nearby_notif_settings", "routes_party_play_interop_settings", b"routes_party_play_interop_settings", "save_for_later_settings", b"save_for_later_settings", "settings_override_rule", b"settings_override_rule", "shared_fusion_settings", b"shared_fusion_settings", "shared_move_settings", b"shared_move_settings", "smart_glasses_feature_flags", b"smart_glasses_feature_flags", "soft_sfida_settings", b"soft_sfida_settings", "sourdough_move_mapping_settings", b"sourdough_move_mapping_settings", "special_egg_settings", b"special_egg_settings", "special_research_visual_refresh_settings", b"special_research_visual_refresh_settings", "sponsored_geofence_gift_settings", b"sponsored_geofence_gift_settings", "squash_settings", b"squash_settings", "stamp_collection_settings", b"stamp_collection_settings", "station_reward_settings", b"station_reward_settings", "stationed_pokemon_table_settings", b"stationed_pokemon_table_settings", "sticker_category_settings", b"sticker_category_settings", "sticker_metadata", b"sticker_metadata", "streamer_mode_settings", b"streamer_mode_settings", "style_shop_settings", b"style_shop_settings", "supply_balloon_gift_settings", b"supply_balloon_gift_settings", "tappable_settings", b"tappable_settings", "template_id", b"template_id", "temporary_evolution_settings", b"temporary_evolution_settings", "ticket_gifting_settings", b"ticket_gifting_settings", "today_view_settings", b"today_view_settings", "tutorial_settings", b"tutorial_settings", "two_for_one_flags", b"two_for_one_flags", "type_effective", b"type_effective", "username_suggestion_settings", b"username_suggestion_settings", "verbose_log_combat_settings", b"verbose_log_combat_settings", "verbose_log_raid_settings", b"verbose_log_raid_settings", "vista_general_settings", b"vista_general_settings", "vnext_battle_config", b"vnext_battle_config", "vps_event_settings", b"vps_event_settings", "vs_seeker_client_settings", b"vs_seeker_client_settings", "vs_seeker_loot_proto", b"vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", b"vs_seeker_pokemon_rewards", "vs_seeker_schedule_settings", b"vs_seeker_schedule_settings", "weather_affinities", b"weather_affinities", "weather_bonus_settings", b"weather_bonus_settings", "welcome_back_rewards_settings", b"welcome_back_rewards_settings"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    _WhichOneofReturnType_Data: _TypeAlias = _typing.Literal["pokemon", "item", "move", "move_sequence", "type_effective", "badge", "player_level", "battle_settings", "encounter_settings", "iap_item_display", "iap_settings", "pokemon_upgrades", "quest_settings", "avatar_customization", "form_settings", "gender_settings", "gym_badge_settings", "weather_affinities", "weather_bonus_settings", "pokemon_scale_settings", "iap_category_display", "beluga_pokemon_whitelist", "onboarding_settings", "friendship_milestone_settings", "lucky_pokemon_settings", "combat_settings", "combat_league_settings", "combat_league", "combat_move", "background_mode_settings", "combat_stat_stage_settings", "combat_npc_trainer", "combat_npc_personality", "party_recommendation_settings", "pokecoin_purchase_display_gmt", "invasion_npc_display_settings", "combat_competitive_season_settings", "combat_ranking_proto_settings", "combat_type", "buddy_level_settings", "buddy_activity_category_settings", "buddy_swap_settings", "route_creation_settings", "vs_seeker_client_settings", "buddy_encounter_cameo_settings", "limited_purchase_sku_settings", "buddy_emotion_level_settings", "pokestop_invasion_availability_settings", "buddy_interaction_settings", "vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", "battle_hub_order_settings", "battle_hub_badge_settings", "map_buddy_settings", "buddy_walk_settings", "buddy_hunger_settings", "project_vacation", "mega_evo_settings", "temporary_evolution_settings", "avatar_group_settings", "pokemon_family", "monodepth_settings", "level_up_rewards", "raid_settings_proto", "tappable_settings", "route_play_settings", "sponsored_geofence_gift_settings", "sticker_metadata", "cross_game_social_settings", "map_display_settings", "pokemon_home_energy_costs", "pokemon_home_settings", "ar_telemetry_settings", "battle_party_settings", "pokemon_home_form_reversion", "deep_linking_settings", "gui_search_settings", "evolution_quest_template", "geotargeted_quest_settings", "pokemon_tag_settings", "recommended_search_proto", "inventory_settings", "route_discovery_settings", "fort_power_up_level_settings", "power_up_pokestops_settings", "incident_priority_settings", "referral_settings", "pokedex_categories_settings", "battle_visual_settings", "addressable_pokemon_settings", "verbose_log_raid_settings", "shared_move_settings", "address_book_import_settings", "music_settings", "map_objects_interaction_range_settings", "external_addressable_assets_settings", "username_suggestion_settings", "tutorial_settings", "egg_hatch_improvements_settings", "feature_unlock_level_settings", "in_app_survey_settings", "incident_visibility_settings", "postcard_collection_settings", "verbose_log_combat_settings", "mega_evo_level_settings", "advanced_settings", "impression_tracking_settings", "garbage_collection_settings", "evolution_chain_display_settings", "route_stamp_category_settings", "popup_control_settings", "ticket_gifting_settings", "language_selector_settings", "gifting_settings", "campfire_settings", "photo_settings", "daily_adventure_incense_settings", "item_inventory_update_settings", "sticker_category_settings", "home_widget_settings", "vs_seeker_schedule_settings", "pokedex_size_stats_system_settings", "asset_refresh_proto", "pokemon_fx_settings", "butterfly_collector_settings", "language_settings", "pokemon_extended_settings", "primal_evo_settings", "nia_id_migration_settings", "location_card_settings", "conversation_settings", "vps_event_settings", "catch_radius_multiplier_settings", "haptics_settings", "raid_lobby_counter_settings", "contest_settings", "guest_account_game_settings_proto", "neutral_avatar_settings", "squash_settings", "today_view_settings", "route_pin_settings", "style_shop_settings", "party_play_general_settings", "optimizations_proto", "nearby_pokemon_settings", "party_player_summary_settings", "party_shared_quest_settings", "client_poi_decoration_group", "map_coord_overlay", "vista_general_settings", "route_badge_settings", "party_dark_launch_settings", "routes_party_play_interop_settings", "routes_nearby_notif_settings", "non_combat_move_settings", "player_bonus_system_settings", "ptc_oauth_settings", "graphics_capabilities_settings", "party_iap_boosts_settings", "language_bundle", "bulk_healing_settings", "photo_sets_settings_proto", "main_menu_camera_button_settings", "shared_fusion_settings", "iris_social_settings", "additive_scene_settings", "mp_settings", "bread_feature_flags", "bread_settings", "settings_override_rule", "save_for_later_settings", "iris_social_ux_funnel_settings", "map_icon_sort_order", "bread_battle_client_settings", "error_reporting_settings", "bread_move_level_settings", "item_expiration_settings", "bread_move_mappings", "station_reward_settings", "stationed_pokemon_table_settings", "accessibility_settings", "bread_lobby_counter_settings", "bread_pokemon_scaling_settings", "pokeball_throw_property_settings", "sourdough_move_mapping_settings", "event_map_decoration_settings", "event_map_decoration_system_settings", "pokemon_info_panel_settings", "stamp_collection_settings", "iap_store_banner", "avatar_item_display", "pokedexv2_feature_flags", "code_gate_proto", "pokedex_v2_settings", "join_raid_via_friend_list_settings", "event_pass_settings", "event_pass_tier_settings", "smart_glasses_feature_flags", "planner_settings", "map_scene_feature_flags", "bread_lobby_update_settings", "anti_leak_settings", "battle_input_buffer_settings", "client_quest_template", "event_pass_system_settings", "pvp_next_feature_flags", "neutral_avatar_mapping", "feature_gate", "roll_back", "ibfc_lightweight_settings", "avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", "two_for_one_flags", "event_planner_popular_notification_settings", "neutral_avatar_item_mapping", "quick_invite_settings", "avatar_feature_flags", "remote_trade_settings", "best_friends_plus_settings", "battle_animation_settings", "vnext_battle_config", "ar_photo_feature_flags", "pokemon_inventory_rule_settings", "special_egg_settings", "supply_balloon_gift_settings", "streamer_mode_settings", "natural_art_day_night_feature_settings", "soft_sfida_settings", "raid_entry_cost_settings", "special_research_visual_refresh_settings", "quest_dialogue_inbox_settings", "field_book_settings", "item_currency_values", "welcome_back_rewards_settings", "reduced_entry_flow_settings", "event_conditional_override_settings_priority", "event_map_refresh_settings", "ar_backend_settings"]  # noqa: Y015
+    _WhichOneofReturnType_Data: _TypeAlias = _typing.Literal["pokemon", "item", "move", "move_sequence", "type_effective", "badge", "player_level", "battle_settings", "encounter_settings", "iap_item_display", "iap_settings", "pokemon_upgrades", "quest_settings", "avatar_customization", "form_settings", "gender_settings", "gym_badge_settings", "weather_affinities", "weather_bonus_settings", "pokemon_scale_settings", "iap_category_display", "beluga_pokemon_whitelist", "onboarding_settings", "friendship_milestone_settings", "lucky_pokemon_settings", "combat_settings", "combat_league_settings", "combat_league", "combat_move", "background_mode_settings", "combat_stat_stage_settings", "combat_npc_trainer", "combat_npc_personality", "party_recommendation_settings", "pokecoin_purchase_display_gmt", "invasion_npc_display_settings", "combat_competitive_season_settings", "combat_ranking_proto_settings", "combat_type", "buddy_level_settings", "buddy_activity_category_settings", "buddy_swap_settings", "route_creation_settings", "vs_seeker_client_settings", "buddy_encounter_cameo_settings", "limited_purchase_sku_settings", "buddy_emotion_level_settings", "pokestop_invasion_availability_settings", "buddy_interaction_settings", "vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", "battle_hub_order_settings", "battle_hub_badge_settings", "map_buddy_settings", "buddy_walk_settings", "buddy_hunger_settings", "project_vacation", "mega_evo_settings", "temporary_evolution_settings", "avatar_group_settings", "pokemon_family", "monodepth_settings", "level_up_rewards", "raid_settings_proto", "tappable_settings", "route_play_settings", "sponsored_geofence_gift_settings", "sticker_metadata", "cross_game_social_settings", "map_display_settings", "pokemon_home_energy_costs", "pokemon_home_settings", "ar_telemetry_settings", "battle_party_settings", "pokemon_home_form_reversion", "deep_linking_settings", "gui_search_settings", "evolution_quest_template", "geotargeted_quest_settings", "pokemon_tag_settings", "recommended_search_proto", "inventory_settings", "route_discovery_settings", "fort_power_up_level_settings", "power_up_pokestops_settings", "incident_priority_settings", "referral_settings", "pokedex_categories_settings", "battle_visual_settings", "addressable_pokemon_settings", "verbose_log_raid_settings", "shared_move_settings", "address_book_import_settings", "music_settings", "map_objects_interaction_range_settings", "external_addressable_assets_settings", "username_suggestion_settings", "tutorial_settings", "egg_hatch_improvements_settings", "feature_unlock_level_settings", "in_app_survey_settings", "incident_visibility_settings", "postcard_collection_settings", "verbose_log_combat_settings", "mega_evo_level_settings", "advanced_settings", "impression_tracking_settings", "garbage_collection_settings", "evolution_chain_display_settings", "route_stamp_category_settings", "popup_control_settings", "ticket_gifting_settings", "language_selector_settings", "gifting_settings", "campfire_settings", "photo_settings", "daily_adventure_incense_settings", "item_inventory_update_settings", "sticker_category_settings", "home_widget_settings", "vs_seeker_schedule_settings", "pokedex_size_stats_system_settings", "asset_refresh_proto", "pokemon_fx_settings", "butterfly_collector_settings", "language_settings", "pokemon_extended_settings", "primal_evo_settings", "nia_id_migration_settings", "location_card_settings", "conversation_settings", "vps_event_settings", "catch_radius_multiplier_settings", "haptics_settings", "raid_lobby_counter_settings", "contest_settings", "guest_account_game_settings_proto", "neutral_avatar_settings", "squash_settings", "today_view_settings", "route_pin_settings", "style_shop_settings", "party_play_general_settings", "optimizations_proto", "nearby_pokemon_settings", "party_player_summary_settings", "party_shared_quest_settings", "client_poi_decoration_group", "map_coord_overlay", "vista_general_settings", "route_badge_settings", "party_dark_launch_settings", "routes_party_play_interop_settings", "routes_nearby_notif_settings", "non_combat_move_settings", "player_bonus_system_settings", "ptc_oauth_settings", "graphics_capabilities_settings", "party_iap_boosts_settings", "language_bundle", "bulk_healing_settings", "photo_sets_settings_proto", "main_menu_camera_button_settings", "shared_fusion_settings", "iris_social_settings", "additive_scene_settings", "mp_settings", "bread_feature_flags", "bread_settings", "settings_override_rule", "save_for_later_settings", "iris_social_ux_funnel_settings", "map_icon_sort_order", "bread_battle_client_settings", "error_reporting_settings", "bread_move_level_settings", "item_expiration_settings", "bread_move_mappings", "station_reward_settings", "stationed_pokemon_table_settings", "accessibility_settings", "bread_lobby_counter_settings", "bread_pokemon_scaling_settings", "pokeball_throw_property_settings", "sourdough_move_mapping_settings", "event_map_decoration_settings", "event_map_decoration_system_settings", "pokemon_info_panel_settings", "stamp_collection_settings", "iap_store_banner", "avatar_item_display", "pokedexv2_feature_flags", "code_gate_proto", "pokedex_v2_settings", "join_raid_via_friend_list_settings", "event_pass_settings", "event_pass_tier_settings", "smart_glasses_feature_flags", "planner_settings", "map_scene_feature_flags", "bread_lobby_update_settings", "anti_leak_settings", "battle_input_buffer_settings", "client_quest_template", "event_pass_system_settings", "pvp_next_feature_flags", "neutral_avatar_mapping", "feature_gate", "roll_back", "ibfc_lightweight_settings", "avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", "two_for_one_flags", "event_planner_popular_notification_settings", "neutral_avatar_item_mapping", "quick_invite_settings", "avatar_feature_flags", "remote_trade_settings", "best_friends_plus_settings", "battle_animation_settings", "vnext_battle_config", "ar_photo_feature_flags", "pokemon_inventory_rule_settings", "special_egg_settings", "supply_balloon_gift_settings", "streamer_mode_settings", "natural_art_day_night_feature_settings", "soft_sfida_settings", "raid_entry_cost_settings", "special_research_visual_refresh_settings", "quest_dialogue_inbox_settings", "field_book_settings", "item_currency_values", "welcome_back_rewards_settings", "reduced_entry_flow_settings", "event_conditional_override_settings_priority", "event_map_refresh_settings", "ar_backend_settings", "prohibited_item_settings", "player_flow_improvements", "egg_list_adventure_sync_card_settings", "region_prohibited_item_settings"]  # noqa: Y015
     _WhichOneofArgType_Data: _TypeAlias = _typing.Literal["Data", b"Data"]  # noqa: Y015
     def WhichOneof(self, oneof_group: _WhichOneofArgType_Data) -> _WhichOneofReturnType_Data | None: ...
 
@@ -67866,6 +68683,7 @@ class GetBreadLobbyDetailsOutProto(_message.Message):
         ERROR_BREAD_BATTLE_UNAVAILABLE: GetBreadLobbyDetailsOutProto._Result.ValueType  # 4
         ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetBreadLobbyDetailsOutProto._Result.ValueType  # 5
         ERROR_STATION_INACCESSIBLE: GetBreadLobbyDetailsOutProto._Result.ValueType  # 6
+        ERROR_PLAYER_NOT_ELIGIBLE: GetBreadLobbyDetailsOutProto._Result.ValueType  # 7
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: GetBreadLobbyDetailsOutProto.Result.ValueType  # 0
@@ -67875,6 +68693,7 @@ class GetBreadLobbyDetailsOutProto(_message.Message):
     ERROR_BREAD_BATTLE_UNAVAILABLE: GetBreadLobbyDetailsOutProto.Result.ValueType  # 4
     ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetBreadLobbyDetailsOutProto.Result.ValueType  # 5
     ERROR_STATION_INACCESSIBLE: GetBreadLobbyDetailsOutProto.Result.ValueType  # 6
+    ERROR_PLAYER_NOT_ELIGIBLE: GetBreadLobbyDetailsOutProto.Result.ValueType  # 7
 
     BREAD_LOBBY_FIELD_NUMBER: _builtins.int
     RESULT_FIELD_NUMBER: _builtins.int
@@ -68829,6 +69648,21 @@ class GetDailyEncounterOutProto(_message.Message):
     NO_POKEMON_AVAILABLE: GetDailyEncounterOutProto.Result.ValueType  # 4
     DISABLED: GetDailyEncounterOutProto.Result.ValueType  # 5
 
+    class _SpawnVisualType:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _SpawnVisualTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[GetDailyEncounterOutProto._SpawnVisualType.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        VISUAL_UNSET: GetDailyEncounterOutProto._SpawnVisualType.ValueType  # 0
+        STANDARD: GetDailyEncounterOutProto._SpawnVisualType.ValueType  # 1
+        YELLOW_RI: GetDailyEncounterOutProto._SpawnVisualType.ValueType  # 2
+
+    class SpawnVisualType(_SpawnVisualType, metaclass=_SpawnVisualTypeEnumTypeWrapper): ...
+    VISUAL_UNSET: GetDailyEncounterOutProto.SpawnVisualType.ValueType  # 0
+    STANDARD: GetDailyEncounterOutProto.SpawnVisualType.ValueType  # 1
+    YELLOW_RI: GetDailyEncounterOutProto.SpawnVisualType.ValueType  # 2
+
     RESULT_FIELD_NUMBER: _builtins.int
     POKEDEX_ID_FIELD_NUMBER: _builtins.int
     LAT_FIELD_NUMBER: _builtins.int
@@ -68837,6 +69671,7 @@ class GetDailyEncounterOutProto(_message.Message):
     ENCOUNTER_ID_FIELD_NUMBER: _builtins.int
     DISAPPEAR_TIME_MS_FIELD_NUMBER: _builtins.int
     POKEMON_DISPLAY_FIELD_NUMBER: _builtins.int
+    SPAWN_VISUAL_TYPE_FIELD_NUMBER: _builtins.int
     result: Global___GetDailyEncounterOutProto.Result.ValueType
     pokedex_id: Global___HoloPokemonId.ValueType
     lat: _builtins.float
@@ -68844,6 +69679,7 @@ class GetDailyEncounterOutProto(_message.Message):
     encounter_location: _builtins.str
     encounter_id: _builtins.int
     disappear_time_ms: _builtins.int
+    spawn_visual_type: Global___GetDailyEncounterOutProto.SpawnVisualType.ValueType
     @_builtins.property
     def pokemon_display(self) -> Global___PokemonDisplayProto: ...
     def __init__(
@@ -68857,10 +69693,11 @@ class GetDailyEncounterOutProto(_message.Message):
         encounter_id: _builtins.int = ...,
         disappear_time_ms: _builtins.int = ...,
         pokemon_display: Global___PokemonDisplayProto | None = ...,
+        spawn_visual_type: Global___GetDailyEncounterOutProto.SpawnVisualType.ValueType = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["pokemon_display", b"pokemon_display"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["disappear_time_ms", b"disappear_time_ms", "encounter_id", b"encounter_id", "encounter_location", b"encounter_location", "lat", b"lat", "lng", b"lng", "pokedex_id", b"pokedex_id", "pokemon_display", b"pokemon_display", "result", b"result"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["disappear_time_ms", b"disappear_time_ms", "encounter_id", b"encounter_id", "encounter_location", b"encounter_location", "lat", b"lat", "lng", b"lng", "pokedex_id", b"pokedex_id", "pokemon_display", b"pokemon_display", "result", b"result", "spawn_visual_type", b"spawn_visual_type"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -72002,19 +72839,25 @@ class GetPartyOutProto(_message.Message):
 
         PARTY_RESULTS_FIELD_NUMBER: _builtins.int
         INVITES_FIELD_NUMBER: _builtins.int
+        ACTIVE_PARTY_RESULT_FIELD_NUMBER: _builtins.int
         @_builtins.property
         def party_results(self) -> _containers.RepeatedCompositeFieldContainer[Global___GetPartyOutProto.WeeklyChallengePartyProto.PartyResultProto]: ...
         @_builtins.property
         def invites(self) -> _containers.RepeatedCompositeFieldContainer[Global___PartyInviteRpcProto]: ...
+        @_builtins.property
+        def active_party_result(self) -> Global___GetPartyOutProto.WeeklyChallengePartyProto.PartyResultProto:
+            """TODO: not in apk"""
+
         def __init__(
             self,
             *,
             party_results: _abc.Iterable[Global___GetPartyOutProto.WeeklyChallengePartyProto.PartyResultProto] | None = ...,
             invites: _abc.Iterable[Global___PartyInviteRpcProto] | None = ...,
+            active_party_result: Global___GetPartyOutProto.WeeklyChallengePartyProto.PartyResultProto | None = ...,
         ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        _HasFieldArgType: _TypeAlias = _typing.Literal["active_party_result", b"active_party_result"]  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["invites", b"invites", "party_results", b"party_results"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["active_party_result", b"active_party_result", "invites", b"invites", "party_results", b"party_results"]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
         def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -72077,7 +72920,9 @@ class GetPartyProto(_message.Message):
     invites_requested: _builtins.bool
     party_seed: _builtins.int
     @_builtins.property
-    def party_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    def party_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]:
+        """6 must be unpacked ???"""
+
     def __init__(
         self,
         *,
@@ -73124,19 +73969,22 @@ class GetPokestopEncounterProto(_message.Message):
     POKEMON_ID_FIELD_NUMBER: _builtins.int
     ENCOUNTER_LOCATION_FIELD_NUMBER: _builtins.int
     FORT_ID_FIELD_NUMBER: _builtins.int
+    INCIDENT_ID_FIELD_NUMBER: _builtins.int
     pokemon_id: Global___HoloPokemonId.ValueType
     encounter_location: _builtins.str
     fort_id: _builtins.str
+    incident_id: _builtins.str
     def __init__(
         self,
         *,
         pokemon_id: Global___HoloPokemonId.ValueType = ...,
         encounter_location: _builtins.str = ...,
         fort_id: _builtins.str = ...,
+        incident_id: _builtins.str = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["encounter_location", b"encounter_location", "fort_id", b"fort_id", "pokemon_id", b"pokemon_id"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["encounter_location", b"encounter_location", "fort_id", b"fort_id", "incident_id", b"incident_id", "pokemon_id", b"pokemon_id"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -73370,6 +74218,7 @@ class GetRaidDetailsOutProto(_message.Message):
         ERROR_RAID_UNAVAILABLE: GetRaidDetailsOutProto._Result.ValueType  # 4
         ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetRaidDetailsOutProto._Result.ValueType  # 5
         ERROR_POI_INACCESSIBLE: GetRaidDetailsOutProto._Result.ValueType  # 6
+        ERROR_PLAYER_NOT_ELIGIBLE: GetRaidDetailsOutProto._Result.ValueType  # 7
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: GetRaidDetailsOutProto.Result.ValueType  # 0
@@ -73379,6 +74228,7 @@ class GetRaidDetailsOutProto(_message.Message):
     ERROR_RAID_UNAVAILABLE: GetRaidDetailsOutProto.Result.ValueType  # 4
     ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetRaidDetailsOutProto.Result.ValueType  # 5
     ERROR_POI_INACCESSIBLE: GetRaidDetailsOutProto.Result.ValueType  # 6
+    ERROR_PLAYER_NOT_ELIGIBLE: GetRaidDetailsOutProto.Result.ValueType  # 7
 
     LOBBY_FIELD_NUMBER: _builtins.int
     RAID_BATTLE_FIELD_NUMBER: _builtins.int
@@ -73589,12 +74439,14 @@ class GetRaidLobbyCounterOutProto(_message.Message):
         SUCCESS: GetRaidLobbyCounterOutProto._Result.ValueType  # 1
         ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetRaidLobbyCounterOutProto._Result.ValueType  # 2
         ERROR_FEATURE_DISABLED: GetRaidLobbyCounterOutProto._Result.ValueType  # 3
+        ERROR_PLAYER_NOT_ELIGIBLE: GetRaidLobbyCounterOutProto._Result.ValueType  # 4
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: GetRaidLobbyCounterOutProto.Result.ValueType  # 0
     SUCCESS: GetRaidLobbyCounterOutProto.Result.ValueType  # 1
     ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetRaidLobbyCounterOutProto.Result.ValueType  # 2
     ERROR_FEATURE_DISABLED: GetRaidLobbyCounterOutProto.Result.ValueType  # 3
+    ERROR_PLAYER_NOT_ELIGIBLE: GetRaidLobbyCounterOutProto.Result.ValueType  # 4
 
     RESULT_FIELD_NUMBER: _builtins.int
     COUNTER_RESPONSES_FIELD_NUMBER: _builtins.int
@@ -75698,6 +76550,12 @@ class GiftingEligibilityStatusProto(_message.Message):
         FAILURE_FRIEND_LEVEL: GiftingEligibilityStatusProto._Status.ValueType  # 8
         FAILURE_FRIEND_HAS_TICKET: GiftingEligibilityStatusProto._Status.ValueType  # 9
         FAILURE_FRIEND_OPT_OUT_RECEIVE_TICKET_GIFTS: GiftingEligibilityStatusProto._Status.ValueType  # 10
+        FAILURE_SENDER_ACCOUNT_AGE: GiftingEligibilityStatusProto._Status.ValueType  # 11
+        FAILURE_RECIPIENT_OPT_OUT: GiftingEligibilityStatusProto._Status.ValueType  # 12
+        FAILURE_RECIPIENT_OWNERSHIP: GiftingEligibilityStatusProto._Status.ValueType  # 13
+        FAILURE_CROSS_CURRENCY: GiftingEligibilityStatusProto._Status.ValueType  # 14
+        FAILURE_RECIPIENT_UNLOCK: GiftingEligibilityStatusProto._Status.ValueType  # 15
+        FAILURE_FRIEND_OPT_OUT_RECEIVE_PREMIUM_GIFTS: GiftingEligibilityStatusProto._Status.ValueType  # 16
 
     class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
     UNSET: GiftingEligibilityStatusProto.Status.ValueType  # 0
@@ -75711,6 +76569,12 @@ class GiftingEligibilityStatusProto(_message.Message):
     FAILURE_FRIEND_LEVEL: GiftingEligibilityStatusProto.Status.ValueType  # 8
     FAILURE_FRIEND_HAS_TICKET: GiftingEligibilityStatusProto.Status.ValueType  # 9
     FAILURE_FRIEND_OPT_OUT_RECEIVE_TICKET_GIFTS: GiftingEligibilityStatusProto.Status.ValueType  # 10
+    FAILURE_SENDER_ACCOUNT_AGE: GiftingEligibilityStatusProto.Status.ValueType  # 11
+    FAILURE_RECIPIENT_OPT_OUT: GiftingEligibilityStatusProto.Status.ValueType  # 12
+    FAILURE_RECIPIENT_OWNERSHIP: GiftingEligibilityStatusProto.Status.ValueType  # 13
+    FAILURE_CROSS_CURRENCY: GiftingEligibilityStatusProto.Status.ValueType  # 14
+    FAILURE_RECIPIENT_UNLOCK: GiftingEligibilityStatusProto.Status.ValueType  # 15
+    FAILURE_FRIEND_OPT_OUT_RECEIVE_PREMIUM_GIFTS: GiftingEligibilityStatusProto.Status.ValueType  # 16
 
     SENDER_CHECK_STATUS_FIELD_NUMBER: _builtins.int
     ITEM_CHECK_STATUS_FIELD_NUMBER: _builtins.int
@@ -77887,6 +78751,7 @@ class HoloInventoryItemProto(_message.Message):
     FIELDBOOK_HEADERS_FIELD_NUMBER: _builtins.int
     POKEMON_TEMP_EVO_RESOURCE_FIELD_NUMBER: _builtins.int
     STRING_TICKETS_FIELD_NUMBER: _builtins.int
+    PENDING_PREMIUM_GIFTS_FIELD_NUMBER: _builtins.int
     @_builtins.property
     def pokemon(self) -> Global___PokemonProto: ...
     @_builtins.property
@@ -77971,6 +78836,8 @@ class HoloInventoryItemProto(_message.Message):
     def pokemon_temp_evo_resource(self) -> Global___PokemonTempEvoResourceProto: ...
     @_builtins.property
     def string_tickets(self) -> Global___StringTicketsProto: ...
+    @_builtins.property
+    def pending_premium_gifts(self) -> Global___PendingPremiumGiftListProto: ...
     def __init__(
         self,
         *,
@@ -78016,12 +78883,13 @@ class HoloInventoryItemProto(_message.Message):
         fieldbook_headers: Global___PlayerPokemonFieldbookHeadersProto | None = ...,
         pokemon_temp_evo_resource: Global___PokemonTempEvoResourceProto | None = ...,
         string_tickets: Global___StringTicketsProto | None = ...,
+        pending_premium_gifts: Global___PendingPremiumGiftListProto | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["Type", b"Type", "active_training_pokemon", b"active_training_pokemon", "applied_bonuses", b"applied_bonuses", "applied_items", b"applied_items", "avatar_item", b"avatar_item", "badge_data", b"badge_data", "beluga_incense", b"beluga_incense", "dt_count", b"dt_count", "egg_incubators", b"egg_incubators", "event_passes", b"event_passes", "event_rsvps", b"event_rsvps", "fake_data", b"fake_data", "fieldbook_headers", b"fieldbook_headers", "follower_data", b"follower_data", "gift_boxes", b"gift_boxes", "inventory_upgrades", b"inventory_upgrades", "item", b"item", "limited_purchase_sku_record", b"limited_purchase_sku_record", "mega_evolve_species", b"mega_evolve_species", "neutral_avatar", b"neutral_avatar", "neutral_avatar_item", b"neutral_avatar_item", "player_attributes", b"player_attributes", "player_camera", b"player_camera", "player_currency", b"player_currency", "player_stats", b"player_stats", "player_stats_snapshots", b"player_stats_snapshots", "pokedex_category_milestone", b"pokedex_category_milestone", "pokedex_entry", b"pokedex_entry", "pokemon", b"pokemon", "pokemon_family", b"pokemon_family", "pokemon_home", b"pokemon_home", "pokemon_temp_evo_resource", b"pokemon_temp_evo_resource", "quest", b"quest", "quests", b"quests", "raid_tickets", b"raid_tickets", "route_creations", b"route_creations", "route_play", b"route_play", "sleep_records", b"sleep_records", "soft_sfida", b"soft_sfida", "sparkly_incense", b"sparkly_incense", "squash_count", b"squash_count", "sticker", b"sticker", "string_tickets", b"string_tickets"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["Type", b"Type", "active_training_pokemon", b"active_training_pokemon", "applied_bonuses", b"applied_bonuses", "applied_items", b"applied_items", "avatar_item", b"avatar_item", "badge_data", b"badge_data", "beluga_incense", b"beluga_incense", "dt_count", b"dt_count", "egg_incubators", b"egg_incubators", "event_passes", b"event_passes", "event_rsvps", b"event_rsvps", "fake_data", b"fake_data", "fieldbook_headers", b"fieldbook_headers", "follower_data", b"follower_data", "gift_boxes", b"gift_boxes", "inventory_upgrades", b"inventory_upgrades", "item", b"item", "limited_purchase_sku_record", b"limited_purchase_sku_record", "mega_evolve_species", b"mega_evolve_species", "neutral_avatar", b"neutral_avatar", "neutral_avatar_item", b"neutral_avatar_item", "pending_premium_gifts", b"pending_premium_gifts", "player_attributes", b"player_attributes", "player_camera", b"player_camera", "player_currency", b"player_currency", "player_stats", b"player_stats", "player_stats_snapshots", b"player_stats_snapshots", "pokedex_category_milestone", b"pokedex_category_milestone", "pokedex_entry", b"pokedex_entry", "pokemon", b"pokemon", "pokemon_family", b"pokemon_family", "pokemon_home", b"pokemon_home", "pokemon_temp_evo_resource", b"pokemon_temp_evo_resource", "quest", b"quest", "quests", b"quests", "raid_tickets", b"raid_tickets", "route_creations", b"route_creations", "route_play", b"route_play", "sleep_records", b"sleep_records", "soft_sfida", b"soft_sfida", "sparkly_incense", b"sparkly_incense", "squash_count", b"squash_count", "sticker", b"sticker", "string_tickets", b"string_tickets"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["Type", b"Type", "active_training_pokemon", b"active_training_pokemon", "applied_bonuses", b"applied_bonuses", "applied_items", b"applied_items", "avatar_item", b"avatar_item", "badge_data", b"badge_data", "beluga_incense", b"beluga_incense", "dt_count", b"dt_count", "egg_incubators", b"egg_incubators", "event_passes", b"event_passes", "event_rsvps", b"event_rsvps", "fake_data", b"fake_data", "fieldbook_headers", b"fieldbook_headers", "follower_data", b"follower_data", "gift_boxes", b"gift_boxes", "inventory_upgrades", b"inventory_upgrades", "item", b"item", "limited_purchase_sku_record", b"limited_purchase_sku_record", "mega_evolve_species", b"mega_evolve_species", "neutral_avatar", b"neutral_avatar", "neutral_avatar_item", b"neutral_avatar_item", "player_attributes", b"player_attributes", "player_camera", b"player_camera", "player_currency", b"player_currency", "player_stats", b"player_stats", "player_stats_snapshots", b"player_stats_snapshots", "pokedex_category_milestone", b"pokedex_category_milestone", "pokedex_entry", b"pokedex_entry", "pokemon", b"pokemon", "pokemon_family", b"pokemon_family", "pokemon_home", b"pokemon_home", "pokemon_temp_evo_resource", b"pokemon_temp_evo_resource", "quest", b"quest", "quests", b"quests", "raid_tickets", b"raid_tickets", "route_creations", b"route_creations", "route_play", b"route_play", "sleep_records", b"sleep_records", "soft_sfida", b"soft_sfida", "sparkly_incense", b"sparkly_incense", "squash_count", b"squash_count", "sticker", b"sticker", "string_tickets", b"string_tickets"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["Type", b"Type", "active_training_pokemon", b"active_training_pokemon", "applied_bonuses", b"applied_bonuses", "applied_items", b"applied_items", "avatar_item", b"avatar_item", "badge_data", b"badge_data", "beluga_incense", b"beluga_incense", "dt_count", b"dt_count", "egg_incubators", b"egg_incubators", "event_passes", b"event_passes", "event_rsvps", b"event_rsvps", "fake_data", b"fake_data", "fieldbook_headers", b"fieldbook_headers", "follower_data", b"follower_data", "gift_boxes", b"gift_boxes", "inventory_upgrades", b"inventory_upgrades", "item", b"item", "limited_purchase_sku_record", b"limited_purchase_sku_record", "mega_evolve_species", b"mega_evolve_species", "neutral_avatar", b"neutral_avatar", "neutral_avatar_item", b"neutral_avatar_item", "pending_premium_gifts", b"pending_premium_gifts", "player_attributes", b"player_attributes", "player_camera", b"player_camera", "player_currency", b"player_currency", "player_stats", b"player_stats", "player_stats_snapshots", b"player_stats_snapshots", "pokedex_category_milestone", b"pokedex_category_milestone", "pokedex_entry", b"pokedex_entry", "pokemon", b"pokemon", "pokemon_family", b"pokemon_family", "pokemon_home", b"pokemon_home", "pokemon_temp_evo_resource", b"pokemon_temp_evo_resource", "quest", b"quest", "quests", b"quests", "raid_tickets", b"raid_tickets", "route_creations", b"route_creations", "route_play", b"route_play", "sleep_records", b"sleep_records", "soft_sfida", b"soft_sfida", "sparkly_incense", b"sparkly_incense", "squash_count", b"squash_count", "sticker", b"sticker", "string_tickets", b"string_tickets"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    _WhichOneofReturnType_Type: _TypeAlias = _typing.Literal["pokemon", "item", "pokedex_entry", "player_stats", "player_currency", "player_camera", "inventory_upgrades", "applied_items", "egg_incubators", "pokemon_family", "quest", "avatar_item", "raid_tickets", "quests", "gift_boxes", "beluga_incense", "sparkly_incense", "limited_purchase_sku_record", "route_play", "mega_evolve_species", "sticker", "pokemon_home", "badge_data", "player_stats_snapshots", "fake_data", "pokedex_category_milestone", "sleep_records", "player_attributes", "follower_data", "squash_count", "route_creations", "neutral_avatar", "neutral_avatar_item", "applied_bonuses", "event_passes", "event_rsvps", "active_training_pokemon", "dt_count", "soft_sfida", "fieldbook_headers", "pokemon_temp_evo_resource", "string_tickets"]  # noqa: Y015
+    _WhichOneofReturnType_Type: _TypeAlias = _typing.Literal["pokemon", "item", "pokedex_entry", "player_stats", "player_currency", "player_camera", "inventory_upgrades", "applied_items", "egg_incubators", "pokemon_family", "quest", "avatar_item", "raid_tickets", "quests", "gift_boxes", "beluga_incense", "sparkly_incense", "limited_purchase_sku_record", "route_play", "mega_evolve_species", "sticker", "pokemon_home", "badge_data", "player_stats_snapshots", "fake_data", "pokedex_category_milestone", "sleep_records", "player_attributes", "follower_data", "squash_count", "route_creations", "neutral_avatar", "neutral_avatar_item", "applied_bonuses", "event_passes", "event_rsvps", "active_training_pokemon", "dt_count", "soft_sfida", "fieldbook_headers", "pokemon_temp_evo_resource", "string_tickets", "pending_premium_gifts"]  # noqa: Y015
     _WhichOneofArgType_Type: _TypeAlias = _typing.Literal["Type", b"Type"]  # noqa: Y015
     def WhichOneof(self, oneof_group: _WhichOneofArgType_Type) -> _WhichOneofReturnType_Type | None: ...
 
@@ -78075,6 +78943,7 @@ class HoloInventoryKeyProto(_message.Message):
     FIELDBOOK_HEADERS_FIELD_NUMBER: _builtins.int
     POKEMON_TEMP_EVO_RESOURCE_FIELD_NUMBER: _builtins.int
     STRING_TICKETS_FIELD_NUMBER: _builtins.int
+    PENDING_PREMIUM_GIFTS_FIELD_NUMBER: _builtins.int
     pokemon_id: _builtins.int
     item: Global___Item.ValueType
     pokedex_entry_id: Global___HoloPokemonId.ValueType
@@ -78119,6 +78988,7 @@ class HoloInventoryKeyProto(_message.Message):
     fieldbook_headers: _builtins.bool
     pokemon_temp_evo_resource: _builtins.str
     string_tickets: _builtins.bool
+    pending_premium_gifts: _builtins.bool
     def __init__(
         self,
         *,
@@ -78166,12 +79036,13 @@ class HoloInventoryKeyProto(_message.Message):
         fieldbook_headers: _builtins.bool = ...,
         pokemon_temp_evo_resource: _builtins.str = ...,
         string_tickets: _builtins.bool = ...,
+        pending_premium_gifts: _builtins.bool = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["Type", b"Type", "active_training_pokemon", b"active_training_pokemon", "applied_bonuses", b"applied_bonuses", "applied_items", b"applied_items", "avatar_template_id", b"avatar_template_id", "badge", b"badge", "beluga_incense_box", b"beluga_incense_box", "dt_count", b"dt_count", "egg_incubators", b"egg_incubators", "event_passes", b"event_passes", "event_rsvps", b"event_rsvps", "fake_data", b"fake_data", "fieldbook_headers", b"fieldbook_headers", "follower_data", b"follower_data", "gift_boxes", b"gift_boxes", "inventory_upgrades", b"inventory_upgrades", "item", b"item", "limited_purchase_sku_record", b"limited_purchase_sku_record", "mega_evo_pokemon_species_id", b"mega_evo_pokemon_species_id", "neutral_avatar", b"neutral_avatar", "neutral_avatar_item_template_id", b"neutral_avatar_item_template_id", "player_attributes", b"player_attributes", "player_camera", b"player_camera", "player_currency", b"player_currency", "player_stats", b"player_stats", "player_stats_snapshot", b"player_stats_snapshot", "pokedex_category", b"pokedex_category", "pokedex_entry_id", b"pokedex_entry_id", "pokemon_family_id", b"pokemon_family_id", "pokemon_home", b"pokemon_home", "pokemon_id", b"pokemon_id", "pokemon_temp_evo_resource", b"pokemon_temp_evo_resource", "quest_type", b"quest_type", "quests", b"quests", "raid_tickets", b"raid_tickets", "route_creation", b"route_creation", "route_play", b"route_play", "sleep_records", b"sleep_records", "soft_sfida", b"soft_sfida", "sparkly_incense", b"sparkly_incense", "squash_count", b"squash_count", "sticker_id", b"sticker_id", "string_tickets", b"string_tickets", "unknown_key", b"unknown_key", "vs_seeker_upgrades", b"vs_seeker_upgrades"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["Type", b"Type", "active_training_pokemon", b"active_training_pokemon", "applied_bonuses", b"applied_bonuses", "applied_items", b"applied_items", "avatar_template_id", b"avatar_template_id", "badge", b"badge", "beluga_incense_box", b"beluga_incense_box", "dt_count", b"dt_count", "egg_incubators", b"egg_incubators", "event_passes", b"event_passes", "event_rsvps", b"event_rsvps", "fake_data", b"fake_data", "fieldbook_headers", b"fieldbook_headers", "follower_data", b"follower_data", "gift_boxes", b"gift_boxes", "inventory_upgrades", b"inventory_upgrades", "item", b"item", "limited_purchase_sku_record", b"limited_purchase_sku_record", "mega_evo_pokemon_species_id", b"mega_evo_pokemon_species_id", "neutral_avatar", b"neutral_avatar", "neutral_avatar_item_template_id", b"neutral_avatar_item_template_id", "pending_premium_gifts", b"pending_premium_gifts", "player_attributes", b"player_attributes", "player_camera", b"player_camera", "player_currency", b"player_currency", "player_stats", b"player_stats", "player_stats_snapshot", b"player_stats_snapshot", "pokedex_category", b"pokedex_category", "pokedex_entry_id", b"pokedex_entry_id", "pokemon_family_id", b"pokemon_family_id", "pokemon_home", b"pokemon_home", "pokemon_id", b"pokemon_id", "pokemon_temp_evo_resource", b"pokemon_temp_evo_resource", "quest_type", b"quest_type", "quests", b"quests", "raid_tickets", b"raid_tickets", "route_creation", b"route_creation", "route_play", b"route_play", "sleep_records", b"sleep_records", "soft_sfida", b"soft_sfida", "sparkly_incense", b"sparkly_incense", "squash_count", b"squash_count", "sticker_id", b"sticker_id", "string_tickets", b"string_tickets", "unknown_key", b"unknown_key", "vs_seeker_upgrades", b"vs_seeker_upgrades"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["Type", b"Type", "active_training_pokemon", b"active_training_pokemon", "applied_bonuses", b"applied_bonuses", "applied_items", b"applied_items", "avatar_template_id", b"avatar_template_id", "badge", b"badge", "beluga_incense_box", b"beluga_incense_box", "dt_count", b"dt_count", "egg_incubators", b"egg_incubators", "event_passes", b"event_passes", "event_rsvps", b"event_rsvps", "fake_data", b"fake_data", "fieldbook_headers", b"fieldbook_headers", "follower_data", b"follower_data", "gift_boxes", b"gift_boxes", "inventory_upgrades", b"inventory_upgrades", "item", b"item", "limited_purchase_sku_record", b"limited_purchase_sku_record", "mega_evo_pokemon_species_id", b"mega_evo_pokemon_species_id", "neutral_avatar", b"neutral_avatar", "neutral_avatar_item_template_id", b"neutral_avatar_item_template_id", "player_attributes", b"player_attributes", "player_camera", b"player_camera", "player_currency", b"player_currency", "player_stats", b"player_stats", "player_stats_snapshot", b"player_stats_snapshot", "pokedex_category", b"pokedex_category", "pokedex_entry_id", b"pokedex_entry_id", "pokemon_family_id", b"pokemon_family_id", "pokemon_home", b"pokemon_home", "pokemon_id", b"pokemon_id", "pokemon_temp_evo_resource", b"pokemon_temp_evo_resource", "quest_type", b"quest_type", "quests", b"quests", "raid_tickets", b"raid_tickets", "route_creation", b"route_creation", "route_play", b"route_play", "sleep_records", b"sleep_records", "soft_sfida", b"soft_sfida", "sparkly_incense", b"sparkly_incense", "squash_count", b"squash_count", "sticker_id", b"sticker_id", "string_tickets", b"string_tickets", "unknown_key", b"unknown_key", "vs_seeker_upgrades", b"vs_seeker_upgrades"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["Type", b"Type", "active_training_pokemon", b"active_training_pokemon", "applied_bonuses", b"applied_bonuses", "applied_items", b"applied_items", "avatar_template_id", b"avatar_template_id", "badge", b"badge", "beluga_incense_box", b"beluga_incense_box", "dt_count", b"dt_count", "egg_incubators", b"egg_incubators", "event_passes", b"event_passes", "event_rsvps", b"event_rsvps", "fake_data", b"fake_data", "fieldbook_headers", b"fieldbook_headers", "follower_data", b"follower_data", "gift_boxes", b"gift_boxes", "inventory_upgrades", b"inventory_upgrades", "item", b"item", "limited_purchase_sku_record", b"limited_purchase_sku_record", "mega_evo_pokemon_species_id", b"mega_evo_pokemon_species_id", "neutral_avatar", b"neutral_avatar", "neutral_avatar_item_template_id", b"neutral_avatar_item_template_id", "pending_premium_gifts", b"pending_premium_gifts", "player_attributes", b"player_attributes", "player_camera", b"player_camera", "player_currency", b"player_currency", "player_stats", b"player_stats", "player_stats_snapshot", b"player_stats_snapshot", "pokedex_category", b"pokedex_category", "pokedex_entry_id", b"pokedex_entry_id", "pokemon_family_id", b"pokemon_family_id", "pokemon_home", b"pokemon_home", "pokemon_id", b"pokemon_id", "pokemon_temp_evo_resource", b"pokemon_temp_evo_resource", "quest_type", b"quest_type", "quests", b"quests", "raid_tickets", b"raid_tickets", "route_creation", b"route_creation", "route_play", b"route_play", "sleep_records", b"sleep_records", "soft_sfida", b"soft_sfida", "sparkly_incense", b"sparkly_incense", "squash_count", b"squash_count", "sticker_id", b"sticker_id", "string_tickets", b"string_tickets", "unknown_key", b"unknown_key", "vs_seeker_upgrades", b"vs_seeker_upgrades"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    _WhichOneofReturnType_Type: _TypeAlias = _typing.Literal["pokemon_id", "item", "pokedex_entry_id", "player_stats", "player_currency", "player_camera", "inventory_upgrades", "applied_items", "egg_incubators", "pokemon_family_id", "quest_type", "avatar_template_id", "raid_tickets", "quests", "gift_boxes", "beluga_incense_box", "vs_seeker_upgrades", "limited_purchase_sku_record", "route_play", "mega_evo_pokemon_species_id", "sticker_id", "pokemon_home", "badge", "player_stats_snapshot", "unknown_key", "fake_data", "pokedex_category", "sleep_records", "player_attributes", "follower_data", "sparkly_incense", "squash_count", "route_creation", "neutral_avatar", "neutral_avatar_item_template_id", "applied_bonuses", "event_passes", "event_rsvps", "active_training_pokemon", "dt_count", "soft_sfida", "fieldbook_headers", "pokemon_temp_evo_resource", "string_tickets"]  # noqa: Y015
+    _WhichOneofReturnType_Type: _TypeAlias = _typing.Literal["pokemon_id", "item", "pokedex_entry_id", "player_stats", "player_currency", "player_camera", "inventory_upgrades", "applied_items", "egg_incubators", "pokemon_family_id", "quest_type", "avatar_template_id", "raid_tickets", "quests", "gift_boxes", "beluga_incense_box", "vs_seeker_upgrades", "limited_purchase_sku_record", "route_play", "mega_evo_pokemon_species_id", "sticker_id", "pokemon_home", "badge", "player_stats_snapshot", "unknown_key", "fake_data", "pokedex_category", "sleep_records", "player_attributes", "follower_data", "sparkly_incense", "squash_count", "route_creation", "neutral_avatar", "neutral_avatar_item_template_id", "applied_bonuses", "event_passes", "event_rsvps", "active_training_pokemon", "dt_count", "soft_sfida", "fieldbook_headers", "pokemon_temp_evo_resource", "string_tickets", "pending_premium_gifts"]  # noqa: Y015
     _WhichOneofArgType_Type: _TypeAlias = _typing.Literal["Type", b"Type"]  # noqa: Y015
     def WhichOneof(self, oneof_group: _WhichOneofArgType_Type) -> _WhichOneofReturnType_Type | None: ...
 
@@ -78420,6 +79291,7 @@ class HoloholoClientTelemetryOmniProto(_message.Message):
     AVATAR_ITEMS_TELEMETRY_FIELD_NUMBER: _builtins.int
     SOFTSFIDA_TELEMETRY_FIELD_NUMBER: _builtins.int
     MAP_SCREEN_COMPASS_BUTTON_PRESSED_TELEMETRY_FIELD_NUMBER: _builtins.int
+    INVENTORY_PERSISTENCE_TELEMETRY_FIELD_NUMBER: _builtins.int
     SERVER_DATA_FIELD_NUMBER: _builtins.int
     COMMON_FILTERS_FIELD_NUMBER: _builtins.int
     @_builtins.property
@@ -78805,6 +79677,8 @@ class HoloholoClientTelemetryOmniProto(_message.Message):
     @_builtins.property
     def map_screen_compass_button_pressed_telemetry(self) -> Global___MapScreenCompassButtonPressedTelemetry: ...
     @_builtins.property
+    def inventory_persistence_telemetry(self) -> Global___InventoryPersistenceTelemetryProto: ...
+    @_builtins.property
     def server_data(self) -> Global___PlatformServerData: ...
     @_builtins.property
     def common_filters(self) -> Global___PlatformCommonFilterProto: ...
@@ -79002,14 +79876,15 @@ class HoloholoClientTelemetryOmniProto(_message.Message):
         avatar_items_telemetry: Global___AvatarItemsTelemetry | None = ...,
         softsfida_telemetry: Global___SoftSfidaTelemetry | None = ...,
         map_screen_compass_button_pressed_telemetry: Global___MapScreenCompassButtonPressedTelemetry | None = ...,
+        inventory_persistence_telemetry: Global___InventoryPersistenceTelemetryProto | None = ...,
         server_data: Global___PlatformServerData | None = ...,
         common_filters: Global___PlatformCommonFilterProto | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["TelemetryData", b"TelemetryData", "account_deletion_initiated_telemetry", b"account_deletion_initiated_telemetry", "address_book_import_telemetry", b"address_book_import_telemetry", "ar_buddy_multiplayer_session_telemetry", b"ar_buddy_multiplayer_session_telemetry", "ar_mapping_session_telemetry", b"ar_mapping_session_telemetry", "ar_mapping_telemetry", b"ar_mapping_telemetry", "ar_photo_session_telemetry", b"ar_photo_session_telemetry", "asset_bundle_telemetry", b"asset_bundle_telemetry", "asset_poi_download_telemetry", b"asset_poi_download_telemetry", "asset_refresh_telemetry", b"asset_refresh_telemetry", "asset_stream_cache_culled_telemetry", b"asset_stream_cache_culled_telemetry", "asset_stream_download_telemetry", b"asset_stream_download_telemetry", "avatar_items_telemetry", b"avatar_items_telemetry", "blocked_from_gaining_pokemon_by_full_bag_telemetry", b"blocked_from_gaining_pokemon_by_full_bag_telemetry", "blocked_from_gaining_rewards_by_full_bag_telemetry", b"blocked_from_gaining_rewards_by_full_bag_telemetry", "boot_telemetry", b"boot_telemetry", "boot_time", b"boot_time", "buddy_hud_button_pressed_telemetry", b"buddy_hud_button_pressed_telemetry", "buddy_multiplayer_connection_failed_telemetry", b"buddy_multiplayer_connection_failed_telemetry", "buddy_multiplayer_connection_succeeded_telemetry", b"buddy_multiplayer_connection_succeeded_telemetry", "buddy_multiplayer_time_to_get_session_telemetry", b"buddy_multiplayer_time_to_get_session_telemetry", "camera_permission_prompt_telemetry", b"camera_permission_prompt_telemetry", "catch_card_telemetry", b"catch_card_telemetry", "change_ar_telemetry", b"change_ar_telemetry", "change_online_status_telemetry", b"change_online_status_telemetry", "client_settings_telemetry", b"client_settings_telemetry", "client_toggle_settings_telemetry", b"client_toggle_settings_telemetry", "combat_hub_entrance_telemetry", b"combat_hub_entrance_telemetry", "combat_minigame_telemetry", b"combat_minigame_telemetry", "common_filters", b"common_filters", "completed_max_battle_telemetry", b"completed_max_battle_telemetry", "completed_raid_telemetry", b"completed_raid_telemetry", "daily_adventure_incense_telemetry", b"daily_adventure_incense_telemetry", "deep_linking_telemetry", b"deep_linking_telemetry", "device_compatible_telemetry", b"device_compatible_telemetry", "device_os_telemetry", b"device_os_telemetry", "device_service_toggle", b"device_service_toggle", "device_specifications_telemetry", b"device_specifications_telemetry", "download_all_assets_telemetry", b"download_all_assets_telemetry", "egg_hatch_telemetry", b"egg_hatch_telemetry", "encounter_last_pokeball_used_telemetry", b"encounter_last_pokeball_used_telemetry", "encounter_pokemon_caught_telemetry", b"encounter_pokemon_caught_telemetry", "encounter_pokemon_telemetry", b"encounter_pokemon_telemetry", "encountered_pokemon_telemetry", b"encountered_pokemon_telemetry", "entered_max_battle_lobby_telemetry", b"entered_max_battle_lobby_telemetry", "entered_raid_lobby_telemetry", b"entered_raid_lobby_telemetry", "entry_telemetry", b"entry_telemetry", "exit_flow_telemetry", b"exit_flow_telemetry", "feed_pokemon_telemetry", b"feed_pokemon_telemetry", "field_effect_telemetry", b"field_effect_telemetry", "fieldbook_telemetry", b"fieldbook_telemetry", "follower_pokemon_tapped_telemetry", b"follower_pokemon_tapped_telemetry", "fort_update_latency_telemetry", b"fort_update_latency_telemetry", "frame_auto_applied_telemetry", b"frame_auto_applied_telemetry", "frame_rate", b"frame_rate", "frame_removed_telemetry", b"frame_removed_telemetry", "generic_click_telemetry", b"generic_click_telemetry", "get_started_tap_telemetry", b"get_started_tap_telemetry", "graphics_capabilities_telemetry", b"graphics_capabilities_telemetry", "home_widget_telemetry", b"home_widget_telemetry", "image_gallery_telemetry", b"image_gallery_telemetry", "incubated_egg_telemetry", b"incubated_egg_telemetry", "invasion_telemetry", b"invasion_telemetry", "iris_social_event_telemetry", b"iris_social_event_telemetry", "item_deleted_telemetry", b"item_deleted_telemetry", "item_telemetry", b"item_telemetry", "language_telemetry", b"language_telemetry", "leave_interaction_range_telemetry", b"leave_interaction_range_telemetry", "leave_point_of_interest_telemetry", b"leave_point_of_interest_telemetry", "login_action_telemetry", b"login_action_telemetry", "main_menu_battle_opened_telemetry", b"main_menu_battle_opened_telemetry", "main_menu_events_opened_telemetry", b"main_menu_events_opened_telemetry", "main_menu_items_opened_telemetry", b"main_menu_items_opened_telemetry", "main_menu_news_opened_telemetry", b"main_menu_news_opened_telemetry", "main_menu_opened_telemetry", b"main_menu_opened_telemetry", "main_menu_pokedex_opened_telemetry", b"main_menu_pokedex_opened_telemetry", "main_menu_pokemon_opened_telemetry", b"main_menu_pokemon_opened_telemetry", "main_menu_settings_opened_telemetry", b"main_menu_settings_opened_telemetry", "main_menu_shop_opened_telemetry", b"main_menu_shop_opened_telemetry", "main_menu_whats_your_favorite_opened_telemetry", b"main_menu_whats_your_favorite_opened_telemetry", "map_righthand_icons_telemetry", b"map_righthand_icons_telemetry", "map_screen_compass_button_pressed_telemetry", b"map_screen_compass_button_pressed_telemetry", "missing_translation_telemetry", b"missing_translation_telemetry", "monodepth_download_telemetry", b"monodepth_download_telemetry", "nearby_menu_opened_telemetry", b"nearby_menu_opened_telemetry", "nearby_menu_pokemon_stop_tracking_pokemon_telemetry", b"nearby_menu_pokemon_stop_tracking_pokemon_telemetry", "nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", b"nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", "nearby_menu_pokemon_tab_tap_pokemon_telemetry", b"nearby_menu_pokemon_tab_tap_pokemon_telemetry", "nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", b"nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", "nearby_menu_powerspot_tab_view_pressed_telemetry", b"nearby_menu_powerspot_tab_view_pressed_telemetry", "nearby_menu_raid_tab_open_ongoing_raid_telemetry", b"nearby_menu_raid_tab_open_ongoing_raid_telemetry", "nearby_menu_raid_tab_open_rsvp_raid_telemetry", b"nearby_menu_raid_tab_open_rsvp_raid_telemetry", "nearby_menu_raid_tab_stop_tracking_raid_telemetry", b"nearby_menu_raid_tab_stop_tracking_raid_telemetry", "nearby_menu_raid_tab_view_on_map_telemetry", b"nearby_menu_raid_tab_view_on_map_telemetry", "nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", b"nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", "nearby_pokemon_tab_focused_telemetry", b"nearby_pokemon_tab_focused_telemetry", "nearby_power_spot_tab_focused_telemetry", b"nearby_power_spot_tab_focused_telemetry", "nearby_raid_tab_focused_telemetry", b"nearby_raid_tab_focused_telemetry", "nearby_route_tab_focused_telemetry", b"nearby_route_tab_focused_telemetry", "nearby_rsvp_tab_focused_telemetry", b"nearby_rsvp_tab_focused_telemetry", "network_check_telemetry", b"network_check_telemetry", "niantic_profile_telemetry", b"niantic_profile_telemetry", "notification_permissions_telemetry", b"notification_permissions_telemetry", "onboarding_telemetry", b"onboarding_telemetry", "open_campfire_map_telemetry", b"open_campfire_map_telemetry", "percent_scrolled_telemetry", b"percent_scrolled_telemetry", "permissions_flow", b"permissions_flow", "photo_error_telemetry", b"photo_error_telemetry", "photo_start_telemetry", b"photo_start_telemetry", "photo_taken_telemetry", b"photo_taken_telemetry", "player_hud_notification_click_telemetry", b"player_hud_notification_click_telemetry", "player_profile_buddy_history_opened_telemetry", b"player_profile_buddy_history_opened_telemetry", "player_profile_exited_telemetry", b"player_profile_exited_telemetry", "player_profile_friends_tab_focused_telemetry", b"player_profile_friends_tab_focused_telemetry", "player_profile_journal_opened_telemetry", b"player_profile_journal_opened_telemetry", "player_profile_me_tab_focused_telemetry", b"player_profile_me_tab_focused_telemetry", "player_profile_opened_telemetry", b"player_profile_opened_telemetry", "player_profile_scrapbook_opened_telemetry", b"player_profile_scrapbook_opened_telemetry", "player_profile_social_tab_focused_telemetry", b"player_profile_social_tab_focused_telemetry", "player_profile_style_shop_opened_telemetry", b"player_profile_style_shop_opened_telemetry", "player_shown_level_up_share_screen_telemetry", b"player_shown_level_up_share_screen_telemetry", "poke_stop_spun_telemetry", b"poke_stop_spun_telemetry", "pokedex_category_selected_telemetry", b"pokedex_category_selected_telemetry", "pokedex_filter_selected_telemetry", b"pokedex_filter_selected_telemetry", "pokedex_pokemon_selected_telemetry", b"pokedex_pokemon_selected_telemetry", "pokedex_region_selected_telemetry", b"pokedex_region_selected_telemetry", "pokedex_see_all_button_pressed_telemetry", b"pokedex_see_all_button_pressed_telemetry", "pokedex_session_telemetry", b"pokedex_session_telemetry", "pokemon_go_plus_telemetry", b"pokemon_go_plus_telemetry", "pokemon_home_telemetry", b"pokemon_home_telemetry", "pokemon_info_gui_action_menu_appraise_telemetry", b"pokemon_info_gui_action_menu_appraise_telemetry", "pokemon_info_gui_action_menu_candy_to_xl_telemetry", b"pokemon_info_gui_action_menu_candy_to_xl_telemetry", "pokemon_info_gui_action_menu_catch_card_telemetry", b"pokemon_info_gui_action_menu_catch_card_telemetry", "pokemon_info_gui_action_menu_favorite_telemetry", b"pokemon_info_gui_action_menu_favorite_telemetry", "pokemon_info_gui_action_menu_items_telemetry", b"pokemon_info_gui_action_menu_items_telemetry", "pokemon_info_gui_action_menu_pokedex_telemetry", b"pokemon_info_gui_action_menu_pokedex_telemetry", "pokemon_info_gui_action_menu_tag_telemetry", b"pokemon_info_gui_action_menu_tag_telemetry", "pokemon_info_gui_action_menu_transfer_confirmed_telemetry", b"pokemon_info_gui_action_menu_transfer_confirmed_telemetry", "pokemon_info_gui_action_menu_transfer_telemetry", b"pokemon_info_gui_action_menu_transfer_telemetry", "pokemon_info_gui_action_menu_unfavorite_telemetry", b"pokemon_info_gui_action_menu_unfavorite_telemetry", "pokemon_info_gui_opened_telemetry", b"pokemon_info_gui_opened_telemetry", "pokemon_load_delay", b"pokemon_load_delay", "pokemon_not_supported_telemetry", b"pokemon_not_supported_telemetry", "pokemon_search_telemetry", b"pokemon_search_telemetry", "pokemon_select_telemetry", b"pokemon_select_telemetry", "popular_rsvp_notification_telemetry", b"popular_rsvp_notification_telemetry", "postcard_book_telemetry", b"postcard_book_telemetry", "push_gateway_telemetry", b"push_gateway_telemetry", "push_gateway_upstream_error_telemetry", b"push_gateway_upstream_error_telemetry", "push_notification_telemetry", b"push_notification_telemetry", "quest_button_pressed_telemetry", b"quest_button_pressed_telemetry", "quest_dialog_telemetry", b"quest_dialog_telemetry", "quest_list_telemetry", b"quest_list_telemetry", "raid_egg_notification_telemetry", b"raid_egg_notification_telemetry", "raid_telemetry", b"raid_telemetry", "read_point_of_interest_description_telemetry", b"read_point_of_interest_description_telemetry", "referral_telemetry", b"referral_telemetry", "remote_raid_telemetry", b"remote_raid_telemetry", "route_discovery_telemetry", b"route_discovery_telemetry", "route_error_telemetry", b"route_error_telemetry", "route_play_tappable_spawned_telemetry", b"route_play_tappable_spawned_telemetry", "rpc_timing_telemetry", b"rpc_timing_telemetry", "screen_resolution_telemetry", b"screen_resolution_telemetry", "server_data", b"server_data", "share_action_telemetry", b"share_action_telemetry", "shopping_page_click_telemetry", b"shopping_page_click_telemetry", "shopping_page_scroll_telemetry", b"shopping_page_scroll_telemetry", "showcase_details_telemetry", b"showcase_details_telemetry", "showcase_rewards_telemetry", b"showcase_rewards_telemetry", "sign_in_action_telemetry", b"sign_in_action_telemetry", "size_record_break_telemetry", b"size_record_break_telemetry", "social_gift_count_telemetry", b"social_gift_count_telemetry", "social_inbox_telemetry", b"social_inbox_telemetry", "social_telemetry", b"social_telemetry", "softsfida_telemetry", b"softsfida_telemetry", "started_max_battle_telemetry", b"started_max_battle_telemetry", "started_raid_telemetry", b"started_raid_telemetry", "sticker_added_telemetry", b"sticker_added_telemetry", "summary_screen_view_telemetry", b"summary_screen_view_telemetry", "time_to_playable_telemetry", b"time_to_playable_telemetry", "today_inner_tab_focused_telemetry", b"today_inner_tab_focused_telemetry", "today_outer_tab_focused_telemetry", b"today_outer_tab_focused_telemetry", "today_view_opened_telemetry", b"today_view_opened_telemetry", "tracked_pokemon_push_notification_telemetry", b"tracked_pokemon_push_notification_telemetry", "tutorial_telemetry", b"tutorial_telemetry", "tutorial_viewed_telemetry", b"tutorial_viewed_telemetry", "update_combat_response_time_telemetry", b"update_combat_response_time_telemetry", "upload_management_telemetry", b"upload_management_telemetry", "user_attributes", b"user_attributes", "user_issue_weather_report", b"user_issue_weather_report", "username_suggestion_telemetry", b"username_suggestion_telemetry", "view_point_of_interest_image_telemetry", b"view_point_of_interest_image_telemetry", "wayspot_edit_telemetry", b"wayspot_edit_telemetry", "web_telemetry", b"web_telemetry"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["TelemetryData", b"TelemetryData", "account_deletion_initiated_telemetry", b"account_deletion_initiated_telemetry", "address_book_import_telemetry", b"address_book_import_telemetry", "ar_buddy_multiplayer_session_telemetry", b"ar_buddy_multiplayer_session_telemetry", "ar_mapping_session_telemetry", b"ar_mapping_session_telemetry", "ar_mapping_telemetry", b"ar_mapping_telemetry", "ar_photo_session_telemetry", b"ar_photo_session_telemetry", "asset_bundle_telemetry", b"asset_bundle_telemetry", "asset_poi_download_telemetry", b"asset_poi_download_telemetry", "asset_refresh_telemetry", b"asset_refresh_telemetry", "asset_stream_cache_culled_telemetry", b"asset_stream_cache_culled_telemetry", "asset_stream_download_telemetry", b"asset_stream_download_telemetry", "avatar_items_telemetry", b"avatar_items_telemetry", "blocked_from_gaining_pokemon_by_full_bag_telemetry", b"blocked_from_gaining_pokemon_by_full_bag_telemetry", "blocked_from_gaining_rewards_by_full_bag_telemetry", b"blocked_from_gaining_rewards_by_full_bag_telemetry", "boot_telemetry", b"boot_telemetry", "boot_time", b"boot_time", "buddy_hud_button_pressed_telemetry", b"buddy_hud_button_pressed_telemetry", "buddy_multiplayer_connection_failed_telemetry", b"buddy_multiplayer_connection_failed_telemetry", "buddy_multiplayer_connection_succeeded_telemetry", b"buddy_multiplayer_connection_succeeded_telemetry", "buddy_multiplayer_time_to_get_session_telemetry", b"buddy_multiplayer_time_to_get_session_telemetry", "camera_permission_prompt_telemetry", b"camera_permission_prompt_telemetry", "catch_card_telemetry", b"catch_card_telemetry", "change_ar_telemetry", b"change_ar_telemetry", "change_online_status_telemetry", b"change_online_status_telemetry", "client_settings_telemetry", b"client_settings_telemetry", "client_toggle_settings_telemetry", b"client_toggle_settings_telemetry", "combat_hub_entrance_telemetry", b"combat_hub_entrance_telemetry", "combat_minigame_telemetry", b"combat_minigame_telemetry", "common_filters", b"common_filters", "completed_max_battle_telemetry", b"completed_max_battle_telemetry", "completed_raid_telemetry", b"completed_raid_telemetry", "daily_adventure_incense_telemetry", b"daily_adventure_incense_telemetry", "deep_linking_telemetry", b"deep_linking_telemetry", "device_compatible_telemetry", b"device_compatible_telemetry", "device_os_telemetry", b"device_os_telemetry", "device_service_toggle", b"device_service_toggle", "device_specifications_telemetry", b"device_specifications_telemetry", "download_all_assets_telemetry", b"download_all_assets_telemetry", "egg_hatch_telemetry", b"egg_hatch_telemetry", "encounter_last_pokeball_used_telemetry", b"encounter_last_pokeball_used_telemetry", "encounter_pokemon_caught_telemetry", b"encounter_pokemon_caught_telemetry", "encounter_pokemon_telemetry", b"encounter_pokemon_telemetry", "encountered_pokemon_telemetry", b"encountered_pokemon_telemetry", "entered_max_battle_lobby_telemetry", b"entered_max_battle_lobby_telemetry", "entered_raid_lobby_telemetry", b"entered_raid_lobby_telemetry", "entry_telemetry", b"entry_telemetry", "exit_flow_telemetry", b"exit_flow_telemetry", "feed_pokemon_telemetry", b"feed_pokemon_telemetry", "field_effect_telemetry", b"field_effect_telemetry", "fieldbook_telemetry", b"fieldbook_telemetry", "follower_pokemon_tapped_telemetry", b"follower_pokemon_tapped_telemetry", "fort_update_latency_telemetry", b"fort_update_latency_telemetry", "frame_auto_applied_telemetry", b"frame_auto_applied_telemetry", "frame_rate", b"frame_rate", "frame_removed_telemetry", b"frame_removed_telemetry", "generic_click_telemetry", b"generic_click_telemetry", "get_started_tap_telemetry", b"get_started_tap_telemetry", "graphics_capabilities_telemetry", b"graphics_capabilities_telemetry", "home_widget_telemetry", b"home_widget_telemetry", "image_gallery_telemetry", b"image_gallery_telemetry", "incubated_egg_telemetry", b"incubated_egg_telemetry", "invasion_telemetry", b"invasion_telemetry", "inventory_persistence_telemetry", b"inventory_persistence_telemetry", "iris_social_event_telemetry", b"iris_social_event_telemetry", "item_deleted_telemetry", b"item_deleted_telemetry", "item_telemetry", b"item_telemetry", "language_telemetry", b"language_telemetry", "leave_interaction_range_telemetry", b"leave_interaction_range_telemetry", "leave_point_of_interest_telemetry", b"leave_point_of_interest_telemetry", "login_action_telemetry", b"login_action_telemetry", "main_menu_battle_opened_telemetry", b"main_menu_battle_opened_telemetry", "main_menu_events_opened_telemetry", b"main_menu_events_opened_telemetry", "main_menu_items_opened_telemetry", b"main_menu_items_opened_telemetry", "main_menu_news_opened_telemetry", b"main_menu_news_opened_telemetry", "main_menu_opened_telemetry", b"main_menu_opened_telemetry", "main_menu_pokedex_opened_telemetry", b"main_menu_pokedex_opened_telemetry", "main_menu_pokemon_opened_telemetry", b"main_menu_pokemon_opened_telemetry", "main_menu_settings_opened_telemetry", b"main_menu_settings_opened_telemetry", "main_menu_shop_opened_telemetry", b"main_menu_shop_opened_telemetry", "main_menu_whats_your_favorite_opened_telemetry", b"main_menu_whats_your_favorite_opened_telemetry", "map_righthand_icons_telemetry", b"map_righthand_icons_telemetry", "map_screen_compass_button_pressed_telemetry", b"map_screen_compass_button_pressed_telemetry", "missing_translation_telemetry", b"missing_translation_telemetry", "monodepth_download_telemetry", b"monodepth_download_telemetry", "nearby_menu_opened_telemetry", b"nearby_menu_opened_telemetry", "nearby_menu_pokemon_stop_tracking_pokemon_telemetry", b"nearby_menu_pokemon_stop_tracking_pokemon_telemetry", "nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", b"nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", "nearby_menu_pokemon_tab_tap_pokemon_telemetry", b"nearby_menu_pokemon_tab_tap_pokemon_telemetry", "nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", b"nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", "nearby_menu_powerspot_tab_view_pressed_telemetry", b"nearby_menu_powerspot_tab_view_pressed_telemetry", "nearby_menu_raid_tab_open_ongoing_raid_telemetry", b"nearby_menu_raid_tab_open_ongoing_raid_telemetry", "nearby_menu_raid_tab_open_rsvp_raid_telemetry", b"nearby_menu_raid_tab_open_rsvp_raid_telemetry", "nearby_menu_raid_tab_stop_tracking_raid_telemetry", b"nearby_menu_raid_tab_stop_tracking_raid_telemetry", "nearby_menu_raid_tab_view_on_map_telemetry", b"nearby_menu_raid_tab_view_on_map_telemetry", "nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", b"nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", "nearby_pokemon_tab_focused_telemetry", b"nearby_pokemon_tab_focused_telemetry", "nearby_power_spot_tab_focused_telemetry", b"nearby_power_spot_tab_focused_telemetry", "nearby_raid_tab_focused_telemetry", b"nearby_raid_tab_focused_telemetry", "nearby_route_tab_focused_telemetry", b"nearby_route_tab_focused_telemetry", "nearby_rsvp_tab_focused_telemetry", b"nearby_rsvp_tab_focused_telemetry", "network_check_telemetry", b"network_check_telemetry", "niantic_profile_telemetry", b"niantic_profile_telemetry", "notification_permissions_telemetry", b"notification_permissions_telemetry", "onboarding_telemetry", b"onboarding_telemetry", "open_campfire_map_telemetry", b"open_campfire_map_telemetry", "percent_scrolled_telemetry", b"percent_scrolled_telemetry", "permissions_flow", b"permissions_flow", "photo_error_telemetry", b"photo_error_telemetry", "photo_start_telemetry", b"photo_start_telemetry", "photo_taken_telemetry", b"photo_taken_telemetry", "player_hud_notification_click_telemetry", b"player_hud_notification_click_telemetry", "player_profile_buddy_history_opened_telemetry", b"player_profile_buddy_history_opened_telemetry", "player_profile_exited_telemetry", b"player_profile_exited_telemetry", "player_profile_friends_tab_focused_telemetry", b"player_profile_friends_tab_focused_telemetry", "player_profile_journal_opened_telemetry", b"player_profile_journal_opened_telemetry", "player_profile_me_tab_focused_telemetry", b"player_profile_me_tab_focused_telemetry", "player_profile_opened_telemetry", b"player_profile_opened_telemetry", "player_profile_scrapbook_opened_telemetry", b"player_profile_scrapbook_opened_telemetry", "player_profile_social_tab_focused_telemetry", b"player_profile_social_tab_focused_telemetry", "player_profile_style_shop_opened_telemetry", b"player_profile_style_shop_opened_telemetry", "player_shown_level_up_share_screen_telemetry", b"player_shown_level_up_share_screen_telemetry", "poke_stop_spun_telemetry", b"poke_stop_spun_telemetry", "pokedex_category_selected_telemetry", b"pokedex_category_selected_telemetry", "pokedex_filter_selected_telemetry", b"pokedex_filter_selected_telemetry", "pokedex_pokemon_selected_telemetry", b"pokedex_pokemon_selected_telemetry", "pokedex_region_selected_telemetry", b"pokedex_region_selected_telemetry", "pokedex_see_all_button_pressed_telemetry", b"pokedex_see_all_button_pressed_telemetry", "pokedex_session_telemetry", b"pokedex_session_telemetry", "pokemon_go_plus_telemetry", b"pokemon_go_plus_telemetry", "pokemon_home_telemetry", b"pokemon_home_telemetry", "pokemon_info_gui_action_menu_appraise_telemetry", b"pokemon_info_gui_action_menu_appraise_telemetry", "pokemon_info_gui_action_menu_candy_to_xl_telemetry", b"pokemon_info_gui_action_menu_candy_to_xl_telemetry", "pokemon_info_gui_action_menu_catch_card_telemetry", b"pokemon_info_gui_action_menu_catch_card_telemetry", "pokemon_info_gui_action_menu_favorite_telemetry", b"pokemon_info_gui_action_menu_favorite_telemetry", "pokemon_info_gui_action_menu_items_telemetry", b"pokemon_info_gui_action_menu_items_telemetry", "pokemon_info_gui_action_menu_pokedex_telemetry", b"pokemon_info_gui_action_menu_pokedex_telemetry", "pokemon_info_gui_action_menu_tag_telemetry", b"pokemon_info_gui_action_menu_tag_telemetry", "pokemon_info_gui_action_menu_transfer_confirmed_telemetry", b"pokemon_info_gui_action_menu_transfer_confirmed_telemetry", "pokemon_info_gui_action_menu_transfer_telemetry", b"pokemon_info_gui_action_menu_transfer_telemetry", "pokemon_info_gui_action_menu_unfavorite_telemetry", b"pokemon_info_gui_action_menu_unfavorite_telemetry", "pokemon_info_gui_opened_telemetry", b"pokemon_info_gui_opened_telemetry", "pokemon_load_delay", b"pokemon_load_delay", "pokemon_not_supported_telemetry", b"pokemon_not_supported_telemetry", "pokemon_search_telemetry", b"pokemon_search_telemetry", "pokemon_select_telemetry", b"pokemon_select_telemetry", "popular_rsvp_notification_telemetry", b"popular_rsvp_notification_telemetry", "postcard_book_telemetry", b"postcard_book_telemetry", "push_gateway_telemetry", b"push_gateway_telemetry", "push_gateway_upstream_error_telemetry", b"push_gateway_upstream_error_telemetry", "push_notification_telemetry", b"push_notification_telemetry", "quest_button_pressed_telemetry", b"quest_button_pressed_telemetry", "quest_dialog_telemetry", b"quest_dialog_telemetry", "quest_list_telemetry", b"quest_list_telemetry", "raid_egg_notification_telemetry", b"raid_egg_notification_telemetry", "raid_telemetry", b"raid_telemetry", "read_point_of_interest_description_telemetry", b"read_point_of_interest_description_telemetry", "referral_telemetry", b"referral_telemetry", "remote_raid_telemetry", b"remote_raid_telemetry", "route_discovery_telemetry", b"route_discovery_telemetry", "route_error_telemetry", b"route_error_telemetry", "route_play_tappable_spawned_telemetry", b"route_play_tappable_spawned_telemetry", "rpc_timing_telemetry", b"rpc_timing_telemetry", "screen_resolution_telemetry", b"screen_resolution_telemetry", "server_data", b"server_data", "share_action_telemetry", b"share_action_telemetry", "shopping_page_click_telemetry", b"shopping_page_click_telemetry", "shopping_page_scroll_telemetry", b"shopping_page_scroll_telemetry", "showcase_details_telemetry", b"showcase_details_telemetry", "showcase_rewards_telemetry", b"showcase_rewards_telemetry", "sign_in_action_telemetry", b"sign_in_action_telemetry", "size_record_break_telemetry", b"size_record_break_telemetry", "social_gift_count_telemetry", b"social_gift_count_telemetry", "social_inbox_telemetry", b"social_inbox_telemetry", "social_telemetry", b"social_telemetry", "softsfida_telemetry", b"softsfida_telemetry", "started_max_battle_telemetry", b"started_max_battle_telemetry", "started_raid_telemetry", b"started_raid_telemetry", "sticker_added_telemetry", b"sticker_added_telemetry", "summary_screen_view_telemetry", b"summary_screen_view_telemetry", "time_to_playable_telemetry", b"time_to_playable_telemetry", "today_inner_tab_focused_telemetry", b"today_inner_tab_focused_telemetry", "today_outer_tab_focused_telemetry", b"today_outer_tab_focused_telemetry", "today_view_opened_telemetry", b"today_view_opened_telemetry", "tracked_pokemon_push_notification_telemetry", b"tracked_pokemon_push_notification_telemetry", "tutorial_telemetry", b"tutorial_telemetry", "tutorial_viewed_telemetry", b"tutorial_viewed_telemetry", "update_combat_response_time_telemetry", b"update_combat_response_time_telemetry", "upload_management_telemetry", b"upload_management_telemetry", "user_attributes", b"user_attributes", "user_issue_weather_report", b"user_issue_weather_report", "username_suggestion_telemetry", b"username_suggestion_telemetry", "view_point_of_interest_image_telemetry", b"view_point_of_interest_image_telemetry", "wayspot_edit_telemetry", b"wayspot_edit_telemetry", "web_telemetry", b"web_telemetry"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["TelemetryData", b"TelemetryData", "account_deletion_initiated_telemetry", b"account_deletion_initiated_telemetry", "address_book_import_telemetry", b"address_book_import_telemetry", "ar_buddy_multiplayer_session_telemetry", b"ar_buddy_multiplayer_session_telemetry", "ar_mapping_session_telemetry", b"ar_mapping_session_telemetry", "ar_mapping_telemetry", b"ar_mapping_telemetry", "ar_photo_session_telemetry", b"ar_photo_session_telemetry", "asset_bundle_telemetry", b"asset_bundle_telemetry", "asset_poi_download_telemetry", b"asset_poi_download_telemetry", "asset_refresh_telemetry", b"asset_refresh_telemetry", "asset_stream_cache_culled_telemetry", b"asset_stream_cache_culled_telemetry", "asset_stream_download_telemetry", b"asset_stream_download_telemetry", "avatar_items_telemetry", b"avatar_items_telemetry", "blocked_from_gaining_pokemon_by_full_bag_telemetry", b"blocked_from_gaining_pokemon_by_full_bag_telemetry", "blocked_from_gaining_rewards_by_full_bag_telemetry", b"blocked_from_gaining_rewards_by_full_bag_telemetry", "boot_telemetry", b"boot_telemetry", "boot_time", b"boot_time", "buddy_hud_button_pressed_telemetry", b"buddy_hud_button_pressed_telemetry", "buddy_multiplayer_connection_failed_telemetry", b"buddy_multiplayer_connection_failed_telemetry", "buddy_multiplayer_connection_succeeded_telemetry", b"buddy_multiplayer_connection_succeeded_telemetry", "buddy_multiplayer_time_to_get_session_telemetry", b"buddy_multiplayer_time_to_get_session_telemetry", "camera_permission_prompt_telemetry", b"camera_permission_prompt_telemetry", "catch_card_telemetry", b"catch_card_telemetry", "change_ar_telemetry", b"change_ar_telemetry", "change_online_status_telemetry", b"change_online_status_telemetry", "client_settings_telemetry", b"client_settings_telemetry", "client_toggle_settings_telemetry", b"client_toggle_settings_telemetry", "combat_hub_entrance_telemetry", b"combat_hub_entrance_telemetry", "combat_minigame_telemetry", b"combat_minigame_telemetry", "common_filters", b"common_filters", "completed_max_battle_telemetry", b"completed_max_battle_telemetry", "completed_raid_telemetry", b"completed_raid_telemetry", "daily_adventure_incense_telemetry", b"daily_adventure_incense_telemetry", "deep_linking_telemetry", b"deep_linking_telemetry", "device_compatible_telemetry", b"device_compatible_telemetry", "device_os_telemetry", b"device_os_telemetry", "device_service_toggle", b"device_service_toggle", "device_specifications_telemetry", b"device_specifications_telemetry", "download_all_assets_telemetry", b"download_all_assets_telemetry", "egg_hatch_telemetry", b"egg_hatch_telemetry", "encounter_last_pokeball_used_telemetry", b"encounter_last_pokeball_used_telemetry", "encounter_pokemon_caught_telemetry", b"encounter_pokemon_caught_telemetry", "encounter_pokemon_telemetry", b"encounter_pokemon_telemetry", "encountered_pokemon_telemetry", b"encountered_pokemon_telemetry", "entered_max_battle_lobby_telemetry", b"entered_max_battle_lobby_telemetry", "entered_raid_lobby_telemetry", b"entered_raid_lobby_telemetry", "entry_telemetry", b"entry_telemetry", "exit_flow_telemetry", b"exit_flow_telemetry", "feed_pokemon_telemetry", b"feed_pokemon_telemetry", "field_effect_telemetry", b"field_effect_telemetry", "fieldbook_telemetry", b"fieldbook_telemetry", "follower_pokemon_tapped_telemetry", b"follower_pokemon_tapped_telemetry", "fort_update_latency_telemetry", b"fort_update_latency_telemetry", "frame_auto_applied_telemetry", b"frame_auto_applied_telemetry", "frame_rate", b"frame_rate", "frame_removed_telemetry", b"frame_removed_telemetry", "generic_click_telemetry", b"generic_click_telemetry", "get_started_tap_telemetry", b"get_started_tap_telemetry", "graphics_capabilities_telemetry", b"graphics_capabilities_telemetry", "home_widget_telemetry", b"home_widget_telemetry", "image_gallery_telemetry", b"image_gallery_telemetry", "incubated_egg_telemetry", b"incubated_egg_telemetry", "invasion_telemetry", b"invasion_telemetry", "iris_social_event_telemetry", b"iris_social_event_telemetry", "item_deleted_telemetry", b"item_deleted_telemetry", "item_telemetry", b"item_telemetry", "language_telemetry", b"language_telemetry", "leave_interaction_range_telemetry", b"leave_interaction_range_telemetry", "leave_point_of_interest_telemetry", b"leave_point_of_interest_telemetry", "login_action_telemetry", b"login_action_telemetry", "main_menu_battle_opened_telemetry", b"main_menu_battle_opened_telemetry", "main_menu_events_opened_telemetry", b"main_menu_events_opened_telemetry", "main_menu_items_opened_telemetry", b"main_menu_items_opened_telemetry", "main_menu_news_opened_telemetry", b"main_menu_news_opened_telemetry", "main_menu_opened_telemetry", b"main_menu_opened_telemetry", "main_menu_pokedex_opened_telemetry", b"main_menu_pokedex_opened_telemetry", "main_menu_pokemon_opened_telemetry", b"main_menu_pokemon_opened_telemetry", "main_menu_settings_opened_telemetry", b"main_menu_settings_opened_telemetry", "main_menu_shop_opened_telemetry", b"main_menu_shop_opened_telemetry", "main_menu_whats_your_favorite_opened_telemetry", b"main_menu_whats_your_favorite_opened_telemetry", "map_righthand_icons_telemetry", b"map_righthand_icons_telemetry", "map_screen_compass_button_pressed_telemetry", b"map_screen_compass_button_pressed_telemetry", "missing_translation_telemetry", b"missing_translation_telemetry", "monodepth_download_telemetry", b"monodepth_download_telemetry", "nearby_menu_opened_telemetry", b"nearby_menu_opened_telemetry", "nearby_menu_pokemon_stop_tracking_pokemon_telemetry", b"nearby_menu_pokemon_stop_tracking_pokemon_telemetry", "nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", b"nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", "nearby_menu_pokemon_tab_tap_pokemon_telemetry", b"nearby_menu_pokemon_tab_tap_pokemon_telemetry", "nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", b"nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", "nearby_menu_powerspot_tab_view_pressed_telemetry", b"nearby_menu_powerspot_tab_view_pressed_telemetry", "nearby_menu_raid_tab_open_ongoing_raid_telemetry", b"nearby_menu_raid_tab_open_ongoing_raid_telemetry", "nearby_menu_raid_tab_open_rsvp_raid_telemetry", b"nearby_menu_raid_tab_open_rsvp_raid_telemetry", "nearby_menu_raid_tab_stop_tracking_raid_telemetry", b"nearby_menu_raid_tab_stop_tracking_raid_telemetry", "nearby_menu_raid_tab_view_on_map_telemetry", b"nearby_menu_raid_tab_view_on_map_telemetry", "nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", b"nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", "nearby_pokemon_tab_focused_telemetry", b"nearby_pokemon_tab_focused_telemetry", "nearby_power_spot_tab_focused_telemetry", b"nearby_power_spot_tab_focused_telemetry", "nearby_raid_tab_focused_telemetry", b"nearby_raid_tab_focused_telemetry", "nearby_route_tab_focused_telemetry", b"nearby_route_tab_focused_telemetry", "nearby_rsvp_tab_focused_telemetry", b"nearby_rsvp_tab_focused_telemetry", "network_check_telemetry", b"network_check_telemetry", "niantic_profile_telemetry", b"niantic_profile_telemetry", "notification_permissions_telemetry", b"notification_permissions_telemetry", "onboarding_telemetry", b"onboarding_telemetry", "open_campfire_map_telemetry", b"open_campfire_map_telemetry", "percent_scrolled_telemetry", b"percent_scrolled_telemetry", "permissions_flow", b"permissions_flow", "photo_error_telemetry", b"photo_error_telemetry", "photo_start_telemetry", b"photo_start_telemetry", "photo_taken_telemetry", b"photo_taken_telemetry", "player_hud_notification_click_telemetry", b"player_hud_notification_click_telemetry", "player_profile_buddy_history_opened_telemetry", b"player_profile_buddy_history_opened_telemetry", "player_profile_exited_telemetry", b"player_profile_exited_telemetry", "player_profile_friends_tab_focused_telemetry", b"player_profile_friends_tab_focused_telemetry", "player_profile_journal_opened_telemetry", b"player_profile_journal_opened_telemetry", "player_profile_me_tab_focused_telemetry", b"player_profile_me_tab_focused_telemetry", "player_profile_opened_telemetry", b"player_profile_opened_telemetry", "player_profile_scrapbook_opened_telemetry", b"player_profile_scrapbook_opened_telemetry", "player_profile_social_tab_focused_telemetry", b"player_profile_social_tab_focused_telemetry", "player_profile_style_shop_opened_telemetry", b"player_profile_style_shop_opened_telemetry", "player_shown_level_up_share_screen_telemetry", b"player_shown_level_up_share_screen_telemetry", "poke_stop_spun_telemetry", b"poke_stop_spun_telemetry", "pokedex_category_selected_telemetry", b"pokedex_category_selected_telemetry", "pokedex_filter_selected_telemetry", b"pokedex_filter_selected_telemetry", "pokedex_pokemon_selected_telemetry", b"pokedex_pokemon_selected_telemetry", "pokedex_region_selected_telemetry", b"pokedex_region_selected_telemetry", "pokedex_see_all_button_pressed_telemetry", b"pokedex_see_all_button_pressed_telemetry", "pokedex_session_telemetry", b"pokedex_session_telemetry", "pokemon_go_plus_telemetry", b"pokemon_go_plus_telemetry", "pokemon_home_telemetry", b"pokemon_home_telemetry", "pokemon_info_gui_action_menu_appraise_telemetry", b"pokemon_info_gui_action_menu_appraise_telemetry", "pokemon_info_gui_action_menu_candy_to_xl_telemetry", b"pokemon_info_gui_action_menu_candy_to_xl_telemetry", "pokemon_info_gui_action_menu_catch_card_telemetry", b"pokemon_info_gui_action_menu_catch_card_telemetry", "pokemon_info_gui_action_menu_favorite_telemetry", b"pokemon_info_gui_action_menu_favorite_telemetry", "pokemon_info_gui_action_menu_items_telemetry", b"pokemon_info_gui_action_menu_items_telemetry", "pokemon_info_gui_action_menu_pokedex_telemetry", b"pokemon_info_gui_action_menu_pokedex_telemetry", "pokemon_info_gui_action_menu_tag_telemetry", b"pokemon_info_gui_action_menu_tag_telemetry", "pokemon_info_gui_action_menu_transfer_confirmed_telemetry", b"pokemon_info_gui_action_menu_transfer_confirmed_telemetry", "pokemon_info_gui_action_menu_transfer_telemetry", b"pokemon_info_gui_action_menu_transfer_telemetry", "pokemon_info_gui_action_menu_unfavorite_telemetry", b"pokemon_info_gui_action_menu_unfavorite_telemetry", "pokemon_info_gui_opened_telemetry", b"pokemon_info_gui_opened_telemetry", "pokemon_load_delay", b"pokemon_load_delay", "pokemon_not_supported_telemetry", b"pokemon_not_supported_telemetry", "pokemon_search_telemetry", b"pokemon_search_telemetry", "pokemon_select_telemetry", b"pokemon_select_telemetry", "popular_rsvp_notification_telemetry", b"popular_rsvp_notification_telemetry", "postcard_book_telemetry", b"postcard_book_telemetry", "push_gateway_telemetry", b"push_gateway_telemetry", "push_gateway_upstream_error_telemetry", b"push_gateway_upstream_error_telemetry", "push_notification_telemetry", b"push_notification_telemetry", "quest_button_pressed_telemetry", b"quest_button_pressed_telemetry", "quest_dialog_telemetry", b"quest_dialog_telemetry", "quest_list_telemetry", b"quest_list_telemetry", "raid_egg_notification_telemetry", b"raid_egg_notification_telemetry", "raid_telemetry", b"raid_telemetry", "read_point_of_interest_description_telemetry", b"read_point_of_interest_description_telemetry", "referral_telemetry", b"referral_telemetry", "remote_raid_telemetry", b"remote_raid_telemetry", "route_discovery_telemetry", b"route_discovery_telemetry", "route_error_telemetry", b"route_error_telemetry", "route_play_tappable_spawned_telemetry", b"route_play_tappable_spawned_telemetry", "rpc_timing_telemetry", b"rpc_timing_telemetry", "screen_resolution_telemetry", b"screen_resolution_telemetry", "server_data", b"server_data", "share_action_telemetry", b"share_action_telemetry", "shopping_page_click_telemetry", b"shopping_page_click_telemetry", "shopping_page_scroll_telemetry", b"shopping_page_scroll_telemetry", "showcase_details_telemetry", b"showcase_details_telemetry", "showcase_rewards_telemetry", b"showcase_rewards_telemetry", "sign_in_action_telemetry", b"sign_in_action_telemetry", "size_record_break_telemetry", b"size_record_break_telemetry", "social_gift_count_telemetry", b"social_gift_count_telemetry", "social_inbox_telemetry", b"social_inbox_telemetry", "social_telemetry", b"social_telemetry", "softsfida_telemetry", b"softsfida_telemetry", "started_max_battle_telemetry", b"started_max_battle_telemetry", "started_raid_telemetry", b"started_raid_telemetry", "sticker_added_telemetry", b"sticker_added_telemetry", "summary_screen_view_telemetry", b"summary_screen_view_telemetry", "time_to_playable_telemetry", b"time_to_playable_telemetry", "today_inner_tab_focused_telemetry", b"today_inner_tab_focused_telemetry", "today_outer_tab_focused_telemetry", b"today_outer_tab_focused_telemetry", "today_view_opened_telemetry", b"today_view_opened_telemetry", "tracked_pokemon_push_notification_telemetry", b"tracked_pokemon_push_notification_telemetry", "tutorial_telemetry", b"tutorial_telemetry", "tutorial_viewed_telemetry", b"tutorial_viewed_telemetry", "update_combat_response_time_telemetry", b"update_combat_response_time_telemetry", "upload_management_telemetry", b"upload_management_telemetry", "user_attributes", b"user_attributes", "user_issue_weather_report", b"user_issue_weather_report", "username_suggestion_telemetry", b"username_suggestion_telemetry", "view_point_of_interest_image_telemetry", b"view_point_of_interest_image_telemetry", "wayspot_edit_telemetry", b"wayspot_edit_telemetry", "web_telemetry", b"web_telemetry"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["TelemetryData", b"TelemetryData", "account_deletion_initiated_telemetry", b"account_deletion_initiated_telemetry", "address_book_import_telemetry", b"address_book_import_telemetry", "ar_buddy_multiplayer_session_telemetry", b"ar_buddy_multiplayer_session_telemetry", "ar_mapping_session_telemetry", b"ar_mapping_session_telemetry", "ar_mapping_telemetry", b"ar_mapping_telemetry", "ar_photo_session_telemetry", b"ar_photo_session_telemetry", "asset_bundle_telemetry", b"asset_bundle_telemetry", "asset_poi_download_telemetry", b"asset_poi_download_telemetry", "asset_refresh_telemetry", b"asset_refresh_telemetry", "asset_stream_cache_culled_telemetry", b"asset_stream_cache_culled_telemetry", "asset_stream_download_telemetry", b"asset_stream_download_telemetry", "avatar_items_telemetry", b"avatar_items_telemetry", "blocked_from_gaining_pokemon_by_full_bag_telemetry", b"blocked_from_gaining_pokemon_by_full_bag_telemetry", "blocked_from_gaining_rewards_by_full_bag_telemetry", b"blocked_from_gaining_rewards_by_full_bag_telemetry", "boot_telemetry", b"boot_telemetry", "boot_time", b"boot_time", "buddy_hud_button_pressed_telemetry", b"buddy_hud_button_pressed_telemetry", "buddy_multiplayer_connection_failed_telemetry", b"buddy_multiplayer_connection_failed_telemetry", "buddy_multiplayer_connection_succeeded_telemetry", b"buddy_multiplayer_connection_succeeded_telemetry", "buddy_multiplayer_time_to_get_session_telemetry", b"buddy_multiplayer_time_to_get_session_telemetry", "camera_permission_prompt_telemetry", b"camera_permission_prompt_telemetry", "catch_card_telemetry", b"catch_card_telemetry", "change_ar_telemetry", b"change_ar_telemetry", "change_online_status_telemetry", b"change_online_status_telemetry", "client_settings_telemetry", b"client_settings_telemetry", "client_toggle_settings_telemetry", b"client_toggle_settings_telemetry", "combat_hub_entrance_telemetry", b"combat_hub_entrance_telemetry", "combat_minigame_telemetry", b"combat_minigame_telemetry", "common_filters", b"common_filters", "completed_max_battle_telemetry", b"completed_max_battle_telemetry", "completed_raid_telemetry", b"completed_raid_telemetry", "daily_adventure_incense_telemetry", b"daily_adventure_incense_telemetry", "deep_linking_telemetry", b"deep_linking_telemetry", "device_compatible_telemetry", b"device_compatible_telemetry", "device_os_telemetry", b"device_os_telemetry", "device_service_toggle", b"device_service_toggle", "device_specifications_telemetry", b"device_specifications_telemetry", "download_all_assets_telemetry", b"download_all_assets_telemetry", "egg_hatch_telemetry", b"egg_hatch_telemetry", "encounter_last_pokeball_used_telemetry", b"encounter_last_pokeball_used_telemetry", "encounter_pokemon_caught_telemetry", b"encounter_pokemon_caught_telemetry", "encounter_pokemon_telemetry", b"encounter_pokemon_telemetry", "encountered_pokemon_telemetry", b"encountered_pokemon_telemetry", "entered_max_battle_lobby_telemetry", b"entered_max_battle_lobby_telemetry", "entered_raid_lobby_telemetry", b"entered_raid_lobby_telemetry", "entry_telemetry", b"entry_telemetry", "exit_flow_telemetry", b"exit_flow_telemetry", "feed_pokemon_telemetry", b"feed_pokemon_telemetry", "field_effect_telemetry", b"field_effect_telemetry", "fieldbook_telemetry", b"fieldbook_telemetry", "follower_pokemon_tapped_telemetry", b"follower_pokemon_tapped_telemetry", "fort_update_latency_telemetry", b"fort_update_latency_telemetry", "frame_auto_applied_telemetry", b"frame_auto_applied_telemetry", "frame_rate", b"frame_rate", "frame_removed_telemetry", b"frame_removed_telemetry", "generic_click_telemetry", b"generic_click_telemetry", "get_started_tap_telemetry", b"get_started_tap_telemetry", "graphics_capabilities_telemetry", b"graphics_capabilities_telemetry", "home_widget_telemetry", b"home_widget_telemetry", "image_gallery_telemetry", b"image_gallery_telemetry", "incubated_egg_telemetry", b"incubated_egg_telemetry", "invasion_telemetry", b"invasion_telemetry", "inventory_persistence_telemetry", b"inventory_persistence_telemetry", "iris_social_event_telemetry", b"iris_social_event_telemetry", "item_deleted_telemetry", b"item_deleted_telemetry", "item_telemetry", b"item_telemetry", "language_telemetry", b"language_telemetry", "leave_interaction_range_telemetry", b"leave_interaction_range_telemetry", "leave_point_of_interest_telemetry", b"leave_point_of_interest_telemetry", "login_action_telemetry", b"login_action_telemetry", "main_menu_battle_opened_telemetry", b"main_menu_battle_opened_telemetry", "main_menu_events_opened_telemetry", b"main_menu_events_opened_telemetry", "main_menu_items_opened_telemetry", b"main_menu_items_opened_telemetry", "main_menu_news_opened_telemetry", b"main_menu_news_opened_telemetry", "main_menu_opened_telemetry", b"main_menu_opened_telemetry", "main_menu_pokedex_opened_telemetry", b"main_menu_pokedex_opened_telemetry", "main_menu_pokemon_opened_telemetry", b"main_menu_pokemon_opened_telemetry", "main_menu_settings_opened_telemetry", b"main_menu_settings_opened_telemetry", "main_menu_shop_opened_telemetry", b"main_menu_shop_opened_telemetry", "main_menu_whats_your_favorite_opened_telemetry", b"main_menu_whats_your_favorite_opened_telemetry", "map_righthand_icons_telemetry", b"map_righthand_icons_telemetry", "map_screen_compass_button_pressed_telemetry", b"map_screen_compass_button_pressed_telemetry", "missing_translation_telemetry", b"missing_translation_telemetry", "monodepth_download_telemetry", b"monodepth_download_telemetry", "nearby_menu_opened_telemetry", b"nearby_menu_opened_telemetry", "nearby_menu_pokemon_stop_tracking_pokemon_telemetry", b"nearby_menu_pokemon_stop_tracking_pokemon_telemetry", "nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", b"nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", "nearby_menu_pokemon_tab_tap_pokemon_telemetry", b"nearby_menu_pokemon_tab_tap_pokemon_telemetry", "nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", b"nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", "nearby_menu_powerspot_tab_view_pressed_telemetry", b"nearby_menu_powerspot_tab_view_pressed_telemetry", "nearby_menu_raid_tab_open_ongoing_raid_telemetry", b"nearby_menu_raid_tab_open_ongoing_raid_telemetry", "nearby_menu_raid_tab_open_rsvp_raid_telemetry", b"nearby_menu_raid_tab_open_rsvp_raid_telemetry", "nearby_menu_raid_tab_stop_tracking_raid_telemetry", b"nearby_menu_raid_tab_stop_tracking_raid_telemetry", "nearby_menu_raid_tab_view_on_map_telemetry", b"nearby_menu_raid_tab_view_on_map_telemetry", "nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", b"nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", "nearby_pokemon_tab_focused_telemetry", b"nearby_pokemon_tab_focused_telemetry", "nearby_power_spot_tab_focused_telemetry", b"nearby_power_spot_tab_focused_telemetry", "nearby_raid_tab_focused_telemetry", b"nearby_raid_tab_focused_telemetry", "nearby_route_tab_focused_telemetry", b"nearby_route_tab_focused_telemetry", "nearby_rsvp_tab_focused_telemetry", b"nearby_rsvp_tab_focused_telemetry", "network_check_telemetry", b"network_check_telemetry", "niantic_profile_telemetry", b"niantic_profile_telemetry", "notification_permissions_telemetry", b"notification_permissions_telemetry", "onboarding_telemetry", b"onboarding_telemetry", "open_campfire_map_telemetry", b"open_campfire_map_telemetry", "percent_scrolled_telemetry", b"percent_scrolled_telemetry", "permissions_flow", b"permissions_flow", "photo_error_telemetry", b"photo_error_telemetry", "photo_start_telemetry", b"photo_start_telemetry", "photo_taken_telemetry", b"photo_taken_telemetry", "player_hud_notification_click_telemetry", b"player_hud_notification_click_telemetry", "player_profile_buddy_history_opened_telemetry", b"player_profile_buddy_history_opened_telemetry", "player_profile_exited_telemetry", b"player_profile_exited_telemetry", "player_profile_friends_tab_focused_telemetry", b"player_profile_friends_tab_focused_telemetry", "player_profile_journal_opened_telemetry", b"player_profile_journal_opened_telemetry", "player_profile_me_tab_focused_telemetry", b"player_profile_me_tab_focused_telemetry", "player_profile_opened_telemetry", b"player_profile_opened_telemetry", "player_profile_scrapbook_opened_telemetry", b"player_profile_scrapbook_opened_telemetry", "player_profile_social_tab_focused_telemetry", b"player_profile_social_tab_focused_telemetry", "player_profile_style_shop_opened_telemetry", b"player_profile_style_shop_opened_telemetry", "player_shown_level_up_share_screen_telemetry", b"player_shown_level_up_share_screen_telemetry", "poke_stop_spun_telemetry", b"poke_stop_spun_telemetry", "pokedex_category_selected_telemetry", b"pokedex_category_selected_telemetry", "pokedex_filter_selected_telemetry", b"pokedex_filter_selected_telemetry", "pokedex_pokemon_selected_telemetry", b"pokedex_pokemon_selected_telemetry", "pokedex_region_selected_telemetry", b"pokedex_region_selected_telemetry", "pokedex_see_all_button_pressed_telemetry", b"pokedex_see_all_button_pressed_telemetry", "pokedex_session_telemetry", b"pokedex_session_telemetry", "pokemon_go_plus_telemetry", b"pokemon_go_plus_telemetry", "pokemon_home_telemetry", b"pokemon_home_telemetry", "pokemon_info_gui_action_menu_appraise_telemetry", b"pokemon_info_gui_action_menu_appraise_telemetry", "pokemon_info_gui_action_menu_candy_to_xl_telemetry", b"pokemon_info_gui_action_menu_candy_to_xl_telemetry", "pokemon_info_gui_action_menu_catch_card_telemetry", b"pokemon_info_gui_action_menu_catch_card_telemetry", "pokemon_info_gui_action_menu_favorite_telemetry", b"pokemon_info_gui_action_menu_favorite_telemetry", "pokemon_info_gui_action_menu_items_telemetry", b"pokemon_info_gui_action_menu_items_telemetry", "pokemon_info_gui_action_menu_pokedex_telemetry", b"pokemon_info_gui_action_menu_pokedex_telemetry", "pokemon_info_gui_action_menu_tag_telemetry", b"pokemon_info_gui_action_menu_tag_telemetry", "pokemon_info_gui_action_menu_transfer_confirmed_telemetry", b"pokemon_info_gui_action_menu_transfer_confirmed_telemetry", "pokemon_info_gui_action_menu_transfer_telemetry", b"pokemon_info_gui_action_menu_transfer_telemetry", "pokemon_info_gui_action_menu_unfavorite_telemetry", b"pokemon_info_gui_action_menu_unfavorite_telemetry", "pokemon_info_gui_opened_telemetry", b"pokemon_info_gui_opened_telemetry", "pokemon_load_delay", b"pokemon_load_delay", "pokemon_not_supported_telemetry", b"pokemon_not_supported_telemetry", "pokemon_search_telemetry", b"pokemon_search_telemetry", "pokemon_select_telemetry", b"pokemon_select_telemetry", "popular_rsvp_notification_telemetry", b"popular_rsvp_notification_telemetry", "postcard_book_telemetry", b"postcard_book_telemetry", "push_gateway_telemetry", b"push_gateway_telemetry", "push_gateway_upstream_error_telemetry", b"push_gateway_upstream_error_telemetry", "push_notification_telemetry", b"push_notification_telemetry", "quest_button_pressed_telemetry", b"quest_button_pressed_telemetry", "quest_dialog_telemetry", b"quest_dialog_telemetry", "quest_list_telemetry", b"quest_list_telemetry", "raid_egg_notification_telemetry", b"raid_egg_notification_telemetry", "raid_telemetry", b"raid_telemetry", "read_point_of_interest_description_telemetry", b"read_point_of_interest_description_telemetry", "referral_telemetry", b"referral_telemetry", "remote_raid_telemetry", b"remote_raid_telemetry", "route_discovery_telemetry", b"route_discovery_telemetry", "route_error_telemetry", b"route_error_telemetry", "route_play_tappable_spawned_telemetry", b"route_play_tappable_spawned_telemetry", "rpc_timing_telemetry", b"rpc_timing_telemetry", "screen_resolution_telemetry", b"screen_resolution_telemetry", "server_data", b"server_data", "share_action_telemetry", b"share_action_telemetry", "shopping_page_click_telemetry", b"shopping_page_click_telemetry", "shopping_page_scroll_telemetry", b"shopping_page_scroll_telemetry", "showcase_details_telemetry", b"showcase_details_telemetry", "showcase_rewards_telemetry", b"showcase_rewards_telemetry", "sign_in_action_telemetry", b"sign_in_action_telemetry", "size_record_break_telemetry", b"size_record_break_telemetry", "social_gift_count_telemetry", b"social_gift_count_telemetry", "social_inbox_telemetry", b"social_inbox_telemetry", "social_telemetry", b"social_telemetry", "softsfida_telemetry", b"softsfida_telemetry", "started_max_battle_telemetry", b"started_max_battle_telemetry", "started_raid_telemetry", b"started_raid_telemetry", "sticker_added_telemetry", b"sticker_added_telemetry", "summary_screen_view_telemetry", b"summary_screen_view_telemetry", "time_to_playable_telemetry", b"time_to_playable_telemetry", "today_inner_tab_focused_telemetry", b"today_inner_tab_focused_telemetry", "today_outer_tab_focused_telemetry", b"today_outer_tab_focused_telemetry", "today_view_opened_telemetry", b"today_view_opened_telemetry", "tracked_pokemon_push_notification_telemetry", b"tracked_pokemon_push_notification_telemetry", "tutorial_telemetry", b"tutorial_telemetry", "tutorial_viewed_telemetry", b"tutorial_viewed_telemetry", "update_combat_response_time_telemetry", b"update_combat_response_time_telemetry", "upload_management_telemetry", b"upload_management_telemetry", "user_attributes", b"user_attributes", "user_issue_weather_report", b"user_issue_weather_report", "username_suggestion_telemetry", b"username_suggestion_telemetry", "view_point_of_interest_image_telemetry", b"view_point_of_interest_image_telemetry", "wayspot_edit_telemetry", b"wayspot_edit_telemetry", "web_telemetry", b"web_telemetry"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    _WhichOneofReturnType_TelemetryData: _TypeAlias = _typing.Literal["boot_time", "frame_rate", "generic_click_telemetry", "encounter_pokemon_telemetry", "feed_pokemon_telemetry", "item_telemetry", "raid_telemetry", "push_notification_telemetry", "read_point_of_interest_description_telemetry", "web_telemetry", "change_ar_telemetry", "user_issue_weather_report", "social_telemetry", "pokemon_go_plus_telemetry", "rpc_timing_telemetry", "social_gift_count_telemetry", "asset_bundle_telemetry", "asset_poi_download_telemetry", "asset_stream_download_telemetry", "asset_stream_cache_culled_telemetry", "permissions_flow", "device_service_toggle", "boot_telemetry", "user_attributes", "onboarding_telemetry", "login_action_telemetry", "ar_photo_session_telemetry", "invasion_telemetry", "combat_minigame_telemetry", "leave_point_of_interest_telemetry", "view_point_of_interest_image_telemetry", "combat_hub_entrance_telemetry", "leave_interaction_range_telemetry", "shopping_page_click_telemetry", "shopping_page_scroll_telemetry", "device_specifications_telemetry", "screen_resolution_telemetry", "ar_buddy_multiplayer_session_telemetry", "buddy_multiplayer_connection_failed_telemetry", "buddy_multiplayer_connection_succeeded_telemetry", "buddy_multiplayer_time_to_get_session_telemetry", "player_hud_notification_click_telemetry", "monodepth_download_telemetry", "ar_mapping_telemetry", "remote_raid_telemetry", "device_os_telemetry", "niantic_profile_telemetry", "change_online_status_telemetry", "deep_linking_telemetry", "ar_mapping_session_telemetry", "pokemon_home_telemetry", "pokemon_search_telemetry", "image_gallery_telemetry", "player_shown_level_up_share_screen_telemetry", "referral_telemetry", "upload_management_telemetry", "wayspot_edit_telemetry", "client_settings_telemetry", "pokedex_category_selected_telemetry", "percent_scrolled_telemetry", "address_book_import_telemetry", "missing_translation_telemetry", "egg_hatch_telemetry", "push_gateway_telemetry", "push_gateway_upstream_error_telemetry", "username_suggestion_telemetry", "tutorial_telemetry", "postcard_book_telemetry", "social_inbox_telemetry", "home_widget_telemetry", "pokemon_load_delay", "account_deletion_initiated_telemetry", "fort_update_latency_telemetry", "update_combat_response_time_telemetry", "open_campfire_map_telemetry", "download_all_assets_telemetry", "daily_adventure_incense_telemetry", "client_toggle_settings_telemetry", "notification_permissions_telemetry", "asset_refresh_telemetry", "catch_card_telemetry", "follower_pokemon_tapped_telemetry", "size_record_break_telemetry", "time_to_playable_telemetry", "language_telemetry", "quest_list_telemetry", "map_righthand_icons_telemetry", "showcase_details_telemetry", "showcase_rewards_telemetry", "route_discovery_telemetry", "route_play_tappable_spawned_telemetry", "route_error_telemetry", "field_effect_telemetry", "graphics_capabilities_telemetry", "iris_social_event_telemetry", "pokedex_filter_selected_telemetry", "pokedex_region_selected_telemetry", "pokedex_pokemon_selected_telemetry", "pokedex_session_telemetry", "quest_dialog_telemetry", "raid_egg_notification_telemetry", "tracked_pokemon_push_notification_telemetry", "popular_rsvp_notification_telemetry", "summary_screen_view_telemetry", "entry_telemetry", "camera_permission_prompt_telemetry", "device_compatible_telemetry", "exit_flow_telemetry", "frame_auto_applied_telemetry", "frame_removed_telemetry", "get_started_tap_telemetry", "network_check_telemetry", "photo_error_telemetry", "photo_start_telemetry", "photo_taken_telemetry", "pokemon_not_supported_telemetry", "pokemon_select_telemetry", "share_action_telemetry", "sign_in_action_telemetry", "sticker_added_telemetry", "tutorial_viewed_telemetry", "fieldbook_telemetry", "poke_stop_spun_telemetry", "item_deleted_telemetry", "incubated_egg_telemetry", "quest_button_pressed_telemetry", "buddy_hud_button_pressed_telemetry", "encountered_pokemon_telemetry", "encounter_pokemon_caught_telemetry", "encounter_last_pokeball_used_telemetry", "entered_raid_lobby_telemetry", "started_raid_telemetry", "completed_raid_telemetry", "entered_max_battle_lobby_telemetry", "started_max_battle_telemetry", "completed_max_battle_telemetry", "main_menu_opened_telemetry", "main_menu_pokedex_opened_telemetry", "main_menu_pokemon_opened_telemetry", "main_menu_shop_opened_telemetry", "main_menu_battle_opened_telemetry", "main_menu_items_opened_telemetry", "main_menu_settings_opened_telemetry", "main_menu_events_opened_telemetry", "main_menu_news_opened_telemetry", "main_menu_whats_your_favorite_opened_telemetry", "nearby_menu_opened_telemetry", "nearby_pokemon_tab_focused_telemetry", "nearby_raid_tab_focused_telemetry", "nearby_power_spot_tab_focused_telemetry", "nearby_rsvp_tab_focused_telemetry", "nearby_route_tab_focused_telemetry", "nearby_menu_pokemon_tab_tap_pokemon_telemetry", "nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", "nearby_menu_pokemon_stop_tracking_pokemon_telemetry", "nearby_menu_raid_tab_view_on_map_telemetry", "nearby_menu_raid_tab_stop_tracking_raid_telemetry", "nearby_menu_raid_tab_open_rsvp_raid_telemetry", "nearby_menu_raid_tab_open_ongoing_raid_telemetry", "nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", "nearby_menu_powerspot_tab_view_pressed_telemetry", "nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", "player_profile_opened_telemetry", "player_profile_exited_telemetry", "player_profile_me_tab_focused_telemetry", "player_profile_friends_tab_focused_telemetry", "player_profile_social_tab_focused_telemetry", "player_profile_buddy_history_opened_telemetry", "player_profile_scrapbook_opened_telemetry", "player_profile_journal_opened_telemetry", "player_profile_style_shop_opened_telemetry", "today_view_opened_telemetry", "today_outer_tab_focused_telemetry", "today_inner_tab_focused_telemetry", "pokemon_info_gui_opened_telemetry", "pokedex_see_all_button_pressed_telemetry", "pokemon_info_gui_action_menu_pokedex_telemetry", "pokemon_info_gui_action_menu_items_telemetry", "pokemon_info_gui_action_menu_candy_to_xl_telemetry", "pokemon_info_gui_action_menu_catch_card_telemetry", "pokemon_info_gui_action_menu_tag_telemetry", "pokemon_info_gui_action_menu_favorite_telemetry", "pokemon_info_gui_action_menu_unfavorite_telemetry", "pokemon_info_gui_action_menu_appraise_telemetry", "pokemon_info_gui_action_menu_transfer_telemetry", "pokemon_info_gui_action_menu_transfer_confirmed_telemetry", "blocked_from_gaining_rewards_by_full_bag_telemetry", "blocked_from_gaining_pokemon_by_full_bag_telemetry", "avatar_items_telemetry", "softsfida_telemetry", "map_screen_compass_button_pressed_telemetry"]  # noqa: Y015
+    _WhichOneofReturnType_TelemetryData: _TypeAlias = _typing.Literal["boot_time", "frame_rate", "generic_click_telemetry", "encounter_pokemon_telemetry", "feed_pokemon_telemetry", "item_telemetry", "raid_telemetry", "push_notification_telemetry", "read_point_of_interest_description_telemetry", "web_telemetry", "change_ar_telemetry", "user_issue_weather_report", "social_telemetry", "pokemon_go_plus_telemetry", "rpc_timing_telemetry", "social_gift_count_telemetry", "asset_bundle_telemetry", "asset_poi_download_telemetry", "asset_stream_download_telemetry", "asset_stream_cache_culled_telemetry", "permissions_flow", "device_service_toggle", "boot_telemetry", "user_attributes", "onboarding_telemetry", "login_action_telemetry", "ar_photo_session_telemetry", "invasion_telemetry", "combat_minigame_telemetry", "leave_point_of_interest_telemetry", "view_point_of_interest_image_telemetry", "combat_hub_entrance_telemetry", "leave_interaction_range_telemetry", "shopping_page_click_telemetry", "shopping_page_scroll_telemetry", "device_specifications_telemetry", "screen_resolution_telemetry", "ar_buddy_multiplayer_session_telemetry", "buddy_multiplayer_connection_failed_telemetry", "buddy_multiplayer_connection_succeeded_telemetry", "buddy_multiplayer_time_to_get_session_telemetry", "player_hud_notification_click_telemetry", "monodepth_download_telemetry", "ar_mapping_telemetry", "remote_raid_telemetry", "device_os_telemetry", "niantic_profile_telemetry", "change_online_status_telemetry", "deep_linking_telemetry", "ar_mapping_session_telemetry", "pokemon_home_telemetry", "pokemon_search_telemetry", "image_gallery_telemetry", "player_shown_level_up_share_screen_telemetry", "referral_telemetry", "upload_management_telemetry", "wayspot_edit_telemetry", "client_settings_telemetry", "pokedex_category_selected_telemetry", "percent_scrolled_telemetry", "address_book_import_telemetry", "missing_translation_telemetry", "egg_hatch_telemetry", "push_gateway_telemetry", "push_gateway_upstream_error_telemetry", "username_suggestion_telemetry", "tutorial_telemetry", "postcard_book_telemetry", "social_inbox_telemetry", "home_widget_telemetry", "pokemon_load_delay", "account_deletion_initiated_telemetry", "fort_update_latency_telemetry", "update_combat_response_time_telemetry", "open_campfire_map_telemetry", "download_all_assets_telemetry", "daily_adventure_incense_telemetry", "client_toggle_settings_telemetry", "notification_permissions_telemetry", "asset_refresh_telemetry", "catch_card_telemetry", "follower_pokemon_tapped_telemetry", "size_record_break_telemetry", "time_to_playable_telemetry", "language_telemetry", "quest_list_telemetry", "map_righthand_icons_telemetry", "showcase_details_telemetry", "showcase_rewards_telemetry", "route_discovery_telemetry", "route_play_tappable_spawned_telemetry", "route_error_telemetry", "field_effect_telemetry", "graphics_capabilities_telemetry", "iris_social_event_telemetry", "pokedex_filter_selected_telemetry", "pokedex_region_selected_telemetry", "pokedex_pokemon_selected_telemetry", "pokedex_session_telemetry", "quest_dialog_telemetry", "raid_egg_notification_telemetry", "tracked_pokemon_push_notification_telemetry", "popular_rsvp_notification_telemetry", "summary_screen_view_telemetry", "entry_telemetry", "camera_permission_prompt_telemetry", "device_compatible_telemetry", "exit_flow_telemetry", "frame_auto_applied_telemetry", "frame_removed_telemetry", "get_started_tap_telemetry", "network_check_telemetry", "photo_error_telemetry", "photo_start_telemetry", "photo_taken_telemetry", "pokemon_not_supported_telemetry", "pokemon_select_telemetry", "share_action_telemetry", "sign_in_action_telemetry", "sticker_added_telemetry", "tutorial_viewed_telemetry", "fieldbook_telemetry", "poke_stop_spun_telemetry", "item_deleted_telemetry", "incubated_egg_telemetry", "quest_button_pressed_telemetry", "buddy_hud_button_pressed_telemetry", "encountered_pokemon_telemetry", "encounter_pokemon_caught_telemetry", "encounter_last_pokeball_used_telemetry", "entered_raid_lobby_telemetry", "started_raid_telemetry", "completed_raid_telemetry", "entered_max_battle_lobby_telemetry", "started_max_battle_telemetry", "completed_max_battle_telemetry", "main_menu_opened_telemetry", "main_menu_pokedex_opened_telemetry", "main_menu_pokemon_opened_telemetry", "main_menu_shop_opened_telemetry", "main_menu_battle_opened_telemetry", "main_menu_items_opened_telemetry", "main_menu_settings_opened_telemetry", "main_menu_events_opened_telemetry", "main_menu_news_opened_telemetry", "main_menu_whats_your_favorite_opened_telemetry", "nearby_menu_opened_telemetry", "nearby_pokemon_tab_focused_telemetry", "nearby_raid_tab_focused_telemetry", "nearby_power_spot_tab_focused_telemetry", "nearby_rsvp_tab_focused_telemetry", "nearby_route_tab_focused_telemetry", "nearby_menu_pokemon_tab_tap_pokemon_telemetry", "nearby_menu_pokemon_tab_start_tracking_pokemon_telemetry", "nearby_menu_pokemon_stop_tracking_pokemon_telemetry", "nearby_menu_raid_tab_view_on_map_telemetry", "nearby_menu_raid_tab_stop_tracking_raid_telemetry", "nearby_menu_raid_tab_open_rsvp_raid_telemetry", "nearby_menu_raid_tab_open_ongoing_raid_telemetry", "nearby_menu_rsvp_tab_tap_reminder_widget_telemetry", "nearby_menu_powerspot_tab_view_pressed_telemetry", "nearby_menu_powerspot_tab_view_on_map_pressed_telemetry", "player_profile_opened_telemetry", "player_profile_exited_telemetry", "player_profile_me_tab_focused_telemetry", "player_profile_friends_tab_focused_telemetry", "player_profile_social_tab_focused_telemetry", "player_profile_buddy_history_opened_telemetry", "player_profile_scrapbook_opened_telemetry", "player_profile_journal_opened_telemetry", "player_profile_style_shop_opened_telemetry", "today_view_opened_telemetry", "today_outer_tab_focused_telemetry", "today_inner_tab_focused_telemetry", "pokemon_info_gui_opened_telemetry", "pokedex_see_all_button_pressed_telemetry", "pokemon_info_gui_action_menu_pokedex_telemetry", "pokemon_info_gui_action_menu_items_telemetry", "pokemon_info_gui_action_menu_candy_to_xl_telemetry", "pokemon_info_gui_action_menu_catch_card_telemetry", "pokemon_info_gui_action_menu_tag_telemetry", "pokemon_info_gui_action_menu_favorite_telemetry", "pokemon_info_gui_action_menu_unfavorite_telemetry", "pokemon_info_gui_action_menu_appraise_telemetry", "pokemon_info_gui_action_menu_transfer_telemetry", "pokemon_info_gui_action_menu_transfer_confirmed_telemetry", "blocked_from_gaining_rewards_by_full_bag_telemetry", "blocked_from_gaining_pokemon_by_full_bag_telemetry", "avatar_items_telemetry", "softsfida_telemetry", "map_screen_compass_button_pressed_telemetry", "inventory_persistence_telemetry"]  # noqa: Y015
     _WhichOneofArgType_TelemetryData: _TypeAlias = _typing.Literal["TelemetryData", b"TelemetryData"]  # noqa: Y015
     def WhichOneof(self, oneof_group: _WhichOneofArgType_TelemetryData) -> _WhichOneofReturnType_TelemetryData | None: ...
 
@@ -80017,6 +80892,7 @@ class IapItemDisplayProto(_message.Message):
     USE_ENVIRONMENT_PREFIX_FIELD_NUMBER: _builtins.int
     WEBSTORE_CONTENT_QUANTITY_FIELD_NUMBER: _builtins.int
     WEBSTORE_REWARD_ROAD_POINTS_FIELD_NUMBER: _builtins.int
+    GIFTABLE_SKU_ID_FIELD_NUMBER: _builtins.int
     sku: _builtins.str
     category: Global___HoloIapItemCategory.ValueType
     sort_order: _builtins.int
@@ -80040,6 +80916,7 @@ class IapItemDisplayProto(_message.Message):
     use_environment_prefix: _builtins.bool
     webstore_content_quantity: _builtins.int
     webstore_reward_road_points: _builtins.int
+    giftable_sku_id: _builtins.str
     @_builtins.property
     def subcategories(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
     def __init__(
@@ -80069,10 +80946,11 @@ class IapItemDisplayProto(_message.Message):
         use_environment_prefix: _builtins.bool = ...,
         webstore_content_quantity: _builtins.int = ...,
         webstore_reward_road_points: _builtins.int = ...,
+        giftable_sku_id: _builtins.str = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["category", b"category", "description", b"description", "hidden", b"hidden", "image_url", b"image_url", "max_level", b"max_level", "min_level", b"min_level", "sale", b"sale", "show_discount_tag", b"show_discount_tag", "show_strikethrough_price", b"show_strikethrough_price", "sku", b"sku", "sku_disable_time", b"sku_disable_time", "sku_disable_time_utc_ms", b"sku_disable_time_utc_ms", "sku_enable_time", b"sku_enable_time", "sku_enable_time_utc_ms", b"sku_enable_time_utc_ms", "sort_order", b"sort_order", "sprite_id", b"sprite_id", "subcategories", b"subcategories", "title", b"title", "total_value", b"total_value", "use_environment_prefix", b"use_environment_prefix", "webstore_content_quantity", b"webstore_content_quantity", "webstore_reward_road_points", b"webstore_reward_road_points", "webstore_sku_id", b"webstore_sku_id", "webstore_sku_price_e6", b"webstore_sku_price_e6"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["category", b"category", "description", b"description", "giftable_sku_id", b"giftable_sku_id", "hidden", b"hidden", "image_url", b"image_url", "max_level", b"max_level", "min_level", b"min_level", "sale", b"sale", "show_discount_tag", b"show_discount_tag", "show_strikethrough_price", b"show_strikethrough_price", "sku", b"sku", "sku_disable_time", b"sku_disable_time", "sku_disable_time_utc_ms", b"sku_disable_time_utc_ms", "sku_enable_time", b"sku_enable_time", "sku_enable_time_utc_ms", b"sku_enable_time_utc_ms", "sort_order", b"sort_order", "sprite_id", b"sprite_id", "subcategories", b"subcategories", "title", b"title", "total_value", b"total_value", "use_environment_prefix", b"use_environment_prefix", "webstore_content_quantity", b"webstore_content_quantity", "webstore_reward_road_points", b"webstore_reward_road_points", "webstore_sku_id", b"webstore_sku_id", "webstore_sku_price_e6", b"webstore_sku_price_e6"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -81261,6 +82139,7 @@ class IbfcProto(_message.Message):
     DEFAULT_TO_ALTERNATE_IBFC_SETTINGS_FIELD_NUMBER: _builtins.int
     ALTERNATE_TO_DEFAULT_IBFC_SETTINGS_FIELD_NUMBER: _builtins.int
     ALTERNATE_FORMS_FIELD_NUMBER: _builtins.int
+    DEFAULT_FORMS_FIELD_NUMBER: _builtins.int
     raid_enable: _builtins.bool
     gym_battle_enable: _builtins.bool
     combat_enable: _builtins.bool
@@ -81272,6 +82151,8 @@ class IbfcProto(_message.Message):
     def alternate_to_default_ibfc_settings(self) -> Global___IbfcTransitionSettings: ...
     @_builtins.property
     def alternate_forms(self) -> _containers.RepeatedScalarFieldContainer[Global___PokemonDisplayProto.Form.ValueType]: ...
+    @_builtins.property
+    def default_forms(self) -> _containers.RepeatedScalarFieldContainer[Global___PokemonDisplayProto.Form.ValueType]: ...
     def __init__(
         self,
         *,
@@ -81283,10 +82164,11 @@ class IbfcProto(_message.Message):
         default_to_alternate_ibfc_settings: Global___IbfcTransitionSettings | None = ...,
         alternate_to_default_ibfc_settings: Global___IbfcTransitionSettings | None = ...,
         alternate_forms: _abc.Iterable[Global___PokemonDisplayProto.Form.ValueType] | None = ...,
+        default_forms: _abc.Iterable[Global___PokemonDisplayProto.Form.ValueType] | None = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["alternate_to_default_ibfc_settings", b"alternate_to_default_ibfc_settings", "default_to_alternate_ibfc_settings", b"default_to_alternate_ibfc_settings"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["alternate_form", b"alternate_form", "alternate_forms", b"alternate_forms", "alternate_to_default_ibfc_settings", b"alternate_to_default_ibfc_settings", "combat_enable", b"combat_enable", "default_form", b"default_form", "default_to_alternate_ibfc_settings", b"default_to_alternate_ibfc_settings", "gym_battle_enable", b"gym_battle_enable", "raid_enable", b"raid_enable"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["alternate_form", b"alternate_form", "alternate_forms", b"alternate_forms", "alternate_to_default_ibfc_settings", b"alternate_to_default_ibfc_settings", "combat_enable", b"combat_enable", "default_form", b"default_form", "default_forms", b"default_forms", "default_to_alternate_ibfc_settings", b"default_to_alternate_ibfc_settings", "gym_battle_enable", b"gym_battle_enable", "raid_enable", b"raid_enable"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -95126,6 +96008,256 @@ class InventoryItemProto(_message.Message):
 Global___InventoryItemProto: _TypeAlias = InventoryItemProto  # noqa: Y015
 
 @_typing.final
+class InventoryPersistenceTelemetryProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _BootstrapOutcome:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _BootstrapOutcomeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[InventoryPersistenceTelemetryProto._BootstrapOutcome.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        BOOTSTRAP_UNDEFINED: InventoryPersistenceTelemetryProto._BootstrapOutcome.ValueType  # 0
+        BOOTSTRAP_HYDRATED: InventoryPersistenceTelemetryProto._BootstrapOutcome.ValueType  # 1
+        BOOTSTRAP_EMPTY: InventoryPersistenceTelemetryProto._BootstrapOutcome.ValueType  # 2
+        BOOTSTRAP_ERROR: InventoryPersistenceTelemetryProto._BootstrapOutcome.ValueType  # 3
+        BOOTSTRAP_TIMEOUT: InventoryPersistenceTelemetryProto._BootstrapOutcome.ValueType  # 4
+        BOOTSTRAP_DISABLED: InventoryPersistenceTelemetryProto._BootstrapOutcome.ValueType  # 5
+        BOOTSTRAP_DISPOSED: InventoryPersistenceTelemetryProto._BootstrapOutcome.ValueType  # 6
+
+    class BootstrapOutcome(_BootstrapOutcome, metaclass=_BootstrapOutcomeEnumTypeWrapper): ...
+    BOOTSTRAP_UNDEFINED: InventoryPersistenceTelemetryProto.BootstrapOutcome.ValueType  # 0
+    BOOTSTRAP_HYDRATED: InventoryPersistenceTelemetryProto.BootstrapOutcome.ValueType  # 1
+    BOOTSTRAP_EMPTY: InventoryPersistenceTelemetryProto.BootstrapOutcome.ValueType  # 2
+    BOOTSTRAP_ERROR: InventoryPersistenceTelemetryProto.BootstrapOutcome.ValueType  # 3
+    BOOTSTRAP_TIMEOUT: InventoryPersistenceTelemetryProto.BootstrapOutcome.ValueType  # 4
+    BOOTSTRAP_DISABLED: InventoryPersistenceTelemetryProto.BootstrapOutcome.ValueType  # 5
+    BOOTSTRAP_DISPOSED: InventoryPersistenceTelemetryProto.BootstrapOutcome.ValueType  # 6
+
+    class _CacheLoadOutcome:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _CacheLoadOutcomeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        CACHE_LOAD_UNDEFINED: InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType  # 0
+        CACHE_LOAD_HIT: InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType  # 1
+        CACHE_LOAD_EMPTY: InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType  # 2
+        CACHE_LOAD_EXPIRED: InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType  # 3
+        CACHE_LOAD_DELETED: InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType  # 4
+        CACHE_LOAD_CORRUPT: InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType  # 5
+        CACHE_LOAD_SCHEMA_MISMATCH: InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType  # 6
+        CACHE_LOAD_TIMESTAMP_ZERO: InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType  # 7
+        CACHE_LOAD_WRONG_PLAYER: InventoryPersistenceTelemetryProto._CacheLoadOutcome.ValueType  # 8
+
+    class CacheLoadOutcome(_CacheLoadOutcome, metaclass=_CacheLoadOutcomeEnumTypeWrapper): ...
+    CACHE_LOAD_UNDEFINED: InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType  # 0
+    CACHE_LOAD_HIT: InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType  # 1
+    CACHE_LOAD_EMPTY: InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType  # 2
+    CACHE_LOAD_EXPIRED: InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType  # 3
+    CACHE_LOAD_DELETED: InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType  # 4
+    CACHE_LOAD_CORRUPT: InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType  # 5
+    CACHE_LOAD_SCHEMA_MISMATCH: InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType  # 6
+    CACHE_LOAD_TIMESTAMP_ZERO: InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType  # 7
+    CACHE_LOAD_WRONG_PLAYER: InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType  # 8
+
+    class _PurgeReason:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _PurgeReasonEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[InventoryPersistenceTelemetryProto._PurgeReason.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        PURGE_UNDEFINED: InventoryPersistenceTelemetryProto._PurgeReason.ValueType  # 0
+        PURGE_LOGOUT: InventoryPersistenceTelemetryProto._PurgeReason.ValueType  # 1
+        PURGE_ACCOUNT_SWITCH: InventoryPersistenceTelemetryProto._PurgeReason.ValueType  # 2
+        PURGE_CORRUPT: InventoryPersistenceTelemetryProto._PurgeReason.ValueType  # 3
+        PURGE_EXPIRED: InventoryPersistenceTelemetryProto._PurgeReason.ValueType  # 4
+        PURGE_DISABLED: InventoryPersistenceTelemetryProto._PurgeReason.ValueType  # 5
+        PURGE_SCHEMA_MISMATCH: InventoryPersistenceTelemetryProto._PurgeReason.ValueType  # 6
+
+    class PurgeReason(_PurgeReason, metaclass=_PurgeReasonEnumTypeWrapper): ...
+    PURGE_UNDEFINED: InventoryPersistenceTelemetryProto.PurgeReason.ValueType  # 0
+    PURGE_LOGOUT: InventoryPersistenceTelemetryProto.PurgeReason.ValueType  # 1
+    PURGE_ACCOUNT_SWITCH: InventoryPersistenceTelemetryProto.PurgeReason.ValueType  # 2
+    PURGE_CORRUPT: InventoryPersistenceTelemetryProto.PurgeReason.ValueType  # 3
+    PURGE_EXPIRED: InventoryPersistenceTelemetryProto.PurgeReason.ValueType  # 4
+    PURGE_DISABLED: InventoryPersistenceTelemetryProto.PurgeReason.ValueType  # 5
+    PURGE_SCHEMA_MISMATCH: InventoryPersistenceTelemetryProto.PurgeReason.ValueType  # 6
+
+    @_typing.final
+    class BootstrapEvent(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        OUTCOME_FIELD_NUMBER: _builtins.int
+        DURATION_BUCKET_FIELD_NUMBER: _builtins.int
+        outcome: Global___InventoryPersistenceTelemetryProto.BootstrapOutcome.ValueType
+        duration_bucket: _builtins.int
+        def __init__(
+            self,
+            *,
+            outcome: Global___InventoryPersistenceTelemetryProto.BootstrapOutcome.ValueType = ...,
+            duration_bucket: _builtins.int = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["duration_bucket", b"duration_bucket", "outcome", b"outcome"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    @_typing.final
+    class CacheLoadEvent(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        OUTCOME_FIELD_NUMBER: _builtins.int
+        outcome: Global___InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType
+        def __init__(
+            self,
+            *,
+            outcome: Global___InventoryPersistenceTelemetryProto.CacheLoadOutcome.ValueType = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["outcome", b"outcome"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    @_typing.final
+    class GateEvent(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        TIMED_OUT_FIELD_NUMBER: _builtins.int
+        WAITER_COUNT_BUCKET_FIELD_NUMBER: _builtins.int
+        timed_out: _builtins.bool
+        waiter_count_bucket: _builtins.int
+        def __init__(
+            self,
+            *,
+            timed_out: _builtins.bool = ...,
+            waiter_count_bucket: _builtins.int = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["timed_out", b"timed_out", "waiter_count_bucket", b"waiter_count_bucket"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    @_typing.final
+    class PurgeEvent(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        REASON_FIELD_NUMBER: _builtins.int
+        reason: Global___InventoryPersistenceTelemetryProto.PurgeReason.ValueType
+        def __init__(
+            self,
+            *,
+            reason: Global___InventoryPersistenceTelemetryProto.PurgeReason.ValueType = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["reason", b"reason"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    @_typing.final
+    class SqliteFailureEvent(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        PRIMARY_CODE_BUCKET_FIELD_NUMBER: _builtins.int
+        EXTENDED_CODE_BUCKET_FIELD_NUMBER: _builtins.int
+        primary_code_bucket: _builtins.int
+        extended_code_bucket: _builtins.int
+        def __init__(
+            self,
+            *,
+            primary_code_bucket: _builtins.int = ...,
+            extended_code_bucket: _builtins.int = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["extended_code_bucket", b"extended_code_bucket", "primary_code_bucket", b"primary_code_bucket"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    @_typing.final
+    class StaleGenerationRejectedEvent(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        COUNT_BUCKET_FIELD_NUMBER: _builtins.int
+        count_bucket: _builtins.int
+        def __init__(
+            self,
+            *,
+            count_bucket: _builtins.int = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["count_bucket", b"count_bucket"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    @_typing.final
+    class WriteEvent(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        DURATION_BUCKET_FIELD_NUMBER: _builtins.int
+        BATCH_SIZE_BUCKET_FIELD_NUMBER: _builtins.int
+        duration_bucket: _builtins.int
+        batch_size_bucket: _builtins.int
+        def __init__(
+            self,
+            *,
+            duration_bucket: _builtins.int = ...,
+            batch_size_bucket: _builtins.int = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["batch_size_bucket", b"batch_size_bucket", "duration_bucket", b"duration_bucket"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    BOOTSTRAP_FIELD_NUMBER: _builtins.int
+    CACHE_LOAD_FIELD_NUMBER: _builtins.int
+    WRITE_FIELD_NUMBER: _builtins.int
+    PURGE_FIELD_NUMBER: _builtins.int
+    GATE_FIELD_NUMBER: _builtins.int
+    SQLITE_FAILURE_FIELD_NUMBER: _builtins.int
+    STALE_GENERATION_REJECTED_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def bootstrap(self) -> Global___InventoryPersistenceTelemetryProto.BootstrapEvent: ...
+    @_builtins.property
+    def cache_load(self) -> Global___InventoryPersistenceTelemetryProto.CacheLoadEvent: ...
+    @_builtins.property
+    def write(self) -> Global___InventoryPersistenceTelemetryProto.WriteEvent: ...
+    @_builtins.property
+    def purge(self) -> Global___InventoryPersistenceTelemetryProto.PurgeEvent: ...
+    @_builtins.property
+    def gate(self) -> Global___InventoryPersistenceTelemetryProto.GateEvent: ...
+    @_builtins.property
+    def sqlite_failure(self) -> Global___InventoryPersistenceTelemetryProto.SqliteFailureEvent: ...
+    @_builtins.property
+    def stale_generation_rejected(self) -> Global___InventoryPersistenceTelemetryProto.StaleGenerationRejectedEvent: ...
+    def __init__(
+        self,
+        *,
+        bootstrap: Global___InventoryPersistenceTelemetryProto.BootstrapEvent | None = ...,
+        cache_load: Global___InventoryPersistenceTelemetryProto.CacheLoadEvent | None = ...,
+        write: Global___InventoryPersistenceTelemetryProto.WriteEvent | None = ...,
+        purge: Global___InventoryPersistenceTelemetryProto.PurgeEvent | None = ...,
+        gate: Global___InventoryPersistenceTelemetryProto.GateEvent | None = ...,
+        sqlite_failure: Global___InventoryPersistenceTelemetryProto.SqliteFailureEvent | None = ...,
+        stale_generation_rejected: Global___InventoryPersistenceTelemetryProto.StaleGenerationRejectedEvent | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["Event", b"Event", "bootstrap", b"bootstrap", "cache_load", b"cache_load", "gate", b"gate", "purge", b"purge", "sqlite_failure", b"sqlite_failure", "stale_generation_rejected", b"stale_generation_rejected", "write", b"write"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["Event", b"Event", "bootstrap", b"bootstrap", "cache_load", b"cache_load", "gate", b"gate", "purge", b"purge", "sqlite_failure", b"sqlite_failure", "stale_generation_rejected", b"stale_generation_rejected", "write", b"write"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType_Event: _TypeAlias = _typing.Literal["bootstrap", "cache_load", "write", "purge", "gate", "sqlite_failure", "stale_generation_rejected"]  # noqa: Y015
+    _WhichOneofArgType_Event: _TypeAlias = _typing.Literal["Event", b"Event"]  # noqa: Y015
+    def WhichOneof(self, oneof_group: _WhichOneofArgType_Event) -> _WhichOneofReturnType_Event | None: ...
+
+Global___InventoryPersistenceTelemetryProto: _TypeAlias = InventoryPersistenceTelemetryProto  # noqa: Y015
+
+@_typing.final
 class InventoryProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -96625,6 +97757,12 @@ class JoinBreadLobbyOutProto(_message.Message):
         ERROR_BREAD_BATTLE_LEVEL_UNAVAILABLE: JoinBreadLobbyOutProto._Result.ValueType  # 25
         ERROR_FRIEND_DETAILS_UNAVAILABLE: JoinBreadLobbyOutProto._Result.ValueType  # 26
         ERROR_BREAD_BATTLE_NOT_FOUND: JoinBreadLobbyOutProto._Result.ValueType  # 27
+        ERROR_PLAYER_NOT_ELIGIBLE: JoinBreadLobbyOutProto._Result.ValueType  # 28
+        ERROR_PRIVATE_LOBBY_NOT_FOUND: JoinBreadLobbyOutProto._Result.ValueType  # 29
+        ERROR_PRIVATE_LOBBY_INVALID_REQUEST: JoinBreadLobbyOutProto._Result.ValueType  # 30
+        ERROR_PRIVATE_LOBBIES_DISABLED: JoinBreadLobbyOutProto._Result.ValueType  # 31
+        ERROR_PRIVATE_LOBBY_LIMIT_REACHED: JoinBreadLobbyOutProto._Result.ValueType  # 32
+        ERROR_PRIVATE_LOBBY_NOT_SUPPORTED_FOR_BATTLE: JoinBreadLobbyOutProto._Result.ValueType  # 33
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: JoinBreadLobbyOutProto.Result.ValueType  # 0
@@ -96653,6 +97791,12 @@ class JoinBreadLobbyOutProto(_message.Message):
     ERROR_BREAD_BATTLE_LEVEL_UNAVAILABLE: JoinBreadLobbyOutProto.Result.ValueType  # 25
     ERROR_FRIEND_DETAILS_UNAVAILABLE: JoinBreadLobbyOutProto.Result.ValueType  # 26
     ERROR_BREAD_BATTLE_NOT_FOUND: JoinBreadLobbyOutProto.Result.ValueType  # 27
+    ERROR_PLAYER_NOT_ELIGIBLE: JoinBreadLobbyOutProto.Result.ValueType  # 28
+    ERROR_PRIVATE_LOBBY_NOT_FOUND: JoinBreadLobbyOutProto.Result.ValueType  # 29
+    ERROR_PRIVATE_LOBBY_INVALID_REQUEST: JoinBreadLobbyOutProto.Result.ValueType  # 30
+    ERROR_PRIVATE_LOBBIES_DISABLED: JoinBreadLobbyOutProto.Result.ValueType  # 31
+    ERROR_PRIVATE_LOBBY_LIMIT_REACHED: JoinBreadLobbyOutProto.Result.ValueType  # 32
+    ERROR_PRIVATE_LOBBY_NOT_SUPPORTED_FOR_BATTLE: JoinBreadLobbyOutProto.Result.ValueType  # 33
 
     @_typing.final
     class ExistingLobbyProto(_message.Message):
@@ -96725,6 +97869,10 @@ class JoinBreadLobbyProto(_message.Message):
     USE_REMOTE_PASS_FIELD_NUMBER: _builtins.int
     INVITER_ID_FIELD_NUMBER: _builtins.int
     IS_SELF_INVITE_FIELD_NUMBER: _builtins.int
+    JOIN_PRIVATE_LOBBY_BY_CODE_FIELD_NUMBER: _builtins.int
+    CREATE_PRIVATE_LOBBY_FIELD_NUMBER: _builtins.int
+    JOIN_LOBBY_BY_ID_FIELD_NUMBER: _builtins.int
+    PUBLIC_MATCHMAKING_FIELD_NUMBER: _builtins.int
     bread_battle_seed: _builtins.int
     station_id: _builtins.str
     station_lat_degrees: _builtins.float
@@ -96736,6 +97884,14 @@ class JoinBreadLobbyProto(_message.Message):
     use_remote_pass: _builtins.bool
     inviter_id: _builtins.str
     is_self_invite: _builtins.bool
+    @_builtins.property
+    def join_private_lobby_by_code(self) -> Global___JoinPrivateLobbyByCodeProto: ...
+    @_builtins.property
+    def create_private_lobby(self) -> Global___CreatePrivateLobbyProto: ...
+    @_builtins.property
+    def join_lobby_by_id(self) -> Global___JoinLobbyByIdProto: ...
+    @_builtins.property
+    def public_matchmaking(self) -> Global___PublicMatchmakingProto: ...
     def __init__(
         self,
         *,
@@ -96750,12 +97906,18 @@ class JoinBreadLobbyProto(_message.Message):
         use_remote_pass: _builtins.bool = ...,
         inviter_id: _builtins.str = ...,
         is_self_invite: _builtins.bool = ...,
+        join_private_lobby_by_code: Global___JoinPrivateLobbyByCodeProto | None = ...,
+        create_private_lobby: Global___CreatePrivateLobbyProto | None = ...,
+        join_lobby_by_id: Global___JoinLobbyByIdProto | None = ...,
+        public_matchmaking: Global___PublicMatchmakingProto | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["JoinMode", b"JoinMode", "create_private_lobby", b"create_private_lobby", "join_lobby_by_id", b"join_lobby_by_id", "join_private_lobby_by_code", b"join_private_lobby_by_code", "public_matchmaking", b"public_matchmaking"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["bread_battle_entry_point", b"bread_battle_entry_point", "bread_battle_seed", b"bread_battle_seed", "bread_lobby_id", b"bread_lobby_id", "inviter_id", b"inviter_id", "is_battle_assist", b"is_battle_assist", "is_self_invite", b"is_self_invite", "station_id", b"station_id", "station_lat_degrees", b"station_lat_degrees", "station_lng_degrees", b"station_lng_degrees", "use_power_crystal", b"use_power_crystal", "use_remote_pass", b"use_remote_pass"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["JoinMode", b"JoinMode", "bread_battle_entry_point", b"bread_battle_entry_point", "bread_battle_seed", b"bread_battle_seed", "bread_lobby_id", b"bread_lobby_id", "create_private_lobby", b"create_private_lobby", "inviter_id", b"inviter_id", "is_battle_assist", b"is_battle_assist", "is_self_invite", b"is_self_invite", "join_lobby_by_id", b"join_lobby_by_id", "join_private_lobby_by_code", b"join_private_lobby_by_code", "public_matchmaking", b"public_matchmaking", "station_id", b"station_id", "station_lat_degrees", b"station_lat_degrees", "station_lng_degrees", b"station_lng_degrees", "use_power_crystal", b"use_power_crystal", "use_remote_pass", b"use_remote_pass"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    def WhichOneof(self, oneof_group: _Never) -> None: ...
+    _WhichOneofReturnType_JoinMode: _TypeAlias = _typing.Literal["join_private_lobby_by_code", "create_private_lobby", "join_lobby_by_id", "public_matchmaking"]  # noqa: Y015
+    _WhichOneofArgType_JoinMode: _TypeAlias = _typing.Literal["JoinMode", b"JoinMode"]  # noqa: Y015
+    def WhichOneof(self, oneof_group: _WhichOneofArgType_JoinMode) -> _WhichOneofReturnType_JoinMode | None: ...
 
 Global___JoinBreadLobbyProto: _TypeAlias = JoinBreadLobbyProto  # noqa: Y015
 
@@ -96838,6 +98000,25 @@ class JoinBuddyMultiplayerSessionProto(_message.Message):
 Global___JoinBuddyMultiplayerSessionProto: _TypeAlias = JoinBuddyMultiplayerSessionProto  # noqa: Y015
 
 @_typing.final
+class JoinLobbyByIdProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    BREAD_LOBBY_ID_FIELD_NUMBER: _builtins.int
+    bread_lobby_id: _builtins.int
+    def __init__(
+        self,
+        *,
+        bread_lobby_id: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["bread_lobby_id", b"bread_lobby_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___JoinLobbyByIdProto: _TypeAlias = JoinLobbyByIdProto  # noqa: Y015
+
+@_typing.final
 class JoinLobbyData(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -96890,6 +98071,7 @@ class JoinLobbyOutProto(_message.Message):
         ERROR_DATA: JoinLobbyOutProto._Result.ValueType  # 15
         ERROR_MAX_LOBBIES_REACHED: JoinLobbyOutProto._Result.ValueType  # 16
         ERROR_FAILED_TO_CREATE_BATTLE: JoinLobbyOutProto._Result.ValueType  # 17
+        ERROR_PLAYER_NOT_ELIGIBLE: JoinLobbyOutProto._Result.ValueType  # 19
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: JoinLobbyOutProto.Result.ValueType  # 0
@@ -96910,6 +98092,7 @@ class JoinLobbyOutProto(_message.Message):
     ERROR_DATA: JoinLobbyOutProto.Result.ValueType  # 15
     ERROR_MAX_LOBBIES_REACHED: JoinLobbyOutProto.Result.ValueType  # 16
     ERROR_FAILED_TO_CREATE_BATTLE: JoinLobbyOutProto.Result.ValueType  # 17
+    ERROR_PLAYER_NOT_ELIGIBLE: JoinLobbyOutProto.Result.ValueType  # 19
 
     RESULT_FIELD_NUMBER: _builtins.int
     LOBBY_FIELD_NUMBER: _builtins.int
@@ -97156,6 +98339,25 @@ class JoinPartyProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___JoinPartyProto: _TypeAlias = JoinPartyProto  # noqa: Y015
+
+@_typing.final
+class JoinPrivateLobbyByCodeProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    PRIVATE_LOBBY_CODE_FIELD_NUMBER: _builtins.int
+    private_lobby_code: _builtins.int
+    def __init__(
+        self,
+        *,
+        private_lobby_code: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["private_lobby_code", b"private_lobby_code"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___JoinPrivateLobbyByCodeProto: _TypeAlias = JoinPrivateLobbyByCodeProto  # noqa: Y015
 
 @_typing.final
 class JoinRaidViaFriendListSettingsProto(_message.Message):
@@ -97884,6 +99086,7 @@ class LeaveBreadLobbyOutProto(_message.Message):
         ERROR_BREAD_LOBBY_UNAVAILABLE: LeaveBreadLobbyOutProto._Result.ValueType  # 2
         ERROR_STATION_INACCESSIBLE: LeaveBreadLobbyOutProto._Result.ValueType  # 3
         ERROR_BREAD_LOBBY_NOT_FOUND: LeaveBreadLobbyOutProto._Result.ValueType  # 4
+        ERROR_PLAYER_NOT_ELIGIBLE: LeaveBreadLobbyOutProto._Result.ValueType  # 5
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: LeaveBreadLobbyOutProto.Result.ValueType  # 0
@@ -97891,6 +99094,7 @@ class LeaveBreadLobbyOutProto(_message.Message):
     ERROR_BREAD_LOBBY_UNAVAILABLE: LeaveBreadLobbyOutProto.Result.ValueType  # 2
     ERROR_STATION_INACCESSIBLE: LeaveBreadLobbyOutProto.Result.ValueType  # 3
     ERROR_BREAD_LOBBY_NOT_FOUND: LeaveBreadLobbyOutProto.Result.ValueType  # 4
+    ERROR_PLAYER_NOT_ELIGIBLE: LeaveBreadLobbyOutProto.Result.ValueType  # 5
 
     RESULT_FIELD_NUMBER: _builtins.int
     BREAD_LOBBY_FIELD_NUMBER: _builtins.int
@@ -98064,12 +99268,14 @@ class LeaveLobbyOutProto(_message.Message):
         SUCCESS: LeaveLobbyOutProto._Result.ValueType  # 1
         ERROR_RAID_UNAVAILABLE: LeaveLobbyOutProto._Result.ValueType  # 2
         ERROR_LOBBY_NOT_FOUND: LeaveLobbyOutProto._Result.ValueType  # 3
+        ERROR_PLAYER_NOT_ELIGIBLE: LeaveLobbyOutProto._Result.ValueType  # 4
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: LeaveLobbyOutProto.Result.ValueType  # 0
     SUCCESS: LeaveLobbyOutProto.Result.ValueType  # 1
     ERROR_RAID_UNAVAILABLE: LeaveLobbyOutProto.Result.ValueType  # 2
     ERROR_LOBBY_NOT_FOUND: LeaveLobbyOutProto.Result.ValueType  # 3
+    ERROR_PLAYER_NOT_ELIGIBLE: LeaveLobbyOutProto.Result.ValueType  # 4
 
     RESULT_FIELD_NUMBER: _builtins.int
     LOBBY_FIELD_NUMBER: _builtins.int
@@ -99185,6 +100391,51 @@ class ListAvatarStoreItemsProto(_message.Message):
 Global___ListAvatarStoreItemsProto: _TypeAlias = ListAvatarStoreItemsProto  # noqa: Y015
 
 @_typing.final
+class ListDeviceVerificationChallengesRequestProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    USER_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_REGISTRATION_ID_FIELD_NUMBER: _builtins.int
+    INCLUDE_TERMINAL_CHALLENGES_FIELD_NUMBER: _builtins.int
+    user_id: _builtins.str
+    device_registration_id: _builtins.str
+    include_terminal_challenges: _builtins.bool
+    def __init__(
+        self,
+        *,
+        user_id: _builtins.str = ...,
+        device_registration_id: _builtins.str = ...,
+        include_terminal_challenges: _builtins.bool = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["device_registration_id", b"device_registration_id", "include_terminal_challenges", b"include_terminal_challenges", "user_id", b"user_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ListDeviceVerificationChallengesRequestProto: _TypeAlias = ListDeviceVerificationChallengesRequestProto  # noqa: Y015
+
+@_typing.final
+class ListDeviceVerificationChallengesResponseProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    CHALLENGES_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def challenges(self) -> _containers.RepeatedCompositeFieldContainer[Global___PendingDeviceVerificationChallengeProto]: ...
+    def __init__(
+        self,
+        *,
+        challenges: _abc.Iterable[Global___PendingDeviceVerificationChallengeProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["challenges", b"challenges"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ListDeviceVerificationChallengesResponseProto: _TypeAlias = ListDeviceVerificationChallengesResponseProto  # noqa: Y015
+
+@_typing.final
 class ListExperiencesFilter(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -99382,6 +100633,45 @@ class ListLoginActionOutProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___ListLoginActionOutProto: _TypeAlias = ListLoginActionOutProto  # noqa: Y015
+
+@_typing.final
+class ListPlayerDevicesRequestProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    USER_ID_FIELD_NUMBER: _builtins.int
+    user_id: _builtins.str
+    def __init__(
+        self,
+        *,
+        user_id: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["user_id", b"user_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ListPlayerDevicesRequestProto: _TypeAlias = ListPlayerDevicesRequestProto  # noqa: Y015
+
+@_typing.final
+class ListPlayerDevicesResponseProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    DEVICES_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def devices(self) -> _containers.RepeatedCompositeFieldContainer[Global___DeviceRegistrationProto]: ...
+    def __init__(
+        self,
+        *,
+        devices: _abc.Iterable[Global___DeviceRegistrationProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["devices", b"devices"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ListPlayerDevicesResponseProto: _TypeAlias = ListPlayerDevicesResponseProto  # noqa: Y015
 
 @_typing.final
 class ListRouteBadgesOutProto(_message.Message):
@@ -99587,6 +100877,7 @@ class LobbyProto(_message.Message):
     RVN_VERSION_FIELD_NUMBER: _builtins.int
     TOTAL_PLAYER_COUNT_IN_LOBBY_FIELD_NUMBER: _builtins.int
     TOTAL_MEGA_EVOLVED_COUNT_IN_LOBBY_FIELD_NUMBER: _builtins.int
+    TOTAL_SHIELD_BREAK_POWER_IN_LOBBY_FIELD_NUMBER: _builtins.int
     player_join_end_ms: _builtins.int
     pokemon_selection_end_ms: _builtins.int
     raid_battle_start_ms: _builtins.int
@@ -99601,6 +100892,7 @@ class LobbyProto(_message.Message):
     rvn_version: _builtins.int
     total_player_count_in_lobby: _builtins.int
     total_mega_evolved_count_in_lobby: _builtins.int
+    total_shield_break_power_in_lobby: _builtins.int
     @_builtins.property
     def lobby_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
     @_builtins.property
@@ -99630,10 +100922,11 @@ class LobbyProto(_message.Message):
         rvn_version: _builtins.int = ...,
         total_player_count_in_lobby: _builtins.int = ...,
         total_mega_evolved_count_in_lobby: _builtins.int = ...,
+        total_shield_break_power_in_lobby: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["rvn_connection", b"rvn_connection"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["battle_plfe_instance", b"battle_plfe_instance", "creation_ms", b"creation_ms", "invited_player_ids", b"invited_player_ids", "is_shard_manager_battle_enabled", b"is_shard_manager_battle_enabled", "lobby_id", b"lobby_id", "owner_nickname", b"owner_nickname", "player_join_end_ms", b"player_join_end_ms", "players", b"players", "pokemon_selection_end_ms", b"pokemon_selection_end_ms", "private", b"private", "raid_battle_end_ms", b"raid_battle_end_ms", "raid_battle_id", b"raid_battle_id", "raid_battle_start_ms", b"raid_battle_start_ms", "rvn_connection", b"rvn_connection", "rvn_version", b"rvn_version", "total_mega_evolved_count_in_lobby", b"total_mega_evolved_count_in_lobby", "total_player_count_in_lobby", b"total_player_count_in_lobby", "weather_condition", b"weather_condition"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["battle_plfe_instance", b"battle_plfe_instance", "creation_ms", b"creation_ms", "invited_player_ids", b"invited_player_ids", "is_shard_manager_battle_enabled", b"is_shard_manager_battle_enabled", "lobby_id", b"lobby_id", "owner_nickname", b"owner_nickname", "player_join_end_ms", b"player_join_end_ms", "players", b"players", "pokemon_selection_end_ms", b"pokemon_selection_end_ms", "private", b"private", "raid_battle_end_ms", b"raid_battle_end_ms", "raid_battle_id", b"raid_battle_id", "raid_battle_start_ms", b"raid_battle_start_ms", "rvn_connection", b"rvn_connection", "rvn_version", b"rvn_version", "total_mega_evolved_count_in_lobby", b"total_mega_evolved_count_in_lobby", "total_player_count_in_lobby", b"total_player_count_in_lobby", "total_shield_break_power_in_lobby", b"total_shield_break_power_in_lobby", "weather_condition", b"weather_condition"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -99865,25 +101158,52 @@ Global___LocationCardFeatureSettingsProto: _TypeAlias = LocationCardFeatureSetti
 class LocationCardSettingsProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
+    class _BackgroundEligibilityStatus:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _BackgroundEligibilityStatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[LocationCardSettingsProto._BackgroundEligibilityStatus.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: LocationCardSettingsProto._BackgroundEligibilityStatus.ValueType  # 0
+        ELIGIBLE: LocationCardSettingsProto._BackgroundEligibilityStatus.ValueType  # 1
+        INELIGIBLE: LocationCardSettingsProto._BackgroundEligibilityStatus.ValueType  # 2
+
+    class BackgroundEligibilityStatus(_BackgroundEligibilityStatus, metaclass=_BackgroundEligibilityStatusEnumTypeWrapper): ...
+    UNSET: LocationCardSettingsProto.BackgroundEligibilityStatus.ValueType  # 0
+    ELIGIBLE: LocationCardSettingsProto.BackgroundEligibilityStatus.ValueType  # 1
+    INELIGIBLE: LocationCardSettingsProto.BackgroundEligibilityStatus.ValueType  # 2
+
     LOCATION_CARD_FIELD_NUMBER: _builtins.int
     IMAGE_URL_FIELD_NUMBER: _builtins.int
+    WEB_URL_FIELD_NUMBER: _builtins.int
     CARD_TYPE_FIELD_NUMBER: _builtins.int
     VFX_ADDRESS_FIELD_NUMBER: _builtins.int
+    ENABLE_GRADIENT_OVERLAY_FIELD_NUMBER: _builtins.int
+    DISCLAIMER_STRING_KEY_OVERRIDE_FIELD_NUMBER: _builtins.int
+    BACKGROUND_ELIGIBILITY_STATUS_FIELD_NUMBER: _builtins.int
     location_card: Global___LocationCard.ValueType
     image_url: _builtins.str
+    web_url: _builtins.str
     card_type: Global___CardType.ValueType
     vfx_address: _builtins.str
+    enable_gradient_overlay: _builtins.bool
+    disclaimer_string_key_override: _builtins.str
+    background_eligibility_status: Global___LocationCardSettingsProto.BackgroundEligibilityStatus.ValueType
     def __init__(
         self,
         *,
         location_card: Global___LocationCard.ValueType = ...,
         image_url: _builtins.str = ...,
+        web_url: _builtins.str = ...,
         card_type: Global___CardType.ValueType = ...,
         vfx_address: _builtins.str = ...,
+        enable_gradient_overlay: _builtins.bool = ...,
+        disclaimer_string_key_override: _builtins.str = ...,
+        background_eligibility_status: Global___LocationCardSettingsProto.BackgroundEligibilityStatus.ValueType = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["card_type", b"card_type", "image_url", b"image_url", "location_card", b"location_card", "vfx_address", b"vfx_address"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["background_eligibility_status", b"background_eligibility_status", "card_type", b"card_type", "disclaimer_string_key_override", b"disclaimer_string_key_override", "enable_gradient_overlay", b"enable_gradient_overlay", "image_url", b"image_url", "location_card", b"location_card", "vfx_address", b"vfx_address", "web_url", b"web_url"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -109060,6 +110380,36 @@ class ObjectDetectionStopEvent(_message.Message):
 Global___ObjectDetectionStopEvent: _TypeAlias = ObjectDetectionStopEvent  # noqa: Y015
 
 @_typing.final
+class OfferRecord(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    OFFER_ID_FIELD_NUMBER: _builtins.int
+    PURCHASE_TIME_MS_FIELD_NUMBER: _builtins.int
+    TOTAL_PURCHASES_FIELD_NUMBER: _builtins.int
+    ASSOCIATED_SKU_ID_FIELD_NUMBER: _builtins.int
+    offer_id: _builtins.str
+    total_purchases: _builtins.int
+    @_builtins.property
+    def purchase_time_ms(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    @_builtins.property
+    def associated_sku_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+    def __init__(
+        self,
+        *,
+        offer_id: _builtins.str = ...,
+        purchase_time_ms: _abc.Iterable[_builtins.int] | None = ...,
+        total_purchases: _builtins.int = ...,
+        associated_sku_id: _abc.Iterable[_builtins.str] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["associated_sku_id", b"associated_sku_id", "offer_id", b"offer_id", "purchase_time_ms", b"purchase_time_ms", "total_purchases", b"total_purchases"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___OfferRecord: _TypeAlias = OfferRecord  # noqa: Y015
+
+@_typing.final
 class OnApplicationFocusData(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -110329,6 +111679,109 @@ class OptionalMoveOverrideProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___OptionalMoveOverrideProto: _TypeAlias = OptionalMoveOverrideProto  # noqa: Y015
+
+@_typing.final
+class OverrideDownloadGmTemplatesRequestProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    BASIS_BATCH_ID_FIELD_NUMBER: _builtins.int
+    BATCH_ID_FIELD_NUMBER: _builtins.int
+    PAGE_OFFSET_FIELD_NUMBER: _builtins.int
+    APPLY_EXPERIMENTS_FIELD_NUMBER: _builtins.int
+    BASIS_EXPERIMENT_ID_FIELD_NUMBER: _builtins.int
+    EXPERIMENT_ID_FIELD_NUMBER: _builtins.int
+    BASIS_GMS_BATCH_ID_FIELD_NUMBER: _builtins.int
+    GMS_BATCH_ID_FIELD_NUMBER: _builtins.int
+    basis_batch_id: _builtins.int
+    batch_id: _builtins.int
+    page_offset: _builtins.int
+    apply_experiments: _builtins.bool
+    basis_gms_batch_id: _builtins.bytes
+    gms_batch_id: _builtins.bytes
+    @_builtins.property
+    def basis_experiment_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    @_builtins.property
+    def experiment_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    def __init__(
+        self,
+        *,
+        basis_batch_id: _builtins.int = ...,
+        batch_id: _builtins.int = ...,
+        page_offset: _builtins.int = ...,
+        apply_experiments: _builtins.bool = ...,
+        basis_experiment_id: _abc.Iterable[_builtins.int] | None = ...,
+        experiment_id: _abc.Iterable[_builtins.int] | None = ...,
+        basis_gms_batch_id: _builtins.bytes = ...,
+        gms_batch_id: _builtins.bytes = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["apply_experiments", b"apply_experiments", "basis_batch_id", b"basis_batch_id", "basis_experiment_id", b"basis_experiment_id", "basis_gms_batch_id", b"basis_gms_batch_id", "batch_id", b"batch_id", "experiment_id", b"experiment_id", "gms_batch_id", b"gms_batch_id", "page_offset", b"page_offset"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___OverrideDownloadGmTemplatesRequestProto: _TypeAlias = OverrideDownloadGmTemplatesRequestProto  # noqa: Y015
+
+@_typing.final
+class OverrideDownloadGmTemplatesResponseProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[OverrideDownloadGmTemplatesResponseProto._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: OverrideDownloadGmTemplatesResponseProto._Result.ValueType  # 0
+        COMPLETE: OverrideDownloadGmTemplatesResponseProto._Result.ValueType  # 1
+        MORE_RESULTS: OverrideDownloadGmTemplatesResponseProto._Result.ValueType  # 2
+        BATCH_ID_NOT_LIVE: OverrideDownloadGmTemplatesResponseProto._Result.ValueType  # 3
+        INVALID_BASIS_BATCH_ID: OverrideDownloadGmTemplatesResponseProto._Result.ValueType  # 4
+        WRONG_EXPERIMENTS: OverrideDownloadGmTemplatesResponseProto._Result.ValueType  # 5
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: OverrideDownloadGmTemplatesResponseProto.Result.ValueType  # 0
+    COMPLETE: OverrideDownloadGmTemplatesResponseProto.Result.ValueType  # 1
+    MORE_RESULTS: OverrideDownloadGmTemplatesResponseProto.Result.ValueType  # 2
+    BATCH_ID_NOT_LIVE: OverrideDownloadGmTemplatesResponseProto.Result.ValueType  # 3
+    INVALID_BASIS_BATCH_ID: OverrideDownloadGmTemplatesResponseProto.Result.ValueType  # 4
+    WRONG_EXPERIMENTS: OverrideDownloadGmTemplatesResponseProto.Result.ValueType  # 5
+
+    RESULT_FIELD_NUMBER: _builtins.int
+    TEMPLATE_FIELD_NUMBER: _builtins.int
+    DELETED_TEMPLATE_FIELD_NUMBER: _builtins.int
+    BATCH_ID_FIELD_NUMBER: _builtins.int
+    PAGE_OFFSET_FIELD_NUMBER: _builtins.int
+    EXPERIMENT_ID_FIELD_NUMBER: _builtins.int
+    GMS_BATCH_ID_FIELD_NUMBER: _builtins.int
+    result: Global___OverrideDownloadGmTemplatesResponseProto.Result.ValueType
+    batch_id: _builtins.int
+    page_offset: _builtins.int
+    gms_batch_id: _builtins.bytes
+    @_builtins.property
+    def template(self) -> _containers.RepeatedCompositeFieldContainer[Global___ClientGameMasterTemplateProto]: ...
+    @_builtins.property
+    def deleted_template(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+    @_builtins.property
+    def experiment_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    def __init__(
+        self,
+        *,
+        result: Global___OverrideDownloadGmTemplatesResponseProto.Result.ValueType = ...,
+        template: _abc.Iterable[Global___ClientGameMasterTemplateProto] | None = ...,
+        deleted_template: _abc.Iterable[_builtins.str] | None = ...,
+        batch_id: _builtins.int = ...,
+        page_offset: _builtins.int = ...,
+        experiment_id: _abc.Iterable[_builtins.int] | None = ...,
+        gms_batch_id: _builtins.bytes = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["batch_id", b"batch_id", "deleted_template", b"deleted_template", "experiment_id", b"experiment_id", "gms_batch_id", b"gms_batch_id", "page_offset", b"page_offset", "result", b"result", "template", b"template"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___OverrideDownloadGmTemplatesResponseProto: _TypeAlias = OverrideDownloadGmTemplatesResponseProto  # noqa: Y015
 
 @_typing.final
 class ParticipantConsumptionAccounting(_message.Message):
@@ -112142,6 +113595,144 @@ class PayloadDeserializer(_message.Message):
 Global___PayloadDeserializer: _TypeAlias = PayloadDeserializer  # noqa: Y015
 
 @_typing.final
+class PendingDeviceVerificationChallengeProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _ChallengeState:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ChallengeStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PendingDeviceVerificationChallengeProto._ChallengeState.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNKNOWN: PendingDeviceVerificationChallengeProto._ChallengeState.ValueType  # 0
+        ACTIVE: PendingDeviceVerificationChallengeProto._ChallengeState.ValueType  # 1
+        CONFIRMED: PendingDeviceVerificationChallengeProto._ChallengeState.ValueType  # 2
+        DENIED: PendingDeviceVerificationChallengeProto._ChallengeState.ValueType  # 3
+        EXPIRED: PendingDeviceVerificationChallengeProto._ChallengeState.ValueType  # 4
+        SUPERSEDED: PendingDeviceVerificationChallengeProto._ChallengeState.ValueType  # 5
+
+    class ChallengeState(_ChallengeState, metaclass=_ChallengeStateEnumTypeWrapper): ...
+    UNKNOWN: PendingDeviceVerificationChallengeProto.ChallengeState.ValueType  # 0
+    ACTIVE: PendingDeviceVerificationChallengeProto.ChallengeState.ValueType  # 1
+    CONFIRMED: PendingDeviceVerificationChallengeProto.ChallengeState.ValueType  # 2
+    DENIED: PendingDeviceVerificationChallengeProto.ChallengeState.ValueType  # 3
+    EXPIRED: PendingDeviceVerificationChallengeProto.ChallengeState.ValueType  # 4
+    SUPERSEDED: PendingDeviceVerificationChallengeProto.ChallengeState.ValueType  # 5
+
+    CHALLENGE_ID_FIELD_NUMBER: _builtins.int
+    USER_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_REGISTRATION_ID_FIELD_NUMBER: _builtins.int
+    TOKEN_HASH_FIELD_NUMBER: _builtins.int
+    CHALLENGE_GENERATION_FIELD_NUMBER: _builtins.int
+    ISSUED_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    EXPIRES_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    CONSUMED_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    STATE_FIELD_NUMBER: _builtins.int
+    TERMINAL_REASON_FIELD_NUMBER: _builtins.int
+    AUTH_PROVIDER_ID_FIELD_NUMBER: _builtins.int
+    EMAIL_TYPE_FIELD_NUMBER: _builtins.int
+    EMAIL_DELIVERY_ID_FIELD_NUMBER: _builtins.int
+    challenge_id: _builtins.str
+    user_id: _builtins.str
+    device_registration_id: _builtins.str
+    token_hash: _builtins.bytes
+    challenge_generation: _builtins.int
+    issued_timestamp_ms: _builtins.int
+    expires_timestamp_ms: _builtins.int
+    consumed_timestamp_ms: _builtins.int
+    state: Global___PendingDeviceVerificationChallengeProto.ChallengeState.ValueType
+    terminal_reason: _builtins.str
+    auth_provider_id: _builtins.str
+    email_type: _builtins.str
+    email_delivery_id: _builtins.str
+    def __init__(
+        self,
+        *,
+        challenge_id: _builtins.str = ...,
+        user_id: _builtins.str = ...,
+        device_registration_id: _builtins.str = ...,
+        token_hash: _builtins.bytes = ...,
+        challenge_generation: _builtins.int = ...,
+        issued_timestamp_ms: _builtins.int = ...,
+        expires_timestamp_ms: _builtins.int = ...,
+        consumed_timestamp_ms: _builtins.int = ...,
+        state: Global___PendingDeviceVerificationChallengeProto.ChallengeState.ValueType = ...,
+        terminal_reason: _builtins.str = ...,
+        auth_provider_id: _builtins.str = ...,
+        email_type: _builtins.str = ...,
+        email_delivery_id: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["auth_provider_id", b"auth_provider_id", "challenge_generation", b"challenge_generation", "challenge_id", b"challenge_id", "consumed_timestamp_ms", b"consumed_timestamp_ms", "device_registration_id", b"device_registration_id", "email_delivery_id", b"email_delivery_id", "email_type", b"email_type", "expires_timestamp_ms", b"expires_timestamp_ms", "issued_timestamp_ms", b"issued_timestamp_ms", "state", b"state", "terminal_reason", b"terminal_reason", "token_hash", b"token_hash", "user_id", b"user_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___PendingDeviceVerificationChallengeProto: _TypeAlias = PendingDeviceVerificationChallengeProto  # noqa: Y015
+
+@_typing.final
+class PendingPremiumGiftListProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    @_typing.final
+    class PremiumGiftItemProto(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        RECEIPT_ID_FIELD_NUMBER: _builtins.int
+        CONTENTS_FIELD_NUMBER: _builtins.int
+        receipt_id: _builtins.str
+        @_builtins.property
+        def contents(self) -> _containers.RepeatedCompositeFieldContainer[Global___SkuContentProto]: ...
+        def __init__(
+            self,
+            *,
+            receipt_id: _builtins.str = ...,
+            contents: _abc.Iterable[Global___SkuContentProto] | None = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["contents", b"contents", "receipt_id", b"receipt_id"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    @_typing.final
+    class SkuIdToPremiumGiftEntry(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        KEY_FIELD_NUMBER: _builtins.int
+        VALUE_FIELD_NUMBER: _builtins.int
+        key: _builtins.str
+        @_builtins.property
+        def value(self) -> Global___PendingPremiumGiftListProto.PremiumGiftItemProto: ...
+        def __init__(
+            self,
+            *,
+            key: _builtins.str = ...,
+            value: Global___PendingPremiumGiftListProto.PremiumGiftItemProto | None = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    SKU_ID_TO_PREMIUM_GIFT_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def sku_id_to_premium_gift(self) -> _containers.MessageMap[_builtins.str, Global___PendingPremiumGiftListProto.PremiumGiftItemProto]: ...
+    def __init__(
+        self,
+        *,
+        sku_id_to_premium_gift: _abc.Mapping[_builtins.str, Global___PendingPremiumGiftListProto.PremiumGiftItemProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["sku_id_to_premium_gift", b"sku_id_to_premium_gift"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___PendingPremiumGiftListProto: _TypeAlias = PendingPremiumGiftListProto  # noqa: Y015
+
+@_typing.final
 class PerStatTrainingCourseQuestProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -113900,6 +115491,63 @@ class PlayerCurrencyProto(_message.Message):
 Global___PlayerCurrencyProto: _TypeAlias = PlayerCurrencyProto  # noqa: Y015
 
 @_typing.final
+class PlayerDeviceRegistrationStateProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    USER_ID_FIELD_NUMBER: _builtins.int
+    EMAIL_COUNT_LAST_HOUR_FIELD_NUMBER: _builtins.int
+    EMAIL_COUNT_WINDOW_START_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    LAST_DEVICE_EVICTION_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    REGISTRATIONS_LAST24_H_FIELD_NUMBER: _builtins.int
+    REGISTRATIONS_WINDOW_START_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    user_id: _builtins.str
+    email_count_last_hour: _builtins.int
+    email_count_window_start_timestamp_ms: _builtins.int
+    last_device_eviction_timestamp_ms: _builtins.int
+    registrations_last24_h: _builtins.int
+    registrations_window_start_timestamp_ms: _builtins.int
+    def __init__(
+        self,
+        *,
+        user_id: _builtins.str = ...,
+        email_count_last_hour: _builtins.int = ...,
+        email_count_window_start_timestamp_ms: _builtins.int = ...,
+        last_device_eviction_timestamp_ms: _builtins.int = ...,
+        registrations_last24_h: _builtins.int = ...,
+        registrations_window_start_timestamp_ms: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["email_count_last_hour", b"email_count_last_hour", "email_count_window_start_timestamp_ms", b"email_count_window_start_timestamp_ms", "last_device_eviction_timestamp_ms", b"last_device_eviction_timestamp_ms", "registrations_last24_h", b"registrations_last24_h", "registrations_window_start_timestamp_ms", b"registrations_window_start_timestamp_ms", "user_id", b"user_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___PlayerDeviceRegistrationStateProto: _TypeAlias = PlayerDeviceRegistrationStateProto  # noqa: Y015
+
+@_typing.final
+class PlayerFlowImprovementsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    ACTION_MENU_OPTIONS_FIELD_NUMBER: _builtins.int
+    SHOW_APPRAISAL_BUTTON_ABOVE_ACTION_MENU_FIELD_NUMBER: _builtins.int
+    show_appraisal_button_above_action_menu: _builtins.bool
+    @_builtins.property
+    def action_menu_options(self) -> Global___ActionMenuOptionsSettingsProto: ...
+    def __init__(
+        self,
+        *,
+        action_menu_options: Global___ActionMenuOptionsSettingsProto | None = ...,
+        show_appraisal_button_above_action_menu: _builtins.bool = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["action_menu_options", b"action_menu_options"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["action_menu_options", b"action_menu_options", "show_appraisal_button_above_action_menu", b"show_appraisal_button_above_action_menu"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___PlayerFlowImprovementsProto: _TypeAlias = PlayerFlowImprovementsProto  # noqa: Y015
+
+@_typing.final
 class PlayerFriendDisplayProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -113914,6 +115562,7 @@ class PlayerFriendDisplayProto(_message.Message):
     BUDDY_HEIGHT_M_FIELD_NUMBER: _builtins.int
     BUDDY_WEIGHT_KG_FIELD_NUMBER: _builtins.int
     BUDDY_SIZE_FIELD_NUMBER: _builtins.int
+    BUDDY_WAS_TRADED_FIELD_NUMBER: _builtins.int
     buddy_display_pokemon_id: _builtins.int
     buddy_pokemon_nickname: _builtins.str
     last_pokemon_caught_display_id: _builtins.int
@@ -113922,6 +115571,7 @@ class PlayerFriendDisplayProto(_message.Message):
     buddy_height_m: _builtins.float
     buddy_weight_kg: _builtins.float
     buddy_size: Global___HoloPokemonSize.ValueType
+    buddy_was_traded: _builtins.bool
     @_builtins.property
     def buddy(self) -> Global___PokemonDisplayProto: ...
     @_builtins.property
@@ -113942,10 +115592,11 @@ class PlayerFriendDisplayProto(_message.Message):
         buddy_height_m: _builtins.float = ...,
         buddy_weight_kg: _builtins.float = ...,
         buddy_size: Global___HoloPokemonSize.ValueType = ...,
+        buddy_was_traded: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["active_mega_evo_info", b"active_mega_evo_info", "buddy", b"buddy", "last_pokemon_caught", b"last_pokemon_caught"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["active_mega_evo_info", b"active_mega_evo_info", "buddy", b"buddy", "buddy_candy_awarded", b"buddy_candy_awarded", "buddy_display_pokemon_id", b"buddy_display_pokemon_id", "buddy_height_m", b"buddy_height_m", "buddy_pokemon_nickname", b"buddy_pokemon_nickname", "buddy_size", b"buddy_size", "buddy_weight_kg", b"buddy_weight_kg", "last_pokemon_caught", b"last_pokemon_caught", "last_pokemon_caught_display_id", b"last_pokemon_caught_display_id", "last_pokemon_caught_timestamp", b"last_pokemon_caught_timestamp"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["active_mega_evo_info", b"active_mega_evo_info", "buddy", b"buddy", "buddy_candy_awarded", b"buddy_candy_awarded", "buddy_display_pokemon_id", b"buddy_display_pokemon_id", "buddy_height_m", b"buddy_height_m", "buddy_pokemon_nickname", b"buddy_pokemon_nickname", "buddy_size", b"buddy_size", "buddy_was_traded", b"buddy_was_traded", "buddy_weight_kg", b"buddy_weight_kg", "last_pokemon_caught", b"last_pokemon_caught", "last_pokemon_caught_display_id", b"last_pokemon_caught_display_id", "last_pokemon_caught_timestamp", b"last_pokemon_caught_timestamp"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -115129,11 +116780,13 @@ class PlayerPreferencesProto(_message.Message):
     ACTIVITY_SHARING_PREFERENCE_FIELD_NUMBER: _builtins.int
     OPT_OUT_OF_RECEIVING_STAMPS_FROM_GIFTS_FIELD_NUMBER: _builtins.int
     NAME_SHARING_PREFERENCES_FIELD_NUMBER: _builtins.int
+    OPT_OUT_OF_RECEIVING_PREMIUM_GIFTS_FIELD_NUMBER: _builtins.int
     opt_out_of_sponsored_gifts: _builtins.bool
     search_filter_preference_base64: _builtins.str
     share_trainer_info_with_postcard: Global___PlayerPreferencesProto.PostcardTrainerInfoSharingPreference.ValueType
     opt_out_of_receiving_ticket_gifts: _builtins.bool
     opt_out_of_receiving_stamps_from_gifts: _builtins.bool
+    opt_out_of_receiving_premium_gifts: _builtins.bool
     @_builtins.property
     def battle_parties(self) -> Global___BattlePartiesProto: ...
     @_builtins.property
@@ -115160,10 +116813,11 @@ class PlayerPreferencesProto(_message.Message):
         activity_sharing_preference: Global___ActivitySharingPreferencesProto | None = ...,
         opt_out_of_receiving_stamps_from_gifts: _builtins.bool = ...,
         name_sharing_preferences: _abc.Iterable[Global___NameSharingPreferencesProto] | None = ...,
+        opt_out_of_receiving_premium_gifts: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["activity_sharing_preference", b"activity_sharing_preference", "battle_parties", b"battle_parties", "party_play_preference", b"party_play_preference", "pokedex_preference", b"pokedex_preference", "waina_preference", b"waina_preference"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["activity_sharing_preference", b"activity_sharing_preference", "battle_parties", b"battle_parties", "name_sharing_preferences", b"name_sharing_preferences", "opt_out_of_receiving_stamps_from_gifts", b"opt_out_of_receiving_stamps_from_gifts", "opt_out_of_receiving_ticket_gifts", b"opt_out_of_receiving_ticket_gifts", "opt_out_of_sponsored_gifts", b"opt_out_of_sponsored_gifts", "party_play_preference", b"party_play_preference", "pokedex_preference", b"pokedex_preference", "search_filter_preference_base64", b"search_filter_preference_base64", "share_trainer_info_with_postcard", b"share_trainer_info_with_postcard", "waina_preference", b"waina_preference"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["activity_sharing_preference", b"activity_sharing_preference", "battle_parties", b"battle_parties", "name_sharing_preferences", b"name_sharing_preferences", "opt_out_of_receiving_premium_gifts", b"opt_out_of_receiving_premium_gifts", "opt_out_of_receiving_stamps_from_gifts", b"opt_out_of_receiving_stamps_from_gifts", "opt_out_of_receiving_ticket_gifts", b"opt_out_of_receiving_ticket_gifts", "opt_out_of_sponsored_gifts", b"opt_out_of_sponsored_gifts", "party_play_preference", b"party_play_preference", "pokedex_preference", b"pokedex_preference", "search_filter_preference_base64", b"search_filter_preference_base64", "share_trainer_info_with_postcard", b"share_trainer_info_with_postcard", "waina_preference", b"waina_preference"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -118030,8 +119684,9 @@ class PokemonDisplayProto(_message.Message):
         HALLOWEEN_2025: PokemonDisplayProto._Costume.ValueType  # 85
         SPRING_2026_A: PokemonDisplayProto._Costume.ValueType  # 86
         SPRING_2026_B: PokemonDisplayProto._Costume.ValueType  # 87
-        PIKACHU_K_2026_A: PokemonDisplayProto._Costume.ValueType  # 91
-        PIKACHU_K_2026_B: PokemonDisplayProto._Costume.ValueType  # 107
+        """PIKACHU_K_2026_A = 91;
+        PIKACHU_K_2026_B = 107;
+        """
 
     class Costume(_Costume, metaclass=_CostumeEnumTypeWrapper): ...
     UNSET: PokemonDisplayProto.Costume.ValueType  # 0
@@ -118121,8 +119776,9 @@ class PokemonDisplayProto(_message.Message):
     HALLOWEEN_2025: PokemonDisplayProto.Costume.ValueType  # 85
     SPRING_2026_A: PokemonDisplayProto.Costume.ValueType  # 86
     SPRING_2026_B: PokemonDisplayProto.Costume.ValueType  # 87
-    PIKACHU_K_2026_A: PokemonDisplayProto.Costume.ValueType  # 91
-    PIKACHU_K_2026_B: PokemonDisplayProto.Costume.ValueType  # 107
+    """PIKACHU_K_2026_A = 91;
+    PIKACHU_K_2026_B = 107;
+    """
 
     class _Gender:
         ValueType = _typing.NewType("ValueType", _builtins.int)
@@ -119650,6 +121306,16 @@ class PokemonDisplayProto(_message.Message):
         CHARMELEON_GOGGLES_2026: PokemonDisplayProto._Form.ValueType  # 3355
         CHARIZARD_GOGGLES_2026: PokemonDisplayProto._Form.ValueType  # 3356
         PIKACHU_GLASS_HELMET_2026: PokemonDisplayProto._Form.ValueType  # 3357
+        PIKACHU_ANNIVERSARY_2026_MALAYSIA_01: PokemonDisplayProto._Form.ValueType  # 3358
+        PIKACHU_ANNIVERSARY_2026_SINGAPORE_01: PokemonDisplayProto._Form.ValueType  # 3359
+        PIKACHU_ANNIVERSARY_2026_TAIWAN_01: PokemonDisplayProto._Form.ValueType  # 3360
+        PIKACHU_K_2026_A_01: PokemonDisplayProto._Form.ValueType  # 3361
+        PIKACHU_ANNIVERSARY_2026_PHILIPPINE_01: PokemonDisplayProto._Form.ValueType  # 3375
+        PIKACHU_ANNIVERSARY_2026_THAILAND_01: PokemonDisplayProto._Form.ValueType  # 3376
+        PIKACHU_K_2026_B_01: PokemonDisplayProto._Form.ValueType  # 3377
+        PIKACHU_ANNIVERSARY_2026_INDONESIA_01: PokemonDisplayProto._Form.ValueType  # 3378
+        PIKACHU_HALLOWEEN_2026: PokemonDisplayProto._Form.ValueType  # 3379
+        MINIOR_METEOR: PokemonDisplayProto._Form.ValueType  # 3380
 
     class Form(_Form, metaclass=_FormEnumTypeWrapper): ...
     FORM_UNSET: PokemonDisplayProto.Form.ValueType  # 0
@@ -121140,6 +122806,16 @@ class PokemonDisplayProto(_message.Message):
     CHARMELEON_GOGGLES_2026: PokemonDisplayProto.Form.ValueType  # 3355
     CHARIZARD_GOGGLES_2026: PokemonDisplayProto.Form.ValueType  # 3356
     PIKACHU_GLASS_HELMET_2026: PokemonDisplayProto.Form.ValueType  # 3357
+    PIKACHU_ANNIVERSARY_2026_MALAYSIA_01: PokemonDisplayProto.Form.ValueType  # 3358
+    PIKACHU_ANNIVERSARY_2026_SINGAPORE_01: PokemonDisplayProto.Form.ValueType  # 3359
+    PIKACHU_ANNIVERSARY_2026_TAIWAN_01: PokemonDisplayProto.Form.ValueType  # 3360
+    PIKACHU_K_2026_A_01: PokemonDisplayProto.Form.ValueType  # 3361
+    PIKACHU_ANNIVERSARY_2026_PHILIPPINE_01: PokemonDisplayProto.Form.ValueType  # 3375
+    PIKACHU_ANNIVERSARY_2026_THAILAND_01: PokemonDisplayProto.Form.ValueType  # 3376
+    PIKACHU_K_2026_B_01: PokemonDisplayProto.Form.ValueType  # 3377
+    PIKACHU_ANNIVERSARY_2026_INDONESIA_01: PokemonDisplayProto.Form.ValueType  # 3378
+    PIKACHU_HALLOWEEN_2026: PokemonDisplayProto.Form.ValueType  # 3379
+    MINIOR_METEOR: PokemonDisplayProto.Form.ValueType  # 3380
 
     class _NaturalArtType:
         ValueType = _typing.NewType("ValueType", _builtins.int)
@@ -122477,15 +124153,18 @@ class PokemonInfoGuiActionMenuAppraiseTelemetry(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
     IS_POST_ENCOUNTER_FIELD_NUMBER: _builtins.int
+    IS_FROM_DETAILS_SHORTCUT_FIELD_NUMBER: _builtins.int
     is_post_encounter: _builtins.bool
+    is_from_details_shortcut: _builtins.bool
     def __init__(
         self,
         *,
         is_post_encounter: _builtins.bool = ...,
+        is_from_details_shortcut: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["is_post_encounter", b"is_post_encounter"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["is_from_details_shortcut", b"is_from_details_shortcut", "is_post_encounter", b"is_post_encounter"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -125137,6 +126816,29 @@ class PreLoginMetadata(_message.Message):
 Global___PreLoginMetadata: _TypeAlias = PreLoginMetadata  # noqa: Y015
 
 @_typing.final
+class PremiumGiftDetailsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    SKU_ID_FIELD_NUMBER: _builtins.int
+    CONTENTS_FIELD_NUMBER: _builtins.int
+    sku_id: _builtins.str
+    @_builtins.property
+    def contents(self) -> _containers.RepeatedCompositeFieldContainer[Global___SkuContentProto]: ...
+    def __init__(
+        self,
+        *,
+        sku_id: _builtins.str = ...,
+        contents: _abc.Iterable[Global___SkuContentProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["contents", b"contents", "sku_id", b"sku_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___PremiumGiftDetailsProto: _TypeAlias = PremiumGiftDetailsProto  # noqa: Y015
+
+@_typing.final
 class PrepareBreadLobbyOutProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -125152,6 +126854,7 @@ class PrepareBreadLobbyOutProto(_message.Message):
         ERROR_BREAD_LOBBY_NOT_FOUND: PrepareBreadLobbyOutProto._Result.ValueType  # 3
         ERROR_BREAD_BATTLE_UNAVAILABLE: PrepareBreadLobbyOutProto._Result.ValueType  # 4
         ERROR_NOT_ENOUGH_TIME: PrepareBreadLobbyOutProto._Result.ValueType  # 5
+        ERROR_PLAYER_NOT_ELIGIBLE: PrepareBreadLobbyOutProto._Result.ValueType  # 6
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: PrepareBreadLobbyOutProto.Result.ValueType  # 0
@@ -125160,6 +126863,7 @@ class PrepareBreadLobbyOutProto(_message.Message):
     ERROR_BREAD_LOBBY_NOT_FOUND: PrepareBreadLobbyOutProto.Result.ValueType  # 3
     ERROR_BREAD_BATTLE_UNAVAILABLE: PrepareBreadLobbyOutProto.Result.ValueType  # 4
     ERROR_NOT_ENOUGH_TIME: PrepareBreadLobbyOutProto.Result.ValueType  # 5
+    ERROR_PLAYER_NOT_ELIGIBLE: PrepareBreadLobbyOutProto.Result.ValueType  # 6
 
     RESULT_FIELD_NUMBER: _builtins.int
     BREAD_LOBBY_FIELD_NUMBER: _builtins.int
@@ -126004,6 +127708,34 @@ class ProgressTokenData(_message.Message):
 Global___ProgressTokenData: _TypeAlias = ProgressTokenData  # noqa: Y015
 
 @_typing.final
+class ProhibitedItemSettingsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    PROHIBITED_PAID_ITEMS_FIELD_NUMBER: _builtins.int
+    PROHIBITED_PAID_BADGES_FIELD_NUMBER: _builtins.int
+    ALLOWLISTED_SKUS_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def prohibited_paid_items(self) -> _containers.RepeatedScalarFieldContainer[Global___Item.ValueType]: ...
+    @_builtins.property
+    def prohibited_paid_badges(self) -> _containers.RepeatedScalarFieldContainer[Global___HoloBadgeType.ValueType]: ...
+    @_builtins.property
+    def allowlisted_skus(self) -> _containers.RepeatedScalarFieldContainer[_builtins.str]: ...
+    def __init__(
+        self,
+        *,
+        prohibited_paid_items: _abc.Iterable[Global___Item.ValueType] | None = ...,
+        prohibited_paid_badges: _abc.Iterable[Global___HoloBadgeType.ValueType] | None = ...,
+        allowlisted_skus: _abc.Iterable[_builtins.str] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["allowlisted_skus", b"allowlisted_skus", "prohibited_paid_badges", b"prohibited_paid_badges", "prohibited_paid_items", b"prohibited_paid_items"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ProhibitedItemSettingsProto: _TypeAlias = ProhibitedItemSettingsProto  # noqa: Y015
+
+@_typing.final
 class ProjectVacationProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -126353,6 +128085,21 @@ class PtcToken(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___PtcToken: _TypeAlias = PtcToken  # noqa: Y015
+
+@_typing.final
+class PublicMatchmakingProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___PublicMatchmakingProto: _TypeAlias = PublicMatchmakingProto  # noqa: Y015
 
 @_typing.final
 class PurifyPokemonLogEntry(_message.Message):
@@ -128750,6 +130497,7 @@ class QuestProto(_message.Message):
     REMOVE_ENCOUNTERS_ON_QUEST_REMOVAL_FIELD_NUMBER: _builtins.int
     IS_NEW_QUEST_FROM_LAPSED_STATE_FIELD_NUMBER: _builtins.int
     EVENT_CONDITIONAL_OVERRIDE_METADATA_FIELD_NUMBER: _builtins.int
+    UI_OVERRIDE_FIELD_NUMBER: _builtins.int
     quest_type: Global___QuestType.ValueType
     quest_id: _builtins.str
     quest_seed: _builtins.int
@@ -128839,6 +130587,8 @@ class QuestProto(_message.Message):
     def with_total_days(self) -> Global___WithTotalDaysProto: ...
     @_builtins.property
     def event_conditional_override_metadata(self) -> Global___EventConditionalOverrideMetadataProto: ...
+    @_builtins.property
+    def ui_override(self) -> Global___QuestUiOverrideProto: ...
     def __init__(
         self,
         *,
@@ -128902,10 +130652,11 @@ class QuestProto(_message.Message):
         remove_encounters_on_quest_removal: _builtins.bool = ...,
         is_new_quest_from_lapsed_state: _builtins.bool = ...,
         event_conditional_override_metadata: Global___EventConditionalOverrideMetadataProto | None = ...,
+        ui_override: Global___QuestUiOverrideProto | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["Quest", b"Quest", "add_friend", b"add_friend", "battle", b"battle", "buddy_evolution_walk", b"buddy_evolution_walk", "catch_pokemon", b"catch_pokemon", "daily_buddy_affection", b"daily_buddy_affection", "daily_counter", b"daily_counter", "daily_quest", b"daily_quest", "days_in_arow", b"days_in_arow", "event_conditional_override_metadata", b"event_conditional_override_metadata", "evolve_into_pokemon", b"evolve_into_pokemon", "geotargeted_quest", b"geotargeted_quest", "get_stardust", b"get_stardust", "goal", b"goal", "mini_collection", b"mini_collection", "multi_part", b"multi_part", "pokemon_reach_cp", b"pokemon_reach_cp", "quest_walk", b"quest_walk", "referral_info", b"referral_info", "spend_stardust", b"spend_stardust", "spend_temp_evo_resource", b"spend_temp_evo_resource", "spin_pokestop", b"spin_pokestop", "submit_sleep_records", b"submit_sleep_records", "take_snapshot", b"take_snapshot", "trade_pokemon", b"trade_pokemon", "travel_route", b"travel_route", "with_single_day", b"with_single_day", "with_total_days", b"with_total_days"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["Quest", b"Quest", "add_friend", b"add_friend", "battle", b"battle", "buddy_evolution_walk", b"buddy_evolution_walk", "catch_pokemon", b"catch_pokemon", "daily_buddy_affection", b"daily_buddy_affection", "daily_counter", b"daily_counter", "daily_quest", b"daily_quest", "days_in_arow", b"days_in_arow", "event_conditional_override_metadata", b"event_conditional_override_metadata", "evolve_into_pokemon", b"evolve_into_pokemon", "geotargeted_quest", b"geotargeted_quest", "get_stardust", b"get_stardust", "goal", b"goal", "mini_collection", b"mini_collection", "multi_part", b"multi_part", "pokemon_reach_cp", b"pokemon_reach_cp", "quest_walk", b"quest_walk", "referral_info", b"referral_info", "spend_stardust", b"spend_stardust", "spend_temp_evo_resource", b"spend_temp_evo_resource", "spin_pokestop", b"spin_pokestop", "submit_sleep_records", b"submit_sleep_records", "take_snapshot", b"take_snapshot", "trade_pokemon", b"trade_pokemon", "travel_route", b"travel_route", "ui_override", b"ui_override", "with_single_day", b"with_single_day", "with_total_days", b"with_total_days"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["Quest", b"Quest", "add_friend", b"add_friend", "admin_generated", b"admin_generated", "battle", b"battle", "branch_rewards", b"branch_rewards", "buddy_evolution_walk", b"buddy_evolution_walk", "catch_pokemon", b"catch_pokemon", "completion_timestamp_ms", b"completion_timestamp_ms", "creation_timestamp_ms", b"creation_timestamp_ms", "daily_buddy_affection", b"daily_buddy_affection", "daily_counter", b"daily_counter", "daily_quest", b"daily_quest", "days_in_arow", b"days_in_arow", "dialog_read", b"dialog_read", "difficulty", b"difficulty", "end_progress_timestamp_ms", b"end_progress_timestamp_ms", "end_timestamp_ms", b"end_timestamp_ms", "event_conditional_override_metadata", b"event_conditional_override_metadata", "evolve_into_pokemon", b"evolve_into_pokemon", "fort_id", b"fort_id", "geotargeted_quest", b"geotargeted_quest", "get_stardust", b"get_stardust", "goal", b"goal", "is_bonus_challenge", b"is_bonus_challenge", "is_new_quest_from_lapsed_state", b"is_new_quest_from_lapsed_state", "last_update_timestamp_ms", b"last_update_timestamp_ms", "min_complete_timestamp_ms", b"min_complete_timestamp_ms", "min_player_level", b"min_player_level", "mini_collection", b"mini_collection", "multi_part", b"multi_part", "phase_number", b"phase_number", "pokemon_reach_cp", b"pokemon_reach_cp", "progress", b"progress", "quest_context", b"quest_context", "quest_id", b"quest_id", "quest_rewards", b"quest_rewards", "quest_seed", b"quest_seed", "quest_type", b"quest_type", "quest_update_toast_progress_percentage_threshold", b"quest_update_toast_progress_percentage_threshold", "quest_walk", b"quest_walk", "referral_info", b"referral_info", "remove_encounters_on_quest_removal", b"remove_encounters_on_quest_removal", "reward_pokemon_icon_url", b"reward_pokemon_icon_url", "s2_cell_id", b"s2_cell_id", "spend_stardust", b"spend_stardust", "spend_temp_evo_resource", b"spend_temp_evo_resource", "spin_pokestop", b"spin_pokestop", "stamp_count_override", b"stamp_count_override", "stamp_count_override_enabled", b"stamp_count_override_enabled", "start_progress_timestamp_ms", b"start_progress_timestamp_ms", "start_timestamp_ms", b"start_timestamp_ms", "status", b"status", "story_quest_template_version", b"story_quest_template_version", "submit_sleep_records", b"submit_sleep_records", "take_snapshot", b"take_snapshot", "template_id", b"template_id", "time_zone_id", b"time_zone_id", "trade_pokemon", b"trade_pokemon", "travel_route", b"travel_route", "with_single_day", b"with_single_day", "with_total_days", b"with_total_days"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["Quest", b"Quest", "add_friend", b"add_friend", "admin_generated", b"admin_generated", "battle", b"battle", "branch_rewards", b"branch_rewards", "buddy_evolution_walk", b"buddy_evolution_walk", "catch_pokemon", b"catch_pokemon", "completion_timestamp_ms", b"completion_timestamp_ms", "creation_timestamp_ms", b"creation_timestamp_ms", "daily_buddy_affection", b"daily_buddy_affection", "daily_counter", b"daily_counter", "daily_quest", b"daily_quest", "days_in_arow", b"days_in_arow", "dialog_read", b"dialog_read", "difficulty", b"difficulty", "end_progress_timestamp_ms", b"end_progress_timestamp_ms", "end_timestamp_ms", b"end_timestamp_ms", "event_conditional_override_metadata", b"event_conditional_override_metadata", "evolve_into_pokemon", b"evolve_into_pokemon", "fort_id", b"fort_id", "geotargeted_quest", b"geotargeted_quest", "get_stardust", b"get_stardust", "goal", b"goal", "is_bonus_challenge", b"is_bonus_challenge", "is_new_quest_from_lapsed_state", b"is_new_quest_from_lapsed_state", "last_update_timestamp_ms", b"last_update_timestamp_ms", "min_complete_timestamp_ms", b"min_complete_timestamp_ms", "min_player_level", b"min_player_level", "mini_collection", b"mini_collection", "multi_part", b"multi_part", "phase_number", b"phase_number", "pokemon_reach_cp", b"pokemon_reach_cp", "progress", b"progress", "quest_context", b"quest_context", "quest_id", b"quest_id", "quest_rewards", b"quest_rewards", "quest_seed", b"quest_seed", "quest_type", b"quest_type", "quest_update_toast_progress_percentage_threshold", b"quest_update_toast_progress_percentage_threshold", "quest_walk", b"quest_walk", "referral_info", b"referral_info", "remove_encounters_on_quest_removal", b"remove_encounters_on_quest_removal", "reward_pokemon_icon_url", b"reward_pokemon_icon_url", "s2_cell_id", b"s2_cell_id", "spend_stardust", b"spend_stardust", "spend_temp_evo_resource", b"spend_temp_evo_resource", "spin_pokestop", b"spin_pokestop", "stamp_count_override", b"stamp_count_override", "stamp_count_override_enabled", b"stamp_count_override_enabled", "start_progress_timestamp_ms", b"start_progress_timestamp_ms", "start_timestamp_ms", b"start_timestamp_ms", "status", b"status", "story_quest_template_version", b"story_quest_template_version", "submit_sleep_records", b"submit_sleep_records", "take_snapshot", b"take_snapshot", "template_id", b"template_id", "time_zone_id", b"time_zone_id", "trade_pokemon", b"trade_pokemon", "travel_route", b"travel_route", "ui_override", b"ui_override", "with_single_day", b"with_single_day", "with_total_days", b"with_total_days"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     _WhichOneofReturnType_Quest: _TypeAlias = _typing.Literal["daily_quest", "multi_part", "catch_pokemon", "add_friend", "trade_pokemon", "daily_buddy_affection", "quest_walk", "evolve_into_pokemon", "get_stardust", "mini_collection", "geotargeted_quest", "buddy_evolution_walk", "battle", "take_snapshot", "submit_sleep_records", "travel_route", "spin_pokestop", "pokemon_reach_cp", "spend_stardust", "spend_temp_evo_resource"]  # noqa: Y015
     _WhichOneofArgType_Quest: _TypeAlias = _typing.Literal["Quest", b"Quest"]  # noqa: Y015
@@ -129155,6 +130906,26 @@ class QuestStampProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___QuestStampProto: _TypeAlias = QuestStampProto  # noqa: Y015
+
+@_typing.final
+class QuestUiOverrideProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    TODAY_VIEW_OVERRIDE_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def today_view_override(self) -> _containers.RepeatedCompositeFieldContainer[Global___TodayViewOverrideProto]: ...
+    def __init__(
+        self,
+        *,
+        today_view_override: _abc.Iterable[Global___TodayViewOverrideProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["today_view_override", b"today_view_override"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___QuestUiOverrideProto: _TypeAlias = QuestUiOverrideProto  # noqa: Y015
 
 @_typing.final
 class QuestWalkProto(_message.Message):
@@ -131499,6 +133270,70 @@ class RedeemPasscodeRewardProto(_message.Message):
 Global___RedeemPasscodeRewardProto: _TypeAlias = RedeemPasscodeRewardProto  # noqa: Y015
 
 @_typing.final
+class RedeemPremiumGiftForUserOutProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Status:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _StatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RedeemPremiumGiftForUserOutProto._Status.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: RedeemPremiumGiftForUserOutProto._Status.ValueType  # 0
+        SUCCESS: RedeemPremiumGiftForUserOutProto._Status.ValueType  # 1
+        ERROR_UNKNOWN: RedeemPremiumGiftForUserOutProto._Status.ValueType  # 2
+        FAILURE_ELIGIBILITY: RedeemPremiumGiftForUserOutProto._Status.ValueType  # 3
+        FAILURE_GIFT_NOT_FOUND: RedeemPremiumGiftForUserOutProto._Status.ValueType  # 4
+
+    class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
+    UNSET: RedeemPremiumGiftForUserOutProto.Status.ValueType  # 0
+    SUCCESS: RedeemPremiumGiftForUserOutProto.Status.ValueType  # 1
+    ERROR_UNKNOWN: RedeemPremiumGiftForUserOutProto.Status.ValueType  # 2
+    FAILURE_ELIGIBILITY: RedeemPremiumGiftForUserOutProto.Status.ValueType  # 3
+    FAILURE_GIFT_NOT_FOUND: RedeemPremiumGiftForUserOutProto.Status.ValueType  # 4
+
+    STATUS_FIELD_NUMBER: _builtins.int
+    GIFTING_ELIGIBILITY_FIELD_NUMBER: _builtins.int
+    status: Global___RedeemPremiumGiftForUserOutProto.Status.ValueType
+    @_builtins.property
+    def gifting_eligibility(self) -> Global___GiftingEligibilityStatusProto: ...
+    def __init__(
+        self,
+        *,
+        status: Global___RedeemPremiumGiftForUserOutProto.Status.ValueType = ...,
+        gifting_eligibility: Global___GiftingEligibilityStatusProto | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["gifting_eligibility", b"gifting_eligibility"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["gifting_eligibility", b"gifting_eligibility", "status", b"status"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___RedeemPremiumGiftForUserOutProto: _TypeAlias = RedeemPremiumGiftForUserOutProto  # noqa: Y015
+
+@_typing.final
+class RedeemPremiumGiftForUserProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    SKU_ID_FIELD_NUMBER: _builtins.int
+    RECIPIENT_USER_ID_FIELD_NUMBER: _builtins.int
+    sku_id: _builtins.str
+    recipient_user_id: _builtins.str
+    def __init__(
+        self,
+        *,
+        sku_id: _builtins.str = ...,
+        recipient_user_id: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["recipient_user_id", b"recipient_user_id", "sku_id", b"sku_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___RedeemPremiumGiftForUserProto: _TypeAlias = RedeemPremiumGiftForUserProto  # noqa: Y015
+
+@_typing.final
 class RedeemTicketGiftForFriendOutProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -131999,6 +133834,47 @@ class RefreshProximityTokensResponseProto(_message.Message):
 Global___RefreshProximityTokensResponseProto: _TypeAlias = RefreshProximityTokensResponseProto  # noqa: Y015
 
 @_typing.final
+class RegionProhibitedItemsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    @_typing.final
+    class RegionProhibitedItemEntry(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        LOCALE_FIELD_NUMBER: _builtins.int
+        PROHIBITED_FIELD_NUMBER: _builtins.int
+        locale: _builtins.str
+        @_builtins.property
+        def prohibited(self) -> Global___ProhibitedItemSettingsProto: ...
+        def __init__(
+            self,
+            *,
+            locale: _builtins.str = ...,
+            prohibited: Global___ProhibitedItemSettingsProto | None = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _typing.Literal["prohibited", b"prohibited"]  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["locale", b"locale", "prohibited", b"prohibited"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    REGION_PROHIBITED_ITEMS_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def region_prohibited_items(self) -> _containers.RepeatedCompositeFieldContainer[Global___RegionProhibitedItemsProto.RegionProhibitedItemEntry]: ...
+    def __init__(
+        self,
+        *,
+        region_prohibited_items: _abc.Iterable[Global___RegionProhibitedItemsProto.RegionProhibitedItemEntry] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["region_prohibited_items", b"region_prohibited_items"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___RegionProhibitedItemsProto: _TypeAlias = RegionProhibitedItemsProto  # noqa: Y015
+
+@_typing.final
 class RegisterBackgroundDeviceActionProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -132057,6 +133933,83 @@ class RegisterBackgroundDeviceResponseProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___RegisterBackgroundDeviceResponseProto: _TypeAlias = RegisterBackgroundDeviceResponseProto  # noqa: Y015
+
+@_typing.final
+class RegisterDeviceActionProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    DEVICE_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_INFO_FIELD_NUMBER: _builtins.int
+    device_id: _builtins.str
+    @_builtins.property
+    def device_info(self) -> Global___DeviceInfoProto: ...
+    def __init__(
+        self,
+        *,
+        device_id: _builtins.str = ...,
+        device_info: Global___DeviceInfoProto | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["device_info", b"device_info"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["device_id", b"device_id", "device_info", b"device_info"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___RegisterDeviceActionProto: _TypeAlias = RegisterDeviceActionProto  # noqa: Y015
+
+@_typing.final
+class RegisterDeviceResponseProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Status:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _StatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RegisterDeviceResponseProto._Status.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: RegisterDeviceResponseProto._Status.ValueType  # 0
+        SUCCESS_REGISTERED: RegisterDeviceResponseProto._Status.ValueType  # 1
+        ALREADY_REGISTERED: RegisterDeviceResponseProto._Status.ValueType  # 2
+        NOT_APPLICABLE: RegisterDeviceResponseProto._Status.ValueType  # 3
+        ERROR: RegisterDeviceResponseProto._Status.ValueType  # 4
+        SUCCESS_AUTO_VERIFIED: RegisterDeviceResponseProto._Status.ValueType  # 5
+        SUCCESS_VERIFICATION_PENDING: RegisterDeviceResponseProto._Status.ValueType  # 6
+
+    class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
+    UNSET: RegisterDeviceResponseProto.Status.ValueType  # 0
+    SUCCESS_REGISTERED: RegisterDeviceResponseProto.Status.ValueType  # 1
+    ALREADY_REGISTERED: RegisterDeviceResponseProto.Status.ValueType  # 2
+    NOT_APPLICABLE: RegisterDeviceResponseProto.Status.ValueType  # 3
+    ERROR: RegisterDeviceResponseProto.Status.ValueType  # 4
+    SUCCESS_AUTO_VERIFIED: RegisterDeviceResponseProto.Status.ValueType  # 5
+    SUCCESS_VERIFICATION_PENDING: RegisterDeviceResponseProto.Status.ValueType  # 6
+
+    STATUS_FIELD_NUMBER: _builtins.int
+    VERIFICATION_EXPIRY_MINUTES_FIELD_NUMBER: _builtins.int
+    DEVICE_VERIFICATION_STATUS_FIELD_NUMBER: _builtins.int
+    DEVICE_REGISTRATION_ID_FIELD_NUMBER: _builtins.int
+    ERROR_MESSAGE_FIELD_NUMBER: _builtins.int
+    status: Global___RegisterDeviceResponseProto.Status.ValueType
+    verification_expiry_minutes: _builtins.int
+    device_verification_status: Global___DeviceVerificationStatus.ValueType
+    device_registration_id: _builtins.str
+    error_message: _builtins.str
+    def __init__(
+        self,
+        *,
+        status: Global___RegisterDeviceResponseProto.Status.ValueType = ...,
+        verification_expiry_minutes: _builtins.int = ...,
+        device_verification_status: Global___DeviceVerificationStatus.ValueType = ...,
+        device_registration_id: _builtins.str = ...,
+        error_message: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["device_registration_id", b"device_registration_id", "device_verification_status", b"device_verification_status", "error_message", b"error_message", "status", b"status", "verification_expiry_minutes", b"verification_expiry_minutes"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___RegisterDeviceResponseProto: _TypeAlias = RegisterDeviceResponseProto  # noqa: Y015
 
 @_typing.final
 class RegisterSfidaRequest(_message.Message):
@@ -132546,6 +134499,73 @@ class RemoveLoginActionProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___RemoveLoginActionProto: _TypeAlias = RemoveLoginActionProto  # noqa: Y015
+
+@_typing.final
+class RemovePlayerDeviceRequestProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    USER_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_REGISTRATION_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_FINGERPRINT_FIELD_NUMBER: _builtins.int
+    REASON_FIELD_NUMBER: _builtins.int
+    user_id: _builtins.str
+    device_registration_id: _builtins.str
+    device_fingerprint: _builtins.str
+    reason: _builtins.str
+    def __init__(
+        self,
+        *,
+        user_id: _builtins.str = ...,
+        device_registration_id: _builtins.str = ...,
+        device_fingerprint: _builtins.str = ...,
+        reason: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["device_fingerprint", b"device_fingerprint", "device_registration_id", b"device_registration_id", "reason", b"reason", "user_id", b"user_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___RemovePlayerDeviceRequestProto: _TypeAlias = RemovePlayerDeviceRequestProto  # noqa: Y015
+
+@_typing.final
+class RemovePlayerDeviceResponseProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Status:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _StatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[RemovePlayerDeviceResponseProto._Status.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: RemovePlayerDeviceResponseProto._Status.ValueType  # 0
+        SUCCESS: RemovePlayerDeviceResponseProto._Status.ValueType  # 1
+        DEVICE_NOT_FOUND: RemovePlayerDeviceResponseProto._Status.ValueType  # 2
+        ERROR: RemovePlayerDeviceResponseProto._Status.ValueType  # 3
+
+    class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
+    UNSET: RemovePlayerDeviceResponseProto.Status.ValueType  # 0
+    SUCCESS: RemovePlayerDeviceResponseProto.Status.ValueType  # 1
+    DEVICE_NOT_FOUND: RemovePlayerDeviceResponseProto.Status.ValueType  # 2
+    ERROR: RemovePlayerDeviceResponseProto.Status.ValueType  # 3
+
+    STATUS_FIELD_NUMBER: _builtins.int
+    ERROR_MESSAGE_FIELD_NUMBER: _builtins.int
+    status: Global___RemovePlayerDeviceResponseProto.Status.ValueType
+    error_message: _builtins.str
+    def __init__(
+        self,
+        *,
+        status: Global___RemovePlayerDeviceResponseProto.Status.ValueType = ...,
+        error_message: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["error_message", b"error_message", "status", b"status"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___RemovePlayerDeviceResponseProto: _TypeAlias = RemovePlayerDeviceResponseProto  # noqa: Y015
 
 @_typing.final
 class RemovePokemonSizeLeaderboardEntryOutProto(_message.Message):
@@ -134008,6 +136028,80 @@ class ReportStationProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___ReportStationProto: _TypeAlias = ReportStationProto  # noqa: Y015
+
+@_typing.final
+class ResendDeviceVerificationEmailRequestProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    USER_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_REGISTRATION_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_FINGERPRINT_FIELD_NUMBER: _builtins.int
+    REASON_FIELD_NUMBER: _builtins.int
+    user_id: _builtins.str
+    device_registration_id: _builtins.str
+    device_fingerprint: _builtins.str
+    reason: _builtins.str
+    def __init__(
+        self,
+        *,
+        user_id: _builtins.str = ...,
+        device_registration_id: _builtins.str = ...,
+        device_fingerprint: _builtins.str = ...,
+        reason: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["device_fingerprint", b"device_fingerprint", "device_registration_id", b"device_registration_id", "reason", b"reason", "user_id", b"user_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ResendDeviceVerificationEmailRequestProto: _TypeAlias = ResendDeviceVerificationEmailRequestProto  # noqa: Y015
+
+@_typing.final
+class ResendDeviceVerificationEmailResponseProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Status:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _StatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ResendDeviceVerificationEmailResponseProto._Status.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: ResendDeviceVerificationEmailResponseProto._Status.ValueType  # 0
+        SUCCESS: ResendDeviceVerificationEmailResponseProto._Status.ValueType  # 1
+        DEVICE_NOT_FOUND: ResendDeviceVerificationEmailResponseProto._Status.ValueType  # 2
+        NOT_PENDING_VERIFICATION: ResendDeviceVerificationEmailResponseProto._Status.ValueType  # 3
+        EMAIL_RATE_LIMITED: ResendDeviceVerificationEmailResponseProto._Status.ValueType  # 4
+        ERROR: ResendDeviceVerificationEmailResponseProto._Status.ValueType  # 5
+
+    class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
+    UNSET: ResendDeviceVerificationEmailResponseProto.Status.ValueType  # 0
+    SUCCESS: ResendDeviceVerificationEmailResponseProto.Status.ValueType  # 1
+    DEVICE_NOT_FOUND: ResendDeviceVerificationEmailResponseProto.Status.ValueType  # 2
+    NOT_PENDING_VERIFICATION: ResendDeviceVerificationEmailResponseProto.Status.ValueType  # 3
+    EMAIL_RATE_LIMITED: ResendDeviceVerificationEmailResponseProto.Status.ValueType  # 4
+    ERROR: ResendDeviceVerificationEmailResponseProto.Status.ValueType  # 5
+
+    STATUS_FIELD_NUMBER: _builtins.int
+    VERIFICATION_EXPIRY_MINUTES_FIELD_NUMBER: _builtins.int
+    ERROR_MESSAGE_FIELD_NUMBER: _builtins.int
+    status: Global___ResendDeviceVerificationEmailResponseProto.Status.ValueType
+    verification_expiry_minutes: _builtins.int
+    error_message: _builtins.str
+    def __init__(
+        self,
+        *,
+        status: Global___ResendDeviceVerificationEmailResponseProto.Status.ValueType = ...,
+        verification_expiry_minutes: _builtins.int = ...,
+        error_message: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["error_message", b"error_message", "status", b"status", "verification_expiry_minutes", b"verification_expiry_minutes"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ResendDeviceVerificationEmailResponseProto: _TypeAlias = ResendDeviceVerificationEmailResponseProto  # noqa: Y015
 
 @_typing.final
 class RespondRemoteTradeOutProto(_message.Message):
@@ -138274,6 +140368,7 @@ class SendBreadBattleInvitationOutProto(_message.Message):
         ERROR_MAX_BATTLE_LEVEL_UNSUPPORTED: SendBreadBattleInvitationOutProto._Result.ValueType  # 10
         ERROR_CANNOT_INVITE: SendBreadBattleInvitationOutProto._Result.ValueType  # 11
         ERROR_REMOTE_MAX_BATTLE_DISABLED: SendBreadBattleInvitationOutProto._Result.ValueType  # 12
+        ERROR_PLAYER_NOT_ELIGIBLE: SendBreadBattleInvitationOutProto._Result.ValueType  # 13
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: SendBreadBattleInvitationOutProto.Result.ValueType  # 0
@@ -138289,6 +140384,7 @@ class SendBreadBattleInvitationOutProto(_message.Message):
     ERROR_MAX_BATTLE_LEVEL_UNSUPPORTED: SendBreadBattleInvitationOutProto.Result.ValueType  # 10
     ERROR_CANNOT_INVITE: SendBreadBattleInvitationOutProto.Result.ValueType  # 11
     ERROR_REMOTE_MAX_BATTLE_DISABLED: SendBreadBattleInvitationOutProto.Result.ValueType  # 12
+    ERROR_PLAYER_NOT_ELIGIBLE: SendBreadBattleInvitationOutProto.Result.ValueType  # 13
 
     RESULT_FIELD_NUMBER: _builtins.int
     NUM_FRIEND_INVITES_REMAINING_FIELD_NUMBER: _builtins.int
@@ -138924,6 +141020,7 @@ class SendRaidInvitationOutProto(_message.Message):
         ERROR_LOBBY_FULL: SendRaidInvitationOutProto._Result.ValueType  # 7
         ERROR_INVITER_NOT_FOUND: SendRaidInvitationOutProto._Result.ValueType  # 8
         ERROR_NO_REMOTE_SLOTS_REMAINING: SendRaidInvitationOutProto._Result.ValueType  # 9
+        ERROR_PLAYER_NOT_ELIGIBLE: SendRaidInvitationOutProto._Result.ValueType  # 10
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: SendRaidInvitationOutProto.Result.ValueType  # 0
@@ -138936,6 +141033,7 @@ class SendRaidInvitationOutProto(_message.Message):
     ERROR_LOBBY_FULL: SendRaidInvitationOutProto.Result.ValueType  # 7
     ERROR_INVITER_NOT_FOUND: SendRaidInvitationOutProto.Result.ValueType  # 8
     ERROR_NO_REMOTE_SLOTS_REMAINING: SendRaidInvitationOutProto.Result.ValueType  # 9
+    ERROR_PLAYER_NOT_ELIGIBLE: SendRaidInvitationOutProto.Result.ValueType  # 10
 
     RESULT_FIELD_NUMBER: _builtins.int
     NUM_FRIEND_INVITES_REMAINING_FIELD_NUMBER: _builtins.int
@@ -139281,6 +141379,80 @@ class SetBirthdayResponseProto(_message.Message):
 Global___SetBirthdayResponseProto: _TypeAlias = SetBirthdayResponseProto  # noqa: Y015
 
 @_typing.final
+class SetBreadLobbyPublicOutProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SetBreadLobbyPublicOutProto._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: SetBreadLobbyPublicOutProto._Result.ValueType  # 0
+        SUCCESS: SetBreadLobbyPublicOutProto._Result.ValueType  # 1
+        ERROR_NOT_BREAD_LOBBY_CREATOR: SetBreadLobbyPublicOutProto._Result.ValueType  # 2
+        ERROR_BREAD_LOBBY_NOT_FOUND: SetBreadLobbyPublicOutProto._Result.ValueType  # 3
+        ERROR_BREAD_BATTLE_UNAVAILABLE: SetBreadLobbyPublicOutProto._Result.ValueType  # 4
+        ERROR_FEATURE_DISABLED: SetBreadLobbyPublicOutProto._Result.ValueType  # 5
+        ERROR_ALREADY_PUBLIC: SetBreadLobbyPublicOutProto._Result.ValueType  # 6
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: SetBreadLobbyPublicOutProto.Result.ValueType  # 0
+    SUCCESS: SetBreadLobbyPublicOutProto.Result.ValueType  # 1
+    ERROR_NOT_BREAD_LOBBY_CREATOR: SetBreadLobbyPublicOutProto.Result.ValueType  # 2
+    ERROR_BREAD_LOBBY_NOT_FOUND: SetBreadLobbyPublicOutProto.Result.ValueType  # 3
+    ERROR_BREAD_BATTLE_UNAVAILABLE: SetBreadLobbyPublicOutProto.Result.ValueType  # 4
+    ERROR_FEATURE_DISABLED: SetBreadLobbyPublicOutProto.Result.ValueType  # 5
+    ERROR_ALREADY_PUBLIC: SetBreadLobbyPublicOutProto.Result.ValueType  # 6
+
+    RESULT_FIELD_NUMBER: _builtins.int
+    BREAD_LOBBY_FIELD_NUMBER: _builtins.int
+    result: Global___SetBreadLobbyPublicOutProto.Result.ValueType
+    @_builtins.property
+    def bread_lobby(self) -> Global___BreadLobbyProto: ...
+    def __init__(
+        self,
+        *,
+        result: Global___SetBreadLobbyPublicOutProto.Result.ValueType = ...,
+        bread_lobby: Global___BreadLobbyProto | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["bread_lobby", b"bread_lobby"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["bread_lobby", b"bread_lobby", "result", b"result"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SetBreadLobbyPublicOutProto: _TypeAlias = SetBreadLobbyPublicOutProto  # noqa: Y015
+
+@_typing.final
+class SetBreadLobbyPublicProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    BREAD_BATTLE_SEED_FIELD_NUMBER: _builtins.int
+    STATION_ID_FIELD_NUMBER: _builtins.int
+    BREAD_LOBBY_ID_FIELD_NUMBER: _builtins.int
+    BREAD_BATTLE_ENTRY_POINT_FIELD_NUMBER: _builtins.int
+    bread_battle_seed: _builtins.int
+    station_id: _builtins.str
+    bread_lobby_id: _builtins.int
+    bread_battle_entry_point: Global___BreadBattleEntryPoint.ValueType
+    def __init__(
+        self,
+        *,
+        bread_battle_seed: _builtins.int = ...,
+        station_id: _builtins.str = ...,
+        bread_lobby_id: _builtins.int = ...,
+        bread_battle_entry_point: Global___BreadBattleEntryPoint.ValueType = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["bread_battle_entry_point", b"bread_battle_entry_point", "bread_battle_seed", b"bread_battle_seed", "bread_lobby_id", b"bread_lobby_id", "station_id", b"station_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SetBreadLobbyPublicProto: _TypeAlias = SetBreadLobbyPublicProto  # noqa: Y015
+
+@_typing.final
 class SetBuddyPokemonOutProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -139535,6 +141707,66 @@ class SetFriendNicknameProto(_message.Message):
 Global___SetFriendNicknameProto: _TypeAlias = SetFriendNicknameProto  # noqa: Y015
 
 @_typing.final
+class SetFriendPremiumGiftPreferenceOutProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SetFriendPremiumGiftPreferenceOutProto._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: SetFriendPremiumGiftPreferenceOutProto._Result.ValueType  # 0
+        SUCCESS: SetFriendPremiumGiftPreferenceOutProto._Result.ValueType  # 1
+        ERROR_UNKNOWN: SetFriendPremiumGiftPreferenceOutProto._Result.ValueType  # 2
+        ERROR_NOT_FRIENDS: SetFriendPremiumGiftPreferenceOutProto._Result.ValueType  # 3
+        ERROR_SOCIAL_UPDATE: SetFriendPremiumGiftPreferenceOutProto._Result.ValueType  # 4
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: SetFriendPremiumGiftPreferenceOutProto.Result.ValueType  # 0
+    SUCCESS: SetFriendPremiumGiftPreferenceOutProto.Result.ValueType  # 1
+    ERROR_UNKNOWN: SetFriendPremiumGiftPreferenceOutProto.Result.ValueType  # 2
+    ERROR_NOT_FRIENDS: SetFriendPremiumGiftPreferenceOutProto.Result.ValueType  # 3
+    ERROR_SOCIAL_UPDATE: SetFriendPremiumGiftPreferenceOutProto.Result.ValueType  # 4
+
+    RESULT_FIELD_NUMBER: _builtins.int
+    result: Global___SetFriendPremiumGiftPreferenceOutProto.Result.ValueType
+    def __init__(
+        self,
+        *,
+        result: Global___SetFriendPremiumGiftPreferenceOutProto.Result.ValueType = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["result", b"result"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SetFriendPremiumGiftPreferenceOutProto: _TypeAlias = SetFriendPremiumGiftPreferenceOutProto  # noqa: Y015
+
+@_typing.final
+class SetFriendPremiumGiftPreferenceProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    FRIEND_ID_FIELD_NUMBER: _builtins.int
+    OPT_OUT_OF_RECEIVING_PREMIUM_GIFTS_FIELD_NUMBER: _builtins.int
+    friend_id: _builtins.str
+    opt_out_of_receiving_premium_gifts: _builtins.bool
+    def __init__(
+        self,
+        *,
+        friend_id: _builtins.str = ...,
+        opt_out_of_receiving_premium_gifts: _builtins.bool = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["friend_id", b"friend_id", "opt_out_of_receiving_premium_gifts", b"opt_out_of_receiving_premium_gifts"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SetFriendPremiumGiftPreferenceProto: _TypeAlias = SetFriendPremiumGiftPreferenceProto  # noqa: Y015
+
+@_typing.final
 class SetLobbyPokemonOutProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -139621,6 +141853,7 @@ class SetLobbyVisibilityOutProto(_message.Message):
         ERROR_NOT_LOBBY_CREATOR: SetLobbyVisibilityOutProto._Result.ValueType  # 2
         ERROR_LOBBY_NOT_FOUND: SetLobbyVisibilityOutProto._Result.ValueType  # 3
         ERROR_RAID_UNAVAILABLE: SetLobbyVisibilityOutProto._Result.ValueType  # 4
+        ERROR_PLAYER_NOT_ELIGIBLE: SetLobbyVisibilityOutProto._Result.ValueType  # 5
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: SetLobbyVisibilityOutProto.Result.ValueType  # 0
@@ -139628,6 +141861,7 @@ class SetLobbyVisibilityOutProto(_message.Message):
     ERROR_NOT_LOBBY_CREATOR: SetLobbyVisibilityOutProto.Result.ValueType  # 2
     ERROR_LOBBY_NOT_FOUND: SetLobbyVisibilityOutProto.Result.ValueType  # 3
     ERROR_RAID_UNAVAILABLE: SetLobbyVisibilityOutProto.Result.ValueType  # 4
+    ERROR_PLAYER_NOT_ELIGIBLE: SetLobbyVisibilityOutProto.Result.ValueType  # 5
 
     RESULT_FIELD_NUMBER: _builtins.int
     LOBBY_FIELD_NUMBER: _builtins.int
@@ -141581,6 +143815,272 @@ class SkipEnterReferralCodeProto(_message.Message):
 Global___SkipEnterReferralCodeProto: _TypeAlias = SkipEnterReferralCodeProto  # noqa: Y015
 
 @_typing.final
+class SkuContentProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    ITEM_TYPE_FIELD_NUMBER: _builtins.int
+    QUANTITY_FIELD_NUMBER: _builtins.int
+    item_type: _builtins.str
+    quantity: _builtins.int
+    def __init__(
+        self,
+        *,
+        item_type: _builtins.str = ...,
+        quantity: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["item_type", b"item_type", "quantity", b"quantity"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SkuContentProto: _TypeAlias = SkuContentProto  # noqa: Y015
+
+@_typing.final
+class SkuDataProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _SkuPaymentType:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _SkuPaymentTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SkuDataProto._SkuPaymentType.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: SkuDataProto._SkuPaymentType.ValueType  # 0
+        THIRD_PARTY: SkuDataProto._SkuPaymentType.ValueType  # 1
+        IN_GAME: SkuDataProto._SkuPaymentType.ValueType  # 2
+        WEB: SkuDataProto._SkuPaymentType.ValueType  # 3
+
+    class SkuPaymentType(_SkuPaymentType, metaclass=_SkuPaymentTypeEnumTypeWrapper): ...
+    UNSET: SkuDataProto.SkuPaymentType.ValueType  # 0
+    THIRD_PARTY: SkuDataProto.SkuPaymentType.ValueType  # 1
+    IN_GAME: SkuDataProto.SkuPaymentType.ValueType  # 2
+    WEB: SkuDataProto.SkuPaymentType.ValueType  # 3
+
+    ID_FIELD_NUMBER: _builtins.int
+    IS_ENABLED_FIELD_NUMBER: _builtins.int
+    CONTENT_FIELD_NUMBER: _builtins.int
+    PRICE_FIELD_NUMBER: _builtins.int
+    PAYMENT_TYPE_FIELD_NUMBER: _builtins.int
+    LAST_MODIFIED_TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
+    PRESENTATION_DATA_FIELD_NUMBER: _builtins.int
+    ENABLED_WINDOW_START_MS_FIELD_NUMBER: _builtins.int
+    ENABLED_WINDOW_END_MS_FIELD_NUMBER: _builtins.int
+    SUBSCRIPTION_ID_FIELD_NUMBER: _builtins.int
+    SKU_LIMIT_FIELD_NUMBER: _builtins.int
+    IS_OFFER_ONLY_FIELD_NUMBER: _builtins.int
+    SUBSCRIPTION_GROUP_ID_FIELD_NUMBER: _builtins.int
+    SUBSCRIPTION_LEVEL_FIELD_NUMBER: _builtins.int
+    STORE_FILTER_FIELD_NUMBER: _builtins.int
+    REWARDED_SPEND_POINTS_FIELD_NUMBER: _builtins.int
+    id: _builtins.str
+    is_enabled: _builtins.bool
+    payment_type: Global___SkuDataProto.SkuPaymentType.ValueType
+    last_modified_timestamp_ms: _builtins.int
+    enabled_window_start_ms: _builtins.int
+    enabled_window_end_ms: _builtins.int
+    subscription_id: _builtins.str
+    is_offer_only: _builtins.bool
+    subscription_group_id: _builtins.str
+    subscription_level: _builtins.int
+    store_filter: _builtins.str
+    rewarded_spend_points: _builtins.int
+    @_builtins.property
+    def content(self) -> _containers.RepeatedCompositeFieldContainer[Global___SkuContentProto]: ...
+    @_builtins.property
+    def price(self) -> _containers.RepeatedCompositeFieldContainer[Global___SkuPriceProto]: ...
+    @_builtins.property
+    def presentation_data(self) -> _containers.RepeatedCompositeFieldContainer[Global___SkuPresentationDataProto]: ...
+    @_builtins.property
+    def sku_limit(self) -> _containers.RepeatedCompositeFieldContainer[Global___SkuLimitProto]: ...
+    def __init__(
+        self,
+        *,
+        id: _builtins.str = ...,
+        is_enabled: _builtins.bool = ...,
+        content: _abc.Iterable[Global___SkuContentProto] | None = ...,
+        price: _abc.Iterable[Global___SkuPriceProto] | None = ...,
+        payment_type: Global___SkuDataProto.SkuPaymentType.ValueType = ...,
+        last_modified_timestamp_ms: _builtins.int = ...,
+        presentation_data: _abc.Iterable[Global___SkuPresentationDataProto] | None = ...,
+        enabled_window_start_ms: _builtins.int = ...,
+        enabled_window_end_ms: _builtins.int = ...,
+        subscription_id: _builtins.str = ...,
+        sku_limit: _abc.Iterable[Global___SkuLimitProto] | None = ...,
+        is_offer_only: _builtins.bool = ...,
+        subscription_group_id: _builtins.str = ...,
+        subscription_level: _builtins.int = ...,
+        store_filter: _builtins.str = ...,
+        rewarded_spend_points: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["content", b"content", "enabled_window_end_ms", b"enabled_window_end_ms", "enabled_window_start_ms", b"enabled_window_start_ms", "id", b"id", "is_enabled", b"is_enabled", "is_offer_only", b"is_offer_only", "last_modified_timestamp_ms", b"last_modified_timestamp_ms", "payment_type", b"payment_type", "presentation_data", b"presentation_data", "price", b"price", "rewarded_spend_points", b"rewarded_spend_points", "sku_limit", b"sku_limit", "store_filter", b"store_filter", "subscription_group_id", b"subscription_group_id", "subscription_id", b"subscription_id", "subscription_level", b"subscription_level"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SkuDataProto: _TypeAlias = SkuDataProto  # noqa: Y015
+
+@_typing.final
+class SkuLimitProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    @_typing.final
+    class ParamsEntry(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        KEY_FIELD_NUMBER: _builtins.int
+        VALUE_FIELD_NUMBER: _builtins.int
+        key: _builtins.str
+        value: _builtins.str
+        def __init__(
+            self,
+            *,
+            key: _builtins.str = ...,
+            value: _builtins.str = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    NAME_FIELD_NUMBER: _builtins.int
+    PARAMS_FIELD_NUMBER: _builtins.int
+    name: _builtins.str
+    @_builtins.property
+    def params(self) -> _containers.ScalarMap[_builtins.str, _builtins.str]: ...
+    def __init__(
+        self,
+        *,
+        name: _builtins.str = ...,
+        params: _abc.Mapping[_builtins.str, _builtins.str] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["name", b"name", "params", b"params"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SkuLimitProto: _TypeAlias = SkuLimitProto  # noqa: Y015
+
+@_typing.final
+class SkuPresentationDataProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    KEY_FIELD_NUMBER: _builtins.int
+    VALUE_FIELD_NUMBER: _builtins.int
+    key: _builtins.str
+    value: _builtins.str
+    def __init__(
+        self,
+        *,
+        key: _builtins.str = ...,
+        value: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SkuPresentationDataProto: _TypeAlias = SkuPresentationDataProto  # noqa: Y015
+
+@_typing.final
+class SkuPriceProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    CURRENCY_TYPE_FIELD_NUMBER: _builtins.int
+    PRICE_FIELD_NUMBER: _builtins.int
+    currency_type: _builtins.str
+    price: _builtins.int
+    def __init__(
+        self,
+        *,
+        currency_type: _builtins.str = ...,
+        price: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["currency_type", b"currency_type", "price", b"price"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SkuPriceProto: _TypeAlias = SkuPriceProto  # noqa: Y015
+
+@_typing.final
+class SkuRecord(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    @_typing.final
+    class SkuOfferRecord(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        PURCHASE_TIME_MS_FIELD_NUMBER: _builtins.int
+        TOTAL_PURCHASES_FIELD_NUMBER: _builtins.int
+        total_purchases: _builtins.int
+        @_builtins.property
+        def purchase_time_ms(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+        def __init__(
+            self,
+            *,
+            purchase_time_ms: _abc.Iterable[_builtins.int] | None = ...,
+            total_purchases: _builtins.int = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["purchase_time_ms", b"purchase_time_ms", "total_purchases", b"total_purchases"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    @_typing.final
+    class OfferRecordsEntry(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        KEY_FIELD_NUMBER: _builtins.int
+        VALUE_FIELD_NUMBER: _builtins.int
+        key: _builtins.str
+        @_builtins.property
+        def value(self) -> Global___SkuRecord.SkuOfferRecord: ...
+        def __init__(
+            self,
+            *,
+            key: _builtins.str = ...,
+            value: Global___SkuRecord.SkuOfferRecord | None = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _typing.Literal["value", b"value"]  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+    SKU_ID_FIELD_NUMBER: _builtins.int
+    PURCHASE_TIME_MS_FIELD_NUMBER: _builtins.int
+    TOTAL_PURCHASES_FIELD_NUMBER: _builtins.int
+    OFFER_RECORDS_FIELD_NUMBER: _builtins.int
+    sku_id: _builtins.str
+    total_purchases: _builtins.int
+    @_builtins.property
+    def purchase_time_ms(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    @_builtins.property
+    def offer_records(self) -> _containers.MessageMap[_builtins.str, Global___SkuRecord.SkuOfferRecord]: ...
+    def __init__(
+        self,
+        *,
+        sku_id: _builtins.str = ...,
+        purchase_time_ms: _abc.Iterable[_builtins.int] | None = ...,
+        total_purchases: _builtins.int = ...,
+        offer_records: _abc.Mapping[_builtins.str, Global___SkuRecord.SkuOfferRecord] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["offer_records", b"offer_records", "purchase_time_ms", b"purchase_time_ms", "sku_id", b"sku_id", "total_purchases", b"total_purchases"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SkuRecord: _TypeAlias = SkuRecord  # noqa: Y015
+
+@_typing.final
 class SleepDayRecordProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -141790,6 +144290,7 @@ class SocialClientSettingsProto(_message.Message):
     ENABLE_REMOTE_GIFTING_FIELD_NUMBER: _builtins.int
     CROSS_GAME_SOCIAL_SETTINGS_FIELD_NUMBER: _builtins.int
     MIGRATE_LUCKY_DATA_TO_SHARED_FIELD_NUMBER: _builtins.int
+    FRIEND_DETAILS_PAGE_SIZE_FIELD_NUMBER: _builtins.int
     enable_social: _builtins.bool
     max_friend_details: _builtins.int
     player_level_gate: _builtins.int
@@ -141801,6 +144302,7 @@ class SocialClientSettingsProto(_message.Message):
     enable_remote_gifting: _builtins.bool
     """bool enable_giftability_v2 = 11;"""
     migrate_lucky_data_to_shared: _builtins.bool
+    friend_details_page_size: _builtins.int
     """bool enable_v2_sticker = 16;
     bool enable_deep_linking_qr_code = 17;
     """
@@ -141821,10 +144323,11 @@ class SocialClientSettingsProto(_message.Message):
         enable_remote_gifting: _builtins.bool = ...,
         cross_game_social_settings: Global___CrossGameSocialGlobalSettingsProto | None = ...,
         migrate_lucky_data_to_shared: _builtins.bool = ...,
+        friend_details_page_size: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["cross_game_social_settings", b"cross_game_social_settings"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["cross_game_social_settings", b"cross_game_social_settings", "disable_facebook_friends_opening_prompt", b"disable_facebook_friends_opening_prompt", "enable_facebook_friends", b"enable_facebook_friends", "enable_remote_gifting", b"enable_remote_gifting", "enable_social", b"enable_social", "facebook_friend_limit_per_request", b"facebook_friend_limit_per_request", "max_friend_details", b"max_friend_details", "max_friend_nickname_length", b"max_friend_nickname_length", "migrate_lucky_data_to_shared", b"migrate_lucky_data_to_shared", "player_level_gate", b"player_level_gate"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["cross_game_social_settings", b"cross_game_social_settings", "disable_facebook_friends_opening_prompt", b"disable_facebook_friends_opening_prompt", "enable_facebook_friends", b"enable_facebook_friends", "enable_remote_gifting", b"enable_remote_gifting", "enable_social", b"enable_social", "facebook_friend_limit_per_request", b"facebook_friend_limit_per_request", "friend_details_page_size", b"friend_details_page_size", "max_friend_details", b"max_friend_details", "max_friend_nickname_length", b"max_friend_nickname_length", "migrate_lucky_data_to_shared", b"migrate_lucky_data_to_shared", "player_level_gate", b"player_level_gate"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -141883,11 +144386,13 @@ class SocialPlayerSettingsProto(_message.Message):
     ENABLE_PARTY_FRIEND_REQUESTS_FIELD_NUMBER: _builtins.int
     DISABLE_LUCKY_FRIEND_APPLICATOR_REQUESTS_FIELD_NUMBER: _builtins.int
     ENABLE_WEEKLY_CHALLENGE_FRIEND_REQUESTS_FIELD_NUMBER: _builtins.int
+    DISABLE_LOCATION_CARD_BACKGROUND_FIELD_NUMBER: _builtins.int
     disable_last_pokemon_caught: _builtins.bool
     enable_raid_friend_requests: _builtins.bool
     enable_party_friend_requests: _builtins.bool
     disable_lucky_friend_applicator_requests: _builtins.bool
     enable_weekly_challenge_friend_requests: _builtins.bool
+    disable_location_card_background: _builtins.bool
     def __init__(
         self,
         *,
@@ -141896,10 +144401,11 @@ class SocialPlayerSettingsProto(_message.Message):
         enable_party_friend_requests: _builtins.bool = ...,
         disable_lucky_friend_applicator_requests: _builtins.bool = ...,
         enable_weekly_challenge_friend_requests: _builtins.bool = ...,
+        disable_location_card_background: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["disable_last_pokemon_caught", b"disable_last_pokemon_caught", "disable_lucky_friend_applicator_requests", b"disable_lucky_friend_applicator_requests", "enable_party_friend_requests", b"enable_party_friend_requests", "enable_raid_friend_requests", b"enable_raid_friend_requests", "enable_weekly_challenge_friend_requests", b"enable_weekly_challenge_friend_requests"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["disable_last_pokemon_caught", b"disable_last_pokemon_caught", "disable_location_card_background", b"disable_location_card_background", "disable_lucky_friend_applicator_requests", b"disable_lucky_friend_applicator_requests", "enable_party_friend_requests", b"enable_party_friend_requests", "enable_raid_friend_requests", b"enable_raid_friend_requests", "enable_weekly_challenge_friend_requests", b"enable_weekly_challenge_friend_requests"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -142106,11 +144612,17 @@ class SoftSfidaLocationUpdateProto(_message.Message):
         UNSET: SoftSfidaLocationUpdateProto._LocationUpdateContext.ValueType  # 0
         BACKGROUND: SoftSfidaLocationUpdateProto._LocationUpdateContext.ValueType  # 1
         GEOFENCE: SoftSfidaLocationUpdateProto._LocationUpdateContext.ValueType  # 2
+        PERIODIC_WORK_REQUEST: SoftSfidaLocationUpdateProto._LocationUpdateContext.ValueType  # 3
+        LOCATION_UPDATES_PENDING_INTENT: SoftSfidaLocationUpdateProto._LocationUpdateContext.ValueType  # 4
+        ACTIVITY_TRANSITION: SoftSfidaLocationUpdateProto._LocationUpdateContext.ValueType  # 5
 
     class LocationUpdateContext(_LocationUpdateContext, metaclass=_LocationUpdateContextEnumTypeWrapper): ...
     UNSET: SoftSfidaLocationUpdateProto.LocationUpdateContext.ValueType  # 0
     BACKGROUND: SoftSfidaLocationUpdateProto.LocationUpdateContext.ValueType  # 1
     GEOFENCE: SoftSfidaLocationUpdateProto.LocationUpdateContext.ValueType  # 2
+    PERIODIC_WORK_REQUEST: SoftSfidaLocationUpdateProto.LocationUpdateContext.ValueType  # 3
+    LOCATION_UPDATES_PENDING_INTENT: SoftSfidaLocationUpdateProto.LocationUpdateContext.ValueType  # 4
+    ACTIVITY_TRANSITION: SoftSfidaLocationUpdateProto.LocationUpdateContext.ValueType  # 5
 
     CONTEXT_FIELD_NUMBER: _builtins.int
     context: Global___SoftSfidaLocationUpdateProto.LocationUpdateContext.ValueType
@@ -142366,6 +144878,10 @@ class SoftSfidaSettingsProto(_message.Message):
     MARKED_CAPTURE_DELAY_POKESTOP_FIELD_NUMBER: _builtins.int
     LOGGING_LEVEL_FIELD_NUMBER: _builtins.int
     ENABLE_FOREGROUND_FTUE_FIELD_NUMBER: _builtins.int
+    ENABLE_BACKGROUND_LOCATION_UPDATES_FIELD_NUMBER: _builtins.int
+    ENABLE_PERIODIC_WORK_REQUEST_FIELD_NUMBER: _builtins.int
+    PERIODIC_WORK_REPEAT_INTERVAL_MIN_FIELD_NUMBER: _builtins.int
+    ENABLE_ACTIVITY_TRANSITION_FIELD_NUMBER: _builtins.int
     enable: _builtins.bool
     enable_forground: _builtins.bool
     enable_recap: _builtins.bool
@@ -142378,6 +144894,10 @@ class SoftSfidaSettingsProto(_message.Message):
     marked_capture_delay_pokestop: _builtins.float
     logging_level: _builtins.int
     enable_foreground_ftue: _builtins.int
+    enable_background_location_updates: _builtins.bool
+    enable_periodic_work_request: _builtins.bool
+    periodic_work_repeat_interval_min: _builtins.int
+    enable_activity_transition: _builtins.bool
     def __init__(
         self,
         *,
@@ -142393,10 +144913,14 @@ class SoftSfidaSettingsProto(_message.Message):
         marked_capture_delay_pokestop: _builtins.float = ...,
         logging_level: _builtins.int = ...,
         enable_foreground_ftue: _builtins.int = ...,
+        enable_background_location_updates: _builtins.bool = ...,
+        enable_periodic_work_request: _builtins.bool = ...,
+        periodic_work_repeat_interval_min: _builtins.int = ...,
+        enable_activity_transition: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["catch_action_delay_ms", b"catch_action_delay_ms", "enable", b"enable", "enable_foreground_ftue", b"enable_foreground_ftue", "enable_forground", b"enable_forground", "enable_recap", b"enable_recap", "geofence_size_m", b"geofence_size_m", "logging_level", b"logging_level", "marked_capture_delay", b"marked_capture_delay", "marked_capture_delay_pokestop", b"marked_capture_delay_pokestop", "min_player_level", b"min_player_level", "reserved_geofence_count", b"reserved_geofence_count", "spin_action_delay_ms", b"spin_action_delay_ms"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["catch_action_delay_ms", b"catch_action_delay_ms", "enable", b"enable", "enable_activity_transition", b"enable_activity_transition", "enable_background_location_updates", b"enable_background_location_updates", "enable_foreground_ftue", b"enable_foreground_ftue", "enable_forground", b"enable_forground", "enable_periodic_work_request", b"enable_periodic_work_request", "enable_recap", b"enable_recap", "geofence_size_m", b"geofence_size_m", "logging_level", b"logging_level", "marked_capture_delay", b"marked_capture_delay", "marked_capture_delay_pokestop", b"marked_capture_delay_pokestop", "min_player_level", b"min_player_level", "periodic_work_repeat_interval_min", b"periodic_work_repeat_interval_min", "reserved_geofence_count", b"reserved_geofence_count", "spin_action_delay_ms", b"spin_action_delay_ms"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -142493,6 +145017,16 @@ class SoftSfidaTelemetry(_message.Message):
         LOCATION_UPDATE_AUTH_FAILED: SoftSfidaTelemetry._EventType.ValueType  # 8
         BACKGROUND_TASK_EXPIRED: SoftSfidaTelemetry._EventType.ValueType  # 9
         LOCATION_FETCH_FAILED: SoftSfidaTelemetry._EventType.ValueType  # 10
+        REQUEST_LOCATION_UPDATES_SUCCESS: SoftSfidaTelemetry._EventType.ValueType  # 11
+        REQUEST_LOCATION_UPDATES_FAILED: SoftSfidaTelemetry._EventType.ValueType  # 12
+        REQUEST_LOCATION_UPDATES_TRIGGERED: SoftSfidaTelemetry._EventType.ValueType  # 13
+        PERIODIC_WORK_TRIGGERED: SoftSfidaTelemetry._EventType.ValueType  # 14
+        ACTIVITY_TRANSITION_ENTER_ON_FOOT: SoftSfidaTelemetry._EventType.ValueType  # 15
+        ACTIVITY_TRANSITION_EXIT_ON_FOOT: SoftSfidaTelemetry._EventType.ValueType  # 16
+        ACTIVITY_TRANSITION_ENTER_ON_BICYCLE: SoftSfidaTelemetry._EventType.ValueType  # 17
+        ACTIVITY_TRANSITION_EXIT_ON_BICYCLE: SoftSfidaTelemetry._EventType.ValueType  # 18
+        ACTIVITY_TRANSITION_ENTER_IN_VEHICLE: SoftSfidaTelemetry._EventType.ValueType  # 19
+        ACTIVITY_TRANSITION_EXIT_IN_VEHICLE: SoftSfidaTelemetry._EventType.ValueType  # 20
 
     class EventType(_EventType, metaclass=_EventTypeEnumTypeWrapper): ...
     UNSET: SoftSfidaTelemetry.EventType.ValueType  # 0
@@ -142506,6 +145040,16 @@ class SoftSfidaTelemetry(_message.Message):
     LOCATION_UPDATE_AUTH_FAILED: SoftSfidaTelemetry.EventType.ValueType  # 8
     BACKGROUND_TASK_EXPIRED: SoftSfidaTelemetry.EventType.ValueType  # 9
     LOCATION_FETCH_FAILED: SoftSfidaTelemetry.EventType.ValueType  # 10
+    REQUEST_LOCATION_UPDATES_SUCCESS: SoftSfidaTelemetry.EventType.ValueType  # 11
+    REQUEST_LOCATION_UPDATES_FAILED: SoftSfidaTelemetry.EventType.ValueType  # 12
+    REQUEST_LOCATION_UPDATES_TRIGGERED: SoftSfidaTelemetry.EventType.ValueType  # 13
+    PERIODIC_WORK_TRIGGERED: SoftSfidaTelemetry.EventType.ValueType  # 14
+    ACTIVITY_TRANSITION_ENTER_ON_FOOT: SoftSfidaTelemetry.EventType.ValueType  # 15
+    ACTIVITY_TRANSITION_EXIT_ON_FOOT: SoftSfidaTelemetry.EventType.ValueType  # 16
+    ACTIVITY_TRANSITION_ENTER_ON_BICYCLE: SoftSfidaTelemetry.EventType.ValueType  # 17
+    ACTIVITY_TRANSITION_EXIT_ON_BICYCLE: SoftSfidaTelemetry.EventType.ValueType  # 18
+    ACTIVITY_TRANSITION_ENTER_IN_VEHICLE: SoftSfidaTelemetry.EventType.ValueType  # 19
+    ACTIVITY_TRANSITION_EXIT_IN_VEHICLE: SoftSfidaTelemetry.EventType.ValueType  # 20
 
     EVENT_TYPE_FIELD_NUMBER: _builtins.int
     BACKGROUND_TASK_DURATION_MS_FIELD_NUMBER: _builtins.int
@@ -143997,6 +146541,7 @@ class StartBreadBattleOutProto(_message.Message):
         ERROR_RVN_START_FAILED: StartBreadBattleOutProto._Result.ValueType  # 19
         ERROR_DUPLICATE_PLAYER_NUMBER: StartBreadBattleOutProto._Result.ValueType  # 20
         ERROR_NO_REMOTE_TICKET: StartBreadBattleOutProto._Result.ValueType  # 21
+        ERROR_PLAYER_NOT_ELIGIBLE: StartBreadBattleOutProto._Result.ValueType  # 22
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: StartBreadBattleOutProto.Result.ValueType  # 0
@@ -144021,6 +146566,7 @@ class StartBreadBattleOutProto(_message.Message):
     ERROR_RVN_START_FAILED: StartBreadBattleOutProto.Result.ValueType  # 19
     ERROR_DUPLICATE_PLAYER_NUMBER: StartBreadBattleOutProto.Result.ValueType  # 20
     ERROR_NO_REMOTE_TICKET: StartBreadBattleOutProto.Result.ValueType  # 21
+    ERROR_PLAYER_NOT_ELIGIBLE: StartBreadBattleOutProto.Result.ValueType  # 22
 
     RESULT_FIELD_NUMBER: _builtins.int
     SESSION_PLAYER_ID_FIELD_NUMBER: _builtins.int
@@ -144640,6 +147186,7 @@ class StartRaidBattleOutProto(_message.Message):
         ERROR_NEVER_JOINED_BATTLE: StartRaidBattleOutProto._Result.ValueType  # 12
         ERROR_DATA: StartRaidBattleOutProto._Result.ValueType  # 13
         ERROR_INSUFFICIENT_PLAYER_COUNT: StartRaidBattleOutProto._Result.ValueType  # 14
+        ERROR_PLAYER_NOT_ELIGIBLE: StartRaidBattleOutProto._Result.ValueType  # 15
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: StartRaidBattleOutProto.Result.ValueType  # 0
@@ -144657,6 +147204,7 @@ class StartRaidBattleOutProto(_message.Message):
     ERROR_NEVER_JOINED_BATTLE: StartRaidBattleOutProto.Result.ValueType  # 12
     ERROR_DATA: StartRaidBattleOutProto.Result.ValueType  # 13
     ERROR_INSUFFICIENT_PLAYER_COUNT: StartRaidBattleOutProto.Result.ValueType  # 14
+    ERROR_PLAYER_NOT_ELIGIBLE: StartRaidBattleOutProto.Result.ValueType  # 15
 
     RESULT_FIELD_NUMBER: _builtins.int
     BATTLE_FIELD_NUMBER: _builtins.int
@@ -145399,17 +147947,20 @@ class StatementOfReason(_message.Message):
 
     NIANTIC_SOR_FIELD_NUMBER: _builtins.int
     ENFORCEMENT_ID_FIELD_NUMBER: _builtins.int
+    NIANTIC_SOR_TEXT_FIELD_NUMBER: _builtins.int
     niantic_sor: Global___NianticStatementOfReason.ValueType
     enforcement_id: _builtins.str
+    niantic_sor_text: _builtins.str
     def __init__(
         self,
         *,
         niantic_sor: Global___NianticStatementOfReason.ValueType = ...,
         enforcement_id: _builtins.str = ...,
+        niantic_sor_text: _builtins.str = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["enforcement_id", b"enforcement_id", "niantic_sor", b"niantic_sor"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["enforcement_id", b"enforcement_id", "niantic_sor", b"niantic_sor", "niantic_sor_text", b"niantic_sor_text"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -146761,11 +149312,13 @@ class SyncBattleInventoryOutProto(_message.Message):
         UNSET: SyncBattleInventoryOutProto._Result.ValueType  # 0
         SUCCESS: SyncBattleInventoryOutProto._Result.ValueType  # 1
         ERROR: SyncBattleInventoryOutProto._Result.ValueType  # 2
+        ERROR_PLAYER_NOT_ELIGIBLE: SyncBattleInventoryOutProto._Result.ValueType  # 3
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     UNSET: SyncBattleInventoryOutProto.Result.ValueType  # 0
     SUCCESS: SyncBattleInventoryOutProto.Result.ValueType  # 1
     ERROR: SyncBattleInventoryOutProto.Result.ValueType  # 2
+    ERROR_PLAYER_NOT_ELIGIBLE: SyncBattleInventoryOutProto.Result.ValueType  # 3
 
     RESULT_FIELD_NUMBER: _builtins.int
     result: Global___SyncBattleInventoryOutProto.Result.ValueType
@@ -147696,19 +150249,22 @@ class TicketGiftingSettingsProto(_message.Message):
     MIN_PLAYER_LEVEL_FIELD_NUMBER: _builtins.int
     DAILY_PLAYER_GIFTING_LIMIT_FIELD_NUMBER: _builtins.int
     MIN_REQUIRED_FRIENDSHIP_LEVEL_FIELD_NUMBER: _builtins.int
+    MIN_ACCOUNT_AGE_DAYS_FIELD_NUMBER: _builtins.int
     min_player_level: _builtins.int
     daily_player_gifting_limit: _builtins.int
     min_required_friendship_level: _builtins.str
+    min_account_age_days: _builtins.int
     def __init__(
         self,
         *,
         min_player_level: _builtins.int = ...,
         daily_player_gifting_limit: _builtins.int = ...,
         min_required_friendship_level: _builtins.str = ...,
+        min_account_age_days: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["daily_player_gifting_limit", b"daily_player_gifting_limit", "min_player_level", b"min_player_level", "min_required_friendship_level", b"min_required_friendship_level"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["daily_player_gifting_limit", b"daily_player_gifting_limit", "min_account_age_days", b"min_account_age_days", "min_player_level", b"min_player_level", "min_required_friendship_level", b"min_required_friendship_level"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -150063,6 +152619,28 @@ class TodayViewOpenedTelemetry(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___TodayViewOpenedTelemetry: _TypeAlias = TodayViewOpenedTelemetry  # noqa: Y015
+
+@_typing.final
+class TodayViewOverrideProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    INNER_LAYER_TYPE_FIELD_NUMBER: _builtins.int
+    OUTER_LAYER_TYPE_FIELD_NUMBER: _builtins.int
+    inner_layer_type: Global___TodayViewInnerLayerType.ValueType
+    outer_layer_type: Global___TodayViewOuterLayerType.ValueType
+    def __init__(
+        self,
+        *,
+        inner_layer_type: Global___TodayViewInnerLayerType.ValueType = ...,
+        outer_layer_type: Global___TodayViewOuterLayerType.ValueType = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["inner_layer_type", b"inner_layer_type", "outer_layer_type", b"outer_layer_type"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___TodayViewOverrideProto: _TypeAlias = TodayViewOverrideProto  # noqa: Y015
 
 @_typing.final
 class TodayViewProto(_message.Message):
@@ -152742,6 +155320,78 @@ class UpdateContestEntryProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___UpdateContestEntryProto: _TypeAlias = UpdateContestEntryProto  # noqa: Y015
+
+@_typing.final
+class UpdateDeviceVerificationRequestProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    USER_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_REGISTRATION_ID_FIELD_NUMBER: _builtins.int
+    DEVICE_FINGERPRINT_FIELD_NUMBER: _builtins.int
+    NEW_STATUS_FIELD_NUMBER: _builtins.int
+    REASON_FIELD_NUMBER: _builtins.int
+    user_id: _builtins.str
+    device_registration_id: _builtins.str
+    device_fingerprint: _builtins.str
+    new_status: Global___DeviceVerificationStatus.ValueType
+    reason: _builtins.str
+    def __init__(
+        self,
+        *,
+        user_id: _builtins.str = ...,
+        device_registration_id: _builtins.str = ...,
+        device_fingerprint: _builtins.str = ...,
+        new_status: Global___DeviceVerificationStatus.ValueType = ...,
+        reason: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["device_fingerprint", b"device_fingerprint", "device_registration_id", b"device_registration_id", "new_status", b"new_status", "reason", b"reason", "user_id", b"user_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___UpdateDeviceVerificationRequestProto: _TypeAlias = UpdateDeviceVerificationRequestProto  # noqa: Y015
+
+@_typing.final
+class UpdateDeviceVerificationResponseProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Status:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _StatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[UpdateDeviceVerificationResponseProto._Status.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: UpdateDeviceVerificationResponseProto._Status.ValueType  # 0
+        SUCCESS: UpdateDeviceVerificationResponseProto._Status.ValueType  # 1
+        DEVICE_NOT_FOUND: UpdateDeviceVerificationResponseProto._Status.ValueType  # 2
+        INVALID_STATUS_TRANSITION: UpdateDeviceVerificationResponseProto._Status.ValueType  # 3
+        ERROR: UpdateDeviceVerificationResponseProto._Status.ValueType  # 4
+
+    class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
+    UNSET: UpdateDeviceVerificationResponseProto.Status.ValueType  # 0
+    SUCCESS: UpdateDeviceVerificationResponseProto.Status.ValueType  # 1
+    DEVICE_NOT_FOUND: UpdateDeviceVerificationResponseProto.Status.ValueType  # 2
+    INVALID_STATUS_TRANSITION: UpdateDeviceVerificationResponseProto.Status.ValueType  # 3
+    ERROR: UpdateDeviceVerificationResponseProto.Status.ValueType  # 4
+
+    STATUS_FIELD_NUMBER: _builtins.int
+    ERROR_MESSAGE_FIELD_NUMBER: _builtins.int
+    status: Global___UpdateDeviceVerificationResponseProto.Status.ValueType
+    error_message: _builtins.str
+    def __init__(
+        self,
+        *,
+        status: Global___UpdateDeviceVerificationResponseProto.Status.ValueType = ...,
+        error_message: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["error_message", b"error_message", "status", b"status"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___UpdateDeviceVerificationResponseProto: _TypeAlias = UpdateDeviceVerificationResponseProto  # noqa: Y015
 
 @_typing.final
 class UpdateEventRsvpSelectionOutProto(_message.Message):
