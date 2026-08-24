@@ -43,6 +43,11 @@ the clutter
 There's also an option to simply print all requests or send them to Discord. You can use those 
 if you don't like the UI.
 
+Set `output = "json"` to emit one decoded-JSON object per RPC (JSONL) to stdout instead of a
+rendered view — each line carries `timestamp`, `rpc_id`, `rpc_status`, `rpc_handle`, and a `protos`
+list where every request/response is the **decoded** proto as JSON (no base64 blobs). Pipe it
+straight to a file or `jq`, e.g. `trafficlight run > traffic.jsonl`.
+
 ## TrafficLight CLI
 
 - `trafficlight run` to run the TUI
