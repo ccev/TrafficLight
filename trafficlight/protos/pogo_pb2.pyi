@@ -17,7 +17,7 @@ Licensed under the
 	or implied. See the License for the specific language governing
 	permissions and limitations under the License.
 
-Version: Base compatible 0.425.x.
+Version: Base compatible 0.427.x.
 """
 
 from collections import abc as _abc
@@ -597,6 +597,23 @@ AVATAR_SLOT_GRADIENT_EYES: AvatarSlot.ValueType  # 22
 AVATAR_SLOT_GRADIENT_HAIR: AvatarSlot.ValueType  # 23
 Global___AvatarSlot: _TypeAlias = AvatarSlot  # noqa: Y015
 
+class _BackgroundAutoLoopMode:
+    ValueType = _typing.NewType("ValueType", _builtins.int)
+    V: _TypeAlias = ValueType  # noqa: Y015
+
+class _BackgroundAutoLoopModeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_BackgroundAutoLoopMode.ValueType], _builtins.type):
+    DESCRIPTOR: _descriptor.EnumDescriptor
+    BACKGROUND_AUTO_LOOP_MODE_UNSET: _BackgroundAutoLoopMode.ValueType  # 0
+    BACKGROUND_AUTO_LOOP_MODE_ON: _BackgroundAutoLoopMode.ValueType  # 1
+    BACKGROUND_AUTO_LOOP_MODE_OFF: _BackgroundAutoLoopMode.ValueType  # 2
+
+class BackgroundAutoLoopMode(_BackgroundAutoLoopMode, metaclass=_BackgroundAutoLoopModeEnumTypeWrapper): ...
+
+BACKGROUND_AUTO_LOOP_MODE_UNSET: BackgroundAutoLoopMode.ValueType  # 0
+BACKGROUND_AUTO_LOOP_MODE_ON: BackgroundAutoLoopMode.ValueType  # 1
+BACKGROUND_AUTO_LOOP_MODE_OFF: BackgroundAutoLoopMode.ValueType  # 2
+Global___BackgroundAutoLoopMode: _TypeAlias = BackgroundAutoLoopMode  # noqa: Y015
+
 class _BattleExperiment:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
@@ -946,6 +963,23 @@ CAMPFIRE_UPDATE_EVENT_RSVP_SELECTION: CampfireMethod.ValueType  # 6011
 GET_MAP_OBJECTS_FOR_CAMPFIRE: CampfireMethod.ValueType  # 6012
 GET_MAP_OBJECTS_DETAIL_FOR_CAMPFIRE: CampfireMethod.ValueType  # 6013
 Global___CampfireMethod: _TypeAlias = CampfireMethod  # noqa: Y015
+
+class _CardTreatment:
+    ValueType = _typing.NewType("ValueType", _builtins.int)
+    V: _TypeAlias = ValueType  # noqa: Y015
+
+class _CardTreatmentEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_CardTreatment.ValueType], _builtins.type):
+    DESCRIPTOR: _descriptor.EnumDescriptor
+    CARD_TREATMENT_UNSET: _CardTreatment.ValueType  # 0
+    CROP_BLEED: _CardTreatment.ValueType  # 1
+    EXTENDED_HEIGHT: _CardTreatment.ValueType  # 2
+
+class CardTreatment(_CardTreatment, metaclass=_CardTreatmentEnumTypeWrapper): ...
+
+CARD_TREATMENT_UNSET: CardTreatment.ValueType  # 0
+CROP_BLEED: CardTreatment.ValueType  # 1
+EXTENDED_HEIGHT: CardTreatment.ValueType  # 2
+Global___CardTreatment: _TypeAlias = CardTreatment  # noqa: Y015
 
 class _CardType:
     ValueType = _typing.NewType("ValueType", _builtins.int)
@@ -11803,6 +11837,38 @@ class _ItemEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Item.ValueType],
     ITEM_EVENT_TICKET_S24_NOV21_COMMUNITY_TO_GIFT: _Item.ValueType  # 2272
     ITEM_EVENT_TICKET_S24_NOV28_MEGARAID: _Item.ValueType  # 2273
     ITEM_EVENT_TICKET_S24_NOV28_MEGARAID_TO_GIFT: _Item.ValueType  # 2274
+    ITEM_EVENT_TICKET_S25_2026_01: _Item.ValueType  # 2275
+    ITEM_EVENT_TICKET_S25_2026_02: _Item.ValueType  # 2276
+    ITEM_EVENT_TICKET_S25_2026_03: _Item.ValueType  # 2277
+    ITEM_EVENT_TICKET_S25_2026_04: _Item.ValueType  # 2278
+    ITEM_EVENT_TICKET_S25_2026_05: _Item.ValueType  # 2279
+    ITEM_EVENT_TICKET_S25_2026_06: _Item.ValueType  # 2280
+    ITEM_EVENT_TICKET_S25_2026_07: _Item.ValueType  # 2281
+    ITEM_EVENT_TICKET_S25_2026_08: _Item.ValueType  # 2282
+    ITEM_EVENT_TICKET_S25_2026_09: _Item.ValueType  # 2283
+    ITEM_EVENT_TICKET_S25_2026_10: _Item.ValueType  # 2284
+    ITEM_EVENT_TICKET_S25_2026_11: _Item.ValueType  # 2285
+    ITEM_EVENT_TICKET_S25_2026_12: _Item.ValueType  # 2286
+    ITEM_EVENT_TICKET_S25_2026_13: _Item.ValueType  # 2287
+    ITEM_EVENT_TICKET_S25_2026_14: _Item.ValueType  # 2288
+    ITEM_EVENT_TICKET_S25_2026_15: _Item.ValueType  # 2289
+    ITEM_EVENT_TICKET_S25_2026_16: _Item.ValueType  # 2290
+    ITEM_EVENT_TICKET_S25_2026_01_TO_GIFT: _Item.ValueType  # 2291
+    ITEM_EVENT_TICKET_S25_2026_02_TO_GIFT: _Item.ValueType  # 2292
+    ITEM_EVENT_TICKET_S25_2026_03_TO_GIFT: _Item.ValueType  # 2293
+    ITEM_EVENT_TICKET_S25_2026_04_TO_GIFT: _Item.ValueType  # 2294
+    ITEM_EVENT_TICKET_S25_2026_05_TO_GIFT: _Item.ValueType  # 2295
+    ITEM_EVENT_TICKET_S25_2026_06_TO_GIFT: _Item.ValueType  # 2296
+    ITEM_EVENT_TICKET_S25_2026_07_TO_GIFT: _Item.ValueType  # 2297
+    ITEM_EVENT_TICKET_S25_2026_08_TO_GIFT: _Item.ValueType  # 2298
+    ITEM_EVENT_TICKET_S25_2026_09_TO_GIFT: _Item.ValueType  # 2299
+    ITEM_EVENT_TICKET_S25_2026_10_TO_GIFT: _Item.ValueType  # 2300
+    ITEM_EVENT_TICKET_S25_2026_11_TO_GIFT: _Item.ValueType  # 2301
+    ITEM_EVENT_TICKET_S25_2026_12_TO_GIFT: _Item.ValueType  # 2302
+    ITEM_EVENT_TICKET_S25_2026_13_TO_GIFT: _Item.ValueType  # 2303
+    ITEM_EVENT_TICKET_S25_2026_14_TO_GIFT: _Item.ValueType  # 2304
+    ITEM_EVENT_TICKET_S25_2026_15_TO_GIFT: _Item.ValueType  # 2305
+    ITEM_EVENT_TICKET_S25_2026_16_TO_GIFT: _Item.ValueType  # 2306
 
 class Item(_Item, metaclass=_ItemEnumTypeWrapper): ...
 
@@ -12067,6 +12133,38 @@ ITEM_EVENT_TICKET_S24_NOV21_COMMUNITY: Item.ValueType  # 2271
 ITEM_EVENT_TICKET_S24_NOV21_COMMUNITY_TO_GIFT: Item.ValueType  # 2272
 ITEM_EVENT_TICKET_S24_NOV28_MEGARAID: Item.ValueType  # 2273
 ITEM_EVENT_TICKET_S24_NOV28_MEGARAID_TO_GIFT: Item.ValueType  # 2274
+ITEM_EVENT_TICKET_S25_2026_01: Item.ValueType  # 2275
+ITEM_EVENT_TICKET_S25_2026_02: Item.ValueType  # 2276
+ITEM_EVENT_TICKET_S25_2026_03: Item.ValueType  # 2277
+ITEM_EVENT_TICKET_S25_2026_04: Item.ValueType  # 2278
+ITEM_EVENT_TICKET_S25_2026_05: Item.ValueType  # 2279
+ITEM_EVENT_TICKET_S25_2026_06: Item.ValueType  # 2280
+ITEM_EVENT_TICKET_S25_2026_07: Item.ValueType  # 2281
+ITEM_EVENT_TICKET_S25_2026_08: Item.ValueType  # 2282
+ITEM_EVENT_TICKET_S25_2026_09: Item.ValueType  # 2283
+ITEM_EVENT_TICKET_S25_2026_10: Item.ValueType  # 2284
+ITEM_EVENT_TICKET_S25_2026_11: Item.ValueType  # 2285
+ITEM_EVENT_TICKET_S25_2026_12: Item.ValueType  # 2286
+ITEM_EVENT_TICKET_S25_2026_13: Item.ValueType  # 2287
+ITEM_EVENT_TICKET_S25_2026_14: Item.ValueType  # 2288
+ITEM_EVENT_TICKET_S25_2026_15: Item.ValueType  # 2289
+ITEM_EVENT_TICKET_S25_2026_16: Item.ValueType  # 2290
+ITEM_EVENT_TICKET_S25_2026_01_TO_GIFT: Item.ValueType  # 2291
+ITEM_EVENT_TICKET_S25_2026_02_TO_GIFT: Item.ValueType  # 2292
+ITEM_EVENT_TICKET_S25_2026_03_TO_GIFT: Item.ValueType  # 2293
+ITEM_EVENT_TICKET_S25_2026_04_TO_GIFT: Item.ValueType  # 2294
+ITEM_EVENT_TICKET_S25_2026_05_TO_GIFT: Item.ValueType  # 2295
+ITEM_EVENT_TICKET_S25_2026_06_TO_GIFT: Item.ValueType  # 2296
+ITEM_EVENT_TICKET_S25_2026_07_TO_GIFT: Item.ValueType  # 2297
+ITEM_EVENT_TICKET_S25_2026_08_TO_GIFT: Item.ValueType  # 2298
+ITEM_EVENT_TICKET_S25_2026_09_TO_GIFT: Item.ValueType  # 2299
+ITEM_EVENT_TICKET_S25_2026_10_TO_GIFT: Item.ValueType  # 2300
+ITEM_EVENT_TICKET_S25_2026_11_TO_GIFT: Item.ValueType  # 2301
+ITEM_EVENT_TICKET_S25_2026_12_TO_GIFT: Item.ValueType  # 2302
+ITEM_EVENT_TICKET_S25_2026_13_TO_GIFT: Item.ValueType  # 2303
+ITEM_EVENT_TICKET_S25_2026_14_TO_GIFT: Item.ValueType  # 2304
+ITEM_EVENT_TICKET_S25_2026_15_TO_GIFT: Item.ValueType  # 2305
+ITEM_EVENT_TICKET_S25_2026_16_TO_GIFT: Item.ValueType  # 2306
 Global___Item: _TypeAlias = Item  # noqa: Y015
 
 class _ItemUseTelemetryIds:
@@ -12562,6 +12660,14 @@ class _LocationCardEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Location
     LC_2026_LATW_POIPOLE: _LocationCard.ValueType  # 405
     LC_SPECIALBACKGROUND_BATIK_2026: _LocationCard.ValueType  # 406
     LC_SPECIALBACKGROUND_2026_10TH_ANNIVERSARY_001: _LocationCard.ValueType  # 407
+    LC_TPC30_IND: _LocationCard.ValueType  # 408
+    LC_TPC30_IN: _LocationCard.ValueType  # 409
+    LC_EMEA_MUSEUM_01: _LocationCard.ValueType  # 410
+    LC_EMEA_MUSEUM_02: _LocationCard.ValueType  # 411
+    LC_EMEA_MUSEUM_03: _LocationCard.ValueType  # 412
+    LC_EMEA_MUSEUM_04: _LocationCard.ValueType  # 413
+    LC_EMEA_MUSEUM_05: _LocationCard.ValueType  # 414
+    LC_EMEA_MUSEUM_06: _LocationCard.ValueType  # 415
 
 class LocationCard(_LocationCard, metaclass=_LocationCardEnumTypeWrapper): ...
 
@@ -12968,6 +13074,14 @@ LC_2026_LATW_STAKATAKA: LocationCard.ValueType  # 404
 LC_2026_LATW_POIPOLE: LocationCard.ValueType  # 405
 LC_SPECIALBACKGROUND_BATIK_2026: LocationCard.ValueType  # 406
 LC_SPECIALBACKGROUND_2026_10TH_ANNIVERSARY_001: LocationCard.ValueType  # 407
+LC_TPC30_IND: LocationCard.ValueType  # 408
+LC_TPC30_IN: LocationCard.ValueType  # 409
+LC_EMEA_MUSEUM_01: LocationCard.ValueType  # 410
+LC_EMEA_MUSEUM_02: LocationCard.ValueType  # 411
+LC_EMEA_MUSEUM_03: LocationCard.ValueType  # 412
+LC_EMEA_MUSEUM_04: LocationCard.ValueType  # 413
+LC_EMEA_MUSEUM_05: LocationCard.ValueType  # 414
+LC_EMEA_MUSEUM_06: LocationCard.ValueType  # 415
 Global___LocationCard: _TypeAlias = LocationCard  # noqa: Y015
 
 class _LoginActionTelemetryIds:
@@ -15818,6 +15932,16 @@ class _RaidLevelEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_RaidLevel.V
     RAID_LEVEL_5_MEGA_ENHANCED: _RaidLevel.ValueType  # 17
     RAID_LEVEL_COORDINATED_1: _RaidLevel.ValueType  # 18
     RAID_LEVEL_COORDINATED_2: _RaidLevel.ValueType  # 19
+    RAID_LEVEL_1_WORLDWIDE: _RaidLevel.ValueType  # 20
+    RAID_LEVEL_2_WORLDWIDE: _RaidLevel.ValueType  # 21
+    RAID_LEVEL_3_WORLDWIDE: _RaidLevel.ValueType  # 22
+    RAID_LEVEL_4_WORLDWIDE: _RaidLevel.ValueType  # 23
+    RAID_LEVEL_5_WORLDWIDE: _RaidLevel.ValueType  # 24
+    RAID_LEVEL_1_WORLDWIDE_ULTRA_BEAST: _RaidLevel.ValueType  # 25
+    RAID_LEVEL_2_WORLDWIDE_ULTRA_BEAST: _RaidLevel.ValueType  # 26
+    RAID_LEVEL_3_WORLDWIDE_ULTRA_BEAST: _RaidLevel.ValueType  # 27
+    RAID_LEVEL_4_WORLDWIDE_ULTRA_BEAST: _RaidLevel.ValueType  # 28
+    RAID_LEVEL_5_WORLDWIDE_ULTRA_BEAST: _RaidLevel.ValueType  # 29
 
 class RaidLevel(_RaidLevel, metaclass=_RaidLevelEnumTypeWrapper): ...
 
@@ -15841,6 +15965,16 @@ RAID_LEVEL_4_MEGA_ENHANCED: RaidLevel.ValueType  # 16
 RAID_LEVEL_5_MEGA_ENHANCED: RaidLevel.ValueType  # 17
 RAID_LEVEL_COORDINATED_1: RaidLevel.ValueType  # 18
 RAID_LEVEL_COORDINATED_2: RaidLevel.ValueType  # 19
+RAID_LEVEL_1_WORLDWIDE: RaidLevel.ValueType  # 20
+RAID_LEVEL_2_WORLDWIDE: RaidLevel.ValueType  # 21
+RAID_LEVEL_3_WORLDWIDE: RaidLevel.ValueType  # 22
+RAID_LEVEL_4_WORLDWIDE: RaidLevel.ValueType  # 23
+RAID_LEVEL_5_WORLDWIDE: RaidLevel.ValueType  # 24
+RAID_LEVEL_1_WORLDWIDE_ULTRA_BEAST: RaidLevel.ValueType  # 25
+RAID_LEVEL_2_WORLDWIDE_ULTRA_BEAST: RaidLevel.ValueType  # 26
+RAID_LEVEL_3_WORLDWIDE_ULTRA_BEAST: RaidLevel.ValueType  # 27
+RAID_LEVEL_4_WORLDWIDE_ULTRA_BEAST: RaidLevel.ValueType  # 28
+RAID_LEVEL_5_WORLDWIDE_ULTRA_BEAST: RaidLevel.ValueType  # 29
 Global___RaidLevel: _TypeAlias = RaidLevel  # noqa: Y015
 
 class _RaidLocationRequirement:
@@ -17428,6 +17562,37 @@ UNSET_TRAINER_ABILITY: TrainerAbility.ValueType  # 0
 ABILITY_PARTY_POWER_DAMAGE_DEALT: TrainerAbility.ValueType  # 1
 Global___TrainerAbility: _TypeAlias = TrainerAbility  # noqa: Y015
 
+class _TrainerBattleState:
+    ValueType = _typing.NewType("ValueType", _builtins.int)
+    V: _TypeAlias = ValueType  # noqa: Y015
+
+class _TrainerBattleStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_TrainerBattleState.ValueType], _builtins.type):
+    DESCRIPTOR: _descriptor.EnumDescriptor
+    BATTLE_STATE_UNSET: _TrainerBattleState.ValueType  # 0
+    STAGING_LOBBY: _TrainerBattleState.ValueType  # 1
+    BATTLE_ACTIVE: _TrainerBattleState.ValueType  # 2
+    REJOIN_LOBBY: _TrainerBattleState.ValueType  # 3
+    FULL_QUIT: _TrainerBattleState.ValueType  # 4
+    BATTLE_WON: _TrainerBattleState.ValueType  # 5
+    BATTLE_LOST: _TrainerBattleState.ValueType  # 6
+    REWARDED: _TrainerBattleState.ValueType  # 7
+    ACTIVE_ENCOUNTER: _TrainerBattleState.ValueType  # 8
+    FINISHED_ENCOUNTER: _TrainerBattleState.ValueType  # 9
+
+class TrainerBattleState(_TrainerBattleState, metaclass=_TrainerBattleStateEnumTypeWrapper): ...
+
+BATTLE_STATE_UNSET: TrainerBattleState.ValueType  # 0
+STAGING_LOBBY: TrainerBattleState.ValueType  # 1
+BATTLE_ACTIVE: TrainerBattleState.ValueType  # 2
+REJOIN_LOBBY: TrainerBattleState.ValueType  # 3
+FULL_QUIT: TrainerBattleState.ValueType  # 4
+BATTLE_WON: TrainerBattleState.ValueType  # 5
+BATTLE_LOST: TrainerBattleState.ValueType  # 6
+REWARDED: TrainerBattleState.ValueType  # 7
+ACTIVE_ENCOUNTER: TrainerBattleState.ValueType  # 8
+FINISHED_ENCOUNTER: TrainerBattleState.ValueType  # 9
+Global___TrainerBattleState: _TypeAlias = TrainerBattleState  # noqa: Y015
+
 class _TutorialCompletion:
     ValueType = _typing.NewType("ValueType", _builtins.int)
     V: _TypeAlias = ValueType  # noqa: Y015
@@ -17674,6 +17839,7 @@ class _TutorialCompletionEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[_Tu
     REACTIVATION_2026_FIELD_BOOK_ENCOUNTER: _TutorialCompletion.ValueType  # 210
     PREMIUM_GIFTING_ACKNOWLEDGEMENT_SHOWN: _TutorialCompletion.ValueType  # 211
     IBFC_DETAILS_MINIOR_TUTORIAL: _TutorialCompletion.ValueType  # 212
+    PREMIUM_GIFTING_PARTY_ACKNOWLEDGEMENT_SHOWN: _TutorialCompletion.ValueType  # 213
 
 class TutorialCompletion(_TutorialCompletion, metaclass=_TutorialCompletionEnumTypeWrapper): ...
 
@@ -17889,6 +18055,7 @@ LOCATION_CARD_BACKGROUND_PROFILE_TUTORIAL: TutorialCompletion.ValueType  # 209
 REACTIVATION_2026_FIELD_BOOK_ENCOUNTER: TutorialCompletion.ValueType  # 210
 PREMIUM_GIFTING_ACKNOWLEDGEMENT_SHOWN: TutorialCompletion.ValueType  # 211
 IBFC_DETAILS_MINIOR_TUTORIAL: TutorialCompletion.ValueType  # 212
+PREMIUM_GIFTING_PARTY_ACKNOWLEDGEMENT_SHOWN: TutorialCompletion.ValueType  # 213
 Global___TutorialCompletion: _TypeAlias = TutorialCompletion  # noqa: Y015
 
 class _TweenAction:
@@ -20749,6 +20916,8 @@ class ActionLogEntry(_message.Message):
     END_POKEMON_TRAINING_FIELD_NUMBER: _builtins.int
     ITEM_EXPIRATION_CONSOLATION_FIELD_NUMBER: _builtins.int
     SOFT_SFIDA_SUMMARY_FIELD_NUMBER: _builtins.int
+    RECEIVE_PREMIUM_GIFT_FIELD_NUMBER: _builtins.int
+    SEND_PREMIUM_GIFT_FIELD_NUMBER: _builtins.int
     TIMESTAMP_MS_FIELD_NUMBER: _builtins.int
     SFIDA_FIELD_NUMBER: _builtins.int
     timestamp_ms: _builtins.int
@@ -20831,6 +21000,10 @@ class ActionLogEntry(_message.Message):
     def item_expiration_consolation(self) -> Global___ItemExpirationConsolationLogEntry: ...
     @_builtins.property
     def soft_sfida_summary(self) -> Global___SoftSfidaLogEntry: ...
+    @_builtins.property
+    def receive_premium_gift(self) -> Global___ReceivePremiumGiftLogEntry: ...
+    @_builtins.property
+    def send_premium_gift(self) -> Global___SendPremiumGiftLogEntry: ...
     def __init__(
         self,
         *,
@@ -20873,14 +21046,16 @@ class ActionLogEntry(_message.Message):
         end_pokemon_training: Global___EndPokemonTrainingLogEntry | None = ...,
         item_expiration_consolation: Global___ItemExpirationConsolationLogEntry | None = ...,
         soft_sfida_summary: Global___SoftSfidaLogEntry | None = ...,
+        receive_premium_gift: Global___ReceivePremiumGiftLogEntry | None = ...,
+        send_premium_gift: Global___SendPremiumGiftLogEntry | None = ...,
         timestamp_ms: _builtins.int = ...,
         sfida: _builtins.bool = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["Action", b"Action", "beluga_transfer", b"beluga_transfer", "bread_battle_rewards", b"bread_battle_rewards", "bread_battle_upgrade_rewards", b"bread_battle_upgrade_rewards", "buddy_consumables", b"buddy_consumables", "buddy_pokemon", b"buddy_pokemon", "butterfly_collector_rewards", b"butterfly_collector_rewards", "catch_pokemon", b"catch_pokemon", "claim_event_pass_rewards", b"claim_event_pass_rewards", "combat", b"combat", "complete_quest", b"complete_quest", "complete_quest_pokemon_encounter", b"complete_quest_pokemon_encounter", "complete_quest_stamp_card", b"complete_quest_stamp_card", "complete_referral_milestone", b"complete_referral_milestone", "complete_route_play", b"complete_route_play", "consume_stickers", b"consume_stickers", "daily_adventure_incense", b"daily_adventure_incense", "end_pokemon_training", b"end_pokemon_training", "event_pass_update", b"event_pass_update", "fitness_rewards", b"fitness_rewards", "fort_search", b"fort_search", "invasion_victory", b"invasion_victory", "iris_social_interaction", b"iris_social_interaction", "item_expiration_consolation", b"item_expiration_consolation", "loot_station", b"loot_station", "open_gift", b"open_gift", "passcode_rewards", b"passcode_rewards", "purify_pokemon", b"purify_pokemon", "raid_rewards", b"raid_rewards", "send_gift", b"send_gift", "soft_sfida_summary", b"soft_sfida_summary", "stamp_collection_progress", b"stamp_collection_progress", "stamp_collection_rewards", b"stamp_collection_rewards", "tappable_rewards", b"tappable_rewards", "trading", b"trading", "use_non_combat_move", b"use_non_combat_move", "vs_seeker_complete_season", b"vs_seeker_complete_season", "vs_seeker_set", b"vs_seeker_set", "vs_seeker_win_rewards", b"vs_seeker_win_rewards", "webstore_rewards", b"webstore_rewards"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["Action", b"Action", "beluga_transfer", b"beluga_transfer", "bread_battle_rewards", b"bread_battle_rewards", "bread_battle_upgrade_rewards", b"bread_battle_upgrade_rewards", "buddy_consumables", b"buddy_consumables", "buddy_pokemon", b"buddy_pokemon", "butterfly_collector_rewards", b"butterfly_collector_rewards", "catch_pokemon", b"catch_pokemon", "claim_event_pass_rewards", b"claim_event_pass_rewards", "combat", b"combat", "complete_quest", b"complete_quest", "complete_quest_pokemon_encounter", b"complete_quest_pokemon_encounter", "complete_quest_stamp_card", b"complete_quest_stamp_card", "complete_referral_milestone", b"complete_referral_milestone", "complete_route_play", b"complete_route_play", "consume_stickers", b"consume_stickers", "daily_adventure_incense", b"daily_adventure_incense", "end_pokemon_training", b"end_pokemon_training", "event_pass_update", b"event_pass_update", "fitness_rewards", b"fitness_rewards", "fort_search", b"fort_search", "invasion_victory", b"invasion_victory", "iris_social_interaction", b"iris_social_interaction", "item_expiration_consolation", b"item_expiration_consolation", "loot_station", b"loot_station", "open_gift", b"open_gift", "passcode_rewards", b"passcode_rewards", "purify_pokemon", b"purify_pokemon", "raid_rewards", b"raid_rewards", "receive_premium_gift", b"receive_premium_gift", "send_gift", b"send_gift", "send_premium_gift", b"send_premium_gift", "soft_sfida_summary", b"soft_sfida_summary", "stamp_collection_progress", b"stamp_collection_progress", "stamp_collection_rewards", b"stamp_collection_rewards", "tappable_rewards", b"tappable_rewards", "trading", b"trading", "use_non_combat_move", b"use_non_combat_move", "vs_seeker_complete_season", b"vs_seeker_complete_season", "vs_seeker_set", b"vs_seeker_set", "vs_seeker_win_rewards", b"vs_seeker_win_rewards", "webstore_rewards", b"webstore_rewards"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["Action", b"Action", "beluga_transfer", b"beluga_transfer", "bread_battle_rewards", b"bread_battle_rewards", "bread_battle_upgrade_rewards", b"bread_battle_upgrade_rewards", "buddy_consumables", b"buddy_consumables", "buddy_pokemon", b"buddy_pokemon", "butterfly_collector_rewards", b"butterfly_collector_rewards", "catch_pokemon", b"catch_pokemon", "claim_event_pass_rewards", b"claim_event_pass_rewards", "combat", b"combat", "complete_quest", b"complete_quest", "complete_quest_pokemon_encounter", b"complete_quest_pokemon_encounter", "complete_quest_stamp_card", b"complete_quest_stamp_card", "complete_referral_milestone", b"complete_referral_milestone", "complete_route_play", b"complete_route_play", "consume_stickers", b"consume_stickers", "daily_adventure_incense", b"daily_adventure_incense", "end_pokemon_training", b"end_pokemon_training", "event_pass_update", b"event_pass_update", "fitness_rewards", b"fitness_rewards", "fort_search", b"fort_search", "invasion_victory", b"invasion_victory", "iris_social_interaction", b"iris_social_interaction", "item_expiration_consolation", b"item_expiration_consolation", "loot_station", b"loot_station", "open_gift", b"open_gift", "passcode_rewards", b"passcode_rewards", "purify_pokemon", b"purify_pokemon", "raid_rewards", b"raid_rewards", "send_gift", b"send_gift", "sfida", b"sfida", "soft_sfida_summary", b"soft_sfida_summary", "stamp_collection_progress", b"stamp_collection_progress", "stamp_collection_rewards", b"stamp_collection_rewards", "tappable_rewards", b"tappable_rewards", "timestamp_ms", b"timestamp_ms", "trading", b"trading", "use_non_combat_move", b"use_non_combat_move", "vs_seeker_complete_season", b"vs_seeker_complete_season", "vs_seeker_set", b"vs_seeker_set", "vs_seeker_win_rewards", b"vs_seeker_win_rewards", "webstore_rewards", b"webstore_rewards"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["Action", b"Action", "beluga_transfer", b"beluga_transfer", "bread_battle_rewards", b"bread_battle_rewards", "bread_battle_upgrade_rewards", b"bread_battle_upgrade_rewards", "buddy_consumables", b"buddy_consumables", "buddy_pokemon", b"buddy_pokemon", "butterfly_collector_rewards", b"butterfly_collector_rewards", "catch_pokemon", b"catch_pokemon", "claim_event_pass_rewards", b"claim_event_pass_rewards", "combat", b"combat", "complete_quest", b"complete_quest", "complete_quest_pokemon_encounter", b"complete_quest_pokemon_encounter", "complete_quest_stamp_card", b"complete_quest_stamp_card", "complete_referral_milestone", b"complete_referral_milestone", "complete_route_play", b"complete_route_play", "consume_stickers", b"consume_stickers", "daily_adventure_incense", b"daily_adventure_incense", "end_pokemon_training", b"end_pokemon_training", "event_pass_update", b"event_pass_update", "fitness_rewards", b"fitness_rewards", "fort_search", b"fort_search", "invasion_victory", b"invasion_victory", "iris_social_interaction", b"iris_social_interaction", "item_expiration_consolation", b"item_expiration_consolation", "loot_station", b"loot_station", "open_gift", b"open_gift", "passcode_rewards", b"passcode_rewards", "purify_pokemon", b"purify_pokemon", "raid_rewards", b"raid_rewards", "receive_premium_gift", b"receive_premium_gift", "send_gift", b"send_gift", "send_premium_gift", b"send_premium_gift", "sfida", b"sfida", "soft_sfida_summary", b"soft_sfida_summary", "stamp_collection_progress", b"stamp_collection_progress", "stamp_collection_rewards", b"stamp_collection_rewards", "tappable_rewards", b"tappable_rewards", "timestamp_ms", b"timestamp_ms", "trading", b"trading", "use_non_combat_move", b"use_non_combat_move", "vs_seeker_complete_season", b"vs_seeker_complete_season", "vs_seeker_set", b"vs_seeker_set", "vs_seeker_win_rewards", b"vs_seeker_win_rewards", "webstore_rewards", b"webstore_rewards"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    _WhichOneofReturnType_Action: _TypeAlias = _typing.Literal["catch_pokemon", "fort_search", "buddy_pokemon", "raid_rewards", "passcode_rewards", "complete_quest", "complete_quest_stamp_card", "complete_quest_pokemon_encounter", "beluga_transfer", "open_gift", "send_gift", "trading", "fitness_rewards", "combat", "purify_pokemon", "invasion_victory", "vs_seeker_set", "vs_seeker_complete_season", "vs_seeker_win_rewards", "buddy_consumables", "complete_referral_milestone", "daily_adventure_incense", "complete_route_play", "butterfly_collector_rewards", "webstore_rewards", "use_non_combat_move", "consume_stickers", "loot_station", "iris_social_interaction", "bread_battle_rewards", "bread_battle_upgrade_rewards", "event_pass_update", "claim_event_pass_rewards", "stamp_collection_rewards", "stamp_collection_progress", "tappable_rewards", "end_pokemon_training", "item_expiration_consolation", "soft_sfida_summary"]  # noqa: Y015
+    _WhichOneofReturnType_Action: _TypeAlias = _typing.Literal["catch_pokemon", "fort_search", "buddy_pokemon", "raid_rewards", "passcode_rewards", "complete_quest", "complete_quest_stamp_card", "complete_quest_pokemon_encounter", "beluga_transfer", "open_gift", "send_gift", "trading", "fitness_rewards", "combat", "purify_pokemon", "invasion_victory", "vs_seeker_set", "vs_seeker_complete_season", "vs_seeker_win_rewards", "buddy_consumables", "complete_referral_milestone", "daily_adventure_incense", "complete_route_play", "butterfly_collector_rewards", "webstore_rewards", "use_non_combat_move", "consume_stickers", "loot_station", "iris_social_interaction", "bread_battle_rewards", "bread_battle_upgrade_rewards", "event_pass_update", "claim_event_pass_rewards", "stamp_collection_rewards", "stamp_collection_progress", "tappable_rewards", "end_pokemon_training", "item_expiration_consolation", "soft_sfida_summary", "receive_premium_gift", "send_premium_gift"]  # noqa: Y015
     _WhichOneofArgType_Action: _TypeAlias = _typing.Literal["Action", b"Action"]  # noqa: Y015
     def WhichOneof(self, oneof_group: _WhichOneofArgType_Action) -> _WhichOneofReturnType_Action | None: ...
 
@@ -33260,11 +33435,29 @@ class BattleAnimationConfigProto(_message.Message):
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
         def WhichOneof(self, oneof_group: _Never) -> None: ...
 
+    @_typing.final
+    class UiAnimationSettings(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        SWAP_TRAY_SLIDE_IN_ANIMATION_SECONDS_FIELD_NUMBER: _builtins.int
+        swap_tray_slide_in_animation_seconds: _builtins.float
+        def __init__(
+            self,
+            *,
+            swap_tray_slide_in_animation_seconds: _builtins.float = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["swap_tray_slide_in_animation_seconds", b"swap_tray_slide_in_animation_seconds"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
     FAST_ATTACK_SETTINGS_FIELD_NUMBER: _builtins.int
     PROJECTED_HEALTH_ANIMATION_DURATION_SECONDS_FIELD_NUMBER: _builtins.int
     UI_CAMERA_ANIMATION_SETTINGS_FIELD_NUMBER: _builtins.int
     CHARGE_MOVE_SEQUENCE_SETTINGS_FIELD_NUMBER: _builtins.int
     MISSED_FAST_ATTACK_RECOVERY_SETTINGS_FIELD_NUMBER: _builtins.int
+    UI_ANIMATION_SETTINGS_FIELD_NUMBER: _builtins.int
     projected_health_animation_duration_seconds: _builtins.float
     @_builtins.property
     def fast_attack_settings(self) -> Global___BattleAnimationConfigProto.AttackAnimationSettings: ...
@@ -33274,6 +33467,8 @@ class BattleAnimationConfigProto(_message.Message):
     def charge_move_sequence_settings(self) -> Global___BattleAnimationConfigProto.ChargeMoveSequenceSettings: ...
     @_builtins.property
     def missed_fast_attack_recovery_settings(self) -> Global___BattleAnimationConfigProto.MissedFastAttackRecoverySettings: ...
+    @_builtins.property
+    def ui_animation_settings(self) -> Global___BattleAnimationConfigProto.UiAnimationSettings: ...
     def __init__(
         self,
         *,
@@ -33282,10 +33477,11 @@ class BattleAnimationConfigProto(_message.Message):
         ui_camera_animation_settings: Global___BattleAnimationConfigProto.UiCameraAnimationSettings | None = ...,
         charge_move_sequence_settings: Global___BattleAnimationConfigProto.ChargeMoveSequenceSettings | None = ...,
         missed_fast_attack_recovery_settings: Global___BattleAnimationConfigProto.MissedFastAttackRecoverySettings | None = ...,
+        ui_animation_settings: Global___BattleAnimationConfigProto.UiAnimationSettings | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["charge_move_sequence_settings", b"charge_move_sequence_settings", "fast_attack_settings", b"fast_attack_settings", "missed_fast_attack_recovery_settings", b"missed_fast_attack_recovery_settings", "ui_camera_animation_settings", b"ui_camera_animation_settings"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["charge_move_sequence_settings", b"charge_move_sequence_settings", "fast_attack_settings", b"fast_attack_settings", "missed_fast_attack_recovery_settings", b"missed_fast_attack_recovery_settings", "ui_animation_settings", b"ui_animation_settings", "ui_camera_animation_settings", b"ui_camera_animation_settings"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["charge_move_sequence_settings", b"charge_move_sequence_settings", "fast_attack_settings", b"fast_attack_settings", "missed_fast_attack_recovery_settings", b"missed_fast_attack_recovery_settings", "projected_health_animation_duration_seconds", b"projected_health_animation_duration_seconds", "ui_camera_animation_settings", b"ui_camera_animation_settings"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["charge_move_sequence_settings", b"charge_move_sequence_settings", "fast_attack_settings", b"fast_attack_settings", "missed_fast_attack_recovery_settings", b"missed_fast_attack_recovery_settings", "projected_health_animation_duration_seconds", b"projected_health_animation_duration_seconds", "ui_animation_settings", b"ui_animation_settings", "ui_camera_animation_settings", b"ui_camera_animation_settings"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -33460,6 +33656,7 @@ class BattleEventProto(_message.Message):
         EVENT_TYPE_HOLISTIC_COUNTDOWN: BattleEventProto._EventType.ValueType  # 43
         EVENT_TYPE_BATTLE_TOAST: BattleEventProto._EventType.ValueType  # 44
         EVENT_TYPE_RECORD_LATENCY: BattleEventProto._EventType.ValueType  # 45
+        EVENT_TYPE_TRIGGER_CLOCK_SYNC: BattleEventProto._EventType.ValueType  # 47
 
     class EventType(_EventType, metaclass=_EventTypeEnumTypeWrapper): ...
     UNSET_EVENT_TYPE: BattleEventProto.EventType.ValueType  # 0
@@ -33503,6 +33700,7 @@ class BattleEventProto(_message.Message):
     EVENT_TYPE_HOLISTIC_COUNTDOWN: BattleEventProto.EventType.ValueType  # 43
     EVENT_TYPE_BATTLE_TOAST: BattleEventProto.EventType.ValueType  # 44
     EVENT_TYPE_RECORD_LATENCY: BattleEventProto.EventType.ValueType  # 45
+    EVENT_TYPE_TRIGGER_CLOCK_SYNC: BattleEventProto.EventType.ValueType  # 47
 
     @_typing.final
     class RecordLatency(_message.Message):
@@ -33670,11 +33868,13 @@ class BattleEventProto(_message.Message):
         MOVE_FIELD_NUMBER: _builtins.int
         TYPE_FIELD_NUMBER: _builtins.int
         TARGET_ID_FIELD_NUMBER: _builtins.int
+        SOURCE_POKEMON_ID_FIELD_NUMBER: _builtins.int
         attack_type: Global___BattlePokemonProto.MoveType.ValueType
         score: _builtins.float
         move: Global___HoloPokemonMove.ValueType
         type: Global___HoloPokemonType.ValueType
         target_id: _builtins.str
+        source_pokemon_id: _builtins.int
         def __init__(
             self,
             *,
@@ -33683,10 +33883,11 @@ class BattleEventProto(_message.Message):
             move: Global___HoloPokemonMove.ValueType = ...,
             type: Global___HoloPokemonType.ValueType = ...,
             target_id: _builtins.str = ...,
+            source_pokemon_id: _builtins.int = ...,
         ) -> None: ...
         _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
         def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["attack_type", b"attack_type", "move", b"move", "score", b"score", "target_id", b"target_id", "type", b"type"]  # noqa: Y015
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["attack_type", b"attack_type", "move", b"move", "score", b"score", "source_pokemon_id", b"source_pokemon_id", "target_id", b"target_id", "type", b"type"]  # noqa: Y015
         def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
         def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -34656,6 +34857,7 @@ class BattleEventProto(_message.Message):
     HOLISTIC_COUNTDOWN_FIELD_NUMBER: _builtins.int
     BATTLE_TOAST_FIELD_NUMBER: _builtins.int
     RECORD_LATENCY_FIELD_NUMBER: _builtins.int
+    TRIGGER_CLOCK_SYNC_FIELD_NUMBER: _builtins.int
     TYPE_FIELD_NUMBER: _builtins.int
     ACTOR_ID_FIELD_NUMBER: _builtins.int
     TURN_FIELD_NUMBER: _builtins.int
@@ -34726,6 +34928,8 @@ class BattleEventProto(_message.Message):
     def battle_toast(self) -> Global___BattleEventProto.BattleToast: ...
     @_builtins.property
     def record_latency(self) -> Global___BattleEventProto.RecordLatency: ...
+    @_builtins.property
+    def trigger_clock_sync(self) -> Global___TriggerClockSync: ...
     def __init__(
         self,
         *,
@@ -34758,17 +34962,18 @@ class BattleEventProto(_message.Message):
         holistic_countdown: Global___BattleEventProto.HolisticCountdown | None = ...,
         battle_toast: Global___BattleEventProto.BattleToast | None = ...,
         record_latency: Global___BattleEventProto.RecordLatency | None = ...,
+        trigger_clock_sync: Global___TriggerClockSync | None = ...,
         type: Global___BattleEventProto.EventType.ValueType = ...,
         actor_id: _builtins.str = ...,
         turn: _builtins.int = ...,
         serial: _builtins.int = ...,
         client_event_id: _builtins.int = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["BattleEvent", b"BattleEvent", "ability_trigger", b"ability_trigger", "attack", b"attack", "attack_boost", b"attack_boost", "attack_telegraph", b"attack_telegraph", "battle_end", b"battle_end", "battle_join", b"battle_join", "battle_log_message", b"battle_log_message", "battle_quit", b"battle_quit", "battle_spin_pokeball", b"battle_spin_pokeball", "battle_toast", b"battle_toast", "bread_move", b"bread_move", "cinematic", b"cinematic", "consensus", b"consensus", "countdown", b"countdown", "dodge", b"dodge", "dodge_success", b"dodge_success", "fast_move_prediction_override", b"fast_move_prediction_override", "flinch", b"flinch", "holistic_countdown", b"holistic_countdown", "item", b"item", "record_latency", b"record_latency", "shield", b"shield", "sideline_action", b"sideline_action", "start_battle", b"start_battle", "stat_change", b"stat_change", "swap_pokemon", b"swap_pokemon", "trainer_ability", b"trainer_ability", "transform", b"transform", "window", b"window"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["BattleEvent", b"BattleEvent", "ability_trigger", b"ability_trigger", "attack", b"attack", "attack_boost", b"attack_boost", "attack_telegraph", b"attack_telegraph", "battle_end", b"battle_end", "battle_join", b"battle_join", "battle_log_message", b"battle_log_message", "battle_quit", b"battle_quit", "battle_spin_pokeball", b"battle_spin_pokeball", "battle_toast", b"battle_toast", "bread_move", b"bread_move", "cinematic", b"cinematic", "consensus", b"consensus", "countdown", b"countdown", "dodge", b"dodge", "dodge_success", b"dodge_success", "fast_move_prediction_override", b"fast_move_prediction_override", "flinch", b"flinch", "holistic_countdown", b"holistic_countdown", "item", b"item", "record_latency", b"record_latency", "shield", b"shield", "sideline_action", b"sideline_action", "start_battle", b"start_battle", "stat_change", b"stat_change", "swap_pokemon", b"swap_pokemon", "trainer_ability", b"trainer_ability", "transform", b"transform", "trigger_clock_sync", b"trigger_clock_sync", "window", b"window"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["BattleEvent", b"BattleEvent", "ability_trigger", b"ability_trigger", "actor_id", b"actor_id", "attack", b"attack", "attack_boost", b"attack_boost", "attack_telegraph", b"attack_telegraph", "battle_end", b"battle_end", "battle_join", b"battle_join", "battle_log_message", b"battle_log_message", "battle_quit", b"battle_quit", "battle_spin_pokeball", b"battle_spin_pokeball", "battle_toast", b"battle_toast", "bread_move", b"bread_move", "cinematic", b"cinematic", "client_event_id", b"client_event_id", "consensus", b"consensus", "countdown", b"countdown", "dodge", b"dodge", "dodge_success", b"dodge_success", "fast_move_prediction_override", b"fast_move_prediction_override", "flinch", b"flinch", "holistic_countdown", b"holistic_countdown", "item", b"item", "record_latency", b"record_latency", "serial", b"serial", "shield", b"shield", "sideline_action", b"sideline_action", "start_battle", b"start_battle", "stat_change", b"stat_change", "swap_pokemon", b"swap_pokemon", "trainer_ability", b"trainer_ability", "transform", b"transform", "turn", b"turn", "type", b"type", "window", b"window"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["BattleEvent", b"BattleEvent", "ability_trigger", b"ability_trigger", "actor_id", b"actor_id", "attack", b"attack", "attack_boost", b"attack_boost", "attack_telegraph", b"attack_telegraph", "battle_end", b"battle_end", "battle_join", b"battle_join", "battle_log_message", b"battle_log_message", "battle_quit", b"battle_quit", "battle_spin_pokeball", b"battle_spin_pokeball", "battle_toast", b"battle_toast", "bread_move", b"bread_move", "cinematic", b"cinematic", "client_event_id", b"client_event_id", "consensus", b"consensus", "countdown", b"countdown", "dodge", b"dodge", "dodge_success", b"dodge_success", "fast_move_prediction_override", b"fast_move_prediction_override", "flinch", b"flinch", "holistic_countdown", b"holistic_countdown", "item", b"item", "record_latency", b"record_latency", "serial", b"serial", "shield", b"shield", "sideline_action", b"sideline_action", "start_battle", b"start_battle", "stat_change", b"stat_change", "swap_pokemon", b"swap_pokemon", "trainer_ability", b"trainer_ability", "transform", b"transform", "trigger_clock_sync", b"trigger_clock_sync", "turn", b"turn", "type", b"type", "window", b"window"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    _WhichOneofReturnType_BattleEvent: _TypeAlias = _typing.Literal["battle_join", "battle_quit", "attack", "dodge", "shield", "swap_pokemon", "item", "trainer_ability", "stat_change", "start_battle", "transform", "ability_trigger", "battle_end", "countdown", "dodge_success", "flinch", "bread_move", "sideline_action", "attack_telegraph", "cinematic", "consensus", "attack_boost", "window", "battle_log_message", "battle_spin_pokeball", "fast_move_prediction_override", "holistic_countdown", "battle_toast", "record_latency"]  # noqa: Y015
+    _WhichOneofReturnType_BattleEvent: _TypeAlias = _typing.Literal["battle_join", "battle_quit", "attack", "dodge", "shield", "swap_pokemon", "item", "trainer_ability", "stat_change", "start_battle", "transform", "ability_trigger", "battle_end", "countdown", "dodge_success", "flinch", "bread_move", "sideline_action", "attack_telegraph", "cinematic", "consensus", "attack_boost", "window", "battle_log_message", "battle_spin_pokeball", "fast_move_prediction_override", "holistic_countdown", "battle_toast", "record_latency", "trigger_clock_sync"]  # noqa: Y015
     _WhichOneofArgType_BattleEvent: _TypeAlias = _typing.Literal["BattleEvent", b"BattleEvent"]  # noqa: Y015
     def WhichOneof(self, oneof_group: _WhichOneofArgType_BattleEvent) -> _WhichOneofReturnType_BattleEvent | None: ...
 
@@ -35371,6 +35576,64 @@ class BattlePartySettingsProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___BattlePartySettingsProto: _TypeAlias = BattlePartySettingsProto  # noqa: Y015
+
+@_typing.final
+class BattlePaymentProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _PaymentState:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _PaymentStateEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[BattlePaymentProto._PaymentState.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: BattlePaymentProto._PaymentState.ValueType  # 0
+        PROMISED: BattlePaymentProto._PaymentState.ValueType  # 1
+        PAID: BattlePaymentProto._PaymentState.ValueType  # 2
+
+    class PaymentState(_PaymentState, metaclass=_PaymentStateEnumTypeWrapper): ...
+    UNSET: BattlePaymentProto.PaymentState.ValueType  # 0
+    PROMISED: BattlePaymentProto.PaymentState.ValueType  # 1
+    PAID: BattlePaymentProto.PaymentState.ValueType  # 2
+
+    PAYMENT_STATE_FIELD_NUMBER: _builtins.int
+    ITEM_REQUIREMENT_FIELD_NUMBER: _builtins.int
+    payment_state: Global___BattlePaymentProto.PaymentState.ValueType
+    @_builtins.property
+    def item_requirement(self) -> Global___ItemRequirementProto: ...
+    def __init__(
+        self,
+        *,
+        payment_state: Global___BattlePaymentProto.PaymentState.ValueType = ...,
+        item_requirement: Global___ItemRequirementProto | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["item_requirement", b"item_requirement"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["item_requirement", b"item_requirement", "payment_state", b"payment_state"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___BattlePaymentProto: _TypeAlias = BattlePaymentProto  # noqa: Y015
+
+@_typing.final
+class BattlePaymentsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    BATTLE_PAYMENTS_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def battle_payments(self) -> _containers.RepeatedCompositeFieldContainer[Global___BattlePaymentProto]: ...
+    def __init__(
+        self,
+        *,
+        battle_payments: _abc.Iterable[Global___BattlePaymentProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["battle_payments", b"battle_payments"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___BattlePaymentsProto: _TypeAlias = BattlePaymentsProto  # noqa: Y015
 
 @_typing.final
 class BattlePokemonProto(_message.Message):
@@ -43911,6 +44174,7 @@ class ClientBattleConfigProto(_message.Message):
     SUBMIT_TURN_NUMBER_WITH_PLAYER_ACTION_FIELD_NUMBER: _builtins.int
     PRE_RESPONSE_INPUT_BLOCK_DURATION_MS_FIELD_NUMBER: _builtins.int
     GET_STATE_TIMEOUT_MS_FIELD_NUMBER: _builtins.int
+    SWAP_BUTTON_END_OF_COOLDOWN_INPUT_BLOCK_DURATION_MS_FIELD_NUMBER: _builtins.int
     battle_end_timeout_threshold_ms: _builtins.int
     bad_network_warning_threshold_turns: _builtins.int
     dead_network_disconnect_threshold_turns: _builtins.int
@@ -43919,6 +44183,7 @@ class ClientBattleConfigProto(_message.Message):
     submit_turn_number_with_player_action: _builtins.bool
     pre_response_input_block_duration_ms: _builtins.int
     get_state_timeout_ms: _builtins.int
+    swap_button_end_of_cooldown_input_block_duration_ms: _builtins.int
     @_builtins.property
     def latency_tracking_settings(self) -> Global___LatencyTrackingSettingsProto: ...
     def __init__(
@@ -43933,10 +44198,11 @@ class ClientBattleConfigProto(_message.Message):
         submit_turn_number_with_player_action: _builtins.bool = ...,
         pre_response_input_block_duration_ms: _builtins.int = ...,
         get_state_timeout_ms: _builtins.int = ...,
+        swap_button_end_of_cooldown_input_block_duration_ms: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["latency_tracking_settings", b"latency_tracking_settings"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["bad_network_warning_threshold_turns", b"bad_network_warning_threshold_turns", "battle_end_timeout_threshold_ms", b"battle_end_timeout_threshold_ms", "dead_network_disconnect_threshold_turns", b"dead_network_disconnect_threshold_turns", "enable_hold_to_tap", b"enable_hold_to_tap", "get_state_timeout_ms", b"get_state_timeout_ms", "latency_tracking_settings", b"latency_tracking_settings", "no_opponent_connection_disconnect_threshold_turns", b"no_opponent_connection_disconnect_threshold_turns", "pre_response_input_block_duration_ms", b"pre_response_input_block_duration_ms", "submit_turn_number_with_player_action", b"submit_turn_number_with_player_action"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["bad_network_warning_threshold_turns", b"bad_network_warning_threshold_turns", "battle_end_timeout_threshold_ms", b"battle_end_timeout_threshold_ms", "dead_network_disconnect_threshold_turns", b"dead_network_disconnect_threshold_turns", "enable_hold_to_tap", b"enable_hold_to_tap", "get_state_timeout_ms", b"get_state_timeout_ms", "latency_tracking_settings", b"latency_tracking_settings", "no_opponent_connection_disconnect_threshold_turns", b"no_opponent_connection_disconnect_threshold_turns", "pre_response_input_block_duration_ms", b"pre_response_input_block_duration_ms", "submit_turn_number_with_player_action", b"submit_turn_number_with_player_action", "swap_button_end_of_cooldown_input_block_duration_ms", b"swap_button_end_of_cooldown_input_block_duration_ms"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -44496,10 +44762,13 @@ class ClientMapObjectsInteractionRangeSettingsProto(_message.Message):
     FAR_INTERACTION_RANGE_METERS_FIELD_NUMBER: _builtins.int
     REMOTE_INTERACTION_RANGE_METERS_FIELD_NUMBER: _builtins.int
     WHITE_PULSE_RADIUS_METERS_FIELD_NUMBER: _builtins.int
+    GYM_INTERACTION_RANGE_METERS_RAID_LEVEL_OVERRIDE_FIELD_NUMBER: _builtins.int
     interaction_range_meters: _builtins.float
     far_interaction_range_meters: _builtins.float
     remote_interaction_range_meters: _builtins.float
     white_pulse_radius_meters: _builtins.float
+    @_builtins.property
+    def gym_interaction_range_meters_raid_level_override(self) -> _containers.RepeatedCompositeFieldContainer[Global___GymInteractionRangeRaidLevelOverrideProto]: ...
     def __init__(
         self,
         *,
@@ -44507,10 +44776,11 @@ class ClientMapObjectsInteractionRangeSettingsProto(_message.Message):
         far_interaction_range_meters: _builtins.float = ...,
         remote_interaction_range_meters: _builtins.float = ...,
         white_pulse_radius_meters: _builtins.float = ...,
+        gym_interaction_range_meters_raid_level_override: _abc.Iterable[Global___GymInteractionRangeRaidLevelOverrideProto] | None = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["far_interaction_range_meters", b"far_interaction_range_meters", "interaction_range_meters", b"interaction_range_meters", "remote_interaction_range_meters", b"remote_interaction_range_meters", "white_pulse_radius_meters", b"white_pulse_radius_meters"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["far_interaction_range_meters", b"far_interaction_range_meters", "gym_interaction_range_meters_raid_level_override", b"gym_interaction_range_meters_raid_level_override", "interaction_range_meters", b"interaction_range_meters", "remote_interaction_range_meters", b"remote_interaction_range_meters", "white_pulse_radius_meters", b"white_pulse_radius_meters"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -50469,9 +50739,11 @@ class CompleteRaidBattleOutProto(_message.Message):
     BATTLE_RESULTS_FIELD_NUMBER: _builtins.int
     IS_VICTORY_FIELD_NUMBER: _builtins.int
     BOOSTABLE_XP_TOKEN_FIELD_NUMBER: _builtins.int
+    TRAINER_BATTLE_STATE_FIELD_NUMBER: _builtins.int
     result: Global___CompleteRaidBattleOutProto.Result.ValueType
     is_victory: _builtins.bool
     boostable_xp_token: _builtins.str
+    trainer_battle_state: Global___TrainerBattleState.ValueType
     @_builtins.property
     def battle_results(self) -> Global___BattleResultsProto: ...
     def __init__(
@@ -50481,10 +50753,11 @@ class CompleteRaidBattleOutProto(_message.Message):
         battle_results: Global___BattleResultsProto | None = ...,
         is_victory: _builtins.bool = ...,
         boostable_xp_token: _builtins.str = ...,
+        trainer_battle_state: Global___TrainerBattleState.ValueType = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["battle_results", b"battle_results"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["battle_results", b"battle_results", "boostable_xp_token", b"boostable_xp_token", "is_victory", b"is_victory", "result", b"result"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["battle_results", b"battle_results", "boostable_xp_token", b"boostable_xp_token", "is_victory", b"is_victory", "result", b"result", "trainer_battle_state", b"trainer_battle_state"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -54756,6 +55029,28 @@ class DayOfWeekAndTimeProto(_message.Message):
 Global___DayOfWeekAndTimeProto: _TypeAlias = DayOfWeekAndTimeProto  # noqa: Y015
 
 @_typing.final
+class DayOfYearProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    MONTH_FIELD_NUMBER: _builtins.int
+    DAY_FIELD_NUMBER: _builtins.int
+    month: _builtins.int
+    day: _builtins.int
+    def __init__(
+        self,
+        *,
+        month: _builtins.int = ...,
+        day: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["day", b"day", "month", b"month"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___DayOfYearProto: _TypeAlias = DayOfYearProto  # noqa: Y015
+
+@_typing.final
 class DaysWithARowQuestProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -58983,6 +59278,26 @@ Global___EncounterProto: _TypeAlias = EncounterProto  # noqa: Y015
 class EncounterSettingsProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
+    @_typing.final
+    class SpeciesActionPeriodOverrideEntry(_message.Message):
+        DESCRIPTOR: _descriptor.Descriptor
+
+        KEY_FIELD_NUMBER: _builtins.int
+        VALUE_FIELD_NUMBER: _builtins.int
+        key: _builtins.int
+        value: _builtins.int
+        def __init__(
+            self,
+            *,
+            key: _builtins.int = ...,
+            value: _builtins.int = ...,
+        ) -> None: ...
+        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+        _ClearFieldArgType: _TypeAlias = _typing.Literal["key", b"key", "value", b"value"]  # noqa: Y015
+        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+        def WhichOneof(self, oneof_group: _Never) -> None: ...
+
     SPIN_BONUS_THRESHOLD_FIELD_NUMBER: _builtins.int
     EXCELLENT_THROW_THRESHOLD_FIELD_NUMBER: _builtins.int
     GREAT_THROW_THRESHOLD_FIELD_NUMBER: _builtins.int
@@ -59017,6 +59332,8 @@ class EncounterSettingsProto(_message.Message):
     HIGHLIGHT_STREAK_REWARDS_FIELD_NUMBER: _builtins.int
     PLAYER_ACTIVITY_CATCH_LEGENDARY_POKEMON_ENABLED_FIELD_NUMBER: _builtins.int
     TUTORIAL_FIELD_NUMBER: _builtins.int
+    ACTION_CHECK_PERIOD_MS_FIELD_NUMBER: _builtins.int
+    SPECIES_ACTION_PERIOD_OVERRIDE_FIELD_NUMBER: _builtins.int
     spin_bonus_threshold: _builtins.float
     excellent_throw_threshold: _builtins.float
     great_throw_threshold: _builtins.float
@@ -59050,8 +59367,11 @@ class EncounterSettingsProto(_message.Message):
     enable_auto_wild_ball_select: _builtins.bool
     highlight_streak_rewards: _builtins.bool
     player_activity_catch_legendary_pokemon_enabled: _builtins.bool
+    action_check_period_ms: _builtins.int
     @_builtins.property
     def tutorial(self) -> Global___EncounterTutorialSettingsProto: ...
+    @_builtins.property
+    def species_action_period_override(self) -> _containers.ScalarMap[_builtins.int, _builtins.int]: ...
     def __init__(
         self,
         *,
@@ -59089,10 +59409,12 @@ class EncounterSettingsProto(_message.Message):
         highlight_streak_rewards: _builtins.bool = ...,
         player_activity_catch_legendary_pokemon_enabled: _builtins.bool = ...,
         tutorial: Global___EncounterTutorialSettingsProto | None = ...,
+        action_check_period_ms: _builtins.int = ...,
+        species_action_period_override: _abc.Mapping[_builtins.int, _builtins.int] | None = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["tutorial", b"tutorial"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["ar_awareness_penalty_threshold", b"ar_awareness_penalty_threshold", "ar_close_proximity_multiplier", b"ar_close_proximity_multiplier", "ar_close_proximity_threshold", b"ar_close_proximity_threshold", "ar_high_awareness_min_penalty_multiplier", b"ar_high_awareness_min_penalty_multiplier", "ar_low_awareness_max_multiplier", b"ar_low_awareness_max_multiplier", "ar_low_awareness_threshold", b"ar_low_awareness_threshold", "ar_plus_attempts_until_flee_infinite", b"ar_plus_attempts_until_flee_infinite", "ar_plus_attempts_until_flee_max", b"ar_plus_attempts_until_flee_max", "ar_plus_mode_enabled", b"ar_plus_mode_enabled", "critical_reticle_capture_rate_threshold", b"critical_reticle_capture_rate_threshold", "critical_reticle_catch_multiplier", b"critical_reticle_catch_multiplier", "critical_reticle_fallback_catch_multiplier", b"critical_reticle_fallback_catch_multiplier", "critical_reticle_threshold", b"critical_reticle_threshold", "enable_auto_wild_ball_select", b"enable_auto_wild_ball_select", "enable_extended_create_details_client", b"enable_extended_create_details_client", "enable_extended_create_details_server", b"enable_extended_create_details_server", "enable_item_selection_slider_v2", b"enable_item_selection_slider_v2", "enable_pokemon_stats_limits", b"enable_pokemon_stats_limits", "encounter_arena_scene_asset_name", b"encounter_arena_scene_asset_name", "escaped_bonus_multiplier_by_excellent_throw", b"escaped_bonus_multiplier_by_excellent_throw", "escaped_bonus_multiplier_by_great_throw", b"escaped_bonus_multiplier_by_great_throw", "escaped_bonus_multiplier_by_nice_throw", b"escaped_bonus_multiplier_by_nice_throw", "escaped_bonus_multiplier_max", b"escaped_bonus_multiplier_max", "excellent_throw_threshold", b"excellent_throw_threshold", "global_candy_multiplier", b"global_candy_multiplier", "global_stardust_multiplier", b"global_stardust_multiplier", "great_throw_threshold", b"great_throw_threshold", "highlight_streak_rewards", b"highlight_streak_rewards", "milestone_threshold", b"milestone_threshold", "nice_throw_threshold", b"nice_throw_threshold", "player_activity_catch_legendary_pokemon_enabled", b"player_activity_catch_legendary_pokemon_enabled", "show_last_throw_animation", b"show_last_throw_animation", "spin_bonus_threshold", b"spin_bonus_threshold", "tutorial", b"tutorial"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["action_check_period_ms", b"action_check_period_ms", "ar_awareness_penalty_threshold", b"ar_awareness_penalty_threshold", "ar_close_proximity_multiplier", b"ar_close_proximity_multiplier", "ar_close_proximity_threshold", b"ar_close_proximity_threshold", "ar_high_awareness_min_penalty_multiplier", b"ar_high_awareness_min_penalty_multiplier", "ar_low_awareness_max_multiplier", b"ar_low_awareness_max_multiplier", "ar_low_awareness_threshold", b"ar_low_awareness_threshold", "ar_plus_attempts_until_flee_infinite", b"ar_plus_attempts_until_flee_infinite", "ar_plus_attempts_until_flee_max", b"ar_plus_attempts_until_flee_max", "ar_plus_mode_enabled", b"ar_plus_mode_enabled", "critical_reticle_capture_rate_threshold", b"critical_reticle_capture_rate_threshold", "critical_reticle_catch_multiplier", b"critical_reticle_catch_multiplier", "critical_reticle_fallback_catch_multiplier", b"critical_reticle_fallback_catch_multiplier", "critical_reticle_threshold", b"critical_reticle_threshold", "enable_auto_wild_ball_select", b"enable_auto_wild_ball_select", "enable_extended_create_details_client", b"enable_extended_create_details_client", "enable_extended_create_details_server", b"enable_extended_create_details_server", "enable_item_selection_slider_v2", b"enable_item_selection_slider_v2", "enable_pokemon_stats_limits", b"enable_pokemon_stats_limits", "encounter_arena_scene_asset_name", b"encounter_arena_scene_asset_name", "escaped_bonus_multiplier_by_excellent_throw", b"escaped_bonus_multiplier_by_excellent_throw", "escaped_bonus_multiplier_by_great_throw", b"escaped_bonus_multiplier_by_great_throw", "escaped_bonus_multiplier_by_nice_throw", b"escaped_bonus_multiplier_by_nice_throw", "escaped_bonus_multiplier_max", b"escaped_bonus_multiplier_max", "excellent_throw_threshold", b"excellent_throw_threshold", "global_candy_multiplier", b"global_candy_multiplier", "global_stardust_multiplier", b"global_stardust_multiplier", "great_throw_threshold", b"great_throw_threshold", "highlight_streak_rewards", b"highlight_streak_rewards", "milestone_threshold", b"milestone_threshold", "nice_throw_threshold", b"nice_throw_threshold", "player_activity_catch_legendary_pokemon_enabled", b"player_activity_catch_legendary_pokemon_enabled", "show_last_throw_animation", b"show_last_throw_animation", "species_action_period_override", b"species_action_period_override", "spin_bonus_threshold", b"spin_bonus_threshold", "tutorial", b"tutorial"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -64472,10 +64794,12 @@ class FormProto(_message.Message):
     IS_COSTUME_FIELD_NUMBER: _builtins.int
     SIZE_DATA_FIELD_NUMBER: _builtins.int
     SILLOUETTE_OBFUSCATION_GROUP_FIELD_NUMBER: _builtins.int
+    UNSILHOUETTE_ON_SPECIES_CAPTURE_FIELD_NUMBER: _builtins.int
     form: Global___PokemonDisplayProto.Form.ValueType
     asset_bundle_value: _builtins.int
     asset_bundle_suffix: _builtins.str
     is_costume: _builtins.bool
+    unsilhouette_on_species_capture: _builtins.bool
     @_builtins.property
     def size_data(self) -> Global___FormPokedexSizeProto: ...
     @_builtins.property
@@ -64489,10 +64813,11 @@ class FormProto(_message.Message):
         is_costume: _builtins.bool = ...,
         size_data: Global___FormPokedexSizeProto | None = ...,
         sillouette_obfuscation_group: Global___SillouetteObfuscationGroup | None = ...,
+        unsilhouette_on_species_capture: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["sillouette_obfuscation_group", b"sillouette_obfuscation_group", "size_data", b"size_data"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["asset_bundle_suffix", b"asset_bundle_suffix", "asset_bundle_value", b"asset_bundle_value", "form", b"form", "is_costume", b"is_costume", "sillouette_obfuscation_group", b"sillouette_obfuscation_group", "size_data", b"size_data"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["asset_bundle_suffix", b"asset_bundle_suffix", "asset_bundle_value", b"asset_bundle_value", "form", b"form", "is_costume", b"is_costume", "sillouette_obfuscation_group", b"sillouette_obfuscation_group", "size_data", b"size_data", "unsilhouette_on_species_capture", b"unsilhouette_on_species_capture"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -65822,11 +66147,13 @@ class FriendshipDataProto(_message.Message):
     IS_LUCKY_FIELD_NUMBER: _builtins.int
     LUCKY_COUNT_FIELD_NUMBER: _builtins.int
     OPT_OUT_OF_RECEIVING_PREMIUM_GIFTS_FIELD_NUMBER: _builtins.int
+    LAST_PREMIUM_GIFT_SENT_AT_MS_FIELD_NUMBER: _builtins.int
     nickname: _builtins.str
     open_trade_expire_ms: _builtins.int
     is_lucky: _builtins.bool
     lucky_count: _builtins.int
     opt_out_of_receiving_premium_gifts: _builtins.bool
+    last_premium_gift_sent_at_ms: _builtins.int
     @_builtins.property
     def friendship_level_data(self) -> Global___FriendshipLevelDataProto: ...
     @_builtins.property
@@ -65841,10 +66168,11 @@ class FriendshipDataProto(_message.Message):
         is_lucky: _builtins.bool = ...,
         lucky_count: _builtins.int = ...,
         opt_out_of_receiving_premium_gifts: _builtins.bool = ...,
+        last_premium_gift_sent_at_ms: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["friendship_level_data", b"friendship_level_data"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["friendship_level_data", b"friendship_level_data", "giftbox_details", b"giftbox_details", "is_lucky", b"is_lucky", "lucky_count", b"lucky_count", "nickname", b"nickname", "open_trade_expire_ms", b"open_trade_expire_ms", "opt_out_of_receiving_premium_gifts", b"opt_out_of_receiving_premium_gifts"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["friendship_level_data", b"friendship_level_data", "giftbox_details", b"giftbox_details", "is_lucky", b"is_lucky", "last_premium_gift_sent_at_ms", b"last_premium_gift_sent_at_ms", "lucky_count", b"lucky_count", "nickname", b"nickname", "open_trade_expire_ms", b"open_trade_expire_ms", "opt_out_of_receiving_premium_gifts", b"opt_out_of_receiving_premium_gifts"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -66506,6 +66834,9 @@ class GameMasterClientTemplateProto(_message.Message):
     PLAYER_FLOW_IMPROVEMENTS_FIELD_NUMBER: _builtins.int
     EGG_LIST_ADVENTURE_SYNC_CARD_SETTINGS_FIELD_NUMBER: _builtins.int
     REGION_PROHIBITED_ITEM_SETTINGS_FIELD_NUMBER: _builtins.int
+    TIME_BOXED_SPAWN_EVENTS_SETTINGS_FIELD_NUMBER: _builtins.int
+    MAP_OBJECT_COLLISION_AVOIDANCE_SETTINGS_FIELD_NUMBER: _builtins.int
+    LOCATION_CARD_FEATURE_SETTINGS_FIELD_NUMBER: _builtins.int
     template_id: _builtins.str
     @_builtins.property
     def pokemon(self) -> Global___PokemonSettingsProto: ...
@@ -66990,7 +67321,13 @@ class GameMasterClientTemplateProto(_message.Message):
     @_builtins.property
     def egg_list_adventure_sync_card_settings(self) -> Global___EggListAdventureSyncCardSettingsProto: ...
     @_builtins.property
-    def region_prohibited_item_settings(self) -> Global___RegionProhibitedItemsProto:
+    def region_prohibited_item_settings(self) -> Global___RegionProhibitedItemsProto: ...
+    @_builtins.property
+    def time_boxed_spawn_events_settings(self) -> Global___TimeBoxedSpawnEventsSettingsProto: ...
+    @_builtins.property
+    def map_object_collision_avoidance_settings(self) -> Global___MapObjectCollisionAvoidanceSettingsProto: ...
+    @_builtins.property
+    def location_card_feature_settings(self) -> Global___LocationCardFeatureSettingsProto:
         """EcosystemNaturalArtSettingsProto ecosystem_natural_art_settings = xxx;"""
 
     def __init__(
@@ -67239,12 +67576,15 @@ class GameMasterClientTemplateProto(_message.Message):
         player_flow_improvements: Global___PlayerFlowImprovementsProto | None = ...,
         egg_list_adventure_sync_card_settings: Global___EggListAdventureSyncCardSettingsProto | None = ...,
         region_prohibited_item_settings: Global___RegionProhibitedItemsProto | None = ...,
+        time_boxed_spawn_events_settings: Global___TimeBoxedSpawnEventsSettingsProto | None = ...,
+        map_object_collision_avoidance_settings: Global___MapObjectCollisionAvoidanceSettingsProto | None = ...,
+        location_card_feature_settings: Global___LocationCardFeatureSettingsProto | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["Data", b"Data", "accessibility_settings", b"accessibility_settings", "additive_scene_settings", b"additive_scene_settings", "address_book_import_settings", b"address_book_import_settings", "addressable_pokemon_settings", b"addressable_pokemon_settings", "advanced_settings", b"advanced_settings", "anti_leak_settings", b"anti_leak_settings", "ar_backend_settings", b"ar_backend_settings", "ar_photo_feature_flags", b"ar_photo_feature_flags", "ar_telemetry_settings", b"ar_telemetry_settings", "asset_refresh_proto", b"asset_refresh_proto", "avatar_customization", b"avatar_customization", "avatar_feature_flags", b"avatar_feature_flags", "avatar_group_settings", b"avatar_group_settings", "avatar_item_display", b"avatar_item_display", "avatar_store_footer_flags", b"avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", b"avatar_store_subcategory_filtering_flags", "background_mode_settings", b"background_mode_settings", "badge", b"badge", "battle_animation_settings", b"battle_animation_settings", "battle_hub_badge_settings", b"battle_hub_badge_settings", "battle_hub_order_settings", b"battle_hub_order_settings", "battle_input_buffer_settings", b"battle_input_buffer_settings", "battle_party_settings", b"battle_party_settings", "battle_settings", b"battle_settings", "battle_visual_settings", b"battle_visual_settings", "beluga_pokemon_whitelist", b"beluga_pokemon_whitelist", "best_friends_plus_settings", b"best_friends_plus_settings", "bread_battle_client_settings", b"bread_battle_client_settings", "bread_feature_flags", b"bread_feature_flags", "bread_lobby_counter_settings", b"bread_lobby_counter_settings", "bread_lobby_update_settings", b"bread_lobby_update_settings", "bread_move_level_settings", b"bread_move_level_settings", "bread_move_mappings", b"bread_move_mappings", "bread_pokemon_scaling_settings", b"bread_pokemon_scaling_settings", "bread_settings", b"bread_settings", "buddy_activity_category_settings", b"buddy_activity_category_settings", "buddy_emotion_level_settings", b"buddy_emotion_level_settings", "buddy_encounter_cameo_settings", b"buddy_encounter_cameo_settings", "buddy_hunger_settings", b"buddy_hunger_settings", "buddy_interaction_settings", b"buddy_interaction_settings", "buddy_level_settings", b"buddy_level_settings", "buddy_swap_settings", b"buddy_swap_settings", "buddy_walk_settings", b"buddy_walk_settings", "bulk_healing_settings", b"bulk_healing_settings", "butterfly_collector_settings", b"butterfly_collector_settings", "campfire_settings", b"campfire_settings", "catch_radius_multiplier_settings", b"catch_radius_multiplier_settings", "client_poi_decoration_group", b"client_poi_decoration_group", "client_quest_template", b"client_quest_template", "code_gate_proto", b"code_gate_proto", "combat_competitive_season_settings", b"combat_competitive_season_settings", "combat_league", b"combat_league", "combat_league_settings", b"combat_league_settings", "combat_move", b"combat_move", "combat_npc_personality", b"combat_npc_personality", "combat_npc_trainer", b"combat_npc_trainer", "combat_ranking_proto_settings", b"combat_ranking_proto_settings", "combat_settings", b"combat_settings", "combat_stat_stage_settings", b"combat_stat_stage_settings", "combat_type", b"combat_type", "contest_settings", b"contest_settings", "conversation_settings", b"conversation_settings", "cross_game_social_settings", b"cross_game_social_settings", "daily_adventure_incense_settings", b"daily_adventure_incense_settings", "deep_linking_settings", b"deep_linking_settings", "egg_hatch_improvements_settings", b"egg_hatch_improvements_settings", "egg_list_adventure_sync_card_settings", b"egg_list_adventure_sync_card_settings", "encounter_settings", b"encounter_settings", "error_reporting_settings", b"error_reporting_settings", "event_conditional_override_settings_priority", b"event_conditional_override_settings_priority", "event_map_decoration_settings", b"event_map_decoration_settings", "event_map_decoration_system_settings", b"event_map_decoration_system_settings", "event_map_refresh_settings", b"event_map_refresh_settings", "event_pass_settings", b"event_pass_settings", "event_pass_system_settings", b"event_pass_system_settings", "event_pass_tier_settings", b"event_pass_tier_settings", "event_planner_popular_notification_settings", b"event_planner_popular_notification_settings", "evolution_chain_display_settings", b"evolution_chain_display_settings", "evolution_quest_template", b"evolution_quest_template", "external_addressable_assets_settings", b"external_addressable_assets_settings", "feature_gate", b"feature_gate", "feature_unlock_level_settings", b"feature_unlock_level_settings", "field_book_settings", b"field_book_settings", "form_settings", b"form_settings", "fort_power_up_level_settings", b"fort_power_up_level_settings", "friendship_milestone_settings", b"friendship_milestone_settings", "garbage_collection_settings", b"garbage_collection_settings", "gender_settings", b"gender_settings", "geotargeted_quest_settings", b"geotargeted_quest_settings", "gifting_settings", b"gifting_settings", "graphics_capabilities_settings", b"graphics_capabilities_settings", "guest_account_game_settings_proto", b"guest_account_game_settings_proto", "gui_search_settings", b"gui_search_settings", "gym_badge_settings", b"gym_badge_settings", "haptics_settings", b"haptics_settings", "home_widget_settings", b"home_widget_settings", "iap_category_display", b"iap_category_display", "iap_item_display", b"iap_item_display", "iap_settings", b"iap_settings", "iap_store_banner", b"iap_store_banner", "ibfc_lightweight_settings", b"ibfc_lightweight_settings", "impression_tracking_settings", b"impression_tracking_settings", "in_app_survey_settings", b"in_app_survey_settings", "incident_priority_settings", b"incident_priority_settings", "incident_visibility_settings", b"incident_visibility_settings", "invasion_npc_display_settings", b"invasion_npc_display_settings", "inventory_settings", b"inventory_settings", "iris_social_settings", b"iris_social_settings", "iris_social_ux_funnel_settings", b"iris_social_ux_funnel_settings", "item", b"item", "item_currency_values", b"item_currency_values", "item_expiration_settings", b"item_expiration_settings", "item_inventory_update_settings", b"item_inventory_update_settings", "join_raid_via_friend_list_settings", b"join_raid_via_friend_list_settings", "language_bundle", b"language_bundle", "language_selector_settings", b"language_selector_settings", "language_settings", b"language_settings", "level_up_rewards", b"level_up_rewards", "limited_purchase_sku_settings", b"limited_purchase_sku_settings", "location_card_settings", b"location_card_settings", "lucky_pokemon_settings", b"lucky_pokemon_settings", "main_menu_camera_button_settings", b"main_menu_camera_button_settings", "map_buddy_settings", b"map_buddy_settings", "map_coord_overlay", b"map_coord_overlay", "map_display_settings", b"map_display_settings", "map_icon_sort_order", b"map_icon_sort_order", "map_objects_interaction_range_settings", b"map_objects_interaction_range_settings", "map_scene_feature_flags", b"map_scene_feature_flags", "mega_evo_level_settings", b"mega_evo_level_settings", "mega_evo_settings", b"mega_evo_settings", "monodepth_settings", b"monodepth_settings", "move", b"move", "move_sequence", b"move_sequence", "mp_settings", b"mp_settings", "music_settings", b"music_settings", "natural_art_day_night_feature_settings", b"natural_art_day_night_feature_settings", "nearby_pokemon_settings", b"nearby_pokemon_settings", "neutral_avatar_item_mapping", b"neutral_avatar_item_mapping", "neutral_avatar_mapping", b"neutral_avatar_mapping", "neutral_avatar_settings", b"neutral_avatar_settings", "nia_id_migration_settings", b"nia_id_migration_settings", "non_combat_move_settings", b"non_combat_move_settings", "onboarding_settings", b"onboarding_settings", "optimizations_proto", b"optimizations_proto", "party_dark_launch_settings", b"party_dark_launch_settings", "party_iap_boosts_settings", b"party_iap_boosts_settings", "party_play_general_settings", b"party_play_general_settings", "party_player_summary_settings", b"party_player_summary_settings", "party_recommendation_settings", b"party_recommendation_settings", "party_shared_quest_settings", b"party_shared_quest_settings", "photo_sets_settings_proto", b"photo_sets_settings_proto", "photo_settings", b"photo_settings", "planner_settings", b"planner_settings", "player_bonus_system_settings", b"player_bonus_system_settings", "player_flow_improvements", b"player_flow_improvements", "player_level", b"player_level", "pokeball_throw_property_settings", b"pokeball_throw_property_settings", "pokecoin_purchase_display_gmt", b"pokecoin_purchase_display_gmt", "pokedex_categories_settings", b"pokedex_categories_settings", "pokedex_size_stats_system_settings", b"pokedex_size_stats_system_settings", "pokedex_v2_settings", b"pokedex_v2_settings", "pokedexv2_feature_flags", b"pokedexv2_feature_flags", "pokemon", b"pokemon", "pokemon_extended_settings", b"pokemon_extended_settings", "pokemon_family", b"pokemon_family", "pokemon_fx_settings", b"pokemon_fx_settings", "pokemon_home_energy_costs", b"pokemon_home_energy_costs", "pokemon_home_form_reversion", b"pokemon_home_form_reversion", "pokemon_home_settings", b"pokemon_home_settings", "pokemon_info_panel_settings", b"pokemon_info_panel_settings", "pokemon_inventory_rule_settings", b"pokemon_inventory_rule_settings", "pokemon_scale_settings", b"pokemon_scale_settings", "pokemon_tag_settings", b"pokemon_tag_settings", "pokemon_upgrades", b"pokemon_upgrades", "pokestop_invasion_availability_settings", b"pokestop_invasion_availability_settings", "popup_control_settings", b"popup_control_settings", "postcard_collection_settings", b"postcard_collection_settings", "power_up_pokestops_settings", b"power_up_pokestops_settings", "primal_evo_settings", b"primal_evo_settings", "prohibited_item_settings", b"prohibited_item_settings", "project_vacation", b"project_vacation", "ptc_oauth_settings", b"ptc_oauth_settings", "pvp_next_feature_flags", b"pvp_next_feature_flags", "quest_dialogue_inbox_settings", b"quest_dialogue_inbox_settings", "quest_settings", b"quest_settings", "quick_invite_settings", b"quick_invite_settings", "raid_entry_cost_settings", b"raid_entry_cost_settings", "raid_lobby_counter_settings", b"raid_lobby_counter_settings", "raid_settings_proto", b"raid_settings_proto", "recommended_search_proto", b"recommended_search_proto", "reduced_entry_flow_settings", b"reduced_entry_flow_settings", "referral_settings", b"referral_settings", "region_prohibited_item_settings", b"region_prohibited_item_settings", "remote_trade_settings", b"remote_trade_settings", "roll_back", b"roll_back", "route_badge_settings", b"route_badge_settings", "route_creation_settings", b"route_creation_settings", "route_discovery_settings", b"route_discovery_settings", "route_pin_settings", b"route_pin_settings", "route_play_settings", b"route_play_settings", "route_stamp_category_settings", b"route_stamp_category_settings", "routes_nearby_notif_settings", b"routes_nearby_notif_settings", "routes_party_play_interop_settings", b"routes_party_play_interop_settings", "save_for_later_settings", b"save_for_later_settings", "settings_override_rule", b"settings_override_rule", "shared_fusion_settings", b"shared_fusion_settings", "shared_move_settings", b"shared_move_settings", "smart_glasses_feature_flags", b"smart_glasses_feature_flags", "soft_sfida_settings", b"soft_sfida_settings", "sourdough_move_mapping_settings", b"sourdough_move_mapping_settings", "special_egg_settings", b"special_egg_settings", "special_research_visual_refresh_settings", b"special_research_visual_refresh_settings", "sponsored_geofence_gift_settings", b"sponsored_geofence_gift_settings", "squash_settings", b"squash_settings", "stamp_collection_settings", b"stamp_collection_settings", "station_reward_settings", b"station_reward_settings", "stationed_pokemon_table_settings", b"stationed_pokemon_table_settings", "sticker_category_settings", b"sticker_category_settings", "sticker_metadata", b"sticker_metadata", "streamer_mode_settings", b"streamer_mode_settings", "style_shop_settings", b"style_shop_settings", "supply_balloon_gift_settings", b"supply_balloon_gift_settings", "tappable_settings", b"tappable_settings", "temporary_evolution_settings", b"temporary_evolution_settings", "ticket_gifting_settings", b"ticket_gifting_settings", "today_view_settings", b"today_view_settings", "tutorial_settings", b"tutorial_settings", "two_for_one_flags", b"two_for_one_flags", "type_effective", b"type_effective", "username_suggestion_settings", b"username_suggestion_settings", "verbose_log_combat_settings", b"verbose_log_combat_settings", "verbose_log_raid_settings", b"verbose_log_raid_settings", "vista_general_settings", b"vista_general_settings", "vnext_battle_config", b"vnext_battle_config", "vps_event_settings", b"vps_event_settings", "vs_seeker_client_settings", b"vs_seeker_client_settings", "vs_seeker_loot_proto", b"vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", b"vs_seeker_pokemon_rewards", "vs_seeker_schedule_settings", b"vs_seeker_schedule_settings", "weather_affinities", b"weather_affinities", "weather_bonus_settings", b"weather_bonus_settings", "welcome_back_rewards_settings", b"welcome_back_rewards_settings"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["Data", b"Data", "accessibility_settings", b"accessibility_settings", "additive_scene_settings", b"additive_scene_settings", "address_book_import_settings", b"address_book_import_settings", "addressable_pokemon_settings", b"addressable_pokemon_settings", "advanced_settings", b"advanced_settings", "anti_leak_settings", b"anti_leak_settings", "ar_backend_settings", b"ar_backend_settings", "ar_photo_feature_flags", b"ar_photo_feature_flags", "ar_telemetry_settings", b"ar_telemetry_settings", "asset_refresh_proto", b"asset_refresh_proto", "avatar_customization", b"avatar_customization", "avatar_feature_flags", b"avatar_feature_flags", "avatar_group_settings", b"avatar_group_settings", "avatar_item_display", b"avatar_item_display", "avatar_store_footer_flags", b"avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", b"avatar_store_subcategory_filtering_flags", "background_mode_settings", b"background_mode_settings", "badge", b"badge", "battle_animation_settings", b"battle_animation_settings", "battle_hub_badge_settings", b"battle_hub_badge_settings", "battle_hub_order_settings", b"battle_hub_order_settings", "battle_input_buffer_settings", b"battle_input_buffer_settings", "battle_party_settings", b"battle_party_settings", "battle_settings", b"battle_settings", "battle_visual_settings", b"battle_visual_settings", "beluga_pokemon_whitelist", b"beluga_pokemon_whitelist", "best_friends_plus_settings", b"best_friends_plus_settings", "bread_battle_client_settings", b"bread_battle_client_settings", "bread_feature_flags", b"bread_feature_flags", "bread_lobby_counter_settings", b"bread_lobby_counter_settings", "bread_lobby_update_settings", b"bread_lobby_update_settings", "bread_move_level_settings", b"bread_move_level_settings", "bread_move_mappings", b"bread_move_mappings", "bread_pokemon_scaling_settings", b"bread_pokemon_scaling_settings", "bread_settings", b"bread_settings", "buddy_activity_category_settings", b"buddy_activity_category_settings", "buddy_emotion_level_settings", b"buddy_emotion_level_settings", "buddy_encounter_cameo_settings", b"buddy_encounter_cameo_settings", "buddy_hunger_settings", b"buddy_hunger_settings", "buddy_interaction_settings", b"buddy_interaction_settings", "buddy_level_settings", b"buddy_level_settings", "buddy_swap_settings", b"buddy_swap_settings", "buddy_walk_settings", b"buddy_walk_settings", "bulk_healing_settings", b"bulk_healing_settings", "butterfly_collector_settings", b"butterfly_collector_settings", "campfire_settings", b"campfire_settings", "catch_radius_multiplier_settings", b"catch_radius_multiplier_settings", "client_poi_decoration_group", b"client_poi_decoration_group", "client_quest_template", b"client_quest_template", "code_gate_proto", b"code_gate_proto", "combat_competitive_season_settings", b"combat_competitive_season_settings", "combat_league", b"combat_league", "combat_league_settings", b"combat_league_settings", "combat_move", b"combat_move", "combat_npc_personality", b"combat_npc_personality", "combat_npc_trainer", b"combat_npc_trainer", "combat_ranking_proto_settings", b"combat_ranking_proto_settings", "combat_settings", b"combat_settings", "combat_stat_stage_settings", b"combat_stat_stage_settings", "combat_type", b"combat_type", "contest_settings", b"contest_settings", "conversation_settings", b"conversation_settings", "cross_game_social_settings", b"cross_game_social_settings", "daily_adventure_incense_settings", b"daily_adventure_incense_settings", "deep_linking_settings", b"deep_linking_settings", "egg_hatch_improvements_settings", b"egg_hatch_improvements_settings", "egg_list_adventure_sync_card_settings", b"egg_list_adventure_sync_card_settings", "encounter_settings", b"encounter_settings", "error_reporting_settings", b"error_reporting_settings", "event_conditional_override_settings_priority", b"event_conditional_override_settings_priority", "event_map_decoration_settings", b"event_map_decoration_settings", "event_map_decoration_system_settings", b"event_map_decoration_system_settings", "event_map_refresh_settings", b"event_map_refresh_settings", "event_pass_settings", b"event_pass_settings", "event_pass_system_settings", b"event_pass_system_settings", "event_pass_tier_settings", b"event_pass_tier_settings", "event_planner_popular_notification_settings", b"event_planner_popular_notification_settings", "evolution_chain_display_settings", b"evolution_chain_display_settings", "evolution_quest_template", b"evolution_quest_template", "external_addressable_assets_settings", b"external_addressable_assets_settings", "feature_gate", b"feature_gate", "feature_unlock_level_settings", b"feature_unlock_level_settings", "field_book_settings", b"field_book_settings", "form_settings", b"form_settings", "fort_power_up_level_settings", b"fort_power_up_level_settings", "friendship_milestone_settings", b"friendship_milestone_settings", "garbage_collection_settings", b"garbage_collection_settings", "gender_settings", b"gender_settings", "geotargeted_quest_settings", b"geotargeted_quest_settings", "gifting_settings", b"gifting_settings", "graphics_capabilities_settings", b"graphics_capabilities_settings", "guest_account_game_settings_proto", b"guest_account_game_settings_proto", "gui_search_settings", b"gui_search_settings", "gym_badge_settings", b"gym_badge_settings", "haptics_settings", b"haptics_settings", "home_widget_settings", b"home_widget_settings", "iap_category_display", b"iap_category_display", "iap_item_display", b"iap_item_display", "iap_settings", b"iap_settings", "iap_store_banner", b"iap_store_banner", "ibfc_lightweight_settings", b"ibfc_lightweight_settings", "impression_tracking_settings", b"impression_tracking_settings", "in_app_survey_settings", b"in_app_survey_settings", "incident_priority_settings", b"incident_priority_settings", "incident_visibility_settings", b"incident_visibility_settings", "invasion_npc_display_settings", b"invasion_npc_display_settings", "inventory_settings", b"inventory_settings", "iris_social_settings", b"iris_social_settings", "iris_social_ux_funnel_settings", b"iris_social_ux_funnel_settings", "item", b"item", "item_currency_values", b"item_currency_values", "item_expiration_settings", b"item_expiration_settings", "item_inventory_update_settings", b"item_inventory_update_settings", "join_raid_via_friend_list_settings", b"join_raid_via_friend_list_settings", "language_bundle", b"language_bundle", "language_selector_settings", b"language_selector_settings", "language_settings", b"language_settings", "level_up_rewards", b"level_up_rewards", "limited_purchase_sku_settings", b"limited_purchase_sku_settings", "location_card_feature_settings", b"location_card_feature_settings", "location_card_settings", b"location_card_settings", "lucky_pokemon_settings", b"lucky_pokemon_settings", "main_menu_camera_button_settings", b"main_menu_camera_button_settings", "map_buddy_settings", b"map_buddy_settings", "map_coord_overlay", b"map_coord_overlay", "map_display_settings", b"map_display_settings", "map_icon_sort_order", b"map_icon_sort_order", "map_object_collision_avoidance_settings", b"map_object_collision_avoidance_settings", "map_objects_interaction_range_settings", b"map_objects_interaction_range_settings", "map_scene_feature_flags", b"map_scene_feature_flags", "mega_evo_level_settings", b"mega_evo_level_settings", "mega_evo_settings", b"mega_evo_settings", "monodepth_settings", b"monodepth_settings", "move", b"move", "move_sequence", b"move_sequence", "mp_settings", b"mp_settings", "music_settings", b"music_settings", "natural_art_day_night_feature_settings", b"natural_art_day_night_feature_settings", "nearby_pokemon_settings", b"nearby_pokemon_settings", "neutral_avatar_item_mapping", b"neutral_avatar_item_mapping", "neutral_avatar_mapping", b"neutral_avatar_mapping", "neutral_avatar_settings", b"neutral_avatar_settings", "nia_id_migration_settings", b"nia_id_migration_settings", "non_combat_move_settings", b"non_combat_move_settings", "onboarding_settings", b"onboarding_settings", "optimizations_proto", b"optimizations_proto", "party_dark_launch_settings", b"party_dark_launch_settings", "party_iap_boosts_settings", b"party_iap_boosts_settings", "party_play_general_settings", b"party_play_general_settings", "party_player_summary_settings", b"party_player_summary_settings", "party_recommendation_settings", b"party_recommendation_settings", "party_shared_quest_settings", b"party_shared_quest_settings", "photo_sets_settings_proto", b"photo_sets_settings_proto", "photo_settings", b"photo_settings", "planner_settings", b"planner_settings", "player_bonus_system_settings", b"player_bonus_system_settings", "player_flow_improvements", b"player_flow_improvements", "player_level", b"player_level", "pokeball_throw_property_settings", b"pokeball_throw_property_settings", "pokecoin_purchase_display_gmt", b"pokecoin_purchase_display_gmt", "pokedex_categories_settings", b"pokedex_categories_settings", "pokedex_size_stats_system_settings", b"pokedex_size_stats_system_settings", "pokedex_v2_settings", b"pokedex_v2_settings", "pokedexv2_feature_flags", b"pokedexv2_feature_flags", "pokemon", b"pokemon", "pokemon_extended_settings", b"pokemon_extended_settings", "pokemon_family", b"pokemon_family", "pokemon_fx_settings", b"pokemon_fx_settings", "pokemon_home_energy_costs", b"pokemon_home_energy_costs", "pokemon_home_form_reversion", b"pokemon_home_form_reversion", "pokemon_home_settings", b"pokemon_home_settings", "pokemon_info_panel_settings", b"pokemon_info_panel_settings", "pokemon_inventory_rule_settings", b"pokemon_inventory_rule_settings", "pokemon_scale_settings", b"pokemon_scale_settings", "pokemon_tag_settings", b"pokemon_tag_settings", "pokemon_upgrades", b"pokemon_upgrades", "pokestop_invasion_availability_settings", b"pokestop_invasion_availability_settings", "popup_control_settings", b"popup_control_settings", "postcard_collection_settings", b"postcard_collection_settings", "power_up_pokestops_settings", b"power_up_pokestops_settings", "primal_evo_settings", b"primal_evo_settings", "prohibited_item_settings", b"prohibited_item_settings", "project_vacation", b"project_vacation", "ptc_oauth_settings", b"ptc_oauth_settings", "pvp_next_feature_flags", b"pvp_next_feature_flags", "quest_dialogue_inbox_settings", b"quest_dialogue_inbox_settings", "quest_settings", b"quest_settings", "quick_invite_settings", b"quick_invite_settings", "raid_entry_cost_settings", b"raid_entry_cost_settings", "raid_lobby_counter_settings", b"raid_lobby_counter_settings", "raid_settings_proto", b"raid_settings_proto", "recommended_search_proto", b"recommended_search_proto", "reduced_entry_flow_settings", b"reduced_entry_flow_settings", "referral_settings", b"referral_settings", "region_prohibited_item_settings", b"region_prohibited_item_settings", "remote_trade_settings", b"remote_trade_settings", "roll_back", b"roll_back", "route_badge_settings", b"route_badge_settings", "route_creation_settings", b"route_creation_settings", "route_discovery_settings", b"route_discovery_settings", "route_pin_settings", b"route_pin_settings", "route_play_settings", b"route_play_settings", "route_stamp_category_settings", b"route_stamp_category_settings", "routes_nearby_notif_settings", b"routes_nearby_notif_settings", "routes_party_play_interop_settings", b"routes_party_play_interop_settings", "save_for_later_settings", b"save_for_later_settings", "settings_override_rule", b"settings_override_rule", "shared_fusion_settings", b"shared_fusion_settings", "shared_move_settings", b"shared_move_settings", "smart_glasses_feature_flags", b"smart_glasses_feature_flags", "soft_sfida_settings", b"soft_sfida_settings", "sourdough_move_mapping_settings", b"sourdough_move_mapping_settings", "special_egg_settings", b"special_egg_settings", "special_research_visual_refresh_settings", b"special_research_visual_refresh_settings", "sponsored_geofence_gift_settings", b"sponsored_geofence_gift_settings", "squash_settings", b"squash_settings", "stamp_collection_settings", b"stamp_collection_settings", "station_reward_settings", b"station_reward_settings", "stationed_pokemon_table_settings", b"stationed_pokemon_table_settings", "sticker_category_settings", b"sticker_category_settings", "sticker_metadata", b"sticker_metadata", "streamer_mode_settings", b"streamer_mode_settings", "style_shop_settings", b"style_shop_settings", "supply_balloon_gift_settings", b"supply_balloon_gift_settings", "tappable_settings", b"tappable_settings", "temporary_evolution_settings", b"temporary_evolution_settings", "ticket_gifting_settings", b"ticket_gifting_settings", "time_boxed_spawn_events_settings", b"time_boxed_spawn_events_settings", "today_view_settings", b"today_view_settings", "tutorial_settings", b"tutorial_settings", "two_for_one_flags", b"two_for_one_flags", "type_effective", b"type_effective", "username_suggestion_settings", b"username_suggestion_settings", "verbose_log_combat_settings", b"verbose_log_combat_settings", "verbose_log_raid_settings", b"verbose_log_raid_settings", "vista_general_settings", b"vista_general_settings", "vnext_battle_config", b"vnext_battle_config", "vps_event_settings", b"vps_event_settings", "vs_seeker_client_settings", b"vs_seeker_client_settings", "vs_seeker_loot_proto", b"vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", b"vs_seeker_pokemon_rewards", "vs_seeker_schedule_settings", b"vs_seeker_schedule_settings", "weather_affinities", b"weather_affinities", "weather_bonus_settings", b"weather_bonus_settings", "welcome_back_rewards_settings", b"welcome_back_rewards_settings"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["Data", b"Data", "accessibility_settings", b"accessibility_settings", "additive_scene_settings", b"additive_scene_settings", "address_book_import_settings", b"address_book_import_settings", "addressable_pokemon_settings", b"addressable_pokemon_settings", "advanced_settings", b"advanced_settings", "anti_leak_settings", b"anti_leak_settings", "ar_backend_settings", b"ar_backend_settings", "ar_photo_feature_flags", b"ar_photo_feature_flags", "ar_telemetry_settings", b"ar_telemetry_settings", "asset_refresh_proto", b"asset_refresh_proto", "avatar_customization", b"avatar_customization", "avatar_feature_flags", b"avatar_feature_flags", "avatar_group_settings", b"avatar_group_settings", "avatar_item_display", b"avatar_item_display", "avatar_store_footer_flags", b"avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", b"avatar_store_subcategory_filtering_flags", "background_mode_settings", b"background_mode_settings", "badge", b"badge", "battle_animation_settings", b"battle_animation_settings", "battle_hub_badge_settings", b"battle_hub_badge_settings", "battle_hub_order_settings", b"battle_hub_order_settings", "battle_input_buffer_settings", b"battle_input_buffer_settings", "battle_party_settings", b"battle_party_settings", "battle_settings", b"battle_settings", "battle_visual_settings", b"battle_visual_settings", "beluga_pokemon_whitelist", b"beluga_pokemon_whitelist", "best_friends_plus_settings", b"best_friends_plus_settings", "bread_battle_client_settings", b"bread_battle_client_settings", "bread_feature_flags", b"bread_feature_flags", "bread_lobby_counter_settings", b"bread_lobby_counter_settings", "bread_lobby_update_settings", b"bread_lobby_update_settings", "bread_move_level_settings", b"bread_move_level_settings", "bread_move_mappings", b"bread_move_mappings", "bread_pokemon_scaling_settings", b"bread_pokemon_scaling_settings", "bread_settings", b"bread_settings", "buddy_activity_category_settings", b"buddy_activity_category_settings", "buddy_emotion_level_settings", b"buddy_emotion_level_settings", "buddy_encounter_cameo_settings", b"buddy_encounter_cameo_settings", "buddy_hunger_settings", b"buddy_hunger_settings", "buddy_interaction_settings", b"buddy_interaction_settings", "buddy_level_settings", b"buddy_level_settings", "buddy_swap_settings", b"buddy_swap_settings", "buddy_walk_settings", b"buddy_walk_settings", "bulk_healing_settings", b"bulk_healing_settings", "butterfly_collector_settings", b"butterfly_collector_settings", "campfire_settings", b"campfire_settings", "catch_radius_multiplier_settings", b"catch_radius_multiplier_settings", "client_poi_decoration_group", b"client_poi_decoration_group", "client_quest_template", b"client_quest_template", "code_gate_proto", b"code_gate_proto", "combat_competitive_season_settings", b"combat_competitive_season_settings", "combat_league", b"combat_league", "combat_league_settings", b"combat_league_settings", "combat_move", b"combat_move", "combat_npc_personality", b"combat_npc_personality", "combat_npc_trainer", b"combat_npc_trainer", "combat_ranking_proto_settings", b"combat_ranking_proto_settings", "combat_settings", b"combat_settings", "combat_stat_stage_settings", b"combat_stat_stage_settings", "combat_type", b"combat_type", "contest_settings", b"contest_settings", "conversation_settings", b"conversation_settings", "cross_game_social_settings", b"cross_game_social_settings", "daily_adventure_incense_settings", b"daily_adventure_incense_settings", "deep_linking_settings", b"deep_linking_settings", "egg_hatch_improvements_settings", b"egg_hatch_improvements_settings", "egg_list_adventure_sync_card_settings", b"egg_list_adventure_sync_card_settings", "encounter_settings", b"encounter_settings", "error_reporting_settings", b"error_reporting_settings", "event_conditional_override_settings_priority", b"event_conditional_override_settings_priority", "event_map_decoration_settings", b"event_map_decoration_settings", "event_map_decoration_system_settings", b"event_map_decoration_system_settings", "event_map_refresh_settings", b"event_map_refresh_settings", "event_pass_settings", b"event_pass_settings", "event_pass_system_settings", b"event_pass_system_settings", "event_pass_tier_settings", b"event_pass_tier_settings", "event_planner_popular_notification_settings", b"event_planner_popular_notification_settings", "evolution_chain_display_settings", b"evolution_chain_display_settings", "evolution_quest_template", b"evolution_quest_template", "external_addressable_assets_settings", b"external_addressable_assets_settings", "feature_gate", b"feature_gate", "feature_unlock_level_settings", b"feature_unlock_level_settings", "field_book_settings", b"field_book_settings", "form_settings", b"form_settings", "fort_power_up_level_settings", b"fort_power_up_level_settings", "friendship_milestone_settings", b"friendship_milestone_settings", "garbage_collection_settings", b"garbage_collection_settings", "gender_settings", b"gender_settings", "geotargeted_quest_settings", b"geotargeted_quest_settings", "gifting_settings", b"gifting_settings", "graphics_capabilities_settings", b"graphics_capabilities_settings", "guest_account_game_settings_proto", b"guest_account_game_settings_proto", "gui_search_settings", b"gui_search_settings", "gym_badge_settings", b"gym_badge_settings", "haptics_settings", b"haptics_settings", "home_widget_settings", b"home_widget_settings", "iap_category_display", b"iap_category_display", "iap_item_display", b"iap_item_display", "iap_settings", b"iap_settings", "iap_store_banner", b"iap_store_banner", "ibfc_lightweight_settings", b"ibfc_lightweight_settings", "impression_tracking_settings", b"impression_tracking_settings", "in_app_survey_settings", b"in_app_survey_settings", "incident_priority_settings", b"incident_priority_settings", "incident_visibility_settings", b"incident_visibility_settings", "invasion_npc_display_settings", b"invasion_npc_display_settings", "inventory_settings", b"inventory_settings", "iris_social_settings", b"iris_social_settings", "iris_social_ux_funnel_settings", b"iris_social_ux_funnel_settings", "item", b"item", "item_currency_values", b"item_currency_values", "item_expiration_settings", b"item_expiration_settings", "item_inventory_update_settings", b"item_inventory_update_settings", "join_raid_via_friend_list_settings", b"join_raid_via_friend_list_settings", "language_bundle", b"language_bundle", "language_selector_settings", b"language_selector_settings", "language_settings", b"language_settings", "level_up_rewards", b"level_up_rewards", "limited_purchase_sku_settings", b"limited_purchase_sku_settings", "location_card_settings", b"location_card_settings", "lucky_pokemon_settings", b"lucky_pokemon_settings", "main_menu_camera_button_settings", b"main_menu_camera_button_settings", "map_buddy_settings", b"map_buddy_settings", "map_coord_overlay", b"map_coord_overlay", "map_display_settings", b"map_display_settings", "map_icon_sort_order", b"map_icon_sort_order", "map_objects_interaction_range_settings", b"map_objects_interaction_range_settings", "map_scene_feature_flags", b"map_scene_feature_flags", "mega_evo_level_settings", b"mega_evo_level_settings", "mega_evo_settings", b"mega_evo_settings", "monodepth_settings", b"monodepth_settings", "move", b"move", "move_sequence", b"move_sequence", "mp_settings", b"mp_settings", "music_settings", b"music_settings", "natural_art_day_night_feature_settings", b"natural_art_day_night_feature_settings", "nearby_pokemon_settings", b"nearby_pokemon_settings", "neutral_avatar_item_mapping", b"neutral_avatar_item_mapping", "neutral_avatar_mapping", b"neutral_avatar_mapping", "neutral_avatar_settings", b"neutral_avatar_settings", "nia_id_migration_settings", b"nia_id_migration_settings", "non_combat_move_settings", b"non_combat_move_settings", "onboarding_settings", b"onboarding_settings", "optimizations_proto", b"optimizations_proto", "party_dark_launch_settings", b"party_dark_launch_settings", "party_iap_boosts_settings", b"party_iap_boosts_settings", "party_play_general_settings", b"party_play_general_settings", "party_player_summary_settings", b"party_player_summary_settings", "party_recommendation_settings", b"party_recommendation_settings", "party_shared_quest_settings", b"party_shared_quest_settings", "photo_sets_settings_proto", b"photo_sets_settings_proto", "photo_settings", b"photo_settings", "planner_settings", b"planner_settings", "player_bonus_system_settings", b"player_bonus_system_settings", "player_flow_improvements", b"player_flow_improvements", "player_level", b"player_level", "pokeball_throw_property_settings", b"pokeball_throw_property_settings", "pokecoin_purchase_display_gmt", b"pokecoin_purchase_display_gmt", "pokedex_categories_settings", b"pokedex_categories_settings", "pokedex_size_stats_system_settings", b"pokedex_size_stats_system_settings", "pokedex_v2_settings", b"pokedex_v2_settings", "pokedexv2_feature_flags", b"pokedexv2_feature_flags", "pokemon", b"pokemon", "pokemon_extended_settings", b"pokemon_extended_settings", "pokemon_family", b"pokemon_family", "pokemon_fx_settings", b"pokemon_fx_settings", "pokemon_home_energy_costs", b"pokemon_home_energy_costs", "pokemon_home_form_reversion", b"pokemon_home_form_reversion", "pokemon_home_settings", b"pokemon_home_settings", "pokemon_info_panel_settings", b"pokemon_info_panel_settings", "pokemon_inventory_rule_settings", b"pokemon_inventory_rule_settings", "pokemon_scale_settings", b"pokemon_scale_settings", "pokemon_tag_settings", b"pokemon_tag_settings", "pokemon_upgrades", b"pokemon_upgrades", "pokestop_invasion_availability_settings", b"pokestop_invasion_availability_settings", "popup_control_settings", b"popup_control_settings", "postcard_collection_settings", b"postcard_collection_settings", "power_up_pokestops_settings", b"power_up_pokestops_settings", "primal_evo_settings", b"primal_evo_settings", "prohibited_item_settings", b"prohibited_item_settings", "project_vacation", b"project_vacation", "ptc_oauth_settings", b"ptc_oauth_settings", "pvp_next_feature_flags", b"pvp_next_feature_flags", "quest_dialogue_inbox_settings", b"quest_dialogue_inbox_settings", "quest_settings", b"quest_settings", "quick_invite_settings", b"quick_invite_settings", "raid_entry_cost_settings", b"raid_entry_cost_settings", "raid_lobby_counter_settings", b"raid_lobby_counter_settings", "raid_settings_proto", b"raid_settings_proto", "recommended_search_proto", b"recommended_search_proto", "reduced_entry_flow_settings", b"reduced_entry_flow_settings", "referral_settings", b"referral_settings", "region_prohibited_item_settings", b"region_prohibited_item_settings", "remote_trade_settings", b"remote_trade_settings", "roll_back", b"roll_back", "route_badge_settings", b"route_badge_settings", "route_creation_settings", b"route_creation_settings", "route_discovery_settings", b"route_discovery_settings", "route_pin_settings", b"route_pin_settings", "route_play_settings", b"route_play_settings", "route_stamp_category_settings", b"route_stamp_category_settings", "routes_nearby_notif_settings", b"routes_nearby_notif_settings", "routes_party_play_interop_settings", b"routes_party_play_interop_settings", "save_for_later_settings", b"save_for_later_settings", "settings_override_rule", b"settings_override_rule", "shared_fusion_settings", b"shared_fusion_settings", "shared_move_settings", b"shared_move_settings", "smart_glasses_feature_flags", b"smart_glasses_feature_flags", "soft_sfida_settings", b"soft_sfida_settings", "sourdough_move_mapping_settings", b"sourdough_move_mapping_settings", "special_egg_settings", b"special_egg_settings", "special_research_visual_refresh_settings", b"special_research_visual_refresh_settings", "sponsored_geofence_gift_settings", b"sponsored_geofence_gift_settings", "squash_settings", b"squash_settings", "stamp_collection_settings", b"stamp_collection_settings", "station_reward_settings", b"station_reward_settings", "stationed_pokemon_table_settings", b"stationed_pokemon_table_settings", "sticker_category_settings", b"sticker_category_settings", "sticker_metadata", b"sticker_metadata", "streamer_mode_settings", b"streamer_mode_settings", "style_shop_settings", b"style_shop_settings", "supply_balloon_gift_settings", b"supply_balloon_gift_settings", "tappable_settings", b"tappable_settings", "template_id", b"template_id", "temporary_evolution_settings", b"temporary_evolution_settings", "ticket_gifting_settings", b"ticket_gifting_settings", "today_view_settings", b"today_view_settings", "tutorial_settings", b"tutorial_settings", "two_for_one_flags", b"two_for_one_flags", "type_effective", b"type_effective", "username_suggestion_settings", b"username_suggestion_settings", "verbose_log_combat_settings", b"verbose_log_combat_settings", "verbose_log_raid_settings", b"verbose_log_raid_settings", "vista_general_settings", b"vista_general_settings", "vnext_battle_config", b"vnext_battle_config", "vps_event_settings", b"vps_event_settings", "vs_seeker_client_settings", b"vs_seeker_client_settings", "vs_seeker_loot_proto", b"vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", b"vs_seeker_pokemon_rewards", "vs_seeker_schedule_settings", b"vs_seeker_schedule_settings", "weather_affinities", b"weather_affinities", "weather_bonus_settings", b"weather_bonus_settings", "welcome_back_rewards_settings", b"welcome_back_rewards_settings"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["Data", b"Data", "accessibility_settings", b"accessibility_settings", "additive_scene_settings", b"additive_scene_settings", "address_book_import_settings", b"address_book_import_settings", "addressable_pokemon_settings", b"addressable_pokemon_settings", "advanced_settings", b"advanced_settings", "anti_leak_settings", b"anti_leak_settings", "ar_backend_settings", b"ar_backend_settings", "ar_photo_feature_flags", b"ar_photo_feature_flags", "ar_telemetry_settings", b"ar_telemetry_settings", "asset_refresh_proto", b"asset_refresh_proto", "avatar_customization", b"avatar_customization", "avatar_feature_flags", b"avatar_feature_flags", "avatar_group_settings", b"avatar_group_settings", "avatar_item_display", b"avatar_item_display", "avatar_store_footer_flags", b"avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", b"avatar_store_subcategory_filtering_flags", "background_mode_settings", b"background_mode_settings", "badge", b"badge", "battle_animation_settings", b"battle_animation_settings", "battle_hub_badge_settings", b"battle_hub_badge_settings", "battle_hub_order_settings", b"battle_hub_order_settings", "battle_input_buffer_settings", b"battle_input_buffer_settings", "battle_party_settings", b"battle_party_settings", "battle_settings", b"battle_settings", "battle_visual_settings", b"battle_visual_settings", "beluga_pokemon_whitelist", b"beluga_pokemon_whitelist", "best_friends_plus_settings", b"best_friends_plus_settings", "bread_battle_client_settings", b"bread_battle_client_settings", "bread_feature_flags", b"bread_feature_flags", "bread_lobby_counter_settings", b"bread_lobby_counter_settings", "bread_lobby_update_settings", b"bread_lobby_update_settings", "bread_move_level_settings", b"bread_move_level_settings", "bread_move_mappings", b"bread_move_mappings", "bread_pokemon_scaling_settings", b"bread_pokemon_scaling_settings", "bread_settings", b"bread_settings", "buddy_activity_category_settings", b"buddy_activity_category_settings", "buddy_emotion_level_settings", b"buddy_emotion_level_settings", "buddy_encounter_cameo_settings", b"buddy_encounter_cameo_settings", "buddy_hunger_settings", b"buddy_hunger_settings", "buddy_interaction_settings", b"buddy_interaction_settings", "buddy_level_settings", b"buddy_level_settings", "buddy_swap_settings", b"buddy_swap_settings", "buddy_walk_settings", b"buddy_walk_settings", "bulk_healing_settings", b"bulk_healing_settings", "butterfly_collector_settings", b"butterfly_collector_settings", "campfire_settings", b"campfire_settings", "catch_radius_multiplier_settings", b"catch_radius_multiplier_settings", "client_poi_decoration_group", b"client_poi_decoration_group", "client_quest_template", b"client_quest_template", "code_gate_proto", b"code_gate_proto", "combat_competitive_season_settings", b"combat_competitive_season_settings", "combat_league", b"combat_league", "combat_league_settings", b"combat_league_settings", "combat_move", b"combat_move", "combat_npc_personality", b"combat_npc_personality", "combat_npc_trainer", b"combat_npc_trainer", "combat_ranking_proto_settings", b"combat_ranking_proto_settings", "combat_settings", b"combat_settings", "combat_stat_stage_settings", b"combat_stat_stage_settings", "combat_type", b"combat_type", "contest_settings", b"contest_settings", "conversation_settings", b"conversation_settings", "cross_game_social_settings", b"cross_game_social_settings", "daily_adventure_incense_settings", b"daily_adventure_incense_settings", "deep_linking_settings", b"deep_linking_settings", "egg_hatch_improvements_settings", b"egg_hatch_improvements_settings", "egg_list_adventure_sync_card_settings", b"egg_list_adventure_sync_card_settings", "encounter_settings", b"encounter_settings", "error_reporting_settings", b"error_reporting_settings", "event_conditional_override_settings_priority", b"event_conditional_override_settings_priority", "event_map_decoration_settings", b"event_map_decoration_settings", "event_map_decoration_system_settings", b"event_map_decoration_system_settings", "event_map_refresh_settings", b"event_map_refresh_settings", "event_pass_settings", b"event_pass_settings", "event_pass_system_settings", b"event_pass_system_settings", "event_pass_tier_settings", b"event_pass_tier_settings", "event_planner_popular_notification_settings", b"event_planner_popular_notification_settings", "evolution_chain_display_settings", b"evolution_chain_display_settings", "evolution_quest_template", b"evolution_quest_template", "external_addressable_assets_settings", b"external_addressable_assets_settings", "feature_gate", b"feature_gate", "feature_unlock_level_settings", b"feature_unlock_level_settings", "field_book_settings", b"field_book_settings", "form_settings", b"form_settings", "fort_power_up_level_settings", b"fort_power_up_level_settings", "friendship_milestone_settings", b"friendship_milestone_settings", "garbage_collection_settings", b"garbage_collection_settings", "gender_settings", b"gender_settings", "geotargeted_quest_settings", b"geotargeted_quest_settings", "gifting_settings", b"gifting_settings", "graphics_capabilities_settings", b"graphics_capabilities_settings", "guest_account_game_settings_proto", b"guest_account_game_settings_proto", "gui_search_settings", b"gui_search_settings", "gym_badge_settings", b"gym_badge_settings", "haptics_settings", b"haptics_settings", "home_widget_settings", b"home_widget_settings", "iap_category_display", b"iap_category_display", "iap_item_display", b"iap_item_display", "iap_settings", b"iap_settings", "iap_store_banner", b"iap_store_banner", "ibfc_lightweight_settings", b"ibfc_lightweight_settings", "impression_tracking_settings", b"impression_tracking_settings", "in_app_survey_settings", b"in_app_survey_settings", "incident_priority_settings", b"incident_priority_settings", "incident_visibility_settings", b"incident_visibility_settings", "invasion_npc_display_settings", b"invasion_npc_display_settings", "inventory_settings", b"inventory_settings", "iris_social_settings", b"iris_social_settings", "iris_social_ux_funnel_settings", b"iris_social_ux_funnel_settings", "item", b"item", "item_currency_values", b"item_currency_values", "item_expiration_settings", b"item_expiration_settings", "item_inventory_update_settings", b"item_inventory_update_settings", "join_raid_via_friend_list_settings", b"join_raid_via_friend_list_settings", "language_bundle", b"language_bundle", "language_selector_settings", b"language_selector_settings", "language_settings", b"language_settings", "level_up_rewards", b"level_up_rewards", "limited_purchase_sku_settings", b"limited_purchase_sku_settings", "location_card_feature_settings", b"location_card_feature_settings", "location_card_settings", b"location_card_settings", "lucky_pokemon_settings", b"lucky_pokemon_settings", "main_menu_camera_button_settings", b"main_menu_camera_button_settings", "map_buddy_settings", b"map_buddy_settings", "map_coord_overlay", b"map_coord_overlay", "map_display_settings", b"map_display_settings", "map_icon_sort_order", b"map_icon_sort_order", "map_object_collision_avoidance_settings", b"map_object_collision_avoidance_settings", "map_objects_interaction_range_settings", b"map_objects_interaction_range_settings", "map_scene_feature_flags", b"map_scene_feature_flags", "mega_evo_level_settings", b"mega_evo_level_settings", "mega_evo_settings", b"mega_evo_settings", "monodepth_settings", b"monodepth_settings", "move", b"move", "move_sequence", b"move_sequence", "mp_settings", b"mp_settings", "music_settings", b"music_settings", "natural_art_day_night_feature_settings", b"natural_art_day_night_feature_settings", "nearby_pokemon_settings", b"nearby_pokemon_settings", "neutral_avatar_item_mapping", b"neutral_avatar_item_mapping", "neutral_avatar_mapping", b"neutral_avatar_mapping", "neutral_avatar_settings", b"neutral_avatar_settings", "nia_id_migration_settings", b"nia_id_migration_settings", "non_combat_move_settings", b"non_combat_move_settings", "onboarding_settings", b"onboarding_settings", "optimizations_proto", b"optimizations_proto", "party_dark_launch_settings", b"party_dark_launch_settings", "party_iap_boosts_settings", b"party_iap_boosts_settings", "party_play_general_settings", b"party_play_general_settings", "party_player_summary_settings", b"party_player_summary_settings", "party_recommendation_settings", b"party_recommendation_settings", "party_shared_quest_settings", b"party_shared_quest_settings", "photo_sets_settings_proto", b"photo_sets_settings_proto", "photo_settings", b"photo_settings", "planner_settings", b"planner_settings", "player_bonus_system_settings", b"player_bonus_system_settings", "player_flow_improvements", b"player_flow_improvements", "player_level", b"player_level", "pokeball_throw_property_settings", b"pokeball_throw_property_settings", "pokecoin_purchase_display_gmt", b"pokecoin_purchase_display_gmt", "pokedex_categories_settings", b"pokedex_categories_settings", "pokedex_size_stats_system_settings", b"pokedex_size_stats_system_settings", "pokedex_v2_settings", b"pokedex_v2_settings", "pokedexv2_feature_flags", b"pokedexv2_feature_flags", "pokemon", b"pokemon", "pokemon_extended_settings", b"pokemon_extended_settings", "pokemon_family", b"pokemon_family", "pokemon_fx_settings", b"pokemon_fx_settings", "pokemon_home_energy_costs", b"pokemon_home_energy_costs", "pokemon_home_form_reversion", b"pokemon_home_form_reversion", "pokemon_home_settings", b"pokemon_home_settings", "pokemon_info_panel_settings", b"pokemon_info_panel_settings", "pokemon_inventory_rule_settings", b"pokemon_inventory_rule_settings", "pokemon_scale_settings", b"pokemon_scale_settings", "pokemon_tag_settings", b"pokemon_tag_settings", "pokemon_upgrades", b"pokemon_upgrades", "pokestop_invasion_availability_settings", b"pokestop_invasion_availability_settings", "popup_control_settings", b"popup_control_settings", "postcard_collection_settings", b"postcard_collection_settings", "power_up_pokestops_settings", b"power_up_pokestops_settings", "primal_evo_settings", b"primal_evo_settings", "prohibited_item_settings", b"prohibited_item_settings", "project_vacation", b"project_vacation", "ptc_oauth_settings", b"ptc_oauth_settings", "pvp_next_feature_flags", b"pvp_next_feature_flags", "quest_dialogue_inbox_settings", b"quest_dialogue_inbox_settings", "quest_settings", b"quest_settings", "quick_invite_settings", b"quick_invite_settings", "raid_entry_cost_settings", b"raid_entry_cost_settings", "raid_lobby_counter_settings", b"raid_lobby_counter_settings", "raid_settings_proto", b"raid_settings_proto", "recommended_search_proto", b"recommended_search_proto", "reduced_entry_flow_settings", b"reduced_entry_flow_settings", "referral_settings", b"referral_settings", "region_prohibited_item_settings", b"region_prohibited_item_settings", "remote_trade_settings", b"remote_trade_settings", "roll_back", b"roll_back", "route_badge_settings", b"route_badge_settings", "route_creation_settings", b"route_creation_settings", "route_discovery_settings", b"route_discovery_settings", "route_pin_settings", b"route_pin_settings", "route_play_settings", b"route_play_settings", "route_stamp_category_settings", b"route_stamp_category_settings", "routes_nearby_notif_settings", b"routes_nearby_notif_settings", "routes_party_play_interop_settings", b"routes_party_play_interop_settings", "save_for_later_settings", b"save_for_later_settings", "settings_override_rule", b"settings_override_rule", "shared_fusion_settings", b"shared_fusion_settings", "shared_move_settings", b"shared_move_settings", "smart_glasses_feature_flags", b"smart_glasses_feature_flags", "soft_sfida_settings", b"soft_sfida_settings", "sourdough_move_mapping_settings", b"sourdough_move_mapping_settings", "special_egg_settings", b"special_egg_settings", "special_research_visual_refresh_settings", b"special_research_visual_refresh_settings", "sponsored_geofence_gift_settings", b"sponsored_geofence_gift_settings", "squash_settings", b"squash_settings", "stamp_collection_settings", b"stamp_collection_settings", "station_reward_settings", b"station_reward_settings", "stationed_pokemon_table_settings", b"stationed_pokemon_table_settings", "sticker_category_settings", b"sticker_category_settings", "sticker_metadata", b"sticker_metadata", "streamer_mode_settings", b"streamer_mode_settings", "style_shop_settings", b"style_shop_settings", "supply_balloon_gift_settings", b"supply_balloon_gift_settings", "tappable_settings", b"tappable_settings", "template_id", b"template_id", "temporary_evolution_settings", b"temporary_evolution_settings", "ticket_gifting_settings", b"ticket_gifting_settings", "time_boxed_spawn_events_settings", b"time_boxed_spawn_events_settings", "today_view_settings", b"today_view_settings", "tutorial_settings", b"tutorial_settings", "two_for_one_flags", b"two_for_one_flags", "type_effective", b"type_effective", "username_suggestion_settings", b"username_suggestion_settings", "verbose_log_combat_settings", b"verbose_log_combat_settings", "verbose_log_raid_settings", b"verbose_log_raid_settings", "vista_general_settings", b"vista_general_settings", "vnext_battle_config", b"vnext_battle_config", "vps_event_settings", b"vps_event_settings", "vs_seeker_client_settings", b"vs_seeker_client_settings", "vs_seeker_loot_proto", b"vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", b"vs_seeker_pokemon_rewards", "vs_seeker_schedule_settings", b"vs_seeker_schedule_settings", "weather_affinities", b"weather_affinities", "weather_bonus_settings", b"weather_bonus_settings", "welcome_back_rewards_settings", b"welcome_back_rewards_settings"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-    _WhichOneofReturnType_Data: _TypeAlias = _typing.Literal["pokemon", "item", "move", "move_sequence", "type_effective", "badge", "player_level", "battle_settings", "encounter_settings", "iap_item_display", "iap_settings", "pokemon_upgrades", "quest_settings", "avatar_customization", "form_settings", "gender_settings", "gym_badge_settings", "weather_affinities", "weather_bonus_settings", "pokemon_scale_settings", "iap_category_display", "beluga_pokemon_whitelist", "onboarding_settings", "friendship_milestone_settings", "lucky_pokemon_settings", "combat_settings", "combat_league_settings", "combat_league", "combat_move", "background_mode_settings", "combat_stat_stage_settings", "combat_npc_trainer", "combat_npc_personality", "party_recommendation_settings", "pokecoin_purchase_display_gmt", "invasion_npc_display_settings", "combat_competitive_season_settings", "combat_ranking_proto_settings", "combat_type", "buddy_level_settings", "buddy_activity_category_settings", "buddy_swap_settings", "route_creation_settings", "vs_seeker_client_settings", "buddy_encounter_cameo_settings", "limited_purchase_sku_settings", "buddy_emotion_level_settings", "pokestop_invasion_availability_settings", "buddy_interaction_settings", "vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", "battle_hub_order_settings", "battle_hub_badge_settings", "map_buddy_settings", "buddy_walk_settings", "buddy_hunger_settings", "project_vacation", "mega_evo_settings", "temporary_evolution_settings", "avatar_group_settings", "pokemon_family", "monodepth_settings", "level_up_rewards", "raid_settings_proto", "tappable_settings", "route_play_settings", "sponsored_geofence_gift_settings", "sticker_metadata", "cross_game_social_settings", "map_display_settings", "pokemon_home_energy_costs", "pokemon_home_settings", "ar_telemetry_settings", "battle_party_settings", "pokemon_home_form_reversion", "deep_linking_settings", "gui_search_settings", "evolution_quest_template", "geotargeted_quest_settings", "pokemon_tag_settings", "recommended_search_proto", "inventory_settings", "route_discovery_settings", "fort_power_up_level_settings", "power_up_pokestops_settings", "incident_priority_settings", "referral_settings", "pokedex_categories_settings", "battle_visual_settings", "addressable_pokemon_settings", "verbose_log_raid_settings", "shared_move_settings", "address_book_import_settings", "music_settings", "map_objects_interaction_range_settings", "external_addressable_assets_settings", "username_suggestion_settings", "tutorial_settings", "egg_hatch_improvements_settings", "feature_unlock_level_settings", "in_app_survey_settings", "incident_visibility_settings", "postcard_collection_settings", "verbose_log_combat_settings", "mega_evo_level_settings", "advanced_settings", "impression_tracking_settings", "garbage_collection_settings", "evolution_chain_display_settings", "route_stamp_category_settings", "popup_control_settings", "ticket_gifting_settings", "language_selector_settings", "gifting_settings", "campfire_settings", "photo_settings", "daily_adventure_incense_settings", "item_inventory_update_settings", "sticker_category_settings", "home_widget_settings", "vs_seeker_schedule_settings", "pokedex_size_stats_system_settings", "asset_refresh_proto", "pokemon_fx_settings", "butterfly_collector_settings", "language_settings", "pokemon_extended_settings", "primal_evo_settings", "nia_id_migration_settings", "location_card_settings", "conversation_settings", "vps_event_settings", "catch_radius_multiplier_settings", "haptics_settings", "raid_lobby_counter_settings", "contest_settings", "guest_account_game_settings_proto", "neutral_avatar_settings", "squash_settings", "today_view_settings", "route_pin_settings", "style_shop_settings", "party_play_general_settings", "optimizations_proto", "nearby_pokemon_settings", "party_player_summary_settings", "party_shared_quest_settings", "client_poi_decoration_group", "map_coord_overlay", "vista_general_settings", "route_badge_settings", "party_dark_launch_settings", "routes_party_play_interop_settings", "routes_nearby_notif_settings", "non_combat_move_settings", "player_bonus_system_settings", "ptc_oauth_settings", "graphics_capabilities_settings", "party_iap_boosts_settings", "language_bundle", "bulk_healing_settings", "photo_sets_settings_proto", "main_menu_camera_button_settings", "shared_fusion_settings", "iris_social_settings", "additive_scene_settings", "mp_settings", "bread_feature_flags", "bread_settings", "settings_override_rule", "save_for_later_settings", "iris_social_ux_funnel_settings", "map_icon_sort_order", "bread_battle_client_settings", "error_reporting_settings", "bread_move_level_settings", "item_expiration_settings", "bread_move_mappings", "station_reward_settings", "stationed_pokemon_table_settings", "accessibility_settings", "bread_lobby_counter_settings", "bread_pokemon_scaling_settings", "pokeball_throw_property_settings", "sourdough_move_mapping_settings", "event_map_decoration_settings", "event_map_decoration_system_settings", "pokemon_info_panel_settings", "stamp_collection_settings", "iap_store_banner", "avatar_item_display", "pokedexv2_feature_flags", "code_gate_proto", "pokedex_v2_settings", "join_raid_via_friend_list_settings", "event_pass_settings", "event_pass_tier_settings", "smart_glasses_feature_flags", "planner_settings", "map_scene_feature_flags", "bread_lobby_update_settings", "anti_leak_settings", "battle_input_buffer_settings", "client_quest_template", "event_pass_system_settings", "pvp_next_feature_flags", "neutral_avatar_mapping", "feature_gate", "roll_back", "ibfc_lightweight_settings", "avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", "two_for_one_flags", "event_planner_popular_notification_settings", "neutral_avatar_item_mapping", "quick_invite_settings", "avatar_feature_flags", "remote_trade_settings", "best_friends_plus_settings", "battle_animation_settings", "vnext_battle_config", "ar_photo_feature_flags", "pokemon_inventory_rule_settings", "special_egg_settings", "supply_balloon_gift_settings", "streamer_mode_settings", "natural_art_day_night_feature_settings", "soft_sfida_settings", "raid_entry_cost_settings", "special_research_visual_refresh_settings", "quest_dialogue_inbox_settings", "field_book_settings", "item_currency_values", "welcome_back_rewards_settings", "reduced_entry_flow_settings", "event_conditional_override_settings_priority", "event_map_refresh_settings", "ar_backend_settings", "prohibited_item_settings", "player_flow_improvements", "egg_list_adventure_sync_card_settings", "region_prohibited_item_settings"]  # noqa: Y015
+    _WhichOneofReturnType_Data: _TypeAlias = _typing.Literal["pokemon", "item", "move", "move_sequence", "type_effective", "badge", "player_level", "battle_settings", "encounter_settings", "iap_item_display", "iap_settings", "pokemon_upgrades", "quest_settings", "avatar_customization", "form_settings", "gender_settings", "gym_badge_settings", "weather_affinities", "weather_bonus_settings", "pokemon_scale_settings", "iap_category_display", "beluga_pokemon_whitelist", "onboarding_settings", "friendship_milestone_settings", "lucky_pokemon_settings", "combat_settings", "combat_league_settings", "combat_league", "combat_move", "background_mode_settings", "combat_stat_stage_settings", "combat_npc_trainer", "combat_npc_personality", "party_recommendation_settings", "pokecoin_purchase_display_gmt", "invasion_npc_display_settings", "combat_competitive_season_settings", "combat_ranking_proto_settings", "combat_type", "buddy_level_settings", "buddy_activity_category_settings", "buddy_swap_settings", "route_creation_settings", "vs_seeker_client_settings", "buddy_encounter_cameo_settings", "limited_purchase_sku_settings", "buddy_emotion_level_settings", "pokestop_invasion_availability_settings", "buddy_interaction_settings", "vs_seeker_loot_proto", "vs_seeker_pokemon_rewards", "battle_hub_order_settings", "battle_hub_badge_settings", "map_buddy_settings", "buddy_walk_settings", "buddy_hunger_settings", "project_vacation", "mega_evo_settings", "temporary_evolution_settings", "avatar_group_settings", "pokemon_family", "monodepth_settings", "level_up_rewards", "raid_settings_proto", "tappable_settings", "route_play_settings", "sponsored_geofence_gift_settings", "sticker_metadata", "cross_game_social_settings", "map_display_settings", "pokemon_home_energy_costs", "pokemon_home_settings", "ar_telemetry_settings", "battle_party_settings", "pokemon_home_form_reversion", "deep_linking_settings", "gui_search_settings", "evolution_quest_template", "geotargeted_quest_settings", "pokemon_tag_settings", "recommended_search_proto", "inventory_settings", "route_discovery_settings", "fort_power_up_level_settings", "power_up_pokestops_settings", "incident_priority_settings", "referral_settings", "pokedex_categories_settings", "battle_visual_settings", "addressable_pokemon_settings", "verbose_log_raid_settings", "shared_move_settings", "address_book_import_settings", "music_settings", "map_objects_interaction_range_settings", "external_addressable_assets_settings", "username_suggestion_settings", "tutorial_settings", "egg_hatch_improvements_settings", "feature_unlock_level_settings", "in_app_survey_settings", "incident_visibility_settings", "postcard_collection_settings", "verbose_log_combat_settings", "mega_evo_level_settings", "advanced_settings", "impression_tracking_settings", "garbage_collection_settings", "evolution_chain_display_settings", "route_stamp_category_settings", "popup_control_settings", "ticket_gifting_settings", "language_selector_settings", "gifting_settings", "campfire_settings", "photo_settings", "daily_adventure_incense_settings", "item_inventory_update_settings", "sticker_category_settings", "home_widget_settings", "vs_seeker_schedule_settings", "pokedex_size_stats_system_settings", "asset_refresh_proto", "pokemon_fx_settings", "butterfly_collector_settings", "language_settings", "pokemon_extended_settings", "primal_evo_settings", "nia_id_migration_settings", "location_card_settings", "conversation_settings", "vps_event_settings", "catch_radius_multiplier_settings", "haptics_settings", "raid_lobby_counter_settings", "contest_settings", "guest_account_game_settings_proto", "neutral_avatar_settings", "squash_settings", "today_view_settings", "route_pin_settings", "style_shop_settings", "party_play_general_settings", "optimizations_proto", "nearby_pokemon_settings", "party_player_summary_settings", "party_shared_quest_settings", "client_poi_decoration_group", "map_coord_overlay", "vista_general_settings", "route_badge_settings", "party_dark_launch_settings", "routes_party_play_interop_settings", "routes_nearby_notif_settings", "non_combat_move_settings", "player_bonus_system_settings", "ptc_oauth_settings", "graphics_capabilities_settings", "party_iap_boosts_settings", "language_bundle", "bulk_healing_settings", "photo_sets_settings_proto", "main_menu_camera_button_settings", "shared_fusion_settings", "iris_social_settings", "additive_scene_settings", "mp_settings", "bread_feature_flags", "bread_settings", "settings_override_rule", "save_for_later_settings", "iris_social_ux_funnel_settings", "map_icon_sort_order", "bread_battle_client_settings", "error_reporting_settings", "bread_move_level_settings", "item_expiration_settings", "bread_move_mappings", "station_reward_settings", "stationed_pokemon_table_settings", "accessibility_settings", "bread_lobby_counter_settings", "bread_pokemon_scaling_settings", "pokeball_throw_property_settings", "sourdough_move_mapping_settings", "event_map_decoration_settings", "event_map_decoration_system_settings", "pokemon_info_panel_settings", "stamp_collection_settings", "iap_store_banner", "avatar_item_display", "pokedexv2_feature_flags", "code_gate_proto", "pokedex_v2_settings", "join_raid_via_friend_list_settings", "event_pass_settings", "event_pass_tier_settings", "smart_glasses_feature_flags", "planner_settings", "map_scene_feature_flags", "bread_lobby_update_settings", "anti_leak_settings", "battle_input_buffer_settings", "client_quest_template", "event_pass_system_settings", "pvp_next_feature_flags", "neutral_avatar_mapping", "feature_gate", "roll_back", "ibfc_lightweight_settings", "avatar_store_footer_flags", "avatar_store_subcategory_filtering_flags", "two_for_one_flags", "event_planner_popular_notification_settings", "neutral_avatar_item_mapping", "quick_invite_settings", "avatar_feature_flags", "remote_trade_settings", "best_friends_plus_settings", "battle_animation_settings", "vnext_battle_config", "ar_photo_feature_flags", "pokemon_inventory_rule_settings", "special_egg_settings", "supply_balloon_gift_settings", "streamer_mode_settings", "natural_art_day_night_feature_settings", "soft_sfida_settings", "raid_entry_cost_settings", "special_research_visual_refresh_settings", "quest_dialogue_inbox_settings", "field_book_settings", "item_currency_values", "welcome_back_rewards_settings", "reduced_entry_flow_settings", "event_conditional_override_settings_priority", "event_map_refresh_settings", "ar_backend_settings", "prohibited_item_settings", "player_flow_improvements", "egg_list_adventure_sync_card_settings", "region_prohibited_item_settings", "time_boxed_spawn_events_settings", "map_object_collision_avoidance_settings", "location_card_feature_settings"]  # noqa: Y015
     _WhichOneofArgType_Data: _TypeAlias = _typing.Literal["Data", b"Data"]  # noqa: Y015
     def WhichOneof(self, oneof_group: _WhichOneofArgType_Data) -> _WhichOneofReturnType_Data | None: ...
 
@@ -71038,6 +71378,59 @@ class GetIncenseRecapProto(_message.Message):
 Global___GetIncenseRecapProto: _TypeAlias = GetIncenseRecapProto  # noqa: Y015
 
 @_typing.final
+class GetIncompleteBattlesOutProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[GetIncompleteBattlesOutProto._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: GetIncompleteBattlesOutProto._Result.ValueType  # 0
+        SUCCESS: GetIncompleteBattlesOutProto._Result.ValueType  # 1
+        ERROR_UNKNOWN: GetIncompleteBattlesOutProto._Result.ValueType  # 2
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: GetIncompleteBattlesOutProto.Result.ValueType  # 0
+    SUCCESS: GetIncompleteBattlesOutProto.Result.ValueType  # 1
+    ERROR_UNKNOWN: GetIncompleteBattlesOutProto.Result.ValueType  # 2
+
+    RESULT_FIELD_NUMBER: _builtins.int
+    BATTLES_FIELD_NUMBER: _builtins.int
+    result: Global___GetIncompleteBattlesOutProto.Result.ValueType
+    @_builtins.property
+    def battles(self) -> _containers.RepeatedCompositeFieldContainer[Global___IncompleteBattleDetailsProto]: ...
+    def __init__(
+        self,
+        *,
+        result: Global___GetIncompleteBattlesOutProto.Result.ValueType = ...,
+        battles: _abc.Iterable[Global___IncompleteBattleDetailsProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["battles", b"battles", "result", b"result"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___GetIncompleteBattlesOutProto: _TypeAlias = GetIncompleteBattlesOutProto  # noqa: Y015
+
+@_typing.final
+class GetIncompleteBattlesProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___GetIncompleteBattlesProto: _TypeAlias = GetIncompleteBattlesProto  # noqa: Y015
+
+@_typing.final
 class GetInventoryProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -71656,6 +72049,8 @@ class GetMapObjectsOutProto(_message.Message):
     CLIENT_WEATHER_FIELD_NUMBER: _builtins.int
     MOON_PHASE_FIELD_NUMBER: _builtins.int
     TWILIGHT_PERIOD_FIELD_NUMBER: _builtins.int
+    NEARBY_POKEMON_SNAPSHOT_FIELD_NUMBER: _builtins.int
+    PINNED_NEARBY_POKEMON_SNAPSHOT_FIELD_NUMBER: _builtins.int
     status: Global___GetMapObjectsOutProto.Status.ValueType
     time_of_day: Global___GetMapObjectsOutProto.TimeOfDay.ValueType
     moon_phase: Global___GetMapObjectsOutProto.MoonPhase.ValueType
@@ -71664,6 +72059,10 @@ class GetMapObjectsOutProto(_message.Message):
     def map_cell(self) -> _containers.RepeatedCompositeFieldContainer[Global___ClientMapCellProto]: ...
     @_builtins.property
     def client_weather(self) -> _containers.RepeatedCompositeFieldContainer[Global___ClientWeatherProto]: ...
+    @_builtins.property
+    def nearby_pokemon_snapshot(self) -> Global___NearbyPokemonSnapshot: ...
+    @_builtins.property
+    def pinned_nearby_pokemon_snapshot(self) -> Global___PinnedNearbyPokemonSnapshot: ...
     def __init__(
         self,
         *,
@@ -71673,10 +72072,12 @@ class GetMapObjectsOutProto(_message.Message):
         client_weather: _abc.Iterable[Global___ClientWeatherProto] | None = ...,
         moon_phase: Global___GetMapObjectsOutProto.MoonPhase.ValueType = ...,
         twilight_period: Global___GetMapObjectsOutProto.TwilightPeriod.ValueType = ...,
+        nearby_pokemon_snapshot: Global___NearbyPokemonSnapshot | None = ...,
+        pinned_nearby_pokemon_snapshot: Global___PinnedNearbyPokemonSnapshot | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["nearby_pokemon_snapshot", b"nearby_pokemon_snapshot", "pinned_nearby_pokemon_snapshot", b"pinned_nearby_pokemon_snapshot"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["client_weather", b"client_weather", "map_cell", b"map_cell", "moon_phase", b"moon_phase", "status", b"status", "time_of_day", b"time_of_day", "twilight_period", b"twilight_period"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["client_weather", b"client_weather", "map_cell", b"map_cell", "moon_phase", b"moon_phase", "nearby_pokemon_snapshot", b"nearby_pokemon_snapshot", "pinned_nearby_pokemon_snapshot", b"pinned_nearby_pokemon_snapshot", "status", b"status", "time_of_day", b"time_of_day", "twilight_period", b"twilight_period"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -71690,8 +72091,10 @@ class GetMapObjectsProto(_message.Message):
     SINCE_TIME_MS_FIELD_NUMBER: _builtins.int
     PLAYER_LAT_FIELD_NUMBER: _builtins.int
     PLAYER_LNG_FIELD_NUMBER: _builtins.int
+    PINNED_ENCOUNTER_ID_FIELD_NUMBER: _builtins.int
     player_lat: _builtins.float
     player_lng: _builtins.float
+    pinned_encounter_id: _builtins.int
     @_builtins.property
     def cell_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
     @_builtins.property
@@ -71703,10 +72106,11 @@ class GetMapObjectsProto(_message.Message):
         since_time_ms: _abc.Iterable[_builtins.int] | None = ...,
         player_lat: _builtins.float = ...,
         player_lng: _builtins.float = ...,
+        pinned_encounter_id: _builtins.int = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["cell_id", b"cell_id", "player_lat", b"player_lat", "player_lng", b"player_lng", "since_time_ms", b"since_time_ms"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["cell_id", b"cell_id", "pinned_encounter_id", b"pinned_encounter_id", "player_lat", b"player_lat", "player_lng", b"player_lng", "since_time_ms", b"since_time_ms"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -74342,6 +74746,7 @@ class GetRaidDetailsProto(_message.Message):
     GYM_LNG_DEGREES_FIELD_NUMBER: _builtins.int
     INVITER_ID_FIELD_NUMBER: _builtins.int
     IS_SELF_INVITE_FIELD_NUMBER: _builtins.int
+    SELECTED_PARTY_FIELD_NUMBER: _builtins.int
     raid_seed: _builtins.int
     gym_id: _builtins.str
     player_lat_degrees: _builtins.float
@@ -74352,6 +74757,8 @@ class GetRaidDetailsProto(_message.Message):
     is_self_invite: _builtins.bool
     @_builtins.property
     def lobby_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    @_builtins.property
+    def selected_party(self) -> Global___SelectedRaidPartyProto: ...
     def __init__(
         self,
         *,
@@ -74364,10 +74771,11 @@ class GetRaidDetailsProto(_message.Message):
         gym_lng_degrees: _builtins.float = ...,
         inviter_id: _builtins.str = ...,
         is_self_invite: _builtins.bool = ...,
+        selected_party: Global___SelectedRaidPartyProto | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["selected_party", b"selected_party"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["gym_id", b"gym_id", "gym_lat_degrees", b"gym_lat_degrees", "gym_lng_degrees", b"gym_lng_degrees", "inviter_id", b"inviter_id", "is_self_invite", b"is_self_invite", "lobby_id", b"lobby_id", "player_lat_degrees", b"player_lat_degrees", "player_lng_degrees", b"player_lng_degrees", "raid_seed", b"raid_seed"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["gym_id", b"gym_id", "gym_lat_degrees", b"gym_lat_degrees", "gym_lng_degrees", b"gym_lng_degrees", "inviter_id", b"inviter_id", "is_self_invite", b"is_self_invite", "lobby_id", b"lobby_id", "player_lat_degrees", b"player_lat_degrees", "player_lng_degrees", b"player_lng_degrees", "raid_seed", b"raid_seed", "selected_party", b"selected_party"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -74424,6 +74832,91 @@ class GetRaidDetailsResponseData(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___GetRaidDetailsResponseData: _TypeAlias = GetRaidDetailsResponseData  # noqa: Y015
+
+@_typing.final
+class GetRaidEncounterDetailsOutProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[GetRaidEncounterDetailsOutProto._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: GetRaidEncounterDetailsOutProto._Result.ValueType  # 0
+        SUCCESS: GetRaidEncounterDetailsOutProto._Result.ValueType  # 1
+        ERROR_UNKNOWN: GetRaidEncounterDetailsOutProto._Result.ValueType  # 2
+        ERROR_ENCOUNTER_COMPLETED: GetRaidEncounterDetailsOutProto._Result.ValueType  # 3
+        ERROR_ENCOUNTER_UNAVAILABLE: GetRaidEncounterDetailsOutProto._Result.ValueType  # 4
+        ERROR_PLAYER_NOT_ELIGIBLE: GetRaidEncounterDetailsOutProto._Result.ValueType  # 5
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: GetRaidEncounterDetailsOutProto.Result.ValueType  # 0
+    SUCCESS: GetRaidEncounterDetailsOutProto.Result.ValueType  # 1
+    ERROR_UNKNOWN: GetRaidEncounterDetailsOutProto.Result.ValueType  # 2
+    ERROR_ENCOUNTER_COMPLETED: GetRaidEncounterDetailsOutProto.Result.ValueType  # 3
+    ERROR_ENCOUNTER_UNAVAILABLE: GetRaidEncounterDetailsOutProto.Result.ValueType  # 4
+    ERROR_PLAYER_NOT_ELIGIBLE: GetRaidEncounterDetailsOutProto.Result.ValueType  # 5
+
+    RESULT_FIELD_NUMBER: _builtins.int
+    TRAINER_BATTLE_STATE_FIELD_NUMBER: _builtins.int
+    THROWS_REMAINING_FIELD_NUMBER: _builtins.int
+    RAID_BALL_FIELD_NUMBER: _builtins.int
+    CAPTURE_PROBABILITIES_FIELD_NUMBER: _builtins.int
+    APPLIED_BONUS_FIELD_NUMBER: _builtins.int
+    APPRAISAL_STAR_FIELD_NUMBER: _builtins.int
+    result: Global___GetRaidEncounterDetailsOutProto.Result.ValueType
+    trainer_battle_state: Global___TrainerBattleState.ValueType
+    throws_remaining: _builtins.int
+    raid_ball: Global___Item.ValueType
+    appraisal_star: _builtins.int
+    @_builtins.property
+    def capture_probabilities(self) -> Global___CaptureProbabilityProto: ...
+    @_builtins.property
+    def applied_bonus(self) -> Global___AppliedBonusProto: ...
+    def __init__(
+        self,
+        *,
+        result: Global___GetRaidEncounterDetailsOutProto.Result.ValueType = ...,
+        trainer_battle_state: Global___TrainerBattleState.ValueType = ...,
+        throws_remaining: _builtins.int = ...,
+        raid_ball: Global___Item.ValueType = ...,
+        capture_probabilities: Global___CaptureProbabilityProto | None = ...,
+        applied_bonus: Global___AppliedBonusProto | None = ...,
+        appraisal_star: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["applied_bonus", b"applied_bonus", "capture_probabilities", b"capture_probabilities"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["applied_bonus", b"applied_bonus", "appraisal_star", b"appraisal_star", "capture_probabilities", b"capture_probabilities", "raid_ball", b"raid_ball", "result", b"result", "throws_remaining", b"throws_remaining", "trainer_battle_state", b"trainer_battle_state"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___GetRaidEncounterDetailsOutProto: _TypeAlias = GetRaidEncounterDetailsOutProto  # noqa: Y015
+
+@_typing.final
+class GetRaidEncounterDetailsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    RAID_SEED_FIELD_NUMBER: _builtins.int
+    GYM_ID_FIELD_NUMBER: _builtins.int
+    BATTLE_ID_FIELD_NUMBER: _builtins.int
+    raid_seed: _builtins.int
+    gym_id: _builtins.str
+    battle_id: _builtins.str
+    def __init__(
+        self,
+        *,
+        raid_seed: _builtins.int = ...,
+        gym_id: _builtins.str = ...,
+        battle_id: _builtins.str = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["battle_id", b"battle_id", "gym_id", b"gym_id", "raid_seed", b"raid_seed"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___GetRaidEncounterDetailsProto: _TypeAlias = GetRaidEncounterDetailsProto  # noqa: Y015
 
 @_typing.final
 class GetRaidLobbyCounterOutProto(_message.Message):
@@ -74486,6 +74979,101 @@ class GetRaidLobbyCounterProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___GetRaidLobbyCounterProto: _TypeAlias = GetRaidLobbyCounterProto  # noqa: Y015
+
+@_typing.final
+class GetRaidLobbyDetailsOutProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[GetRaidLobbyDetailsOutProto._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: GetRaidLobbyDetailsOutProto._Result.ValueType  # 0
+        SUCCESS: GetRaidLobbyDetailsOutProto._Result.ValueType  # 1
+        ERROR_NOT_IN_RANGE: GetRaidLobbyDetailsOutProto._Result.ValueType  # 2
+        ERROR_RAID_COMPLETED: GetRaidLobbyDetailsOutProto._Result.ValueType  # 3
+        ERROR_RAID_UNAVAILABLE: GetRaidLobbyDetailsOutProto._Result.ValueType  # 4
+        ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetRaidLobbyDetailsOutProto._Result.ValueType  # 5
+        ERROR_POI_INACCESSIBLE: GetRaidLobbyDetailsOutProto._Result.ValueType  # 6
+        ERROR_PLAYER_NOT_ELIGIBLE: GetRaidLobbyDetailsOutProto._Result.ValueType  # 7
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: GetRaidLobbyDetailsOutProto.Result.ValueType  # 0
+    SUCCESS: GetRaidLobbyDetailsOutProto.Result.ValueType  # 1
+    ERROR_NOT_IN_RANGE: GetRaidLobbyDetailsOutProto.Result.ValueType  # 2
+    ERROR_RAID_COMPLETED: GetRaidLobbyDetailsOutProto.Result.ValueType  # 3
+    ERROR_RAID_UNAVAILABLE: GetRaidLobbyDetailsOutProto.Result.ValueType  # 4
+    ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetRaidLobbyDetailsOutProto.Result.ValueType  # 5
+    ERROR_POI_INACCESSIBLE: GetRaidLobbyDetailsOutProto.Result.ValueType  # 6
+    ERROR_PLAYER_NOT_ELIGIBLE: GetRaidLobbyDetailsOutProto.Result.ValueType  # 7
+
+    RESULT_FIELD_NUMBER: _builtins.int
+    TRAINER_BATTLE_STATE_FIELD_NUMBER: _builtins.int
+    SERVER_MS_FIELD_NUMBER: _builtins.int
+    SERVER_INSTANCE_FIELD_NUMBER: _builtins.int
+    LOBBY_FIELD_NUMBER: _builtins.int
+    result: Global___GetRaidLobbyDetailsOutProto.Result.ValueType
+    trainer_battle_state: Global___TrainerBattleState.ValueType
+    server_ms: _builtins.int
+    server_instance: _builtins.int
+    @_builtins.property
+    def lobby(self) -> Global___LobbyProto: ...
+    def __init__(
+        self,
+        *,
+        result: Global___GetRaidLobbyDetailsOutProto.Result.ValueType = ...,
+        trainer_battle_state: Global___TrainerBattleState.ValueType = ...,
+        server_ms: _builtins.int = ...,
+        server_instance: _builtins.int = ...,
+        lobby: Global___LobbyProto | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["lobby", b"lobby"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["lobby", b"lobby", "result", b"result", "server_instance", b"server_instance", "server_ms", b"server_ms", "trainer_battle_state", b"trainer_battle_state"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___GetRaidLobbyDetailsOutProto: _TypeAlias = GetRaidLobbyDetailsOutProto  # noqa: Y015
+
+@_typing.final
+class GetRaidLobbyDetailsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    RAID_SEED_FIELD_NUMBER: _builtins.int
+    GYM_ID_FIELD_NUMBER: _builtins.int
+    LOBBY_ID_FIELD_NUMBER: _builtins.int
+    GYM_LAT_DEGREES_FIELD_NUMBER: _builtins.int
+    GYM_LNG_DEGREES_FIELD_NUMBER: _builtins.int
+    INVITER_ID_FIELD_NUMBER: _builtins.int
+    IS_SELF_INVITE_FIELD_NUMBER: _builtins.int
+    raid_seed: _builtins.int
+    gym_id: _builtins.str
+    gym_lat_degrees: _builtins.float
+    gym_lng_degrees: _builtins.float
+    inviter_id: _builtins.str
+    is_self_invite: _builtins.bool
+    @_builtins.property
+    def lobby_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    def __init__(
+        self,
+        *,
+        raid_seed: _builtins.int = ...,
+        gym_id: _builtins.str = ...,
+        lobby_id: _abc.Iterable[_builtins.int] | None = ...,
+        gym_lat_degrees: _builtins.float = ...,
+        gym_lng_degrees: _builtins.float = ...,
+        inviter_id: _builtins.str = ...,
+        is_self_invite: _builtins.bool = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["gym_id", b"gym_id", "gym_lat_degrees", b"gym_lat_degrees", "gym_lng_degrees", b"gym_lng_degrees", "inviter_id", b"inviter_id", "is_self_invite", b"is_self_invite", "lobby_id", b"lobby_id", "raid_seed", b"raid_seed"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___GetRaidLobbyDetailsProto: _TypeAlias = GetRaidLobbyDetailsProto  # noqa: Y015
 
 @_typing.final
 class GetReferralCodeOutProto(_message.Message):
@@ -75260,6 +75848,117 @@ class GetServerTimeProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___GetServerTimeProto: _TypeAlias = GetServerTimeProto  # noqa: Y015
+
+@_typing.final
+class GetSimpleRaidDetailsOutProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[GetSimpleRaidDetailsOutProto._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: GetSimpleRaidDetailsOutProto._Result.ValueType  # 0
+        SUCCESS: GetSimpleRaidDetailsOutProto._Result.ValueType  # 1
+        ERROR_NOT_IN_RANGE: GetSimpleRaidDetailsOutProto._Result.ValueType  # 2
+        ERROR_RAID_COMPLETED: GetSimpleRaidDetailsOutProto._Result.ValueType  # 3
+        ERROR_RAID_UNAVAILABLE: GetSimpleRaidDetailsOutProto._Result.ValueType  # 4
+        ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetSimpleRaidDetailsOutProto._Result.ValueType  # 5
+        ERROR_POI_INACCESSIBLE: GetSimpleRaidDetailsOutProto._Result.ValueType  # 6
+        ERROR_PLAYER_NOT_ELIGIBLE: GetSimpleRaidDetailsOutProto._Result.ValueType  # 7
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: GetSimpleRaidDetailsOutProto.Result.ValueType  # 0
+    SUCCESS: GetSimpleRaidDetailsOutProto.Result.ValueType  # 1
+    ERROR_NOT_IN_RANGE: GetSimpleRaidDetailsOutProto.Result.ValueType  # 2
+    ERROR_RAID_COMPLETED: GetSimpleRaidDetailsOutProto.Result.ValueType  # 3
+    ERROR_RAID_UNAVAILABLE: GetSimpleRaidDetailsOutProto.Result.ValueType  # 4
+    ERROR_PLAYER_BELOW_MINIMUM_LEVEL: GetSimpleRaidDetailsOutProto.Result.ValueType  # 5
+    ERROR_POI_INACCESSIBLE: GetSimpleRaidDetailsOutProto.Result.ValueType  # 6
+    ERROR_PLAYER_NOT_ELIGIBLE: GetSimpleRaidDetailsOutProto.Result.ValueType  # 7
+
+    RESULT_FIELD_NUMBER: _builtins.int
+    TRAINER_BATTLE_STATE_FIELD_NUMBER: _builtins.int
+    SERVER_MS_FIELD_NUMBER: _builtins.int
+    SERVER_INSTANCE_FIELD_NUMBER: _builtins.int
+    RAID_ENTRY_COST_FIELD_NUMBER: _builtins.int
+    PAYMENTS_MADE_FIELD_NUMBER: _builtins.int
+    FREE_TICKET_AVAILABLE_FIELD_NUMBER: _builtins.int
+    NUM_PLAYERS_IN_LOBBY_FIELD_NUMBER: _builtins.int
+    LOBBY_CREATION_MS_FIELD_NUMBER: _builtins.int
+    LOBBY_JOIN_END_MS_FIELD_NUMBER: _builtins.int
+    result: Global___GetSimpleRaidDetailsOutProto.Result.ValueType
+    trainer_battle_state: Global___TrainerBattleState.ValueType
+    server_ms: _builtins.int
+    server_instance: _builtins.int
+    free_ticket_available: _builtins.bool
+    num_players_in_lobby: _builtins.int
+    lobby_creation_ms: _builtins.int
+    lobby_join_end_ms: _builtins.int
+    @_builtins.property
+    def raid_entry_cost(self) -> Global___RaidEntryCostProto: ...
+    @_builtins.property
+    def payments_made(self) -> Global___BattlePaymentsProto: ...
+    def __init__(
+        self,
+        *,
+        result: Global___GetSimpleRaidDetailsOutProto.Result.ValueType = ...,
+        trainer_battle_state: Global___TrainerBattleState.ValueType = ...,
+        server_ms: _builtins.int = ...,
+        server_instance: _builtins.int = ...,
+        raid_entry_cost: Global___RaidEntryCostProto | None = ...,
+        payments_made: Global___BattlePaymentsProto | None = ...,
+        free_ticket_available: _builtins.bool = ...,
+        num_players_in_lobby: _builtins.int = ...,
+        lobby_creation_ms: _builtins.int = ...,
+        lobby_join_end_ms: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["payments_made", b"payments_made", "raid_entry_cost", b"raid_entry_cost"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["free_ticket_available", b"free_ticket_available", "lobby_creation_ms", b"lobby_creation_ms", "lobby_join_end_ms", b"lobby_join_end_ms", "num_players_in_lobby", b"num_players_in_lobby", "payments_made", b"payments_made", "raid_entry_cost", b"raid_entry_cost", "result", b"result", "server_instance", b"server_instance", "server_ms", b"server_ms", "trainer_battle_state", b"trainer_battle_state"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___GetSimpleRaidDetailsOutProto: _TypeAlias = GetSimpleRaidDetailsOutProto  # noqa: Y015
+
+@_typing.final
+class GetSimpleRaidDetailsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    RAID_SEED_FIELD_NUMBER: _builtins.int
+    GYM_ID_FIELD_NUMBER: _builtins.int
+    LOBBY_ID_FIELD_NUMBER: _builtins.int
+    GYM_LAT_DEGREES_FIELD_NUMBER: _builtins.int
+    GYM_LNG_DEGREES_FIELD_NUMBER: _builtins.int
+    INVITER_ID_FIELD_NUMBER: _builtins.int
+    IS_SELF_INVITE_FIELD_NUMBER: _builtins.int
+    raid_seed: _builtins.int
+    gym_id: _builtins.str
+    gym_lat_degrees: _builtins.float
+    gym_lng_degrees: _builtins.float
+    inviter_id: _builtins.str
+    is_self_invite: _builtins.bool
+    @_builtins.property
+    def lobby_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    def __init__(
+        self,
+        *,
+        raid_seed: _builtins.int = ...,
+        gym_id: _builtins.str = ...,
+        lobby_id: _abc.Iterable[_builtins.int] | None = ...,
+        gym_lat_degrees: _builtins.float = ...,
+        gym_lng_degrees: _builtins.float = ...,
+        inviter_id: _builtins.str = ...,
+        is_self_invite: _builtins.bool = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["gym_id", b"gym_id", "gym_lat_degrees", b"gym_lat_degrees", "gym_lng_degrees", b"gym_lng_degrees", "inviter_id", b"inviter_id", "is_self_invite", b"is_self_invite", "lobby_id", b"lobby_id", "raid_seed", b"raid_seed"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___GetSimpleRaidDetailsProto: _TypeAlias = GetSimpleRaidDetailsProto  # noqa: Y015
 
 @_typing.final
 class GetStardustQuestProto(_message.Message):
@@ -77947,6 +78646,7 @@ class GymDeployOutProto(_message.Message):
         ERROR_RAID_ACTIVE: GymDeployOutProto._Result.ValueType  # 19
         ERROR_FUSION_POKEMON: GymDeployOutProto._Result.ValueType  # 20
         ERROR_FUSION_COMPONENT_POKEMON: GymDeployOutProto._Result.ValueType  # 21
+        ERROR_GYM_DEPLOY_DISABLED: GymDeployOutProto._Result.ValueType  # 22
 
     class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
     NO_RESULT_SET: GymDeployOutProto.Result.ValueType  # 0
@@ -77971,6 +78671,7 @@ class GymDeployOutProto(_message.Message):
     ERROR_RAID_ACTIVE: GymDeployOutProto.Result.ValueType  # 19
     ERROR_FUSION_POKEMON: GymDeployOutProto.Result.ValueType  # 20
     ERROR_FUSION_COMPONENT_POKEMON: GymDeployOutProto.Result.ValueType  # 21
+    ERROR_GYM_DEPLOY_DISABLED: GymDeployOutProto.Result.ValueType  # 22
 
     RESULT_FIELD_NUMBER: _builtins.int
     GYM_STATUS_AND_DEFENDERS_FIELD_NUMBER: _builtins.int
@@ -78035,10 +78736,12 @@ class GymDisplayProto(_message.Message):
     LOWEST_POKEMON_MOTIVATION_FIELD_NUMBER: _builtins.int
     SLOTS_AVAILABLE_FIELD_NUMBER: _builtins.int
     OCCUPIED_MILLIS_FIELD_NUMBER: _builtins.int
+    DISABLE_GYM_BATTLE_FIELD_NUMBER: _builtins.int
     total_gym_cp: _builtins.int
     lowest_pokemon_motivation: _builtins.float
     slots_available: _builtins.int
     occupied_millis: _builtins.int
+    disable_gym_battle: _builtins.bool
     @_builtins.property
     def gym_event(self) -> _containers.RepeatedCompositeFieldContainer[Global___GymEventProto]: ...
     def __init__(
@@ -78049,10 +78752,11 @@ class GymDisplayProto(_message.Message):
         lowest_pokemon_motivation: _builtins.float = ...,
         slots_available: _builtins.int = ...,
         occupied_millis: _builtins.int = ...,
+        disable_gym_battle: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["gym_event", b"gym_event", "lowest_pokemon_motivation", b"lowest_pokemon_motivation", "occupied_millis", b"occupied_millis", "slots_available", b"slots_available", "total_gym_cp", b"total_gym_cp"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["disable_gym_battle", b"disable_gym_battle", "gym_event", b"gym_event", "lowest_pokemon_motivation", b"lowest_pokemon_motivation", "occupied_millis", b"occupied_millis", "slots_available", b"slots_available", "total_gym_cp", b"total_gym_cp"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -78368,6 +79072,28 @@ class GymGetInfoProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___GymGetInfoProto: _TypeAlias = GymGetInfoProto  # noqa: Y015
+
+@_typing.final
+class GymInteractionRangeRaidLevelOverrideProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    RAID_LEVEL_FIELD_NUMBER: _builtins.int
+    INTERACTION_RANGE_METERS_FIELD_NUMBER: _builtins.int
+    raid_level: Global___RaidLevel.ValueType
+    interaction_range_meters: _builtins.float
+    def __init__(
+        self,
+        *,
+        raid_level: Global___RaidLevel.ValueType = ...,
+        interaction_range_meters: _builtins.float = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["interaction_range_meters", b"interaction_range_meters", "raid_level", b"raid_level"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___GymInteractionRangeRaidLevelOverrideProto: _TypeAlias = GymInteractionRangeRaidLevelOverrideProto  # noqa: Y015
 
 @_typing.final
 class GymMembershipProto(_message.Message):
@@ -82808,6 +83534,63 @@ class IncidentVisibilitySettingsProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___IncidentVisibilitySettingsProto: _TypeAlias = IncidentVisibilitySettingsProto  # noqa: Y015
+
+@_typing.final
+class IncompleteBattleDetailsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    INCOMPLETE_RAID_INFO_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def incomplete_raid_info(self) -> Global___IncompleteRaidInfoProto: ...
+    def __init__(
+        self,
+        *,
+        incomplete_raid_info: Global___IncompleteRaidInfoProto | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["IncompleteBattle", b"IncompleteBattle", "incomplete_raid_info", b"incomplete_raid_info"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["IncompleteBattle", b"IncompleteBattle", "incomplete_raid_info", b"incomplete_raid_info"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    _WhichOneofReturnType_IncompleteBattle: _TypeAlias = _typing.Literal["incomplete_raid_info"]  # noqa: Y015
+    _WhichOneofArgType_IncompleteBattle: _TypeAlias = _typing.Literal["IncompleteBattle", b"IncompleteBattle"]  # noqa: Y015
+    def WhichOneof(self, oneof_group: _WhichOneofArgType_IncompleteBattle) -> _WhichOneofReturnType_IncompleteBattle | None: ...
+
+Global___IncompleteBattleDetailsProto: _TypeAlias = IncompleteBattleDetailsProto  # noqa: Y015
+
+@_typing.final
+class IncompleteRaidInfoProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    RAID_SEED_FIELD_NUMBER: _builtins.int
+    GYM_ID_FIELD_NUMBER: _builtins.int
+    LOBBY_ID_FIELD_NUMBER: _builtins.int
+    BATTLE_ID_FIELD_NUMBER: _builtins.int
+    GYM_LAT_DEGREES_FIELD_NUMBER: _builtins.int
+    GYM_LNG_DEGREES_FIELD_NUMBER: _builtins.int
+    raid_seed: _builtins.int
+    gym_id: _builtins.str
+    battle_id: _builtins.str
+    gym_lat_degrees: _builtins.float
+    gym_lng_degrees: _builtins.float
+    @_builtins.property
+    def lobby_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    def __init__(
+        self,
+        *,
+        raid_seed: _builtins.int = ...,
+        gym_id: _builtins.str = ...,
+        lobby_id: _abc.Iterable[_builtins.int] | None = ...,
+        battle_id: _builtins.str = ...,
+        gym_lat_degrees: _builtins.float = ...,
+        gym_lng_degrees: _builtins.float = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["battle_id", b"battle_id", "gym_id", b"gym_id", "gym_lat_degrees", b"gym_lat_degrees", "gym_lng_degrees", b"gym_lng_degrees", "lobby_id", b"lobby_id", "raid_seed", b"raid_seed"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___IncompleteRaidInfoProto: _TypeAlias = IncompleteRaidInfoProto  # noqa: Y015
 
 @_typing.final
 class IncubatedEggTelemetry(_message.Message):
@@ -97502,6 +98285,28 @@ class ItemProto(_message.Message):
 Global___ItemProto: _TypeAlias = ItemProto  # noqa: Y015
 
 @_typing.final
+class ItemRequirementProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    ITEM_FIELD_NUMBER: _builtins.int
+    COUNT_FIELD_NUMBER: _builtins.int
+    item: Global___Item.ValueType
+    count: _builtins.int
+    def __init__(
+        self,
+        *,
+        item: Global___Item.ValueType = ...,
+        count: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["count", b"count", "item", b"item"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ItemRequirementProto: _TypeAlias = ItemRequirementProto  # noqa: Y015
+
+@_typing.final
 class ItemRewardProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -101135,20 +101940,19 @@ Global___LocationCardDisplayProto: _TypeAlias = LocationCardDisplayProto  # noqa
 class LocationCardFeatureSettingsProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
-    ENABLED_FIELD_NUMBER: _builtins.int
-    OB_BOOL_FIELD_NUMBER: _builtins.int
-    enabled: _builtins.bool
-    ob_bool: _builtins.bool
-    """TODO removed i thinks..."""
+    BACKGROUND_DISPLAY_SECONDS_FIELD_NUMBER: _builtins.int
+    BACKGROUND_AUTO_LOOP_FIELD_NUMBER: _builtins.int
+    background_display_seconds: _builtins.int
+    background_auto_loop: Global___BackgroundAutoLoopMode.ValueType
     def __init__(
         self,
         *,
-        enabled: _builtins.bool = ...,
-        ob_bool: _builtins.bool = ...,
+        background_display_seconds: _builtins.int = ...,
+        background_auto_loop: Global___BackgroundAutoLoopMode.ValueType = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["enabled", b"enabled", "ob_bool", b"ob_bool"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["background_auto_loop", b"background_auto_loop", "background_display_seconds", b"background_display_seconds"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -101178,17 +101982,28 @@ class LocationCardSettingsProto(_message.Message):
     WEB_URL_FIELD_NUMBER: _builtins.int
     CARD_TYPE_FIELD_NUMBER: _builtins.int
     VFX_ADDRESS_FIELD_NUMBER: _builtins.int
+    OVERWRITE_TEMP_EVO_FIELD_NUMBER: _builtins.int
+    BACKGROUND_DISPLAY_SECONDS_OVERRIDE_FIELD_NUMBER: _builtins.int
     ENABLE_GRADIENT_OVERLAY_FIELD_NUMBER: _builtins.int
     DISCLAIMER_STRING_KEY_OVERRIDE_FIELD_NUMBER: _builtins.int
     BACKGROUND_ELIGIBILITY_STATUS_FIELD_NUMBER: _builtins.int
+    BACKGROUND_AUTO_LOOP_OVERRIDE_FIELD_NUMBER: _builtins.int
+    CARD_TREATMENT_FIELD_NUMBER: _builtins.int
     location_card: Global___LocationCard.ValueType
     image_url: _builtins.str
     web_url: _builtins.str
     card_type: Global___CardType.ValueType
     vfx_address: _builtins.str
+    background_display_seconds_override: _builtins.int
     enable_gradient_overlay: _builtins.bool
     disclaimer_string_key_override: _builtins.str
     background_eligibility_status: Global___LocationCardSettingsProto.BackgroundEligibilityStatus.ValueType
+    background_auto_loop_override: Global___BackgroundAutoLoopMode.ValueType
+    card_treatment: Global___CardTreatment.ValueType
+    @_builtins.property
+    def overwrite_temp_evo(self) -> Global___FormChangeLocationCardBasicSettingsProto:
+        """TODO: not in apk"""
+
     def __init__(
         self,
         *,
@@ -101197,13 +102012,17 @@ class LocationCardSettingsProto(_message.Message):
         web_url: _builtins.str = ...,
         card_type: Global___CardType.ValueType = ...,
         vfx_address: _builtins.str = ...,
+        overwrite_temp_evo: Global___FormChangeLocationCardBasicSettingsProto | None = ...,
+        background_display_seconds_override: _builtins.int = ...,
         enable_gradient_overlay: _builtins.bool = ...,
         disclaimer_string_key_override: _builtins.str = ...,
         background_eligibility_status: Global___LocationCardSettingsProto.BackgroundEligibilityStatus.ValueType = ...,
+        background_auto_loop_override: Global___BackgroundAutoLoopMode.ValueType = ...,
+        card_treatment: Global___CardTreatment.ValueType = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["overwrite_temp_evo", b"overwrite_temp_evo"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["background_eligibility_status", b"background_eligibility_status", "card_type", b"card_type", "disclaimer_string_key_override", b"disclaimer_string_key_override", "enable_gradient_overlay", b"enable_gradient_overlay", "image_url", b"image_url", "location_card", b"location_card", "vfx_address", b"vfx_address", "web_url", b"web_url"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["background_auto_loop_override", b"background_auto_loop_override", "background_display_seconds_override", b"background_display_seconds_override", "background_eligibility_status", b"background_eligibility_status", "card_treatment", b"card_treatment", "card_type", b"card_type", "disclaimer_string_key_override", b"disclaimer_string_key_override", "enable_gradient_overlay", b"enable_gradient_overlay", "image_url", b"image_url", "location_card", b"location_card", "overwrite_temp_evo", b"overwrite_temp_evo", "vfx_address", b"vfx_address", "web_url", b"web_url"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -102801,6 +103620,31 @@ class MapIconsSettingsProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___MapIconsSettingsProto: _TypeAlias = MapIconsSettingsProto  # noqa: Y015
+
+@_typing.final
+class MapObjectCollisionAvoidanceSettingsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    MAP_PLACE_COLLISION_BUFFER_DISTANCE_FIELD_NUMBER: _builtins.int
+    POKEMON_COLLISION_BUFFER_DISTANCE_FIELD_NUMBER: _builtins.int
+    POKEMON_COLLISION_RADIUS_SCALE_FACTOR_FIELD_NUMBER: _builtins.int
+    map_place_collision_buffer_distance: _builtins.float
+    pokemon_collision_buffer_distance: _builtins.float
+    pokemon_collision_radius_scale_factor: _builtins.float
+    def __init__(
+        self,
+        *,
+        map_place_collision_buffer_distance: _builtins.float = ...,
+        pokemon_collision_buffer_distance: _builtins.float = ...,
+        pokemon_collision_radius_scale_factor: _builtins.float = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["map_place_collision_buffer_distance", b"map_place_collision_buffer_distance", "pokemon_collision_buffer_distance", b"pokemon_collision_buffer_distance", "pokemon_collision_radius_scale_factor", b"pokemon_collision_radius_scale_factor"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___MapObjectCollisionAvoidanceSettingsProto: _TypeAlias = MapObjectCollisionAvoidanceSettingsProto  # noqa: Y015
 
 @_typing.final
 class MapPoint2D(_message.Message):
@@ -108366,6 +109210,44 @@ class NearbyPokemonSettings(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___NearbyPokemonSettings: _TypeAlias = NearbyPokemonSettings  # noqa: Y015
+
+@_typing.final
+class NearbyPokemonSnapshot(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Status:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _StatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[NearbyPokemonSnapshot._Status.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: NearbyPokemonSnapshot._Status.ValueType  # 0
+        COMPLETE: NearbyPokemonSnapshot._Status.ValueType  # 1
+        NOT_EVALUATED: NearbyPokemonSnapshot._Status.ValueType  # 2
+
+    class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
+    UNSET: NearbyPokemonSnapshot.Status.ValueType  # 0
+    COMPLETE: NearbyPokemonSnapshot.Status.ValueType  # 1
+    NOT_EVALUATED: NearbyPokemonSnapshot.Status.ValueType  # 2
+
+    STATUS_FIELD_NUMBER: _builtins.int
+    POKEMON_FIELD_NUMBER: _builtins.int
+    status: Global___NearbyPokemonSnapshot.Status.ValueType
+    @_builtins.property
+    def pokemon(self) -> _containers.RepeatedCompositeFieldContainer[Global___NearbyPokemonProto]: ...
+    def __init__(
+        self,
+        *,
+        status: Global___NearbyPokemonSnapshot.Status.ValueType = ...,
+        pokemon: _abc.Iterable[Global___NearbyPokemonProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["pokemon", b"pokemon", "status", b"status"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___NearbyPokemonSnapshot: _TypeAlias = NearbyPokemonSnapshot  # noqa: Y015
 
 @_typing.final
 class NearbyPokemonTabFocusedTelemetry(_message.Message):
@@ -114136,6 +115018,51 @@ class PingResponseProto(_message.Message):
 Global___PingResponseProto: _TypeAlias = PingResponseProto  # noqa: Y015
 
 @_typing.final
+class PinnedNearbyPokemonSnapshot(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Status:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _StatusEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[PinnedNearbyPokemonSnapshot._Status.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: PinnedNearbyPokemonSnapshot._Status.ValueType  # 0
+        NOT_REQUESTED: PinnedNearbyPokemonSnapshot._Status.ValueType  # 1
+        INCLUDED: PinnedNearbyPokemonSnapshot._Status.ValueType  # 2
+        NO_LONGER_ELIGIBLE: PinnedNearbyPokemonSnapshot._Status.ValueType  # 3
+        NOT_EVALUATED: PinnedNearbyPokemonSnapshot._Status.ValueType  # 4
+
+    class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
+    UNSET: PinnedNearbyPokemonSnapshot.Status.ValueType  # 0
+    NOT_REQUESTED: PinnedNearbyPokemonSnapshot.Status.ValueType  # 1
+    INCLUDED: PinnedNearbyPokemonSnapshot.Status.ValueType  # 2
+    NO_LONGER_ELIGIBLE: PinnedNearbyPokemonSnapshot.Status.ValueType  # 3
+    NOT_EVALUATED: PinnedNearbyPokemonSnapshot.Status.ValueType  # 4
+
+    STATUS_FIELD_NUMBER: _builtins.int
+    PINNED_ENCOUNTER_ID_FIELD_NUMBER: _builtins.int
+    POKEMON_FIELD_NUMBER: _builtins.int
+    status: Global___PinnedNearbyPokemonSnapshot.Status.ValueType
+    pinned_encounter_id: _builtins.int
+    @_builtins.property
+    def pokemon(self) -> Global___NearbyPokemonProto: ...
+    def __init__(
+        self,
+        *,
+        status: Global___PinnedNearbyPokemonSnapshot.Status.ValueType = ...,
+        pinned_encounter_id: _builtins.int = ...,
+        pokemon: Global___NearbyPokemonProto | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["pokemon", b"pokemon"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["pinned_encounter_id", b"pinned_encounter_id", "pokemon", b"pokemon", "status", b"status"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___PinnedNearbyPokemonSnapshot: _TypeAlias = PinnedNearbyPokemonSnapshot  # noqa: Y015
+
+@_typing.final
 class PlaceProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -118595,11 +119522,13 @@ class PokedexCategoriesSettingsProto(_message.Message):
     SEARCH_ENABLED_FIELD_NUMBER: _builtins.int
     SHOW_DEX_AFTER_NEW_FORM_ENABLED_FIELD_NUMBER: _builtins.int
     SHOW_SHINY_DEX_CELEBRATION_ENABLED_FIELD_NUMBER: _builtins.int
+    SHOW_DEX_CUTSCENE_AFTER_NEW_FORM_IS_CAPTURED_FIELD_NUMBER: _builtins.int
     feature_enabled: _builtins.bool
     client_shiny_form_check: _builtins.bool
     search_enabled: _builtins.bool
     show_dex_after_new_form_enabled: _builtins.bool
     show_shiny_dex_celebration_enabled: _builtins.bool
+    show_dex_cutscene_after_new_form_is_captured: _builtins.bool
     @_builtins.property
     def pokedex_category_settings_in_order(self) -> _containers.RepeatedCompositeFieldContainer[Global___PokedexCategoriesSettingsProto.PokedexCategorySettingsProto]: ...
     def __init__(
@@ -118611,10 +119540,11 @@ class PokedexCategoriesSettingsProto(_message.Message):
         search_enabled: _builtins.bool = ...,
         show_dex_after_new_form_enabled: _builtins.bool = ...,
         show_shiny_dex_celebration_enabled: _builtins.bool = ...,
+        show_dex_cutscene_after_new_form_is_captured: _builtins.bool = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["client_shiny_form_check", b"client_shiny_form_check", "feature_enabled", b"feature_enabled", "pokedex_category_settings_in_order", b"pokedex_category_settings_in_order", "search_enabled", b"search_enabled", "show_dex_after_new_form_enabled", b"show_dex_after_new_form_enabled", "show_shiny_dex_celebration_enabled", b"show_shiny_dex_celebration_enabled"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["client_shiny_form_check", b"client_shiny_form_check", "feature_enabled", b"feature_enabled", "pokedex_category_settings_in_order", b"pokedex_category_settings_in_order", "search_enabled", b"search_enabled", "show_dex_after_new_form_enabled", b"show_dex_after_new_form_enabled", "show_dex_cutscene_after_new_form_is_captured", b"show_dex_cutscene_after_new_form_is_captured", "show_shiny_dex_celebration_enabled", b"show_shiny_dex_celebration_enabled"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -121310,6 +122240,13 @@ class PokemonDisplayProto(_message.Message):
         PIKACHU_ANNIVERSARY_2026_SINGAPORE_01: PokemonDisplayProto._Form.ValueType  # 3359
         PIKACHU_ANNIVERSARY_2026_TAIWAN_01: PokemonDisplayProto._Form.ValueType  # 3360
         PIKACHU_K_2026_A_01: PokemonDisplayProto._Form.ValueType  # 3361
+        ZUBAT_HALLOWEEN_2026_01: PokemonDisplayProto._Form.ValueType  # 3362
+        GOLBAT_HALLOWEEN_2026_01: PokemonDisplayProto._Form.ValueType  # 3363
+        CROBAT_HALLOWEEN_2026_01: PokemonDisplayProto._Form.ValueType  # 3364
+        SINISTEA_P_HALLOWEEN_2026_01: PokemonDisplayProto._Form.ValueType  # 3365
+        SINISTEA_A_HALLOWEEN_2026_01: PokemonDisplayProto._Form.ValueType  # 3366
+        POLTEAGEIST_P_HALLOWEEN_2026_01: PokemonDisplayProto._Form.ValueType  # 3367
+        POLTEAGEIST_A_HALLOWEEN_2026_01: PokemonDisplayProto._Form.ValueType  # 3368
         PIKACHU_ANNIVERSARY_2026_PHILIPPINE_01: PokemonDisplayProto._Form.ValueType  # 3375
         PIKACHU_ANNIVERSARY_2026_THAILAND_01: PokemonDisplayProto._Form.ValueType  # 3376
         PIKACHU_K_2026_B_01: PokemonDisplayProto._Form.ValueType  # 3377
@@ -122810,6 +123747,13 @@ class PokemonDisplayProto(_message.Message):
     PIKACHU_ANNIVERSARY_2026_SINGAPORE_01: PokemonDisplayProto.Form.ValueType  # 3359
     PIKACHU_ANNIVERSARY_2026_TAIWAN_01: PokemonDisplayProto.Form.ValueType  # 3360
     PIKACHU_K_2026_A_01: PokemonDisplayProto.Form.ValueType  # 3361
+    ZUBAT_HALLOWEEN_2026_01: PokemonDisplayProto.Form.ValueType  # 3362
+    GOLBAT_HALLOWEEN_2026_01: PokemonDisplayProto.Form.ValueType  # 3363
+    CROBAT_HALLOWEEN_2026_01: PokemonDisplayProto.Form.ValueType  # 3364
+    SINISTEA_P_HALLOWEEN_2026_01: PokemonDisplayProto.Form.ValueType  # 3365
+    SINISTEA_A_HALLOWEEN_2026_01: PokemonDisplayProto.Form.ValueType  # 3366
+    POLTEAGEIST_P_HALLOWEEN_2026_01: PokemonDisplayProto.Form.ValueType  # 3367
+    POLTEAGEIST_A_HALLOWEEN_2026_01: PokemonDisplayProto.Form.ValueType  # 3368
     PIKACHU_ANNIVERSARY_2026_PHILIPPINE_01: PokemonDisplayProto.Form.ValueType  # 3375
     PIKACHU_ANNIVERSARY_2026_THAILAND_01: PokemonDisplayProto.Form.ValueType  # 3376
     PIKACHU_K_2026_B_01: PokemonDisplayProto.Form.ValueType  # 3377
@@ -129954,6 +130898,7 @@ class QuestPokemonEncounterProto(_message.Message):
     OVERWRITTEN_ON_FLEE_FIELD_NUMBER: _builtins.int
     QUEST_ENCOUNTER_TYPE_FIELD_NUMBER: _builtins.int
     APPRAISAL_STAR_FIELD_NUMBER: _builtins.int
+    UI_OVERRIDE_FIELD_NUMBER: _builtins.int
     quest_id: _builtins.str
     encounter_type: Global___EncounterType.ValueType
     is_hidden_ditto: _builtins.bool
@@ -129965,6 +130910,8 @@ class QuestPokemonEncounterProto(_message.Message):
     def pokemon(self) -> Global___PokemonProto: ...
     @_builtins.property
     def ditto(self) -> Global___PokemonProto: ...
+    @_builtins.property
+    def ui_override(self) -> Global___QuestUiOverrideProto: ...
     def __init__(
         self,
         *,
@@ -129977,10 +130924,11 @@ class QuestPokemonEncounterProto(_message.Message):
         overwritten_on_flee: _builtins.bool = ...,
         quest_encounter_type: Global___QuestEncounterType.ValueType = ...,
         appraisal_star: _builtins.int = ...,
+        ui_override: Global___QuestUiOverrideProto | None = ...,
     ) -> None: ...
-    _HasFieldArgType: _TypeAlias = _typing.Literal["ditto", b"ditto", "pokemon", b"pokemon"]  # noqa: Y015
+    _HasFieldArgType: _TypeAlias = _typing.Literal["ditto", b"ditto", "pokemon", b"pokemon", "ui_override", b"ui_override"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["appraisal_star", b"appraisal_star", "ditto", b"ditto", "encounter_type", b"encounter_type", "is_hidden_ditto", b"is_hidden_ditto", "overwritten_on_flee", b"overwritten_on_flee", "poke_ball_override", b"poke_ball_override", "pokemon", b"pokemon", "quest_encounter_type", b"quest_encounter_type", "quest_id", b"quest_id"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["appraisal_star", b"appraisal_star", "ditto", b"ditto", "encounter_type", b"encounter_type", "is_hidden_ditto", b"is_hidden_ditto", "overwritten_on_flee", b"overwritten_on_flee", "poke_ball_override", b"poke_ball_override", "pokemon", b"pokemon", "quest_encounter_type", b"quest_encounter_type", "quest_id", b"quest_id", "ui_override", b"ui_override"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -131177,6 +132125,7 @@ class RaidClientSettingsProto(_message.Message):
     SKIP_RAID_RESOLVE_RAID_LEVELS_FIELD_NUMBER: _builtins.int
     RAID_LEVEL_ENCOUNTER_TIMINGS_FIELD_NUMBER: _builtins.int
     TURN_OFF_RAID_BATTLE_LOGS_FOR_RAID_LEVELS_FIELD_NUMBER: _builtins.int
+    UNSUPPORTED_RAID_LEVELS_FOR_RSVP_FIELD_NUMBER: _builtins.int
     remote_raid_enabled: _builtins.bool
     max_remote_raid_passes: _builtins.int
     remote_damage_modifier: _builtins.float
@@ -131224,6 +132173,8 @@ class RaidClientSettingsProto(_message.Message):
     def raid_level_encounter_timings(self) -> _containers.RepeatedCompositeFieldContainer[Global___RaidLevelEncounterTimingSettings]: ...
     @_builtins.property
     def turn_off_raid_battle_logs_for_raid_levels(self) -> _containers.RepeatedScalarFieldContainer[Global___RaidLevel.ValueType]: ...
+    @_builtins.property
+    def unsupported_raid_levels_for_rsvp(self) -> _containers.RepeatedScalarFieldContainer[Global___RaidLevel.ValueType]: ...
     def __init__(
         self,
         *,
@@ -131262,10 +132213,11 @@ class RaidClientSettingsProto(_message.Message):
         skip_raid_resolve_raid_levels: _abc.Iterable[Global___RaidLevel.ValueType] | None = ...,
         raid_level_encounter_timings: _abc.Iterable[Global___RaidLevelEncounterTimingSettings] | None = ...,
         turn_off_raid_battle_logs_for_raid_levels: _abc.Iterable[Global___RaidLevel.ValueType] | None = ...,
+        unsupported_raid_levels_for_rsvp: _abc.Iterable[Global___RaidLevel.ValueType] | None = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _typing.Literal["raid_feature_flags", b"raid_feature_flags"]  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-    _ClearFieldArgType: _TypeAlias = _typing.Literal["boot_cutoff_ms", b"boot_cutoff_ms", "boot_raid_enabled", b"boot_raid_enabled", "boot_solo_ms", b"boot_solo_ms", "can_invite_friends_in_person", b"can_invite_friends_in_person", "can_invite_friends_remotely", b"can_invite_friends_remotely", "failed_friend_invite_info_enabled", b"failed_friend_invite_info_enabled", "fetch_profile_from_social_enabled", b"fetch_profile_from_social_enabled", "friend_invite_cutoff_time_sec", b"friend_invite_cutoff_time_sec", "friend_requests_enabled", b"friend_requests_enabled", "invite_cooldown_duration_millis", b"invite_cooldown_duration_millis", "is_nearby_raid_notification_disabled", b"is_nearby_raid_notification_disabled", "lobby_refresh_interval_ms", b"lobby_refresh_interval_ms", "max_num_friend_invites", b"max_num_friend_invites", "max_num_friend_invites_per_action", b"max_num_friend_invites_per_action", "max_players_per_lobby", b"max_players_per_lobby", "max_remote_players_per_lobby", b"max_remote_players_per_lobby", "max_remote_raid_passes", b"max_remote_raid_passes", "min_players_to_boot", b"min_players_to_boot", "ob_bool", b"ob_bool", "ob_int32", b"ob_int32", "pokemon_music_overrides", b"pokemon_music_overrides", "popup_time_ms", b"popup_time_ms", "raid_feature_flags", b"raid_feature_flags", "raid_level_encounter_timings", b"raid_level_encounter_timings", "raid_level_music_overrides", b"raid_level_music_overrides", "remote_damage_modifier", b"remote_damage_modifier", "remote_raid_distance_validation", b"remote_raid_distance_validation", "remote_raid_enabled", b"remote_raid_enabled", "remote_raid_iap_prompt_skus", b"remote_raid_iap_prompt_skus", "remote_raids_min_player_level", b"remote_raids_min_player_level", "skip_raid_resolve_raid_levels", b"skip_raid_resolve_raid_levels", "suggested_player_count_toast_settings", b"suggested_player_count_toast_settings", "turn_off_raid_battle_logs_for_raid_levels", b"turn_off_raid_battle_logs_for_raid_levels", "unsupported_raid_levels_for_friend_invites", b"unsupported_raid_levels_for_friend_invites", "unsupported_remote_raid_levels", b"unsupported_remote_raid_levels"]  # noqa: Y015
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["boot_cutoff_ms", b"boot_cutoff_ms", "boot_raid_enabled", b"boot_raid_enabled", "boot_solo_ms", b"boot_solo_ms", "can_invite_friends_in_person", b"can_invite_friends_in_person", "can_invite_friends_remotely", b"can_invite_friends_remotely", "failed_friend_invite_info_enabled", b"failed_friend_invite_info_enabled", "fetch_profile_from_social_enabled", b"fetch_profile_from_social_enabled", "friend_invite_cutoff_time_sec", b"friend_invite_cutoff_time_sec", "friend_requests_enabled", b"friend_requests_enabled", "invite_cooldown_duration_millis", b"invite_cooldown_duration_millis", "is_nearby_raid_notification_disabled", b"is_nearby_raid_notification_disabled", "lobby_refresh_interval_ms", b"lobby_refresh_interval_ms", "max_num_friend_invites", b"max_num_friend_invites", "max_num_friend_invites_per_action", b"max_num_friend_invites_per_action", "max_players_per_lobby", b"max_players_per_lobby", "max_remote_players_per_lobby", b"max_remote_players_per_lobby", "max_remote_raid_passes", b"max_remote_raid_passes", "min_players_to_boot", b"min_players_to_boot", "ob_bool", b"ob_bool", "ob_int32", b"ob_int32", "pokemon_music_overrides", b"pokemon_music_overrides", "popup_time_ms", b"popup_time_ms", "raid_feature_flags", b"raid_feature_flags", "raid_level_encounter_timings", b"raid_level_encounter_timings", "raid_level_music_overrides", b"raid_level_music_overrides", "remote_damage_modifier", b"remote_damage_modifier", "remote_raid_distance_validation", b"remote_raid_distance_validation", "remote_raid_enabled", b"remote_raid_enabled", "remote_raid_iap_prompt_skus", b"remote_raid_iap_prompt_skus", "remote_raids_min_player_level", b"remote_raids_min_player_level", "skip_raid_resolve_raid_levels", b"skip_raid_resolve_raid_levels", "suggested_player_count_toast_settings", b"suggested_player_count_toast_settings", "turn_off_raid_battle_logs_for_raid_levels", b"turn_off_raid_battle_logs_for_raid_levels", "unsupported_raid_levels_for_friend_invites", b"unsupported_raid_levels_for_friend_invites", "unsupported_raid_levels_for_rsvp", b"unsupported_raid_levels_for_rsvp", "unsupported_remote_raid_levels", b"unsupported_remote_raid_levels"]  # noqa: Y015
     def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
@@ -131469,36 +132421,16 @@ Global___RaidEndData: _TypeAlias = RaidEndData  # noqa: Y015
 class RaidEntryCostProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
-    @_typing.final
-    class ItemRequirementProto(_message.Message):
-        DESCRIPTOR: _descriptor.Descriptor
-
-        ITEM_FIELD_NUMBER: _builtins.int
-        COUNT_FIELD_NUMBER: _builtins.int
-        item: Global___Item.ValueType
-        count: _builtins.int
-        def __init__(
-            self,
-            *,
-            item: Global___Item.ValueType = ...,
-            count: _builtins.int = ...,
-        ) -> None: ...
-        _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
-        def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
-        _ClearFieldArgType: _TypeAlias = _typing.Literal["count", b"count", "item", b"item"]  # noqa: Y015
-        def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
-        def WhichOneof(self, oneof_group: _Never) -> None: ...
-
     RAID_TYPE_FIELD_NUMBER: _builtins.int
     ITEM_REQUIREMENT_FIELD_NUMBER: _builtins.int
     raid_type: Global___RaidLocationRequirement.ValueType
     @_builtins.property
-    def item_requirement(self) -> _containers.RepeatedCompositeFieldContainer[Global___RaidEntryCostProto.ItemRequirementProto]: ...
+    def item_requirement(self) -> _containers.RepeatedCompositeFieldContainer[Global___ItemRequirementProto]: ...
     def __init__(
         self,
         *,
         raid_type: Global___RaidLocationRequirement.ValueType = ...,
-        item_requirement: _abc.Iterable[Global___RaidEntryCostProto.ItemRequirementProto] | None = ...,
+        item_requirement: _abc.Iterable[Global___ItemRequirementProto] | None = ...,
     ) -> None: ...
     _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
     def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
@@ -132953,6 +133885,45 @@ class RecallRouteDraftProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___RecallRouteDraftProto: _TypeAlias = RecallRouteDraftProto  # noqa: Y015
+
+@_typing.final
+class ReceivePremiumGiftLogEntry(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[ReceivePremiumGiftLogEntry._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: ReceivePremiumGiftLogEntry._Result.ValueType  # 0
+        SUCCESS: ReceivePremiumGiftLogEntry._Result.ValueType  # 1
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: ReceivePremiumGiftLogEntry.Result.ValueType  # 0
+    SUCCESS: ReceivePremiumGiftLogEntry.Result.ValueType  # 1
+
+    RESULT_FIELD_NUMBER: _builtins.int
+    SENDER_CODENAME_FIELD_NUMBER: _builtins.int
+    CONTENTS_FIELD_NUMBER: _builtins.int
+    result: Global___ReceivePremiumGiftLogEntry.Result.ValueType
+    sender_codename: _builtins.str
+    @_builtins.property
+    def contents(self) -> _containers.RepeatedCompositeFieldContainer[Global___SkuContentProto]: ...
+    def __init__(
+        self,
+        *,
+        result: Global___ReceivePremiumGiftLogEntry.Result.ValueType = ...,
+        sender_codename: _builtins.str = ...,
+        contents: _abc.Iterable[Global___SkuContentProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["contents", b"contents", "result", b"result", "sender_codename", b"sender_codename"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___ReceivePremiumGiftLogEntry: _TypeAlias = ReceivePremiumGiftLogEntry  # noqa: Y015
 
 @_typing.final
 class RecommendedSearchProto(_message.Message):
@@ -140195,6 +141166,26 @@ class SeasonContestsDefinitionSettingsProto(_message.Message):
 Global___SeasonContestsDefinitionSettingsProto: _TypeAlias = SeasonContestsDefinitionSettingsProto  # noqa: Y015
 
 @_typing.final
+class SelectedRaidPartyProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    POKEMON_ID_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def pokemon_id(self) -> _containers.RepeatedScalarFieldContainer[_builtins.int]: ...
+    def __init__(
+        self,
+        *,
+        pokemon_id: _abc.Iterable[_builtins.int] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["pokemon_id", b"pokemon_id"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SelectedRaidPartyProto: _TypeAlias = SelectedRaidPartyProto  # noqa: Y015
+
+@_typing.final
 class SemanticVpsInfoProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -140927,6 +141918,45 @@ class SendPartyInvitationProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___SendPartyInvitationProto: _TypeAlias = SendPartyInvitationProto  # noqa: Y015
+
+@_typing.final
+class SendPremiumGiftLogEntry(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _Result:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _ResultEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[SendPremiumGiftLogEntry._Result.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: SendPremiumGiftLogEntry._Result.ValueType  # 0
+        SUCCESS: SendPremiumGiftLogEntry._Result.ValueType  # 1
+
+    class Result(_Result, metaclass=_ResultEnumTypeWrapper): ...
+    UNSET: SendPremiumGiftLogEntry.Result.ValueType  # 0
+    SUCCESS: SendPremiumGiftLogEntry.Result.ValueType  # 1
+
+    RESULT_FIELD_NUMBER: _builtins.int
+    RECIPIENT_CODENAME_FIELD_NUMBER: _builtins.int
+    CONTENTS_FIELD_NUMBER: _builtins.int
+    result: Global___SendPremiumGiftLogEntry.Result.ValueType
+    recipient_codename: _builtins.str
+    @_builtins.property
+    def contents(self) -> _containers.RepeatedCompositeFieldContainer[Global___SkuContentProto]: ...
+    def __init__(
+        self,
+        *,
+        result: Global___SendPremiumGiftLogEntry.Result.ValueType = ...,
+        recipient_codename: _builtins.str = ...,
+        contents: _abc.Iterable[Global___SkuContentProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["contents", b"contents", "recipient_codename", b"recipient_codename", "result", b"result"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___SendPremiumGiftLogEntry: _TypeAlias = SendPremiumGiftLogEntry  # noqa: Y015
 
 @_typing.final
 class SendProbeOutProto(_message.Message):
@@ -150366,6 +151396,88 @@ class TimeBonusSettingsProto(_message.Message):
 Global___TimeBonusSettingsProto: _TypeAlias = TimeBonusSettingsProto  # noqa: Y015
 
 @_typing.final
+class TimeBoxedSpawnEventProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    class _TimeBoxedSpawnEventType:
+        ValueType = _typing.NewType("ValueType", _builtins.int)
+        V: _TypeAlias = ValueType  # noqa: Y015
+
+    class _TimeBoxedSpawnEventTypeEnumTypeWrapper(_enum_type_wrapper._EnumTypeWrapper[TimeBoxedSpawnEventProto._TimeBoxedSpawnEventType.ValueType], _builtins.type):
+        DESCRIPTOR: _descriptor.EnumDescriptor
+        UNSET: TimeBoxedSpawnEventProto._TimeBoxedSpawnEventType.ValueType  # 0
+        METEOR_SHOWER: TimeBoxedSpawnEventProto._TimeBoxedSpawnEventType.ValueType  # 1
+
+    class TimeBoxedSpawnEventType(_TimeBoxedSpawnEventType, metaclass=_TimeBoxedSpawnEventTypeEnumTypeWrapper): ...
+    UNSET: TimeBoxedSpawnEventProto.TimeBoxedSpawnEventType.ValueType  # 0
+    METEOR_SHOWER: TimeBoxedSpawnEventProto.TimeBoxedSpawnEventType.ValueType  # 1
+
+    START_DAY_LOCAL_FIELD_NUMBER: _builtins.int
+    START_TIME_LOCAL_FIELD_NUMBER: _builtins.int
+    END_DAY_LOCAL_FIELD_NUMBER: _builtins.int
+    END_TIME_LOCAL_FIELD_NUMBER: _builtins.int
+    START_PEAK_TIME_LOCAL_FIELD_NUMBER: _builtins.int
+    END_PEAK_TIME_LOCAL_FIELD_NUMBER: _builtins.int
+    TITLE_STRING_KEY_FIELD_NUMBER: _builtins.int
+    DESCRIPTION_STRING_KEY_FIELD_NUMBER: _builtins.int
+    TIME_BOXED_SPAWN_EVENT_TYPE_FIELD_NUMBER: _builtins.int
+    title_string_key: _builtins.str
+    description_string_key: _builtins.str
+    time_boxed_spawn_event_type: Global___TimeBoxedSpawnEventProto.TimeBoxedSpawnEventType.ValueType
+    @_builtins.property
+    def start_day_local(self) -> Global___DayOfYearProto: ...
+    @_builtins.property
+    def start_time_local(self) -> Global___TimeOfDayProto: ...
+    @_builtins.property
+    def end_day_local(self) -> Global___DayOfYearProto: ...
+    @_builtins.property
+    def end_time_local(self) -> Global___TimeOfDayProto: ...
+    @_builtins.property
+    def start_peak_time_local(self) -> Global___TimeOfDayProto: ...
+    @_builtins.property
+    def end_peak_time_local(self) -> Global___TimeOfDayProto: ...
+    def __init__(
+        self,
+        *,
+        start_day_local: Global___DayOfYearProto | None = ...,
+        start_time_local: Global___TimeOfDayProto | None = ...,
+        end_day_local: Global___DayOfYearProto | None = ...,
+        end_time_local: Global___TimeOfDayProto | None = ...,
+        start_peak_time_local: Global___TimeOfDayProto | None = ...,
+        end_peak_time_local: Global___TimeOfDayProto | None = ...,
+        title_string_key: _builtins.str = ...,
+        description_string_key: _builtins.str = ...,
+        time_boxed_spawn_event_type: Global___TimeBoxedSpawnEventProto.TimeBoxedSpawnEventType.ValueType = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _typing.Literal["end_day_local", b"end_day_local", "end_peak_time_local", b"end_peak_time_local", "end_time_local", b"end_time_local", "start_day_local", b"start_day_local", "start_peak_time_local", b"start_peak_time_local", "start_time_local", b"start_time_local"]  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["description_string_key", b"description_string_key", "end_day_local", b"end_day_local", "end_peak_time_local", b"end_peak_time_local", "end_time_local", b"end_time_local", "start_day_local", b"start_day_local", "start_peak_time_local", b"start_peak_time_local", "start_time_local", b"start_time_local", "time_boxed_spawn_event_type", b"time_boxed_spawn_event_type", "title_string_key", b"title_string_key"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___TimeBoxedSpawnEventProto: _TypeAlias = TimeBoxedSpawnEventProto  # noqa: Y015
+
+@_typing.final
+class TimeBoxedSpawnEventsSettingsProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    TIME_BOXED_SPAWN_EVENTS_FIELD_NUMBER: _builtins.int
+    @_builtins.property
+    def time_boxed_spawn_events(self) -> _containers.RepeatedCompositeFieldContainer[Global___TimeBoxedSpawnEventProto]: ...
+    def __init__(
+        self,
+        *,
+        time_boxed_spawn_events: _abc.Iterable[Global___TimeBoxedSpawnEventProto] | None = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["time_boxed_spawn_events", b"time_boxed_spawn_events"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___TimeBoxedSpawnEventsSettingsProto: _TypeAlias = TimeBoxedSpawnEventsSettingsProto  # noqa: Y015
+
+@_typing.final
 class TimeGapProto(_message.Message):
     DESCRIPTOR: _descriptor.Descriptor
 
@@ -150419,6 +151531,28 @@ class TimeGapProto(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___TimeGapProto: _TypeAlias = TimeGapProto  # noqa: Y015
+
+@_typing.final
+class TimeOfDayProto(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    HOUR_FIELD_NUMBER: _builtins.int
+    MINUTE_FIELD_NUMBER: _builtins.int
+    hour: _builtins.int
+    minute: _builtins.int
+    def __init__(
+        self,
+        *,
+        hour: _builtins.int = ...,
+        minute: _builtins.int = ...,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _typing.Literal["hour", b"hour", "minute", b"minute"]  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___TimeOfDayProto: _TypeAlias = TimeOfDayProto  # noqa: Y015
 
 @_typing.final
 class TimePeriodCounterSettingsProto(_message.Message):
@@ -152902,6 +154036,7 @@ class TradeExclusionProto(_message.Message):
         LAST_BREAD_POKEMON: TradeExclusionProto._ExclusionReason.ValueType  # 17
         IN_ESCROW: TradeExclusionProto._ExclusionReason.ValueType  # 18
         UNTRADABLE_CATCH_COOLDOWN: TradeExclusionProto._ExclusionReason.ValueType  # 19
+        RESTRICTED_BACKGROUND: TradeExclusionProto._ExclusionReason.ValueType  # 20
 
     class ExclusionReason(_ExclusionReason, metaclass=_ExclusionReasonEnumTypeWrapper): ...
     UNSET: TradeExclusionProto.ExclusionReason.ValueType  # 0
@@ -152924,6 +154059,7 @@ class TradeExclusionProto(_message.Message):
     LAST_BREAD_POKEMON: TradeExclusionProto.ExclusionReason.ValueType  # 17
     IN_ESCROW: TradeExclusionProto.ExclusionReason.ValueType  # 18
     UNTRADABLE_CATCH_COOLDOWN: TradeExclusionProto.ExclusionReason.ValueType  # 19
+    RESTRICTED_BACKGROUND: TradeExclusionProto.ExclusionReason.ValueType  # 20
 
     def __init__(
         self,
@@ -153879,6 +155015,21 @@ class TriangleList(_message.Message):
     def WhichOneof(self, oneof_group: _Never) -> None: ...
 
 Global___TriangleList: _TypeAlias = TriangleList  # noqa: Y015
+
+@_typing.final
+class TriggerClockSync(_message.Message):
+    DESCRIPTOR: _descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+    _HasFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def HasField(self, field_name: _HasFieldArgType) -> _builtins.bool: ...
+    _ClearFieldArgType: _TypeAlias = _Never  # noqa: Y015
+    def ClearField(self, field_name: _ClearFieldArgType) -> None: ...
+    def WhichOneof(self, oneof_group: _Never) -> None: ...
+
+Global___TriggerClockSync: _TypeAlias = TriggerClockSync  # noqa: Y015
 
 @_typing.final
 class TutorialCreateDetail(_message.Message):
